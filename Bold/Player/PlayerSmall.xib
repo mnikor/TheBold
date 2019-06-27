@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerSmallView" customModule="Bold" customModuleProvider="target">
+            <connections>
+                <outlet property="actionImageView" destination="VIJ-15-yoJ" id="nZl-MA-6v2"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="N2G-oe-N8h"/>
+                <outlet property="playButton" destination="bjx-ci-jVg" id="EBH-fy-M6R"/>
+                <outlet property="progressView" destination="KU2-B2-KiF" id="ZWb-cH-4aJ"/>
+                <outlet property="subtitleLabel" destination="Xme-hV-edG" id="LDF-aE-oPe"/>
+                <outlet property="titleLabel" destination="vge-3S-sjR" id="adr-dw-qqf"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="ZKW-IZ-Lp1">
+                    <rect key="frame" x="16" y="10" width="343" height="40"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playerSmallImage" translatesAutoresizingMaskIntoConstraints="NO" id="VIJ-15-yoJ">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="4mj-ox-JfC"/>
+                                <constraint firstAttribute="width" constant="40" id="MNd-jG-bsL"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="20"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="YCW-bq-7gP">
+                            <rect key="frame" x="52" y="3" width="187" height="34.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find your conﬁdence" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vge-3S-sjR">
+                                    <rect key="frame" x="0.0" y="0.0" width="165" height="18.5"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="15"/>
+                                    <color key="textColor" red="0.10588235294117647" green="0.15686274509803921" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Intro to meditation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xme-hV-edG">
+                                    <rect key="frame" x="0.0" y="19.5" width="116" height="15"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="12"/>
+                                    <color key="textColor" red="0.40784313725490196" green="0.44313725490196076" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="3b0-6N-iEi">
+                            <rect key="frame" x="251" y="0.0" width="92" height="40"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjx-ci-jVg">
+                                    <rect key="frame" x="0.0" y="0.0" width="44" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="oNE-R2-Rwv"/>
+                                    </constraints>
+                                    <state key="normal" image="playerSmallPause"/>
+                                    <connections>
+                                        <action selector="tapPlayButton:" destination="-1" eventType="touchUpInside" id="T9N-Uk-LnJ"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbg-rU-Dji">
+                                    <rect key="frame" x="48" y="0.0" width="44" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="44" id="9h1-h7-tX8"/>
+                                        <constraint firstAttribute="height" constant="40" id="lbc-5A-g2o"/>
+                                    </constraints>
+                                    <state key="normal" image="playerSmallClose"/>
+                                    <connections>
+                                        <action selector="tapCloseButton:" destination="-1" eventType="touchUpInside" id="Nkl-IX-YCM"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="bjx-ci-jVg" firstAttribute="width" secondItem="Gbg-rU-Dji" secondAttribute="width" id="8aQ-DQ-Eem"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                </stackView>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KU2-B2-KiF">
+                    <rect key="frame" x="0.0" y="57" width="375" height="3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="3" id="rHE-bh-YzW"/>
+                    </constraints>
+                    <color key="progressTintColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="trackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </progressView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ZKW-IZ-Lp1" secondAttribute="trailing" constant="16" id="KDb-SD-xiQ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ZKW-IZ-Lp1" secondAttribute="bottom" constant="10" id="Lxt-5f-HBr"/>
+                <constraint firstItem="KU2-B2-KiF" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="TTL-R3-stb"/>
+                <constraint firstAttribute="trailing" secondItem="KU2-B2-KiF" secondAttribute="trailing" id="WGV-N2-z8W"/>
+                <constraint firstItem="ZKW-IZ-Lp1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Yhk-su-TJR"/>
+                <constraint firstItem="KU2-B2-KiF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YqE-tL-2Ri"/>
+                <constraint firstItem="ZKW-IZ-Lp1" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="ZYs-Rc-arn"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-2.3999999999999999" y="140.32983508245877"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="playerSmallClose" width="16" height="16"/>
+        <image name="playerSmallImage" width="58" height="57"/>
+        <image name="playerSmallPause" width="11" height="17"/>
+    </resources>
+</document>

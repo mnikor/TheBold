@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ActionCollectionViewCell" id="gTV-IL-0wX" customClass="ActionCollectionViewCell" customModule="Bold" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="122" height="163"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="122" height="163"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="actionImage" translatesAutoresizingMaskIntoConstraints="NO" id="oWX-GQ-2aQ">
+                        <rect key="frame" x="0.0" y="0.0" width="122" height="163"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Morning intention" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5xW-EE-kKJ">
+                        <rect key="frame" x="10" y="103" width="102" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="DEz-Ra-Xz2"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="15"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSe-8P-fRU">
+                        <rect key="frame" x="12" y="10" width="33" height="33"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="33" id="FGG-Hw-des"/>
+                            <constraint firstAttribute="width" constant="33" id="n0Z-Pg-dOp"/>
+                        </constraints>
+                        <state key="normal" image="actionShape"/>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="5xW-EE-kKJ" secondAttribute="trailing" constant="10" id="962-Z9-hrI"/>
+                <constraint firstItem="bSe-8P-fRU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="CQg-go-rQY"/>
+                <constraint firstAttribute="bottom" secondItem="oWX-GQ-2aQ" secondAttribute="bottom" id="EOY-BV-MPN"/>
+                <constraint firstItem="bSe-8P-fRU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="HFg-Xy-tKr"/>
+                <constraint firstItem="oWX-GQ-2aQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Lnf-19-Xu4"/>
+                <constraint firstAttribute="bottom" secondItem="5xW-EE-kKJ" secondAttribute="bottom" constant="10" id="Mj7-1a-vd6"/>
+                <constraint firstAttribute="trailing" secondItem="oWX-GQ-2aQ" secondAttribute="trailing" id="NFI-88-KbX"/>
+                <constraint firstItem="5xW-EE-kKJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="UVF-LU-XRx"/>
+                <constraint firstItem="oWX-GQ-2aQ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="fwR-HU-2M0"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="backgroundImageView" destination="oWX-GQ-2aQ" id="3WH-PE-GLV"/>
+                <outlet property="titleLabel" destination="5xW-EE-kKJ" id="FZZ-Ix-e0b"/>
+                <outlet property="topLeftButton" destination="bSe-8P-fRU" id="7ME-fR-gyS"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="actionImage" width="138" height="179"/>
+        <image name="actionShape" width="33" height="33"/>
+    </resources>
+</document>

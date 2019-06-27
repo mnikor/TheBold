@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActivityCollectionTableViewCell" id="KGk-i7-Jjw" customClass="ActivityCollectionTableViewCell" customModule="Bold" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="310"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="309.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Saa-l9-66J">
+                        <rect key="frame" x="22" y="34" width="244" height="46"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuFeel" translatesAutoresizingMaskIntoConstraints="NO" id="5vB-2Y-eWc">
+                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="3Nj-Z6-sis"/>
+                                    <constraint firstAttribute="width" constant="30" id="hfy-GW-waG"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qEL-cr-Xpy">
+                                <rect key="frame" x="38" y="0.0" width="206" height="46"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feel Bold" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msZ-Dy-P9i">
+                                        <rect key="frame" x="0.0" y="0.0" width="206" height="30"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rewire your mind" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HL-Sz-ixg">
+                                        <rect key="frame" x="0.0" y="30" width="206" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.46274509800000002" green="0.4941176471" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="msZ-Dy-P9i" firstAttribute="centerY" secondItem="5vB-2Y-eWc" secondAttribute="centerY" id="ly0-0K-dQh"/>
+                        </constraints>
+                    </stackView>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xhr-zL-L5h">
+                        <rect key="frame" x="0.0" y="103.5" width="375" height="172"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="z7W-xf-BfE">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTa-Mu-L0S">
+                        <rect key="frame" x="276" y="34" width="77" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="fgE-9M-HRB"/>
+                            <constraint firstAttribute="width" constant="77" id="gwe-Wr-HaY"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
+                        <inset key="titleEdgeInsets" minX="-10" minY="0.0" maxX="10" maxY="0.0"/>
+                        <inset key="imageEdgeInsets" minX="70" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="Show all" image="rightArrowIcon">
+                            <color key="titleColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="tapAllActivityButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jn9-G6-4Sw"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="xhr-zL-L5h" secondAttribute="trailing" id="6rJ-NF-yFQ"/>
+                    <constraint firstItem="xhr-zL-L5h" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ebx-vA-IJk"/>
+                    <constraint firstItem="vTa-Mu-L0S" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="34" id="ISV-ab-479"/>
+                    <constraint firstItem="xhr-zL-L5h" firstAttribute="top" secondItem="vTa-Mu-L0S" secondAttribute="bottom" constant="29.5" id="RaC-KO-TyS"/>
+                    <constraint firstItem="vTa-Mu-L0S" firstAttribute="leading" secondItem="Saa-l9-66J" secondAttribute="trailing" constant="10" id="bQa-7H-wdH"/>
+                    <constraint firstItem="Saa-l9-66J" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="34" id="gqg-hn-9wq"/>
+                    <constraint firstAttribute="trailing" secondItem="vTa-Mu-L0S" secondAttribute="trailing" constant="22" id="ic8-rX-lr1"/>
+                    <constraint firstItem="Saa-l9-66J" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="obr-ij-pHJ"/>
+                    <constraint firstAttribute="bottom" secondItem="xhr-zL-L5h" secondAttribute="bottom" constant="34" id="tco-A4-iJz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="activityImageView" destination="5vB-2Y-eWc" id="r2j-7a-bls"/>
+                <outlet property="bottomCollectionConstraint" destination="tco-A4-iJz" id="IYW-gP-LCB"/>
+                <outlet property="collectionView" destination="xhr-zL-L5h" id="RsB-M1-iYZ"/>
+                <outlet property="showAllButton" destination="vTa-Mu-L0S" id="WpB-1C-iyc"/>
+                <outlet property="subtitleLabel" destination="5HL-Sz-ixg" id="u0S-aP-m3b"/>
+                <outlet property="titleLabel" destination="msZ-Dy-P9i" id="STj-vy-AeI"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="menuFeel" width="30" height="30"/>
+        <image name="rightArrowIcon" width="8" height="12"/>
+    </resources>
+</document>

@@ -1,0 +1,78 @@
+/* 
+  Localizable.strings
+  Bold
+
+  Created by Alexander Kovalov on 5/29/19.
+  Copyright © 2019 Alexander Kovalov. All rights reserved.
+*/
+
+"ShowAll" = "Show all";
+"ViewAll" = "View all";
+
+// Onboarding
+"Splash.Feel" = "Feel";
+"Splash.Think" = "Think";
+"Splash.Act" = "Act";
+"Splash.FeelDescription" = "Conquer fear: boost confidence, resilience and more, by rewiring your subconscious mind.";
+"Splash.ThinkDescription" = "Our lessons, inspiring stories and quotes will guide your thinking to a new level.";
+"Splash.ActDescription" = "Put your sweat where your mouth is: set and conquer your Boldest goals.";
+"Splash.FindYourBoldness" = "Find your boldness";
+"Splash.SignUp" = "Sign Up";
+
+
+//Authorization
+"Authorization.SignUp" = "Sign Up!";
+"Authorization.Email" = "Email address";
+"Authorization.Password" = "Password";
+"Authorization.SignUpButton" = "Sign Up";
+"Authorization.OrSignUpWith" = "or sign up with";
+"Authorization.Facebook" = "Facebook";
+"Authorization.HaveAnAccount" = "Have an Account?";
+"Authorization.LogInButton" = "Log In";
+"Authorization.LogIn" = "Log In!";
+"Authorization.IForgot" = "I forgot";
+"Authorization.OrLoginWith" = "or login with";
+"Authorization.HaventAnAccount" = "Haven't an Account?";
+"Authorization.SignUpButton" = "Sign Up";
+"Authorization.ForgotPassword" = "Forgot password";
+"Authorization.PutYourEmailBelowAndWellSendYourPassword" = "Put your email below and we'll send your password";
+"Authorization.SendMePassword" = "Send me password";
+"Authorization.Success" = "Success!";
+"Authorization.YourPasswordWasSend" = "Your password was send.";
+"Authorization.LogInNow" = "Log In now";
+
+
+//Menu
+
+"Menu.Home" = "Home";
+"Menu.Feel" = "Feel";
+"Menu.Think" = "Think";
+"Menu.Act" = "Act";
+"Menu.Settings" = "Settings";
+
+
+// Player
+
+"Player.NextPractices" = "Next practices";
+
+
+// Feel
+
+"Feel.FeelBold" = "Feel Bold";
+"Feel.Apprentice" = "Apprentice";
+"Feel.Meditation" = "Meditation";
+"Feel.MeditationSubtitle" = "Tune your mind, body and soul and let them work together.";
+"Feel.Hypnosis" = "Hypnosis";
+"Feel.HypnosisSubtitle" = "Hack your supercomputer and change unhelpful programs running in your subconscious mind.";
+"Feel.Pep-talk" = "Pep-talk";
+"Feel.Pep-talkSubtitle" = "Change the story you are telling yourself, because everything depends on it.";
+
+"Feel.AddToActionPlan" = "Add to action plan";
+"Feel.FindYourConfidence" = "Find your confidence";
+"Feel.Duration" = "Duration";
+"Feel.Reminder" = "Reminder";
+"Feel.Goal" = "Goal";
+"Feel.Stake" = "Stake";
+"Feel.ShareWithFriends" = "Share with friends";
+"Off" = "Off";
+"Feel.NoStake" = "No stake";

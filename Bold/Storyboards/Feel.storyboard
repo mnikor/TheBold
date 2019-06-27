@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HTU-3G-IWg">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="YcA-i7-4lN">
+            <objects>
+                <navigationController id="HTU-3G-IWg" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="i8g-Ff-PXw">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="99K-NC-5VR" kind="relationship" relationship="rootViewController" id="fHe-Pa-Nz4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="djd-Zn-beN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-770" y="92"/>
+        </scene>
+        <!--Feel View Controller-->
+        <scene sceneID="inp-us-9OR">
+            <objects>
+                <viewController id="99K-NC-5VR" customClass="FeelViewController" customModule="Bold" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DCZ-z7-70E">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OLv-6T-OJB">
+                                <rect key="frame" x="0.0" y="99" width="375" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="99K-NC-5VR" id="zqW-6M-8FE"/>
+                                    <outlet property="delegate" destination="99K-NC-5VR" id="bHZ-8h-8pw"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4R-mr-COn" customClass="ProgressHeaderView" customModule="Bold" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="35"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="R11-Y7-GBB"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dDJ-RI-5xu" customClass="NavigationBottomView" customModule="Bold" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <color key="backgroundColor" red="1" green="0.66666666669999997" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="UIq-ox-E3x"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="y4R-mr-COn" firstAttribute="leading" secondItem="a1j-WD-zRa" secondAttribute="leading" id="AXi-bl-OIM"/>
+                            <constraint firstItem="dDJ-RI-5xu" firstAttribute="top" secondItem="a1j-WD-zRa" secondAttribute="top" id="B28-6y-tZY"/>
+                            <constraint firstItem="a1j-WD-zRa" firstAttribute="bottom" secondItem="OLv-6T-OJB" secondAttribute="bottom" id="Kiy-L7-bFG"/>
+                            <constraint firstItem="y4R-mr-COn" firstAttribute="top" secondItem="dDJ-RI-5xu" secondAttribute="bottom" id="XVD-Uz-uOf"/>
+                            <constraint firstItem="dDJ-RI-5xu" firstAttribute="trailing" secondItem="a1j-WD-zRa" secondAttribute="trailing" id="ZpG-Qe-zAQ"/>
+                            <constraint firstItem="dDJ-RI-5xu" firstAttribute="leading" secondItem="a1j-WD-zRa" secondAttribute="leading" id="cNk-Pj-uZV"/>
+                            <constraint firstItem="OLv-6T-OJB" firstAttribute="top" secondItem="y4R-mr-COn" secondAttribute="bottom" id="myW-Oc-uau"/>
+                            <constraint firstItem="a1j-WD-zRa" firstAttribute="trailing" secondItem="y4R-mr-COn" secondAttribute="trailing" id="q4n-C0-j25"/>
+                            <constraint firstItem="a1j-WD-zRa" firstAttribute="trailing" secondItem="OLv-6T-OJB" secondAttribute="trailing" id="qBj-At-eFN"/>
+                            <constraint firstItem="OLv-6T-OJB" firstAttribute="leading" secondItem="a1j-WD-zRa" secondAttribute="leading" id="tyb-Pz-sGp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="a1j-WD-zRa"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="wNL-iW-UDY">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" image="menuIcon" id="DZt-7U-Ilb">
+                            <connections>
+                                <action selector="tapMenuButton:" destination="99K-NC-5VR" id="ZgL-8z-Blb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="OLv-6T-OJB" id="Rhb-YS-3n0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ic5-YP-OWm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="64.799999999999997" y="92.203898050974516"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="menuIcon" width="26" height="16"/>
+    </resources>
+</document>

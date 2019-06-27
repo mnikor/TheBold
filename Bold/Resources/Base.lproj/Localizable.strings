@@ -1,0 +1,14 @@
+
+"Error.Unknown" = "Something went wrong";
+
+"Error.OhMyStars" = "Oh my stars!";
+"Error.ServerIsNotAvailable" = "Server is not available at the moment.";
+"Error.pickAnotherCard" = "Pick another card";
+
+// Horoscope tags
+"sun sign" = "sun sign";
+"health" = "health";
+"love" = "love";
+"career" = "career";
+"money" = "money";
+"mood" = "mood";

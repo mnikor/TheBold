@@ -1,0 +1,31 @@
+xcassets:
+  - inputs:
+    - Bold/Resources/Assets.xcassets
+    outputs:
+      templateName: swift4
+      output: Bold/Resources/Assets-Constants.swift
+colors:
+  - inputs:
+    - Bold/Resources/colors.json
+    outputs:
+      templateName: swift4
+      output: Bold/Extensions/UIColor+Extensions.swift
+ib:
+  - inputs:
+    - Bold/Storyboards/
+    outputs:
+      - templateName: scenes-swift4
+        output: Bold/Extensions/StoryboardScenes+Extensions.swift
+      - templateName: segues-swift4
+        output: Bold/Extensions/StoryboardSegues+Extensions.swift
+fonts:
+  - inputs:
+    - Bold/Resources/Fonts
+    outputs:
+      templateName: swift4
+      output: Bold/Extensions/UIFont+Extensions.swift
+strings:
+  inputs: Bold/Resources/Localizable.strings
+  outputs:
+    templateName: structured-swift4
+    output: Bold/Resources/L10n-Constants.swift

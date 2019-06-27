@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuBottomView" customModule="Bold" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="6wc-7x-FsQ" id="OUb-S2-Ae8"/>
+                <outlet property="subtitleLabel" destination="JXy-Lw-ekI" id="usM-eM-xL8"/>
+                <outlet property="titleLabel" destination="ROZ-Lb-QFV" id="g0E-8a-OZx"/>
+                <outlet property="userImageView" destination="ZON-r7-XU1" id="JW3-bQ-RyZ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="6wc-7x-FsQ">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="230"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vjB-KX-kOW">
+                    <rect key="frame" x="54" y="100.5" width="321" height="53"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuUser" translatesAutoresizingMaskIntoConstraints="NO" id="ZON-r7-XU1">
+                            <rect key="frame" x="0.0" y="0.0" width="53" height="53"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="53" id="aMO-sB-sLX"/>
+                                <constraint firstAttribute="width" constant="53" id="mlf-Lu-dhb"/>
+                            </constraints>
+                        </imageView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="qFU-Ua-uwV">
+                            <rect key="frame" x="61" y="7.5" width="260" height="45.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Johnathan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROZ-Lb-QFV">
+                                    <rect key="frame" x="0.0" y="0.0" width="260" height="21"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apprentice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXy-Lw-ekI">
+                                    <rect key="frame" x="0.0" y="25" width="260" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.46274509800000002" green="0.4941176471" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rof-fz-2Wl">
+                    <rect key="frame" x="54" y="80.5" width="321" height="93"/>
+                    <connections>
+                        <action selector="tapBottomView:" destination="-1" eventType="touchUpInside" id="hdc-BQ-rxK"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vjB-KX-kOW" firstAttribute="leading" secondItem="6wc-7x-FsQ" secondAttribute="leading" constant="54" id="3w3-7e-IHU"/>
+                <constraint firstItem="rof-fz-2Wl" firstAttribute="top" secondItem="vjB-KX-kOW" secondAttribute="top" constant="-20" id="6kO-m4-FXv"/>
+                <constraint firstAttribute="trailing" secondItem="vjB-KX-kOW" secondAttribute="trailing" id="Nog-6n-qNf"/>
+                <constraint firstItem="vjB-KX-kOW" firstAttribute="centerY" secondItem="6wc-7x-FsQ" secondAttribute="centerY" constant="12" id="PQy-fT-3JD"/>
+                <constraint firstItem="rof-fz-2Wl" firstAttribute="trailing" secondItem="vjB-KX-kOW" secondAttribute="trailing" id="XHX-fO-uqD"/>
+                <constraint firstItem="rof-fz-2Wl" firstAttribute="leading" secondItem="vjB-KX-kOW" secondAttribute="leading" id="ne6-Nx-fEy"/>
+                <constraint firstItem="rof-fz-2Wl" firstAttribute="bottom" secondItem="vjB-KX-kOW" secondAttribute="bottom" constant="20" id="rlD-TT-qCW"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="Uxv-dg-eaw"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="menuUser" width="53" height="53"/>
+    </resources>
+</document>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NavigationView" customModule="Bold" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="126"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FvE-Tw-J0Y">
+                    <rect key="frame" x="9" y="15" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="eku-oG-yoC"/>
+                        <constraint firstAttribute="width" constant="50" id="rPH-Ta-Ld9"/>
+                    </constraints>
+                    <state key="normal" image="menuBlueIcon"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6V-WZ-HY1">
+                    <rect key="frame" x="316" y="15" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="JKv-Ll-e98"/>
+                        <constraint firstAttribute="height" constant="50" id="zkW-8f-0fE"/>
+                    </constraints>
+                    <state key="normal" image="calendarBlueIcon"/>
+                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5W5-Fg-cbo">
+                    <rect key="frame" x="20" y="75" width="162.5" height="22"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Act Bold" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8D-hA-bpk">
+                            <rect key="frame" x="0.0" y="0.0" width="132.5" height="22"/>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="30"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="infoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="pN8-nE-ESO">
+                            <rect key="frame" x="140.5" y="0.0" width="22" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="3lS-Kr-Rp6"/>
+                                <constraint firstAttribute="width" constant="22" id="7gS-Cj-d1m"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                </stackView>
+                <navigationBar alpha="0.29999999999999999" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwp-N2-m4f">
+                    <rect key="frame" x="0.0" y="18" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <items>
+                        <navigationItem title="Title" id="mg5-Y7-HLs"/>
+                    </items>
+                </navigationBar>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i6g-Pi-crU">
+                    <rect key="frame" x="99" y="62" width="240" height="64"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="FvE-Tw-J0Y" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="15" id="AKv-CZ-RLp"/>
+                <constraint firstItem="h6V-WZ-HY1" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="15" id="Xrd-gT-TyK"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5W5-Fg-cbo" secondAttribute="trailing" constant="8" id="cJp-SB-Mzo"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="5W5-Fg-cbo" secondAttribute="bottom" constant="29" id="ggz-bM-wYF"/>
+                <constraint firstItem="5W5-Fg-cbo" firstAttribute="top" secondItem="FvE-Tw-J0Y" secondAttribute="bottom" constant="10" id="rj5-9Z-nvE"/>
+                <constraint firstItem="FvE-Tw-J0Y" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="9" id="taZ-TW-q6t"/>
+                <constraint firstItem="5W5-Fg-cbo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="xyR-gG-P8m"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="h6V-WZ-HY1" secondAttribute="trailing" constant="9" id="yzo-if-aPm"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="138.40000000000001" y="129.53523238380811"/>
+        </view>
+        <view contentMode="scaleToFill" id="v57-5m-Ki8">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6c-hv-wTe">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <items>
+                        <navigationItem title="Title" id="lio-eR-3d0"/>
+                    </items>
+                </navigationBar>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Q6c-hv-wTe" firstAttribute="leading" secondItem="vsr-2Z-T91" secondAttribute="leading" id="6cq-Rs-4Se"/>
+                <constraint firstItem="Q6c-hv-wTe" firstAttribute="top" secondItem="vsr-2Z-T91" secondAttribute="top" id="CHg-lt-3wT"/>
+                <constraint firstItem="Q6c-hv-wTe" firstAttribute="trailing" secondItem="vsr-2Z-T91" secondAttribute="trailing" id="s7g-H3-PXG"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vsr-2Z-T91"/>
+            <point key="canvasLocation" x="860" y="116.49175412293854"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="calendarBlueIcon" width="20" height="21"/>
+        <image name="infoIcon" width="22" height="22"/>
+        <image name="menuBlueIcon" width="26" height="16"/>
+    </resources>
+</document>
