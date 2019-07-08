@@ -10,6 +10,8 @@ import UIKit
 
 class FeelViewController: UIViewController, SideMenuItemContent {
 
+    @IBOutlet weak var highNavigationBar: NavigationBottomView!
+    @IBOutlet weak var progressView: ProgressHeaderView!
     @IBOutlet weak var tableView: UITableView!
     
     lazy var feelItems : [FeelEntity] = {
@@ -19,27 +21,27 @@ class FeelViewController: UIViewController, SideMenuItemContent {
         
     }()
     
-    @IBAction func tapMenuButton(_ sender: UIBarButtonItem) {
-        showSideMenu()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.navigationBar.isHidden = true
+        highNavigationBar.configItem(title: L10n.Feel.feelBold, titleImage: .none, leftButton: .showMenu, rightButton: .none)
+        highNavigationBar.deleagte = self
+        
         tableView.tableFooterView = UIView()
-        
-        tableView.register(UINib(nibName: "ActionCollectionTableViewCell", bundle: nil), forCellReuseIdentifier: "ActionCollectionTableViewCell")
-        
-        //self.navigationItem.title = L10n.Feel.feelBold
-
-//        if #available(iOS 11.0, *) {
-//            self.navigationController?.navigationBar.prefersLargeTitles = true
-//        } else {
-//            // Fallback on earlier versions
-//        }
+        registerXibs()
+    }
+    
+    func registerXibs() {
+        tableView.registerNib(ActionCollectionTableViewCell.self)
     }
 }
 
+extension FeelViewController: NavigationBottomViewDelegate {
+    func tapLeftButton() {
+        showSideMenu()
+    }
+}
 
 extension FeelViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,29 +49,40 @@ extension FeelViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ActionCollectionTableViewCell", for: indexPath) as! ActionCollectionTableViewCell
+        let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActionCollectionTableViewCell
+        cell.delegate = self
         cell.config(entity: feelItems[indexPath.row])
         cell.cellBackground(indexPath: indexPath)
         return cell
     }
+}
+
+extension FeelViewController: ActionCollectionTableViewCellDelegate {
     
+    func tapItemCollection() {
+        print("Show item")
+        performSegue(withIdentifier: StoryboardSegue.Feel.feelPlayerIdentifier.rawValue, sender: nil)
+    }
     
+    func tapShowAll(typeCells: FeelTypeCell)  {
+        print("Show all")
+        performSegue(withIdentifier: StoryboardSegue.Feel.showItem.rawValue, sender: typeCells)
+    }
+
+}
+
+extension FeelViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == StoryboardSegue.Feel.showItem.rawValue {
+            let vc = segue.destination as! ActionsListViewController
+            guard let type = sender as? FeelTypeCell else {return}
+            vc.typeVC = type
+        }
+    }
 }
 
 struct FeelEntity {
     var type : FeelTypeCell
     var items: Array<Any>
 }
-
-
-//class HomeEntity: NSObject {
-//
-//    var type : HomeActionsTypeCell
-//    var items : Array<Any>?
-//
-//    init(type: HomeActionsTypeCell, items: Array<Any>?) {
-//        self.type = type
-//        self.items = items
-//    }
-//
-//}

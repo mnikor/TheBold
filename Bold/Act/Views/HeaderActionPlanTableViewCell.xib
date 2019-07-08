@@ -60,6 +60,9 @@
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="49" id="a0s-2S-P3g"/>
+                        </constraints>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tOg-w1-V1l">
                         <rect key="frame" x="302.5" y="23.5" width="49.5" height="15"/>
@@ -81,10 +84,11 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="QYX-eu-yAW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6Ul-zD-Nhf"/>
                     <constraint firstItem="tOg-w1-V1l" firstAttribute="centerY" secondItem="ccn-Mp-MuT" secondAttribute="centerY" id="IwR-cP-hBG"/>
+                    <constraint firstAttribute="bottom" secondItem="QYX-eu-yAW" secondAttribute="bottom" constant="15" id="R0f-qJ-4p5"/>
                     <constraint firstItem="QYX-eu-yAW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="aRi-Zh-Qa6"/>
                     <constraint firstAttribute="trailing" secondItem="tOg-w1-V1l" secondAttribute="trailing" constant="23" id="mg0-DE-wYW"/>
+                    <constraint firstItem="QYX-eu-yAW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15.5" id="u5i-Fe-kir"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

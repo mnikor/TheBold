@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ActInactiveCollectionViewCell: UICollectionViewCell {
+class ActInactiveCollectionViewCell: BaseCollectionViewCell {
 
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!

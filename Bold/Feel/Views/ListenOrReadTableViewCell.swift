@@ -17,7 +17,7 @@ enum ButtonCombinationType {
     case none
 }
 
-class ListenOrReadTableViewCell: UITableViewCell {
+class ListenOrReadTableViewCell: BaseTableViewCell {
 
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -47,9 +47,9 @@ class ListenOrReadTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         startButton.isHidden = true
-        unlockButton.isHidden = true
+        //unlockButton.isHidden = true
         addPlanButton.isHidden = true
-        listenPreviewButton.isHidden = true
+        //listenPreviewButton.isHidden = true
         readPreviewButton.isHidden = true
         
     }

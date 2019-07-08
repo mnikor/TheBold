@@ -66,7 +66,7 @@ extension OnboardViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "onboardCell", for: indexPath) as! OnboardCell
+        let cell = collectionView.dequeReusableCell(indexPath: indexPath) as OnboardCell
         cell.configure(typeText: texts[indexPath.row])
         return cell
     }

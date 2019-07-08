@@ -10,24 +10,100 @@ import UIKit
 
 class PlayerListView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var topTopAnchor : NSLayoutConstraint!
+    var topBottomAnchor : NSLayoutConstraint!
+    var superView: UIView!
+    
+    lazy var ListItems : [SongEntity] = {
+        return [SongEntity(name: "Fundamentals of practice", duration: "3:24"),
+                SongEntity(name: "Introduction", duration: "8:00"),
+                SongEntity(name: "Meditation", duration: "0:50")]
+    }()
+    
+    @IBAction func tapHideListButton(_ sender: UIButton) {
+        hideViewAnimate()
+    }
+    
     override func draw(_ rect: CGRect) {
         // Drawing code
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.tableFooterView = UIView()
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 50
     }
-    */
     
-    func addBlur() {
-        //https://www.raywenderlich.com/167-uivisualeffectview-tutorial-getting-started
-        self.backgroundColor = .clear
-        // 2
-        let blurEffect = UIBlurEffect(style: .light)
-        // 3
-        let blurView = UIVisualEffectView(effect: blurEffect)
-        // 4
-        blurView.translatesAutoresizingMaskIntoConstraints = false
-        self.insertSubview(blurView, at: 0)
+    func configView(superView: UIView) {
+        
+        self.superView = superView
+        
+        let frame = CGRect(x: 0, y: superView.bounds.size.height, width: superView.bounds.size.width, height: superView.bounds.size.height)
+        
+        self.frame = frame
+        superView.addSubview(self)
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
+        topTopAnchor = self.topAnchor.constraint(equalTo: superView.topAnchor)
+        topBottomAnchor = self.topAnchor.constraint(equalTo: superView.bottomAnchor)
+        topTopAnchor.isActive = false
+        
+        NSLayoutConstraint.activate([
+            self.heightAnchor.constraint(equalToConstant: superView.bounds.size.height),
+            self.leftAnchor.constraint(equalTo: superView.leftAnchor),
+            self.rightAnchor.constraint(equalTo: superView.rightAnchor),
+            topBottomAnchor])
+        
+        showViewAnimate()
     }
 
+    func showViewAnimate() {
+        UIView.animate(withDuration: 0.3) {
+            self.topBottomAnchor.isActive = false
+            self.topTopAnchor.isActive = true
+            self.superView.layoutIfNeeded()
+        }
+    }
+    
+    func hideViewAnimate() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.topTopAnchor.isActive = false
+            self.topBottomAnchor.isActive = true
+            self.superView.layoutIfNeeded()
+        }, completion: { [unowned self] (_) in
+            self.removeFromSuperview()
+        })
+    }
+    
+}
+
+
+extension PlayerListView: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ListItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeReusableCell(indexPath: indexPath) as PlayerListTableViewCell
+        cell.config(item: ListItems[indexPath.row])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        
+        print("Select track = \(ListItems[indexPath.row])")
+        hideViewAnimate()
+    }
+    
+}
+
+
+struct SongEntity {
+    var name: String
+    var duration: String
 }

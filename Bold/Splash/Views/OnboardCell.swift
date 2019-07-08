@@ -14,7 +14,7 @@ enum OnboardTypeText {
     case act
 }
 
-class OnboardCell: UICollectionViewCell {
+class OnboardCell: BaseCollectionViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!

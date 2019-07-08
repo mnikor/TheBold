@@ -20,6 +20,25 @@ class PlayerSmallView: UIView {
     
     @IBAction func tapPlayButton(_ sender: UIButton) {
     }
+    
     @IBAction func tapCloseButton(_ sender: UIButton) {
     }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    func commonInit() {
+        Bundle.main.loadNibNamed("PlayerSmallView", owner: self)
+        contentView.fixInView(self)
+        //backgroundColor = .clear
+    }
+
+    
 }

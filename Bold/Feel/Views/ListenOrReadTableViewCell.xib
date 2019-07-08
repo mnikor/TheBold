@@ -135,14 +135,15 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="MGF-1d-SYO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="0k9-uD-Ub7"/>
                     <constraint firstItem="MwA-8M-KQv" firstAttribute="leading" secondItem="zIX-3w-GSQ" secondAttribute="leading" id="0ve-v8-H2m"/>
                     <constraint firstItem="MGF-1d-SYO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="1Nn-ME-5CJ"/>
+                    <constraint firstAttribute="bottom" secondItem="MGF-1d-SYO" secondAttribute="bottom" constant="14.5" id="4p4-gt-1L7"/>
                     <constraint firstItem="zIX-3w-GSQ" firstAttribute="leading" secondItem="MGF-1d-SYO" secondAttribute="trailing" constant="16" id="9Kr-xm-IbY"/>
                     <constraint firstItem="8Jh-MX-mGz" firstAttribute="bottom" secondItem="MGF-1d-SYO" secondAttribute="bottom" id="AQT-7f-jja"/>
                     <constraint firstAttribute="trailing" secondItem="zIX-3w-GSQ" secondAttribute="trailing" constant="20" id="Bom-fU-MMg"/>
                     <constraint firstItem="zIX-3w-GSQ" firstAttribute="top" secondItem="MGF-1d-SYO" secondAttribute="top" id="CKD-Py-QMo"/>
                     <constraint firstAttribute="bottom" secondItem="MwA-8M-KQv" secondAttribute="bottom" id="EJi-U7-WMO"/>
+                    <constraint firstItem="MGF-1d-SYO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="KCT-n9-Ha4"/>
                     <constraint firstAttribute="trailing" secondItem="MwA-8M-KQv" secondAttribute="trailing" constant="12" id="paI-wx-mDM"/>
                     <constraint firstAttribute="trailing" secondItem="8Jh-MX-mGz" secondAttribute="trailing" constant="20" id="zNX-wa-NPY"/>
                     <constraint firstItem="8Jh-MX-mGz" firstAttribute="leading" secondItem="zIX-3w-GSQ" secondAttribute="leading" id="zct-ES-M63"/>

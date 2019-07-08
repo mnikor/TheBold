@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HeaderActionPlanTableViewCell: UITableViewCell {
+class HeaderActionPlanTableViewCell: BaseTableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

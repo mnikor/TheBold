@@ -12,7 +12,7 @@ protocol UnlockPremiumTableViewCellDelegate: class {
     func tapUnlockPremium()
 }
 
-class UnlockPremiumTableViewCell: UITableViewCell {
+class UnlockPremiumTableViewCell: BaseTableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtiltleLabel: UILabel!

@@ -16,6 +16,10 @@ internal enum StoryboardScene {
     internal static let storyboardName = "Act"
 
     internal static let initialScene = InitialSceneType<UIKit.UIViewController>(storyboard: Act.self)
+
+    internal static let addActionPlanViewController = SceneType<Bold.AddActionPlanViewController>(storyboard: Act.self, identifier: "AddActionPlanViewController")
+
+    internal static let editActionPlanViewController = SceneType<Bold.EditActionPlanViewController>(storyboard: Act.self, identifier: "EditActionPlanViewController")
   }
   internal enum Auth: StoryboardType {
     internal static let storyboardName = "Auth"
@@ -26,6 +30,8 @@ internal enum StoryboardScene {
     internal static let storyboardName = "Feel"
 
     internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: Feel.self)
+
+    internal static let actionsListViewController = SceneType<Bold.ActionsListViewController>(storyboard: Feel.self, identifier: "ActionsListViewController")
   }
   internal enum Home: StoryboardType {
     internal static let storyboardName = "Home"
@@ -43,6 +49,8 @@ internal enum StoryboardScene {
   }
   internal enum Player: StoryboardType {
     internal static let storyboardName = "Player"
+
+    internal static let initialScene = InitialSceneType<Bold.PlayerViewController>(storyboard: Player.self)
   }
   internal enum Profile: StoryboardType {
     internal static let storyboardName = "Profile"
@@ -62,7 +70,7 @@ internal enum StoryboardScene {
   internal enum Think: StoryboardType {
     internal static let storyboardName = "Think"
 
-    internal static let initialScene = InitialSceneType<UIKit.UIViewController>(storyboard: Think.self)
+    internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: Think.self)
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name

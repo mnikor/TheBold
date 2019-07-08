@@ -12,7 +12,7 @@ protocol ActivityCollectionTableViewCellDelegate: class {
     func tapItemCollection()
 }
 
-class ActivityCollectionTableViewCell: UITableViewCell {
+class ActivityCollectionTableViewCell: BaseTableViewCell {
 
     @IBOutlet weak var activityImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -35,9 +35,7 @@ class ActivityCollectionTableViewCell: UITableViewCell {
 
         self.selectionStyle = .none
         
-        collectionView.register(UINib(nibName: "ActivityCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ActivityCollectionViewCell")
-        collectionView.register(UINib(nibName: "ActInactiveCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ActInactiveCollectionViewCell")
-        collectionView.register(UINib(nibName: "GoalCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "GoalCollectionViewCell")
+        registerXibs()
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -46,6 +44,11 @@ class ActivityCollectionTableViewCell: UITableViewCell {
 
     }
 
+    func registerXibs() {
+        collectionView.registerNib(ActivityCollectionViewCell.self)
+        collectionView.registerNib(ActInactiveCollectionViewCell.self)
+        collectionView.registerNib(GoalCollectionViewCell.self)
+    }
     
     func configCell(entity: HomeEntity) {
         
@@ -104,13 +107,13 @@ extension ActivityCollectionTableViewCell: UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch entity.type {
         case .feel, .think:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ActivityCollectionViewCell", for: indexPath) as! ActivityCollectionViewCell
+            let cell = collectionView.dequeReusableCell(indexPath: indexPath) as ActivityCollectionViewCell
             return cell
         case .actNotActive:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ActInactiveCollectionViewCell", for: indexPath) as! ActInactiveCollectionViewCell
+            let cell = collectionView.dequeReusableCell(indexPath: indexPath) as ActInactiveCollectionViewCell
             return cell
         case .actActive:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GoalCollectionViewCell", for: indexPath) as! GoalCollectionViewCell
+            let cell = collectionView.dequeReusableCell(indexPath: indexPath) as GoalCollectionViewCell
             cell.configCell()
             return cell
         default:

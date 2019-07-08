@@ -91,12 +91,16 @@ class HomeViewController: UIViewController, SideMenuItemContent, ViewProtocol {
 //        headerHomeView.frame = frame
         tableView.tableHeaderView = headerHomeView
         
-        tableView.register(UINib(nibName: "UnlockPremiumTableViewCell", bundle: nil), forCellReuseIdentifier: "UnlockPremiumTableViewCell")
-        tableView.register(UINib(nibName: "ActivityCollectionTableViewCell", bundle: nil), forCellReuseIdentifier: "ActivityCollectionTableViewCell")
+        registerXibs()
         
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
+    }
+    
+    func registerXibs() {
+        tableView.registerNib(UnlockPremiumTableViewCell.self)
+        tableView.registerNib(ActivityCollectionTableViewCell.self)
     }
     
     override func viewDidLayoutSubviews() {
@@ -140,12 +144,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch actionItems[indexPath.row].type {
         case .feel, .think, .actActive, .actNotActive:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityCollectionTableViewCell", for: indexPath) as! ActivityCollectionTableViewCell
+            let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActivityCollectionTableViewCell
             cell.configCell(entity: actionItems[indexPath.row])
             cell.cellBackground(indexPath: indexPath)
             return cell
         case .boldManifest :
-            let cell = tableView.dequeueReusableCell(withIdentifier: "UnlockPremiumTableViewCell", for: indexPath) as! UnlockPremiumTableViewCell
+            let cell = tableView.dequeReusableCell(indexPath: indexPath) as UnlockPremiumTableViewCell
             cell.delegate = self
             cell.cellBackground(indexPath: indexPath)
             return cell

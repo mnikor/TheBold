@@ -17,10 +17,8 @@
 		F141668A22BD00F20020BF0F /* VideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141668922BD00F20020BF0F /* VideoService.swift */; };
 		F141668C22BD1F590020BF0F /* AudioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141668B22BD1F590020BF0F /* AudioService.swift */; };
 		F141668E22BD28760020BF0F /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F141668D22BD28760020BF0F /* Player.storyboard */; };
-		F141669122C0D97B0020BF0F /* PlayerSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = F141669022C0D97B0020BF0F /* PlayerSmall.xib */; };
+		F141669122C0D97B0020BF0F /* PlayerSmallView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F141669022C0D97B0020BF0F /* PlayerSmallView.xib */; };
 		F141669322C0DFC30020BF0F /* PlayerSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141669222C0DFC30020BF0F /* PlayerSmallView.swift */; };
-		F141669622C0E2C10020BF0F /* addActionPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141669522C0E2C00020BF0F /* addActionPlanView.swift */; };
-		F141669822C0E2DF0020BF0F /* addActionPlanView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F141669722C0E2DF0020BF0F /* addActionPlanView.xib */; };
 		F141669B22C0EDD20020BF0F /* SettingActionPlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141669922C0EDD20020BF0F /* SettingActionPlanTableViewCell.swift */; };
 		F141669C22C0EDD20020BF0F /* SettingActionPlanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F141669A22C0EDD20020BF0F /* SettingActionPlanTableViewCell.xib */; };
 		F14166A022C106210020BF0F /* HeaderActionPlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141669E22C106210020BF0F /* HeaderActionPlanTableViewCell.swift */; };
@@ -117,8 +115,24 @@
 		F1C2535022B3F9C5003156AA /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C2534F22B3F9C5003156AA /* HomeInteractor.swift */; };
 		F1C2535322B3F9F8003156AA /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C2535222B3F9F8003156AA /* HomeRouter.swift */; };
 		F1C2535622BA8064003156AA /* ManifestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C2535522BA8063003156AA /* ManifestViewController.swift */; };
+		F1CCC70322CA0F2900E7B637 /* UITableView+Xib.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCC70222CA0F2900E7B637 /* UITableView+Xib.swift */; };
+		F1CCC70522CA11FB00E7B637 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCC70422CA11FB00E7B637 /* BaseTableViewCell.swift */; };
+		F1CCC70722CA5E3700E7B637 /* ActionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCC70622CA5E3700E7B637 /* ActionsListViewController.swift */; };
+		F1CCC70D22CCDBE400E7B637 /* PlayerListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCC70C22CCDBE400E7B637 /* PlayerListTableViewCell.swift */; };
+		F1CCC71322CE228800E7B637 /* AddActionPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCC71222CE228800E7B637 /* AddActionPlanViewController.swift */; };
+		F1CCC71622CE46F600E7B637 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCC71522CE46F600E7B637 /* UIView+Extensions.swift */; };
+		F1CCC71822CE474800E7B637 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCC71722CE474800E7B637 /* UIButton+Extensions.swift */; };
+		F1CCC71B22CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCC71922CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.swift */; };
+		F1CCC71C22CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CCC71A22CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.xib */; };
+		F1CCC71E22CE854900E7B637 /* EditActionPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCC71D22CE854900E7B637 /* EditActionPlanViewController.swift */; };
 		F1EB8DD622A8022500E3BC4C /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EB8DD522A8022500E3BC4C /* ForgotPasswordViewController.swift */; };
 		F1EB8DD822A8026C00E3BC4C /* ForgotSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EB8DD722A8026C00E3BC4C /* ForgotSuccessViewController.swift */; };
+		F1EBC7B022CF63D200BAA82D /* Bomfunk Mcs - Freestyler.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1EBC7AF22CF63D100BAA82D /* Bomfunk Mcs - Freestyler.mp3 */; };
+		F1EBC7B222CF70A000BAA82D /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EBC7B122CF70A000BAA82D /* AudioPlayer.swift */; };
+		F1EBC7B622D3772100BAA82D /* CitationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EBC7B422D3772100BAA82D /* CitationTableViewCell.swift */; };
+		F1EBC7B722D3772100BAA82D /* CitationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1EBC7B522D3772100BAA82D /* CitationTableViewCell.xib */; };
+		F1EBC7B922D38C3300BAA82D /* ThinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EBC7B822D38C3300BAA82D /* ThinkViewController.swift */; };
+		F1EBC7BB22D38E8100BAA82D /* ThinkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EBC7BA22D38E8100BAA82D /* ThinkListViewController.swift */; };
 		F1EE4D4F229EA6620072F663 /* BackgroundVideo.MOV in Resources */ = {isa = PBXBuildFile; fileRef = F1EE4D4E229EA6620072F663 /* BackgroundVideo.MOV */; };
 		F1EE4D51229EB78C0072F663 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EE4D50229EB78C0072F663 /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -135,10 +149,8 @@
 		F141668922BD00F20020BF0F /* VideoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoService.swift; sourceTree = "<group>"; };
 		F141668B22BD1F590020BF0F /* AudioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioService.swift; sourceTree = "<group>"; };
 		F141668D22BD28760020BF0F /* Player.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
-		F141669022C0D97B0020BF0F /* PlayerSmall.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerSmall.xib; sourceTree = "<group>"; };
+		F141669022C0D97B0020BF0F /* PlayerSmallView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerSmallView.xib; sourceTree = "<group>"; };
 		F141669222C0DFC30020BF0F /* PlayerSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSmallView.swift; sourceTree = "<group>"; };
-		F141669522C0E2C00020BF0F /* addActionPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addActionPlanView.swift; sourceTree = "<group>"; };
-		F141669722C0E2DF0020BF0F /* addActionPlanView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = addActionPlanView.xib; sourceTree = "<group>"; };
 		F141669922C0EDD20020BF0F /* SettingActionPlanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingActionPlanTableViewCell.swift; sourceTree = "<group>"; };
 		F141669A22C0EDD20020BF0F /* SettingActionPlanTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingActionPlanTableViewCell.xib; sourceTree = "<group>"; };
 		F141669E22C106210020BF0F /* HeaderActionPlanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderActionPlanTableViewCell.swift; sourceTree = "<group>"; };
@@ -237,8 +249,24 @@
 		F1C2534F22B3F9C5003156AA /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		F1C2535222B3F9F8003156AA /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		F1C2535522BA8063003156AA /* ManifestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestViewController.swift; sourceTree = "<group>"; };
+		F1CCC70222CA0F2900E7B637 /* UITableView+Xib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Xib.swift"; sourceTree = "<group>"; };
+		F1CCC70422CA11FB00E7B637 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		F1CCC70622CA5E3700E7B637 /* ActionsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsListViewController.swift; sourceTree = "<group>"; };
+		F1CCC70C22CCDBE400E7B637 /* PlayerListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListTableViewCell.swift; sourceTree = "<group>"; };
+		F1CCC71222CE228800E7B637 /* AddActionPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActionPlanViewController.swift; sourceTree = "<group>"; };
+		F1CCC71522CE46F600E7B637 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		F1CCC71722CE474800E7B637 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
+		F1CCC71922CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTitleActionPlanTableViewCell.swift; sourceTree = "<group>"; };
+		F1CCC71A22CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTitleActionPlanTableViewCell.xib; sourceTree = "<group>"; };
+		F1CCC71D22CE854900E7B637 /* EditActionPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditActionPlanViewController.swift; sourceTree = "<group>"; };
 		F1EB8DD522A8022500E3BC4C /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		F1EB8DD722A8026C00E3BC4C /* ForgotSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotSuccessViewController.swift; sourceTree = "<group>"; };
+		F1EBC7AF22CF63D100BAA82D /* Bomfunk Mcs - Freestyler.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Bomfunk Mcs - Freestyler.mp3"; sourceTree = SOURCE_ROOT; };
+		F1EBC7B122CF70A000BAA82D /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		F1EBC7B422D3772100BAA82D /* CitationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitationTableViewCell.swift; sourceTree = "<group>"; };
+		F1EBC7B522D3772100BAA82D /* CitationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CitationTableViewCell.xib; sourceTree = "<group>"; };
+		F1EBC7B822D38C3300BAA82D /* ThinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinkViewController.swift; sourceTree = "<group>"; };
+		F1EBC7BA22D38E8100BAA82D /* ThinkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinkListViewController.swift; sourceTree = "<group>"; };
 		F1EE4D4E229EA6620072F663 /* BackgroundVideo.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = BackgroundVideo.MOV; sourceTree = "<group>"; };
 		F1EE4D50229EB78C0072F663 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		F772C2D45E719D311FE396F6 /* Pods-Bold.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bold.debug.xcconfig"; path = "Target Support Files/Pods-Bold/Pods-Bold.debug.xcconfig"; sourceTree = "<group>"; };
@@ -278,6 +306,7 @@
 			children = (
 				F141668922BD00F20020BF0F /* VideoService.swift */,
 				F141668B22BD1F590020BF0F /* AudioService.swift */,
+				F1EBC7B122CF70A000BAA82D /* AudioPlayer.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -287,7 +316,8 @@
 			children = (
 				F14166A222C1158C0020BF0F /* PlayerViewController.swift */,
 				F14166A422C115B50020BF0F /* PlayerListView.swift */,
-				F141669022C0D97B0020BF0F /* PlayerSmall.xib */,
+				F1CCC70C22CCDBE400E7B637 /* PlayerListTableViewCell.swift */,
+				F141669022C0D97B0020BF0F /* PlayerSmallView.xib */,
 				F141669222C0DFC30020BF0F /* PlayerSmallView.swift */,
 			);
 			path = Player;
@@ -297,8 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				F158E2BA22C3C2C300FD671A /* FeelViewController.swift */,
-				F141669522C0E2C00020BF0F /* addActionPlanView.swift */,
-				F141669722C0E2DF0020BF0F /* addActionPlanView.xib */,
+				F1CCC70622CA5E3700E7B637 /* ActionsListViewController.swift */,
 				F141669D22C0EDE00020BF0F /* Views */,
 			);
 			path = Feel;
@@ -311,10 +340,6 @@
 				F158E2C422C4E12A00FD671A /* NavigationView.xib */,
 				F158E2BE22C3C72800FD671A /* ProgressHeaderView.swift */,
 				F158E2C022C3C73F00FD671A /* ProgressHeaderView.xib */,
-				F141669E22C106210020BF0F /* HeaderActionPlanTableViewCell.swift */,
-				F141669F22C106210020BF0F /* HeaderActionPlanTableViewCell.xib */,
-				F141669922C0EDD20020BF0F /* SettingActionPlanTableViewCell.swift */,
-				F141669A22C0EDD20020BF0F /* SettingActionPlanTableViewCell.xib */,
 				F14166AA22C125A50020BF0F /* ActionCollectionTableViewCell.swift */,
 				F14166AB22C125A50020BF0F /* ActionCollectionTableViewCell.xib */,
 				F162A77C22C12C05008292E8 /* ActionCollectionViewCell.swift */,
@@ -409,6 +434,7 @@
 			children = (
 				F17CB26822A682130035ABAB /* RoundedButton.swift */,
 				F17CB26C22A6BDA60035ABAB /* SCPageControlView.swift */,
+				F1CCC70422CA11FB00E7B637 /* BaseTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -458,6 +484,10 @@
 				F179975922AFE5CC0039879F /* Home */,
 				F141668F22C0D9120020BF0F /* Player */,
 				F141669422C0E2560020BF0F /* Feel */,
+				F1CCC70F22CE220E00E7B637 /* Think */,
+				F1CCC70E22CE21E500E7B637 /* Act */,
+				F1CCC71022CE222000E7B637 /* Settings */,
+				F1CCC71122CE222E00E7B637 /* Profile */,
 				F1868805229D79740029A663 /* API */,
 				F1868804229D74230029A663 /* Storyboards */,
 				F1868803229D74010029A663 /* Network */,
@@ -476,6 +506,9 @@
 				F1868848229E9BD80029A663 /* UIColor+Extensions.swift */,
 				F1868849229E9BD80029A663 /* UIFont+Extensions.swift */,
 				F1EE4D50229EB78C0072F663 /* String+Extensions.swift */,
+				F1CCC70222CA0F2900E7B637 /* UITableView+Xib.swift */,
+				F1CCC71522CE46F600E7B637 /* UIView+Extensions.swift */,
+				F1CCC71722CE474800E7B637 /* UIButton+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -531,6 +564,7 @@
 				F186880C229E82CD0029A663 /* colors.json */,
 				F186884F229E9D970029A663 /* Assets-Constants.swift */,
 				F1868851229E9DA20029A663 /* L10n-Constants.swift */,
+				F1EBC7AF22CF63D100BAA82D /* Bomfunk Mcs - Freestyler.mp3 */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -572,10 +606,66 @@
 			path = Manifest;
 			sourceTree = "<group>";
 		};
+		F1CCC70E22CE21E500E7B637 /* Act */ = {
+			isa = PBXGroup;
+			children = (
+				F1CCC71222CE228800E7B637 /* AddActionPlanViewController.swift */,
+				F1CCC71D22CE854900E7B637 /* EditActionPlanViewController.swift */,
+				F1CCC71422CE256400E7B637 /* Views */,
+			);
+			path = Act;
+			sourceTree = "<group>";
+		};
+		F1CCC70F22CE220E00E7B637 /* Think */ = {
+			isa = PBXGroup;
+			children = (
+				F1EBC7B822D38C3300BAA82D /* ThinkViewController.swift */,
+				F1EBC7BA22D38E8100BAA82D /* ThinkListViewController.swift */,
+				F1EBC7B322D376C300BAA82D /* Views */,
+			);
+			path = Think;
+			sourceTree = "<group>";
+		};
+		F1CCC71022CE222000E7B637 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		F1CCC71122CE222E00E7B637 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		F1CCC71422CE256400E7B637 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F141669E22C106210020BF0F /* HeaderActionPlanTableViewCell.swift */,
+				F141669F22C106210020BF0F /* HeaderActionPlanTableViewCell.xib */,
+				F1CCC71922CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.swift */,
+				F1CCC71A22CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.xib */,
+				F141669922C0EDD20020BF0F /* SettingActionPlanTableViewCell.swift */,
+				F141669A22C0EDD20020BF0F /* SettingActionPlanTableViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F1EB8DD922A80AA800E3BC4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				F17CB26F22A6CF230035ABAB /* OnboardCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F1EBC7B322D376C300BAA82D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F1EBC7B422D3772100BAA82D /* CitationTableViewCell.swift */,
+				F1EBC7B522D3772100BAA82D /* CitationTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -615,6 +705,11 @@
 				TargetAttributes = {
 					F18687D9229D56B00029A663 = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -643,6 +738,7 @@
 			files = (
 				F18687F6229D60150029A663 /* Home.storyboard in Resources */,
 				F1C2534622B2ACAA003156AA /* GoalCollectionViewCell.xib in Resources */,
+				F1CCC71C22CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.xib in Resources */,
 				F1868841229E90EF0029A663 /* Montserrat-Black.ttf in Resources */,
 				F162A78C22C2400D008292E8 /* ListenOrReadTableViewCell.xib in Resources */,
 				F1868842229E90EF0029A663 /* Montserrat-LightItalic.ttf in Resources */,
@@ -659,6 +755,7 @@
 				F1C2534A22B2ACFC003156AA /* ActInactiveCollectionViewCell.xib in Resources */,
 				F179976222AFFA1D0039879F /* MenuBottomView.xib in Resources */,
 				F18687F8229D602C0029A663 /* Feel.storyboard in Resources */,
+				F1EBC7B022CF63D200BAA82D /* Bomfunk Mcs - Freestyler.mp3 in Resources */,
 				F1EE4D4F229EA6620072F663 /* BackgroundVideo.MOV in Resources */,
 				F162A78822C23352008292E8 /* ActionTableViewCell.xib in Resources */,
 				F1868832229E90EF0029A663 /* Montserrat-Bold.ttf in Resources */,
@@ -672,14 +769,14 @@
 				F186883E229E90EF0029A663 /* Montserrat-Regular.ttf in Resources */,
 				F18687FA229D60410029A663 /* Think.storyboard in Resources */,
 				F14166A122C106210020BF0F /* HeaderActionPlanTableViewCell.xib in Resources */,
-				F141669122C0D97B0020BF0F /* PlayerSmall.xib in Resources */,
-				F141669822C0E2DF0020BF0F /* addActionPlanView.xib in Resources */,
+				F141669122C0D97B0020BF0F /* PlayerSmallView.xib in Resources */,
 				F186883A229E90EF0029A663 /* Montserrat-Thin.ttf in Resources */,
 				F1C2533C22B2A78A003156AA /* ActivityCollectionViewCell.xib in Resources */,
 				F1868817229E8CA50029A663 /* Menu.storyboard in Resources */,
 				F1868839229E90EF0029A663 /* Montserrat-SemiBold.ttf in Resources */,
 				F186883D229E90EF0029A663 /* Montserrat-ExtraLightItalic.ttf in Resources */,
 				F18687F4229D5FFD0029A663 /* Settings.storyboard in Resources */,
+				F1EBC7B722D3772100BAA82D /* CitationTableViewCell.xib in Resources */,
 				F186883B229E90EF0029A663 /* Montserrat-ExtraLight.ttf in Resources */,
 				F1868837229E90EF0029A663 /* Montserrat-ThinItalic.ttf in Resources */,
 				F18687FC229D60510029A663 /* Act.storyboard in Resources */,
@@ -762,15 +859,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F141668122BCD7A10020BF0F /* ManifestConfigurator.swift in Sources */,
+				F1CCC71822CE474800E7B637 /* UIButton+Extensions.swift in Sources */,
 				F179977422B1413A0039879F /* MenuAnimator.swift in Sources */,
 				F1868852229E9DA20029A663 /* L10n-Constants.swift in Sources */,
 				F14166A522C115B50020BF0F /* PlayerListView.swift in Sources */,
-				F141669622C0E2C10020BF0F /* addActionPlanView.swift in Sources */,
 				F179974D22AE615D0039879F /* Localizable.swift in Sources */,
 				F17CB27022A6CF230035ABAB /* OnboardCell.swift in Sources */,
+				F1CCC71622CE46F600E7B637 /* UIView+Extensions.swift in Sources */,
 				F1EE4D51229EB78C0072F663 /* String+Extensions.swift in Sources */,
 				F158E2BF22C3C72800FD671A /* ProgressHeaderView.swift in Sources */,
 				F17CB27422A7D0830035ABAB /* LoginViewController.swift in Sources */,
+				F1EBC7B222CF70A000BAA82D /* AudioPlayer.swift in Sources */,
 				F141668A22BD00F20020BF0F /* VideoService.swift in Sources */,
 				F14166A322C1158C0020BF0F /* PlayerViewController.swift in Sources */,
 				F141668722BCD7FA0020BF0F /* ManifestRouter.swift in Sources */,
@@ -783,26 +882,33 @@
 				F186884B229E9BD80029A663 /* StoryboardSegues+Extensions.swift in Sources */,
 				F186884E229E9BD80029A663 /* StoryboardScenes+Extensions.swift in Sources */,
 				F1C2533722B2A1BC003156AA /* ActivityCollectionTableViewCell.swift in Sources */,
+				F1CCC70722CA5E3700E7B637 /* ActionsListViewController.swift in Sources */,
 				F179975E22AFF77B0039879F /* MenuTableViewCell.swift in Sources */,
 				F1C2534C22B3F977003156AA /* HomeConfigurator.swift in Sources */,
 				F141668322BCD7D20020BF0F /* ManifestPresenter.swift in Sources */,
 				F14166A022C106210020BF0F /* HeaderActionPlanTableViewCell.swift in Sources */,
 				F141668C22BD1F590020BF0F /* AudioService.swift in Sources */,
 				F1C2534922B2ACFC003156AA /* ActInactiveCollectionViewCell.swift in Sources */,
+				F1CCC70322CA0F2900E7B637 /* UITableView+Xib.swift in Sources */,
 				F158E2C322C4E11600FD671A /* NavigationView.swift in Sources */,
 				F179974F22AE619C0039879F /* EmptyView.swift in Sources */,
 				F179976922B1319F0039879F /* HomeViewController.swift in Sources */,
 				F1868850229E9D970029A663 /* Assets-Constants.swift in Sources */,
+				F1EBC7BB22D38E8100BAA82D /* ThinkListViewController.swift in Sources */,
+				F1CCC71322CE228800E7B637 /* AddActionPlanViewController.swift in Sources */,
 				F17CB26922A682130035ABAB /* RoundedButton.swift in Sources */,
 				F14166AC22C125A50020BF0F /* ActionCollectionTableViewCell.swift in Sources */,
 				F1EB8DD622A8022500E3BC4C /* ForgotPasswordViewController.swift in Sources */,
 				F179977522B1413A0039879F /* SideMenuItemOptions.swift in Sources */,
+				F1EBC7B922D38C3300BAA82D /* ThinkViewController.swift in Sources */,
 				F1C2533322B297B9003156AA /* UnlockPremiumTableViewCell.swift in Sources */,
 				F162A78B22C2400D008292E8 /* ListenOrReadTableViewCell.swift in Sources */,
 				F141669322C0DFC30020BF0F /* PlayerSmallView.swift in Sources */,
+				F1CCC71E22CE854900E7B637 /* EditActionPlanViewController.swift in Sources */,
 				F18687E0229D56B00029A663 /* BaseProtocols.swift in Sources */,
 				F179977322B1413A0039879F /* MenuContainerViewController.swift in Sources */,
 				F1EB8DD822A8026C00E3BC4C /* ForgotSuccessViewController.swift in Sources */,
+				F1CCC71B22CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.swift in Sources */,
 				F162A77E22C12C05008292E8 /* ActionCollectionViewCell.swift in Sources */,
 				F1C2535022B3F9C5003156AA /* HomeInteractor.swift in Sources */,
 				F18687DE229D56B00029A663 /* AppDelegate.swift in Sources */,
@@ -817,12 +923,15 @@
 				F13DEAD322AAC0B700BC3CA6 /* SignUpView.swift in Sources */,
 				F1868807229D7DF60029A663 /* SplashViewController.swift in Sources */,
 				F1C2535322B3F9F8003156AA /* HomeRouter.swift in Sources */,
+				F1EBC7B622D3772100BAA82D /* CitationTableViewCell.swift in Sources */,
 				F179976022AFF8A90039879F /* MenuBottomView.swift in Sources */,
 				F179976522B10AD70039879F /* HeaderHomeView.swift in Sources */,
+				F1CCC70D22CCDBE400E7B637 /* PlayerListTableViewCell.swift in Sources */,
 				F179977A22B141FA0039879F /* HostViewController.swift in Sources */,
 				F186884D229E9BD80029A663 /* UIFont+Extensions.swift in Sources */,
 				F141669B22C0EDD20020BF0F /* SettingActionPlanTableViewCell.swift in Sources */,
 				F17CB26D22A6BDA60035ABAB /* SCPageControlView.swift in Sources */,
+				F1CCC70522CA11FB00E7B637 /* BaseTableViewCell.swift in Sources */,
 				F179975B22AFE6100039879F /* LeftMenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

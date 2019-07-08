@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GoalCollectionViewCell: UICollectionViewCell {
+class GoalCollectionViewCell: BaseCollectionViewCell {
 
     @IBOutlet weak var goalProgressView: UIProgressView!
     @IBOutlet weak var titleLabel: UILabel!

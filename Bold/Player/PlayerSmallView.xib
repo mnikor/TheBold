@@ -49,16 +49,16 @@
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="YCW-bq-7gP">
-                            <rect key="frame" x="52" y="3" width="187" height="34.5"/>
+                            <rect key="frame" x="52" y="4" width="187" height="32.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find your conﬁdence" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vge-3S-sjR">
-                                    <rect key="frame" x="0.0" y="0.0" width="165" height="18.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="141.5" height="17.5"/>
                                     <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="15"/>
                                     <color key="textColor" red="0.10588235294117647" green="0.15686274509803921" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Intro to meditation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xme-hV-edG">
-                                    <rect key="frame" x="0.0" y="19.5" width="116" height="15"/>
+                                    <rect key="frame" x="0.0" y="18.5" width="98.5" height="14"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="12"/>
                                     <color key="textColor" red="0.40784313725490196" green="0.44313725490196076" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -70,9 +70,6 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjx-ci-jVg">
                                     <rect key="frame" x="0.0" y="0.0" width="44" height="40"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="40" id="oNE-R2-Rwv"/>
-                                    </constraints>
                                     <state key="normal" image="playerSmallPause"/>
                                     <connections>
                                         <action selector="tapPlayButton:" destination="-1" eventType="touchUpInside" id="T9N-Uk-LnJ"/>
@@ -95,6 +92,9 @@
                             </constraints>
                         </stackView>
                     </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="0SN-1c-etj"/>
+                    </constraints>
                 </stackView>
                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KU2-B2-KiF">
                     <rect key="frame" x="0.0" y="57" width="375" height="3"/>
@@ -105,7 +105,7 @@
                     <color key="trackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </progressView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ZKW-IZ-Lp1" secondAttribute="trailing" constant="16" id="KDb-SD-xiQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ZKW-IZ-Lp1" secondAttribute="bottom" constant="10" id="Lxt-5f-HBr"/>

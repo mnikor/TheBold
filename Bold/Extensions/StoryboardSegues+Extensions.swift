@@ -15,8 +15,19 @@ internal enum StoryboardSegue {
   internal enum Auth: String, SegueType {
     case forgotPassword
   }
+  internal enum Feel: String, SegueType {
+    case feelActionsListToAddActionIdentifier
+    case feelPlayerIdentifier
+    case showItem
+  }
   internal enum Home: String, SegueType {
     case manifestIdentifier
+  }
+  internal enum Player: String, SegueType {
+    case playerAddActionPlanIdentifier
+  }
+  internal enum Think: String, SegueType {
+    case showItem
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name

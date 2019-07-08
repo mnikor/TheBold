@@ -37,9 +37,9 @@ internal struct ColorName {
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#f3c32f"></span>
   /// Alpha: 100% <br/> (0xf3c32fff)
   internal static let goalYellow = ColorName(rgbaValue: 0xf3c32fff)
-  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#000456"></span>
-  /// Alpha: 80% <br/> (0x000456cd)
-  internal static let primaryBlue = ColorName(rgbaValue: 0x000456cd)
+  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#4562cd"></span>
+  /// Alpha: 100% <br/> (0x4562cdff)
+  internal static let primaryBlue = ColorName(rgbaValue: 0x4562cdff)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ffaa6e"></span>
   /// Alpha: 100% <br/> (0xffaa6eff)
   internal static let primaryOrange = ColorName(rgbaValue: 0xffaa6eff)

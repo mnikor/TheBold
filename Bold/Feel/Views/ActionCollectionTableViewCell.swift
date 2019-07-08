@@ -10,14 +10,18 @@ import UIKit
 
 protocol ActionCollectionTableViewCellDelegate: class {
     func tapItemCollection()
+    func tapShowAll(typeCells: FeelTypeCell)
 }
 
 enum FeelTypeCell {
     case meditation
     case hypnosis
     case pepTalk
+    case stories
+    case citate
+    case lessons
     
-    func titleText() -> String {
+    func titleText() -> String? {
         switch self {
         case .meditation:
             return L10n.Feel.meditation
@@ -25,10 +29,16 @@ enum FeelTypeCell {
             return L10n.Feel.hypnosis
         case .pepTalk:
             return L10n.Feel.pepTalk
+        case .stories:
+            return L10n.Think.stories
+        case .lessons:
+            return L10n.Think.lessons
+        case .citate:
+            return nil
         }
     }
     
-    func subtitleText() -> String {
+    func subtitleText() -> String? {
         switch self {
         case .meditation:
             return L10n.Feel.meditationSubtitle
@@ -36,12 +46,18 @@ enum FeelTypeCell {
             return L10n.Feel.hypnosisSubtitle
         case .pepTalk:
             return L10n.Feel.pepTalkSubtitle
+        case .stories:
+            return L10n.Think.storiesSubtitle
+        case .lessons:
+            return L10n.Think.lessonsSubtitle
+        case.citate:
+            return nil
         }
     }
     
 }
 
-class ActionCollectionTableViewCell: UITableViewCell {
+class ActionCollectionTableViewCell: BaseTableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
@@ -52,7 +68,7 @@ class ActionCollectionTableViewCell: UITableViewCell {
     var entity: FeelEntity!
     
     @IBAction func tapViewAllButton(_ sender: UIButton) {
-        
+        delegate?.tapShowAll(typeCells: entity.type)
     }
     
     override func awakeFromNib() {
@@ -62,7 +78,11 @@ class ActionCollectionTableViewCell: UITableViewCell {
         collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         
-        collectionView.register(UINib(nibName: "ActionCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ActionCollectionViewCell")
+        registerXibs()
+    }
+    
+    func registerXibs() {
+        collectionView.registerNib(ActionCollectionViewCell.self)
     }
     
     func config(entity: FeelEntity) {
@@ -71,7 +91,6 @@ class ActionCollectionTableViewCell: UITableViewCell {
         titleLabel.text = entity.type.titleText()
         subTitleLabel.text = entity.type.subtitleText()
         collectionView.reloadData()
-        
     }
     
 }
@@ -82,7 +101,8 @@ extension ActionCollectionTableViewCell: UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ActionCollectionViewCell", for: indexPath) as! ActionCollectionViewCell
+        let cell = collectionView.dequeReusableCell(indexPath: indexPath) as ActionCollectionViewCell
+        cell.config()
         return cell
     }
     

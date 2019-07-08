@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CitationTableViewCell" id="KGk-i7-Jjw" customClass="CitationTableViewCell" customModule="Bold" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="410"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="409.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="citationBackground" translatesAutoresizingMaskIntoConstraints="NO" id="oip-nG-c2x">
+                        <rect key="frame" x="20" y="20.5" width="335" height="369"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="oip-nG-c2x" secondAttribute="height" multiplier="335:369" id="oyJ-8y-LG1"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="14"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="ZI7-NL-LqN">
+                        <rect key="frame" x="40" y="53.5" width="300" height="37"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leonardo" translatesAutoresizingMaskIntoConstraints="NO" id="gxJ-qc-Qdf">
+                                <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="c5M-zV-2qq"/>
+                                    <constraint firstAttribute="width" constant="37" id="ezT-Kj-eOR"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.77000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leonardo Da Vinci" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0o-J8-HwQ">
+                                <rect key="frame" x="48" y="9.5" width="252" height="18.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One can have no smaller or greater mastery  than of oneself" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6r-tT-4mY">
+                        <rect key="frame" x="40" y="130.5" width="300" height="137"/>
+                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="28"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEV-rN-2I3">
+                        <rect key="frame" x="154" y="333.5" width="181" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="36" id="y6X-Y5-6eM"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
+                        <inset key="titleEdgeInsets" minX="-15" minY="0.0" maxX="15" maxY="0.0"/>
+                        <inset key="imageEdgeInsets" minX="174" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title=" More food for thought" image="rightArrowWhite"/>
+                        <connections>
+                            <action selector="tapMoreButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="OiP-iq-z8g"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="kEV-rN-2I3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="w6r-tT-4mY" secondAttribute="bottom" constant="20" id="ACa-Hm-we1"/>
+                    <constraint firstItem="ZI7-NL-LqN" firstAttribute="leading" secondItem="oip-nG-c2x" secondAttribute="leading" constant="20" id="JFw-Ed-oKC"/>
+                    <constraint firstItem="w6r-tT-4mY" firstAttribute="leading" secondItem="oip-nG-c2x" secondAttribute="leading" constant="20" id="KQJ-We-IVg"/>
+                    <constraint firstItem="w6r-tT-4mY" firstAttribute="top" secondItem="ZI7-NL-LqN" secondAttribute="bottom" constant="40" id="OCa-KZ-OEo"/>
+                    <constraint firstItem="oip-nG-c2x" firstAttribute="bottom" secondItem="kEV-rN-2I3" secondAttribute="bottom" constant="20" id="STT-FK-RYx"/>
+                    <constraint firstItem="oip-nG-c2x" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" priority="800" constant="20" id="UgV-BZ-gmi"/>
+                    <constraint firstAttribute="bottom" secondItem="oip-nG-c2x" secondAttribute="bottom" constant="20" id="YVH-3o-fPe"/>
+                    <constraint firstItem="oip-nG-c2x" firstAttribute="trailing" secondItem="w6r-tT-4mY" secondAttribute="trailing" constant="15" id="iXv-I6-xsu"/>
+                    <constraint firstItem="oip-nG-c2x" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="kEq-PU-tXG"/>
+                    <constraint firstItem="oip-nG-c2x" firstAttribute="trailing" secondItem="ZI7-NL-LqN" secondAttribute="trailing" constant="15" id="mzp-QW-cae"/>
+                    <constraint firstItem="ZI7-NL-LqN" firstAttribute="top" secondItem="oip-nG-c2x" secondAttribute="top" constant="33" id="n63-A2-d3W"/>
+                    <constraint firstAttribute="trailing" secondItem="oip-nG-c2x" secondAttribute="trailing" constant="20" id="pSy-j5-Bnu"/>
+                    <constraint firstItem="oip-nG-c2x" firstAttribute="trailing" secondItem="kEV-rN-2I3" secondAttribute="trailing" constant="20" id="tfU-Zg-Oxl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="authorImageView" destination="gxJ-qc-Qdf" id="NmE-a8-9Sa"/>
+                <outlet property="authorNameLabel" destination="T0o-J8-HwQ" id="RhN-Ja-s67"/>
+                <outlet property="citationTextLabel" destination="w6r-tT-4mY" id="CTK-Jl-UwM"/>
+                <outlet property="moreButton" destination="kEV-rN-2I3" id="8tC-hB-uQX"/>
+            </connections>
+            <point key="canvasLocation" x="138.40579710144928" y="129.91071428571428"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="citationBackground" width="353" height="387"/>
+        <image name="leonardo" width="37" height="37"/>
+        <image name="rightArrowWhite" width="7" height="11"/>
+    </resources>
+</document>

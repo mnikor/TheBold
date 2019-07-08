@@ -8,6 +8,10 @@
 
 "ShowAll" = "Show all";
 "ViewAll" = "View all";
+"Off" = "Off";
+"Unlock" = "Unlock";
+"Delete" = "Delete";
+"Done" = "Done";
 
 // Onboarding
 "Splash.Feel" = "Feel";
@@ -67,12 +71,23 @@
 "Feel.Pep-talk" = "Pep-talk";
 "Feel.Pep-talkSubtitle" = "Change the story you are telling yourself, because everything depends on it.";
 
-"Feel.AddToActionPlan" = "Add to action plan";
-"Feel.FindYourConfidence" = "Find your confidence";
-"Feel.Duration" = "Duration";
-"Feel.Reminder" = "Reminder";
-"Feel.Goal" = "Goal";
-"Feel.Stake" = "Stake";
-"Feel.ShareWithFriends" = "Share with friends";
-"Off" = "Off";
-"Feel.NoStake" = "No stake";
+
+// Think
+
+"Think.ThinkBold" = "Think Bold";
+"Think.Stories" = "Stories";
+"Think.StoriesSubtitle" = "Inspiring stories of real Bold people: hear and learn from their insights.";
+"Think.Lessons" = "Lessons";
+"Think.LessonsSubtitle" = "Acquire powerful knowledge to learn how to progress towards your goals.";
+
+
+// Act
+
+"Act.AddToActionPlan" = "Add to action plan";
+"Act.FindYourConfidence" = "Find your confidence";
+"Act.Duration" = "Duration";
+"Act.Reminder" = "Reminder";
+"Act.Goal" = "Goal";
+"Act.Stake" = "Stake";
+"Act.ShareWithFriends" = "Share with friends";
+"Act.NoStake" = "No stake";
