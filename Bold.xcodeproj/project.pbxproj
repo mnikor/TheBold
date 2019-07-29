@@ -8,6 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		15273BE08B094F6580EB812D /* Pods_Bold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6854131E5D97D066DB48AC96 /* Pods_Bold.framework */; };
+		F107537622EF1E470078C71C /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107537522EF1E470078C71C /* Goal.swift */; };
+		F107537822EF1E550078C71C /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107537722EF1E550078C71C /* Action.swift */; };
+		F107537A22EF36670078C71C /* BoldTipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107537922EF36670078C71C /* BoldTipsViewController.swift */; };
+		F107537C22EF391A0078C71C /* ShareWithFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107537B22EF39190078C71C /* ShareWithFriendsViewController.swift */; };
+		F107537F22EF49550078C71C /* ShareCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107537E22EF49550078C71C /* ShareCardTableViewCell.swift */; };
+		F107538122EF496F0078C71C /* ShareButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107538022EF496F0078C71C /* ShareButtonTableViewCell.swift */; };
+		F10B69BF22EB168B00E47315 /* IdeasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B69BE22EB168B00E47315 /* IdeasViewController.swift */; };
+		F10B69C222EB16F800E47315 /* IdeasConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B69C122EB16F800E47315 /* IdeasConfigurator.swift */; };
+		F10B69C422EB170B00E47315 /* IdeasPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B69C322EB170B00E47315 /* IdeasPresenter.swift */; };
+		F10B69C622EB171A00E47315 /* IdeasInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B69C522EB171A00E47315 /* IdeasInteractor.swift */; };
+		F10B69C822EB172900E47315 /* IdeasRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B69C722EB172900E47315 /* IdeasRouter.swift */; };
+		F10B69CB22EB2D9100E47315 /* IdeasTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B69C922EB2D9100E47315 /* IdeasTableViewCell.swift */; };
+		F10B69CC22EB2D9100E47315 /* IdeasTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F10B69CA22EB2D9100E47315 /* IdeasTableViewCell.xib */; };
+		F10B69CE22EB3D1F00E47315 /* IdeasFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B69CD22EB3D1F00E47315 /* IdeasFooterView.swift */; };
+		F115629C22DDB15900399FA6 /* DescriptionAndLikesCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F115629B22DDB15900399FA6 /* DescriptionAndLikesCountViewController.swift */; };
+		F115629E22DF0B5C00399FA6 /* Description.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F115629D22DF0B5C00399FA6 /* Description.storyboard */; };
+		F11562A022DF20B100399FA6 /* ActViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F115629F22DF20B100399FA6 /* ActViewController.swift */; };
+		F11562A322DF2E9A00399FA6 /* StakeActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11562A122DF2E9A00399FA6 /* StakeActionTableViewCell.swift */; };
+		F11562A422DF2E9A00399FA6 /* StakeActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11562A222DF2E9A00399FA6 /* StakeActionTableViewCell.xib */; };
 		F13DEAD322AAC0B700BC3CA6 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13DEAD222AAC0B700BC3CA6 /* SignUpView.swift */; };
 		F13DEAD522AAC0D500BC3CA6 /* SignUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F13DEAD422AAC0D500BC3CA6 /* SignUpView.xib */; };
 		F141668122BCD7A10020BF0F /* ManifestConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141668022BCD7A10020BF0F /* ManifestConfigurator.swift */; };
@@ -27,6 +46,7 @@
 		F14166A522C115B50020BF0F /* PlayerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14166A422C115B50020BF0F /* PlayerListView.swift */; };
 		F14166AC22C125A50020BF0F /* ActionCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14166AA22C125A50020BF0F /* ActionCollectionTableViewCell.swift */; };
 		F14166AD22C125A50020BF0F /* ActionCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F14166AB22C125A50020BF0F /* ActionCollectionTableViewCell.xib */; };
+		F158273F22EB569E007B9023 /* DateAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F158273E22EB569E007B9023 /* DateAlertViewController.swift */; };
 		F158E2BC22C3C2C300FD671A /* FeelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F158E2BA22C3C2C300FD671A /* FeelViewController.swift */; };
 		F158E2BF22C3C72800FD671A /* ProgressHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F158E2BE22C3C72800FD671A /* ProgressHeaderView.swift */; };
 		F158E2C122C3C73F00FD671A /* ProgressHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F158E2C022C3C73F00FD671A /* ProgressHeaderView.xib */; };
@@ -60,6 +80,34 @@
 		F17CB26D22A6BDA60035ABAB /* SCPageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17CB26C22A6BDA60035ABAB /* SCPageControlView.swift */; };
 		F17CB27022A6CF230035ABAB /* OnboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17CB26F22A6CF230035ABAB /* OnboardCell.swift */; };
 		F17CB27422A7D0830035ABAB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17CB27322A7D0830035ABAB /* LoginViewController.swift */; };
+		F183301022E5CB2D00BB7A9E /* FeelConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183300F22E5CB2D00BB7A9E /* FeelConfigurator.swift */; };
+		F183301322E5CB5700BB7A9E /* FeelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183301222E5CB5700BB7A9E /* FeelPresenter.swift */; };
+		F183301522E5CB6A00BB7A9E /* FeelInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183301422E5CB6A00BB7A9E /* FeelInteractor.swift */; };
+		F183301722E5CB7800BB7A9E /* FeelRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183301622E5CB7800BB7A9E /* FeelRouter.swift */; };
+		F183301A22E5CBCC00BB7A9E /* ActionsListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183301922E5CBCC00BB7A9E /* ActionsListConfigurator.swift */; };
+		F183301C22E5CBD800BB7A9E /* ActionsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183301B22E5CBD800BB7A9E /* ActionsListPresenter.swift */; };
+		F183301E22E5CBEB00BB7A9E /* ActionsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183301D22E5CBEB00BB7A9E /* ActionsListInteractor.swift */; };
+		F183302022E5CBF700BB7A9E /* ActionsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183301F22E5CBF700BB7A9E /* ActionsListRouter.swift */; };
+		F183302322E6058100BB7A9E /* ActConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183302222E6058100BB7A9E /* ActConfigurator.swift */; };
+		F183302522E6059600BB7A9E /* ActPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183302422E6059600BB7A9E /* ActPresenter.swift */; };
+		F183302722E605A600BB7A9E /* ActInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183302622E605A600BB7A9E /* ActInteractor.swift */; };
+		F183302922E605B500BB7A9E /* ActRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183302822E605B500BB7A9E /* ActRouter.swift */; };
+		F183302C22E6178D00BB7A9E /* AllGoalsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183302B22E6178D00BB7A9E /* AllGoalsConfigurator.swift */; };
+		F183302E22E617A300BB7A9E /* AllGoalsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183302D22E617A300BB7A9E /* AllGoalsPresenter.swift */; };
+		F183303022E617B900BB7A9E /* AllGoalsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183302F22E617B900BB7A9E /* AllGoalsInteractor.swift */; };
+		F183303222E617C700BB7A9E /* AllGoalsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183303122E617C700BB7A9E /* AllGoalsRouter.swift */; };
+		F183303622E6F02800BB7A9E /* CreateActionConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183303522E6F02800BB7A9E /* CreateActionConfigurator.swift */; };
+		F183303822E6F03700BB7A9E /* CreateActionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183303722E6F03700BB7A9E /* CreateActionPresenter.swift */; };
+		F183303A22E6F04500BB7A9E /* CreateActionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183303922E6F04500BB7A9E /* CreateActionInteractor.swift */; };
+		F183303C22E6F05500BB7A9E /* CreateActionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183303B22E6F05500BB7A9E /* CreateActionRouter.swift */; };
+		F183303E22E6F0D300BB7A9E /* CreateGoalConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183303D22E6F0D300BB7A9E /* CreateGoalConfigurator.swift */; };
+		F183304022E6F0E100BB7A9E /* CreateGoalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183303F22E6F0E100BB7A9E /* CreateGoalPresenter.swift */; };
+		F183304222E6F0F000BB7A9E /* CreateGoalInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183304122E6F0F000BB7A9E /* CreateGoalInteractor.swift */; };
+		F183304422E6F0FD00BB7A9E /* CreateGoalRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183304322E6F0FD00BB7A9E /* CreateGoalRouter.swift */; };
+		F183304722E714E800BB7A9E /* PlayerConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183304622E714E800BB7A9E /* PlayerConfigurator.swift */; };
+		F183304922E714F600BB7A9E /* PlayerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183304822E714F600BB7A9E /* PlayerPresenter.swift */; };
+		F183304B22E7150300BB7A9E /* PlayerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183304A22E7150300BB7A9E /* PlayerInteractor.swift */; };
+		F183304D22E7151400BB7A9E /* PlayerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183304C22E7151400BB7A9E /* PlayerRouter.swift */; };
 		F18687DE229D56B00029A663 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18687DD229D56B00029A663 /* AppDelegate.swift */; };
 		F18687E0229D56B00029A663 /* BaseProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18687DF229D56B00029A663 /* BaseProtocols.swift */; };
 		F18687E5229D56B10029A663 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F18687E4229D56B10029A663 /* Assets.xcassets */; };
@@ -100,6 +148,31 @@
 		F186884E229E9BD80029A663 /* StoryboardScenes+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F186884A229E9BD80029A663 /* StoryboardScenes+Extensions.swift */; };
 		F1868850229E9D970029A663 /* Assets-Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F186884F229E9D970029A663 /* Assets-Constants.swift */; };
 		F1868852229E9DA20029A663 /* L10n-Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1868851229E9DA20029A663 /* L10n-Constants.swift */; };
+		F190357822D87AF8001BC996 /* FixedPaddingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190357722D87AF8001BC996 /* FixedPaddingTextView.swift */; };
+		F19257FC22E7526E00FA5C6E /* CalendarActionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19257FB22E7526E00FA5C6E /* CalendarActionsListViewController.swift */; };
+		F19257FF22E7529900FA5C6E /* CalendarActionsListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19257FE22E7529900FA5C6E /* CalendarActionsListConfigurator.swift */; };
+		F192580122E752A600FA5C6E /* CalendarActionsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192580022E752A600FA5C6E /* CalendarActionsListPresenter.swift */; };
+		F192580322E752B600FA5C6E /* CalendarActionsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192580222E752B600FA5C6E /* CalendarActionsListInteractor.swift */; };
+		F192580522E752C400FA5C6E /* CalendarActionsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192580422E752C400FA5C6E /* CalendarActionsListRouter.swift */; };
+		F19A98A322D4F3C300A0492E /* CitationBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A98A222D4F3C300A0492E /* CitationBaseViewController.swift */; };
+		F19A98A522D5FF4F00A0492E /* CustomDotsPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A98A422D5FF4F00A0492E /* CustomDotsPageControl.swift */; };
+		F19A98A822D616FB00A0492E /* DontGiveUpAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A98A722D616FB00A0492E /* DontGiveUpAlertView.swift */; };
+		F19A98AA22D6173D00A0492E /* DontGiveUpAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19A98A922D6173D00A0492E /* DontGiveUpAlertView.xib */; };
+		F19A98AE22D6551E00A0492E /* BaseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A98AD22D6551E00A0492E /* BaseAlertViewController.swift */; };
+		F19A98B022D7393C00A0492E /* CongratulationsAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A98AF22D7393C00A0492E /* CongratulationsAlertView.swift */; };
+		F19A98B222D7395600A0492E /* CongratulationsAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19A98B122D7395600A0492E /* CongratulationsAlertView.xib */; };
+		F19A98B422D7573000A0492E /* MissedYouOneButtonAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A98B322D7573000A0492E /* MissedYouOneButtonAlertView.swift */; };
+		F19A98B622D7575C00A0492E /* MissedYouOneButtonAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19A98B522D7575C00A0492E /* MissedYouOneButtonAlertView.xib */; };
+		F19A98B822D758CF00A0492E /* MissedYouTwoButtonAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A98B722D758CF00A0492E /* MissedYouTwoButtonAlertView.swift */; };
+		F19A98BA22D758E700A0492E /* MissedYouTwoButtonAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19A98B922D758E700A0492E /* MissedYouTwoButtonAlertView.xib */; };
+		F19A98BC22D7A06F00A0492E /* StartActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A98BB22D7A06F00A0492E /* StartActionViewController.swift */; };
+		F1A79DC622D89C0C0018A8EF /* ListenOrReadMaterialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A79DC522D89C0C0018A8EF /* ListenOrReadMaterialView.xib */; };
+		F1A79DC922D8A5620018A8EF /* ManageItTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A79DC722D8A5620018A8EF /* ManageItTableViewCell.swift */; };
+		F1A79DCA22D8A5620018A8EF /* ManageItTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A79DC822D8A5620018A8EF /* ManageItTableViewCell.xib */; };
+		F1A79DCD22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A79DCB22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.swift */; };
+		F1A79DCE22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A79DCC22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.xib */; };
+		F1A79DD022D8A9560018A8EF /* ListenOrReadMaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A79DCF22D8A9560018A8EF /* ListenOrReadMaterialView.swift */; };
+		F1A79DD622DCAFA80018A8EF /* OverTabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A79DD522DCAFA80018A8EF /* OverTabbarView.swift */; };
 		F1C2533322B297B9003156AA /* UnlockPremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C2533122B297B9003156AA /* UnlockPremiumTableViewCell.swift */; };
 		F1C2533422B297B9003156AA /* UnlockPremiumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1C2533222B297B9003156AA /* UnlockPremiumTableViewCell.xib */; };
 		F1C2533722B2A1BC003156AA /* ActivityCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C2533522B2A1BC003156AA /* ActivityCollectionTableViewCell.swift */; };
@@ -125,6 +198,37 @@
 		F1CCC71B22CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCC71922CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.swift */; };
 		F1CCC71C22CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CCC71A22CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.xib */; };
 		F1CCC71E22CE854900E7B637 /* EditActionPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCC71D22CE854900E7B637 /* EditActionPlanViewController.swift */; };
+		F1CECE1522E9C73400EA95EE /* ColorCreateGoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CECE1322E9C73400EA95EE /* ColorCreateGoalTableViewCell.swift */; };
+		F1CECE1622E9C73400EA95EE /* ColorCreateGoalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CECE1422E9C73400EA95EE /* ColorCreateGoalTableViewCell.xib */; };
+		F1CECE1922E9C75000EA95EE /* ColorListCreateGoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CECE1722E9C75000EA95EE /* ColorListCreateGoalTableViewCell.swift */; };
+		F1CECE1A22E9C75000EA95EE /* ColorListCreateGoalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CECE1822E9C75000EA95EE /* ColorListCreateGoalTableViewCell.xib */; };
+		F1CECE1D22E9C77600EA95EE /* IconListCreateGoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CECE1B22E9C77600EA95EE /* IconListCreateGoalTableViewCell.swift */; };
+		F1CECE1E22E9C77600EA95EE /* IconListCreateGoalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CECE1C22E9C77600EA95EE /* IconListCreateGoalTableViewCell.xib */; };
+		F1CECE2122E9E5D600EA95EE /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CECE1F22E9E5D600EA95EE /* ColorCollectionViewCell.swift */; };
+		F1CECE2222E9E5D600EA95EE /* ColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CECE2022E9E5D600EA95EE /* ColorCollectionViewCell.xib */; };
+		F1CECE2522EA0AC000EA95EE /* IconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CECE2322EA0AC000EA95EE /* IconCollectionViewCell.swift */; };
+		F1CECE2622EA0AC000EA95EE /* IconCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CECE2422EA0AC000EA95EE /* IconCollectionViewCell.xib */; };
+		F1D390F722D4E3AB00DF8700 /* CitationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D390F622D4E3AB00DF8700 /* CitationPageViewController.swift */; };
+		F1D390F922D4E3F800DF8700 /* CitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D390F822D4E3F800DF8700 /* CitationViewController.swift */; };
+		F1EA1CA722E0776600BB328F /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA1CA622E0776600BB328F /* UIImageView+Extensions.swift */; };
+		F1EA1CA922E07D2A00BB328F /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA1CA822E07D2A00BB328F /* UILabel+Extensions.swift */; };
+		F1EA1CAB22E0833400BB328F /* StakeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA1CAA22E0833400BB328F /* StakeHeaderView.swift */; };
+		F1EA1CAD22E0834D00BB328F /* StakeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1EA1CAC22E0834D00BB328F /* StakeHeaderView.xib */; };
+		F1EA1CAF22E0A71F00BB328F /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA1CAE22E0A71F00BB328F /* UIImage+Extensions.swift */; };
+		F1EA1CB122E0BE6200BB328F /* EmptyActView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA1CB022E0BE6200BB328F /* EmptyActView.swift */; };
+		F1EA1CB322E0BFCE00BB328F /* EmptyActView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1EA1CB222E0BFCE00BB328F /* EmptyActView.xib */; };
+		F1EA1CB522E1BF4900BB328F /* AllGoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA1CB422E1BF4900BB328F /* AllGoalsViewController.swift */; };
+		F1EA1CB722E1C65900BB328F /* CreateActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA1CB622E1C65900BB328F /* CreateActionViewController.swift */; };
+		F1EA1CB922E1C66B00BB328F /* CreateGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA1CB822E1C66B00BB328F /* CreateGoalViewController.swift */; };
+		F1EA1CBE22E1EA9500BB328F /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA1CBD22E1EA9500BB328F /* UITableViewCell+Extensions.swift */; };
+		F1EA1CC022E1EAE300BB328F /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA1CBF22E1EAE300BB328F /* UIViewController+Extensions.swift */; };
+		F1EAF59222E89925008073D7 /* HeaderWriteActionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EAF59022E89925008073D7 /* HeaderWriteActionsTableViewCell.swift */; };
+		F1EAF59322E89925008073D7 /* HeaderWriteActionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1EAF59122E89925008073D7 /* HeaderWriteActionsTableViewCell.xib */; };
+		F1EAF59522E8A987008073D7 /* ConfigurateActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EAF59422E8A987008073D7 /* ConfigurateActionViewController.swift */; };
+		F1EAF59822E8AA63008073D7 /* ConfigurateActionConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EAF59722E8AA63008073D7 /* ConfigurateActionConfigurator.swift */; };
+		F1EAF59A22E8AA79008073D7 /* ConfigurateActionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EAF59922E8AA79008073D7 /* ConfigurateActionPresenter.swift */; };
+		F1EAF59C22E8AA89008073D7 /* ConfigurateActionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EAF59B22E8AA89008073D7 /* ConfigurateActionInteractor.swift */; };
+		F1EAF59E22E8AA9A008073D7 /* ConfigurateActionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EAF59D22E8AA9A008073D7 /* ConfigurateActionRouter.swift */; };
 		F1EB8DD622A8022500E3BC4C /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EB8DD522A8022500E3BC4C /* ForgotPasswordViewController.swift */; };
 		F1EB8DD822A8026C00E3BC4C /* ForgotSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EB8DD722A8026C00E3BC4C /* ForgotSuccessViewController.swift */; };
 		F1EBC7B022CF63D200BAA82D /* Bomfunk Mcs - Freestyler.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1EBC7AF22CF63D100BAA82D /* Bomfunk Mcs - Freestyler.mp3 */; };
@@ -140,6 +244,25 @@
 /* Begin PBXFileReference section */
 		06EBFD976848A75FE49ED5C8 /* Pods-Bold.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bold.release.xcconfig"; path = "Target Support Files/Pods-Bold/Pods-Bold.release.xcconfig"; sourceTree = "<group>"; };
 		6854131E5D97D066DB48AC96 /* Pods_Bold.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bold.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F107537522EF1E470078C71C /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		F107537722EF1E550078C71C /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		F107537922EF36670078C71C /* BoldTipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldTipsViewController.swift; sourceTree = "<group>"; };
+		F107537B22EF39190078C71C /* ShareWithFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareWithFriendsViewController.swift; sourceTree = "<group>"; };
+		F107537E22EF49550078C71C /* ShareCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCardTableViewCell.swift; sourceTree = "<group>"; };
+		F107538022EF496F0078C71C /* ShareButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButtonTableViewCell.swift; sourceTree = "<group>"; };
+		F10B69BE22EB168B00E47315 /* IdeasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasViewController.swift; sourceTree = "<group>"; };
+		F10B69C122EB16F800E47315 /* IdeasConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasConfigurator.swift; sourceTree = "<group>"; };
+		F10B69C322EB170B00E47315 /* IdeasPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasPresenter.swift; sourceTree = "<group>"; };
+		F10B69C522EB171A00E47315 /* IdeasInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasInteractor.swift; sourceTree = "<group>"; };
+		F10B69C722EB172900E47315 /* IdeasRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasRouter.swift; sourceTree = "<group>"; };
+		F10B69C922EB2D9100E47315 /* IdeasTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasTableViewCell.swift; sourceTree = "<group>"; };
+		F10B69CA22EB2D9100E47315 /* IdeasTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdeasTableViewCell.xib; sourceTree = "<group>"; };
+		F10B69CD22EB3D1F00E47315 /* IdeasFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasFooterView.swift; sourceTree = "<group>"; };
+		F115629B22DDB15900399FA6 /* DescriptionAndLikesCountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionAndLikesCountViewController.swift; sourceTree = "<group>"; };
+		F115629D22DF0B5C00399FA6 /* Description.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Description.storyboard; sourceTree = "<group>"; };
+		F115629F22DF20B100399FA6 /* ActViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActViewController.swift; sourceTree = "<group>"; };
+		F11562A122DF2E9A00399FA6 /* StakeActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StakeActionTableViewCell.swift; sourceTree = "<group>"; };
+		F11562A222DF2E9A00399FA6 /* StakeActionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StakeActionTableViewCell.xib; sourceTree = "<group>"; };
 		F13DEAD222AAC0B700BC3CA6 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		F13DEAD422AAC0D500BC3CA6 /* SignUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpView.xib; sourceTree = "<group>"; };
 		F141668022BCD7A10020BF0F /* ManifestConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestConfigurator.swift; sourceTree = "<group>"; };
@@ -159,6 +282,7 @@
 		F14166A422C115B50020BF0F /* PlayerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListView.swift; sourceTree = "<group>"; };
 		F14166AA22C125A50020BF0F /* ActionCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		F14166AB22C125A50020BF0F /* ActionCollectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionCollectionTableViewCell.xib; sourceTree = "<group>"; };
+		F158273E22EB569E007B9023 /* DateAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAlertViewController.swift; sourceTree = "<group>"; };
 		F158E2BA22C3C2C300FD671A /* FeelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelViewController.swift; sourceTree = "<group>"; };
 		F158E2BE22C3C72800FD671A /* ProgressHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHeaderView.swift; sourceTree = "<group>"; };
 		F158E2C022C3C73F00FD671A /* ProgressHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressHeaderView.xib; sourceTree = "<group>"; };
@@ -192,6 +316,34 @@
 		F17CB26C22A6BDA60035ABAB /* SCPageControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPageControlView.swift; sourceTree = "<group>"; };
 		F17CB26F22A6CF230035ABAB /* OnboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardCell.swift; sourceTree = "<group>"; };
 		F17CB27322A7D0830035ABAB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F183300F22E5CB2D00BB7A9E /* FeelConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelConfigurator.swift; sourceTree = "<group>"; };
+		F183301222E5CB5700BB7A9E /* FeelPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelPresenter.swift; sourceTree = "<group>"; };
+		F183301422E5CB6A00BB7A9E /* FeelInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelInteractor.swift; sourceTree = "<group>"; };
+		F183301622E5CB7800BB7A9E /* FeelRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelRouter.swift; sourceTree = "<group>"; };
+		F183301922E5CBCC00BB7A9E /* ActionsListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsListConfigurator.swift; sourceTree = "<group>"; };
+		F183301B22E5CBD800BB7A9E /* ActionsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsListPresenter.swift; sourceTree = "<group>"; };
+		F183301D22E5CBEB00BB7A9E /* ActionsListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsListInteractor.swift; sourceTree = "<group>"; };
+		F183301F22E5CBF700BB7A9E /* ActionsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsListRouter.swift; sourceTree = "<group>"; };
+		F183302222E6058100BB7A9E /* ActConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActConfigurator.swift; sourceTree = "<group>"; };
+		F183302422E6059600BB7A9E /* ActPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActPresenter.swift; sourceTree = "<group>"; };
+		F183302622E605A600BB7A9E /* ActInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActInteractor.swift; sourceTree = "<group>"; };
+		F183302822E605B500BB7A9E /* ActRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActRouter.swift; sourceTree = "<group>"; };
+		F183302B22E6178D00BB7A9E /* AllGoalsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGoalsConfigurator.swift; sourceTree = "<group>"; };
+		F183302D22E617A300BB7A9E /* AllGoalsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGoalsPresenter.swift; sourceTree = "<group>"; };
+		F183302F22E617B900BB7A9E /* AllGoalsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGoalsInteractor.swift; sourceTree = "<group>"; };
+		F183303122E617C700BB7A9E /* AllGoalsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGoalsRouter.swift; sourceTree = "<group>"; };
+		F183303522E6F02800BB7A9E /* CreateActionConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateActionConfigurator.swift; sourceTree = "<group>"; };
+		F183303722E6F03700BB7A9E /* CreateActionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateActionPresenter.swift; sourceTree = "<group>"; };
+		F183303922E6F04500BB7A9E /* CreateActionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateActionInteractor.swift; sourceTree = "<group>"; };
+		F183303B22E6F05500BB7A9E /* CreateActionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateActionRouter.swift; sourceTree = "<group>"; };
+		F183303D22E6F0D300BB7A9E /* CreateGoalConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalConfigurator.swift; sourceTree = "<group>"; };
+		F183303F22E6F0E100BB7A9E /* CreateGoalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalPresenter.swift; sourceTree = "<group>"; };
+		F183304122E6F0F000BB7A9E /* CreateGoalInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalInteractor.swift; sourceTree = "<group>"; };
+		F183304322E6F0FD00BB7A9E /* CreateGoalRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalRouter.swift; sourceTree = "<group>"; };
+		F183304622E714E800BB7A9E /* PlayerConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerConfigurator.swift; sourceTree = "<group>"; };
+		F183304822E714F600BB7A9E /* PlayerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPresenter.swift; sourceTree = "<group>"; };
+		F183304A22E7150300BB7A9E /* PlayerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInteractor.swift; sourceTree = "<group>"; };
+		F183304C22E7151400BB7A9E /* PlayerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRouter.swift; sourceTree = "<group>"; };
 		F18687DA229D56B00029A663 /* Bold.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bold.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F18687DD229D56B00029A663 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F18687DF229D56B00029A663 /* BaseProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProtocols.swift; sourceTree = "<group>"; };
@@ -234,6 +386,31 @@
 		F186884A229E9BD80029A663 /* StoryboardScenes+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoryboardScenes+Extensions.swift"; sourceTree = "<group>"; };
 		F186884F229E9D970029A663 /* Assets-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Assets-Constants.swift"; sourceTree = "<group>"; };
 		F1868851229E9DA20029A663 /* L10n-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "L10n-Constants.swift"; sourceTree = "<group>"; };
+		F190357722D87AF8001BC996 /* FixedPaddingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedPaddingTextView.swift; sourceTree = "<group>"; };
+		F19257FB22E7526E00FA5C6E /* CalendarActionsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActionsListViewController.swift; sourceTree = "<group>"; };
+		F19257FE22E7529900FA5C6E /* CalendarActionsListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActionsListConfigurator.swift; sourceTree = "<group>"; };
+		F192580022E752A600FA5C6E /* CalendarActionsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActionsListPresenter.swift; sourceTree = "<group>"; };
+		F192580222E752B600FA5C6E /* CalendarActionsListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActionsListInteractor.swift; sourceTree = "<group>"; };
+		F192580422E752C400FA5C6E /* CalendarActionsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActionsListRouter.swift; sourceTree = "<group>"; };
+		F19A98A222D4F3C300A0492E /* CitationBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitationBaseViewController.swift; sourceTree = "<group>"; };
+		F19A98A422D5FF4F00A0492E /* CustomDotsPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDotsPageControl.swift; sourceTree = "<group>"; };
+		F19A98A722D616FB00A0492E /* DontGiveUpAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DontGiveUpAlertView.swift; sourceTree = "<group>"; };
+		F19A98A922D6173D00A0492E /* DontGiveUpAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DontGiveUpAlertView.xib; sourceTree = "<group>"; };
+		F19A98AD22D6551E00A0492E /* BaseAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAlertViewController.swift; sourceTree = "<group>"; };
+		F19A98AF22D7393C00A0492E /* CongratulationsAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratulationsAlertView.swift; sourceTree = "<group>"; };
+		F19A98B122D7395600A0492E /* CongratulationsAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CongratulationsAlertView.xib; sourceTree = "<group>"; };
+		F19A98B322D7573000A0492E /* MissedYouOneButtonAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissedYouOneButtonAlertView.swift; sourceTree = "<group>"; };
+		F19A98B522D7575C00A0492E /* MissedYouOneButtonAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MissedYouOneButtonAlertView.xib; sourceTree = "<group>"; };
+		F19A98B722D758CF00A0492E /* MissedYouTwoButtonAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissedYouTwoButtonAlertView.swift; sourceTree = "<group>"; };
+		F19A98B922D758E700A0492E /* MissedYouTwoButtonAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MissedYouTwoButtonAlertView.xib; sourceTree = "<group>"; };
+		F19A98BB22D7A06F00A0492E /* StartActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartActionViewController.swift; sourceTree = "<group>"; };
+		F1A79DC522D89C0C0018A8EF /* ListenOrReadMaterialView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListenOrReadMaterialView.xib; sourceTree = "<group>"; };
+		F1A79DC722D8A5620018A8EF /* ManageItTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageItTableViewCell.swift; sourceTree = "<group>"; };
+		F1A79DC822D8A5620018A8EF /* ManageItTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManageItTableViewCell.xib; sourceTree = "<group>"; };
+		F1A79DCB22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenOrReadMaterialCollectionViewCell.swift; sourceTree = "<group>"; };
+		F1A79DCC22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListenOrReadMaterialCollectionViewCell.xib; sourceTree = "<group>"; };
+		F1A79DCF22D8A9560018A8EF /* ListenOrReadMaterialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenOrReadMaterialView.swift; sourceTree = "<group>"; };
+		F1A79DD522DCAFA80018A8EF /* OverTabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverTabbarView.swift; sourceTree = "<group>"; };
 		F1C2533122B297B9003156AA /* UnlockPremiumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockPremiumTableViewCell.swift; sourceTree = "<group>"; };
 		F1C2533222B297B9003156AA /* UnlockPremiumTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnlockPremiumTableViewCell.xib; sourceTree = "<group>"; };
 		F1C2533522B2A1BC003156AA /* ActivityCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCollectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -259,6 +436,37 @@
 		F1CCC71922CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTitleActionPlanTableViewCell.swift; sourceTree = "<group>"; };
 		F1CCC71A22CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTitleActionPlanTableViewCell.xib; sourceTree = "<group>"; };
 		F1CCC71D22CE854900E7B637 /* EditActionPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditActionPlanViewController.swift; sourceTree = "<group>"; };
+		F1CECE1322E9C73400EA95EE /* ColorCreateGoalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCreateGoalTableViewCell.swift; sourceTree = "<group>"; };
+		F1CECE1422E9C73400EA95EE /* ColorCreateGoalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorCreateGoalTableViewCell.xib; sourceTree = "<group>"; };
+		F1CECE1722E9C75000EA95EE /* ColorListCreateGoalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorListCreateGoalTableViewCell.swift; sourceTree = "<group>"; };
+		F1CECE1822E9C75000EA95EE /* ColorListCreateGoalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorListCreateGoalTableViewCell.xib; sourceTree = "<group>"; };
+		F1CECE1B22E9C77600EA95EE /* IconListCreateGoalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconListCreateGoalTableViewCell.swift; sourceTree = "<group>"; };
+		F1CECE1C22E9C77600EA95EE /* IconListCreateGoalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconListCreateGoalTableViewCell.xib; sourceTree = "<group>"; };
+		F1CECE1F22E9E5D600EA95EE /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		F1CECE2022E9E5D600EA95EE /* ColorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorCollectionViewCell.xib; sourceTree = "<group>"; };
+		F1CECE2322EA0AC000EA95EE /* IconCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewCell.swift; sourceTree = "<group>"; };
+		F1CECE2422EA0AC000EA95EE /* IconCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconCollectionViewCell.xib; sourceTree = "<group>"; };
+		F1D390F622D4E3AB00DF8700 /* CitationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitationPageViewController.swift; sourceTree = "<group>"; };
+		F1D390F822D4E3F800DF8700 /* CitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitationViewController.swift; sourceTree = "<group>"; };
+		F1EA1CA622E0776600BB328F /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		F1EA1CA822E07D2A00BB328F /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
+		F1EA1CAA22E0833400BB328F /* StakeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StakeHeaderView.swift; sourceTree = "<group>"; };
+		F1EA1CAC22E0834D00BB328F /* StakeHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StakeHeaderView.xib; sourceTree = "<group>"; };
+		F1EA1CAE22E0A71F00BB328F /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		F1EA1CB022E0BE6200BB328F /* EmptyActView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyActView.swift; sourceTree = "<group>"; };
+		F1EA1CB222E0BFCE00BB328F /* EmptyActView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyActView.xib; sourceTree = "<group>"; };
+		F1EA1CB422E1BF4900BB328F /* AllGoalsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGoalsViewController.swift; sourceTree = "<group>"; };
+		F1EA1CB622E1C65900BB328F /* CreateActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateActionViewController.swift; sourceTree = "<group>"; };
+		F1EA1CB822E1C66B00BB328F /* CreateGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalViewController.swift; sourceTree = "<group>"; };
+		F1EA1CBD22E1EA9500BB328F /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
+		F1EA1CBF22E1EAE300BB328F /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		F1EAF59022E89925008073D7 /* HeaderWriteActionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderWriteActionsTableViewCell.swift; sourceTree = "<group>"; };
+		F1EAF59122E89925008073D7 /* HeaderWriteActionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderWriteActionsTableViewCell.xib; sourceTree = "<group>"; };
+		F1EAF59422E8A987008073D7 /* ConfigurateActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurateActionViewController.swift; sourceTree = "<group>"; };
+		F1EAF59722E8AA63008073D7 /* ConfigurateActionConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurateActionConfigurator.swift; sourceTree = "<group>"; };
+		F1EAF59922E8AA79008073D7 /* ConfigurateActionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurateActionPresenter.swift; sourceTree = "<group>"; };
+		F1EAF59B22E8AA89008073D7 /* ConfigurateActionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurateActionInteractor.swift; sourceTree = "<group>"; };
+		F1EAF59D22E8AA9A008073D7 /* ConfigurateActionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurateActionRouter.swift; sourceTree = "<group>"; };
 		F1EB8DD522A8022500E3BC4C /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		F1EB8DD722A8026C00E3BC4C /* ForgotSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotSuccessViewController.swift; sourceTree = "<group>"; };
 		F1EBC7AF22CF63D100BAA82D /* Bomfunk Mcs - Freestyler.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Bomfunk Mcs - Freestyler.mp3"; sourceTree = SOURCE_ROOT; };
@@ -301,6 +509,35 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F107537422EF1E0A0078C71C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F107537522EF1E470078C71C /* Goal.swift */,
+				F107537722EF1E550078C71C /* Action.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F107537D22EF39210078C71C /* ShareWithFriendsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F107537B22EF39190078C71C /* ShareWithFriendsViewController.swift */,
+			);
+			path = ShareWithFriendsViewController;
+			sourceTree = "<group>";
+		};
+		F10B69C022EB16B300E47315 /* IdeasViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F10B69BE22EB168B00E47315 /* IdeasViewController.swift */,
+				F10B69C122EB16F800E47315 /* IdeasConfigurator.swift */,
+				F10B69C322EB170B00E47315 /* IdeasPresenter.swift */,
+				F10B69C522EB171A00E47315 /* IdeasInteractor.swift */,
+				F10B69C722EB172900E47315 /* IdeasRouter.swift */,
+			);
+			path = IdeasViewController;
+			sourceTree = "<group>";
+		};
 		F141668822BD00CB0020BF0F /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,7 +551,7 @@
 		F141668F22C0D9120020BF0F /* Player */ = {
 			isa = PBXGroup;
 			children = (
-				F14166A222C1158C0020BF0F /* PlayerViewController.swift */,
+				F183304522E714CC00BB7A9E /* PlayerViewController */,
 				F14166A422C115B50020BF0F /* PlayerListView.swift */,
 				F1CCC70C22CCDBE400E7B637 /* PlayerListTableViewCell.swift */,
 				F141669022C0D97B0020BF0F /* PlayerSmallView.xib */,
@@ -326,8 +563,8 @@
 		F141669422C0E2560020BF0F /* Feel */ = {
 			isa = PBXGroup;
 			children = (
-				F158E2BA22C3C2C300FD671A /* FeelViewController.swift */,
-				F1CCC70622CA5E3700E7B637 /* ActionsListViewController.swift */,
+				F183301122E5CB4200BB7A9E /* FeelViewController */,
+				F183301822E5CB8600BB7A9E /* ActionsListViewController */,
 				F141669D22C0EDE00020BF0F /* Views */,
 			);
 			path = Feel;
@@ -348,6 +585,12 @@
 				F162A78622C23352008292E8 /* ActionTableViewCell.xib */,
 				F162A78922C2400D008292E8 /* ListenOrReadTableViewCell.swift */,
 				F162A78A22C2400D008292E8 /* ListenOrReadTableViewCell.xib */,
+				F1A79DC722D8A5620018A8EF /* ManageItTableViewCell.swift */,
+				F1A79DC822D8A5620018A8EF /* ManageItTableViewCell.xib */,
+				F1A79DCB22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.swift */,
+				F1A79DCC22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.xib */,
+				F1A79DCF22D8A9560018A8EF /* ListenOrReadMaterialView.swift */,
+				F1A79DC522D89C0C0018A8EF /* ListenOrReadMaterialView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -377,11 +620,7 @@
 			children = (
 				F1C2535422BA8031003156AA /* Manifest */,
 				F179976322B10AB00039879F /* Views */,
-				F179976822B1319F0039879F /* HomeViewController.swift */,
-				F1C2534B22B3F977003156AA /* HomeConfigurator.swift */,
-				F1C2534D22B3F9A9003156AA /* HomePresenter.swift */,
-				F1C2534F22B3F9C5003156AA /* HomeInteractor.swift */,
-				F1C2535222B3F9F8003156AA /* HomeRouter.swift */,
+				F1EA1CBA22E1C6AB00BB328F /* HomeViewController */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -433,7 +672,7 @@
 			isa = PBXGroup;
 			children = (
 				F17CB26822A682130035ABAB /* RoundedButton.swift */,
-				F17CB26C22A6BDA60035ABAB /* SCPageControlView.swift */,
+				F190357722D87AF8001BC996 /* FixedPaddingTextView.swift */,
 				F1CCC70422CA11FB00E7B637 /* BaseTableViewCell.swift */,
 			);
 			path = Views;
@@ -448,6 +687,90 @@
 				F1EB8DD722A8026C00E3BC4C /* ForgotSuccessViewController.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		F183301122E5CB4200BB7A9E /* FeelViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F158E2BA22C3C2C300FD671A /* FeelViewController.swift */,
+				F183300F22E5CB2D00BB7A9E /* FeelConfigurator.swift */,
+				F183301222E5CB5700BB7A9E /* FeelPresenter.swift */,
+				F183301422E5CB6A00BB7A9E /* FeelInteractor.swift */,
+				F183301622E5CB7800BB7A9E /* FeelRouter.swift */,
+			);
+			path = FeelViewController;
+			sourceTree = "<group>";
+		};
+		F183301822E5CB8600BB7A9E /* ActionsListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F1CCC70622CA5E3700E7B637 /* ActionsListViewController.swift */,
+				F183301922E5CBCC00BB7A9E /* ActionsListConfigurator.swift */,
+				F183301B22E5CBD800BB7A9E /* ActionsListPresenter.swift */,
+				F183301D22E5CBEB00BB7A9E /* ActionsListInteractor.swift */,
+				F183301F22E5CBF700BB7A9E /* ActionsListRouter.swift */,
+			);
+			path = ActionsListViewController;
+			sourceTree = "<group>";
+		};
+		F183302122E6051B00BB7A9E /* ActViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F115629F22DF20B100399FA6 /* ActViewController.swift */,
+				F183302222E6058100BB7A9E /* ActConfigurator.swift */,
+				F183302422E6059600BB7A9E /* ActPresenter.swift */,
+				F183302622E605A600BB7A9E /* ActInteractor.swift */,
+				F183302822E605B500BB7A9E /* ActRouter.swift */,
+			);
+			path = ActViewController;
+			sourceTree = "<group>";
+		};
+		F183302A22E6175C00BB7A9E /* AllGoalsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F1EA1CB422E1BF4900BB328F /* AllGoalsViewController.swift */,
+				F183302B22E6178D00BB7A9E /* AllGoalsConfigurator.swift */,
+				F183302D22E617A300BB7A9E /* AllGoalsPresenter.swift */,
+				F183302F22E617B900BB7A9E /* AllGoalsInteractor.swift */,
+				F183303122E617C700BB7A9E /* AllGoalsRouter.swift */,
+			);
+			path = AllGoalsViewController;
+			sourceTree = "<group>";
+		};
+		F183303322E6ED2100BB7A9E /* CreateActionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F1EA1CB622E1C65900BB328F /* CreateActionViewController.swift */,
+				F183303522E6F02800BB7A9E /* CreateActionConfigurator.swift */,
+				F183303722E6F03700BB7A9E /* CreateActionPresenter.swift */,
+				F183303922E6F04500BB7A9E /* CreateActionInteractor.swift */,
+				F183303B22E6F05500BB7A9E /* CreateActionRouter.swift */,
+			);
+			path = CreateActionViewController;
+			sourceTree = "<group>";
+		};
+		F183303422E6ED3800BB7A9E /* CreateGoalViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F1EA1CB822E1C66B00BB328F /* CreateGoalViewController.swift */,
+				F183303D22E6F0D300BB7A9E /* CreateGoalConfigurator.swift */,
+				F183303F22E6F0E100BB7A9E /* CreateGoalPresenter.swift */,
+				F183304122E6F0F000BB7A9E /* CreateGoalInteractor.swift */,
+				F183304322E6F0FD00BB7A9E /* CreateGoalRouter.swift */,
+			);
+			path = CreateGoalViewController;
+			sourceTree = "<group>";
+		};
+		F183304522E714CC00BB7A9E /* PlayerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F14166A222C1158C0020BF0F /* PlayerViewController.swift */,
+				F183304622E714E800BB7A9E /* PlayerConfigurator.swift */,
+				F183304822E714F600BB7A9E /* PlayerPresenter.swift */,
+				F183304A22E7150300BB7A9E /* PlayerInteractor.swift */,
+				F183304C22E7151400BB7A9E /* PlayerRouter.swift */,
+			);
+			path = PlayerViewController;
 			sourceTree = "<group>";
 		};
 		F18687D1229D56B00029A663 = {
@@ -476,6 +799,8 @@
 				F179974C22AE615D0039879F /* Localizable.swift */,
 				F179974E22AE619C0039879F /* EmptyView.swift */,
 				F179975522AFB04B0039879F /* LocalizableViewController.swift */,
+				F107537422EF1E0A0078C71C /* Models */,
+				F1EA1CBB22E1E97A00BB328F /* Frameworks */,
 				F141668822BD00CB0020BF0F /* Services */,
 				F17CB26722A6735F0035ABAB /* Views */,
 				F1868808229D7E040029A663 /* Splash */,
@@ -507,8 +832,13 @@
 				F1868849229E9BD80029A663 /* UIFont+Extensions.swift */,
 				F1EE4D50229EB78C0072F663 /* String+Extensions.swift */,
 				F1CCC70222CA0F2900E7B637 /* UITableView+Xib.swift */,
+				F1EA1CBD22E1EA9500BB328F /* UITableViewCell+Extensions.swift */,
 				F1CCC71522CE46F600E7B637 /* UIView+Extensions.swift */,
+				F1EA1CBF22E1EAE300BB328F /* UIViewController+Extensions.swift */,
 				F1CCC71722CE474800E7B637 /* UIButton+Extensions.swift */,
+				F1EA1CA622E0776600BB328F /* UIImageView+Extensions.swift */,
+				F1EA1CA822E07D2A00BB328F /* UILabel+Extensions.swift */,
+				F1EA1CAE22E0A71F00BB328F /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -533,6 +863,7 @@
 				F18687F3229D5FFD0029A663 /* Settings.storyboard */,
 				F18687FD229D609C0029A663 /* Profile.storyboard */,
 				F141668D22BD28760020BF0F /* Player.storyboard */,
+				F115629D22DF0B5C00399FA6 /* Description.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -594,6 +925,33 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		F19257FD22E7527B00FA5C6E /* CalendarActionsListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F19257FB22E7526E00FA5C6E /* CalendarActionsListViewController.swift */,
+				F19257FE22E7529900FA5C6E /* CalendarActionsListConfigurator.swift */,
+				F192580022E752A600FA5C6E /* CalendarActionsListPresenter.swift */,
+				F192580222E752B600FA5C6E /* CalendarActionsListInteractor.swift */,
+				F192580422E752C400FA5C6E /* CalendarActionsListRouter.swift */,
+			);
+			path = CalendarActionsListViewController;
+			sourceTree = "<group>";
+		};
+		F19A98A622D6167D00A0492E /* AlertViews */ = {
+			isa = PBXGroup;
+			children = (
+				F19A98AF22D7393C00A0492E /* CongratulationsAlertView.swift */,
+				F19A98B122D7395600A0492E /* CongratulationsAlertView.xib */,
+				F19A98B322D7573000A0492E /* MissedYouOneButtonAlertView.swift */,
+				F19A98B522D7575C00A0492E /* MissedYouOneButtonAlertView.xib */,
+				F19A98B722D758CF00A0492E /* MissedYouTwoButtonAlertView.swift */,
+				F19A98B922D758E700A0492E /* MissedYouTwoButtonAlertView.xib */,
+				F19A98A722D616FB00A0492E /* DontGiveUpAlertView.swift */,
+				F19A98A922D6173D00A0492E /* DontGiveUpAlertView.xib */,
+			);
+			path = AlertViews;
+			sourceTree = "<group>";
+		};
 		F1C2535422BA8031003156AA /* Manifest */ = {
 			isa = PBXGroup;
 			children = (
@@ -609,8 +967,21 @@
 		F1CCC70E22CE21E500E7B637 /* Act */ = {
 			isa = PBXGroup;
 			children = (
+				F183302122E6051B00BB7A9E /* ActViewController */,
+				F183302A22E6175C00BB7A9E /* AllGoalsViewController */,
+				F19257FD22E7527B00FA5C6E /* CalendarActionsListViewController */,
+				F183303322E6ED2100BB7A9E /* CreateActionViewController */,
+				F183303422E6ED3800BB7A9E /* CreateGoalViewController */,
+				F1EAF59622E8A9A4008073D7 /* ConfigurateActionViewController */,
+				F10B69C022EB16B300E47315 /* IdeasViewController */,
+				F107537D22EF39210078C71C /* ShareWithFriendsViewController */,
+				F107537922EF36670078C71C /* BoldTipsViewController.swift */,
+				F158273E22EB569E007B9023 /* DateAlertViewController.swift */,
 				F1CCC71222CE228800E7B637 /* AddActionPlanViewController.swift */,
 				F1CCC71D22CE854900E7B637 /* EditActionPlanViewController.swift */,
+				F19A98BB22D7A06F00A0492E /* StartActionViewController.swift */,
+				F19A98AD22D6551E00A0492E /* BaseAlertViewController.swift */,
+				F19A98A622D6167D00A0492E /* AlertViews */,
 				F1CCC71422CE256400E7B637 /* Views */,
 			);
 			path = Act;
@@ -621,6 +992,11 @@
 			children = (
 				F1EBC7B822D38C3300BAA82D /* ThinkViewController.swift */,
 				F1EBC7BA22D38E8100BAA82D /* ThinkListViewController.swift */,
+				F19A98A422D5FF4F00A0492E /* CustomDotsPageControl.swift */,
+				F19A98A222D4F3C300A0492E /* CitationBaseViewController.swift */,
+				F1D390F622D4E3AB00DF8700 /* CitationPageViewController.swift */,
+				F1D390F822D4E3F800DF8700 /* CitationViewController.swift */,
+				F115629B22DDB15900399FA6 /* DescriptionAndLikesCountViewController.swift */,
 				F1EBC7B322D376C300BAA82D /* Views */,
 			);
 			path = Think;
@@ -649,8 +1025,71 @@
 				F1CCC71A22CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.xib */,
 				F141669922C0EDD20020BF0F /* SettingActionPlanTableViewCell.swift */,
 				F141669A22C0EDD20020BF0F /* SettingActionPlanTableViewCell.xib */,
+				F1EAF59022E89925008073D7 /* HeaderWriteActionsTableViewCell.swift */,
+				F1EAF59122E89925008073D7 /* HeaderWriteActionsTableViewCell.xib */,
+				F1CECE1322E9C73400EA95EE /* ColorCreateGoalTableViewCell.swift */,
+				F1CECE1422E9C73400EA95EE /* ColorCreateGoalTableViewCell.xib */,
+				F1CECE1722E9C75000EA95EE /* ColorListCreateGoalTableViewCell.swift */,
+				F1CECE1822E9C75000EA95EE /* ColorListCreateGoalTableViewCell.xib */,
+				F1CECE1F22E9E5D600EA95EE /* ColorCollectionViewCell.swift */,
+				F1CECE2022E9E5D600EA95EE /* ColorCollectionViewCell.xib */,
+				F1CECE2322EA0AC000EA95EE /* IconCollectionViewCell.swift */,
+				F1CECE2422EA0AC000EA95EE /* IconCollectionViewCell.xib */,
+				F1CECE1B22E9C77600EA95EE /* IconListCreateGoalTableViewCell.swift */,
+				F1CECE1C22E9C77600EA95EE /* IconListCreateGoalTableViewCell.xib */,
+				F10B69C922EB2D9100E47315 /* IdeasTableViewCell.swift */,
+				F10B69CA22EB2D9100E47315 /* IdeasTableViewCell.xib */,
+				F10B69CD22EB3D1F00E47315 /* IdeasFooterView.swift */,
+				F11562A122DF2E9A00399FA6 /* StakeActionTableViewCell.swift */,
+				F11562A222DF2E9A00399FA6 /* StakeActionTableViewCell.xib */,
+				F1EA1CAA22E0833400BB328F /* StakeHeaderView.swift */,
+				F1EA1CAC22E0834D00BB328F /* StakeHeaderView.xib */,
+				F1EA1CB022E0BE6200BB328F /* EmptyActView.swift */,
+				F1EA1CB222E0BFCE00BB328F /* EmptyActView.xib */,
+				F107537E22EF49550078C71C /* ShareCardTableViewCell.swift */,
+				F107538022EF496F0078C71C /* ShareButtonTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F1EA1CBA22E1C6AB00BB328F /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F179976822B1319F0039879F /* HomeViewController.swift */,
+				F1C2534B22B3F977003156AA /* HomeConfigurator.swift */,
+				F1C2534D22B3F9A9003156AA /* HomePresenter.swift */,
+				F1C2534F22B3F9C5003156AA /* HomeInteractor.swift */,
+				F1C2535222B3F9F8003156AA /* HomeRouter.swift */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		F1EA1CBB22E1E97A00BB328F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F1EA1CBC22E1E99300BB328F /* SCPageControlView */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		F1EA1CBC22E1E99300BB328F /* SCPageControlView */ = {
+			isa = PBXGroup;
+			children = (
+				F17CB26C22A6BDA60035ABAB /* SCPageControlView.swift */,
+			);
+			path = SCPageControlView;
+			sourceTree = "<group>";
+		};
+		F1EAF59622E8A9A4008073D7 /* ConfigurateActionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F1EAF59422E8A987008073D7 /* ConfigurateActionViewController.swift */,
+				F1EAF59722E8AA63008073D7 /* ConfigurateActionConfigurator.swift */,
+				F1EAF59922E8AA79008073D7 /* ConfigurateActionPresenter.swift */,
+				F1EAF59B22E8AA89008073D7 /* ConfigurateActionInteractor.swift */,
+				F1EAF59D22E8AA9A008073D7 /* ConfigurateActionRouter.swift */,
+			);
+			path = ConfigurateActionViewController;
 			sourceTree = "<group>";
 		};
 		F1EB8DD922A80AA800E3BC4C /* Views */ = {
@@ -666,6 +1105,7 @@
 			children = (
 				F1EBC7B422D3772100BAA82D /* CitationTableViewCell.swift */,
 				F1EBC7B522D3772100BAA82D /* CitationTableViewCell.xib */,
+				F1A79DD522DCAFA80018A8EF /* OverTabbarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -740,6 +1180,7 @@
 				F1C2534622B2ACAA003156AA /* GoalCollectionViewCell.xib in Resources */,
 				F1CCC71C22CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.xib in Resources */,
 				F1868841229E90EF0029A663 /* Montserrat-Black.ttf in Resources */,
+				F1A79DCE22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.xib in Resources */,
 				F162A78C22C2400D008292E8 /* ListenOrReadTableViewCell.xib in Resources */,
 				F1868842229E90EF0029A663 /* Montserrat-LightItalic.ttf in Resources */,
 				F1868833229E90EF0029A663 /* Montserrat-MediumItalic.ttf in Resources */,
@@ -747,6 +1188,7 @@
 				F1868834229E90EF0029A663 /* Montserrat-BoldItalic.ttf in Resources */,
 				F18687FE229D609C0029A663 /* Profile.storyboard in Resources */,
 				F1868836229E90EF0029A663 /* Montserrat-Italic.ttf in Resources */,
+				F1CECE1E22E9C77600EA95EE /* IconListCreateGoalTableViewCell.xib in Resources */,
 				F186883F229E90EF0029A663 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				F1868835229E90EF0029A663 /* Montserrat-BlackItalic.ttf in Resources */,
 				F14166AD22C125A50020BF0F /* ActionCollectionTableViewCell.xib in Resources */,
@@ -754,27 +1196,40 @@
 				F1C2533422B297B9003156AA /* UnlockPremiumTableViewCell.xib in Resources */,
 				F1C2534A22B2ACFC003156AA /* ActInactiveCollectionViewCell.xib in Resources */,
 				F179976222AFFA1D0039879F /* MenuBottomView.xib in Resources */,
+				F1A79DC622D89C0C0018A8EF /* ListenOrReadMaterialView.xib in Resources */,
 				F18687F8229D602C0029A663 /* Feel.storyboard in Resources */,
+				F115629E22DF0B5C00399FA6 /* Description.storyboard in Resources */,
 				F1EBC7B022CF63D200BAA82D /* Bomfunk Mcs - Freestyler.mp3 in Resources */,
 				F1EE4D4F229EA6620072F663 /* BackgroundVideo.MOV in Resources */,
 				F162A78822C23352008292E8 /* ActionTableViewCell.xib in Resources */,
+				F1CECE2222E9E5D600EA95EE /* ColorCollectionViewCell.xib in Resources */,
 				F1868832229E90EF0029A663 /* Montserrat-Bold.ttf in Resources */,
+				F1EA1CB322E0BFCE00BB328F /* EmptyActView.xib in Resources */,
+				F1EA1CAD22E0834D00BB328F /* StakeHeaderView.xib in Resources */,
+				F1EAF59322E89925008073D7 /* HeaderWriteActionsTableViewCell.xib in Resources */,
 				F1868838229E90EF0029A663 /* Montserrat-Medium.ttf in Resources */,
+				F1A79DCA22D8A5620018A8EF /* ManageItTableViewCell.xib in Resources */,
 				F186883C229E90EF0029A663 /* Montserrat-Light.ttf in Resources */,
 				F18687E5229D56B10029A663 /* Assets.xcassets in Resources */,
 				F18687F2229D5EE30029A663 /* Auth.storyboard in Resources */,
 				F162A77F22C12C05008292E8 /* ActionCollectionViewCell.xib in Resources */,
 				F13DEAD522AAC0D500BC3CA6 /* SignUpView.xib in Resources */,
 				F179976722B10AEC0039879F /* HeaderHomeView.xib in Resources */,
+				F19A98B622D7575C00A0492E /* MissedYouOneButtonAlertView.xib in Resources */,
 				F186883E229E90EF0029A663 /* Montserrat-Regular.ttf in Resources */,
+				F1CECE1622E9C73400EA95EE /* ColorCreateGoalTableViewCell.xib in Resources */,
+				F10B69CC22EB2D9100E47315 /* IdeasTableViewCell.xib in Resources */,
+				F1CECE1A22E9C75000EA95EE /* ColorListCreateGoalTableViewCell.xib in Resources */,
 				F18687FA229D60410029A663 /* Think.storyboard in Resources */,
 				F14166A122C106210020BF0F /* HeaderActionPlanTableViewCell.xib in Resources */,
+				F1CECE2622EA0AC000EA95EE /* IconCollectionViewCell.xib in Resources */,
 				F141669122C0D97B0020BF0F /* PlayerSmallView.xib in Resources */,
 				F186883A229E90EF0029A663 /* Montserrat-Thin.ttf in Resources */,
 				F1C2533C22B2A78A003156AA /* ActivityCollectionViewCell.xib in Resources */,
 				F1868817229E8CA50029A663 /* Menu.storyboard in Resources */,
 				F1868839229E90EF0029A663 /* Montserrat-SemiBold.ttf in Resources */,
 				F186883D229E90EF0029A663 /* Montserrat-ExtraLightItalic.ttf in Resources */,
+				F19A98AA22D6173D00A0492E /* DontGiveUpAlertView.xib in Resources */,
 				F18687F4229D5FFD0029A663 /* Settings.storyboard in Resources */,
 				F1EBC7B722D3772100BAA82D /* CitationTableViewCell.xib in Resources */,
 				F186883B229E90EF0029A663 /* Montserrat-ExtraLight.ttf in Resources */,
@@ -784,6 +1239,9 @@
 				F1868815229E8B9A0029A663 /* Splash.storyboard in Resources */,
 				F1C2533822B2A1BC003156AA /* ActivityCollectionTableViewCell.xib in Resources */,
 				F1868843229E90EF0029A663 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
+				F19A98B222D7395600A0492E /* CongratulationsAlertView.xib in Resources */,
+				F11562A422DF2E9A00399FA6 /* StakeActionTableViewCell.xib in Resources */,
+				F19A98BA22D758E700A0492E /* MissedYouTwoButtonAlertView.xib in Resources */,
 				F158E2C522C4E12A00FD671A /* NavigationView.xib in Resources */,
 				F141668E22BD28760020BF0F /* Player.storyboard in Resources */,
 				F1868840229E90EF0029A663 /* Montserrat-ExtraBold.ttf in Resources */,
@@ -858,21 +1316,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F183304D22E7151400BB7A9E /* PlayerRouter.swift in Sources */,
+				F10B69CB22EB2D9100E47315 /* IdeasTableViewCell.swift in Sources */,
 				F141668122BCD7A10020BF0F /* ManifestConfigurator.swift in Sources */,
 				F1CCC71822CE474800E7B637 /* UIButton+Extensions.swift in Sources */,
 				F179977422B1413A0039879F /* MenuAnimator.swift in Sources */,
 				F1868852229E9DA20029A663 /* L10n-Constants.swift in Sources */,
 				F14166A522C115B50020BF0F /* PlayerListView.swift in Sources */,
 				F179974D22AE615D0039879F /* Localizable.swift in Sources */,
+				F1D390F922D4E3F800DF8700 /* CitationViewController.swift in Sources */,
 				F17CB27022A6CF230035ABAB /* OnboardCell.swift in Sources */,
 				F1CCC71622CE46F600E7B637 /* UIView+Extensions.swift in Sources */,
+				F1EA1CB922E1C66B00BB328F /* CreateGoalViewController.swift in Sources */,
+				F10B69C822EB172900E47315 /* IdeasRouter.swift in Sources */,
+				F1EA1CAF22E0A71F00BB328F /* UIImage+Extensions.swift in Sources */,
+				F183303C22E6F05500BB7A9E /* CreateActionRouter.swift in Sources */,
 				F1EE4D51229EB78C0072F663 /* String+Extensions.swift in Sources */,
 				F158E2BF22C3C72800FD671A /* ProgressHeaderView.swift in Sources */,
+				F10B69C422EB170B00E47315 /* IdeasPresenter.swift in Sources */,
+				F183301722E5CB7800BB7A9E /* FeelRouter.swift in Sources */,
+				F183303622E6F02800BB7A9E /* CreateActionConfigurator.swift in Sources */,
 				F17CB27422A7D0830035ABAB /* LoginViewController.swift in Sources */,
+				F1EA1CAB22E0833400BB328F /* StakeHeaderView.swift in Sources */,
+				F19A98B022D7393C00A0492E /* CongratulationsAlertView.swift in Sources */,
+				F183303A22E6F04500BB7A9E /* CreateActionInteractor.swift in Sources */,
 				F1EBC7B222CF70A000BAA82D /* AudioPlayer.swift in Sources */,
+				F1EA1CB722E1C65900BB328F /* CreateActionViewController.swift in Sources */,
 				F141668A22BD00F20020BF0F /* VideoService.swift in Sources */,
 				F14166A322C1158C0020BF0F /* PlayerViewController.swift in Sources */,
+				F1EAF59822E8AA63008073D7 /* ConfigurateActionConfigurator.swift in Sources */,
 				F141668722BCD7FA0020BF0F /* ManifestRouter.swift in Sources */,
+				F10B69C622EB171A00E47315 /* IdeasInteractor.swift in Sources */,
+				F1A79DCD22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.swift in Sources */,
+				F1A79DC922D8A5620018A8EF /* ManageItTableViewCell.swift in Sources */,
 				F186880A229D7E1F0029A663 /* OnboardViewController.swift in Sources */,
 				F1C2534522B2ACAA003156AA /* GoalCollectionViewCell.swift in Sources */,
 				F179977622B1413A0039879F /* MenuViewController.swift in Sources */,
@@ -880,59 +1356,127 @@
 				F179977222B1413A0039879F /* MenuTransitioningDelegate.swift in Sources */,
 				F162A78722C23352008292E8 /* ActionTableViewCell.swift in Sources */,
 				F186884B229E9BD80029A663 /* StoryboardSegues+Extensions.swift in Sources */,
+				F1CECE2122E9E5D600EA95EE /* ColorCollectionViewCell.swift in Sources */,
 				F186884E229E9BD80029A663 /* StoryboardScenes+Extensions.swift in Sources */,
+				F10B69C222EB16F800E47315 /* IdeasConfigurator.swift in Sources */,
+				F183301E22E5CBEB00BB7A9E /* ActionsListInteractor.swift in Sources */,
 				F1C2533722B2A1BC003156AA /* ActivityCollectionTableViewCell.swift in Sources */,
 				F1CCC70722CA5E3700E7B637 /* ActionsListViewController.swift in Sources */,
 				F179975E22AFF77B0039879F /* MenuTableViewCell.swift in Sources */,
 				F1C2534C22B3F977003156AA /* HomeConfigurator.swift in Sources */,
+				F19A98A522D5FF4F00A0492E /* CustomDotsPageControl.swift in Sources */,
 				F141668322BCD7D20020BF0F /* ManifestPresenter.swift in Sources */,
 				F14166A022C106210020BF0F /* HeaderActionPlanTableViewCell.swift in Sources */,
+				F1CECE1522E9C73400EA95EE /* ColorCreateGoalTableViewCell.swift in Sources */,
 				F141668C22BD1F590020BF0F /* AudioService.swift in Sources */,
 				F1C2534922B2ACFC003156AA /* ActInactiveCollectionViewCell.swift in Sources */,
+				F183301022E5CB2D00BB7A9E /* FeelConfigurator.swift in Sources */,
+				F183302722E605A600BB7A9E /* ActInteractor.swift in Sources */,
+				F183304222E6F0F000BB7A9E /* CreateGoalInteractor.swift in Sources */,
 				F1CCC70322CA0F2900E7B637 /* UITableView+Xib.swift in Sources */,
 				F158E2C322C4E11600FD671A /* NavigationView.swift in Sources */,
+				F183301A22E5CBCC00BB7A9E /* ActionsListConfigurator.swift in Sources */,
+				F1A79DD622DCAFA80018A8EF /* OverTabbarView.swift in Sources */,
+				F1EA1CA722E0776600BB328F /* UIImageView+Extensions.swift in Sources */,
 				F179974F22AE619C0039879F /* EmptyView.swift in Sources */,
 				F179976922B1319F0039879F /* HomeViewController.swift in Sources */,
+				F1CECE1D22E9C77600EA95EE /* IconListCreateGoalTableViewCell.swift in Sources */,
+				F107538122EF496F0078C71C /* ShareButtonTableViewCell.swift in Sources */,
 				F1868850229E9D970029A663 /* Assets-Constants.swift in Sources */,
 				F1EBC7BB22D38E8100BAA82D /* ThinkListViewController.swift in Sources */,
+				F19A98B422D7573000A0492E /* MissedYouOneButtonAlertView.swift in Sources */,
 				F1CCC71322CE228800E7B637 /* AddActionPlanViewController.swift in Sources */,
+				F183302022E5CBF700BB7A9E /* ActionsListRouter.swift in Sources */,
+				F1EA1CBE22E1EA9500BB328F /* UITableViewCell+Extensions.swift in Sources */,
+				F107537822EF1E550078C71C /* Action.swift in Sources */,
+				F1EA1CA922E07D2A00BB328F /* UILabel+Extensions.swift in Sources */,
+				F11562A322DF2E9A00399FA6 /* StakeActionTableViewCell.swift in Sources */,
+				F1CECE2522EA0AC000EA95EE /* IconCollectionViewCell.swift in Sources */,
 				F17CB26922A682130035ABAB /* RoundedButton.swift in Sources */,
 				F14166AC22C125A50020BF0F /* ActionCollectionTableViewCell.swift in Sources */,
 				F1EB8DD622A8022500E3BC4C /* ForgotPasswordViewController.swift in Sources */,
+				F192580122E752A600FA5C6E /* CalendarActionsListPresenter.swift in Sources */,
+				F19A98BC22D7A06F00A0492E /* StartActionViewController.swift in Sources */,
 				F179977522B1413A0039879F /* SideMenuItemOptions.swift in Sources */,
+				F19257FC22E7526E00FA5C6E /* CalendarActionsListViewController.swift in Sources */,
 				F1EBC7B922D38C3300BAA82D /* ThinkViewController.swift in Sources */,
 				F1C2533322B297B9003156AA /* UnlockPremiumTableViewCell.swift in Sources */,
+				F192580322E752B600FA5C6E /* CalendarActionsListInteractor.swift in Sources */,
 				F162A78B22C2400D008292E8 /* ListenOrReadTableViewCell.swift in Sources */,
+				F1EAF59A22E8AA79008073D7 /* ConfigurateActionPresenter.swift in Sources */,
+				F1EA1CB122E0BE6200BB328F /* EmptyActView.swift in Sources */,
 				F141669322C0DFC30020BF0F /* PlayerSmallView.swift in Sources */,
 				F1CCC71E22CE854900E7B637 /* EditActionPlanViewController.swift in Sources */,
 				F18687E0229D56B00029A663 /* BaseProtocols.swift in Sources */,
+				F192580522E752C400FA5C6E /* CalendarActionsListRouter.swift in Sources */,
+				F183301522E5CB6A00BB7A9E /* FeelInteractor.swift in Sources */,
+				F183301322E5CB5700BB7A9E /* FeelPresenter.swift in Sources */,
+				F19A98AE22D6551E00A0492E /* BaseAlertViewController.swift in Sources */,
 				F179977322B1413A0039879F /* MenuContainerViewController.swift in Sources */,
 				F1EB8DD822A8026C00E3BC4C /* ForgotSuccessViewController.swift in Sources */,
 				F1CCC71B22CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.swift in Sources */,
+				F183303822E6F03700BB7A9E /* CreateActionPresenter.swift in Sources */,
 				F162A77E22C12C05008292E8 /* ActionCollectionViewCell.swift in Sources */,
+				F183304722E714E800BB7A9E /* PlayerConfigurator.swift in Sources */,
 				F1C2535022B3F9C5003156AA /* HomeInteractor.swift in Sources */,
 				F18687DE229D56B00029A663 /* AppDelegate.swift in Sources */,
+				F107537F22EF49550078C71C /* ShareCardTableViewCell.swift in Sources */,
+				F1A79DD022D8A9560018A8EF /* ListenOrReadMaterialView.swift in Sources */,
+				F183304022E6F0E100BB7A9E /* CreateGoalPresenter.swift in Sources */,
 				F158E2BC22C3C2C300FD671A /* FeelViewController.swift in Sources */,
 				F1C2535622BA8064003156AA /* ManifestViewController.swift in Sources */,
+				F10B69BF22EB168B00E47315 /* IdeasViewController.swift in Sources */,
+				F183301C22E5CBD800BB7A9E /* ActionsListPresenter.swift in Sources */,
 				F1C2534E22B3F9A9003156AA /* HomePresenter.swift in Sources */,
+				F183303E22E6F0D300BB7A9E /* CreateGoalConfigurator.swift in Sources */,
+				F1EAF59E22E8AA9A008073D7 /* ConfigurateActionRouter.swift in Sources */,
+				F183303022E617B900BB7A9E /* AllGoalsInteractor.swift in Sources */,
+				F107537622EF1E470078C71C /* Goal.swift in Sources */,
 				F141668522BCD7E60020BF0F /* ManifestInteractor.swift in Sources */,
+				F19A98A822D616FB00A0492E /* DontGiveUpAlertView.swift in Sources */,
+				F1EA1CC022E1EAE300BB328F /* UIViewController+Extensions.swift in Sources */,
 				F1C2533B22B2A78A003156AA /* ActivityCollectionViewCell.swift in Sources */,
+				F183302E22E617A300BB7A9E /* AllGoalsPresenter.swift in Sources */,
+				F107537A22EF36670078C71C /* BoldTipsViewController.swift in Sources */,
 				F179975622AFB04B0039879F /* LocalizableViewController.swift in Sources */,
+				F183302522E6059600BB7A9E /* ActPresenter.swift in Sources */,
+				F1EAF59222E89925008073D7 /* HeaderWriteActionsTableViewCell.swift in Sources */,
+				F1D390F722D4E3AB00DF8700 /* CitationPageViewController.swift in Sources */,
 				F179977722B1413A0039879F /* SideMenuItemContent.swift in Sources */,
+				F11562A022DF20B100399FA6 /* ActViewController.swift in Sources */,
 				F179977822B1413A0039879F /* Options.swift in Sources */,
 				F13DEAD322AAC0B700BC3CA6 /* SignUpView.swift in Sources */,
+				F183304922E714F600BB7A9E /* PlayerPresenter.swift in Sources */,
+				F183302922E605B500BB7A9E /* ActRouter.swift in Sources */,
 				F1868807229D7DF60029A663 /* SplashViewController.swift in Sources */,
+				F19A98A322D4F3C300A0492E /* CitationBaseViewController.swift in Sources */,
 				F1C2535322B3F9F8003156AA /* HomeRouter.swift in Sources */,
+				F183304B22E7150300BB7A9E /* PlayerInteractor.swift in Sources */,
 				F1EBC7B622D3772100BAA82D /* CitationTableViewCell.swift in Sources */,
+				F1EAF59522E8A987008073D7 /* ConfigurateActionViewController.swift in Sources */,
 				F179976022AFF8A90039879F /* MenuBottomView.swift in Sources */,
+				F19257FF22E7529900FA5C6E /* CalendarActionsListConfigurator.swift in Sources */,
 				F179976522B10AD70039879F /* HeaderHomeView.swift in Sources */,
+				F183303222E617C700BB7A9E /* AllGoalsRouter.swift in Sources */,
 				F1CCC70D22CCDBE400E7B637 /* PlayerListTableViewCell.swift in Sources */,
+				F158273F22EB569E007B9023 /* DateAlertViewController.swift in Sources */,
+				F10B69CE22EB3D1F00E47315 /* IdeasFooterView.swift in Sources */,
+				F1EAF59C22E8AA89008073D7 /* ConfigurateActionInteractor.swift in Sources */,
+				F1EA1CB522E1BF4900BB328F /* AllGoalsViewController.swift in Sources */,
 				F179977A22B141FA0039879F /* HostViewController.swift in Sources */,
+				F19A98B822D758CF00A0492E /* MissedYouTwoButtonAlertView.swift in Sources */,
+				F190357822D87AF8001BC996 /* FixedPaddingTextView.swift in Sources */,
+				F1CECE1922E9C75000EA95EE /* ColorListCreateGoalTableViewCell.swift in Sources */,
 				F186884D229E9BD80029A663 /* UIFont+Extensions.swift in Sources */,
 				F141669B22C0EDD20020BF0F /* SettingActionPlanTableViewCell.swift in Sources */,
+				F183302322E6058100BB7A9E /* ActConfigurator.swift in Sources */,
 				F17CB26D22A6BDA60035ABAB /* SCPageControlView.swift in Sources */,
 				F1CCC70522CA11FB00E7B637 /* BaseTableViewCell.swift in Sources */,
+				F107537C22EF391A0078C71C /* ShareWithFriendsViewController.swift in Sources */,
+				F183304422E6F0FD00BB7A9E /* CreateGoalRouter.swift in Sources */,
 				F179975B22AFE6100039879F /* LeftMenuViewController.swift in Sources */,
+				F115629C22DDB15900399FA6 /* DescriptionAndLikesCountViewController.swift in Sources */,
+				F183302C22E6178D00BB7A9E /* AllGoalsConfigurator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,16 +15,35 @@ internal enum StoryboardScene {
   internal enum Act: StoryboardType {
     internal static let storyboardName = "Act"
 
-    internal static let initialScene = InitialSceneType<UIKit.UIViewController>(storyboard: Act.self)
+    internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: Act.self)
 
     internal static let addActionPlanViewController = SceneType<Bold.AddActionPlanViewController>(storyboard: Act.self, identifier: "AddActionPlanViewController")
 
+    internal static let baseAlertViewController = SceneType<Bold.BaseAlertViewController>(storyboard: Act.self, identifier: "BaseAlertViewController")
+
+    internal static let boldTipsViewController = SceneType<Bold.BoldTipsViewController>(storyboard: Act.self, identifier: "BoldTipsViewController")
+
+    internal static let createActionViewController = SceneType<Bold.CreateActionViewController>(storyboard: Act.self, identifier: "CreateActionViewController")
+
+    internal static let createGoalViewController = SceneType<Bold.CreateGoalViewController>(storyboard: Act.self, identifier: "CreateGoalViewController")
+
+    internal static let dateAlertViewController = SceneType<Bold.DateAlertViewController>(storyboard: Act.self, identifier: "DateAlertViewController")
+
     internal static let editActionPlanViewController = SceneType<Bold.EditActionPlanViewController>(storyboard: Act.self, identifier: "EditActionPlanViewController")
+
+    internal static let ideasViewController = SceneType<Bold.IdeasViewController>(storyboard: Act.self, identifier: "IdeasViewController")
+
+    internal static let startActionViewController = SceneType<Bold.StartActionViewController>(storyboard: Act.self, identifier: "StartActionViewController")
   }
   internal enum Auth: StoryboardType {
     internal static let storyboardName = "Auth"
 
     internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: Auth.self)
+  }
+  internal enum Description: StoryboardType {
+    internal static let storyboardName = "Description"
+
+    internal static let manifestViewController = SceneType<Bold.ManifestViewController>(storyboard: Description.self, identifier: "ManifestViewController")
   }
   internal enum Feel: StoryboardType {
     internal static let storyboardName = "Feel"
@@ -71,6 +90,8 @@ internal enum StoryboardScene {
     internal static let storyboardName = "Think"
 
     internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: Think.self)
+
+    internal static let citationViewController = SceneType<Bold.CitationViewController>(storyboard: Think.self, identifier: "CitationViewController")
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name

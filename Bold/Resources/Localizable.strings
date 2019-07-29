@@ -6,14 +6,28 @@
   Copyright © 2019 Alexander Kovalov. All rights reserved.
 */
 
+// Global
+
 "ShowAll" = "Show all";
 "ViewAll" = "View all";
 "Off" = "Off";
 "Unlock" = "Unlock";
 "Delete" = "Delete";
 "Done" = "Done";
+"No" = "No";
+"Get" = "Get";
+"Okay" = "Okay";
+"Cancel" = "Cancel";
+"Yes" = "Yes";
+"Start" = "Start";
+"AddToPlan" = "Add to plan";
+"ListenPreview" = "Listen preview";
+"ReadPreview" = "Read preview";
+"Save" = "Save";
+
 
 // Onboarding
+
 "Splash.Feel" = "Feel";
 "Splash.Think" = "Think";
 "Splash.Act" = "Act";
@@ -25,6 +39,7 @@
 
 
 //Authorization
+
 "Authorization.SignUp" = "Sign Up!";
 "Authorization.Email" = "Email address";
 "Authorization.Password" = "Password";
@@ -46,7 +61,7 @@
 "Authorization.LogInNow" = "Log In now";
 
 
-//Menu
+// Menu
 
 "Menu.Home" = "Home";
 "Menu.Feel" = "Feel";
@@ -83,6 +98,17 @@
 
 // Act
 
+"Act.ActBold" = "Act Bold";
+"Act.ActiveGoals" = "Active goals";
+"Act.YouHaveTasksWithStakes" = "You have 3 tasks with stakes";
+"Act.TodaysActions" = "Today’s Actions";
+"Act.YouHaveActionWithStakes" = "You have 3 action with stakes";
+"Act.SeriouslyNoActions" = "Seriously no actions?";
+"Act.AllGoals" = "All goals";
+"Act.Hopefully" = "Hopefully, you're buzzing with nerves or excitement... Awesome. Now figure out what actions will achieve your goal.";
+
+"Act.GoalIsLocked" = "Goal is locked";
+
 "Act.AddToActionPlan" = "Add to action plan";
 "Act.FindYourConfidence" = "Find your confidence";
 "Act.Duration" = "Duration";
@@ -91,3 +117,56 @@
 "Act.Stake" = "Stake";
 "Act.ShareWithFriends" = "Share with friends";
 "Act.NoStake" = "No stake";
+
+"Act.HopefullyEmptyText" = "Hopefully, you're buzzing with nerves or excitement... Awesome. Now figure out what actions will achieve your goal.";
+
+"Act.Create.GoalTitle" = "Create a goal";
+"Act.Create.ActionTitle" = "Create an action";
+"Act.Create.GoalHeader" = "What is your goal?";
+"Act.Create.ActionHeader" = "What action will achieve your goal?";
+
+"Act.Starts" = "Starts";
+"Act.Ends" = "Ends";
+"Act.Color" = "Color";
+"Act.Icons" = "Icons";
+
+"Act.Ideas" = "Ideas";
+"Act.Ideas.Marathon" = "Marathon";
+"Act.Ideas.Triathlon" = "Triathlon";
+"Act.Ideas.CharityProject" = "Charity project";
+"Act.Ideas.WriteBook" = "Write a book";
+"Act.Ideas.QuitSmoking" = "Quit smoking";
+"Act.Ideas.PublicSpeech" = "Public speech";
+"Act.Ideas.SkyDiving" = "Sky-diving";
+"Act.Ideas.LaunchStartUp" = "Launch start-up";
+"Act.Ideas.CompeteToWin" = "Compete to win";
+"Act.Ideas.StartNewProject" = "Start new project";
+"Act.Ideas.KillProject" = "Kill a project";
+"Act.Ideas.FindNewJob" = "Find a new job";
+"Act.Ideas.MakeDiscovery" = "Make discovery";
+"Act.Ideas.InventSomething" = "Invent something";
+"Act.Ideas.Income" = "10xIncome";
+"Act.Ideas.MasterSkill" = "MasterSkill";
+
+"Act.Date.ChooseStartDate" = "Choose start date";
+"Act.Date.ChooseEndDate" = "Choose end date";
+
+"Act.ShareWithFriends" = "Share with friends";
+
+// Alert
+
+"Alert.Congratulations" = "Congratulations!";
+"Alert.CongratulationsText1" = "You have completed your action, saved your stake and earned points. Keep crushing your action plan!!!";
+"Alert.CongratulationsText2" = " You have completed your action and earned points. Keep crushing your action plan!!!";
+"Alert.GoalIsAchieved" = "A goal is achieved!";
+"Alert.ImportantDecision" = "You just made an important decision. \nKeep going, it’s an exciting journey.";
+"Alert.GoalFantastic" = "Fantastic! You have achieved your goal. \nCongratulations, you get additional points!!!";
+"Alert.YouveMissedYourAction." = "You've missed your action.";
+"Alert.DontGiveUpKeepGoing" = "Don’t give up, keep going!";
+"Alert.YourGoalIsLockedNow" = "Your goal is locked now.To unlock  it stake should be paid as in-app purchase. Don’t give up, keep going!";
+"Alert.DontGiveUp" = "Don’t give up!";
+"Alert.SometimesItsHardToFollowYourPlansLaterDate" = "Sometimes it's hard to follow your plans, but on the other side is glory...\n\nSo, are you sure you want to move to a later date?";
+"Alert.SometimesGoalsBecomeIrrelevant" = "Sometimes goals become irrelevant!\n\nConfirm deletion";
+"Alert.SometimesActionsBecomeIrrelevantAsWeAdaptOurStrategy" = "Sometimes actions become irrelevant as we adapt our strategy!\n\nConfirm deletion";
+"Alert.AreYouSureYouWantToDeleteThisStake" = "Are you sure you want to delete this stake?\n\nConfirm deletion";
+"Alert.SometimesItsHardToFollowYourPlansDeleteThisTask" = "Sometimes it's hard to follow your plans, but on the other side is glory...\n\nSo, are you sure you want to delete this task?";

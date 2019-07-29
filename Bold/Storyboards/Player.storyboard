@@ -237,7 +237,6 @@
                         <outlet property="titleImageView" destination="0bv-WW-br8" id="bMr-yY-yig"/>
                         <outlet property="titleSongLabel" destination="r0M-be-Ocq" id="HuI-P9-vPs"/>
                         <outlet property="toolBar" destination="tZa-8h-XZZ" id="K4d-m3-a06"/>
-                        <segue destination="6tM-cf-E8D" kind="presentation" identifier="playerAddActionPlanIdentifier" animates="NO" modalPresentationStyle="overFullScreen" id="ez2-un-Whh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ayy-HY-KkY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -376,14 +375,6 @@
                 </view>
             </objects>
             <point key="canvasLocation" x="77.599999999999994" y="44.527736131934034"/>
-        </scene>
-        <!--AddActionPlanViewController-->
-        <scene sceneID="VtD-Xq-sjJ">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Act" referencedIdentifier="AddActionPlanViewController" id="6tM-cf-E8D" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dau-Nw-s8i" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="78" y="476"/>
         </scene>
     </scenes>
     <resources>

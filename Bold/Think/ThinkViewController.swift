@@ -17,13 +17,15 @@ class ThinkViewController: FeelViewController {
         
     }()
     
-    override var feelItems: [FeelEntity] {
-        get {return thinkItems}
-        set {thinkItems = newValue}
-    }
+//    override var feelItems: [FeelEntity] {
+//        get {return thinkItems}
+//        set {thinkItems = newValue}
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        presenter.feelItems = thinkItems
         
         navigationController?.navigationBar.isHidden = true
         highNavigationBar.configItem(title: L10n.Think.thinkBold, titleImage: .none, leftButton: .showMenu, rightButton: .none)
@@ -38,8 +40,11 @@ class ThinkViewController: FeelViewController {
         tableView.registerNib(CitationTableViewCell.self)
     }
     
+//    override func showAll(typeCells: FeelTypeCell) {
+//        performSegue(withIdentifier: StoryboardSegue.Think.showItem.rawValue, sender: typeCells)
+//    }
+    
 }
-
 
 extension ThinkViewController {
     
@@ -49,7 +54,7 @@ extension ThinkViewController {
         case .stories, .lessons:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActionCollectionTableViewCell
             cell.delegate = self
-            cell.config(entity: feelItems[indexPath.row])
+            cell.config(entity: presenter.feelItems[indexPath.row])
             cell.cellBackground(indexPath: indexPath)
             return cell
         case .citate:
@@ -67,5 +72,7 @@ extension ThinkViewController {
 extension ThinkViewController: CitationTableViewCellDelegate {
     func tapMoreInfoButton() {
         print("tap more")
+        //performSegue(withIdentifier: StoryboardSegue.Think.citationIdentifier.rawValue, sender: nil)
+        performSegue(withIdentifier: StoryboardSegue.Think.descriptionThinkIdentifier.rawValue, sender: nil)
     }
 }

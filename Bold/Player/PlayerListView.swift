@@ -27,8 +27,8 @@ class PlayerListView: UIView {
         hideViewAnimate()
     }
     
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
         tableView.dataSource = self
         tableView.delegate = self

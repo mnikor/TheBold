@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="5zu-SR-PRF" customClass="MissedYouTwoButtonAlertView" customModule="Bold" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VwI-vT-edR">
+                    <rect key="frame" x="20" y="332" width="335" height="48"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F07-4d-OMh">
+                            <rect key="frame" x="0.0" y="0.0" width="157.5" height="48"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="tapCancelButton:" destination="5zu-SR-PRF" eventType="touchUpInside" id="9Qe-YR-YBN"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ye-HI-tR9" customClass="RoundedButton" customModule="Bold" customModuleProvider="target">
+                            <rect key="frame" x="177.5" y="0.0" width="157.5" height="48"/>
+                            <color key="backgroundColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
+                            <state key="normal" title="Unlock">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="tapOkButton:" destination="5zu-SR-PRF" eventType="touchUpInside" id="VPn-8a-548"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="d8e-Rz-T0v"/>
+                    </constraints>
+                </stackView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lockIcon" translatesAutoresizingMaskIntoConstraints="NO" id="9wo-a0-BeL">
+                    <rect key="frame" x="141.5" y="34" width="92" height="74"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="74" id="M2K-er-RGK"/>
+                        <constraint firstAttribute="width" constant="92" id="v1A-jO-LDW"/>
+                    </constraints>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="XIt-J6-Uan">
+                    <rect key="frame" x="30" y="132" width="315" height="160"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="You’ve missed your action!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3h-Zc-QvC">
+                            <rect key="frame" x="66.5" y="0.0" width="182.5" height="89"/>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="24"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Your goal is locked now.To unlock  it stake should be paid as in-app purchase. Don’t give up, keep going!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPE-E8-PD2">
+                            <rect key="frame" x="0.5" y="105" width="314.5" height="55"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="XIt-J6-Uan" secondAttribute="trailing" constant="30" id="1ec-LX-gDw"/>
+                <constraint firstItem="VwI-vT-edR" firstAttribute="top" secondItem="XIt-J6-Uan" secondAttribute="bottom" constant="40" id="5R1-1r-Ree"/>
+                <constraint firstItem="VwI-vT-edR" firstAttribute="leading" secondItem="5zu-SR-PRF" secondAttribute="leading" constant="20" id="66l-7d-Izm"/>
+                <constraint firstAttribute="trailing" secondItem="VwI-vT-edR" secondAttribute="trailing" constant="20" id="6qp-0g-DUY"/>
+                <constraint firstItem="9wo-a0-BeL" firstAttribute="centerX" secondItem="5zu-SR-PRF" secondAttribute="centerX" id="HVp-pF-aPt"/>
+                <constraint firstAttribute="bottom" secondItem="VwI-vT-edR" secondAttribute="bottom" constant="20" id="T59-0W-ann"/>
+                <constraint firstItem="XIt-J6-Uan" firstAttribute="top" secondItem="9wo-a0-BeL" secondAttribute="bottom" constant="24" id="e4i-Y0-vv2"/>
+                <constraint firstItem="XIt-J6-Uan" firstAttribute="leading" secondItem="5zu-SR-PRF" secondAttribute="leading" constant="30" id="eFc-xB-aUX"/>
+                <constraint firstItem="9wo-a0-BeL" firstAttribute="top" secondItem="5zu-SR-PRF" secondAttribute="top" constant="34" id="ld1-X4-RHf"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="aSc-Y2-La5"/>
+            <connections>
+                <outlet property="cancelButton" destination="F07-4d-OMh" id="qeN-Rq-sYO"/>
+                <outlet property="iconImageView" destination="9wo-a0-BeL" id="rdo-gk-Tf4"/>
+                <outlet property="okButton" destination="0Ye-HI-tR9" id="BA7-1H-Cwb"/>
+                <outlet property="textLabel" destination="VPE-E8-PD2" id="fVA-hc-eee"/>
+                <outlet property="titleILabel" destination="t3h-Zc-QvC" id="4OI-Zq-tcL"/>
+            </connections>
+            <point key="canvasLocation" x="530" y="401"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="lockIcon" width="92" height="74"/>
+    </resources>
+</document>

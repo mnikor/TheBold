@@ -47,6 +47,10 @@ class ManifestViewController: UIViewController, ViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        playButton.cornerRadius()
+        playButton.positionImageBeforeText(padding: 8)
+        playButton.shadow()
+        
         configurator.configure(with: self)
         
         presenter.input(.tapPlayVideo(kVideoName))

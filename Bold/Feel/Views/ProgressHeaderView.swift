@@ -10,7 +10,7 @@ import UIKit
 
 class ProgressHeaderView: UIView {
 
-    @IBOutlet var contentView: UIView!
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var pointsLabel: UILabel!

@@ -12,6 +12,8 @@ class ManifestConfigurator: ConfiguratorProtocol {
     
     typealias View = ManifestViewController
     
+    //MARK: ConfiguratorProtocol
+    
     func configure(with viewController: ManifestViewController) {
         
         let presenter = ManifestPresenter(view: viewController)

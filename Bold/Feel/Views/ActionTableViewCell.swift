@@ -39,7 +39,7 @@ class ActionTableViewCell: BaseTableViewCell {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var leftHeaderButton: UIButton!
     @IBOutlet weak var rightHeaderLabel: UILabel!
-    @IBOutlet weak var titleLabel: UITextView!
+    @IBOutlet weak var titleTextView: UITextView!
     @IBOutlet weak var threeDotsButton: UIButton!
     @IBOutlet weak var downloadButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!

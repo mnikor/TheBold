@@ -13,7 +13,7 @@ protocol ActionCollectionTableViewCellDelegate: class {
     func tapShowAll(typeCells: FeelTypeCell)
 }
 
-enum FeelTypeCell {
+enum FeelTypeCell: Int {
     case meditation
     case hypnosis
     case pepTalk
@@ -50,7 +50,7 @@ enum FeelTypeCell {
             return L10n.Think.storiesSubtitle
         case .lessons:
             return L10n.Think.lessonsSubtitle
-        case.citate:
+        case .citate:
             return nil
         }
     }

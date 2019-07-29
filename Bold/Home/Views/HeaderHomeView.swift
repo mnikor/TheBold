@@ -10,7 +10,7 @@ import UIKit
 
 class HeaderHomeView: UIView {
 
-    @IBOutlet var contentView: UIView!
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -35,10 +35,15 @@ class HeaderHomeView: UIView {
     
     func commonInit() {
         Bundle.main.loadNibNamed("HeaderHomeView", owner: self)
-        self.translatesAutoresizingMaskIntoConstraints = false;
+        self.translatesAutoresizingMaskIntoConstraints = false
         contentView.frame = self.frame;
         self.addSubview(contentView)
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         //contentView.fixInView(self)
     }
+    
+//    class func loadFromNib() -> HeaderHomeView {
+//        let headerView: HeaderHomeView = Bundle.main.loadNibNamed("HeaderHomeView", owner: self, options: nil)?.first as! HeaderHomeView
+//        return headerView
+//    }
 }

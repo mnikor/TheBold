@@ -23,6 +23,7 @@ class SettingActionPlanTableViewCell: BaseTableViewCell {
         if item.currentValue != nil {
             valueLabel.text = item.currentValue as? String
         }
+        accessoryImageView.isHidden = item.type.hideAccessoryIcon()
     }
     
 }

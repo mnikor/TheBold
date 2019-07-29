@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="FtY-Hi-afq" customClass="CongratulationsAlertView" customModule="Bold" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5QZ-kc-FkH">
+                    <rect key="frame" x="20" y="282" width="335" height="48"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sJu-m0-GD3" customClass="RoundedButton" customModule="Bold" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="335" height="48"/>
+                            <color key="backgroundColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
+                            <state key="normal" title="Get  50" image="ShapeWhiteButton">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="tapOkButton:" destination="FtY-Hi-afq" eventType="touchUpInside" id="XBd-TW-1gT"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="daR-2f-56R"/>
+                    </constraints>
+                </stackView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clapIcon" translatesAutoresizingMaskIntoConstraints="NO" id="q5Y-qe-mqb">
+                    <rect key="frame" x="141.5" y="34" width="92" height="92"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="92" id="uaf-v4-pd0"/>
+                        <constraint firstAttribute="width" constant="92" id="xUO-QB-B4r"/>
+                    </constraints>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="pu8-aN-AAn">
+                    <rect key="frame" x="40" y="140" width="295" height="102"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Congratulations!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sx-U5-DpH">
+                            <rect key="frame" x="44.5" y="0.0" width="206.5" height="31"/>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="24"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have completed your action, saved your stake and earned points. Keep crushing your action plan!!!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UlQ-F4-rx6">
+                            <rect key="frame" x="9" y="47" width="277.5" height="55"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="pu8-aN-AAn" firstAttribute="top" secondItem="q5Y-qe-mqb" secondAttribute="bottom" constant="14" id="1Z3-N3-Zih"/>
+                <constraint firstAttribute="trailing" secondItem="5QZ-kc-FkH" secondAttribute="trailing" constant="20" id="Ine-II-QFe"/>
+                <constraint firstItem="q5Y-qe-mqb" firstAttribute="centerX" secondItem="FtY-Hi-afq" secondAttribute="centerX" id="Iti-Bi-4iO"/>
+                <constraint firstItem="5QZ-kc-FkH" firstAttribute="leading" secondItem="FtY-Hi-afq" secondAttribute="leading" constant="20" id="Z9Q-hU-7YN"/>
+                <constraint firstItem="q5Y-qe-mqb" firstAttribute="top" secondItem="FtY-Hi-afq" secondAttribute="top" constant="34" id="dnQ-zg-Wel"/>
+                <constraint firstAttribute="bottom" secondItem="5QZ-kc-FkH" secondAttribute="bottom" constant="20" id="qBx-sg-zn2"/>
+                <constraint firstItem="5QZ-kc-FkH" firstAttribute="top" secondItem="pu8-aN-AAn" secondAttribute="bottom" constant="40" id="tMM-Ry-2i9"/>
+                <constraint firstItem="pu8-aN-AAn" firstAttribute="leading" secondItem="FtY-Hi-afq" secondAttribute="leading" constant="40" id="tPf-OD-d0A"/>
+                <constraint firstAttribute="trailing" secondItem="pu8-aN-AAn" secondAttribute="trailing" constant="40" id="xJI-Jl-6oO"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="XhP-HH-TQJ"/>
+            <connections>
+                <outlet property="iconImageView" destination="q5Y-qe-mqb" id="lz0-mG-v6E"/>
+                <outlet property="okButton" destination="sJu-m0-GD3" id="5NU-cF-zQX"/>
+                <outlet property="textLabel" destination="UlQ-F4-rx6" id="XpM-as-AfV"/>
+                <outlet property="titleILabel" destination="1sx-U5-DpH" id="oXC-R9-Lui"/>
+            </connections>
+            <point key="canvasLocation" x="54" y="117"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ShapeWhiteButton" width="28" height="15"/>
+        <image name="clapIcon" width="63" height="63"/>
+    </resources>
+</document>

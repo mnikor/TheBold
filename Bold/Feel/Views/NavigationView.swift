@@ -8,8 +8,9 @@
 
 import UIKit
 
-@objc protocol NavigationBottomViewDelegate : class {
+@objc protocol NavigationViewDelegate : class {
     func tapLeftButton()
+    @objc optional func tapInfoAction()
     @objc optional func tapRightButton()
 }
 
@@ -34,16 +35,20 @@ enum NavigationTitleImageType {
     }
 }
 
-class NavigationBottomView: UIView {
+class NavigationView: UIView {
 
-    @IBOutlet var contentView: UIView!
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var navigationItem: UINavigationItem!
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var titleImageView: UIImageView!
+    @IBOutlet weak var infoButton: UIButton!
     
-    weak var deleagte : NavigationBottomViewDelegate?
+    @IBAction func tapInfoButton(_ sender: UIButton) {
+        deleagte?.tapInfoAction?()
+    }
+    
+    weak var deleagte : NavigationViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -60,7 +65,7 @@ class NavigationBottomView: UIView {
         contentView.fixInView(self)
         backgroundColor = .clear
         navigationBar.shadowImage = UIImage()
-        titleImageView.isHidden = true
+        infoButton.isHidden = true
     }
 
     func configItem(title: String, titleImage: NavigationTitleImageType, leftButton: NavigationBarType, rightButton: NavigationBarType) {
@@ -74,8 +79,8 @@ class NavigationBottomView: UIView {
         }
         
         if titleImage != .none {
-            titleImageView.isHidden = false
-            titleImageView.image = titleImage.image()
+            infoButton.isHidden = false
+            infoButton.setImage(titleImage.image(), for: .normal)
         }
         
     }
@@ -95,12 +100,11 @@ class NavigationBottomView: UIView {
             image = UIImage()
         }
         
-        return UIBarButtonItem(image: image, style: .plain, target: self, action: right ? #selector(tapLeftItem(_:)) : #selector(tapLeftItem(_:)))
-        
+        return UIBarButtonItem(image: image, style: .plain, target: self, action: right ? #selector(tapRightItem(_:)) : #selector(tapLeftItem(_:)))
     }
     
     @objc func tapRightItem(_ sender: UIBarButtonItem) {
-        deleagte?.tapRightButton!()
+        deleagte?.tapRightButton?()
     }
     
     @objc func tapLeftItem(_ sender: UIBarButtonItem) {

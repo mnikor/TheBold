@@ -18,9 +18,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NavigationView" customModule="Bold" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="v57-5m-Ki8" id="Pb4-lu-9m1"/>
+                <outlet property="infoButton" destination="JUF-G2-vaF" id="3V0-dy-fKv"/>
                 <outlet property="navigationBar" destination="Q6c-hv-wTe" id="wLS-VH-Tcd"/>
                 <outlet property="navigationItem" destination="lio-eR-3d0" id="qSj-95-f7g"/>
-                <outlet property="titleImageView" destination="hRS-dM-OQ6" id="A9c-go-WFU"/>
                 <outlet property="titleLabel" destination="013-q6-q1S" id="n67-GY-uMN"/>
             </connections>
         </placeholder>
@@ -35,8 +35,8 @@
                         <navigationItem id="lio-eR-3d0"/>
                     </items>
                 </navigationBar>
-                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7vN-h8-9UU">
-                    <rect key="frame" x="20" y="64" width="162.5" height="37"/>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="7vN-h8-9UU">
+                    <rect key="frame" x="20" y="64" width="172.5" height="40"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Act Bold" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="013-q6-q1S">
                             <rect key="frame" x="0.0" y="0.0" width="132.5" height="37"/>
@@ -44,12 +44,17 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="infoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="hRS-dM-OQ6">
-                            <rect key="frame" x="140.5" y="7.5" width="22" height="22"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JUF-G2-vaF">
+                            <rect key="frame" x="132.5" y="0.0" width="40" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="22" id="10Z-Wo-esu"/>
+                                <constraint firstAttribute="height" constant="40" id="0Vw-UN-fdv"/>
+                                <constraint firstAttribute="width" constant="40" id="8xF-xF-IxE"/>
                             </constraints>
-                        </imageView>
+                            <state key="normal" image="infoIcon"/>
+                            <connections>
+                                <action selector="tapInfoButton:" destination="-1" eventType="touchUpInside" id="16X-Dg-wPD"/>
+                            </connections>
+                        </button>
                     </subviews>
                 </stackView>
             </subviews>

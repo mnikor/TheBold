@@ -30,8 +30,9 @@ class ManifestRouter: RouterProtocol, ManifestInputRouterProtocol {
     func input(_ inputCase: ManifestInput) {
         switch inputCase {
         case .close:
-            viewController.navigationController?.isNavigationBarHidden = false
-            viewController.navigationController?.popViewController(animated: true)
+//            viewController.navigationController?.isNavigationBarHidden = false
+//            viewController.navigationController?.popViewController(animated: true)
+            viewController.dismiss(animated: true, completion: nil)
         }
     }
 }

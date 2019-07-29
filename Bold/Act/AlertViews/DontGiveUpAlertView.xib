@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2oc-SA-HWo" customClass="DontGiveUpAlertView" customModule="Bold" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="cqi-1k-Iee">
+                    <rect key="frame" x="60" y="232" width="334" height="48"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljy-aY-P91">
+                            <rect key="frame" x="0.0" y="0.0" width="91" height="48"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
+                            <state key="normal" title="Yes, -10" image="ShapeBlueButton">
+                                <color key="titleColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="tapOkButton:" destination="2oc-SA-HWo" eventType="touchUpInside" id="2iu-yp-JcV"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H7s-Y1-ba7" customClass="RoundedButton" customModule="Bold" customModuleProvider="target">
+                            <rect key="frame" x="184" y="0.0" width="150" height="48"/>
+                            <color key="backgroundColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="150" id="Lo6-sW-ZX2"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
+                            <state key="normal" title="No">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="tapCancelButton:" destination="2oc-SA-HWo" eventType="touchUpInside" id="xzu-sU-bkj"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="Yla-GH-0sJ"/>
+                    </constraints>
+                </stackView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shapeOrangeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="tDU-nc-w7j">
+                    <rect key="frame" x="190" y="44" width="34" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="34" id="Lqd-v6-sUP"/>
+                        <constraint firstAttribute="height" constant="17" id="uEg-Rf-5Cd"/>
+                    </constraints>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="QuZ-yk-QeK">
+                    <rect key="frame" x="40" y="85" width="334" height="100"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Don’t give up!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hl3-Wu-CNw">
+                            <rect key="frame" x="80.5" y="0.0" width="173" height="47"/>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="24"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sometimes it's hard to follow your plans, but on the other side is glory..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXk-ge-w9C">
+                            <rect key="frame" x="11.5" y="63" width="311.5" height="37"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="cqi-1k-Iee" firstAttribute="leading" secondItem="2oc-SA-HWo" secondAttribute="leading" constant="60" id="8Zr-8Q-fyZ"/>
+                <constraint firstAttribute="trailing" secondItem="cqi-1k-Iee" secondAttribute="trailing" constant="20" id="AUh-TX-Zfk"/>
+                <constraint firstItem="cqi-1k-Iee" firstAttribute="top" secondItem="QuZ-yk-QeK" secondAttribute="bottom" constant="47" id="Tlk-1H-MVc"/>
+                <constraint firstItem="tDU-nc-w7j" firstAttribute="top" secondItem="2oc-SA-HWo" secondAttribute="top" constant="44" id="ehH-rk-zun"/>
+                <constraint firstAttribute="trailing" secondItem="QuZ-yk-QeK" secondAttribute="trailing" constant="40" id="i8s-6T-6id"/>
+                <constraint firstAttribute="bottom" secondItem="cqi-1k-Iee" secondAttribute="bottom" constant="20" id="iQu-Dm-iRW"/>
+                <constraint firstItem="tDU-nc-w7j" firstAttribute="centerX" secondItem="2oc-SA-HWo" secondAttribute="centerX" id="qNK-3Z-Fa3"/>
+                <constraint firstItem="QuZ-yk-QeK" firstAttribute="leading" secondItem="2oc-SA-HWo" secondAttribute="leading" constant="40" id="rWI-vI-vGy"/>
+                <constraint firstItem="QuZ-yk-QeK" firstAttribute="top" secondItem="tDU-nc-w7j" secondAttribute="bottom" constant="24" id="zE3-TW-eMK"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="ZFK-CK-5wG"/>
+            <connections>
+                <outlet property="cancelButton" destination="H7s-Y1-ba7" id="oaL-Ux-FB3"/>
+                <outlet property="iconImageView" destination="tDU-nc-w7j" id="1Nx-hS-1TS"/>
+                <outlet property="okButton" destination="ljy-aY-P91" id="9FY-Le-31S"/>
+                <outlet property="textLabel" destination="cXk-ge-w9C" id="POl-MM-52j"/>
+                <outlet property="titleILabel" destination="hl3-Wu-CNw" id="ubf-aD-jub"/>
+            </connections>
+            <point key="canvasLocation" x="232" y="78"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ShapeBlueButton" width="29" height="15"/>
+        <image name="shapeOrangeIcon" width="36" height="19"/>
+    </resources>
+</document>

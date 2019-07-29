@@ -96,24 +96,34 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Morning intention" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAk-HO-j3d">
-                                <rect key="frame" x="15" y="262" width="254" height="48"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="26"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5min" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7m-kU-n8X">
                                 <rect key="frame" x="272" y="29" width="39" height="18.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="gm2-WM-86w">
+                                <rect key="frame" x="20" y="221.5" width="295" height="80.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arnold Schvarzenegger" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2l-al-4WT">
+                                        <rect key="frame" x="0.0" y="0.0" width="179" height="18.5"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Morning intention" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAk-HO-j3d" customClass="FixedPaddingTextView" customModule="Bold" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="32.5" width="251" height="48"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="26"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="VD0-Mi-Pnv" secondAttribute="bottom" id="1Bt-KH-yZz"/>
-                            <constraint firstAttribute="trailing" secondItem="WAk-HO-j3d" secondAttribute="trailing" constant="66" id="2uv-zp-QVM"/>
                             <constraint firstAttribute="bottom" secondItem="TRz-dg-tdZ" secondAttribute="bottom" constant="10" id="56c-zt-bty"/>
                             <constraint firstItem="33x-g5-PpA" firstAttribute="top" secondItem="Qds-fB-jj3" secondAttribute="top" constant="20" id="5KB-WA-GB4"/>
                             <constraint firstAttribute="width" secondItem="Qds-fB-jj3" secondAttribute="height" multiplier="335:359" id="Bu9-fQ-fkH"/>
@@ -121,12 +131,13 @@
                             <constraint firstItem="TRz-dg-tdZ" firstAttribute="leading" secondItem="Qds-fB-jj3" secondAttribute="leading" constant="16" id="K6t-1m-upc"/>
                             <constraint firstAttribute="trailing" secondItem="n7m-kU-n8X" secondAttribute="trailing" constant="24" id="Oqh-kg-FHZ"/>
                             <constraint firstAttribute="trailing" secondItem="VD0-Mi-Pnv" secondAttribute="trailing" id="QfA-3g-ta8"/>
-                            <constraint firstItem="TRz-dg-tdZ" firstAttribute="top" secondItem="WAk-HO-j3d" secondAttribute="bottom" constant="-1" id="Yus-hd-ihh"/>
                             <constraint firstItem="VD0-Mi-Pnv" firstAttribute="leading" secondItem="Qds-fB-jj3" secondAttribute="leading" id="bPT-f8-R8U"/>
                             <constraint firstItem="VD0-Mi-Pnv" firstAttribute="top" secondItem="Qds-fB-jj3" secondAttribute="top" id="dfO-FK-rm1"/>
                             <constraint firstItem="n7m-kU-n8X" firstAttribute="centerY" secondItem="33x-g5-PpA" secondAttribute="centerY" id="e1j-sI-NFu"/>
-                            <constraint firstItem="WAk-HO-j3d" firstAttribute="leading" secondItem="Qds-fB-jj3" secondAttribute="leading" constant="15" id="ipW-9o-z5r"/>
+                            <constraint firstItem="gm2-WM-86w" firstAttribute="leading" secondItem="Qds-fB-jj3" secondAttribute="leading" constant="20" id="kbY-XZ-hLa"/>
                             <constraint firstItem="33x-g5-PpA" firstAttribute="leading" secondItem="Qds-fB-jj3" secondAttribute="leading" constant="20" id="mRP-AE-Jts"/>
+                            <constraint firstItem="TRz-dg-tdZ" firstAttribute="top" secondItem="gm2-WM-86w" secondAttribute="bottom" constant="7" id="zAa-LZ-fFO"/>
+                            <constraint firstAttribute="trailing" secondItem="gm2-WM-86w" secondAttribute="trailing" constant="20" id="zpc-tJ-dhg"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -146,7 +157,7 @@
                 <outlet property="likeButton" destination="4Ox-Qt-XTv" id="4RP-cz-pUP"/>
                 <outlet property="rightHeaderLabel" destination="n7m-kU-n8X" id="BYy-vS-O4K"/>
                 <outlet property="threeDotsButton" destination="NA7-wL-DsZ" id="8fK-hq-b4s"/>
-                <outlet property="titleLabel" destination="WAk-HO-j3d" id="Awv-AT-MUT"/>
+                <outlet property="titleTextView" destination="WAk-HO-j3d" id="uhg-WE-Ek4"/>
                 <outlet property="topHeaderButtonConstraint" destination="5KB-WA-GB4" id="SAT-wk-ySD"/>
             </connections>
             <point key="canvasLocation" x="138.40579710144928" y="136.60714285714286"/>

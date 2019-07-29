@@ -103,6 +103,7 @@ start up</string>
                 <outlet property="goalImageView" destination="Wch-jd-rmp" id="a8K-ST-35O"/>
                 <outlet property="goalProgressLabel" destination="nwd-xo-R6B" id="cvS-8I-maE"/>
                 <outlet property="goalProgressView" destination="21m-tl-MGk" id="8aX-sM-Qmy"/>
+                <outlet property="goalView" destination="2Yq-Qf-JsK" id="4Ts-J6-bOc"/>
                 <outlet property="titleLabel" destination="JBc-6g-Rx4" id="zq3-ba-Q56"/>
             </connections>
             <point key="canvasLocation" x="169.56521739130437" y="24.441964285714285"/>

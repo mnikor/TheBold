@@ -20,7 +20,7 @@ protocol MenuBottomViewDelegate: class {
 
 class MenuBottomView: UIView {
     
-    @IBOutlet var contentView: UIView!
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -45,12 +45,7 @@ class MenuBottomView: UIView {
     }
     
     func config(type: MenuBottomViewType) {
-        switch type {
-        case .user:
-            userImageView.isHidden = false
-        case .logIn:
-            userImageView.isHidden = true
-        }
+        userImageView.isHidden = type == .logIn
     }
     
     @IBAction func tapBottomView(_ sender: UIButton) {
@@ -63,20 +58,5 @@ class MenuBottomView: UIView {
         case .user:
             delegate?.tapShowUsetProfile()
         }
-    }
-}
-
-extension UIView
-{
-    func fixInView(_ container: UIView!) -> Void{
-        self.translatesAutoresizingMaskIntoConstraints = false;
-        self.frame = container.frame;
-        container.addSubview(self);
-        NSLayoutConstraint.activate([
-            container.topAnchor.constraint(equalTo: self.topAnchor),
-            container.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            container.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            container.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            ])
     }
 }

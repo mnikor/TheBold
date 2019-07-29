@@ -10,7 +10,7 @@ import UIKit
 
 class PlayerSmallView: UIView {
 
-    @IBOutlet var contentView: UIView!
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var actionImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -39,6 +39,5 @@ class PlayerSmallView: UIView {
         contentView.fixInView(self)
         //backgroundColor = .clear
     }
-
     
 }

@@ -9,6 +9,7 @@
 import UIKit
 
 protocol ActivityCollectionTableViewCellDelegate: class {
+    func tapShowAllActivity(type: FeelTypeCell)
     func tapItemCollection()
 }
 
@@ -27,6 +28,7 @@ class ActivityCollectionTableViewCell: BaseTableViewCell {
     
     @IBAction func tapAllActivityButton(_ sender: UIButton) {
         print("Tap Show All Activity")
+        delegate?.tapShowAllActivity(type: .meditation)
     }
     
     override func awakeFromNib() {
@@ -44,7 +46,7 @@ class ActivityCollectionTableViewCell: BaseTableViewCell {
 
     }
 
-    func registerXibs() {
+    private func registerXibs() {
         collectionView.registerNib(ActivityCollectionViewCell.self)
         collectionView.registerNib(ActInactiveCollectionViewCell.self)
         collectionView.registerNib(GoalCollectionViewCell.self)
@@ -68,6 +70,12 @@ class ActivityCollectionTableViewCell: BaseTableViewCell {
             showAllButton.setImage(Asset.plusIcon.image, for: .normal)
             showAllButton.leftTitleInButton()
             showAllButton.rightImageInButton()
+        case .activeGoals:
+            showAllButton.isUserInteractionEnabled = true
+            showAllButton.setTitle("Show all", for: .normal)
+            showAllButton.setImage(Asset.rightArrowIcon.image, for: .normal)
+            showAllButton.leftTitleInButton()
+            showAllButton.rightImageInButton()
         default:
             showAllButton.isUserInteractionEnabled = true
             showAllButton.setTitle("Show all", for: .normal)
@@ -89,6 +97,10 @@ class ActivityCollectionTableViewCell: BaseTableViewCell {
             activityImageView.image = Asset.menuAct.image
             titleLabel.text = "Act Bold"
             subtitleLabel.text = "Take a next step"
+        case .activeGoals:
+            activityImageView.isHidden = true
+            titleLabel.text = "Active goals"
+            subtitleLabel.text = "You have 3 tasks with stakes"
         default:
             break
         }
@@ -97,6 +109,8 @@ class ActivityCollectionTableViewCell: BaseTableViewCell {
     }
     
 }
+
+//MARK:- UICollectionViewDelegate, UICollectionViewDataSource
 
 extension ActivityCollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -112,9 +126,9 @@ extension ActivityCollectionTableViewCell: UICollectionViewDelegate, UICollectio
         case .actNotActive:
             let cell = collectionView.dequeReusableCell(indexPath: indexPath) as ActInactiveCollectionViewCell
             return cell
-        case .actActive:
+        case .actActive, .activeGoals:
             let cell = collectionView.dequeReusableCell(indexPath: indexPath) as GoalCollectionViewCell
-            cell.configCell()
+            cell.configCell(type: GoalEntity(type: .BuildHouseForParents, active: .locked, progress: 0, total: 0))
             return cell
         default:
             return UICollectionViewCell()
@@ -130,28 +144,12 @@ extension ActivityCollectionTableViewCell: UICollectionViewDelegate, UICollectio
     
 }
 
+//MARK:- UICollectionViewDelegateFlowLayout
+
 extension ActivityCollectionTableViewCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return entity.type.collectionCellSize()
-    }
-    
-}
-
-extension UIButton {
-    
-    func rightImageInButton() {
-        guard let imageInButton = imageView else {
-            return
-        }
-        imageEdgeInsets = UIEdgeInsets(top: 0, left: bounds.size.width - imageInButton.bounds.size.width, bottom: 0, right: 0)
-    }
-    
-    func leftTitleInButton() {
-        guard let _ = titleLabel else {
-            return
-        }
-        imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
 }

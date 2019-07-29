@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.27121284604072571" green="0.38390123844146729" blue="0.8037533164024353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="sjy-kK-TxU" kind="relationship" relationship="rootViewController" id="0xr-gh-jyT"/>
@@ -48,7 +48,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="awL-hk-hdb" firstAttribute="trailing" secondItem="tfr-n2-yQi" secondAttribute="trailing" id="EWo-2e-Frh"/>
-                            <constraint firstItem="awL-hk-hdb" firstAttribute="bottom" secondItem="tfr-n2-yQi" secondAttribute="bottom" id="Meb-xV-XGg"/>
+                            <constraint firstItem="awL-hk-hdb" firstAttribute="bottom" secondItem="EjZ-6t-XC4" secondAttribute="bottom" id="Meb-xV-XGg"/>
                             <constraint firstItem="awL-hk-hdb" firstAttribute="top" secondItem="tfr-n2-yQi" secondAttribute="top" id="hAM-1k-3pb"/>
                             <constraint firstItem="awL-hk-hdb" firstAttribute="leading" secondItem="tfr-n2-yQi" secondAttribute="leading" id="xGf-cT-fqR"/>
                         </constraints>
@@ -63,7 +63,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="awL-hk-hdb" id="tZe-rC-Ge2"/>
-                        <segue destination="x0c-2o-sx9" kind="show" identifier="manifestIdentifier" id="E7n-Pm-VvQ"/>
+                        <segue destination="x0c-2o-sx9" kind="presentation" identifier="manifestIdentifier" id="E7n-Pm-VvQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fve-SA-7oA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -100,24 +100,38 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="q5u-89-045"/>
                                 </items>
                             </toolbar>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Am4-7A-Ad8">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Am4-7A-Ad8">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BTQ-bc-G5x" userLabel="PlayerView">
-                                        <rect key="frame" x="0.0" y="0.0" width="16" height="320"/>
+                                        <rect key="frame" x="0.0" y="-20" width="16" height="320"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="320" id="PNV-Mz-rjJ"/>
                                         </constraints>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="manifestBody" translatesAutoresizingMaskIntoConstraints="NO" id="hfI-iU-TUX">
-                                        <rect key="frame" x="0.0" y="320" width="16" height="1340"/>
+                                        <rect key="frame" x="0.0" y="300" width="16" height="1340"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1340" id="N6W-hG-qAi"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEj-9D-DJB">
+                                        <rect key="frame" x="120" y="275" width="135" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Q9d-el-O2g"/>
+                                            <constraint firstAttribute="width" constant="135" id="YZN-vR-Ghj"/>
+                                        </constraints>
+                                        <state key="normal" title="Listen" image="headphones">
+                                            <color key="titleColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapPlayButton:" destination="x0c-2o-sx9" eventType="touchUpInside" id="oXf-M6-YMt"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfq-gc-0we">
-                                        <rect key="frame" x="-38" y="14" width="44" height="44"/>
+                                        <rect key="frame" x="-38" y="-6" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="Mhp-bo-9KK"/>
                                             <constraint firstAttribute="width" constant="44" id="odA-lc-XCK"/>
@@ -127,28 +141,17 @@
                                             <action selector="tapCloseButton:" destination="x0c-2o-sx9" eventType="touchUpInside" id="QPk-Gx-aew"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEj-9D-DJB">
-                                        <rect key="frame" x="-22" y="130" width="60" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="Q9d-el-O2g"/>
-                                            <constraint firstAttribute="width" constant="60" id="YZN-vR-Ghj"/>
-                                        </constraints>
-                                        <state key="normal" image="playButtonIcon"/>
-                                        <connections>
-                                            <action selector="tapPlayButton:" destination="x0c-2o-sx9" eventType="touchUpInside" id="oXf-M6-YMt"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="XEj-9D-DJB" firstAttribute="centerX" secondItem="Am4-7A-Ad8" secondAttribute="centerX" id="3CQ-3L-igb"/>
                                     <constraint firstItem="BTQ-bc-G5x" firstAttribute="trailing" secondItem="Qfq-gc-0we" secondAttribute="trailing" constant="10" id="BbH-FI-c0L"/>
                                     <constraint firstItem="BTQ-bc-G5x" firstAttribute="leading" secondItem="Am4-7A-Ad8" secondAttribute="leading" id="CAg-sz-fAm"/>
                                     <constraint firstItem="BTQ-bc-G5x" firstAttribute="top" secondItem="Qfq-gc-0we" secondAttribute="bottom" constant="-58" id="Ejc-PQ-6OE"/>
                                     <constraint firstAttribute="trailing" secondItem="hfI-iU-TUX" secondAttribute="trailing" id="Qp2-ko-Sdx"/>
                                     <constraint firstItem="hfI-iU-TUX" firstAttribute="leading" secondItem="Am4-7A-Ad8" secondAttribute="leading" id="R8X-ET-j3Q"/>
-                                    <constraint firstItem="BTQ-bc-G5x" firstAttribute="top" secondItem="Am4-7A-Ad8" secondAttribute="top" id="SJT-g1-mAa"/>
+                                    <constraint firstItem="BTQ-bc-G5x" firstAttribute="top" secondItem="Am4-7A-Ad8" secondAttribute="top" constant="-20" id="SJT-g1-mAa"/>
                                     <constraint firstAttribute="bottom" secondItem="hfI-iU-TUX" secondAttribute="bottom" id="ZPQ-DZ-Trd"/>
-                                    <constraint firstItem="XEj-9D-DJB" firstAttribute="centerY" secondItem="BTQ-bc-G5x" secondAttribute="centerY" id="jcn-5s-epH"/>
-                                    <constraint firstItem="XEj-9D-DJB" firstAttribute="centerX" secondItem="BTQ-bc-G5x" secondAttribute="centerX" id="puK-v3-0ff"/>
+                                    <constraint firstItem="XEj-9D-DJB" firstAttribute="top" secondItem="BTQ-bc-G5x" secondAttribute="bottom" constant="-25" id="ert-Ve-z52"/>
                                     <constraint firstItem="hfI-iU-TUX" firstAttribute="top" secondItem="BTQ-bc-G5x" secondAttribute="bottom" id="tTq-Gk-hY2"/>
                                     <constraint firstAttribute="trailing" secondItem="BTQ-bc-G5x" secondAttribute="trailing" id="waS-5C-rWd"/>
                                 </constraints>
@@ -184,9 +187,9 @@
         <image name="addIcon" width="18" height="18"/>
         <image name="closeWhite" width="16" height="16"/>
         <image name="downloadIcon" width="17" height="16"/>
+        <image name="headphones" width="20" height="18"/>
         <image name="likeIcon" width="20" height="17"/>
         <image name="manifestBody" width="375" height="1341"/>
         <image name="menuIcon" width="26" height="16"/>
-        <image name="playButtonIcon" width="94" height="94"/>
     </resources>
 </document>

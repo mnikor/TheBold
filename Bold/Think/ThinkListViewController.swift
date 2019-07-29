@@ -16,7 +16,6 @@ class ThinkListViewController: ActionsListViewController {
         // Do any additional setup after loading the view.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -28,3 +27,12 @@ class ThinkListViewController: ActionsListViewController {
     */
 
 }
+
+
+//extension ThinkListViewController: ActionTableViewCellDelegate {
+//    
+//    override func tapAddActionPlanButton() {
+//        performSegue(withIdentifier: StoryboardSegue.Think.addActionIdentifier.rawValue, sender: nil)
+//    }
+//    
+//}

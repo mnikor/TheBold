@@ -58,6 +58,9 @@ internal struct ColorName {
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#f3c32f"></span>
   /// Alpha: 100% <br/> (0xf3c32fff)
   internal static let secondaryYellow = ColorName(rgbaValue: 0xf3c32fff)
+  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#f4f5f9"></span>
+  /// Alpha: 100% <br/> (0xf4f5f9ff)
+  internal static let tableViewBackground = ColorName(rgbaValue: 0xf4f5f9ff)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#1b2850"></span>
   /// Alpha: 100% <br/> (0x1b2850ff)
   internal static let typographyBlack100 = ColorName(rgbaValue: 0x1b2850ff)

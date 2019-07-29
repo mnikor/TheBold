@@ -36,20 +36,20 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="236"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeHeaderBackground" translatesAutoresizingMaskIntoConstraints="NO" id="pl4-gl-v45">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeHeaderBackground" translatesAutoresizingMaskIntoConstraints="NO" id="pl4-gl-v45">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="236"/>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="YNg-Bl-npU">
                     <rect key="frame" x="22" y="21" width="331" height="65"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome back," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bY-i3-giK">
-                            <rect key="frame" x="0.0" y="0.0" width="331" height="29.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Welcome back," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bY-i3-giK">
+                            <rect key="frame" x="0.0" y="0.0" width="331" height="31"/>
                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="24"/>
                             <color key="textColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Johnathan!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8v-z7-ADX">
-                            <rect key="frame" x="0.0" y="35.5" width="331" height="29.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Johnathan!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8v-z7-ADX">
+                            <rect key="frame" x="0.0" y="37" width="331" height="28"/>
                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="24"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -60,19 +60,19 @@
                     </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="AdI-NP-jqR">
-                    <rect key="frame" x="22" y="156" width="296.5" height="40"/>
+                    <rect key="frame" x="22" y="156" width="278.5" height="40"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="gXH-lc-hZ2">
-                            <rect key="frame" x="0.0" y="1" width="85" height="38.5"/>
+                            <rect key="frame" x="0.0" y="1.5" width="73" height="37"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apprentice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ate-Sj-dgO">
-                                    <rect key="frame" x="0.0" y="0.0" width="85" height="18.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="73" height="17.5"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mastery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7m-n2-5tr">
-                                    <rect key="frame" x="0.0" y="22.5" width="85" height="16"/>
+                                    <rect key="frame" x="0.0" y="21.5" width="73" height="15.5"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="13"/>
                                     <color key="textColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -80,7 +80,7 @@
                             </subviews>
                         </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rsA-HF-bUF">
-                            <rect key="frame" x="102" y="3" width="1" height="34"/>
+                            <rect key="frame" x="90" y="3" width="1" height="34"/>
                             <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="1" id="1WI-Ww-x4Q"/>
@@ -88,16 +88,16 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="mfY-Mb-739">
-                            <rect key="frame" x="120" y="0.5" width="81" height="39.5"/>
+                            <rect key="frame" x="108" y="1" width="81" height="38.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/300" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sy-qB-cCT">
-                                    <rect key="frame" x="0.0" y="0.0" width="44" height="18.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="38.5" height="17.5"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
                                     <color key="textColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="SsG-Ds-YuR">
-                                    <rect key="frame" x="0.0" y="22.5" width="81" height="17"/>
+                                    <rect key="frame" x="0.0" y="21.5" width="81" height="17"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" image="homeHeaderShape" translatesAutoresizingMaskIntoConstraints="NO" id="tQ3-Ge-evL">
                                             <rect key="frame" x="0.0" y="0.0" width="17" height="17"/>
@@ -120,7 +120,7 @@
                             </subviews>
                         </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ic-uN-yCe">
-                            <rect key="frame" x="218" y="3" width="1" height="34"/>
+                            <rect key="frame" x="206" y="3" width="1" height="34"/>
                             <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="34" id="B28-ys-p7r"/>
@@ -128,16 +128,16 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="P2R-6O-lrC">
-                            <rect key="frame" x="236" y="1" width="60.5" height="38.5"/>
+                            <rect key="frame" x="224" y="1.5" width="54.5" height="37"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfW-4W-QRm">
-                                    <rect key="frame" x="0.0" y="0.0" width="60.5" height="18.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="54.5" height="17.5"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Boldness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOw-1N-1RO">
-                                    <rect key="frame" x="0.0" y="22.5" width="60.5" height="16"/>
+                                    <rect key="frame" x="0.0" y="21.5" width="54.5" height="15.5"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="13"/>
                                     <color key="textColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -183,7 +183,7 @@
         </view>
     </objects>
     <resources>
-        <image name="homeHeaderBackground" width="375" height="236"/>
+        <image name="homeHeaderBackground" width="375" height="237"/>
         <image name="homeHeaderShape" width="17" height="7"/>
     </resources>
 </document>

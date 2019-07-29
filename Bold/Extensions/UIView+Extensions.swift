@@ -30,4 +30,15 @@ extension UIView {
         layer.mask = mask
     }
     
+    func fixInView(_ container: UIView!) -> Void{
+        self.translatesAutoresizingMaskIntoConstraints = false;
+        self.frame = container.frame;
+        container.addSubview(self);
+        NSLayoutConstraint.activate([
+            container.topAnchor.constraint(equalTo: self.topAnchor),
+            container.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            container.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            container.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            ])
+    }
 }

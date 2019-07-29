@@ -8,8 +8,14 @@
 
 import UIKit
 
+enum GoalCellType {
+    case active
+    case locked
+}
+
 class GoalCollectionViewCell: BaseCollectionViewCell {
 
+    @IBOutlet weak var goalView: UIView!
     @IBOutlet weak var goalProgressView: UIProgressView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dueDateLabel: UILabel!
@@ -24,12 +30,22 @@ class GoalCollectionViewCell: BaseCollectionViewCell {
         goalProgressView.trackTintColor = .white
     }
 
-    func configCell() {
+    func configCell(type: GoalEntity) {
         
-        goalProgressView.progressTintColor = ColorName.goalGreen.color
-        goalImageView.image = Asset.menuAct.image.withRenderingMode(.alwaysTemplate)
-        goalImageView.tintColor = ColorName.goalGreen.color
-        
+        switch type.active {
+        case .active:
+            goalProgressView.progressTintColor = ColorName.goalGreen.color
+            goalImageView.renderImageWithColor(image: Asset.menuAct.image, color: ColorName.goalGreen.color)
+        case .locked:
+            goalProgressView.progressTintColor = ColorName.goalGreen.color
+            goalImageView.renderImageWithColor(image: Asset.menuAct.image, color: UIColor.white)
+            goalView.backgroundColor = ColorName.goalGreen.color
+            goalProgressView.progress = 1
+            titleLabel.textColor = .white
+            dueDateLabel.textColor = .white
+            goalProgressLabel.textColor = .white
+            goalProgressLabel.text = L10n.Act.goalIsLocked
+        }
     }
     
 }

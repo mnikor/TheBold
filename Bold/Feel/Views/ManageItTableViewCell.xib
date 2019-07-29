@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="ManageItTableViewCell" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ManageItTableViewCell" customModule="Bold" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="430"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="429.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage it" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIU-2y-P2Q">
+                        <rect key="frame" x="20" y="30" width="335" height="24.5"/>
+                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="enY-8w-XB9">
+                        <rect key="frame" x="0.0" y="59.5" width="375" height="360"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="360" id="4Ra-uX-LoR"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="RBA-S9-A03">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFZ-OE-am6">
+                        <rect key="frame" x="16" y="0.0" width="343" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="xTO-na-Acw"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="eFZ-OE-am6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="6Qd-xI-a3k"/>
+                    <constraint firstItem="enY-8w-XB9" firstAttribute="top" secondItem="kIU-2y-P2Q" secondAttribute="bottom" constant="5" id="7V2-bn-tsW"/>
+                    <constraint firstAttribute="trailing" secondItem="enY-8w-XB9" secondAttribute="trailing" id="9Pa-mL-OmR"/>
+                    <constraint firstItem="kIU-2y-P2Q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="CtY-sj-2fD"/>
+                    <constraint firstItem="kIU-2y-P2Q" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="OXI-dT-6j8"/>
+                    <constraint firstAttribute="bottom" secondItem="enY-8w-XB9" secondAttribute="bottom" constant="10" id="WYf-1e-ZdG"/>
+                    <constraint firstItem="eFZ-OE-am6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ahH-jq-6WT"/>
+                    <constraint firstAttribute="trailing" secondItem="kIU-2y-P2Q" secondAttribute="trailing" constant="20" id="krw-MP-38U"/>
+                    <constraint firstAttribute="trailing" secondItem="eFZ-OE-am6" secondAttribute="trailing" constant="16" id="mk9-Ki-MtK"/>
+                    <constraint firstItem="enY-8w-XB9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="sNP-kS-TGo"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="collectionView" destination="enY-8w-XB9" id="aKI-4O-3FK"/>
+                <outlet property="headTitleConstraint" destination="OXI-dT-6j8" id="Ldw-q7-tHV"/>
+                <outlet property="titleLabel" destination="kIU-2y-P2Q" id="axP-Xd-sO4"/>
+            </connections>
+            <point key="canvasLocation" x="132.60869565217394" y="35.491071428571423"/>
+        </tableViewCell>
+    </objects>
+</document>

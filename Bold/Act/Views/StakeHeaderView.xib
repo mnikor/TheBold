@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="StakeHeaderView" customModule="Bold" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6M8-cq-Xlh">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="olQ-JQ-hDH">
+                    <rect key="frame" x="20" y="20" width="335" height="44"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="trg-yV-AO8">
+                            <rect key="frame" x="0.0" y="0.0" width="295" height="44"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today’s Actions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5S-3z-P6y">
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="24.5"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="20"/>
+                                    <color key="textColor" red="0.1058823529" green="0.15686274510000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="You have 3 action with stakes" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aT1-Ra-wVR">
+                                    <rect key="frame" x="0.0" y="28.5" width="194" height="15.5"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="13"/>
+                                    <color key="textColor" red="0.37254901959999998" green="0.40784313729999999" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wN-dy-NwB">
+                            <rect key="frame" x="303" y="0.0" width="32" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="32" id="hFL-Fv-PhT"/>
+                            </constraints>
+                            <state key="normal" image="plusTodayActions"/>
+                            <connections>
+                                <action selector="tapPlusButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="LAu-8Q-apo"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="2wN-dy-NwB" firstAttribute="height" secondItem="trg-yV-AO8" secondAttribute="height" id="Ie2-MM-SFQ"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="6M8-cq-Xlh" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="4Vt-nc-lPv"/>
+                <constraint firstItem="6M8-cq-Xlh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="7fJ-uf-f9F"/>
+                <constraint firstItem="6M8-cq-Xlh" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="7m0-Od-fDv"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="olQ-JQ-hDH" secondAttribute="trailing" constant="20" id="FGK-Oe-yJ2"/>
+                <constraint firstItem="6M8-cq-Xlh" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="N5z-Tu-SAY"/>
+                <constraint firstItem="olQ-JQ-hDH" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Osm-Ts-8VM"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="olQ-JQ-hDH" secondAttribute="bottom" constant="20" id="mpf-3y-A04"/>
+                <constraint firstItem="olQ-JQ-hDH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="pnC-aV-DjF"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="imageView" destination="6M8-cq-Xlh" id="FDs-Fg-NZe"/>
+                <outlet property="plusButton" destination="2wN-dy-NwB" id="fP0-Y6-nXs"/>
+                <outlet property="subtitleLabel" destination="aT1-Ra-wVR" id="LsH-bt-sdI"/>
+                <outlet property="titleLabel" destination="a5S-3z-P6y" id="5tN-1i-ULy"/>
+            </connections>
+            <point key="canvasLocation" x="-34" y="111"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="plusTodayActions" width="18" height="17"/>
+    </resources>
+</document>

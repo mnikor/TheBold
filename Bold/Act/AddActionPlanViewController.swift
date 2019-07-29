@@ -11,11 +11,18 @@ import UIKit
 enum AddActionCellType {
     case headerAddToPlan
     case headerEditAction
+    case headerWriteActivity
     case duration
     case reminder
     case goal
     case stake
     case share
+    case starts
+    case ends
+    case color
+    case colorList
+    case icons
+    case iconsList
     
     func iconType() -> UIImage? {
         switch self {
@@ -29,6 +36,14 @@ enum AddActionCellType {
             return Asset.addActionStake.image
         case .share:
             return Asset.addActionShare.image
+        case .starts:
+            return Asset.addActionStartTime.image
+        case .ends:
+            return Asset.addActionEndTime.image
+        case .color:
+            return Asset.addActionColor.image
+        case .icons:
+            return Asset.addActionIcons.image
         default :
             return nil
         }
@@ -46,6 +61,14 @@ enum AddActionCellType {
             return L10n.Act.stake
         case .share:
             return L10n.Act.shareWithFriends
+        case .starts:
+            return L10n.Act.starts
+        case .ends:
+            return L10n.Act.ends
+        case .color:
+            return L10n.Act.color
+        case .icons:
+            return L10n.Act.icons
         default :
             return nil
         }
@@ -53,12 +76,22 @@ enum AddActionCellType {
     
     func hideValue() -> Bool {
         switch self {
-        case .share:
+        case .share, .icons:
             return true
         default:
             return false
         }
     }
+    
+    func hideAccessoryIcon() -> Bool {
+        switch self {
+        case .icons:
+            return true
+        default:
+            return false
+        }
+    }
+
 }
 
 class AddActionPlanViewController: UIViewController {
@@ -71,7 +104,10 @@ class AddActionPlanViewController: UIViewController {
     
     @IBOutlet weak var bottomAddActionConstraint: NSLayoutConstraint!
     
+    var activeOkButton : (() -> Void)?
+    
     @IBAction func tapAddActionButton(_ sender: UIButton) {
+        activeOkButton?()
         hideAnimateView()
     }
     
@@ -84,6 +120,18 @@ class AddActionPlanViewController: UIViewController {
                 AddActionEntity(type: .share, currentValue: nil)]
     }()
     
+    class func createController(tapOk: @escaping (() -> Void)) -> AddActionPlanViewController {
+        let addVC = StoryboardScene.Act.addActionPlanViewController.instantiate()
+        addVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        addVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        addVC.activeOkButton = tapOk
+        return addVC
+    }
+    
+    func presentedBy(_ vc: UIViewController) {
+        vc.present(self, animated: false, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -93,7 +141,7 @@ class AddActionPlanViewController: UIViewController {
         bottomAddActionConstraint.constant = -self.addActionView.bounds.height
         
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 156
+        tableView.estimatedRowHeight = 56
         tableView.tableFooterView = UIView()
         registerXibs()
         
@@ -173,6 +221,8 @@ extension AddActionPlanViewController: UITableViewDelegate, UITableViewDataSourc
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as SettingActionPlanTableViewCell
             cell.config(item: listSettings[indexPath.row])
             return cell
+        default:
+            return UITableViewCell()
         }
     }
     

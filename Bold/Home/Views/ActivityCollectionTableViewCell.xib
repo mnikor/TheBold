@@ -37,17 +37,17 @@
                                     <constraint firstAttribute="width" constant="30" id="hfy-GW-waG"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qEL-cr-Xpy">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="qEL-cr-Xpy">
                                 <rect key="frame" x="38" y="0.0" width="206" height="46"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feel Bold" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msZ-Dy-P9i">
-                                        <rect key="frame" x="0.0" y="0.0" width="206" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="106" height="30"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rewire your mind" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HL-Sz-ixg">
-                                        <rect key="frame" x="0.0" y="30" width="206" height="16"/>
+                                        <rect key="frame" x="0.0" y="30" width="104.5" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.46274509800000002" green="0.4941176471" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -60,8 +60,11 @@
                         </constraints>
                     </stackView>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xhr-zL-L5h">
-                        <rect key="frame" x="0.0" y="103.5" width="375" height="172"/>
+                        <rect key="frame" x="0.0" y="94.5" width="375" height="181"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" priority="750" constant="181" id="Dkw-Ub-AWy"/>
+                        </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="z7W-xf-BfE">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -70,7 +73,7 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTa-Mu-L0S">
-                        <rect key="frame" x="276" y="34" width="77" height="40"/>
+                        <rect key="frame" x="276" y="29" width="77" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="fgE-9M-HRB"/>
                             <constraint firstAttribute="width" constant="77" id="gwe-Wr-HaY"/>
@@ -87,15 +90,15 @@
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="xhr-zL-L5h" firstAttribute="top" secondItem="Saa-l9-66J" secondAttribute="bottom" constant="14.5" id="0At-xv-87L"/>
                     <constraint firstAttribute="trailing" secondItem="xhr-zL-L5h" secondAttribute="trailing" id="6rJ-NF-yFQ"/>
                     <constraint firstItem="xhr-zL-L5h" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ebx-vA-IJk"/>
-                    <constraint firstItem="vTa-Mu-L0S" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="34" id="ISV-ab-479"/>
-                    <constraint firstItem="xhr-zL-L5h" firstAttribute="top" secondItem="vTa-Mu-L0S" secondAttribute="bottom" constant="29.5" id="RaC-KO-TyS"/>
                     <constraint firstItem="vTa-Mu-L0S" firstAttribute="leading" secondItem="Saa-l9-66J" secondAttribute="trailing" constant="10" id="bQa-7H-wdH"/>
                     <constraint firstItem="Saa-l9-66J" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="34" id="gqg-hn-9wq"/>
                     <constraint firstAttribute="trailing" secondItem="vTa-Mu-L0S" secondAttribute="trailing" constant="22" id="ic8-rX-lr1"/>
                     <constraint firstItem="Saa-l9-66J" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="obr-ij-pHJ"/>
                     <constraint firstAttribute="bottom" secondItem="xhr-zL-L5h" secondAttribute="bottom" constant="34" id="tco-A4-iJz"/>
+                    <constraint firstItem="vTa-Mu-L0S" firstAttribute="centerY" secondItem="5vB-2Y-eWc" secondAttribute="centerY" id="wvo-Ll-ET4"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -107,6 +110,7 @@
                 <outlet property="subtitleLabel" destination="5HL-Sz-ixg" id="u0S-aP-m3b"/>
                 <outlet property="titleLabel" destination="msZ-Dy-P9i" id="STj-vy-AeI"/>
             </connections>
+            <point key="canvasLocation" x="138.40579710144928" y="129.91071428571428"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -34,6 +34,7 @@ class HostViewController: MenuContainerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         let screenSize: CGRect = UIScreen.main.bounds
         self.transitionOptions = TransitionOptions(duration: 0.4, visibleContentWidth: screenSize.width / 6)
 
@@ -47,8 +48,40 @@ class HostViewController: MenuContainerViewController {
         self.selectContentViewController(contentViewControllers.first!)
 
         self.currentItemOptions.cornerRadius = 10.0
+        
     }
-
+    
+    class func showController(newVC: UIViewController) {
+        
+        guard let hoostVC = UIApplication.shared.keyWindow?.rootViewController as? HostViewController else {
+            return
+        }
+        
+        if let navController = newVC as? UINavigationController {
+            hoostVC.selectContentViewController(navController)
+        }
+        
+//        if let _ = newVC as? ActionsListViewController {
+//            guard let feelVC = StoryboardScene.Feel.storyboard.instantiateInitialViewController()
+//                else {  return }
+//            if let navController = feelVC as? UINavigationController {
+//                navController.viewControllers.append(newVC)
+//            }
+//            hoostVC.selectContentViewController(feelVC)
+//        }else {
+//            if let navController = newVC as? UINavigationController {
+//                hoostVC.selectContentViewController(navController)
+//            }
+//        }
+        
+//        if let menuContainerViewController = parent as? MenuContainerViewController {
+//            menuContainerViewController.showSideMenu()
+//        } else if let navController = parent as? UINavigationController,
+//            let menuContainerViewController = navController.parent as? MenuContainerViewController {
+//            menuContainerViewController.showSideMenu()
+//        }
+    }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
 
