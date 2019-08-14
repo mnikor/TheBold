@@ -14,6 +14,16 @@
 		F107537C22EF391A0078C71C /* ShareWithFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107537B22EF39190078C71C /* ShareWithFriendsViewController.swift */; };
 		F107537F22EF49550078C71C /* ShareCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107537E22EF49550078C71C /* ShareCardTableViewCell.swift */; };
 		F107538122EF496F0078C71C /* ShareButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107538022EF496F0078C71C /* ShareButtonTableViewCell.swift */; };
+		F107538422F091C10078C71C /* HeaderConfigureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107538222F091C10078C71C /* HeaderConfigureTableViewCell.swift */; };
+		F107538522F091C10078C71C /* HeaderConfigureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F107538322F091C10078C71C /* HeaderConfigureTableViewCell.xib */; };
+		F107538822F093770078C71C /* BodyConfigureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107538622F093770078C71C /* BodyConfigureTableViewCell.swift */; };
+		F107538922F093770078C71C /* BodyConfigureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F107538722F093770078C71C /* BodyConfigureTableViewCell.xib */; };
+		F107538C22F09B640078C71C /* DaysOfWeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107538A22F09B640078C71C /* DaysOfWeekTableViewCell.swift */; };
+		F107538D22F09B640078C71C /* DaysOfWeekTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F107538B22F09B640078C71C /* DaysOfWeekTableViewCell.xib */; };
+		F107539022F0A2830078C71C /* DayOfWeekCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107538E22F0A2830078C71C /* DayOfWeekCollectionViewCell.swift */; };
+		F107539122F0A2830078C71C /* DayOfWeekCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F107538F22F0A2830078C71C /* DayOfWeekCollectionViewCell.xib */; };
+		F107539422F20C0B0078C71C /* EnterYourGoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107539222F20C0B0078C71C /* EnterYourGoalTableViewCell.swift */; };
+		F107539522F20C0B0078C71C /* EnterYourGoalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F107539322F20C0B0078C71C /* EnterYourGoalTableViewCell.xib */; };
 		F10B69BF22EB168B00E47315 /* IdeasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B69BE22EB168B00E47315 /* IdeasViewController.swift */; };
 		F10B69C222EB16F800E47315 /* IdeasConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B69C122EB16F800E47315 /* IdeasConfigurator.swift */; };
 		F10B69C422EB170B00E47315 /* IdeasPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B69C322EB170B00E47315 /* IdeasPresenter.swift */; };
@@ -58,6 +68,7 @@
 		F162A78822C23352008292E8 /* ActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F162A78622C23352008292E8 /* ActionTableViewCell.xib */; };
 		F162A78B22C2400D008292E8 /* ListenOrReadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F162A78922C2400D008292E8 /* ListenOrReadTableViewCell.swift */; };
 		F162A78C22C2400D008292E8 /* ListenOrReadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F162A78A22C2400D008292E8 /* ListenOrReadTableViewCell.xib */; };
+		F16F21D622F304A4004DC5F3 /* StakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16F21D522F304A4004DC5F3 /* StakeViewController.swift */; };
 		F179974D22AE615D0039879F /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F179974C22AE615D0039879F /* Localizable.swift */; };
 		F179974F22AE619C0039879F /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F179974E22AE619C0039879F /* EmptyView.swift */; };
 		F179975622AFB04B0039879F /* LocalizableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F179975522AFB04B0039879F /* LocalizableViewController.swift */; };
@@ -173,6 +184,13 @@
 		F1A79DCE22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A79DCC22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.xib */; };
 		F1A79DD022D8A9560018A8EF /* ListenOrReadMaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A79DCF22D8A9560018A8EF /* ListenOrReadMaterialView.swift */; };
 		F1A79DD622DCAFA80018A8EF /* OverTabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A79DD522DCAFA80018A8EF /* OverTabbarView.swift */; };
+		F1B2B1CA22FB697100C327B0 /* DateCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B2B1C922FB697100C327B0 /* DateCalendarCell.swift */; };
+		F1B2B1CC22FB698E00C327B0 /* HeaderCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B2B1CB22FB698E00C327B0 /* HeaderCalendarView.swift */; };
+		F1B2B1CE22FB723000C327B0 /* DateCalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1B2B1CD22FB723000C327B0 /* DateCalendarCell.xib */; };
+		F1B2B1D022FB72FF00C327B0 /* HeaderCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1B2B1CF22FB72FF00C327B0 /* HeaderCalendarView.xib */; };
+		F1B2B1D222FC1A2100C327B0 /* CalendarDecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B2B1D122FC1A2100C327B0 /* CalendarDecorationView.swift */; };
+		F1B2B1D422FC62DD00C327B0 /* YearMonthAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B2B1D322FC62DD00C327B0 /* YearMonthAlertViewController.swift */; };
+		F1B2B1D622FC6C0000C327B0 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B2B1D522FC6C0000C327B0 /* MonthYearPickerView.swift */; };
 		F1C2533322B297B9003156AA /* UnlockPremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C2533122B297B9003156AA /* UnlockPremiumTableViewCell.swift */; };
 		F1C2533422B297B9003156AA /* UnlockPremiumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1C2533222B297B9003156AA /* UnlockPremiumTableViewCell.xib */; };
 		F1C2533722B2A1BC003156AA /* ActivityCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C2533522B2A1BC003156AA /* ActivityCollectionTableViewCell.swift */; };
@@ -210,6 +228,10 @@
 		F1CECE2622EA0AC000EA95EE /* IconCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CECE2422EA0AC000EA95EE /* IconCollectionViewCell.xib */; };
 		F1D390F722D4E3AB00DF8700 /* CitationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D390F622D4E3AB00DF8700 /* CitationPageViewController.swift */; };
 		F1D390F922D4E3F800DF8700 /* CitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D390F822D4E3F800DF8700 /* CitationViewController.swift */; };
+		F1E8EFD422F45626006A9D39 /* Formatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E8EFD322F45626006A9D39 /* Formatter+Extension.swift */; };
+		F1E8EFD722F45D42006A9D39 /* CostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E8EFD622F45D42006A9D39 /* CostButton.swift */; };
+		F1E8EFDA22F484B2006A9D39 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E8EFD822F484B2006A9D39 /* CalendarTableViewCell.swift */; };
+		F1E8EFDB22F484B2006A9D39 /* CalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1E8EFD922F484B2006A9D39 /* CalendarTableViewCell.xib */; };
 		F1EA1CA722E0776600BB328F /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA1CA622E0776600BB328F /* UIImageView+Extensions.swift */; };
 		F1EA1CA922E07D2A00BB328F /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA1CA822E07D2A00BB328F /* UILabel+Extensions.swift */; };
 		F1EA1CAB22E0833400BB328F /* StakeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA1CAA22E0833400BB328F /* StakeHeaderView.swift */; };
@@ -239,6 +261,11 @@
 		F1EBC7BB22D38E8100BAA82D /* ThinkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EBC7BA22D38E8100BAA82D /* ThinkListViewController.swift */; };
 		F1EE4D4F229EA6620072F663 /* BackgroundVideo.MOV in Resources */ = {isa = PBXBuildFile; fileRef = F1EE4D4E229EA6620072F663 /* BackgroundVideo.MOV */; };
 		F1EE4D51229EB78C0072F663 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EE4D50229EB78C0072F663 /* String+Extensions.swift */; };
+		F1F406072302D0450091B774 /* BlueNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F406062302D0450091B774 /* BlueNavigationBar.swift */; };
+		F1F4060923030B070091B774 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F4060823030B070091B774 /* Network.swift */; };
+		F1F4060B230311240091B774 /* RequestDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F4060A230311240091B774 /* RequestDescriptor.swift */; };
+		F1F4060D230313960091B774 /* ProfileRequestDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F4060C230313960091B774 /* ProfileRequestDescriptor.swift */; };
+		F1F40611230313FF0091B774 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F40610230313FF0091B774 /* Profile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -250,6 +277,16 @@
 		F107537B22EF39190078C71C /* ShareWithFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareWithFriendsViewController.swift; sourceTree = "<group>"; };
 		F107537E22EF49550078C71C /* ShareCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCardTableViewCell.swift; sourceTree = "<group>"; };
 		F107538022EF496F0078C71C /* ShareButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButtonTableViewCell.swift; sourceTree = "<group>"; };
+		F107538222F091C10078C71C /* HeaderConfigureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderConfigureTableViewCell.swift; sourceTree = "<group>"; };
+		F107538322F091C10078C71C /* HeaderConfigureTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderConfigureTableViewCell.xib; sourceTree = "<group>"; };
+		F107538622F093770078C71C /* BodyConfigureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyConfigureTableViewCell.swift; sourceTree = "<group>"; };
+		F107538722F093770078C71C /* BodyConfigureTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BodyConfigureTableViewCell.xib; sourceTree = "<group>"; };
+		F107538A22F09B640078C71C /* DaysOfWeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysOfWeekTableViewCell.swift; sourceTree = "<group>"; };
+		F107538B22F09B640078C71C /* DaysOfWeekTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaysOfWeekTableViewCell.xib; sourceTree = "<group>"; };
+		F107538E22F0A2830078C71C /* DayOfWeekCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekCollectionViewCell.swift; sourceTree = "<group>"; };
+		F107538F22F0A2830078C71C /* DayOfWeekCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayOfWeekCollectionViewCell.xib; sourceTree = "<group>"; };
+		F107539222F20C0B0078C71C /* EnterYourGoalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterYourGoalTableViewCell.swift; sourceTree = "<group>"; };
+		F107539322F20C0B0078C71C /* EnterYourGoalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnterYourGoalTableViewCell.xib; sourceTree = "<group>"; };
 		F10B69BE22EB168B00E47315 /* IdeasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasViewController.swift; sourceTree = "<group>"; };
 		F10B69C122EB16F800E47315 /* IdeasConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasConfigurator.swift; sourceTree = "<group>"; };
 		F10B69C322EB170B00E47315 /* IdeasPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasPresenter.swift; sourceTree = "<group>"; };
@@ -294,6 +331,7 @@
 		F162A78622C23352008292E8 /* ActionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionTableViewCell.xib; sourceTree = "<group>"; };
 		F162A78922C2400D008292E8 /* ListenOrReadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenOrReadTableViewCell.swift; sourceTree = "<group>"; };
 		F162A78A22C2400D008292E8 /* ListenOrReadTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListenOrReadTableViewCell.xib; sourceTree = "<group>"; };
+		F16F21D522F304A4004DC5F3 /* StakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StakeViewController.swift; sourceTree = "<group>"; };
 		F179974C22AE615D0039879F /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		F179974E22AE619C0039879F /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		F179975522AFB04B0039879F /* LocalizableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableViewController.swift; sourceTree = "<group>"; };
@@ -411,6 +449,13 @@
 		F1A79DCC22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListenOrReadMaterialCollectionViewCell.xib; sourceTree = "<group>"; };
 		F1A79DCF22D8A9560018A8EF /* ListenOrReadMaterialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenOrReadMaterialView.swift; sourceTree = "<group>"; };
 		F1A79DD522DCAFA80018A8EF /* OverTabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverTabbarView.swift; sourceTree = "<group>"; };
+		F1B2B1C922FB697100C327B0 /* DateCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalendarCell.swift; sourceTree = "<group>"; };
+		F1B2B1CB22FB698E00C327B0 /* HeaderCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCalendarView.swift; sourceTree = "<group>"; };
+		F1B2B1CD22FB723000C327B0 /* DateCalendarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateCalendarCell.xib; sourceTree = "<group>"; };
+		F1B2B1CF22FB72FF00C327B0 /* HeaderCalendarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCalendarView.xib; sourceTree = "<group>"; };
+		F1B2B1D122FC1A2100C327B0 /* CalendarDecorationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDecorationView.swift; sourceTree = "<group>"; };
+		F1B2B1D322FC62DD00C327B0 /* YearMonthAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearMonthAlertViewController.swift; sourceTree = "<group>"; };
+		F1B2B1D522FC6C0000C327B0 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		F1C2533122B297B9003156AA /* UnlockPremiumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockPremiumTableViewCell.swift; sourceTree = "<group>"; };
 		F1C2533222B297B9003156AA /* UnlockPremiumTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnlockPremiumTableViewCell.xib; sourceTree = "<group>"; };
 		F1C2533522B2A1BC003156AA /* ActivityCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCollectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -448,6 +493,10 @@
 		F1CECE2422EA0AC000EA95EE /* IconCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconCollectionViewCell.xib; sourceTree = "<group>"; };
 		F1D390F622D4E3AB00DF8700 /* CitationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitationPageViewController.swift; sourceTree = "<group>"; };
 		F1D390F822D4E3F800DF8700 /* CitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitationViewController.swift; sourceTree = "<group>"; };
+		F1E8EFD322F45626006A9D39 /* Formatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Extension.swift"; sourceTree = "<group>"; };
+		F1E8EFD622F45D42006A9D39 /* CostButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostButton.swift; sourceTree = "<group>"; };
+		F1E8EFD822F484B2006A9D39 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
+		F1E8EFD922F484B2006A9D39 /* CalendarTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarTableViewCell.xib; sourceTree = "<group>"; };
 		F1EA1CA622E0776600BB328F /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		F1EA1CA822E07D2A00BB328F /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		F1EA1CAA22E0833400BB328F /* StakeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StakeHeaderView.swift; sourceTree = "<group>"; };
@@ -477,6 +526,11 @@
 		F1EBC7BA22D38E8100BAA82D /* ThinkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinkListViewController.swift; sourceTree = "<group>"; };
 		F1EE4D4E229EA6620072F663 /* BackgroundVideo.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = BackgroundVideo.MOV; sourceTree = "<group>"; };
 		F1EE4D50229EB78C0072F663 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		F1F406062302D0450091B774 /* BlueNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueNavigationBar.swift; sourceTree = "<group>"; };
+		F1F4060823030B070091B774 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		F1F4060A230311240091B774 /* RequestDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDescriptor.swift; sourceTree = "<group>"; };
+		F1F4060C230313960091B774 /* ProfileRequestDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRequestDescriptor.swift; sourceTree = "<group>"; };
+		F1F40610230313FF0091B774 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		F772C2D45E719D311FE396F6 /* Pods-Bold.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bold.debug.xcconfig"; path = "Target Support Files/Pods-Bold/Pods-Bold.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -514,6 +568,7 @@
 			children = (
 				F107537522EF1E470078C71C /* Goal.swift */,
 				F107537722EF1E550078C71C /* Action.swift */,
+				F1F40610230313FF0091B774 /* Profile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -593,6 +648,14 @@
 				F1A79DC522D89C0C0018A8EF /* ListenOrReadMaterialView.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F16F21D722F304AE004DC5F3 /* StakeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F16F21D522F304A4004DC5F3 /* StakeViewController.swift */,
+			);
+			path = StakeViewController;
 			sourceTree = "<group>";
 		};
 		F179974822AE56EE0039879F /* Views */ = {
@@ -816,6 +879,7 @@
 				F1868805229D79740029A663 /* API */,
 				F1868804229D74230029A663 /* Storyboards */,
 				F1868803229D74010029A663 /* Network */,
+				F1E8EFD522F45D1C006A9D39 /* Customs */,
 				F18687FF229D661B0029A663 /* Extensions */,
 				F186880B229E82360029A663 /* Resources */,
 				F18687E9229D56B10029A663 /* Info.plist */,
@@ -839,6 +903,7 @@
 				F1EA1CA622E0776600BB328F /* UIImageView+Extensions.swift */,
 				F1EA1CA822E07D2A00BB328F /* UILabel+Extensions.swift */,
 				F1EA1CAE22E0A71F00BB328F /* UIImage+Extensions.swift */,
+				F1E8EFD322F45626006A9D39 /* Formatter+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -846,6 +911,9 @@
 		F1868803229D74010029A663 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				F1F4060823030B070091B774 /* Network.swift */,
+				F1F4060A230311240091B774 /* RequestDescriptor.swift */,
+				F1F4060C230313960091B774 /* ProfileRequestDescriptor.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -952,6 +1020,14 @@
 			path = AlertViews;
 			sourceTree = "<group>";
 		};
+		F1B2B1D722FD734C00C327B0 /* MonthYearPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				F1B2B1D522FC6C0000C327B0 /* MonthYearPickerView.swift */,
+			);
+			path = MonthYearPickerView;
+			sourceTree = "<group>";
+		};
 		F1C2535422BA8031003156AA /* Manifest */ = {
 			isa = PBXGroup;
 			children = (
@@ -975,8 +1051,10 @@
 				F1EAF59622E8A9A4008073D7 /* ConfigurateActionViewController */,
 				F10B69C022EB16B300E47315 /* IdeasViewController */,
 				F107537D22EF39210078C71C /* ShareWithFriendsViewController */,
+				F16F21D722F304AE004DC5F3 /* StakeViewController */,
 				F107537922EF36670078C71C /* BoldTipsViewController.swift */,
 				F158273E22EB569E007B9023 /* DateAlertViewController.swift */,
+				F1B2B1D322FC62DD00C327B0 /* YearMonthAlertViewController.swift */,
 				F1CCC71222CE228800E7B637 /* AddActionPlanViewController.swift */,
 				F1CCC71D22CE854900E7B637 /* EditActionPlanViewController.swift */,
 				F19A98BB22D7A06F00A0492E /* StartActionViewController.swift */,
@@ -1044,12 +1122,38 @@
 				F11562A222DF2E9A00399FA6 /* StakeActionTableViewCell.xib */,
 				F1EA1CAA22E0833400BB328F /* StakeHeaderView.swift */,
 				F1EA1CAC22E0834D00BB328F /* StakeHeaderView.xib */,
+				F1E8EFD822F484B2006A9D39 /* CalendarTableViewCell.swift */,
+				F1E8EFD922F484B2006A9D39 /* CalendarTableViewCell.xib */,
+				F1B2B1C922FB697100C327B0 /* DateCalendarCell.swift */,
+				F1B2B1CD22FB723000C327B0 /* DateCalendarCell.xib */,
+				F1B2B1CB22FB698E00C327B0 /* HeaderCalendarView.swift */,
+				F1B2B1CF22FB72FF00C327B0 /* HeaderCalendarView.xib */,
+				F1B2B1D122FC1A2100C327B0 /* CalendarDecorationView.swift */,
 				F1EA1CB022E0BE6200BB328F /* EmptyActView.swift */,
 				F1EA1CB222E0BFCE00BB328F /* EmptyActView.xib */,
 				F107537E22EF49550078C71C /* ShareCardTableViewCell.swift */,
 				F107538022EF496F0078C71C /* ShareButtonTableViewCell.swift */,
+				F107538222F091C10078C71C /* HeaderConfigureTableViewCell.swift */,
+				F107538322F091C10078C71C /* HeaderConfigureTableViewCell.xib */,
+				F107538622F093770078C71C /* BodyConfigureTableViewCell.swift */,
+				F107538722F093770078C71C /* BodyConfigureTableViewCell.xib */,
+				F107538A22F09B640078C71C /* DaysOfWeekTableViewCell.swift */,
+				F107538B22F09B640078C71C /* DaysOfWeekTableViewCell.xib */,
+				F107538E22F0A2830078C71C /* DayOfWeekCollectionViewCell.swift */,
+				F107538F22F0A2830078C71C /* DayOfWeekCollectionViewCell.xib */,
+				F107539222F20C0B0078C71C /* EnterYourGoalTableViewCell.swift */,
+				F107539322F20C0B0078C71C /* EnterYourGoalTableViewCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F1E8EFD522F45D1C006A9D39 /* Customs */ = {
+			isa = PBXGroup;
+			children = (
+				F1E8EFD622F45D42006A9D39 /* CostButton.swift */,
+				F1F406062302D0450091B774 /* BlueNavigationBar.swift */,
+			);
+			path = Customs;
 			sourceTree = "<group>";
 		};
 		F1EA1CBA22E1C6AB00BB328F /* HomeViewController */ = {
@@ -1067,6 +1171,7 @@
 		F1EA1CBB22E1E97A00BB328F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1B2B1D722FD734C00C327B0 /* MonthYearPickerView */,
 				F1EA1CBC22E1E99300BB328F /* SCPageControlView */,
 			);
 			path = Frameworks;
@@ -1178,6 +1283,7 @@
 			files = (
 				F18687F6229D60150029A663 /* Home.storyboard in Resources */,
 				F1C2534622B2ACAA003156AA /* GoalCollectionViewCell.xib in Resources */,
+				F107538922F093770078C71C /* BodyConfigureTableViewCell.xib in Resources */,
 				F1CCC71C22CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.xib in Resources */,
 				F1868841229E90EF0029A663 /* Montserrat-Black.ttf in Resources */,
 				F1A79DCE22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.xib in Resources */,
@@ -1189,12 +1295,16 @@
 				F18687FE229D609C0029A663 /* Profile.storyboard in Resources */,
 				F1868836229E90EF0029A663 /* Montserrat-Italic.ttf in Resources */,
 				F1CECE1E22E9C77600EA95EE /* IconListCreateGoalTableViewCell.xib in Resources */,
+				F107539122F0A2830078C71C /* DayOfWeekCollectionViewCell.xib in Resources */,
 				F186883F229E90EF0029A663 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				F1868835229E90EF0029A663 /* Montserrat-BlackItalic.ttf in Resources */,
+				F1B2B1CE22FB723000C327B0 /* DateCalendarCell.xib in Resources */,
 				F14166AD22C125A50020BF0F /* ActionCollectionTableViewCell.xib in Resources */,
 				F158E2C122C3C73F00FD671A /* ProgressHeaderView.xib in Resources */,
 				F1C2533422B297B9003156AA /* UnlockPremiumTableViewCell.xib in Resources */,
+				F107539522F20C0B0078C71C /* EnterYourGoalTableViewCell.xib in Resources */,
 				F1C2534A22B2ACFC003156AA /* ActInactiveCollectionViewCell.xib in Resources */,
+				F107538522F091C10078C71C /* HeaderConfigureTableViewCell.xib in Resources */,
 				F179976222AFFA1D0039879F /* MenuBottomView.xib in Resources */,
 				F1A79DC622D89C0C0018A8EF /* ListenOrReadMaterialView.xib in Resources */,
 				F18687F8229D602C0029A663 /* Feel.storyboard in Resources */,
@@ -1214,6 +1324,7 @@
 				F18687F2229D5EE30029A663 /* Auth.storyboard in Resources */,
 				F162A77F22C12C05008292E8 /* ActionCollectionViewCell.xib in Resources */,
 				F13DEAD522AAC0D500BC3CA6 /* SignUpView.xib in Resources */,
+				F1B2B1D022FB72FF00C327B0 /* HeaderCalendarView.xib in Resources */,
 				F179976722B10AEC0039879F /* HeaderHomeView.xib in Resources */,
 				F19A98B622D7575C00A0492E /* MissedYouOneButtonAlertView.xib in Resources */,
 				F186883E229E90EF0029A663 /* Montserrat-Regular.ttf in Resources */,
@@ -1244,8 +1355,10 @@
 				F19A98BA22D758E700A0492E /* MissedYouTwoButtonAlertView.xib in Resources */,
 				F158E2C522C4E12A00FD671A /* NavigationView.xib in Resources */,
 				F141668E22BD28760020BF0F /* Player.storyboard in Resources */,
+				F107538D22F09B640078C71C /* DaysOfWeekTableViewCell.xib in Resources */,
 				F1868840229E90EF0029A663 /* Montserrat-ExtraBold.ttf in Resources */,
 				F186880D229E82CD0029A663 /* colors.json in Resources */,
+				F1E8EFDB22F484B2006A9D39 /* CalendarTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1324,10 +1437,13 @@
 				F1868852229E9DA20029A663 /* L10n-Constants.swift in Sources */,
 				F14166A522C115B50020BF0F /* PlayerListView.swift in Sources */,
 				F179974D22AE615D0039879F /* Localizable.swift in Sources */,
+				F107539422F20C0B0078C71C /* EnterYourGoalTableViewCell.swift in Sources */,
 				F1D390F922D4E3F800DF8700 /* CitationViewController.swift in Sources */,
 				F17CB27022A6CF230035ABAB /* OnboardCell.swift in Sources */,
+				F1F4060923030B070091B774 /* Network.swift in Sources */,
 				F1CCC71622CE46F600E7B637 /* UIView+Extensions.swift in Sources */,
 				F1EA1CB922E1C66B00BB328F /* CreateGoalViewController.swift in Sources */,
+				F1B2B1CC22FB698E00C327B0 /* HeaderCalendarView.swift in Sources */,
 				F10B69C822EB172900E47315 /* IdeasRouter.swift in Sources */,
 				F1EA1CAF22E0A71F00BB328F /* UIImage+Extensions.swift in Sources */,
 				F183303C22E6F05500BB7A9E /* CreateActionRouter.swift in Sources */,
@@ -1337,12 +1453,14 @@
 				F183301722E5CB7800BB7A9E /* FeelRouter.swift in Sources */,
 				F183303622E6F02800BB7A9E /* CreateActionConfigurator.swift in Sources */,
 				F17CB27422A7D0830035ABAB /* LoginViewController.swift in Sources */,
+				F16F21D622F304A4004DC5F3 /* StakeViewController.swift in Sources */,
 				F1EA1CAB22E0833400BB328F /* StakeHeaderView.swift in Sources */,
 				F19A98B022D7393C00A0492E /* CongratulationsAlertView.swift in Sources */,
 				F183303A22E6F04500BB7A9E /* CreateActionInteractor.swift in Sources */,
 				F1EBC7B222CF70A000BAA82D /* AudioPlayer.swift in Sources */,
 				F1EA1CB722E1C65900BB328F /* CreateActionViewController.swift in Sources */,
 				F141668A22BD00F20020BF0F /* VideoService.swift in Sources */,
+				F1B2B1CA22FB697100C327B0 /* DateCalendarCell.swift in Sources */,
 				F14166A322C1158C0020BF0F /* PlayerViewController.swift in Sources */,
 				F1EAF59822E8AA63008073D7 /* ConfigurateActionConfigurator.swift in Sources */,
 				F141668722BCD7FA0020BF0F /* ManifestRouter.swift in Sources */,
@@ -1368,14 +1486,17 @@
 				F141668322BCD7D20020BF0F /* ManifestPresenter.swift in Sources */,
 				F14166A022C106210020BF0F /* HeaderActionPlanTableViewCell.swift in Sources */,
 				F1CECE1522E9C73400EA95EE /* ColorCreateGoalTableViewCell.swift in Sources */,
+				F1B2B1D622FC6C0000C327B0 /* MonthYearPickerView.swift in Sources */,
 				F141668C22BD1F590020BF0F /* AudioService.swift in Sources */,
 				F1C2534922B2ACFC003156AA /* ActInactiveCollectionViewCell.swift in Sources */,
 				F183301022E5CB2D00BB7A9E /* FeelConfigurator.swift in Sources */,
+				F1F40611230313FF0091B774 /* Profile.swift in Sources */,
 				F183302722E605A600BB7A9E /* ActInteractor.swift in Sources */,
 				F183304222E6F0F000BB7A9E /* CreateGoalInteractor.swift in Sources */,
 				F1CCC70322CA0F2900E7B637 /* UITableView+Xib.swift in Sources */,
 				F158E2C322C4E11600FD671A /* NavigationView.swift in Sources */,
 				F183301A22E5CBCC00BB7A9E /* ActionsListConfigurator.swift in Sources */,
+				F1B2B1D222FC1A2100C327B0 /* CalendarDecorationView.swift in Sources */,
 				F1A79DD622DCAFA80018A8EF /* OverTabbarView.swift in Sources */,
 				F1EA1CA722E0776600BB328F /* UIImageView+Extensions.swift in Sources */,
 				F179974F22AE619C0039879F /* EmptyView.swift in Sources */,
@@ -1395,15 +1516,20 @@
 				F17CB26922A682130035ABAB /* RoundedButton.swift in Sources */,
 				F14166AC22C125A50020BF0F /* ActionCollectionTableViewCell.swift in Sources */,
 				F1EB8DD622A8022500E3BC4C /* ForgotPasswordViewController.swift in Sources */,
+				F107538422F091C10078C71C /* HeaderConfigureTableViewCell.swift in Sources */,
 				F192580122E752A600FA5C6E /* CalendarActionsListPresenter.swift in Sources */,
 				F19A98BC22D7A06F00A0492E /* StartActionViewController.swift in Sources */,
 				F179977522B1413A0039879F /* SideMenuItemOptions.swift in Sources */,
 				F19257FC22E7526E00FA5C6E /* CalendarActionsListViewController.swift in Sources */,
 				F1EBC7B922D38C3300BAA82D /* ThinkViewController.swift in Sources */,
 				F1C2533322B297B9003156AA /* UnlockPremiumTableViewCell.swift in Sources */,
+				F1E8EFD422F45626006A9D39 /* Formatter+Extension.swift in Sources */,
 				F192580322E752B600FA5C6E /* CalendarActionsListInteractor.swift in Sources */,
 				F162A78B22C2400D008292E8 /* ListenOrReadTableViewCell.swift in Sources */,
+				F1F406072302D0450091B774 /* BlueNavigationBar.swift in Sources */,
+				F1F4060D230313960091B774 /* ProfileRequestDescriptor.swift in Sources */,
 				F1EAF59A22E8AA79008073D7 /* ConfigurateActionPresenter.swift in Sources */,
+				F1B2B1D422FC62DD00C327B0 /* YearMonthAlertViewController.swift in Sources */,
 				F1EA1CB122E0BE6200BB328F /* EmptyActView.swift in Sources */,
 				F141669322C0DFC30020BF0F /* PlayerSmallView.swift in Sources */,
 				F1CCC71E22CE854900E7B637 /* EditActionPlanViewController.swift in Sources */,
@@ -1425,6 +1551,7 @@
 				F183304022E6F0E100BB7A9E /* CreateGoalPresenter.swift in Sources */,
 				F158E2BC22C3C2C300FD671A /* FeelViewController.swift in Sources */,
 				F1C2535622BA8064003156AA /* ManifestViewController.swift in Sources */,
+				F1E8EFD722F45D42006A9D39 /* CostButton.swift in Sources */,
 				F10B69BF22EB168B00E47315 /* IdeasViewController.swift in Sources */,
 				F183301C22E5CBD800BB7A9E /* ActionsListPresenter.swift in Sources */,
 				F1C2534E22B3F9A9003156AA /* HomePresenter.swift in Sources */,
@@ -1432,6 +1559,7 @@
 				F1EAF59E22E8AA9A008073D7 /* ConfigurateActionRouter.swift in Sources */,
 				F183303022E617B900BB7A9E /* AllGoalsInteractor.swift in Sources */,
 				F107537622EF1E470078C71C /* Goal.swift in Sources */,
+				F107538C22F09B640078C71C /* DaysOfWeekTableViewCell.swift in Sources */,
 				F141668522BCD7E60020BF0F /* ManifestInteractor.swift in Sources */,
 				F19A98A822D616FB00A0492E /* DontGiveUpAlertView.swift in Sources */,
 				F1EA1CC022E1EAE300BB328F /* UIViewController+Extensions.swift in Sources */,
@@ -1443,6 +1571,7 @@
 				F1EAF59222E89925008073D7 /* HeaderWriteActionsTableViewCell.swift in Sources */,
 				F1D390F722D4E3AB00DF8700 /* CitationPageViewController.swift in Sources */,
 				F179977722B1413A0039879F /* SideMenuItemContent.swift in Sources */,
+				F1E8EFDA22F484B2006A9D39 /* CalendarTableViewCell.swift in Sources */,
 				F11562A022DF20B100399FA6 /* ActViewController.swift in Sources */,
 				F179977822B1413A0039879F /* Options.swift in Sources */,
 				F13DEAD322AAC0B700BC3CA6 /* SignUpView.swift in Sources */,
@@ -1458,6 +1587,8 @@
 				F19257FF22E7529900FA5C6E /* CalendarActionsListConfigurator.swift in Sources */,
 				F179976522B10AD70039879F /* HeaderHomeView.swift in Sources */,
 				F183303222E617C700BB7A9E /* AllGoalsRouter.swift in Sources */,
+				F1F4060B230311240091B774 /* RequestDescriptor.swift in Sources */,
+				F107539022F0A2830078C71C /* DayOfWeekCollectionViewCell.swift in Sources */,
 				F1CCC70D22CCDBE400E7B637 /* PlayerListTableViewCell.swift in Sources */,
 				F158273F22EB569E007B9023 /* DateAlertViewController.swift in Sources */,
 				F10B69CE22EB3D1F00E47315 /* IdeasFooterView.swift in Sources */,
@@ -1476,6 +1607,7 @@
 				F183304422E6F0FD00BB7A9E /* CreateGoalRouter.swift in Sources */,
 				F179975B22AFE6100039879F /* LeftMenuViewController.swift in Sources */,
 				F115629C22DDB15900399FA6 /* DescriptionAndLikesCountViewController.swift in Sources */,
+				F107538822F093770078C71C /* BodyConfigureTableViewCell.swift in Sources */,
 				F183302C22E6178D00BB7A9E /* AllGoalsConfigurator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

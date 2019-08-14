@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="DateCalendarCell" id="abC-nk-Prv" customClass="DateCalendarCell" customModule="Bold" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TdN-SN-52L">
+                        <rect key="frame" x="1" y="0.5" width="48" height="49"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qBw-Bc-fSz">
+                                <rect key="frame" x="37" y="10" width="4" height="4"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="4" id="wkN-Uv-jRX"/>
+                                    <constraint firstAttribute="width" constant="4" id="z7r-39-JAR"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99607843139999996" green="0.47058823529999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qBw-Bc-fSz" secondAttribute="trailing" constant="7" id="YeB-Vq-Hob"/>
+                            <constraint firstItem="qBw-Bc-fSz" firstAttribute="top" secondItem="TdN-SN-52L" secondAttribute="top" constant="10" id="qgt-wY-ee0"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JV-Dg-wNt">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="TdN-SN-52L" firstAttribute="leading" secondItem="abC-nk-Prv" secondAttribute="leading" constant="1" id="2yf-sz-82u"/>
+                <constraint firstAttribute="bottom" secondItem="2JV-Dg-wNt" secondAttribute="bottom" id="W3s-8i-axy"/>
+                <constraint firstAttribute="trailing" secondItem="2JV-Dg-wNt" secondAttribute="trailing" id="YzS-XH-4dw"/>
+                <constraint firstAttribute="trailing" secondItem="TdN-SN-52L" secondAttribute="trailing" constant="1" id="ejY-oY-Wc0"/>
+                <constraint firstItem="TdN-SN-52L" firstAttribute="top" secondItem="abC-nk-Prv" secondAttribute="top" constant="0.5" id="jt8-5v-n0F"/>
+                <constraint firstItem="2JV-Dg-wNt" firstAttribute="top" secondItem="abC-nk-Prv" secondAttribute="top" id="nJY-cl-VIi"/>
+                <constraint firstAttribute="bottom" secondItem="TdN-SN-52L" secondAttribute="bottom" constant="0.5" id="qEv-vA-2N8"/>
+                <constraint firstItem="2JV-Dg-wNt" firstAttribute="leading" secondItem="abC-nk-Prv" secondAttribute="leading" id="qPT-Jb-BTr"/>
+            </constraints>
+            <connections>
+                <outlet property="dateLabel" destination="2JV-Dg-wNt" id="4LI-uf-kdS"/>
+                <outlet property="dotView" destination="qBw-Bc-fSz" id="Hrh-hv-7hq"/>
+                <outlet property="selectView" destination="TdN-SN-52L" id="C37-On-u9X"/>
+            </connections>
+            <point key="canvasLocation" x="92.753623188405811" y="109.82142857142857"/>
+        </collectionViewCell>
+    </objects>
+</document>

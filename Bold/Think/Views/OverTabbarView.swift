@@ -35,9 +35,11 @@ class OverTabbarView: UIView {
         addActionButton.cornerRadius()
         shareButton.cornerRadius()
         
-        likesCountButtons.borderWidth()
-        addActionButton.borderWidth()
-        shareButton.borderWidth()
+        //hex color F1F1F4
+        let colorBorder = UIColor(red: 241/255, green: 241/255, blue: 244/255, alpha: 1.0)
+        likesCountButtons.borderWidth(color: colorBorder)
+        addActionButton.borderWidth(color: colorBorder)
+        shareButton.borderWidth(color: colorBorder)
         
         likesCountButtons.positionImageBeforeText(padding: 6)
         likesCountButtons.isUserInteractionEnabled = false

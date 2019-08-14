@@ -71,8 +71,6 @@ extension ThinkViewController {
 
 extension ThinkViewController: CitationTableViewCellDelegate {
     func tapMoreInfoButton() {
-        print("tap more")
-        //performSegue(withIdentifier: StoryboardSegue.Think.citationIdentifier.rawValue, sender: nil)
-        performSegue(withIdentifier: StoryboardSegue.Think.descriptionThinkIdentifier.rawValue, sender: nil)
+        performSegue(withIdentifier: StoryboardSegue.Think.citationIdentifier.rawValue, sender: nil)
     }
 }

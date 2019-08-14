@@ -11,6 +11,15 @@ import UIKit
 enum DateAlertType {
     case startDate
     case endDate
+    
+    var titleText : String {
+        switch self {
+        case .startDate:
+            return L10n.Act.Date.chooseStartDate
+        case .endDate:
+            return L10n.Act.Date.chooseEndDate
+        }
+    }
 }
 
 class DateAlertViewController: UIViewController {
@@ -51,8 +60,7 @@ class DateAlertViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        titleTextLabel.text = (dateType == .startDate) ? L10n.Act.Date.chooseStartDate : L10n.Act.Date.chooseEndDate
-        
+        titleTextLabel.text = dateType.titleText
         overlayView.alpha = 0
         bottomContentViewConstraint.constant = -self.contentView.bounds.height
     }

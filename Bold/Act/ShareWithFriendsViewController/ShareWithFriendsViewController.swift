@@ -8,23 +8,96 @@
 
 import UIKit
 
+enum ShareTypeButton {
+    case card
+    case facebook
+    case email
+    case share
+    
+    func title() -> String {
+        switch self {
+        case .facebook:
+            return L10n.Act.Share.facebook
+        case .email:
+            return L10n.Act.Share.sendEmail
+        case .share:
+            return L10n.Act.Share.share
+        default:
+            return String()
+        }
+    }
+    
+    func icon() -> UIImage {
+        switch self {
+        case .facebook:
+            return Asset.facebookLogo.image
+        case .email:
+            return Asset.emailLogo.image
+        case .share:
+            return Asset.downloadLogo.image
+        default:
+            return UIImage()
+        }
+    }
+}
+
+private struct Constants {
+    struct Identifier {
+        static let cardCell : String = "ShareCardTableViewCell"
+        static let buttonCell : String = "ShareButtonTableViewCell"
+    }
+}
+
 class ShareWithFriendsViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    lazy var items : [ShareTypeButton] = {
+        return [.card, .facebook, .email, .share]
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        navigationItem.title = L10n.Act.Share.shareWithFriends
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func rgisterXibs() {
+        tableView.register(ShareCardTableViewCell.self, forCellReuseIdentifier: Constants.Identifier.cardCell)
+        tableView.register(ShareButtonTableViewCell.self, forCellReuseIdentifier: Constants.Identifier.buttonCell)
     }
-    */
 
+}
+
+
+    //MARK:- UITableViewDelegate, UITableViewDataSource
+
+extension ShareWithFriendsViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        switch items[indexPath.row] {
+        case .card:
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Identifier.cardCell, for: indexPath) as! ShareCardTableViewCell
+            cell.config(actionText: "Run 5km every morning", color: .orange)
+            return cell
+        case .email, .facebook, .share:
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Identifier.buttonCell, for: indexPath) as! ShareButtonTableViewCell
+            cell.config(type: items[indexPath.row])
+            cell.delegate = self
+            return cell
+        }
+    }
+}
+
+    //MARK:- ShareButtonTableViewCellDelegate
+
+extension ShareWithFriendsViewController: ShareButtonTableViewCellDelegate {
+    
+    func tapButton(shareType: ShareTypeButton) {
+        print("Share type = \(shareType)")
+    }
 }

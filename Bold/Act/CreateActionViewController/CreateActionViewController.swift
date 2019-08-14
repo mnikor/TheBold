@@ -18,6 +18,25 @@ class CreateActionViewController: UIViewController, ViewProtocol {
     var presenter: Presenter!
     var configurator: Configurator! = CreateActionConfigurator()
     
+    @IBOutlet weak var navBar: BlueNavigationBar!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+//        navigationController?.navigationBar.tintColor = .white
+//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+//        navigationController?.navigationBar.setBackgroundImage(Asset.navigationBlueImage.image, for: .default)
+//        navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.isHidden = false
+//        navigationController?.navigationBar.tintColor = .black
+//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
+//        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,33 +59,46 @@ class CreateActionViewController: UIViewController, ViewProtocol {
 
     func configNavigationController() {
         
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+        guard let navigationController = self.navigationController else {
+            return
+        }
+        navigationController.navigationBar.shadowImage = UIImage()
         
-        navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.barTintColor = ColorName.primaryBlue.color
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-        navigationItem.title = L10n.Act.Create.actionTitle
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.save, style: .plain, target: self, action: #selector(tapSaveAction))
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: L10n.cancel, style: .plain, target: nil, action: nil)
+        navBar.configure(type: .action, save: {
+            print("Save")
+        }) { [unowned self] in
+            self.presenter.router.input(.cancel)
+        }
     }
     
-    @objc func tapSaveAction() {
-        print("tapCreateAction")
-    }
-    
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        if let vc = segue.destination as? ConfigurateActionViewController {
+            vc.delegate = self
+            guard let settingType = sender as? AddActionCellType else {return}
+            vc.settingsActionType = settingType
+        }
+        if let vc = segue.destination as? StakeViewController {
+            vc.delegate = self
+            //vc.currentStake = 30
+        }
     }
-    */
-
 }
 
+
+// MARK: - UINavigationBarDelegate
+
+extension CreateActionViewController: UINavigationBarDelegate {
+    
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
+    }
+}
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
@@ -115,11 +147,28 @@ extension CreateActionViewController: UITableViewDelegate, UITableViewDataSource
         let settings = presenter.listSettings[indexPath.section]
         
         switch settings[indexPath.row].type {
-            case .duration, .reminder, .goal, .stake, .share :
-            print("dsf")
-        default:
-            return
+            case .duration, .reminder, .goal:
+                presenter.input(.setting(settings[indexPath.row].type))
+            case .stake:
+                presenter.input(.stake)
+            case .share:
+                presenter.input(.share)
+            default:
+                return
         }
     }
     
+}
+
+extension CreateActionViewController: ConfigurateActionViewControllerDelegate {
+    
+    func updateData() {
+        print("updateData")
+    }
+}
+
+extension CreateActionViewController: StakeViewControllerDelegate {
+    func confirmStake(stake: Float) {
+        print("confirmStake \(stake)")
+    }
 }

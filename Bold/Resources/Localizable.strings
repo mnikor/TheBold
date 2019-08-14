@@ -148,10 +148,56 @@
 "Act.Ideas.Income" = "10xIncome";
 "Act.Ideas.MasterSkill" = "MasterSkill";
 
+"Act.AllGoals" = "All goals";
+
 "Act.Date.ChooseStartDate" = "Choose start date";
 "Act.Date.ChooseEndDate" = "Choose end date";
+"Act.Date.Choose date" = "Choose date";
 
-"Act.ShareWithFriends" = "Share with friends";
+"Act.Share.ShareWithFriends" = "Share with friends";
+"Act.Share.Facebook" = "Facebook";
+"Act.Share.SendEmail" = "Send Email";
+"Act.Share.Share" = "Share";
+"Act.Share.MyActionIs" = "My action is";
+
+"Act.Duration" = "Duration";
+"Act.Duration.StartDate" = "Start date";
+"Act.Duration.Today" = "Today";
+"Act.Duration.Tommorow" = "Tommorow";
+"Act.Duration.ChooseDate" = "Choose date";
+"Act.Duration.EndDate" = "End date";
+"Act.Duration.AfterOneWeek" = "After one week";
+"Act.Duration.Repeat" = "Repeat";
+"Act.Duration.NoRepeat" = "No repeat";
+"Act.Duration.EveryDay" = "Every day";
+"Act.Duration.DaysOfWeek" = "Days of week";
+"Act.Duration.Day.Mo" = "MO";
+"Act.Duration.Day.Tu" = "TU";
+"Act.Duration.Day.We" = "WE";
+"Act.Duration.Day.Th" = "TH";
+"Act.Duration.Day.Fr" = "FR";
+"Act.Duration.Day.Su" = "SU";
+"Act.Duration.Day.Sa" = "SA";
+
+"Act.Reminders" = "Reminders";
+"Act.Reminders.RemindMe" = "Remind me";
+"Act.Reminders.NoReminders" = "No reminders";
+"Act.Reminders.BeforeTheDay" = "Before the day";
+"Act.Reminders.OnTheDay" = "On the day";
+"Act.Reminders.When" = "When";
+"Act.Reminders.SetTime" = "Set time";
+
+"Act.Goals" = "Goals";
+"Act.Goals.ChooseGoal" = "Choose goal";
+"Act.Goals.OrCreateNew" = "Or create new";
+"Act.Goals.EnterYourGoal" = "Enter your goal";
+
+"Act.Stake" = "Stake";
+"Act.Stake.LetsMakeYourChallenging" = "Let's make your challenging task higher-octane...";
+"Act.Stake.YourStake" = "Your stake";
+"Act.Stake.ConfirmStake" = "Confirm stake";
+"Act.Stake.AllFundsGoesToGlobalCharityFoundation" = "All funds goes to a global charity\n foundation gcf-care.org";
+"Act.Stake.gcfCareOrg" = "gcf-care.org";
 
 // Alert
 

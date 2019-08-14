@@ -19,13 +19,14 @@ class CalendarActionsListViewController: UIViewController, ViewProtocol {
     var configurator: Configurator! = CalendarActionsListConfigurator()
     
     var currentGoal: GoalEntity!
+    //var currentDate: Date = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configurator.configure(with: self)
         
-        tableView.backgroundView = EmptyActView.loadFromNib()
+        tableView.backgroundView = presenter.actItems.isEmpty ? EmptyActView.loadFromNib() : UIView()
         tableView.tableFooterView = UIView()
         registerXibs()
         
@@ -40,7 +41,7 @@ class CalendarActionsListViewController: UIViewController, ViewProtocol {
         
         self.navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isHidden = false
-        navigationItem.title = "All goals"
+        navigationItem.title = "Marathon"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: Asset.plusTodayActions.image, style: .plain, target: self, action: #selector(tapCreateAction))
     }
     
@@ -51,6 +52,7 @@ class CalendarActionsListViewController: UIViewController, ViewProtocol {
     func registerXibs() {
         tableView.registerNib(ActivityCollectionTableViewCell.self)
         tableView.registerNib(StakeActionTableViewCell.self)
+        tableView.registerNib(CalendarTableViewCell.self)
         tableView.registerHeaderFooterNib(StakeHeaderView.self)
     }
     
@@ -66,27 +68,38 @@ class CalendarActionsListViewController: UIViewController, ViewProtocol {
 
 }
 
+
+//MARK:- UITableViewDelegate, UITableViewDataSource
+
 extension CalendarActionsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return presenter.actHeaders.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.actItems.count
+        let sectionItem = presenter.actHeaders[section]
+        return sectionItem.items.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: StakeHeaderView.reuseIdentifier) as! StakeHeaderView
-        headerView.config()
+        let sectionItem = presenter.actHeaders[section]
+        headerView.config(type: sectionItem.headerType)
         headerView.delegate = self
         return headerView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let act = presenter.actItems[indexPath.row]
+        let sectionItem = presenter.actHeaders[indexPath.section]
+        let act = sectionItem.items[indexPath.row]
         switch act.type {
+        case .calendar:
+            let cell = tableView.dequeReusableCell(indexPath: indexPath) as CalendarTableViewCell
+            cell.config(date: presenter.currentDate)
+            cell.delegate = self
+            return cell
         case .stake:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as StakeActionTableViewCell
             cell.config()
@@ -105,18 +118,37 @@ extension CalendarActionsListViewController: UITableViewDelegate, UITableViewDat
     
 }
 
+
+//MARK:- StakeHeaderViewDelegate
+
 extension CalendarActionsListViewController: StakeHeaderViewDelegate {
     
-    func tapRightButton() {
-        presenter.input(.calendarHeader)
+    func tapRightButton(type: ActHeaderType) {
+        presenter.input(.calendarHeader(type))
     }
     
 }
+
+
+//MARK:- StakeActionTableViewCellDelegate
 
 extension CalendarActionsListViewController: StakeActionTableViewCellDelegate {
     
     func tapLongPress() {
         presenter.input(.longTapAction)
     }
+}
+
+
+//MARK:- CalendarTableViewCellDelegate
+
+extension CalendarActionsListViewController: CalendarTableViewCellDelegate {
     
+    func tapMonthTitle(date: Date) {
+        presenter.input(.yearMonthAlert)
+    }
+    
+    func selectDate(date: Date) {
+        presenter.currentDate = date
+    }
 }

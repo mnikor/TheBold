@@ -22,6 +22,9 @@ internal struct ColorName {
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#f6cccc"></span>
   /// Alpha: 100% <br/> (0xf6ccccff)
   internal static let ariesTopColor = ColorName(rgbaValue: 0xf6ccccff)
+  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#181e28"></span>
+  /// Alpha: 100% <br/> (0x181e28ff)
+  internal static let calendarThisMonth = ColorName(rgbaValue: 0x181e28ff)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#f3f5f8"></span>
   /// Alpha: 100% <br/> (0xf3f5f8ff)
   internal static let cellEvenColor = ColorName(rgbaValue: 0xf3f5f8ff)

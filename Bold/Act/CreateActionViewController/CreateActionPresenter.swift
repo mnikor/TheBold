@@ -9,11 +9,13 @@
 import Foundation
 
 enum CreateActionInputPresenter {
-    case rr
+    case setting(AddActionCellType)
+    case stake
+    case share
 }
 
 protocol CreateActionInputProtocol {
-    func input(_ inputCase: CreateActionInputRouter)
+    func input(_ inputCase: CreateActionInputPresenter)
 }
 
 class CreateActionPresenter: PresenterProtocol, CreateActionInputProtocol {
@@ -46,12 +48,14 @@ class CreateActionPresenter: PresenterProtocol, CreateActionInputProtocol {
         
     }
     
-    func input(_ inputCase: CreateActionInputRouter) {
+    func input(_ inputCase: CreateActionInputPresenter) {
         switch inputCase {
-        case .qq:
-            print("sdfsd")
-        default:
-            print("sdfsdf")
+        case .setting(let settingType):
+            router.input(.presentSetting(settingType))
+        case .stake:
+            router.input(.stake)
+        case .share:
+            router.input(.share)
         }
     }
 }

@@ -9,7 +9,10 @@
 import Foundation
 
 enum CreateActionInputRouter {
-    case qq
+    case presentSetting(AddActionCellType)
+    case stake
+    case share
+    case cancel
 }
 
 protocol CreateActionInputRouterProtocol {
@@ -28,10 +31,14 @@ class CreateActionRouter: RouterProtocol, CreateActionInputRouterProtocol {
     
     func input(_ inputCase: CreateActionInputRouter) {
         switch inputCase {
-        case .qq:
-            print("dsfdf")
-        default:
-            print("sdf")
+        case .presentSetting(let type):
+            viewController.performSegue(withIdentifier: StoryboardSegue.Act.configurateActionIdentifier.rawValue, sender: type)
+        case .stake:
+            viewController.performSegue(withIdentifier: StoryboardSegue.Act.stakeIdentifier.rawValue, sender: nil)
+        case .share:
+            viewController.performSegue(withIdentifier: StoryboardSegue.Act.shareWithFriendsIdentifier.rawValue, sender: nil)
+        case .cancel:
+            viewController.navigationController?.popViewController(animated: true)
         }
     }
 }

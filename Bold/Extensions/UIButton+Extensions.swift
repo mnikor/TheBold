@@ -18,6 +18,15 @@ extension UIButton {
         }
     }
     
+    func positionImageFirstInButton() {
+        if let imageView = imageView {
+            let spacing : CGFloat = 30
+            let imageWidth = imageView.bounds.width
+            imageEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: bounds.width - imageWidth - spacing)
+            titleEdgeInsets = UIEdgeInsets(top: 0, left: -imageWidth/2, bottom: 0, right: imageWidth/2)
+        }
+    }
+    
     func positionImageAfterText(padding: CGFloat) {
         if let imageView = imageView, let titleLabel = titleLabel {
             imageEdgeInsets = UIEdgeInsets(top: 5, left: titleLabel.frame.size.width+padding, bottom: 5, right: -titleLabel.frame.size.width-padding)
@@ -36,9 +45,9 @@ extension UIButton {
         layer.cornerRadius = bounds.size.height / 2
     }
     
-    func borderWidth() {
+    func borderWidth(color: Color) {
         layer.borderWidth = 1
-        layer.borderColor = UIColor(red: 241/255, green: 241/255, blue: 244/255, alpha: 1.0).cgColor //hex color F1F1F4
+        layer.borderColor = color.cgColor
     }
     
     func shadow() {

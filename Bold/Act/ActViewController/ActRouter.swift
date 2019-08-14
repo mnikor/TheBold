@@ -36,11 +36,11 @@ class ActRouter: RouterProtocol, ActInputRouterProtocol {
         case .menuShow:
             viewController.showSideMenu()
         case .calendar:
-            viewController.performSegue(withIdentifier: StoryboardSegue.Act.allGoallIdentifier.rawValue, sender: nil)
+            viewController.performSegue(withIdentifier: StoryboardSegue.Act.calendarFromActViewIdentifier.rawValue, sender: nil)
         case .tapPlus:
-            print("tapPlus")
+            viewController.performSegue(withIdentifier: StoryboardSegue.Act.createActionFromActViewIdentifier.rawValue, sender: nil)
         case .allGoals:
-            print("allGoals")
+            viewController.performSegue(withIdentifier: StoryboardSegue.Act.allGoallIdentifier.rawValue, sender: nil)
         case .goalItem:
             print("goalItem")
         case .longTapActionPresentedBy(let vc):

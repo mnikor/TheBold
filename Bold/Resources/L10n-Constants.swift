@@ -65,6 +65,8 @@ internal enum L10n {
     internal static let goal = L10n.tr("Localizable", "Act.Goal")
     /// Goal is locked
     internal static let goalIsLocked = L10n.tr("Localizable", "Act.GoalIsLocked")
+    /// Goals
+    internal static let goals = L10n.tr("Localizable", "Act.Goals")
     /// Hopefully, you're buzzing with nerves or excitement... Awesome. Now figure out what actions will achieve your goal.
     internal static let hopefully = L10n.tr("Localizable", "Act.Hopefully")
     /// Hopefully, you're buzzing with nerves or excitement... Awesome. Now figure out what actions will achieve your goal.
@@ -77,6 +79,8 @@ internal enum L10n {
     internal static let noStake = L10n.tr("Localizable", "Act.NoStake")
     /// Reminder
     internal static let reminder = L10n.tr("Localizable", "Act.Reminder")
+    /// Reminders
+    internal static let reminders = L10n.tr("Localizable", "Act.Reminders")
     /// Seriously no actions?
     internal static let seriouslyNoActions = L10n.tr("Localizable", "Act.SeriouslyNoActions")
     /// Share with friends
@@ -102,10 +106,58 @@ internal enum L10n {
       internal static let goalTitle = L10n.tr("Localizable", "Act.Create.GoalTitle")
     }
     internal enum Date {
+      /// Choose date
+      internal static let chooseDate = L10n.tr("Localizable", "Act.Date.Choose date")
       /// Choose end date
       internal static let chooseEndDate = L10n.tr("Localizable", "Act.Date.ChooseEndDate")
       /// Choose start date
       internal static let chooseStartDate = L10n.tr("Localizable", "Act.Date.ChooseStartDate")
+    }
+    internal enum Duration {
+      /// After one week
+      internal static let afterOneWeek = L10n.tr("Localizable", "Act.Duration.AfterOneWeek")
+      /// Choose date
+      internal static let chooseDate = L10n.tr("Localizable", "Act.Duration.ChooseDate")
+      /// Days of week
+      internal static let daysOfWeek = L10n.tr("Localizable", "Act.Duration.DaysOfWeek")
+      /// End date
+      internal static let endDate = L10n.tr("Localizable", "Act.Duration.EndDate")
+      /// Every day
+      internal static let everyDay = L10n.tr("Localizable", "Act.Duration.EveryDay")
+      /// No repeat
+      internal static let noRepeat = L10n.tr("Localizable", "Act.Duration.NoRepeat")
+      /// Repeat
+      internal static let `repeat` = L10n.tr("Localizable", "Act.Duration.Repeat")
+      /// Start date
+      internal static let startDate = L10n.tr("Localizable", "Act.Duration.StartDate")
+      /// Today
+      internal static let today = L10n.tr("Localizable", "Act.Duration.Today")
+      /// Tommorow
+      internal static let tommorow = L10n.tr("Localizable", "Act.Duration.Tommorow")
+      internal enum Day {
+        /// FR
+        internal static let fr = L10n.tr("Localizable", "Act.Duration.Day.Fr")
+        /// MO
+        internal static let mo = L10n.tr("Localizable", "Act.Duration.Day.Mo")
+        /// SA
+        internal static let sa = L10n.tr("Localizable", "Act.Duration.Day.Sa")
+        /// SU
+        internal static let su = L10n.tr("Localizable", "Act.Duration.Day.Su")
+        /// TH
+        internal static let th = L10n.tr("Localizable", "Act.Duration.Day.Th")
+        /// TU
+        internal static let tu = L10n.tr("Localizable", "Act.Duration.Day.Tu")
+        /// WE
+        internal static let we = L10n.tr("Localizable", "Act.Duration.Day.We")
+      }
+    }
+    internal enum Goals {
+      /// Choose goal
+      internal static let chooseGoal = L10n.tr("Localizable", "Act.Goals.ChooseGoal")
+      /// Enter your goal
+      internal static let enterYourGoal = L10n.tr("Localizable", "Act.Goals.EnterYourGoal")
+      /// Or create new
+      internal static let orCreateNew = L10n.tr("Localizable", "Act.Goals.OrCreateNew")
     }
     internal enum Ideas {
       /// Charity project
@@ -140,6 +192,44 @@ internal enum L10n {
       internal static let triathlon = L10n.tr("Localizable", "Act.Ideas.Triathlon")
       /// Write a book
       internal static let writeBook = L10n.tr("Localizable", "Act.Ideas.WriteBook")
+    }
+    internal enum Reminders {
+      /// Before the day
+      internal static let beforeTheDay = L10n.tr("Localizable", "Act.Reminders.BeforeTheDay")
+      /// No reminders
+      internal static let noReminders = L10n.tr("Localizable", "Act.Reminders.NoReminders")
+      /// On the day
+      internal static let onTheDay = L10n.tr("Localizable", "Act.Reminders.OnTheDay")
+      /// Remind me
+      internal static let remindMe = L10n.tr("Localizable", "Act.Reminders.RemindMe")
+      /// Set time
+      internal static let setTime = L10n.tr("Localizable", "Act.Reminders.SetTime")
+      /// When
+      internal static let when = L10n.tr("Localizable", "Act.Reminders.When")
+    }
+    internal enum Share {
+      /// Facebook
+      internal static let facebook = L10n.tr("Localizable", "Act.Share.Facebook")
+      /// My action is
+      internal static let myActionIs = L10n.tr("Localizable", "Act.Share.MyActionIs")
+      /// Send Email
+      internal static let sendEmail = L10n.tr("Localizable", "Act.Share.SendEmail")
+      /// Share
+      internal static let share = L10n.tr("Localizable", "Act.Share.Share")
+      /// Share with friends
+      internal static let shareWithFriends = L10n.tr("Localizable", "Act.Share.ShareWithFriends")
+    }
+    internal enum Stake {
+      /// All funds goes to a global charity\n foundation gcf-care.org
+      internal static let allFundsGoesToGlobalCharityFoundation = L10n.tr("Localizable", "Act.Stake.AllFundsGoesToGlobalCharityFoundation")
+      /// Confirm stake
+      internal static let confirmStake = L10n.tr("Localizable", "Act.Stake.ConfirmStake")
+      /// gcf-care.org
+      internal static let gcfCareOrg = L10n.tr("Localizable", "Act.Stake.gcfCareOrg")
+      /// Let's make your challenging task higher-octane...
+      internal static let letsMakeYourChallenging = L10n.tr("Localizable", "Act.Stake.LetsMakeYourChallenging")
+      /// Your stake
+      internal static let yourStake = L10n.tr("Localizable", "Act.Stake.YourStake")
     }
   }
 

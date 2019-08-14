@@ -11,6 +11,7 @@ import Foundation
 enum CalendarActionsListInputRouter {
     case presentdCreateAction
     case editAction(EditActionPlanViewController)
+    case yearMonthAlert(YearMonthAlertViewController)
 }
 
 protocol CalendarActionsListInputRouterProtocol {
@@ -30,9 +31,12 @@ class CalendarActionsListRouter: RouterProtocol, CalendarActionsListInputRouterP
     func input(_ inputCase: CalendarActionsListInputRouter) {
         switch inputCase {
         case .presentdCreateAction:
-            print("dsf")
+            let vc = StoryboardScene.Act.createActionViewController.instantiate()
+            viewController.navigationController?.pushViewController(vc, animated: true)
         case .editAction(let editVC):
             editVC.presentedBy(viewController)
+        case .yearMonthAlert(let dateAlert):
+            dateAlert.presentedBy(viewController)
         }
     }
  

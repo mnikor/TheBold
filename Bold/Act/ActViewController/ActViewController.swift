@@ -10,7 +10,7 @@ import UIKit
 
 enum ActCellType {
     case goals
-    case plan
+    case calendar
     case stake
 }
 
@@ -25,12 +25,16 @@ class ActViewController: UIViewController, SideMenuItemContent, ViewProtocol {
     @IBOutlet weak var highNavigationBar: NavigationView!
     @IBOutlet weak var tableView: UITableView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configurator.configure(with: self)
         
-        navigationController?.navigationBar.isHidden = true
         highNavigationBar.configItem(title: L10n.Act.actBold, titleImage: .none, leftButton: .showMenu, rightButton: .callendar)
         highNavigationBar.deleagte = self
         
@@ -75,7 +79,7 @@ extension ActViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: StakeHeaderView.reuseIdentifier) as! StakeHeaderView
-        headerView.config()
+        headerView.config(type: .plus)
         headerView.delegate = self
         return headerView
     }
@@ -122,7 +126,7 @@ extension ActViewController: ActivityCollectionTableViewCellDelegate {
 // MARK:- StakeHeaderViewDelegate
 
 extension ActViewController: StakeHeaderViewDelegate {
-    func tapPlusButton() {
+    func tapRightButton(type: ActHeaderType) {
         print("tapPlusButton")
         presenter.input(.tapPlus)
     }

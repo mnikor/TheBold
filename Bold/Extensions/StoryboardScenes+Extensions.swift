@@ -34,6 +34,8 @@ internal enum StoryboardScene {
     internal static let ideasViewController = SceneType<Bold.IdeasViewController>(storyboard: Act.self, identifier: "IdeasViewController")
 
     internal static let startActionViewController = SceneType<Bold.StartActionViewController>(storyboard: Act.self, identifier: "StartActionViewController")
+
+    internal static let yearMonthAlertViewController = SceneType<Bold.YearMonthAlertViewController>(storyboard: Act.self, identifier: "YearMonthAlertViewController")
   }
   internal enum Auth: StoryboardType {
     internal static let storyboardName = "Auth"
@@ -42,6 +44,8 @@ internal enum StoryboardScene {
   }
   internal enum Description: StoryboardType {
     internal static let storyboardName = "Description"
+
+    internal static let descriptionAndLikesCountViewController = SceneType<Bold.DescriptionAndLikesCountViewController>(storyboard: Description.self, identifier: "DescriptionAndLikesCountViewController")
 
     internal static let manifestViewController = SceneType<Bold.ManifestViewController>(storyboard: Description.self, identifier: "ManifestViewController")
   }

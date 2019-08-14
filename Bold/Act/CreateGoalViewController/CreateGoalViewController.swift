@@ -16,7 +16,19 @@ class CreateGoalViewController: UIViewController, ViewProtocol {
     var presenter: Presenter!
     var configurator: Configurator! = CreateGoalConfigurator()
     
+    @IBOutlet weak var navBar: BlueNavigationBar!
+    
     @IBOutlet weak var tableView: UITableView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,20 +54,16 @@ class CreateGoalViewController: UIViewController, ViewProtocol {
     }
 
     func configNavigationController() {
+        guard let navigationController = self.navigationController else {
+            return
+        }
+        navigationController.navigationBar.shadowImage = UIImage()
         
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        
-        navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.barTintColor = ColorName.primaryBlue.color
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-        navigationItem.title = L10n.Act.Create.goalHeader
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.save, style: .plain, target: self, action: #selector(tapSaveAction))
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: L10n.cancel, style: .plain, target: nil, action: nil)
-    }
-    
-    @objc func tapSaveAction() {
-        print("tapCreateAction")
+        navBar.configure(type: .goal, save: {
+            print("Save")
+        }) { [unowned self] in
+            self.presenter.router.input(.cancel)
+        }
     }
     
     /*

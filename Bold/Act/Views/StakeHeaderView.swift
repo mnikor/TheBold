@@ -8,8 +8,29 @@
 
 import UIKit
 
+enum ActHeaderType {
+    case calendar
+    case list
+    case plus
+    case none
+    
+    func imageInButton() -> UIImage {
+        switch self {
+        case .calendar:
+            return Asset.calendarBlueIcon.image
+        case .list:
+            return Asset.listCalendar.image
+        case .plus:
+            return Asset.plusTodayActions.image
+        default:
+            return UIImage()
+        }
+    }
+    
+}
+
 protocol StakeHeaderViewDelegate: class {
-    func tapRightButton()
+    func tapRightButton(type: ActHeaderType)
 }
 
 class StakeHeaderView: BaseTableViewHeaderFooterView {
@@ -20,14 +41,19 @@ class StakeHeaderView: BaseTableViewHeaderFooterView {
     @IBOutlet weak var plusButton: UIButton!
     
     weak var delegate: StakeHeaderViewDelegate?
+    var type: ActHeaderType!
     
     @IBAction func tapPlusButton(_ sender: UIButton) {
-        delegate?.tapRightButton()
+        delegate?.tapRightButton(type: type)
     }
     
-    func config() {
+    func config(type: ActHeaderType) {
         
-        imageView.image = UIImage.image(size: imageView.bounds.size, fillColors: [UIColor.white, UIColor.white.withAlphaComponent(0)])
+        self.type = type
+        let color = type == .list ? ColorName.tableViewBackground.color : .white
+        contentView.backgroundColor = type == .list ? color : .clear
+        imageView.image = UIImage.image(size: imageView.bounds.size, fillColors: [color, color.withAlphaComponent(0)])
+        plusButton.setImage(type.imageInButton(), for: .normal)
     }
     
 }

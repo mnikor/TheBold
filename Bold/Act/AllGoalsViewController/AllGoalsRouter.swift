@@ -30,9 +30,10 @@ class AllGoalsRouter: RouterProtocol, AllGoalsInputRouterProtocol {
     func input(_ inputCase: AllGoalsInputRouter) {
         switch inputCase {
         case .addGoal:
-            print("addGoal")
+            let vc = StoryboardScene.Act.createGoalViewController.instantiate()
+            viewController.navigationController?.pushViewController(vc, animated: true)
         case .selectGoal(let selectGoal):
-            viewController.performSegue(withIdentifier: StoryboardSegue.Act.allGoallIdentifier.rawValue, sender: selectGoal)
+            viewController.performSegue(withIdentifier: StoryboardSegue.Act.calendarListIdentifier.rawValue, sender: selectGoal)
         }
     }
     

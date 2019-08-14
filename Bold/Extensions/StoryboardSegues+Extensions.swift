@@ -13,8 +13,15 @@ import UIKit
 // swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
 internal enum StoryboardSegue {
   internal enum Act: String, SegueType {
-    case goalsListIdentifier = "GoalsListIdentifier"
     case allGoallIdentifier
+    case calendarFromActViewIdentifier
+    case calendarListIdentifier
+    case configurateActionIdentifier
+    case createActionFromActViewIdentifier
+    case createActionFromCalendarViewIdentifier
+    case createGoalFromAllGoalIdentifier
+    case shareWithFriendsIdentifier
+    case stakeIdentifier
   }
   internal enum Auth: String, SegueType {
     case forgotPassword
@@ -27,7 +34,6 @@ internal enum StoryboardSegue {
   }
   internal enum Think: String, SegueType {
     case citationIdentifier
-    case descriptionThinkIdentifier
     case showItem
   }
 }

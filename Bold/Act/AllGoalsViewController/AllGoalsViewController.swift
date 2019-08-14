@@ -56,12 +56,13 @@ class AllGoalsViewController: UIViewController, ViewProtocol {
         
         self.navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isHidden = false
-        navigationItem.title = "All goals"
+        navigationItem.title = L10n.Act.allGoals
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: Asset.plusTodayActions.image, style: .plain, target: self, action: #selector(tapCreateAction))
     }
     
     @objc func tapCreateAction() {
         print("tapCreateAction")
+        presenter.input(.addGoal)
     }
     
     

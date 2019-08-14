@@ -43,7 +43,7 @@ class CreateGoalRouter: RouterProtocol, CreateGoalInputRouterProtocol {
 //            vc.presentedBy(viewController)
             
         case .cancel:
-            print("dsfsdf")
+            viewController.navigationController?.popViewController(animated: true)
         case .presentDateAlert(let alertVC):
             alertVC.presentedBy(viewController)
         }

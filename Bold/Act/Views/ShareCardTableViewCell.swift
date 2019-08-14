@@ -8,17 +8,22 @@
 
 import UIKit
 
-class ShareCardTableViewCell: UITableViewCell {
+class ShareCardTableViewCell: BaseTableViewCell {
 
+    @IBOutlet weak var smallTitleLabel: UILabel!
+    @IBOutlet weak var actionLabel: UILabel!
+    @IBOutlet weak var cardView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        smallTitleLabel.text = L10n.Act.Share.myActionIs
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func config(actionText: String, color: ColorGoalType) {
+        
+        actionLabel.text = actionText
+        cardView.backgroundColor = color.colorGoal()
     }
-
 }
