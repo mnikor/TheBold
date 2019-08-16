@@ -19,6 +19,11 @@
 		C59E5E3823059414005DCD18 /* AccountDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59E5E3723059414005DCD18 /* AccountDetailsRouter.swift */; };
 		C59E5E3A23059444005DCD18 /* AccountDetailsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59E5E3923059444005DCD18 /* AccountDetailsConfigurator.swift */; };
 		C5A4853923069B0C002CC62A /* EditAccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A4853823069B0C002CC62A /* EditAccountDetailsViewController.swift */; };
+		C5A4853C2306B91B002CC62A /* CalendarAndHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A4853B2306B91B002CC62A /* CalendarAndHistoryViewController.swift */; };
+		C5A4853E2306B934002CC62A /* CalendarAndHistoryConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A4853D2306B934002CC62A /* CalendarAndHistoryConfigurator.swift */; };
+		C5A485402306B94E002CC62A /* CalendarAndHistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A4853F2306B94E002CC62A /* CalendarAndHistoryPresenter.swift */; };
+		C5A485422306B966002CC62A /* CalendarAndHistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A485412306B966002CC62A /* CalendarAndHistoryInteractor.swift */; };
+		C5A485442306B979002CC62A /* CalendarAndHistoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A485432306B979002CC62A /* CalendarAndHistoryRouter.swift */; };
 		C5B1E54E23042913000991DF /* ImagedTitleSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1E54D23042913000991DF /* ImagedTitleSubtitleView.swift */; };
 		C5B1E55223042947000991DF /* ImagedTitleSubtitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1E55123042947000991DF /* ImagedTitleSubtitleViewModel.swift */; };
 		C5B1E55523043865000991DF /* ViewModelConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1E55423043865000991DF /* ViewModelConfigurable.swift */; };
@@ -304,6 +309,11 @@
 		C59E5E3723059414005DCD18 /* AccountDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsRouter.swift; sourceTree = "<group>"; };
 		C59E5E3923059444005DCD18 /* AccountDetailsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsConfigurator.swift; sourceTree = "<group>"; };
 		C5A4853823069B0C002CC62A /* EditAccountDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountDetailsViewController.swift; sourceTree = "<group>"; };
+		C5A4853B2306B91B002CC62A /* CalendarAndHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAndHistoryViewController.swift; sourceTree = "<group>"; };
+		C5A4853D2306B934002CC62A /* CalendarAndHistoryConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAndHistoryConfigurator.swift; sourceTree = "<group>"; };
+		C5A4853F2306B94E002CC62A /* CalendarAndHistoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAndHistoryPresenter.swift; sourceTree = "<group>"; };
+		C5A485412306B966002CC62A /* CalendarAndHistoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAndHistoryInteractor.swift; sourceTree = "<group>"; };
+		C5A485432306B979002CC62A /* CalendarAndHistoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAndHistoryRouter.swift; sourceTree = "<group>"; };
 		C5B1E54D23042913000991DF /* ImagedTitleSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagedTitleSubtitleView.swift; sourceTree = "<group>"; };
 		C5B1E55123042947000991DF /* ImagedTitleSubtitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagedTitleSubtitleViewModel.swift; sourceTree = "<group>"; };
 		C5B1E55423043865000991DF /* ViewModelConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelConfigurable.swift; sourceTree = "<group>"; };
@@ -679,6 +689,18 @@
 				C5A4853823069B0C002CC62A /* EditAccountDetailsViewController.swift */,
 			);
 			path = EditAccountDetailsViewController;
+			sourceTree = "<group>";
+		};
+		C5A4853A2306B8B7002CC62A /* CalendarAndHistoryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C5A4853B2306B91B002CC62A /* CalendarAndHistoryViewController.swift */,
+				C5A4853D2306B934002CC62A /* CalendarAndHistoryConfigurator.swift */,
+				C5A4853F2306B94E002CC62A /* CalendarAndHistoryPresenter.swift */,
+				C5A485412306B966002CC62A /* CalendarAndHistoryInteractor.swift */,
+				C5A485432306B979002CC62A /* CalendarAndHistoryRouter.swift */,
+			);
+			path = CalendarAndHistoryViewController;
 			sourceTree = "<group>";
 		};
 		C5B1E54F23042917000991DF /* ImagedTitleSubtitleView */ = {
@@ -1276,6 +1298,7 @@
 				C59E5E262305721E005DCD18 /* ProfileViewController */,
 				C59E5E2E230581C5005DCD18 /* AccountDetailsViewController */,
 				C5A4853723069AC1002CC62A /* EditAccountDetailsViewController */,
+				C5A4853A2306B8B7002CC62A /* CalendarAndHistoryViewController */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1652,7 +1675,9 @@
 				F1EAF59822E8AA63008073D7 /* ConfigurateActionConfigurator.swift in Sources */,
 				F141668722BCD7FA0020BF0F /* ManifestRouter.swift in Sources */,
 				F10B69C622EB171A00E47315 /* IdeasInteractor.swift in Sources */,
+				C5A485422306B966002CC62A /* CalendarAndHistoryInteractor.swift in Sources */,
 				F1A79DCD22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.swift in Sources */,
+				C5A4853C2306B91B002CC62A /* CalendarAndHistoryViewController.swift in Sources */,
 				F1A79DC922D8A5620018A8EF /* ManageItTableViewCell.swift in Sources */,
 				F186880A229D7E1F0029A663 /* OnboardViewController.swift in Sources */,
 				F1C2534522B2ACAA003156AA /* GoalCollectionViewCell.swift in Sources */,
@@ -1719,6 +1744,7 @@
 				C5A4853923069B0C002CC62A /* EditAccountDetailsViewController.swift in Sources */,
 				C5B1E56723045F6C000991DF /* ProfileConfigurator.swift in Sources */,
 				F19257FC22E7526E00FA5C6E /* CalendarActionsListViewController.swift in Sources */,
+				C5A485402306B94E002CC62A /* CalendarAndHistoryPresenter.swift in Sources */,
 				F1EBC7B922D38C3300BAA82D /* ThinkViewController.swift in Sources */,
 				F1C2533322B297B9003156AA /* UnlockPremiumTableViewCell.swift in Sources */,
 				C5B1E56023043DAE000991DF /* UnderlinedImageTitleView.swift in Sources */,
@@ -1754,6 +1780,7 @@
 				F158E2BC22C3C2C300FD671A /* FeelViewController.swift in Sources */,
 				F1C2535622BA8064003156AA /* ManifestViewController.swift in Sources */,
 				F1E8EFD722F45D42006A9D39 /* CostButton.swift in Sources */,
+				C5A485442306B979002CC62A /* CalendarAndHistoryRouter.swift in Sources */,
 				F10B69BF22EB168B00E47315 /* IdeasViewController.swift in Sources */,
 				C5B1E55D23043A31000991DF /* ConfigurableTableViewCell.swift in Sources */,
 				F183301C22E5CBD800BB7A9E /* ActionsListPresenter.swift in Sources */,
@@ -1807,6 +1834,7 @@
 				F190357822D87AF8001BC996 /* FixedPaddingTextView.swift in Sources */,
 				F1CECE1922E9C75000EA95EE /* ColorListCreateGoalTableViewCell.swift in Sources */,
 				F186884D229E9BD80029A663 /* UIFont+Extensions.swift in Sources */,
+				C5A4853E2306B934002CC62A /* CalendarAndHistoryConfigurator.swift in Sources */,
 				F141669B22C0EDD20020BF0F /* SettingActionPlanTableViewCell.swift in Sources */,
 				F183302322E6058100BB7A9E /* ActConfigurator.swift in Sources */,
 				F17CB26D22A6BDA60035ABAB /* SCPageControlView.swift in Sources */,

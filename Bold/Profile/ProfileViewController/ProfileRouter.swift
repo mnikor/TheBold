@@ -28,7 +28,7 @@ class ProfileRouter: ProfileRouterInputProtocol {
     func input(_ inputCase: ProfileRouterInput) {
         switch inputCase {
         case .performSegue(segueType: let segue):
-            viewController.perform(segue: segue, sender: viewController)
+            viewController.perform(segue: segue, sender: nil)
         }
     }
     

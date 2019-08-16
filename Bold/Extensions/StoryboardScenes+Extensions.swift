@@ -23,6 +23,8 @@ internal enum StoryboardScene {
 
     internal static let boldTipsViewController = SceneType<Bold.BoldTipsViewController>(storyboard: Act.self, identifier: "BoldTipsViewController")
 
+    internal static let calendarActionsListViewController = SceneType<Bold.CalendarActionsListViewController>(storyboard: Act.self, identifier: "CalendarActionsListViewController")
+
     internal static let createActionViewController = SceneType<Bold.CreateActionViewController>(storyboard: Act.self, identifier: "CreateActionViewController")
 
     internal static let createGoalViewController = SceneType<Bold.CreateGoalViewController>(storyboard: Act.self, identifier: "CreateGoalViewController")

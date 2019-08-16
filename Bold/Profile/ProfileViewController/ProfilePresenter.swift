@@ -78,6 +78,7 @@ class ProfilePresenter: ProfilePresenterInputProtocol {
     }
     
     private func calendar() {
+        router.input(.performSegue(segueType: .showCalendarAndHistoryIdentifier))
         // TODO
     }
     

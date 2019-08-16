@@ -64,6 +64,7 @@
                         <outlet property="highNavigationBar" destination="3i7-dg-b0g" id="6vX-2Q-jah"/>
                         <outlet property="tableView" destination="ojz-3a-j8p" id="wtn-Vv-RsO"/>
                         <segue destination="bGt-SZ-1CH" kind="show" identifier="showAccountDetails" id="yts-4a-Wlv"/>
+                        <segue destination="X7n-Zd-RcJ" kind="show" identifier="showCalendarAndHistoryIdentifier" id="ZqT-Tt-Ws2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fxb-4G-3sP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -248,6 +249,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZvQ-Zx-iLd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2632.8000000000002" y="91.304347826086968"/>
+        </scene>
+        <!--Calendar And History View Controller-->
+        <scene sceneID="TzP-ac-IxT">
+            <objects>
+                <viewController id="X7n-Zd-RcJ" customClass="CalendarAndHistoryViewController" customModule="Bold" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="t4g-Te-ThA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Ue-qG-pJB">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6US-7L-ctF" firstAttribute="bottom" secondItem="1Ue-qG-pJB" secondAttribute="bottom" id="77q-iL-h5C"/>
+                            <constraint firstItem="1Ue-qG-pJB" firstAttribute="top" secondItem="6US-7L-ctF" secondAttribute="top" id="FS3-o8-wTn"/>
+                            <constraint firstItem="1Ue-qG-pJB" firstAttribute="leading" secondItem="6US-7L-ctF" secondAttribute="leading" id="hDr-JJ-4BM"/>
+                            <constraint firstItem="6US-7L-ctF" firstAttribute="trailing" secondItem="1Ue-qG-pJB" secondAttribute="trailing" id="w2p-QH-K8F"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6US-7L-ctF"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="1Ue-qG-pJB" id="SOX-Tx-1J5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Olc-4d-ddn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2018" y="-745"/>
         </scene>
     </scenes>
 </document>

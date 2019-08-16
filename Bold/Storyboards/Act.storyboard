@@ -371,7 +371,7 @@
         <!--Calendar Actions List View Controller-->
         <scene sceneID="Hf2-QE-YJk">
             <objects>
-                <viewController id="hVi-Tn-22G" customClass="CalendarActionsListViewController" customModule="Bold" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalendarActionsListViewController" id="hVi-Tn-22G" customClass="CalendarActionsListViewController" customModule="Bold" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mim-Ml-Ipr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -935,7 +935,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNh-es-uCw">
-                                                <rect key="frame" x="30" y="30" width="32" height="22"/>
+                                                <rect key="frame" x="30" y="30" width="26" height="19"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
                                                 <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                                                 <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -944,13 +944,13 @@
                                                 </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5min" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MtE-Nz-sI3">
-                                                <rect key="frame" x="274" y="32" width="39" height="18.5"/>
+                                                <rect key="frame" x="274" y="30.5" width="39" height="18.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="eKh-gP-rD7">
-                                                <rect key="frame" x="30" y="166.5" width="283" height="124.5"/>
+                                                <rect key="frame" x="30" y="219" width="283" height="72"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arnold Schvarzenegger" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0m-yK-neO">
                                                         <rect key="frame" x="0.0" y="0.0" width="203" height="21"/>
@@ -959,7 +959,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Morning intention" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRk-ho-FD0" customClass="FixedPaddingTextView" customModule="Bold" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="35" width="152" height="89.5"/>
+                                                        <rect key="frame" x="0.0" y="35" width="281.5" height="37"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="30"/>
