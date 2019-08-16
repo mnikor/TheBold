@@ -19,6 +19,7 @@ class LeftMenuViewController: MenuViewController {
         super.viewDidLoad()
 
         menuItems = [.home, .feel, .think, .act, .settings]
+        menuBottomView.delegate = self
     }
 }
 
@@ -46,3 +47,17 @@ extension LeftMenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension LeftMenuViewController: MenuBottomViewDelegate {
+    func tapShowUsetProfile() {
+        guard let menuContainerViewController = self.menuContainerViewController else {
+            return
+        }
+        menuContainerViewController.selectContentViewController(menuContainerViewController.contentViewControllers[5])
+        menuContainerViewController.hideSideMenu()
+    }
+    
+    func tapShowLogIn() {
+        // TODO
+    }
+    
+}

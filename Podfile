@@ -12,5 +12,6 @@ target 'Bold' do
     pod 'RxCocoa'
     pod 'SwiftVideoBackground'
     pod 'JTAppleCalendar', '~> 8.0'
+    pod 'SnapKit'
 
 end

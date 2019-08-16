@@ -32,6 +32,10 @@ internal enum StoryboardSegue {
   internal enum Home: String, SegueType {
     case manifestIdentifier
   }
+  internal enum Profile: String, SegueType {
+    case editItem
+    case showAccountDetails
+  }
   internal enum Think: String, SegueType {
     case citationIdentifier
     case showItem

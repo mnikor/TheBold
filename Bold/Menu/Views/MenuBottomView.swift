@@ -26,7 +26,7 @@ class MenuBottomView: UIView {
     @IBOutlet weak var subtitleLabel: UILabel!
 
     weak var delegate: MenuBottomViewDelegate?
-    var typeView: MenuBottomViewType?
+    var typeView: MenuBottomViewType? = .user
     
     override init(frame: CGRect) {
         super.init(frame: frame)
