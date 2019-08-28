@@ -83,7 +83,7 @@ internal enum StoryboardScene {
   internal enum Settings: StoryboardType {
     internal static let storyboardName = "Settings"
 
-    internal static let initialScene = InitialSceneType<UIKit.UIViewController>(storyboard: Settings.self)
+    internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: Settings.self)
   }
   internal enum Splash: StoryboardType {
     internal static let storyboardName = "Splash"

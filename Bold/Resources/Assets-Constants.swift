@@ -141,8 +141,6 @@ internal enum Asset {
   internal static let listCalendar = ImageAsset(name: "listCalendar")
   internal static let logoSmall = ImageAsset(name: "logoSmall")
   internal static let menuBlueIcon = ImageAsset(name: "menuBlueIcon")
-  internal static let navTemp = ImageAsset(name: "navTemp")
-  internal static let navigationBlueImage = ImageAsset(name: "navigationBlueImage")
   internal static let passwordEye = ImageAsset(name: "passwordEye")
   internal static let plusIcon = ImageAsset(name: "plusIcon")
   internal static let rightArrowIcon = ImageAsset(name: "rightArrowIcon")

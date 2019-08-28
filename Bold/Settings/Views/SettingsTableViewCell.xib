@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="67" id="edU-AI-Osp" customClass="SettingsTableViewCell" customModule="Bold" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="467" height="67"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="edU-AI-Osp" id="jNL-7F-XFf">
+                <rect key="frame" x="0.0" y="0.0" width="467" height="66.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxG-Ca-6AN">
+                        <rect key="frame" x="20" y="23" width="427" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="UyG-jD-ePi">
+                        <rect key="frame" x="439" y="27.5" width="8" height="12"/>
+                    </imageView>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="f9F-FB-AOd">
+                        <rect key="frame" x="398" y="10" width="51" height="46.5"/>
+                        <color key="tintColor" red="0.95309144258499146" green="0.96054095029830933" blue="0.97255140542984009" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="onTintColor" red="0.27949750423431396" green="0.36988106369972229" blue="0.80396240949630737" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <connections>
+                            <action selector="toggleSwitchActionWithSender:" destination="edU-AI-Osp" eventType="valueChanged" id="fFE-it-VDr"/>
+                        </connections>
+                    </switch>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="f9F-FB-AOd" secondAttribute="bottom" constant="10" id="5Mr-iG-Mhr"/>
+                    <constraint firstItem="wxG-Ca-6AN" firstAttribute="leading" secondItem="jNL-7F-XFf" secondAttribute="leading" constant="20" id="7G9-VZ-OWY"/>
+                    <constraint firstItem="f9F-FB-AOd" firstAttribute="top" secondItem="jNL-7F-XFf" secondAttribute="top" constant="10" id="9H7-Js-VVb"/>
+                    <constraint firstItem="wxG-Ca-6AN" firstAttribute="centerY" secondItem="jNL-7F-XFf" secondAttribute="centerY" id="GRj-ov-xdY"/>
+                    <constraint firstAttribute="trailing" secondItem="wxG-Ca-6AN" secondAttribute="trailing" constant="20" id="JHq-bF-Uhw"/>
+                    <constraint firstItem="f9F-FB-AOd" firstAttribute="centerY" secondItem="jNL-7F-XFf" secondAttribute="centerY" id="MIS-aG-qI7"/>
+                    <constraint firstAttribute="trailing" secondItem="UyG-jD-ePi" secondAttribute="trailing" constant="20" id="REr-Vb-3Dk"/>
+                    <constraint firstItem="UyG-jD-ePi" firstAttribute="centerY" secondItem="jNL-7F-XFf" secondAttribute="centerY" id="iNR-TH-VwF"/>
+                    <constraint firstAttribute="trailing" secondItem="f9F-FB-AOd" secondAttribute="trailing" constant="20" id="rXb-LL-0Y2"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="arrowImage" destination="UyG-jD-ePi" id="4cJ-zq-gnT"/>
+                <outlet property="titleLabel" destination="wxG-Ca-6AN" id="PWA-Qb-gt8"/>
+                <outlet property="toggleSwitch" destination="f9F-FB-AOd" id="3hp-h6-tfg"/>
+            </connections>
+            <point key="canvasLocation" x="386.23188405797106" y="113.50446428571428"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="rightArrowIcon" width="8" height="12"/>
+    </resources>
+</document>
