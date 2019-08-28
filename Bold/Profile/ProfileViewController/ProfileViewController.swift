@@ -22,11 +22,24 @@ enum UserProfileListItem {
     case label(title: String)
 }
 
-enum ProfileAdditionalInfoCell: String, CaseIterable {
-    case accountDetails = "Account details"
-    case archivedGoals = "Archived goals"
-    case downloads = "Downloads"
-    case calendar = "Calendar & History"
+enum ProfileAdditionalInfoCell: CaseIterable {
+    case accountDetails
+    case archivedGoals
+    case downloads
+    case calendar
+    
+    var title : String {
+        switch self {
+        case .accountDetails:
+            return L10n.Profile.accountDetails
+        case .archivedGoals:
+            return L10n.Profile.archivedGoals
+        case .downloads:
+            return L10n.Profile.downloads
+        case .calendar:
+            return L10n.Profile.calendarAndHistory
+        }
+    }
 }
 
 enum ProfileViewInput {
@@ -50,6 +63,11 @@ class ProfileViewController: UIViewController, SideMenuItemContent, ProfileViewI
     @IBOutlet private weak var tableView: UITableView!
     
     private var dataSource: [UserProfileDataSourceItem] = []
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

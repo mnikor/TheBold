@@ -31,6 +31,8 @@ internal enum StoryboardScene {
 
     internal static let dateAlertViewController = SceneType<Bold.DateAlertViewController>(storyboard: Act.self, identifier: "DateAlertViewController")
 
+    internal static let downloadsActionViewController = SceneType<Bold.DownloadsActionViewController>(storyboard: Act.self, identifier: "DownloadsActionViewController")
+
     internal static let editActionPlanViewController = SceneType<Bold.EditActionPlanViewController>(storyboard: Act.self, identifier: "EditActionPlanViewController")
 
     internal static let ideasViewController = SceneType<Bold.IdeasViewController>(storyboard: Act.self, identifier: "IdeasViewController")

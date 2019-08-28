@@ -13,5 +13,6 @@ target 'Bold' do
     pod 'SwiftVideoBackground'
     pod 'JTAppleCalendar', '~> 8.0'
     pod 'SnapKit'
+    pod 'Cosmos', '~> 19.0'
 
 end

@@ -13,6 +13,8 @@ import Foundation
 internal enum L10n {
   /// Add to plan
   internal static let addToPlan = L10n.tr("Localizable", "AddToPlan")
+  /// All
+  internal static let all = L10n.tr("Localizable", "All")
   /// Cancel
   internal static let cancel = L10n.tr("Localizable", "Cancel")
   /// Delete
@@ -340,6 +342,75 @@ internal enum L10n {
   internal enum Player {
     /// Next practices
     internal static let nextPractices = L10n.tr("Localizable", "Player.NextPractices")
+  }
+
+  internal enum Profile {
+    /// Account details
+    internal static let accountDetails = L10n.tr("Localizable", "Profile.AccountDetails")
+    /// Archived goals
+    internal static let archivedGoals = L10n.tr("Localizable", "Profile.ArchivedGoals")
+    /// Calendar & History
+    internal static let calendarAndHistory = L10n.tr("Localizable", "Profile.CalendarAndHistory")
+    /// Downloads
+    internal static let downloads = L10n.tr("Localizable", "Profile.Downloads")
+    /// Level of mastery
+    internal static let levelOfMastery = L10n.tr("Localizable", "Profile.LevelOfMastery")
+    /// Review
+    internal static let review = L10n.tr("Localizable", "Profile.Review")
+    internal enum ArchivedGoals {
+      /// Completed
+      internal static let completed = L10n.tr("Localizable", "Profile.ArchivedGoals.Completed")
+      /// Failed
+      internal static let failed = L10n.tr("Localizable", "Profile.ArchivedGoals.Failed")
+    }
+    internal enum LevelOfMastery {
+      /// Apprentice
+      internal static let apprentice = L10n.tr("Localizable", "Profile.LevelOfMastery.Apprentice")
+      /// Intermidiate
+      internal static let intermidiate = L10n.tr("Localizable", "Profile.LevelOfMastery.Intermidiate")
+      /// Long-term goals — duration more than 10 months
+      internal static let longTermGoalsDuration = L10n.tr("Localizable", "Profile.LevelOfMastery.LongTermGoalsDuration")
+      /// Mid-term goals — duration 3 to 6 months
+      internal static let midTermGoalsDuration = L10n.tr("Localizable", "Profile.LevelOfMastery.MidTermGoalsDuration")
+      /// of 5 points
+      internal static let of = L10n.tr("Localizable", "Profile.LevelOfMastery.Of")
+      ///  points
+      internal static let points = L10n.tr("Localizable", "Profile.LevelOfMastery.Points")
+      /// Rising power
+      internal static let risingPower = L10n.tr("Localizable", "Profile.LevelOfMastery.RisingPower")
+      /// Seasoned
+      internal static let seasoned = L10n.tr("Localizable", "Profile.LevelOfMastery.Seasoned")
+      /// Unstoppable
+      internal static let unstoppable = L10n.tr("Localizable", "Profile.LevelOfMastery.Unstoppable")
+      internal enum Intermidiate {
+        /// 3 mid-term goals
+        internal static let midTermGoals = L10n.tr("Localizable", "Profile.LevelOfMastery.Intermidiate.MidTermGoals")
+      }
+      internal enum RisingPower {
+        /// 1 mid-term goal achieved
+        internal static let midTermGoalAchieved = L10n.tr("Localizable", "Profile.LevelOfMastery.RisingPower.MidTermGoalAchieved")
+      }
+      internal enum Seasoned {
+        /// 1 long-term and 5 mid-term achieved. Or 2 long-term goals achieved
+        internal static let longTermAndMidTermAchievedOrLongTermGoalsAchieved = L10n.tr("Localizable", "Profile.LevelOfMastery.Seasoned.LongTermAndMidTermAchievedOrLongTermGoalsAchieved")
+        /// Min 1000 points
+        internal static let minPoints = L10n.tr("Localizable", "Profile.LevelOfMastery.Seasoned.MinPoints")
+      }
+      internal enum Unstoppable {
+        /// 3 long-term and 1 long-term goals achieved and 7 mid-term achieved
+        internal static let longTermAndLongTermGoalsAchievedAndMidTermAchieved = L10n.tr("Localizable", "Profile.LevelOfMastery.Unstoppable.LongTermAndLongTermGoalsAchievedAndMidTermAchieved")
+      }
+    }
+    internal enum Review {
+      /// Description (Optional)
+      internal static let descriptionOptional = L10n.tr("Localizable", "Profile.Review.DescriptionOptional")
+      /// Send
+      internal static let send = L10n.tr("Localizable", "Profile.Review.Send")
+      /// Tap a star to rate it
+      internal static let tapStarToRateIt = L10n.tr("Localizable", "Profile.Review.TapStarToRateIt")
+      /// Title
+      internal static let title = L10n.tr("Localizable", "Profile.Review.Title")
+    }
   }
 
   internal enum Splash {

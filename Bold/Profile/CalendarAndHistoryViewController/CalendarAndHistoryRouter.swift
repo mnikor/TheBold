@@ -9,7 +9,6 @@
 import Foundation
 
 enum CalendarAndHistoryInputRouter {
-    case presentdCreateAction
     case editAction(EditActionPlanViewController)
     case yearMonthAlert(YearMonthAlertViewController)
 }
@@ -30,9 +29,6 @@ class CalendarAndHistoryRouter: RouterProtocol, CalendarAndHistoryInputRouterPro
     
     func input(_ inputCase: CalendarAndHistoryInputRouter) {
         switch inputCase {
-        case .presentdCreateAction:
-            let vc = StoryboardScene.Act.createActionViewController.instantiate()
-            viewController.navigationController?.pushViewController(vc, animated: true)
         case .editAction(let editVC):
             editVC.presentedBy(viewController)
         case .yearMonthAlert(let dateAlert):

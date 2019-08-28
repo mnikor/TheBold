@@ -46,16 +46,16 @@ class ProfileInteractor: ProfileInteractorInputProtocol {
                                                                   attributedTitle: nil,
                                                                   subtitle: "Apprentice",
                                                                   attributedSubtitle: nil,
-                                                                  rightImage: Asset.rightArrowIcon.image)
+                                                                  rightImage: Asset.rightArrowProfileIcon.image)
         let profileHeader = UserProfileListItem.imagedTitleSubtitle(viewModel: profileHeaderViewModel)
         return (section: .profileHeader,
                 items: [profileHeader])
     }
     
     private func createAdditionalInfoSection() -> UserProfileDataSourceItem {
-        let items = ProfileAdditionalInfoCell.allCases.compactMap { UserProfileListItem.underlinedImageTitle( viewModel: UnderlinedImageTitleViewModel(title: $0.rawValue,
+        let items = ProfileAdditionalInfoCell.allCases.compactMap { UserProfileListItem.underlinedImageTitle( viewModel: UnderlinedImageTitleViewModel(title: $0.title,
                                                                                                                                                 attributedTitle: nil,
-                                                                                                                                                image: Asset.rightArrowIcon.image,
+                                                                                                                                                image: Asset.rightArrowProfileIcon.image,
                                                                                                                                                 underlineColor: nil)) }
         
         return (section: .additionalInfo,
@@ -66,7 +66,7 @@ class ProfileInteractor: ProfileInteractorInputProtocol {
         let rateAppViewModel = ImagedTitleViewModel(leftImage: Asset.rateApp.image,
                                                                   title: "Johnathan Smith",
                                                                   attributedTitle: nil,
-                                                                  rightImage: Asset.rightArrowIcon.image)
+                                                                  rightImage: Asset.rightArrowProfileIcon.image)
         let rateAppItem = UserProfileListItem.imagedTitle(viewModel: rateAppViewModel)
         return (section: .rate,
                 items: [rateAppItem])

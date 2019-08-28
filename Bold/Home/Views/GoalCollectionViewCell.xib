@@ -62,26 +62,38 @@ start up</string>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 of 5 completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwd-xo-R6B">
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Qs3-RT-rG7">
                                 <rect key="frame" x="16" y="145" width="130" height="16"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="13"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="completedIcon" translatesAutoresizingMaskIntoConstraints="NO" id="nKl-NN-T1c">
+                                        <rect key="frame" x="0.0" y="1" width="14" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="2sZ-VG-6Qo"/>
+                                            <constraint firstAttribute="width" constant="14" id="bs8-Hh-6mO"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 of 5 completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwd-xo-R6B">
+                                        <rect key="frame" x="20" y="0.0" width="110" height="16"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="nwd-xo-R6B" firstAttribute="top" secondItem="Wus-e3-xJ8" secondAttribute="bottom" constant="14" id="126-2B-YqG"/>
                             <constraint firstItem="Wus-e3-xJ8" firstAttribute="leading" secondItem="2Yq-Qf-JsK" secondAttribute="leading" constant="16" id="3TF-yG-O1C"/>
                             <constraint firstItem="21m-tl-MGk" firstAttribute="leading" secondItem="2Yq-Qf-JsK" secondAttribute="leading" id="9gm-Lh-WbY"/>
                             <constraint firstItem="Wch-jd-rmp" firstAttribute="top" secondItem="2Yq-Qf-JsK" secondAttribute="top" constant="20" id="SAT-sg-WWH"/>
+                            <constraint firstItem="Qs3-RT-rG7" firstAttribute="top" secondItem="Wus-e3-xJ8" secondAttribute="bottom" constant="14" id="Wgj-fO-Joe"/>
                             <constraint firstAttribute="trailing" secondItem="21m-tl-MGk" secondAttribute="trailing" id="Yeu-f6-DGQ"/>
-                            <constraint firstAttribute="trailing" secondItem="nwd-xo-R6B" secondAttribute="trailing" constant="4" id="akc-Zt-32G"/>
                             <constraint firstAttribute="trailing" secondItem="Wus-e3-xJ8" secondAttribute="trailing" constant="4" id="fcM-aE-Q1Y"/>
-                            <constraint firstItem="nwd-xo-R6B" firstAttribute="leading" secondItem="2Yq-Qf-JsK" secondAttribute="leading" constant="16" id="m8a-e6-o0N"/>
+                            <constraint firstAttribute="trailing" secondItem="Qs3-RT-rG7" secondAttribute="trailing" constant="4" id="k6T-w8-vtx"/>
+                            <constraint firstAttribute="bottom" secondItem="Qs3-RT-rG7" secondAttribute="bottom" constant="20" id="knP-ua-56J"/>
                             <constraint firstItem="21m-tl-MGk" firstAttribute="top" secondItem="2Yq-Qf-JsK" secondAttribute="top" id="oAU-Hs-3tB"/>
-                            <constraint firstAttribute="bottom" secondItem="nwd-xo-R6B" secondAttribute="bottom" constant="20" id="uQJ-vq-2Eu"/>
                             <constraint firstItem="Wch-jd-rmp" firstAttribute="leading" secondItem="2Yq-Qf-JsK" secondAttribute="leading" constant="16" id="x1N-zs-Vb2"/>
+                            <constraint firstItem="Qs3-RT-rG7" firstAttribute="leading" secondItem="2Yq-Qf-JsK" secondAttribute="leading" constant="16" id="xcP-Gh-5LT"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -104,12 +116,14 @@ start up</string>
                 <outlet property="goalProgressLabel" destination="nwd-xo-R6B" id="cvS-8I-maE"/>
                 <outlet property="goalProgressView" destination="21m-tl-MGk" id="8aX-sM-Qmy"/>
                 <outlet property="goalView" destination="2Yq-Qf-JsK" id="4Ts-J6-bOc"/>
+                <outlet property="isDoneImageView" destination="nKl-NN-T1c" id="Y7q-qm-ngh"/>
                 <outlet property="titleLabel" destination="JBc-6g-Rx4" id="zq3-ba-Q56"/>
             </connections>
             <point key="canvasLocation" x="169.56521739130437" y="24.441964285714285"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="completedIcon" width="14" height="11"/>
         <image name="menuAct" width="30" height="30"/>
     </resources>
 </document>

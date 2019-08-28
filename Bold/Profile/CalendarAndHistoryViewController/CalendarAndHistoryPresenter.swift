@@ -9,7 +9,6 @@
 import Foundation
 
 enum CalendarAndHistoryInputPresenter {
-    case createAction
     case editAction(ActEntity)
     case longTapAction
     case yearMonthAlert
@@ -57,8 +56,6 @@ class CalendarAndHistoryPresenter: PresenterProtocol, CalendarAndHistoryInputPre
     
     func input(_ inputCase: CalendarAndHistoryInputPresenter) {
         switch inputCase {
-        case .createAction:
-            router.input(.presentdCreateAction)
         case .editAction(let entity):
             let editVC = EditActionPlanViewController.createController {
                 print("create")

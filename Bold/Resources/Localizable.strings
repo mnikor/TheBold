@@ -24,6 +24,7 @@
 "ListenPreview" = "Listen preview";
 "ReadPreview" = "Read preview";
 "Save" = "Save";
+"All" = "All";
 
 
 // Onboarding
@@ -216,3 +217,37 @@
 "Alert.SometimesActionsBecomeIrrelevantAsWeAdaptOurStrategy" = "Sometimes actions become irrelevant as we adapt our strategy!\n\nConfirm deletion";
 "Alert.AreYouSureYouWantToDeleteThisStake" = "Are you sure you want to delete this stake?\n\nConfirm deletion";
 "Alert.SometimesItsHardToFollowYourPlansDeleteThisTask" = "Sometimes it's hard to follow your plans, but on the other side is glory...\n\nSo, are you sure you want to delete this task?";
+
+// Profile
+
+"Profile.AccountDetails" = "Account details";
+"Profile.CalendarAndHistory" = "Calendar & History";
+
+"Profile.LevelOfMastery" = "Level of mastery";
+"Profile.LevelOfMastery.Apprentice" = "Apprentice";
+"Profile.LevelOfMastery.RisingPower" = "Rising power";
+"Profile.LevelOfMastery.Intermidiate" = "Intermidiate";
+"Profile.LevelOfMastery.Seasoned" = "Seasoned";
+"Profile.LevelOfMastery.Unstoppable" = "Unstoppable";
+"Profile.LevelOfMastery.MidTermGoalsDuration" = "Mid-term goals — duration 3 to 6 months";
+"Profile.LevelOfMastery.LongTermGoalsDuration" = "Long-term goals — duration more than 10 months";
+"Profile.LevelOfMastery.Of" = "of 5 points";
+"Profile.LevelOfMastery.Points" = " points";
+"Profile.LevelOfMastery.RisingPower.MidTermGoalAchieved" = "1 mid-term goal achieved";
+"Profile.LevelOfMastery.Intermidiate.MidTermGoals" = "3 mid-term goals";
+"Profile.LevelOfMastery.Seasoned.MinPoints" = "Min 1000 points";
+"Profile.LevelOfMastery.Seasoned.LongTermAndMidTermAchievedOrLongTermGoalsAchieved" = "1 long-term and 5 mid-term achieved. Or 2 long-term goals achieved";
+"Profile.LevelOfMastery.Unstoppable.LongTermAndLongTermGoalsAchievedAndMidTermAchieved" = "3 long-term and 1 long-term goals achieved and 7 mid-term achieved";
+
+"Profile.ArchivedGoals" = "Archived goals";
+"Profile.ArchivedGoals.Completed" = "Completed";
+"Profile.ArchivedGoals.Failed" = "Failed";
+
+"Profile.Downloads" = "Downloads";
+
+"Profile.Review" = "Review";
+"Profile.Review.Send" = "Send";
+"Profile.Review.TapStarToRateIt" = "Tap a star to rate it";
+"Profile.Review.Title" = "Title";
+"Profile.Review.DescriptionOptional" = "Description (Optional)";
+

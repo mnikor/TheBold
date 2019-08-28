@@ -11,6 +11,8 @@ import UIKit
 enum GoalCellType {
     case active
     case locked
+    case completed
+    case failed
 }
 
 class GoalCollectionViewCell: BaseCollectionViewCell {
@@ -21,6 +23,7 @@ class GoalCollectionViewCell: BaseCollectionViewCell {
     @IBOutlet weak var dueDateLabel: UILabel!
     @IBOutlet weak var goalProgressLabel: UILabel!
     @IBOutlet weak var goalImageView: UIImageView!
+    @IBOutlet weak var isDoneImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,6 +39,7 @@ class GoalCollectionViewCell: BaseCollectionViewCell {
         case .active:
             goalProgressView.progressTintColor = ColorName.goalGreen.color
             goalImageView.renderImageWithColor(image: Asset.menuAct.image, color: ColorName.goalGreen.color)
+            isDoneImageView.isHidden = true
         case .locked:
             goalProgressView.progressTintColor = ColorName.goalGreen.color
             goalImageView.renderImageWithColor(image: Asset.menuAct.image, color: UIColor.white)
@@ -45,6 +49,15 @@ class GoalCollectionViewCell: BaseCollectionViewCell {
             dueDateLabel.textColor = .white
             goalProgressLabel.textColor = .white
             goalProgressLabel.text = L10n.Act.goalIsLocked
+            isDoneImageView.isHidden = true
+        case .completed:
+            isDoneImageView.isHidden = false
+            isDoneImageView.image = Asset.completedIcon.image
+            goalProgressLabel.text = L10n.Profile.ArchivedGoals.completed
+        case .failed:
+            isDoneImageView.isHidden = false
+            isDoneImageView.image = Asset.failedIcon.image
+            goalProgressLabel.text = L10n.Profile.ArchivedGoals.failed
         }
     }
     

@@ -62,7 +62,7 @@ class ProfilePresenter: ProfilePresenterInputProtocol {
     }
     
     private func profileInfo() {
-        // TODO
+        router.input(.performSegue(segueType: .levelOfMasteryIdentifier))
     }
     
     private func accountDetails() {
@@ -70,20 +70,19 @@ class ProfilePresenter: ProfilePresenterInputProtocol {
     }
     
     private func archivedGoals() {
-        // TODO
+        router.input(.performSegue(segueType: .archivedGoalsIdentifier))
     }
     
     private func downloads() {
-        // TODO
+        router.input(.performSegue(segueType: .downloadsIdentifier))
     }
     
     private func calendar() {
         router.input(.performSegue(segueType: .showCalendarAndHistoryIdentifier))
-        // TODO
     }
     
     private func rateApp() {
-        // TODO
+        router.input(.performSegue(segueType: .rateIdentifier))
     }
     
     private func logout() {

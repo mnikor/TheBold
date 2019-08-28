@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="DownloadTableViewCell" customModule="Bold" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="73.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bqI-y7-sTk">
+                        <rect key="frame" x="16" y="12.5" width="49" height="49"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="49" id="Eob-TZ-R4T"/>
+                            <constraint firstAttribute="width" constant="49" id="ysi-9C-wb2"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FbG-Rf-OYY">
+                        <rect key="frame" x="285" y="0.0" width="35" height="73.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="73.5" id="4oU-ja-xF4"/>
+                            <constraint firstAttribute="width" constant="35" id="oU9-HM-8dH"/>
+                        </constraints>
+                        <state key="normal" image="threeDotsVertIcon"/>
+                        <connections>
+                            <action selector="actionTreeDotsLabel:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="b9p-Hg-aU0"/>
+                        </connections>
+                    </button>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Yrj-BA-ffD">
+                        <rect key="frame" x="77" y="18.5" width="208" height="42"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Managing team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cj0-KY-aBK">
+                                <rect key="frame" x="0.0" y="0.0" width="208" height="18.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lesson" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOv-PJ-ulx">
+                                <rect key="frame" x="0.0" y="23.5" width="208" height="18.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
+                                <color key="textColor" red="0.46274509800000002" green="0.4941176471" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="FbG-Rf-OYY" secondAttribute="trailing" id="Bbx-eh-kwH"/>
+                    <constraint firstItem="Yrj-BA-ffD" firstAttribute="top" secondItem="bqI-y7-sTk" secondAttribute="top" constant="6" id="J4J-bo-qgf"/>
+                    <constraint firstItem="Yrj-BA-ffD" firstAttribute="leading" secondItem="bqI-y7-sTk" secondAttribute="trailing" constant="12" id="KIo-K9-7UI"/>
+                    <constraint firstItem="FbG-Rf-OYY" firstAttribute="leading" secondItem="Yrj-BA-ffD" secondAttribute="trailing" id="Lig-Da-hRS"/>
+                    <constraint firstItem="bqI-y7-sTk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="cFY-kb-4Zp"/>
+                    <constraint firstAttribute="bottom" secondItem="FbG-Rf-OYY" secondAttribute="bottom" id="hRg-7n-Lyy"/>
+                    <constraint firstItem="bqI-y7-sTk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="kyh-ab-jV4"/>
+                    <constraint firstItem="FbG-Rf-OYY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="rhJ-yP-g5c"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="coverImageView" destination="bqI-y7-sTk" id="Wkt-pz-BKt"/>
+                <outlet property="groupLabel" destination="TOv-PJ-ulx" id="Exr-l4-F6S"/>
+                <outlet property="heightConstraint" destination="4oU-ja-xF4" id="heE-gQ-1dq"/>
+                <outlet property="leftImageConstraint" destination="kyh-ab-jV4" id="9t7-sY-mzC"/>
+                <outlet property="paddingImageTextConstraint" destination="KIo-K9-7UI" id="czV-Zv-a0E"/>
+                <outlet property="tiltleLabel" destination="cj0-KY-aBK" id="hqe-fY-7ZZ"/>
+                <outlet property="treeDotsButton" destination="FbG-Rf-OYY" id="BGO-Vt-GVs"/>
+            </connections>
+            <point key="canvasLocation" x="-164" y="6"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="threeDotsVertIcon" width="3" height="17"/>
+    </resources>
+</document>

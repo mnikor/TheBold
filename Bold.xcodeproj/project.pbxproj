@@ -59,6 +59,17 @@
 		F10B69CB22EB2D9100E47315 /* IdeasTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B69C922EB2D9100E47315 /* IdeasTableViewCell.swift */; };
 		F10B69CC22EB2D9100E47315 /* IdeasTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F10B69CA22EB2D9100E47315 /* IdeasTableViewCell.xib */; };
 		F10B69CE22EB3D1F00E47315 /* IdeasFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B69CD22EB3D1F00E47315 /* IdeasFooterView.swift */; };
+		F1130CD7230BFF81008FA60D /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1130CD6230BFF81008FA60D /* CircularProgressBar.swift */; };
+		F1130CDB230D4B54008FA60D /* ArchivedGoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1130CDA230D4B54008FA60D /* ArchivedGoalsViewController.swift */; };
+		F1130CDD230D4B6A008FA60D /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1130CDC230D4B6A008FA60D /* DownloadsViewController.swift */; };
+		F1130CDF230E937C008FA60D /* WMSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1130CDE230E937C008FA60D /* WMSegment.swift */; };
+		F1130CE3230EC5BD008FA60D /* DownloadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1130CE1230EC5BD008FA60D /* DownloadTableViewCell.swift */; };
+		F1130CE4230EC5BD008FA60D /* DownloadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1130CE2230EC5BD008FA60D /* DownloadTableViewCell.xib */; };
+		F1130CE9230FE058008FA60D /* ZSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1130CE8230FE058008FA60D /* ZSegmentedControl.swift */; };
+		F1130CEC230FF34E008FA60D /* DownloadsActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1130CEB230FF34E008FA60D /* DownloadsActionViewController.swift */; };
+		F1130CEF230FFBEA008FA60D /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1130CED230FFBEA008FA60D /* SettingsTableViewCell.swift */; };
+		F1130CF0230FFBEA008FA60D /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1130CEE230FFBEA008FA60D /* SettingsTableViewCell.xib */; };
+		F1130CF223102076008FA60D /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1130CF123102076008FA60D /* ReviewViewController.swift */; };
 		F115629C22DDB15900399FA6 /* DescriptionAndLikesCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F115629B22DDB15900399FA6 /* DescriptionAndLikesCountViewController.swift */; };
 		F115629E22DF0B5C00399FA6 /* Description.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F115629D22DF0B5C00399FA6 /* Description.storyboard */; };
 		F11562A022DF20B100399FA6 /* ActViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F115629F22DF20B100399FA6 /* ActViewController.swift */; };
@@ -255,6 +266,18 @@
 		F1CECE2622EA0AC000EA95EE /* IconCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CECE2422EA0AC000EA95EE /* IconCollectionViewCell.xib */; };
 		F1D390F722D4E3AB00DF8700 /* CitationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D390F622D4E3AB00DF8700 /* CitationPageViewController.swift */; };
 		F1D390F922D4E3F800DF8700 /* CitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D390F822D4E3F800DF8700 /* CitationViewController.swift */; };
+		F1E698A52315640400438E3E /* LevelOfMasteryConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E698A42315640400438E3E /* LevelOfMasteryConfigurator.swift */; };
+		F1E698A72315641800438E3E /* LevelOfMasteryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E698A62315641800438E3E /* LevelOfMasteryPresenter.swift */; };
+		F1E698A92315642C00438E3E /* LevelOfMasteryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E698A82315642C00438E3E /* LevelOfMasteryInteractor.swift */; };
+		F1E698AB2315643A00438E3E /* LevelOfMasteryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E698AA2315643A00438E3E /* LevelOfMasteryRouter.swift */; };
+		F1E698AE2315721000438E3E /* DownloadsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E698AD2315721000438E3E /* DownloadsConfigurator.swift */; };
+		F1E698B02315721E00438E3E /* DownloadsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E698AF2315721E00438E3E /* DownloadsPresenter.swift */; };
+		F1E698B22315722C00438E3E /* DownloadsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E698B12315722C00438E3E /* DownloadsInteractor.swift */; };
+		F1E698B42315723900438E3E /* DownloadsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E698B32315723900438E3E /* DownloadsRouter.swift */; };
+		F1E698B723157E3D00438E3E /* ArchivedGoalsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E698B623157E3D00438E3E /* ArchivedGoalsConfigurator.swift */; };
+		F1E698B923157E4C00438E3E /* ArchivedGoalsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E698B823157E4C00438E3E /* ArchivedGoalsPresenter.swift */; };
+		F1E698BB23157E5D00438E3E /* ArchivedGoalsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E698BA23157E5D00438E3E /* ArchivedGoalsInteractor.swift */; };
+		F1E698BD23157E6A00438E3E /* ArchivedGoalsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E698BC23157E6A00438E3E /* ArchivedGoalsRouter.swift */; };
 		F1E8EFD422F45626006A9D39 /* Formatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E8EFD322F45626006A9D39 /* Formatter+Extension.swift */; };
 		F1E8EFD722F45D42006A9D39 /* CostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E8EFD622F45D42006A9D39 /* CostButton.swift */; };
 		F1E8EFDA22F484B2006A9D39 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E8EFD822F484B2006A9D39 /* CalendarTableViewCell.swift */; };
@@ -293,6 +316,10 @@
 		F1F4060B230311240091B774 /* RequestDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F4060A230311240091B774 /* RequestDescriptor.swift */; };
 		F1F4060D230313960091B774 /* ProfileRequestDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F4060C230313960091B774 /* ProfileRequestDescriptor.swift */; };
 		F1F40611230313FF0091B774 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F40610230313FF0091B774 /* Profile.swift */; };
+		F1F406262306F3D80091B774 /* LevelOfMasteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F406252306F3D80091B774 /* LevelOfMasteryViewController.swift */; };
+		F1F406322306F6BA0091B774 /* LevelOfMasteryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F406302306F6BA0091B774 /* LevelOfMasteryTableViewCell.swift */; };
+		F1F406332306F6BA0091B774 /* LevelOfMasteryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F406312306F6BA0091B774 /* LevelOfMasteryTableViewCell.xib */; };
+		F1F40635230AE2270091B774 /* LevelOfMasteryFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F40634230AE2270091B774 /* LevelOfMasteryFooterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -349,6 +376,17 @@
 		F10B69C922EB2D9100E47315 /* IdeasTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasTableViewCell.swift; sourceTree = "<group>"; };
 		F10B69CA22EB2D9100E47315 /* IdeasTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdeasTableViewCell.xib; sourceTree = "<group>"; };
 		F10B69CD22EB3D1F00E47315 /* IdeasFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasFooterView.swift; sourceTree = "<group>"; };
+		F1130CD6230BFF81008FA60D /* CircularProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
+		F1130CDA230D4B54008FA60D /* ArchivedGoalsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedGoalsViewController.swift; sourceTree = "<group>"; };
+		F1130CDC230D4B6A008FA60D /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
+		F1130CDE230E937C008FA60D /* WMSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WMSegment.swift; sourceTree = "<group>"; };
+		F1130CE1230EC5BD008FA60D /* DownloadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTableViewCell.swift; sourceTree = "<group>"; };
+		F1130CE2230EC5BD008FA60D /* DownloadTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadTableViewCell.xib; sourceTree = "<group>"; };
+		F1130CE8230FE058008FA60D /* ZSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZSegmentedControl.swift; sourceTree = "<group>"; };
+		F1130CEB230FF34E008FA60D /* DownloadsActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsActionViewController.swift; sourceTree = "<group>"; };
+		F1130CED230FFBEA008FA60D /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		F1130CEE230FFBEA008FA60D /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
+		F1130CF123102076008FA60D /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		F115629B22DDB15900399FA6 /* DescriptionAndLikesCountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionAndLikesCountViewController.swift; sourceTree = "<group>"; };
 		F115629D22DF0B5C00399FA6 /* Description.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Description.storyboard; sourceTree = "<group>"; };
 		F115629F22DF20B100399FA6 /* ActViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActViewController.swift; sourceTree = "<group>"; };
@@ -547,6 +585,18 @@
 		F1CECE2422EA0AC000EA95EE /* IconCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconCollectionViewCell.xib; sourceTree = "<group>"; };
 		F1D390F622D4E3AB00DF8700 /* CitationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitationPageViewController.swift; sourceTree = "<group>"; };
 		F1D390F822D4E3F800DF8700 /* CitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitationViewController.swift; sourceTree = "<group>"; };
+		F1E698A42315640400438E3E /* LevelOfMasteryConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfMasteryConfigurator.swift; sourceTree = "<group>"; };
+		F1E698A62315641800438E3E /* LevelOfMasteryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfMasteryPresenter.swift; sourceTree = "<group>"; };
+		F1E698A82315642C00438E3E /* LevelOfMasteryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfMasteryInteractor.swift; sourceTree = "<group>"; };
+		F1E698AA2315643A00438E3E /* LevelOfMasteryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfMasteryRouter.swift; sourceTree = "<group>"; };
+		F1E698AD2315721000438E3E /* DownloadsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsConfigurator.swift; sourceTree = "<group>"; };
+		F1E698AF2315721E00438E3E /* DownloadsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsPresenter.swift; sourceTree = "<group>"; };
+		F1E698B12315722C00438E3E /* DownloadsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsInteractor.swift; sourceTree = "<group>"; };
+		F1E698B32315723900438E3E /* DownloadsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsRouter.swift; sourceTree = "<group>"; };
+		F1E698B623157E3D00438E3E /* ArchivedGoalsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedGoalsConfigurator.swift; sourceTree = "<group>"; };
+		F1E698B823157E4C00438E3E /* ArchivedGoalsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedGoalsPresenter.swift; sourceTree = "<group>"; };
+		F1E698BA23157E5D00438E3E /* ArchivedGoalsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedGoalsInteractor.swift; sourceTree = "<group>"; };
+		F1E698BC23157E6A00438E3E /* ArchivedGoalsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedGoalsRouter.swift; sourceTree = "<group>"; };
 		F1E8EFD322F45626006A9D39 /* Formatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Extension.swift"; sourceTree = "<group>"; };
 		F1E8EFD622F45D42006A9D39 /* CostButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostButton.swift; sourceTree = "<group>"; };
 		F1E8EFD822F484B2006A9D39 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
@@ -585,6 +635,10 @@
 		F1F4060A230311240091B774 /* RequestDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDescriptor.swift; sourceTree = "<group>"; };
 		F1F4060C230313960091B774 /* ProfileRequestDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRequestDescriptor.swift; sourceTree = "<group>"; };
 		F1F40610230313FF0091B774 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		F1F406252306F3D80091B774 /* LevelOfMasteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfMasteryViewController.swift; sourceTree = "<group>"; };
+		F1F406302306F6BA0091B774 /* LevelOfMasteryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfMasteryTableViewCell.swift; sourceTree = "<group>"; };
+		F1F406312306F6BA0091B774 /* LevelOfMasteryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelOfMasteryTableViewCell.xib; sourceTree = "<group>"; };
+		F1F40634230AE2270091B774 /* LevelOfMasteryFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfMasteryFooterView.swift; sourceTree = "<group>"; };
 		F772C2D45E719D311FE396F6 /* Pods-Bold.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bold.debug.xcconfig"; path = "Target Support Files/Pods-Bold/Pods-Bold.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -790,6 +844,30 @@
 				F10B69C722EB172900E47315 /* IdeasRouter.swift */,
 			);
 			path = IdeasViewController;
+			sourceTree = "<group>";
+		};
+		F1130CD8230BFF9E008FA60D /* ProgressAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				F1130CD6230BFF81008FA60D /* CircularProgressBar.swift */,
+			);
+			path = ProgressAnimation;
+			sourceTree = "<group>";
+		};
+		F1130CE0230E9380008FA60D /* WMSegment */ = {
+			isa = PBXGroup;
+			children = (
+				F1130CDE230E937C008FA60D /* WMSegment.swift */,
+			);
+			path = WMSegment;
+			sourceTree = "<group>";
+		};
+		F1130CEA230FE062008FA60D /* ZSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				F1130CE8230FE058008FA60D /* ZSegmentedControl.swift */,
+			);
+			path = ZSegmentedControl;
 			sourceTree = "<group>";
 		};
 		F141668822BD00CB0020BF0F /* Services */ = {
@@ -1263,6 +1341,7 @@
 				F1CCC71222CE228800E7B637 /* AddActionPlanViewController.swift */,
 				F1CCC71D22CE854900E7B637 /* EditActionPlanViewController.swift */,
 				F19A98BB22D7A06F00A0492E /* StartActionViewController.swift */,
+				F1130CEB230FF34E008FA60D /* DownloadsActionViewController.swift */,
 				F19A98AD22D6551E00A0492E /* BaseAlertViewController.swift */,
 				F19A98A622D6167D00A0492E /* AlertViews */,
 				F1CCC71422CE256400E7B637 /* Views */,
@@ -1299,6 +1378,11 @@
 				C59E5E2E230581C5005DCD18 /* AccountDetailsViewController */,
 				C5A4853723069AC1002CC62A /* EditAccountDetailsViewController */,
 				C5A4853A2306B8B7002CC62A /* CalendarAndHistoryViewController */,
+				F1E698A3231563D600438E3E /* LevelOfMasteryViewController */,
+				F1E698B523157E1600438E3E /* ArchivedGoalsViewController */,
+				F1E698AC231571F200438E3E /* DownloadsViewController */,
+				F1130CF123102076008FA60D /* ReviewViewController.swift */,
+				F1F406272306F3FD0091B774 /* Views */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1356,6 +1440,42 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		F1E698A3231563D600438E3E /* LevelOfMasteryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F1F406252306F3D80091B774 /* LevelOfMasteryViewController.swift */,
+				F1E698A42315640400438E3E /* LevelOfMasteryConfigurator.swift */,
+				F1E698A62315641800438E3E /* LevelOfMasteryPresenter.swift */,
+				F1E698A82315642C00438E3E /* LevelOfMasteryInteractor.swift */,
+				F1E698AA2315643A00438E3E /* LevelOfMasteryRouter.swift */,
+			);
+			path = LevelOfMasteryViewController;
+			sourceTree = "<group>";
+		};
+		F1E698AC231571F200438E3E /* DownloadsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F1130CDC230D4B6A008FA60D /* DownloadsViewController.swift */,
+				F1E698AD2315721000438E3E /* DownloadsConfigurator.swift */,
+				F1E698AF2315721E00438E3E /* DownloadsPresenter.swift */,
+				F1E698B12315722C00438E3E /* DownloadsInteractor.swift */,
+				F1E698B32315723900438E3E /* DownloadsRouter.swift */,
+			);
+			path = DownloadsViewController;
+			sourceTree = "<group>";
+		};
+		F1E698B523157E1600438E3E /* ArchivedGoalsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F1130CDA230D4B54008FA60D /* ArchivedGoalsViewController.swift */,
+				F1E698B623157E3D00438E3E /* ArchivedGoalsConfigurator.swift */,
+				F1E698B823157E4C00438E3E /* ArchivedGoalsPresenter.swift */,
+				F1E698BA23157E5D00438E3E /* ArchivedGoalsInteractor.swift */,
+				F1E698BC23157E6A00438E3E /* ArchivedGoalsRouter.swift */,
+			);
+			path = ArchivedGoalsViewController;
+			sourceTree = "<group>";
+		};
 		F1E8EFD522F45D1C006A9D39 /* Customs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1380,6 +1500,9 @@
 		F1EA1CBB22E1E97A00BB328F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1130CEA230FE062008FA60D /* ZSegmentedControl */,
+				F1130CE0230E9380008FA60D /* WMSegment */,
+				F1130CD8230BFF9E008FA60D /* ProgressAnimation */,
 				F1B2B1D722FD734C00C327B0 /* MonthYearPickerView */,
 				F1EA1CBC22E1E99300BB328F /* SCPageControlView */,
 			);
@@ -1420,6 +1543,20 @@
 				F1EBC7B422D3772100BAA82D /* CitationTableViewCell.swift */,
 				F1EBC7B522D3772100BAA82D /* CitationTableViewCell.xib */,
 				F1A79DD522DCAFA80018A8EF /* OverTabbarView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F1F406272306F3FD0091B774 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F1F406302306F6BA0091B774 /* LevelOfMasteryTableViewCell.swift */,
+				F1F406312306F6BA0091B774 /* LevelOfMasteryTableViewCell.xib */,
+				F1F40634230AE2270091B774 /* LevelOfMasteryFooterView.swift */,
+				F1130CE1230EC5BD008FA60D /* DownloadTableViewCell.swift */,
+				F1130CE2230EC5BD008FA60D /* DownloadTableViewCell.xib */,
+				F1130CED230FFBEA008FA60D /* SettingsTableViewCell.swift */,
+				F1130CEE230FFBEA008FA60D /* SettingsTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1528,6 +1665,7 @@
 				F1EAF59322E89925008073D7 /* HeaderWriteActionsTableViewCell.xib in Resources */,
 				F1868838229E90EF0029A663 /* Montserrat-Medium.ttf in Resources */,
 				F1A79DCA22D8A5620018A8EF /* ManageItTableViewCell.xib in Resources */,
+				F1F406332306F6BA0091B774 /* LevelOfMasteryTableViewCell.xib in Resources */,
 				F186883C229E90EF0029A663 /* Montserrat-Light.ttf in Resources */,
 				F18687E5229D56B10029A663 /* Assets.xcassets in Resources */,
 				F18687F2229D5EE30029A663 /* Auth.storyboard in Resources */,
@@ -1555,9 +1693,11 @@
 				F186883B229E90EF0029A663 /* Montserrat-ExtraLight.ttf in Resources */,
 				F1868837229E90EF0029A663 /* Montserrat-ThinItalic.ttf in Resources */,
 				F18687FC229D60510029A663 /* Act.storyboard in Resources */,
+				F1130CF0230FFBEA008FA60D /* SettingsTableViewCell.xib in Resources */,
 				F1868846229E98120029A663 /* Localizable.strings in Resources */,
 				F1868815229E8B9A0029A663 /* Splash.storyboard in Resources */,
 				F1C2533822B2A1BC003156AA /* ActivityCollectionTableViewCell.xib in Resources */,
+				F1130CE4230EC5BD008FA60D /* DownloadTableViewCell.xib in Resources */,
 				F1868843229E90EF0029A663 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
 				F19A98B222D7395600A0492E /* CongratulationsAlertView.xib in Resources */,
 				F11562A422DF2E9A00399FA6 /* StakeActionTableViewCell.xib in Resources */,
@@ -1643,6 +1783,7 @@
 				F141668122BCD7A10020BF0F /* ManifestConfigurator.swift in Sources */,
 				F1CCC71822CE474800E7B637 /* UIButton+Extensions.swift in Sources */,
 				F179977422B1413A0039879F /* MenuAnimator.swift in Sources */,
+				F1130CDD230D4B6A008FA60D /* DownloadsViewController.swift in Sources */,
 				F1868852229E9DA20029A663 /* L10n-Constants.swift in Sources */,
 				F14166A522C115B50020BF0F /* PlayerListView.swift in Sources */,
 				F179974D22AE615D0039879F /* Localizable.swift in Sources */,
@@ -1670,6 +1811,7 @@
 				F1EBC7B222CF70A000BAA82D /* AudioPlayer.swift in Sources */,
 				F1EA1CB722E1C65900BB328F /* CreateActionViewController.swift in Sources */,
 				F141668A22BD00F20020BF0F /* VideoService.swift in Sources */,
+				F1E698BD23157E6A00438E3E /* ArchivedGoalsRouter.swift in Sources */,
 				F1B2B1CA22FB697100C327B0 /* DateCalendarCell.swift in Sources */,
 				F14166A322C1158C0020BF0F /* PlayerViewController.swift in Sources */,
 				F1EAF59822E8AA63008073D7 /* ConfigurateActionConfigurator.swift in Sources */,
@@ -1687,6 +1829,7 @@
 				C59E5E3823059414005DCD18 /* AccountDetailsRouter.swift in Sources */,
 				C5B1E56D23045FA4000991DF /* ProfileRouter.swift in Sources */,
 				F179977222B1413A0039879F /* MenuTransitioningDelegate.swift in Sources */,
+				F1E698B42315723900438E3E /* DownloadsRouter.swift in Sources */,
 				F162A78722C23352008292E8 /* ActionTableViewCell.swift in Sources */,
 				F186884B229E9BD80029A663 /* StoryboardSegues+Extensions.swift in Sources */,
 				F1CECE2122E9E5D600EA95EE /* ColorCollectionViewCell.swift in Sources */,
@@ -1697,8 +1840,10 @@
 				F1CCC70722CA5E3700E7B637 /* ActionsListViewController.swift in Sources */,
 				C5B1E56323043DC2000991DF /* UnderlinedImageTitleViewModel.swift in Sources */,
 				F179975E22AFF77B0039879F /* MenuTableViewCell.swift in Sources */,
+				F1E698A52315640400438E3E /* LevelOfMasteryConfigurator.swift in Sources */,
 				F1C2534C22B3F977003156AA /* HomeConfigurator.swift in Sources */,
 				F19A98A522D5FF4F00A0492E /* CustomDotsPageControl.swift in Sources */,
+				F1F406322306F6BA0091B774 /* LevelOfMasteryTableViewCell.swift in Sources */,
 				F141668322BCD7D20020BF0F /* ManifestPresenter.swift in Sources */,
 				F14166A022C106210020BF0F /* HeaderActionPlanTableViewCell.swift in Sources */,
 				F1CECE1522E9C73400EA95EE /* ColorCreateGoalTableViewCell.swift in Sources */,
@@ -1715,10 +1860,12 @@
 				C5B1E56B23045F99000991DF /* ProfilePresenter.swift in Sources */,
 				C59E5E3623059405005DCD18 /* AccountDetailsInteractor.swift in Sources */,
 				F1B2B1D222FC1A2100C327B0 /* CalendarDecorationView.swift in Sources */,
+				F1E698B723157E3D00438E3E /* ArchivedGoalsConfigurator.swift in Sources */,
 				C59E5E1E23055BDD005DCD18 /* ConfigurableLabel.swift in Sources */,
 				F1A79DD622DCAFA80018A8EF /* OverTabbarView.swift in Sources */,
 				F1EA1CA722E0776600BB328F /* UIImageView+Extensions.swift in Sources */,
 				F179974F22AE619C0039879F /* EmptyView.swift in Sources */,
+				F1E698AE2315721000438E3E /* DownloadsConfigurator.swift in Sources */,
 				F179976922B1319F0039879F /* HomeViewController.swift in Sources */,
 				F1CECE1D22E9C77600EA95EE /* IconListCreateGoalTableViewCell.swift in Sources */,
 				F107538122EF496F0078C71C /* ShareButtonTableViewCell.swift in Sources */,
@@ -1727,6 +1874,7 @@
 				F19A98B422D7573000A0492E /* MissedYouOneButtonAlertView.swift in Sources */,
 				F1CCC71322CE228800E7B637 /* AddActionPlanViewController.swift in Sources */,
 				F183302022E5CBF700BB7A9E /* ActionsListRouter.swift in Sources */,
+				F1130CE3230EC5BD008FA60D /* DownloadTableViewCell.swift in Sources */,
 				F1EA1CBE22E1EA9500BB328F /* UITableViewCell+Extensions.swift in Sources */,
 				F107537822EF1E550078C71C /* Action.swift in Sources */,
 				F1EA1CA922E07D2A00BB328F /* UILabel+Extensions.swift in Sources */,
@@ -1747,6 +1895,7 @@
 				C5A485402306B94E002CC62A /* CalendarAndHistoryPresenter.swift in Sources */,
 				F1EBC7B922D38C3300BAA82D /* ThinkViewController.swift in Sources */,
 				F1C2533322B297B9003156AA /* UnlockPremiumTableViewCell.swift in Sources */,
+				F1130CEC230FF34E008FA60D /* DownloadsActionViewController.swift in Sources */,
 				C5B1E56023043DAE000991DF /* UnderlinedImageTitleView.swift in Sources */,
 				F1E8EFD422F45626006A9D39 /* Formatter+Extension.swift in Sources */,
 				C59E5E2223056A30005DCD18 /* ImageTitleViewModel.swift in Sources */,
@@ -1756,6 +1905,7 @@
 				F1F4060D230313960091B774 /* ProfileRequestDescriptor.swift in Sources */,
 				F1EAF59A22E8AA79008073D7 /* ConfigurateActionPresenter.swift in Sources */,
 				F1B2B1D422FC62DD00C327B0 /* YearMonthAlertViewController.swift in Sources */,
+				F1E698B923157E4C00438E3E /* ArchivedGoalsPresenter.swift in Sources */,
 				F1EA1CB122E0BE6200BB328F /* EmptyActView.swift in Sources */,
 				F141669322C0DFC30020BF0F /* PlayerSmallView.swift in Sources */,
 				F1CCC71E22CE854900E7B637 /* EditActionPlanViewController.swift in Sources */,
@@ -1770,9 +1920,13 @@
 				F1CCC71B22CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.swift in Sources */,
 				F183303822E6F03700BB7A9E /* CreateActionPresenter.swift in Sources */,
 				F162A77E22C12C05008292E8 /* ActionCollectionViewCell.swift in Sources */,
+				F1E698B22315722C00438E3E /* DownloadsInteractor.swift in Sources */,
 				C5B1E54E23042913000991DF /* ImagedTitleSubtitleView.swift in Sources */,
+				F1E698B02315721E00438E3E /* DownloadsPresenter.swift in Sources */,
 				F183304722E714E800BB7A9E /* PlayerConfigurator.swift in Sources */,
+				F1F406262306F3D80091B774 /* LevelOfMasteryViewController.swift in Sources */,
 				F1C2535022B3F9C5003156AA /* HomeInteractor.swift in Sources */,
+				F1130CF223102076008FA60D /* ReviewViewController.swift in Sources */,
 				F18687DE229D56B00029A663 /* AppDelegate.swift in Sources */,
 				F107537F22EF49550078C71C /* ShareCardTableViewCell.swift in Sources */,
 				F1A79DD022D8A9560018A8EF /* ListenOrReadMaterialView.swift in Sources */,
@@ -1781,31 +1935,39 @@
 				F1C2535622BA8064003156AA /* ManifestViewController.swift in Sources */,
 				F1E8EFD722F45D42006A9D39 /* CostButton.swift in Sources */,
 				C5A485442306B979002CC62A /* CalendarAndHistoryRouter.swift in Sources */,
+				F1E698A92315642C00438E3E /* LevelOfMasteryInteractor.swift in Sources */,
 				F10B69BF22EB168B00E47315 /* IdeasViewController.swift in Sources */,
 				C5B1E55D23043A31000991DF /* ConfigurableTableViewCell.swift in Sources */,
 				F183301C22E5CBD800BB7A9E /* ActionsListPresenter.swift in Sources */,
 				F1C2534E22B3F9A9003156AA /* HomePresenter.swift in Sources */,
 				F183303E22E6F0D300BB7A9E /* CreateGoalConfigurator.swift in Sources */,
 				F1EAF59E22E8AA9A008073D7 /* ConfigurateActionRouter.swift in Sources */,
+				F1E698AB2315643A00438E3E /* LevelOfMasteryRouter.swift in Sources */,
+				F1130CE9230FE058008FA60D /* ZSegmentedControl.swift in Sources */,
 				F183303022E617B900BB7A9E /* AllGoalsInteractor.swift in Sources */,
 				C5B1E55523043865000991DF /* ViewModelConfigurable.swift in Sources */,
 				F107537622EF1E470078C71C /* Goal.swift in Sources */,
 				F107538C22F09B640078C71C /* DaysOfWeekTableViewCell.swift in Sources */,
 				F141668522BCD7E60020BF0F /* ManifestInteractor.swift in Sources */,
 				F19A98A822D616FB00A0492E /* DontGiveUpAlertView.swift in Sources */,
+				F1130CD7230BFF81008FA60D /* CircularProgressBar.swift in Sources */,
 				F1EA1CC022E1EAE300BB328F /* UIViewController+Extensions.swift in Sources */,
 				F1C2533B22B2A78A003156AA /* ActivityCollectionViewCell.swift in Sources */,
 				F183302E22E617A300BB7A9E /* AllGoalsPresenter.swift in Sources */,
 				F107537A22EF36670078C71C /* BoldTipsViewController.swift in Sources */,
 				F179975622AFB04B0039879F /* LocalizableViewController.swift in Sources */,
+				F1E698BB23157E5D00438E3E /* ArchivedGoalsInteractor.swift in Sources */,
 				F183302522E6059600BB7A9E /* ActPresenter.swift in Sources */,
 				F1EAF59222E89925008073D7 /* HeaderWriteActionsTableViewCell.swift in Sources */,
+				F1F40635230AE2270091B774 /* LevelOfMasteryFooterView.swift in Sources */,
+				F1E698A72315641800438E3E /* LevelOfMasteryPresenter.swift in Sources */,
 				F1D390F722D4E3AB00DF8700 /* CitationPageViewController.swift in Sources */,
 				C59E5E30230581F0005DCD18 /* AccountDetailsViewController.swift in Sources */,
 				F179977722B1413A0039879F /* SideMenuItemContent.swift in Sources */,
 				F1E8EFDA22F484B2006A9D39 /* CalendarTableViewCell.swift in Sources */,
 				F11562A022DF20B100399FA6 /* ActViewController.swift in Sources */,
 				F179977822B1413A0039879F /* Options.swift in Sources */,
+				F1130CEF230FFBEA008FA60D /* SettingsTableViewCell.swift in Sources */,
 				F13DEAD322AAC0B700BC3CA6 /* SignUpView.swift in Sources */,
 				F183304922E714F600BB7A9E /* PlayerPresenter.swift in Sources */,
 				F183302922E605B500BB7A9E /* ActRouter.swift in Sources */,
@@ -1835,6 +1997,7 @@
 				F1CECE1922E9C75000EA95EE /* ColorListCreateGoalTableViewCell.swift in Sources */,
 				F186884D229E9BD80029A663 /* UIFont+Extensions.swift in Sources */,
 				C5A4853E2306B934002CC62A /* CalendarAndHistoryConfigurator.swift in Sources */,
+				F1130CDB230D4B54008FA60D /* ArchivedGoalsViewController.swift in Sources */,
 				F141669B22C0EDD20020BF0F /* SettingActionPlanTableViewCell.swift in Sources */,
 				F183302322E6058100BB7A9E /* ActConfigurator.swift in Sources */,
 				F17CB26D22A6BDA60035ABAB /* SCPageControlView.swift in Sources */,
@@ -1845,6 +2008,7 @@
 				F115629C22DDB15900399FA6 /* DescriptionAndLikesCountViewController.swift in Sources */,
 				F107538822F093770078C71C /* BodyConfigureTableViewCell.swift in Sources */,
 				F183302C22E6178D00BB7A9E /* AllGoalsConfigurator.swift in Sources */,
+				F1130CDF230E937C008FA60D /* WMSegment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

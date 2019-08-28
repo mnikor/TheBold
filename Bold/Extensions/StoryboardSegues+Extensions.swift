@@ -33,7 +33,11 @@ internal enum StoryboardSegue {
     case manifestIdentifier
   }
   internal enum Profile: String, SegueType {
+    case archivedGoalsIdentifier
+    case downloadsIdentifier
     case editItem
+    case levelOfMasteryIdentifier
+    case rateIdentifier
     case showAccountDetails
     case showCalendarAndHistoryIdentifier
   }

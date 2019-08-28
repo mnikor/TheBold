@@ -46,8 +46,6 @@ class CalendarAndHistoryViewController: UIViewController, ViewProtocol {
         navigationController?.navigationBar.isHidden = false
         navigationItem.titleView = prepareTitleView()
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: Asset.arrowBack.image, style: .plain, target: self, action: #selector(backBarButtonTapped(_:)))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: Asset.plusTodayActions.image, style: .plain, target: self, action: #selector(tapCreateAction))
-        
     }
     
     private func prepareTitleView() -> UILabel {
@@ -57,10 +55,6 @@ class CalendarAndHistoryViewController: UIViewController, ViewProtocol {
         label.textAlignment = .center
         label.text = "Calendar & History"
         return label
-    }
-    
-    @objc func tapCreateAction() {
-        presenter.input(.createAction)
     }
     
     func registerXibs() {
