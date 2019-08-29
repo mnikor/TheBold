@@ -40,14 +40,16 @@ class SettingsRouter: SettingsInputRouterProtocol {
     func input(_ inputCase: SettingsInputRouter) {
         switch inputCase {
         case .present(let cellType):
-            var viewController: UIViewController!
-            let storyboard: UIStoryboard = StoryboardScene.Settings.storyboard
+            //var viewController: UIViewController!
+            //let storyboard: UIStoryboard = StoryboardScene.Settings.storyboard
             if cellType == .premium {
-                viewController = storyboard.instantiateViewController(withIdentifier: StoryboardSegue.Settings.premium.rawValue)
+                viewController.perform(segue: StoryboardSegue.Settings.premium)
+                //viewController = storyboard.instantiateViewController(withIdentifier: StoryboardSegue.Settings.premium.rawValue)
             } else if cellType == .terms || cellType == .privacy {
-                viewController = storyboard.instantiateViewController(withIdentifier: StoryboardSegue.Settings.termsPrivacy.rawValue)
+                viewController.perform(segue: StoryboardSegue.Settings.termsPrivacy)
+                //viewController = storyboard.instantiateViewController(withIdentifier: StoryboardSegue.Settings.termsPrivacy.rawValue)
             }
-            viewController.present(viewController, animated: true, completion: nil)
+            //viewController.present(viewController, animated: true, completion: nil)
         case .showMenu:
             viewController.showSideMenu()
         }

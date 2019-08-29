@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -237,6 +237,8 @@
 		F1CECE2622EA0AC000EA95EE /* IconCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CECE2422EA0AC000EA95EE /* IconCollectionViewCell.xib */; };
 		F1D390F722D4E3AB00DF8700 /* CitationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D390F622D4E3AB00DF8700 /* CitationPageViewController.swift */; };
 		F1D390F922D4E3F800DF8700 /* CitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D390F822D4E3F800DF8700 /* CitationViewController.swift */; };
+		F1E698C22317DF9100438E3E /* PremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E698C12317DF9100438E3E /* PremiumViewController.swift */; };
+		F1E698C52317DFC700438E3E /* TermsPrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E698C42317DFC700438E3E /* TermsPrivacyViewController.swift */; };
 		F1E8EFD422F45626006A9D39 /* Formatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E8EFD322F45626006A9D39 /* Formatter+Extension.swift */; };
 		F1E8EFD722F45D42006A9D39 /* CostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E8EFD622F45D42006A9D39 /* CostButton.swift */; };
 		F1E8EFDA22F484B2006A9D39 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E8EFD822F484B2006A9D39 /* CalendarTableViewCell.swift */; };
@@ -512,6 +514,8 @@
 		F1CECE2422EA0AC000EA95EE /* IconCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconCollectionViewCell.xib; sourceTree = "<group>"; };
 		F1D390F622D4E3AB00DF8700 /* CitationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitationPageViewController.swift; sourceTree = "<group>"; };
 		F1D390F822D4E3F800DF8700 /* CitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitationViewController.swift; sourceTree = "<group>"; };
+		F1E698C12317DF9100438E3E /* PremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewController.swift; sourceTree = "<group>"; };
+		F1E698C42317DFC700438E3E /* TermsPrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsPrivacyViewController.swift; sourceTree = "<group>"; };
 		F1E8EFD322F45626006A9D39 /* Formatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Extension.swift"; sourceTree = "<group>"; };
 		F1E8EFD622F45D42006A9D39 /* CostButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostButton.swift; sourceTree = "<group>"; };
 		F1E8EFD822F484B2006A9D39 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
@@ -575,11 +579,9 @@
 		3EFCA3AD2306BF5E00129DB4 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				3EFCA3AE2306BF7C00129DB4 /* SettingsViewController.swift */,
-				3EFCA3B02306BF8700129DB4 /* SettingsPresenter.swift */,
-				3EFCA3B22306BF9100129DB4 /* SettingsInteractor.swift */,
-				3EFCA3B42306BF9C00129DB4 /* SettingsRouter.swift */,
-				3EFCA3B62306BFA600129DB4 /* SettingsConfigurator.swift */,
+				F1E698C32317DFA200438E3E /* SettingsViewController */,
+				F1E698C12317DF9100438E3E /* PremiumViewController.swift */,
+				F1E698C42317DFC700438E3E /* TermsPrivacyViewController.swift */,
 				3EFCA3BB2306D46000129DB4 /* Views */,
 				3EFCA3B82306D01C00129DB4 /* Models */,
 			);
@@ -1190,6 +1192,18 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		F1E698C32317DFA200438E3E /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3EFCA3AE2306BF7C00129DB4 /* SettingsViewController.swift */,
+				3EFCA3B02306BF8700129DB4 /* SettingsPresenter.swift */,
+				3EFCA3B22306BF9100129DB4 /* SettingsInteractor.swift */,
+				3EFCA3B42306BF9C00129DB4 /* SettingsRouter.swift */,
+				3EFCA3B62306BFA600129DB4 /* SettingsConfigurator.swift */,
+			);
+			path = SettingsViewController;
+			sourceTree = "<group>";
+		};
 		F1E8EFD522F45D1C006A9D39 /* Customs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1415,30 +1429,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Bold/Pods-Bold-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftVideoBackground/SwiftVideoBackground.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Bold/Pods-Bold-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftVideoBackground.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Bold/Pods-Bold-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bold/Pods-Bold-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bold/Pods-Bold-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F122E115F93C750D82103E9D /* [CP] Check Pods Manifest.lock */ = {
@@ -1638,6 +1637,7 @@
 				F1E8EFDA22F484B2006A9D39 /* CalendarTableViewCell.swift in Sources */,
 				F11562A022DF20B100399FA6 /* ActViewController.swift in Sources */,
 				F179977822B1413A0039879F /* Options.swift in Sources */,
+				F1E698C22317DF9100438E3E /* PremiumViewController.swift in Sources */,
 				F13DEAD322AAC0B700BC3CA6 /* SignUpView.swift in Sources */,
 				F183304922E714F600BB7A9E /* PlayerPresenter.swift in Sources */,
 				F183302922E605B500BB7A9E /* ActRouter.swift in Sources */,
@@ -1649,6 +1649,7 @@
 				F1EBC7B622D3772100BAA82D /* CitationTableViewCell.swift in Sources */,
 				3EFCA3B72306BFA600129DB4 /* SettingsConfigurator.swift in Sources */,
 				F1EAF59522E8A987008073D7 /* ConfigurateActionViewController.swift in Sources */,
+				F1E698C52317DFC700438E3E /* TermsPrivacyViewController.swift in Sources */,
 				F179976022AFF8A90039879F /* MenuBottomView.swift in Sources */,
 				3EFCA3AF2306BF7C00129DB4 /* SettingsViewController.swift in Sources */,
 				F19257FF22E7529900FA5C6E /* CalendarActionsListConfigurator.swift in Sources */,
