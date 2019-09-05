@@ -67,7 +67,7 @@ class NotificationService: NSObject {
         }
     }
     
-    func createRepeatingNotification(title: String, body: String, repeatType: RepeatType) {
+    func createRepeatingNotification(title: String, body: String, repeatType: RepeatType, identifier: String?) {
         getLocalNotificationStatus { [weak self] status in
             guard let self = self,
                 status == .authorized
@@ -81,20 +81,24 @@ class NotificationService: NSObject {
                 triggers = self.createWeekdaysReminder(for: content, with: weekdays)
             }
             for trigger in triggers {
-                self.addRequest(with: "Local Notification", content: content, trigger: trigger)
+                self.addRequest(with: identifier ?? UUID().uuidString, content: content, trigger: trigger)
             }
         }
     }
     
-    func createReminder(title: String, body: String, date: Date, reminderType: ReminderType) {
+    func createReminder(title: String, body: String, date: Date, reminderType: ReminderType, identifier: String?) {
         getLocalNotificationStatus { [weak self] status in
             guard let self = self,
                 status == .authorized
                 else { return }
             let content = self.configureLocalNotificationContent(title: title, body: body)
             let trigger = self.createReminderTrigger(date: date, reminderType: reminderType)
-            self.addRequest(with: "Local Notification", content: content, trigger: trigger)
+            self.addRequest(with: identifier ?? UUID().uuidString, content: content, trigger: trigger)
         }
+    }
+    
+    func removeNotificationRequest(with identifier: String) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier] )
     }
     
     private func configureLocalNotificationContent(title: String, body: String) -> UNMutableNotificationContent {
@@ -131,6 +135,7 @@ class NotificationService: NSObject {
         return UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: false)
     }
     
+    // FIXME: - Create and fill request identifiers storage
     private func addRequest(with identifier: String, content: UNMutableNotificationContent, trigger: UNNotificationTrigger) {
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         
