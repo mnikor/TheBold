@@ -177,7 +177,8 @@ class ConfigurateActionViewController: UIViewController, ViewProtocol {
     
     func createGoal() {
         
-        headers = [ConfigureActionModel(headerType: ConfigureActionType.header(.chooseGoal),
+        headers = [
+        ConfigureActionModel(headerType: ConfigureActionType.header(.chooseGoal),
                                         bodysType: [ConfigureActionType.body(.goalName)]),
                    
                    ConfigureActionModel(headerType: ConfigureActionType.header(.orCreateNew),

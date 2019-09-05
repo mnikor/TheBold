@@ -36,6 +36,27 @@ enum DayWeekType {
         }
     }
     
+    var weekdayIndex: Int? {
+        let weekdaySymbol: String
+        switch self {
+        case .monday:
+            weekdaySymbol = "Monday"
+        case .tuesday:
+            weekdaySymbol = "Tuesday"
+        case .wednesday:
+            weekdaySymbol = "Wednesday"
+        case .thursday:
+            weekdaySymbol = "Thursday"
+        case .friday:
+            weekdaySymbol = "Friday"
+        case .saturday:
+            weekdaySymbol = "Saturday"
+        case .sunday:
+            weekdaySymbol = "Sunday"
+        }
+        return Calendar.autoupdatingCurrent.weekdaySymbols.firstIndex(of: weekdaySymbol)
+    }
+    
 }
 
 protocol DaysOfWeekTableViewCellDelegate: class {

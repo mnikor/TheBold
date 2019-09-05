@@ -12,6 +12,7 @@ enum CreateActionInputPresenter {
     case setting(AddActionCellType)
     case stake
     case share
+    case save
 }
 
 protocol CreateActionInputProtocol {
@@ -56,6 +57,9 @@ class CreateActionPresenter: PresenterProtocol, CreateActionInputProtocol {
             router.input(.stake)
         case .share:
             router.input(.share)
+        case .save:
+            // TODO: Create notification and save action
+            break
         }
     }
 }

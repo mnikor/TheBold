@@ -63,9 +63,8 @@ class CreateActionViewController: UIViewController, ViewProtocol {
             return
         }
         navigationController.navigationBar.shadowImage = UIImage()
-        
         navBar.configure(type: .action, save: {
-            print("Save")
+            self.presenter.input(.save)
         }) { [unowned self] in
             self.presenter.router.input(.cancel)
         }
@@ -161,7 +160,6 @@ extension CreateActionViewController: UITableViewDelegate, UITableViewDataSource
 }
 
 extension CreateActionViewController: ConfigurateActionViewControllerDelegate {
-    
     func updateData() {
         print("updateData")
     }
