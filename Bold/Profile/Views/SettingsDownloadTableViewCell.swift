@@ -1,5 +1,5 @@
 //
-//  SettingsTableViewCell.swift
+//  SettingsDownloadTableViewCell.swift
 //  Bold
 //
 //  Created by Alexander Kovalov on 8/23/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsTableViewCell: BaseTableViewCell {
+class SettingsDownloadTableViewCell: BaseTableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var arrowImageView: UIImageView!

@@ -51,7 +51,7 @@ class DownloadsActionViewController: UIViewController {
     
     func registerXibs() {
         tableView.registerNib(DownloadTableViewCell.self)
-        tableView.registerNib(SettingsTableViewCell.self)
+        tableView.registerNib(SettingsDownloadTableViewCell.self)
     }
     
     class func createController(item: DownloadsEntity, tapAddPlan: @escaping (() -> Void), tapDelete: @escaping (() -> Void)) -> DownloadsActionViewController {
@@ -127,7 +127,7 @@ extension DownloadsActionViewController: UITableViewDelegate, UITableViewDataSou
             }
             return cell
         }else {
-            let cell = tableView.dequeReusableCell(indexPath: indexPath) as SettingsTableViewCell
+            let cell = tableView.dequeReusableCell(indexPath: indexPath) as SettingsDownloadTableViewCell
             cell.config(type: paramAction.type)
             return cell
         }

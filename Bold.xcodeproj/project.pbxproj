@@ -67,8 +67,8 @@
 		F1130CE4230EC5BD008FA60D /* DownloadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1130CE2230EC5BD008FA60D /* DownloadTableViewCell.xib */; };
 		F1130CE9230FE058008FA60D /* ZSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1130CE8230FE058008FA60D /* ZSegmentedControl.swift */; };
 		F1130CEC230FF34E008FA60D /* DownloadsActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1130CEB230FF34E008FA60D /* DownloadsActionViewController.swift */; };
-		F1130CEF230FFBEA008FA60D /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1130CED230FFBEA008FA60D /* SettingsTableViewCell.swift */; };
-		F1130CF0230FFBEA008FA60D /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1130CEE230FFBEA008FA60D /* SettingsTableViewCell.xib */; };
+		F1130CEF230FFBEA008FA60D /* SettingsDownloadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1130CED230FFBEA008FA60D /* SettingsDownloadTableViewCell.swift */; };
+		F1130CF0230FFBEA008FA60D /* SettingsDownloadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1130CEE230FFBEA008FA60D /* SettingsDownloadTableViewCell.xib */; };
 		F1130CF223102076008FA60D /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1130CF123102076008FA60D /* ReviewViewController.swift */; };
 		F115629C22DDB15900399FA6 /* DescriptionAndLikesCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F115629B22DDB15900399FA6 /* DescriptionAndLikesCountViewController.swift */; };
 		F115629E22DF0B5C00399FA6 /* Description.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F115629D22DF0B5C00399FA6 /* Description.storyboard */; };
@@ -384,8 +384,8 @@
 		F1130CE2230EC5BD008FA60D /* DownloadTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadTableViewCell.xib; sourceTree = "<group>"; };
 		F1130CE8230FE058008FA60D /* ZSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZSegmentedControl.swift; sourceTree = "<group>"; };
 		F1130CEB230FF34E008FA60D /* DownloadsActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsActionViewController.swift; sourceTree = "<group>"; };
-		F1130CED230FFBEA008FA60D /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
-		F1130CEE230FFBEA008FA60D /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
+		F1130CED230FFBEA008FA60D /* SettingsDownloadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDownloadTableViewCell.swift; sourceTree = "<group>"; };
+		F1130CEE230FFBEA008FA60D /* SettingsDownloadTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsDownloadTableViewCell.xib; sourceTree = "<group>"; };
 		F1130CF123102076008FA60D /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		F115629B22DDB15900399FA6 /* DescriptionAndLikesCountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionAndLikesCountViewController.swift; sourceTree = "<group>"; };
 		F115629D22DF0B5C00399FA6 /* Description.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Description.storyboard; sourceTree = "<group>"; };
@@ -1555,8 +1555,8 @@
 				F1F40634230AE2270091B774 /* LevelOfMasteryFooterView.swift */,
 				F1130CE1230EC5BD008FA60D /* DownloadTableViewCell.swift */,
 				F1130CE2230EC5BD008FA60D /* DownloadTableViewCell.xib */,
-				F1130CED230FFBEA008FA60D /* SettingsTableViewCell.swift */,
-				F1130CEE230FFBEA008FA60D /* SettingsTableViewCell.xib */,
+				F1130CED230FFBEA008FA60D /* SettingsDownloadTableViewCell.swift */,
+				F1130CEE230FFBEA008FA60D /* SettingsDownloadTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1693,7 +1693,7 @@
 				F186883B229E90EF0029A663 /* Montserrat-ExtraLight.ttf in Resources */,
 				F1868837229E90EF0029A663 /* Montserrat-ThinItalic.ttf in Resources */,
 				F18687FC229D60510029A663 /* Act.storyboard in Resources */,
-				F1130CF0230FFBEA008FA60D /* SettingsTableViewCell.xib in Resources */,
+				F1130CF0230FFBEA008FA60D /* SettingsDownloadTableViewCell.xib in Resources */,
 				F1868846229E98120029A663 /* Localizable.strings in Resources */,
 				F1868815229E8B9A0029A663 /* Splash.storyboard in Resources */,
 				F1C2533822B2A1BC003156AA /* ActivityCollectionTableViewCell.xib in Resources */,
@@ -1967,7 +1967,7 @@
 				F1E8EFDA22F484B2006A9D39 /* CalendarTableViewCell.swift in Sources */,
 				F11562A022DF20B100399FA6 /* ActViewController.swift in Sources */,
 				F179977822B1413A0039879F /* Options.swift in Sources */,
-				F1130CEF230FFBEA008FA60D /* SettingsTableViewCell.swift in Sources */,
+				F1130CEF230FFBEA008FA60D /* SettingsDownloadTableViewCell.swift in Sources */,
 				F13DEAD322AAC0B700BC3CA6 /* SignUpView.swift in Sources */,
 				F183304922E714F600BB7A9E /* PlayerPresenter.swift in Sources */,
 				F183302922E605B500BB7A9E /* ActRouter.swift in Sources */,
