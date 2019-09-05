@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Goal: NSObject {
+class GoalTemp: NSObject {
     var name: String?
     var startDate: Date!
     var endDate: Date!

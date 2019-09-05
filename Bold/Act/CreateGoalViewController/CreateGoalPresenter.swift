@@ -32,8 +32,10 @@ class CreateGoalPresenter: PresenterProtocol, CreateGoalInputPresenterProtocol {
     var interactor: Interactor!
     var router: Router!
     
-    lazy var newGoal: Goal = {
-        return Goal(name: nil, startDate: Date(), endDate: Date(), color: .none, icon: .none)
+    //lazy var goalCD
+    
+    lazy var newGoal: GoalTemp = {
+        return GoalTemp(name: nil, startDate: Date(), endDate: Date(), color: .none, icon: .none)
     }()
     
     lazy var listSettings : [Array] = {
@@ -51,6 +53,8 @@ class CreateGoalPresenter: PresenterProtocol, CreateGoalInputPresenterProtocol {
     
     required init(view: View) {
         self.viewController = view
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

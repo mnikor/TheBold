@@ -8,15 +8,15 @@
 
 import UIKit
 
-class Action: NSObject {
+class ActionTemp: NSObject {
 
     var name: String?
     var duration: Date!
     var reminder: Date!
-    var goal: Goal!
+    var goal: GoalTemp!
     var stake: Double!
     
-    init(name: String?, duration: Date, reminder: Date, goal: Goal, stake: Double) {
+    init(name: String?, duration: Date, reminder: Date, goal: GoalTemp, stake: Double) {
         self.name = name
         self.duration = duration
         self.reminder = reminder

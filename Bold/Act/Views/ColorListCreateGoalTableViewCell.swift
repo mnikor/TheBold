@@ -8,35 +8,6 @@
 
 import UIKit
 
-enum ColorGoalType {
-    case orange
-    case red
-    case blueDark
-    case green
-    case yellow
-    case blue
-    case none
-    
-    func colorGoal() -> UIColor {
-        switch self {
-        case .orange:
-            return ColorName.primaryOrange.color
-        case .red:
-            return ColorName.primaryRed.color
-        case .blueDark:
-            return ColorName.secondaryBlue.color
-        case .green:
-            return ColorName.secondaryTurquoise.color
-        case .yellow:
-            return ColorName.secondaryYellow.color
-        case .blue:
-            return ColorName.primaryBlue.color
-        default:
-            return .white
-        }
-    }
-}
-
 private struct Constants {
     struct SizeCell {
         static let size : CGSize = CGSize(width: 30, height: 30)

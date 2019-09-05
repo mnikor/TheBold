@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Profile: NSObject {
+class ProfileTemp: NSObject {
     
     var id : String
     var name : String
