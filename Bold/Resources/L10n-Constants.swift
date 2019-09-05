@@ -413,6 +413,35 @@ internal enum L10n {
     }
   }
 
+  internal enum Settings {
+    /// Google Calendar
+    internal static let googleCalendar = L10n.tr("Localizable", "Settings.GoogleCalendar")
+    /// Goals and progress in iCloud
+    internal static let inCloud = L10n.tr("Localizable", "Settings.InCloud")
+    /// iOS Calendar
+    internal static let iosCalendar = L10n.tr("Localizable", "Settings.iOSCalendar")
+    /// Offline
+    internal static let offline = L10n.tr("Localizable", "Settings.Offline")
+    /// Download only on Wi-Fi
+    internal static let onWIFI = L10n.tr("Localizable", "Settings.OnWIFI")
+    /// Premium Account
+    internal static let premiumAccount = L10n.tr("Localizable", "Settings.PremiumAccount")
+    /// Privacy Policy
+    internal static let privacy = L10n.tr("Localizable", "Settings.Privacy")
+    /// Settings
+    internal static let settings = L10n.tr("Localizable", "Settings.Settings")
+    /// Sign Out
+    internal static let signOut = L10n.tr("Localizable", "Settings.SignOut")
+    /// Support
+    internal static let support = L10n.tr("Localizable", "Settings.Support")
+    /// Synchronis
+    internal static let synchronise = L10n.tr("Localizable", "Settings.Synchronise")
+    /// Terms & Conditions
+    internal static let terms = L10n.tr("Localizable", "Settings.Terms")
+    /// App version 1.1.1
+    internal static let version = L10n.tr("Localizable", "Settings.Version")
+  }
+
   internal enum Splash {
     /// Act
     internal static let act = L10n.tr("Localizable", "Splash.Act")

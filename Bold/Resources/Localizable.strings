@@ -88,6 +88,22 @@
 "Feel.Pep-talkSubtitle" = "Change the story you are telling yourself, because everything depends on it.";
 
 
+//Settings
+
+"Settings.Settings" = "Settings";
+"Settings.PremiumAccount" = "Premium Account";
+"Settings.Synchronise" = "Synchronis";
+"Settings.iOSCalendar" = "iOS Calendar";
+"Settings.GoogleCalendar" = "Google Calendar";
+"Settings.InCloud" = "Goals and progress in iCloud";
+"Settings.Offline" = "Offline";
+"Settings.OnWIFI" = "Download only on Wi-Fi";
+"Settings.Support" = "Support";
+"Settings.Terms" = "Terms & Conditions";
+"Settings.Privacy" = "Privacy Policy";
+"Settings.Version" = "App version 1.1.1";
+"Settings.SignOut" = "Sign Out";
+
 // Think
 
 "Think.ThinkBold" = "Think Bold";

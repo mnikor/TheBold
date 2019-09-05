@@ -41,6 +41,10 @@ internal enum StoryboardSegue {
     case showAccountDetails
     case showCalendarAndHistoryIdentifier
   }
+  internal enum Settings: String, SegueType {
+    case premium
+    case termsPrivacy
+  }
   internal enum Think: String, SegueType {
     case citationIdentifier
     case showItem
