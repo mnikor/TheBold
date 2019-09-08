@@ -469,16 +469,7 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="e3C-aB-zh8">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                                 <connections>
                                     <outlet property="dataSource" destination="HaI-PA-Uns" id="UbF-0K-8y1"/>
                                     <outlet property="delegate" destination="HaI-PA-Uns" id="AIr-4F-l9p"/>
@@ -950,7 +941,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="eKh-gP-rD7">
-                                                <rect key="frame" x="30" y="219" width="283" height="72"/>
+                                                <rect key="frame" x="30" y="166.5" width="283" height="124.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arnold Schvarzenegger" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0m-yK-neO">
                                                         <rect key="frame" x="0.0" y="0.0" width="203" height="21"/>
@@ -959,7 +950,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Morning intention" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRk-ho-FD0" customClass="FixedPaddingTextView" customModule="Bold" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="35" width="281.5" height="37"/>
+                                                        <rect key="frame" x="0.0" y="35" width="152" height="89.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="30"/>
@@ -1073,7 +1064,7 @@
                                                     <rect key="frame" x="16" y="32.5" width="343" height="322"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardShapeBackground" translatesAutoresizingMaskIntoConstraints="NO" id="C37-7N-JQM">
-                                                            <rect key="frame" x="146" y="0.0" width="197" height="276"/>
+                                                            <rect key="frame" x="146" y="0.0" width="197.00000000000006" height="276"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="197" id="COs-yO-dq3"/>
                                                                 <constraint firstAttribute="height" constant="276" id="FO2-jH-PWE"/>
@@ -1087,13 +1078,13 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My action is" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVL-rD-bwb">
-                                                            <rect key="frame" x="30" y="115" width="297" height="20"/>
+                                                            <rect key="frame" x="30" y="115" width="297" height="21"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Run 5km every morning" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQq-yA-pfu">
-                                                            <rect key="frame" x="30" y="145" width="297" height="70"/>
+                                                            <rect key="frame" x="30" y="146" width="297" height="73.5"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="30"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -1797,7 +1788,7 @@ foundation gcf-care.org</string>
         <image name="textBoldTips" width="375" height="635"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="76Y-Pg-rVT"/>
+        <segue reference="19i-Ov-A8Z"/>
         <segue reference="pAq-T2-3zm"/>
     </inferredMetricsTieBreakers>
 </document>

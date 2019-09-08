@@ -130,11 +130,11 @@ extension CreateActionViewController: UITableViewDelegate, UITableViewDataSource
         switch settings[indexPath.row].type {
         case .headerWriteActivity:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as HeaderWriteActionsTableViewCell
-            cell.config(typeHeader: .action)
+            //cell.config(typeHeader: .action)
             return cell
         case .duration, .reminder, .goal, .stake, .share :
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as SettingActionPlanTableViewCell
-            cell.config(item: settings[indexPath.row])
+            //cell.config(item: settings[indexPath.row])
             return cell
         default:
             return UITableViewCell()

@@ -28,11 +28,8 @@ class ColorListCreateGoalTableViewCell: BaseTableViewCell {
     
     weak var delegate: ColorListCreateGoalTableViewCellDelegate?
     
-    lazy var colors : [ColorGoalType] = {
-        return [.orange, .red, .blueDark, .green, .yellow, .blue]
-    }()
-    
-    var currentColor: ColorGoalType = .orange
+    var colors = [ColorGoalType]()
+    var currentColor : ColorGoalType!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,9 +45,16 @@ class ColorListCreateGoalTableViewCell: BaseTableViewCell {
         collectionView.registerNib(ColorCollectionViewCell.self)
     }
     
-    func config(currentColor: ColorGoalType) {
-        self.currentColor = currentColor
-        collectionView.reloadData()
+    func config(modelView: CreateGoalModel) {
+        
+        switch modelView.modelValue {
+        case .colors(let colorList, let selectColor):
+            self.colors = colorList
+            self.currentColor = selectColor
+            collectionView.reloadData()
+        default:
+            return
+        }
     }
 }
 

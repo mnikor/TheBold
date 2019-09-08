@@ -59,8 +59,9 @@ extension IdeasViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let idea = presenter.item(for: indexPath.row)
         let cell = tableView.dequeReusableCell(indexPath: indexPath) as IdeasTableViewCell
-        cell.config(type: presenter.item(for: indexPath.row), selectIdea: selectIdea)
+        cell.config(type: idea, selectIdea: selectIdea)
         return cell
     }
     

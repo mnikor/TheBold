@@ -16,14 +16,20 @@ class SettingActionPlanTableViewCell: BaseTableViewCell {
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var accessoryImageView: UIImageView!
 
-    func config(item: AddActionEntity) {
-        iconImageView.image = item.type.iconType()
-        titleLabel.text = item.type.textType()
-        valueLabel.isHidden = item.type.hideValue()
-        if item.currentValue != nil {
-            valueLabel.text = item.currentValue as? String
+    func config(modelView: CreateGoalModel) {
+        
+        iconImageView.image = modelView.type.iconType()
+        titleLabel.text = modelView.type.textType()
+        valueLabel.isHidden = modelView.type.hideValue()
+        accessoryImageView.isHidden = modelView.type.hideAccessoryIcon()
+        
+        switch modelView.modelValue {
+        case .value(let value):
+            valueLabel.text = value
+        case .date(let dateString):
+            valueLabel.text = dateString
+        default:
+            return
         }
-        accessoryImageView.isHidden = item.type.hideAccessoryIcon()
     }
-    
 }

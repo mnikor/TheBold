@@ -15,6 +15,7 @@ enum HeaderCreateType {
 
 protocol HeaderWriteActionsTableViewCellDelegate: class {
     func tapIdeas()
+    func editingNameIdea(nameIdea: String)
 }
 
 class HeaderWriteActionsTableViewCell: BaseTableViewCell {
@@ -35,17 +36,31 @@ class HeaderWriteActionsTableViewCell: BaseTableViewCell {
         nameActionsTextField.delegate = self
     }
     
-    func config(typeHeader: HeaderCreateType) {
+    func config(modelView: CreateGoalModel) {
         
-        nameActionsTextField.placeholder = typeHeader == .goal ? L10n.Act.Create.goalHeader : L10n.Act.Create.actionHeader
-        ideasButton.isHidden = typeHeader == .action
-        
+        switch modelView.modelValue {
+        case .header(let typeHeader, let nameString):
+            nameActionsTextField.placeholder = typeHeader == .goal ? L10n.Act.Create.goalHeader : L10n.Act.Create.actionHeader
+            ideasButton.isHidden = typeHeader == .action
+            if let name = nameString {
+                nameActionsTextField.text = name
+            }
+        default:
+            return
+        }
     }
     
 }
 
 extension HeaderWriteActionsTableViewCell: UITextFieldDelegate {
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.editingNameIdea(nameIdea: textField.text!)
+    }
     
 }

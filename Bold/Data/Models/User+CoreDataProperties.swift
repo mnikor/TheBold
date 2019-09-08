@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  
 //
-//  Created by Alexander Kovalov on 9/3/19.
+//  Created by Alexander Kovalov on 9/6/19.
 //
 //
 
@@ -21,5 +21,6 @@ extension User {
     @NSManaged public var iCloudOn: Bool
     @NSManaged public var levelOfMasteryPoints: Int32
     @NSManaged public var token: String?
+    @NSManaged public var firstOpenIdeas: Bool
 
 }

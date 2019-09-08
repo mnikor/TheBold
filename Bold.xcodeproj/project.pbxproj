@@ -351,6 +351,8 @@
 		F1F6ADCC23210DC800F6A925 /* Bold.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1F6ADCA23210DC800F6A925 /* Bold.xcdatamodeld */; };
 		F1F6ADCF23210E7700F6A925 /* NumberFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6ADCD23210E7600F6A925 /* NumberFormatter+Extension.swift */; };
 		F1F6ADD023210E7700F6A925 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6ADCE23210E7700F6A925 /* DateFormatter+Extension.swift */; };
+		F1F6ADD2232128FF00F6A925 /* CreateGoalSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6ADD1232128FF00F6A925 /* CreateGoalSectionModel.swift */; };
+		F1F6ADD72321297700F6A925 /* CreateGoalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6ADD62321297700F6A925 /* CreateGoalModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -702,6 +704,8 @@
 		F1F6ADCB23210DC800F6A925 /* Bold.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bold.xcdatamodel; sourceTree = "<group>"; };
 		F1F6ADCD23210E7600F6A925 /* NumberFormatter+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Extension.swift"; sourceTree = "<group>"; };
 		F1F6ADCE23210E7700F6A925 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
+		F1F6ADD1232128FF00F6A925 /* CreateGoalSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalSectionModel.swift; sourceTree = "<group>"; };
+		F1F6ADD62321297700F6A925 /* CreateGoalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1183,6 +1187,7 @@
 				F183303F22E6F0E100BB7A9E /* CreateGoalPresenter.swift */,
 				F183304122E6F0F000BB7A9E /* CreateGoalInteractor.swift */,
 				F183304322E6F0FD00BB7A9E /* CreateGoalRouter.swift */,
+				F1F6ADD32321290600F6A925 /* Model */,
 			);
 			path = CreateGoalViewController;
 			sourceTree = "<group>";
@@ -1694,6 +1699,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		F1F6ADD32321290600F6A925 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F1F6ADD1232128FF00F6A925 /* CreateGoalSectionModel.swift */,
+				F1F6ADD62321297700F6A925 /* CreateGoalModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2034,6 +2048,7 @@
 				F19A98BC22D7A06F00A0492E /* StartActionViewController.swift in Sources */,
 				C59E5E3A23059444005DCD18 /* AccountDetailsConfigurator.swift in Sources */,
 				F1F6ADB823210DB300F6A925 /* DataSource+Actions.swift in Sources */,
+				F1F6ADD2232128FF00F6A925 /* CreateGoalSectionModel.swift in Sources */,
 				F179977522B1413A0039879F /* SideMenuItemOptions.swift in Sources */,
 				C5A4853923069B0C002CC62A /* EditAccountDetailsViewController.swift in Sources */,
 				C5B1E56723045F6C000991DF /* ProfileConfigurator.swift in Sources */,
@@ -2172,6 +2187,7 @@
 				F115629C22DDB15900399FA6 /* DescriptionAndLikesCountViewController.swift in Sources */,
 				F107538822F093770078C71C /* BodyConfigureTableViewCell.swift in Sources */,
 				F183302C22E6178D00BB7A9E /* AllGoalsConfigurator.swift in Sources */,
+				F1F6ADD72321297700F6A925 /* CreateGoalModel.swift in Sources */,
 				F1130CDF230E937C008FA60D /* WMSegment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

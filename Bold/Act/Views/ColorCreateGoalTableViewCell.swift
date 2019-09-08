@@ -21,11 +21,17 @@ class ColorCreateGoalTableViewCell: BaseTableViewCell {
         colorView.layer.cornerRadius = colorView.bounds.size.height / 2
     }
     
-    func config(item: AddActionEntity, colorType: ColorGoalType) {
+    func config(modelView: CreateGoalModel) {
         
-        iconImageView.image = item.type.iconType()
-        titleLabel.text = item.type.textType()
-        colorView.backgroundColor = colorType.colorGoal()
+        iconImageView.image = modelView.type.iconType()
+        titleLabel.text = modelView.type.textType()
+        
+        switch modelView.modelValue {
+        case .color(let selectColor):
+            colorView.backgroundColor = selectColor.colorGoal()
+        default:
+            return
+        }
     }
     
 }

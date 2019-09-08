@@ -34,10 +34,7 @@ class IconListCreateGoalTableViewCell: BaseTableViewCell {
     
     weak var delegate: IconListCreateGoalTableViewCellDelegate?
     
-    lazy var icons : [IdeasType] = {
-        return [.marathon, .triathlon, .charityProject, .writeBook, .quitSmoking, .publicSpeech, .skyDiving, .launchStartUp]
-    }()
-    
+    var icons : [IdeasType]!
     var currentColor: ColorGoalType = .none
     var currentIcon : IdeasType = .none
     
@@ -54,11 +51,17 @@ class IconListCreateGoalTableViewCell: BaseTableViewCell {
         collectionView.registerNib(IconCollectionViewCell.self)
     }
     
-    func config(selectIcon: IdeasType, selectColor: ColorGoalType) {
+    func config(modelView: CreateGoalModel) {
         
-        self.currentIcon = selectIcon
-        self.currentColor = selectColor
-        collectionView.reloadData()
+        switch modelView.modelValue {
+        case .icons(let icons, let selectIcon, let selectColor):
+            self.icons = icons
+            self.currentIcon = selectIcon
+            self.currentColor = selectColor
+            collectionView.reloadData()
+        default:
+            return
+        }
     }
 }
 

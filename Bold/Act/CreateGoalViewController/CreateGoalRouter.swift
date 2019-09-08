@@ -9,7 +9,7 @@
 import Foundation
 
 enum CreateGoalInputRouter {
-    case ideas
+    case ideasPresent(IdeasViewController)
     case cancel
     case presentDateAlert(DateAlertViewController)
 }
@@ -30,18 +30,11 @@ class CreateGoalRouter: RouterProtocol, CreateGoalInputRouterProtocol {
     
     func input(_ inputCase: CreateGoalInputRouter) {
         switch inputCase {
-        case .ideas:
-            print("dfsf")
-            let ideasVC = StoryboardScene.Act.ideasViewController.instantiate()
+        case .ideasPresent(let ideasVC):
+//            let ideasVC = StoryboardScene.Act.ideasViewController.instantiate()
+//            ideasVC.delegate = viewController
+//            ideasVC.selectIdea = selectIdea
             viewController.navigationController?.pushViewController(ideasVC, animated: true)
-//            let dateVC = StoryboardScene.Act.dateAlertViewController.instantiate()
-//            viewController.present(dateVC, animated: true, completion: nil)
-            
-//            let vc = DateAlertViewController.createController(type: .endDate, currentDate: nil) { (selectDate) in
-//                print("selecDate = \(selectDate)")
-//            }
-//            vc.presentedBy(viewController)
-            
         case .cancel:
             viewController.navigationController?.popViewController(animated: true)
         case .presentDateAlert(let alertVC):

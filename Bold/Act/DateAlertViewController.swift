@@ -61,6 +61,8 @@ class DateAlertViewController: UIViewController {
         super.viewDidLoad()
 
         titleTextLabel.text = dateType.titleText
+        datePicker.date = selectDate
+        
         overlayView.alpha = 0
         bottomContentViewConstraint.constant = -self.contentView.bounds.height
     }

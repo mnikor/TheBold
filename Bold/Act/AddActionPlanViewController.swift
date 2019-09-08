@@ -133,7 +133,7 @@ extension AddActionPlanViewController: UITableViewDelegate, UITableViewDataSourc
             return cell
         case .duration, .reminder, .goal, .stake, .share :
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as SettingActionPlanTableViewCell
-            cell.config(item: listSettings[indexPath.row])
+            //cell.config(item: listSettings[indexPath.row])
             return cell
         default:
             return UITableViewCell()

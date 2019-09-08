@@ -8,6 +8,12 @@
 
 import UIKit
 
+private struct Constants {
+    static let heightHeader : CGFloat = 40
+    static let heightFooter : CGFloat = 11
+    static let rowHeight : CGFloat = 56
+}
+
 class CreateGoalViewController: UIViewController, ViewProtocol {
     
     typealias Presenter = CreateGoalPresenter
@@ -34,15 +40,10 @@ class CreateGoalViewController: UIViewController, ViewProtocol {
         super.viewDidLoad()
 
         configurator.configure(with: self)
-        
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 56
-        tableView.tableFooterView = UIView()
-        let viewHeader = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 40))
-        viewHeader.backgroundColor = ColorName.tableViewBackground.color
-        tableView.tableHeaderView = viewHeader
+        configureTableView()
         registerXibs()
         configNavigationController()
+        presenter.input(.createNewGoal)
     }
     
     func registerXibs() {
@@ -59,23 +60,21 @@ class CreateGoalViewController: UIViewController, ViewProtocol {
         }
         navigationController.navigationBar.shadowImage = UIImage()
         
-        navBar.configure(type: .goal, save: {
-            print("Save")
+        navBar.configure(type: .goal, save: { [weak self] in
+            self?.presenter.input(.save)
         }) { [unowned self] in
-            self.presenter.router.input(.cancel)
+            self.presenter.input(.cancel)
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func configureTableView() {
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = Constants.rowHeight
+        let headerAndFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: Constants.heightHeader))
+        headerAndFooterView.backgroundColor = ColorName.tableViewBackground.color
+        tableView.tableHeaderView = headerAndFooterView
+        tableView.tableFooterView = headerAndFooterView
     }
-    */
-
 }
 
 
@@ -84,7 +83,7 @@ class CreateGoalViewController: UIViewController, ViewProtocol {
 extension CreateGoalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return presenter.listSettings.count
+        return presenter.dataSource.count
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -94,41 +93,41 @@ extension CreateGoalViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 11
+        return Constants.heightFooter
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let settings = presenter.listSettings[section]
-        return settings.count
+        let section = presenter.dataSource[section]
+        return section.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let settings = presenter.listSettings[indexPath.section]
-        let param = settings[indexPath.row]
+        let section = presenter.dataSource[indexPath.section]
+        let item = section.items[indexPath.row]
         
-        switch param.type {
+        switch item.type {
         case .headerWriteActivity:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as HeaderWriteActionsTableViewCell
-            cell.config(typeHeader: .goal)
+            cell.config(modelView: item)
             cell.delegate = self
             return cell
         case .starts, .ends, .icons:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as SettingActionPlanTableViewCell
-            cell.config(item: param)
+            cell.config(modelView: item)
             return cell
         case .color:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as ColorCreateGoalTableViewCell
-            cell.config(item: param, colorType: presenter.newGoal.color)
+            cell.config(modelView: item)
             return cell
         case .colorList:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as ColorListCreateGoalTableViewCell
-            cell.config(currentColor: presenter.newGoal.color)
+            cell.config(modelView: item)
             cell.delegate = self
             return cell
         case .iconsList:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as IconListCreateGoalTableViewCell
-            cell.config(selectIcon: presenter.newGoal.icon, selectColor: presenter.newGoal.color)
+            cell.config(modelView: item)
             cell.delegate = self
             return cell
         default:
@@ -138,20 +137,14 @@ extension CreateGoalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        self.view.endEditing(true)
+        let section = presenter.dataSource[indexPath.section]
         
-        let settings = presenter.listSettings[indexPath.section]
-        
-        switch settings[indexPath.row].type {
-        case .headerWriteActivity:
-            print("dsfdsf")
+        switch section.items[indexPath.row].type {
         case .starts:
-            presenter.input(.showDateAlert(.startDate, Date()))
+            presenter.input(.showDateAlert(.startDate))
         case .ends:
-            presenter.input(.showDateAlert(.endDate, Date()))
-        case .colorList:
-            print("dsfdsf")
-        case .iconsList:
-            print("dsfdsf")
+            presenter.input(.showDateAlert(.endDate))
         default:
             return
         }
@@ -164,7 +157,11 @@ extension CreateGoalViewController: UITableViewDelegate, UITableViewDataSource {
 extension CreateGoalViewController: HeaderWriteActionsTableViewCellDelegate {
     
     func tapIdeas() {
-        presenter.input(.ideas)
+        presenter.input(.showIdeas)
+    }
+    
+    func editingNameIdea(nameIdea: String) {
+        presenter.input(.updateName(nameIdea))
     }
 }
 
@@ -174,8 +171,7 @@ extension CreateGoalViewController: HeaderWriteActionsTableViewCellDelegate {
 extension CreateGoalViewController: ColorListCreateGoalTableViewCellDelegate {
     
     func tapSelectColor(colorType: ColorGoalType) {
-        print("tap select color \(colorType)")
-        presenter.input(.selectColor(colorType))
+        presenter.input(.updateColor(colorType))
     }
 }
 
@@ -185,7 +181,16 @@ extension CreateGoalViewController: ColorListCreateGoalTableViewCellDelegate {
 extension CreateGoalViewController: IconListCreateGoalTableViewCellDelegate {
     
     func tapSelectIcon(selectIcon: IdeasType) {
-        print("tap select color \(selectIcon)")
-        presenter.input(.selectIcon(selectIcon))
+        presenter.input(.updateIcon(selectIcon))
+    }
+}
+
+
+    //MARK:- IdeasViewControllerDeleagte
+
+extension CreateGoalViewController:  IdeasViewControllerDeleagte {
+    
+    func selectIdea(selectIdea: IdeasType) {
+        presenter.input(.updateIdeas(selectIdea))
     }
 }

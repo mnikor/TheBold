@@ -17,4 +17,11 @@ enum DateType : String {
 
 extension DateFormatter {
     
+    class func formatting(type: DateType, date: Date) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = type.rawValue
+        return dateFormatter.string(from: date)
+    }
+    
 }
