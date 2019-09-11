@@ -25,7 +25,6 @@ class ActionsListViewController: UIViewController, ViewProtocol {
 
     @IBOutlet weak var highNavigationBar: NavigationView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var playerView: PlayerSmallView!
     
     var typeVC : FeelTypeCell = .meditation
     

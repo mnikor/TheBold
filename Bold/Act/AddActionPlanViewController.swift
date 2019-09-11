@@ -135,7 +135,7 @@ class AddActionPlanViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        addActionView.roundCorners(corners: [.topLeft, .topRight], radius: 10)
+        
         
         overlayView.alpha = 0
         bottomAddActionConstraint.constant = -self.addActionView.bounds.height
@@ -148,6 +148,11 @@ class AddActionPlanViewController: UIViewController {
         addHeader()
         addSwipe()
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        addActionView.roundCorners(corners: [.topLeft, .topRight], radius: 10)
     }
     
     func addHeader() {

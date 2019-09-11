@@ -7,6 +7,13 @@
 //
 
 import UIKit
+import CoreMedia
+
+enum PlayerState {
+    case stoped
+    case playing
+    case paused
+}
 
 class PlayerViewController: UIViewController, ViewProtocol {
     
@@ -27,7 +34,9 @@ class PlayerViewController: UIViewController, ViewProtocol {
     
     @IBOutlet weak var currentTimeSongLabel: UILabel!
     @IBOutlet weak var durationSongLabel: UILabel!
-    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var slider: UISlider!
+    //    @IBOutlet weak var progressView: UIProgressView!
+    
     
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
@@ -36,19 +45,48 @@ class PlayerViewController: UIViewController, ViewProtocol {
     @IBOutlet weak var downloadButton: UIBarButtonItem!
     @IBOutlet weak var likeButton: UIBarButtonItem!
     
-    let service = AudioService()
+    let service = AudioService.shared
     
     var buttonsToolbar = StateStatusButtonToolbar()
     
+    private var timer: Timer?
+    private var state: PlayerState = .stoped
+    
     @IBAction func tapPreviousSong(_ sender: UIButton) {
+        AudioService.shared.input(.playPrevious)
     }
     
     @IBAction func tapNextSong(_ sender: UIButton) {
+        AudioService.shared.input(.playNext)
     }
     
     @IBAction func tapPlayPause(_ sender: UIButton) {
-        //service.delegate = self
-        service.input(.play(audioName: "Bomfunk Mcs - Freestyler.mp3"))
+        service.delegate = self
+        
+        switch state {
+        case .stoped:
+            play()
+        case .playing:
+            pause()
+        case .paused:
+            resume()
+        }
+    }
+    
+    private func play() {
+        state = .playing
+        slider.value = 0
+        service.input(.play(trackIndex: nil))
+    }
+    
+    private func pause() {
+        state = .paused
+        service.input(.pause)
+    }
+    
+    private func resume() {
+        state = .playing
+        service.input(.resume)
     }
     
     @IBAction func tapShowPlayerList(_ sender: UIBarButtonItem) {
@@ -82,7 +120,29 @@ class PlayerViewController: UIViewController, ViewProtocol {
         
         toolBar.setShadowImage(UIImage(), forToolbarPosition: .any)
         addSwipe()
-        
+        configureSliderAction()
+        AudioService.shared.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !AudioService.shared.isPlaying() {
+            play()
+        } else {
+            playerIsPlaying()
+        }
+    }
+    
+    private func configureSliderAction() {
+        slider.addTarget(self,
+                         action: #selector(sliderDidChangeValue(_:)),
+                         for: .touchUpInside)
+    }
+    
+    private func configureSlider() {
+        slider.maximumValue = Float(service.getDuration()?.seconds ?? 0)
+        slider.minimumValue = 0
+        slider.value = Float(service.getCurrentTime().seconds)
     }
     
     class func createController() -> PlayerViewController {
@@ -103,6 +163,61 @@ class PlayerViewController: UIViewController, ViewProtocol {
     }
     
     @objc func userSwipe() {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true) {
+            AudioService.shared.showSmallPlayer()
+        }
     }
+    
+    private func updateTimer() {
+        slider.value += 1
+        currentTimeSongLabel.text = getCurrentTimeText()
+    }
+    
+    @objc private func sliderDidChangeValue(_ slider: UISlider) {
+        let value = Int(slider.value)
+        let time = CMTime(seconds: Double(value), preferredTimescale: 1)
+        currentTimeSongLabel.text = formatTimeInterval(Double(value))
+        service.input(.seek(to: time))
+    }
+    
+}
+
+
+extension PlayerViewController: AudioServiceDelegate {
+    func playerPaused() {
+        timer?.invalidate()
+    }
+    
+    func playerIsPlaying() {
+        timer?.invalidate()
+        durationSongLabel.text = getDurationText()
+        currentTimeSongLabel.text = getCurrentTimeText()
+        configureSlider()
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            self?.updateTimer()
+        }
+
+    }
+    
+    func playerFailed() {
+        
+    }
+    
+    private func getCurrentTimeText() -> String {
+        return formatTimeInterval(service.getCurrentTime().seconds)
+    }
+    
+    private func getDurationText() -> String? {
+        guard let duration = service.getDuration()?.seconds else { return "0:00" }
+        return formatTimeInterval(duration)
+    }
+    
+    private func formatTimeInterval(_ timeInterval: TimeInterval) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        formatter.allowedUnits = [ .minute, .second ]
+        formatter.zeroFormattingBehavior = [ .pad ]
+        return formatter.string(from: timeInterval) ?? "0:00"
+    }
+    
 }

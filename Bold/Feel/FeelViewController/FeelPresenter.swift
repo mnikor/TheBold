@@ -50,8 +50,13 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
         case .showAll(let typeCell):
             router.input(.showAll(typeCell))
         case .showPlayer:
-            router.input(.showPlayer)
+            showPlayer()
         }
+    }
+    
+    private func showPlayer() {
+        interactor.input(.prepareTracks)
+        router.input(.showPlayer)
     }
 }
 

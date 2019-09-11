@@ -111,32 +111,21 @@
                                     <outlet property="delegate" destination="xpL-k6-t8L" id="76h-0k-mqY"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TV7-6y-itQ" customClass="PlayerSmallView" customModule="Bold" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="lMy-LH-7yP"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="83A-Hg-BRM" firstAttribute="trailing" secondItem="Dar-IJ-TIv" secondAttribute="trailing" id="3Ml-Lb-8FT"/>
-                            <constraint firstItem="Dar-IJ-TIv" firstAttribute="bottom" secondItem="TV7-6y-itQ" secondAttribute="bottom" id="4q5-1A-ybj"/>
                             <constraint firstItem="83A-Hg-BRM" firstAttribute="leading" secondItem="Dar-IJ-TIv" secondAttribute="leading" id="7SF-s2-ejc"/>
                             <constraint firstItem="83A-Hg-BRM" firstAttribute="top" secondItem="Dar-IJ-TIv" secondAttribute="top" id="9bW-MT-d6u"/>
                             <constraint firstItem="O69-jb-EUU" firstAttribute="leading" secondItem="Dar-IJ-TIv" secondAttribute="leading" id="SoV-UU-kVd"/>
                             <constraint firstItem="O69-jb-EUU" firstAttribute="top" secondItem="83A-Hg-BRM" secondAttribute="bottom" id="T9W-so-PaY"/>
-                            <constraint firstItem="Dar-IJ-TIv" firstAttribute="trailing" secondItem="TV7-6y-itQ" secondAttribute="trailing" id="WDj-kw-opc"/>
                             <constraint firstItem="Dar-IJ-TIv" firstAttribute="trailing" secondItem="O69-jb-EUU" secondAttribute="trailing" id="dSX-Y0-eY9"/>
                             <constraint firstItem="O69-jb-EUU" firstAttribute="bottom" secondItem="Dar-IJ-TIv" secondAttribute="bottom" id="jds-d5-r6N"/>
-                            <constraint firstItem="TV7-6y-itQ" firstAttribute="leading" secondItem="Dar-IJ-TIv" secondAttribute="leading" id="wrQ-bB-f2s"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Dar-IJ-TIv"/>
                     </view>
                     <connections>
                         <outlet property="highNavigationBar" destination="83A-Hg-BRM" id="YrS-Xn-Fpm"/>
-                        <outlet property="playerView" destination="TV7-6y-itQ" id="U8e-pq-peh"/>
                         <outlet property="tableView" destination="O69-jb-EUU" id="vvF-oa-BLv"/>
                     </connections>
                 </viewController>

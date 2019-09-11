@@ -8,57 +8,153 @@
 
 import Foundation
 import AVFoundation
+import AVKit
+import MediaPlayer
 
-public class AudioPlayer {
+enum FilePath {
+    case local(String)
+    case remote(String)
+}
+
+struct AudioPlayerTrackInfo {
+    var trackName: String
+    var duration: String
+    var path: FilePath
+}
+
+protocol AudioPlayerDelegate: class {
+    func audioPlayerDidChangeStatus(to status: AVPlayerItem.Status?)
+    func audioPlayerDidChangeTimeControlStatus(to status: AVPlayer.TimeControlStatus)
+}
+
+public class AudioPlayer: NSObject {
+    weak var delegate: AudioPlayerDelegate?
     
-    var player = AVAudioPlayer()
+    var duration: CMTime? {
+        return player.currentItem?.asset.duration
+    }
+    
+    var currentTime: CMTime {
+        return player.currentTime()
+    }
+    
+    var playerItem: AVPlayerItem?
+    var player = AVPlayer()
     var audioSession = AVAudioSession.sharedInstance()
+    var observer: NSKeyValueObservation?
     
-    func play(audioName: String) throws {
+    private var currentTrackInfo: AudioPlayerTrackInfo?
+    
+    public override init() {
+        super.init()
+        setupRemoteControls()
+    }
+    
+    private func setupRemoteControls() {
+        let commandCenter = MPRemoteCommandCenter.shared()
         
-        guard let path = Bundle.main.path(forResource: audioName.fileName(), ofType: audioName.fileExtension()) else {
-            throw AudioBackgroundError.audioNotFound(name: audioName)
+        commandCenter.playCommand.addTarget { [unowned self] event in
+            if self.player.rate == 0 {
+                self.resume()
+                return .success
+            }
+            return .commandFailed
         }
         
-        let url = URL(fileURLWithPath: path)
-        
-        do {
-            player = try AVAudioPlayer(contentsOf: url)
-        } catch {
-            throw AudioBackgroundError.audioNotPlay(name: audioName)
+        commandCenter.pauseCommand.addTarget { [unowned self] event in
+            if self.player.rate != 0 {
+                self.pause()
+                return .success
+            }
+            return .commandFailed
         }
         
-        player.prepareToPlay()
-        
-        do {
-            try audioSession.setCategory(.playback)
-        } catch {
-            throw AudioBackgroundError.audioSessionError(error: error)
+        commandCenter.previousTrackCommand.addTarget { [unowned self] event in
+            AudioService.shared.input(.playPrevious)
+            return .success
         }
         
-        player.play()
+        commandCenter.nextTrackCommand.addTarget { [unowned self] event in
+            AudioService.shared.input(.playNext)
+            return .success
+        }
+    }
+    
+    private func setupNowPlaying() {
+        var nowPlayingInfo = [String : Any]()
+        nowPlayingInfo[MPMediaItemPropertyTitle] = currentTrackInfo?.trackName ?? ""
+        
+        
+        nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = currentTime.seconds
+        nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = (duration?.seconds ?? 0)
+        nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = player.rate
+        
+        // Set the metadata
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+    }
+    
+    func setupTracks() {
         
     }
     
-    func pause() {
+    func observePlayer() {
+        
+        observer = player.observe(\.timeControlStatus, options: [.new]) {
+            [weak self] (player, _) in
+            self?.delegate?.audioPlayerDidChangeTimeControlStatus(to: player.timeControlStatus)
+        }
+    }
+    
+    func play(with trackInfo: AudioPlayerTrackInfo) {
+        currentTrackInfo = trackInfo
+        let path: URL?
+        switch trackInfo.path {
+        case .local(let localPath):
+            path = URL(fileURLWithPath: localPath)
+        case .remote(let remotePath):
+            path = URL(string: remotePath)
+        }
+        
+        guard let url = path else { return }
+        do {
+            try audioSession.setCategory(.playback)
+            let asset = AVAsset(url: url)
+            playerItem = AVPlayerItem(asset: asset)
+            player = AVPlayer(playerItem: playerItem)
+            observePlayer()
+            player.automaticallyWaitsToMinimizeStalling = false
+            player.play()
+            setupNowPlaying()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func stop() {
         player.pause()
     }
     
+    func pause() {
+        player.rate = 0
+    }
+    
     func resume() {
-        player.play()
+        player.rate = 1
     }
     
     func restart() {
-        if player.isPlaying {
-            player.pause()
+    }
+    
+    func seek(to time: CMTime) {
+        player.seek(to: time) { [unowned self] _ in
+            self.setupNowPlaying()
         }
-        player.currentTime = 0
-        player.play()
     }
     
     func isPlaying() -> Bool {
-        return player.isPlaying
+        return player.rate > 0
     }
+    
 }
 
 

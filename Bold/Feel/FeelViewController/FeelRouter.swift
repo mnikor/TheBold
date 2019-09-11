@@ -36,8 +36,7 @@ class FeelRouter: RouterProtocol, FeelInputRouterProtocol {
         case .showAll(let typeCell):
             viewController.performSegue(withIdentifier: StoryboardSegue.Feel.showItem.rawValue, sender: typeCell)
         case .showPlayer:
-            let player = PlayerViewController.createController()
-            player.present(viewController)
+            AudioService.shared.showPlayerFullScreen()
         }
     }
 }

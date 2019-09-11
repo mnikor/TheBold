@@ -49,16 +49,16 @@
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="YCW-bq-7gP">
-                            <rect key="frame" x="52" y="4" width="187" height="32.5"/>
+                            <rect key="frame" x="52" y="3" width="187" height="34.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find your conﬁdence" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vge-3S-sjR">
-                                    <rect key="frame" x="0.0" y="0.0" width="141.5" height="17.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="165" height="18.5"/>
                                     <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="15"/>
                                     <color key="textColor" red="0.10588235294117647" green="0.15686274509803921" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Intro to meditation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xme-hV-edG">
-                                    <rect key="frame" x="0.0" y="18.5" width="98.5" height="14"/>
+                                    <rect key="frame" x="0.0" y="19.5" width="116" height="15"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="12"/>
                                     <color key="textColor" red="0.40784313725490196" green="0.44313725490196076" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -96,6 +96,14 @@
                         <constraint firstAttribute="height" constant="40" id="0SN-1c-etj"/>
                     </constraints>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sdo-tJ-D0W">
+                    <rect key="frame" x="0.0" y="0.0" width="247" height="60"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="2Of-Hg-xNi" appends="YES" id="wFq-eK-8CJ"/>
+                    </connections>
+                </view>
                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KU2-B2-KiF">
                     <rect key="frame" x="0.0" y="57" width="375" height="3"/>
                     <constraints>
@@ -107,13 +115,17 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="sdo-tJ-D0W" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="DOo-T0-koy"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="sdo-tJ-D0W" secondAttribute="bottom" id="Dlh-Ye-nqd"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ZKW-IZ-Lp1" secondAttribute="trailing" constant="16" id="KDb-SD-xiQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ZKW-IZ-Lp1" secondAttribute="bottom" constant="10" id="Lxt-5f-HBr"/>
                 <constraint firstItem="KU2-B2-KiF" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="TTL-R3-stb"/>
                 <constraint firstAttribute="trailing" secondItem="KU2-B2-KiF" secondAttribute="trailing" id="WGV-N2-z8W"/>
                 <constraint firstItem="ZKW-IZ-Lp1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Yhk-su-TJR"/>
                 <constraint firstItem="KU2-B2-KiF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YqE-tL-2Ri"/>
+                <constraint firstItem="bjx-ci-jVg" firstAttribute="leading" secondItem="sdo-tJ-D0W" secondAttribute="trailing" constant="20" id="ZKf-xF-IcU"/>
                 <constraint firstItem="ZKW-IZ-Lp1" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="ZYs-Rc-arn"/>
+                <constraint firstItem="sdo-tJ-D0W" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yqc-CK-bT2"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
@@ -121,6 +133,11 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="-2.3999999999999999" y="140.32983508245877"/>
         </view>
+        <tapGestureRecognizer id="2Of-Hg-xNi">
+            <connections>
+                <action selector="didTapAtView:" destination="-1" id="UFP-fI-9rD"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="playerSmallClose" width="16" height="16"/>

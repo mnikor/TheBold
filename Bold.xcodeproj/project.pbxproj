@@ -871,6 +871,13 @@
 			path = UnderlinedImageTitleViewModel;
 			sourceTree = "<group>";
 		};
+		C5B7D19D232646910058DE5C /* FellPlayerViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FellPlayerViewController;
+			sourceTree = "<group>";
+		};
 		F107537422EF1E0A0078C71C /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -951,6 +958,7 @@
 		F141669422C0E2560020BF0F /* Feel */ = {
 			isa = PBXGroup;
 			children = (
+				C5B7D19D232646910058DE5C /* FellPlayerViewController */,
 				F183301122E5CB4200BB7A9E /* FeelViewController */,
 				F183301822E5CB8600BB7A9E /* ActionsListViewController */,
 				F141669D22C0EDE00020BF0F /* Views */,
