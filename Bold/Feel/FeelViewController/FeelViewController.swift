@@ -81,27 +81,6 @@ extension FeelViewController: ActionCollectionTableViewCellDelegate {
     func showAll(typeCells: FeelTypeCell) {
         performSegue(withIdentifier: StoryboardSegue.Feel.showItem.rawValue, sender: typeCells)
     }
-
-    @objc func showPlayer() {
-        prepareTracks()
-        AudioService.shared.showPlayerFullScreen()
-    }
-    
-    func prepareTracks() {
-        var tracks = [AudioPlayerTrackInfo]()
-        for index in 1 ... 5 {
-            tracks.append(AudioPlayerTrackInfo(trackName: "Test\(index)", duration: formatTimeInterval(1254) , path: .remote("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-\(index).mp3")))
-        }
-        AudioService.shared.tracks = tracks
-    }
-    
-    private func formatTimeInterval(_ timeInterval: TimeInterval) -> String {
-        let formatter = DateComponentsFormatter()
-        formatter.unitsStyle = .positional
-        formatter.allowedUnits = [ .minute, .second ]
-        formatter.zeroFormattingBehavior = [ .pad ]
-        return formatter.string(from: timeInterval) ?? "0:00"
-    }
     
 }
 

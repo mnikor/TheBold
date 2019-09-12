@@ -85,6 +85,8 @@ class PlayerSmallView: UIView {
 extension PlayerSmallView: AudioServiceDelegate {
     func playerIsPlaying() {
         timer?.invalidate()
+        titleLabel.text = AudioService.shared.getCurrentTrackName()
+        subtitleLabel.text = AudioService.shared.getCurrentArtistName()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             self?.updateProgress()
         }

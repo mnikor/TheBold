@@ -36,7 +36,7 @@ class FeelInteractor: FeelInteractorInputProtocol {
     private func prepareTracks() {
         var tracks = [AudioPlayerTrackInfo]()
         for index in 1 ... 5 {
-            tracks.append(AudioPlayerTrackInfo(trackName: "Test\(index)", duration: formatTimeInterval(1254) , path: .remote("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-\(index).mp3")))
+            tracks.append(AudioPlayerTrackInfo(trackName: "Track\(index)", artistName: "Artist\(index)", duration: formatTimeInterval(1254) , path: .remote("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-\(index).mp3")))
         }
         AudioService.shared.tracks = tracks
     }

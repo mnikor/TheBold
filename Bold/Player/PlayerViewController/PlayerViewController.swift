@@ -124,8 +124,8 @@ class PlayerViewController: UIViewController, ViewProtocol {
         AudioService.shared.delegate = self
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if !AudioService.shared.isPlaying() {
             play()
         } else {
@@ -190,6 +190,8 @@ extension PlayerViewController: AudioServiceDelegate {
     
     func playerIsPlaying() {
         timer?.invalidate()
+        titleSongLabel.text = AudioService.shared.getCurrentTrackName()
+        subtitleSongLabel.text = AudioService.shared.getCurrentArtistName()
         durationSongLabel.text = getDurationText()
         currentTimeSongLabel.text = getCurrentTimeText()
         configureSlider()

@@ -18,6 +18,7 @@ enum FilePath {
 
 struct AudioPlayerTrackInfo {
     var trackName: String
+    var artistName: String
     var duration: String
     var path: FilePath
 }
@@ -83,6 +84,7 @@ public class AudioPlayer: NSObject {
     private func setupNowPlaying() {
         var nowPlayingInfo = [String : Any]()
         nowPlayingInfo[MPMediaItemPropertyTitle] = currentTrackInfo?.trackName ?? ""
+        nowPlayingInfo[MPMediaItemPropertyArtist] = currentTrackInfo?.artistName ?? ""
         
         
         nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = currentTime.seconds

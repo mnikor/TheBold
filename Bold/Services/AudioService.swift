@@ -99,6 +99,14 @@ class AudioService: NSObject, AudioServiceProtocol {
         return player.currentTime
     }
     
+    func getCurrentTrackName() -> String {
+        return tracks[currentTrackIndex].trackName
+    }
+    
+    func getCurrentArtistName() -> String {
+        return tracks[currentTrackIndex].artistName
+    }
+    
     func showSmallPlayer() {
         delegate = smallPlayer
         UIApplication.shared.keyWindow?.addSubview(smallPlayer)
