@@ -99,7 +99,7 @@ extension PlayerListView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         
-        print("Select track = \(ListItems[indexPath.row])")
+        AudioService.shared.input(.play(trackIndex: indexPath.row))
         hideViewAnimate()
     }
     

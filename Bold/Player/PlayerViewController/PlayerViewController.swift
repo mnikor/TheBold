@@ -169,7 +169,7 @@ class PlayerViewController: UIViewController, ViewProtocol {
     }
     
     private func updateTimer() {
-        slider.value += 1
+        slider.value = Float(AudioService.shared.getCurrentTime().seconds)
         currentTimeSongLabel.text = getCurrentTimeText()
     }
     
