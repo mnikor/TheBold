@@ -39,47 +39,16 @@ public class AudioPlayer: NSObject {
         return player.currentTime()
     }
     
+    var rate: Float {
+        return player.rate
+    }
+    
     var playerItem: AVPlayerItem?
     var player = AVPlayer()
     var audioSession = AVAudioSession.sharedInstance()
     var observer: NSKeyValueObservation?
     
     private var currentTrackInfo: AudioPlayerTrackInfo?
-    
-    public override init() {
-        super.init()
-        setupRemoteControls()
-    }
-    
-    private func setupRemoteControls() {
-        let commandCenter = MPRemoteCommandCenter.shared()
-        
-        commandCenter.playCommand.addTarget { [unowned self] event in
-            if self.player.rate == 0 {
-                self.resume()
-                return .success
-            }
-            return .commandFailed
-        }
-        
-        commandCenter.pauseCommand.addTarget { [unowned self] event in
-            if self.player.rate != 0 {
-                self.pause()
-                return .success
-            }
-            return .commandFailed
-        }
-        
-        commandCenter.previousTrackCommand.addTarget { [unowned self] event in
-            AudioService.shared.input(.playPrevious)
-            return .success
-        }
-        
-        commandCenter.nextTrackCommand.addTarget { [unowned self] event in
-            AudioService.shared.input(.playNext)
-            return .success
-        }
-    }
     
     private func setupNowPlaying() {
         var nowPlayingInfo = [String : Any]()
@@ -95,12 +64,7 @@ public class AudioPlayer: NSObject {
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
     }
     
-    func setupTracks() {
-        
-    }
-    
     func observePlayer() {
-        
         observer = player.observe(\.timeControlStatus, options: [.new]) {
             [weak self] (player, _) in
             self?.delegate?.audioPlayerDidChangeTimeControlStatus(to: player.timeControlStatus)
@@ -147,9 +111,9 @@ public class AudioPlayer: NSObject {
     func restart() {
     }
     
-    func seek(to time: CMTime) {
+    func seek(to time: CMTime, completion: (() -> Void)?) {
         player.seek(to: time) { [unowned self] _ in
-            self.setupNowPlaying()
+            completion?()
         }
     }
     

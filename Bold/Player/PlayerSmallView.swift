@@ -87,6 +87,7 @@ extension PlayerSmallView: AudioServiceDelegate {
         timer?.invalidate()
         titleLabel.text = AudioService.shared.getCurrentTrackName()
         subtitleLabel.text = AudioService.shared.getCurrentArtistName()
+        updateProgress()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             self?.updateProgress()
         }

@@ -51,7 +51,66 @@ class AudioService: NSObject, AudioServiceProtocol {
     
     override private init() {
         super.init()
+        setupRemoteControls()
         player.delegate = self
+    }
+    
+    private func setupRemoteControls() {
+        let commandCenter = MPRemoteCommandCenter.shared()
+        
+        commandCenter.playCommand.addTarget { [unowned self] event in
+            if self.player.rate == 0 {
+                self.player.resume()
+                return .success
+            }
+            return .commandFailed
+        }
+        
+        commandCenter.pauseCommand.addTarget { [unowned self] event in
+            if self.player.rate != 0 {
+                self.player.pause()
+                return .success
+            }
+            return .commandFailed
+        }
+        
+        commandCenter.previousTrackCommand.addTarget { [unowned self] event in
+            self.playPrevious()
+            return .success
+        }
+        
+        commandCenter.nextTrackCommand.addTarget { [unowned self] event in
+            self.playNext()
+            return .success
+        }
+    }
+    
+    private func setupNowPlaying() {
+        var nowPlayingInfo = [String : Any]()
+        nowPlayingInfo[MPMediaItemPropertyTitle] = tracks[currentTrackIndex].trackName
+        nowPlayingInfo[MPMediaItemPropertyArtist] = tracks[currentTrackIndex].artistName
+        
+        
+        nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player.currentTime.seconds
+        nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = (player.duration?.seconds ?? 0)
+        nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = player.rate
+        
+        // Set the metadata
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+    }
+    
+    private func playPrevious() {
+        currentTrackIndex = currentTrackIndex - 1 >= 0
+            ? currentTrackIndex - 1
+            : currentTrackIndex
+        player.play(with: tracks[currentTrackIndex])
+    }
+    
+    private func playNext() {
+        currentTrackIndex = currentTrackIndex + 1 >= tracks.count
+            ? currentTrackIndex
+            : currentTrackIndex + 1
+        player.play(with: tracks[currentTrackIndex])
     }
     
     func addSubscriber(_ subscriber: AudioServiceDelegate) {
@@ -61,18 +120,12 @@ class AudioService: NSObject, AudioServiceProtocol {
     func input(_ inputCase: AudioServiceInput) {
         switch inputCase {
         case .play(let index):
-            player.play(with: tracks[index ?? currentTrackIndex])
             currentTrackIndex = index ?? currentTrackIndex
+            player.play(with: tracks[currentTrackIndex])
         case .playPrevious:
-            currentTrackIndex = currentTrackIndex - 1 >= 0
-                ? currentTrackIndex - 1
-                : currentTrackIndex
-            player.play(with: tracks[currentTrackIndex])
+            playPrevious()
         case .playNext:
-            currentTrackIndex = currentTrackIndex + 1 >= tracks.count
-                ? currentTrackIndex
-                : currentTrackIndex + 1
-            player.play(with: tracks[currentTrackIndex])
+            playNext()
         case .stop:
             player.stop()
         case .pause:
@@ -82,7 +135,9 @@ class AudioService: NSObject, AudioServiceProtocol {
         case .restart:
             player.restart()
         case .seek(to: let time):
-            player.seek(to: time)
+            player.seek(to: time) { [unowned self] in
+                self.setupNowPlaying()
+            }
         }
         
     }
@@ -110,7 +165,7 @@ class AudioService: NSObject, AudioServiceProtocol {
     func showSmallPlayer() {
         delegate = smallPlayer
         UIApplication.shared.keyWindow?.addSubview(smallPlayer)
-        if let window = UIApplication.shared.keyWindow {
+        if let _ = UIApplication.shared.keyWindow {
             smallPlayer.snp.makeConstraints { make in
                 make.bottom.leading.trailing.equalToSuperview()
             }

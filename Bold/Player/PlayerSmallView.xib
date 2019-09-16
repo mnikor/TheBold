@@ -104,7 +104,7 @@
                         <outletCollection property="gestureRecognizers" destination="2Of-Hg-xNi" appends="YES" id="wFq-eK-8CJ"/>
                     </connections>
                 </view>
-                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KU2-B2-KiF">
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KU2-B2-KiF">
                     <rect key="frame" x="0.0" y="57" width="375" height="3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="3" id="rHE-bh-YzW"/>

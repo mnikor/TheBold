@@ -45,6 +45,10 @@
 		C5B1E56B23045F99000991DF /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1E56A23045F99000991DF /* ProfilePresenter.swift */; };
 		C5B1E56D23045FA4000991DF /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1E56C23045FA4000991DF /* ProfileRouter.swift */; };
 		C5C6C14C2320F23800C15C2B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C6C14B2320F23800C15C2B /* NotificationService.swift */; };
+		C5E9B9FA232FAAF200668F2E /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E9B9F9232FAAF200668F2E /* CalendarService.swift */; };
+		C5E9B9FC232FAD2300668F2E /* ResultCustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E9B9FB232FAD2300668F2E /* ResultCustomError.swift */; };
+		C5E9B9FE232FADFA00668F2E /* CalendarCustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E9B9FD232FADFA00668F2E /* CalendarCustomError.swift */; };
+		C5E9BA00232FB09800668F2E /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E9B9FF232FB09800668F2E /* Event.swift */; };
 		F107537622EF1E470078C71C /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107537522EF1E470078C71C /* Goal.swift */; };
 		F107537822EF1E550078C71C /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107537722EF1E550078C71C /* Action.swift */; };
 		F107537A22EF36670078C71C /* BoldTipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107537922EF36670078C71C /* BoldTipsViewController.swift */; };
@@ -375,6 +379,10 @@
 		C5B1E56C23045FA4000991DF /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		C5C6C14B2320F23800C15C2B /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		C5C6C14D2320F5BB00C15C2B /* Bold.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bold.entitlements; sourceTree = "<group>"; };
+		C5E9B9F9232FAAF200668F2E /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		C5E9B9FB232FAD2300668F2E /* ResultCustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCustomError.swift; sourceTree = "<group>"; };
+		C5E9B9FD232FADFA00668F2E /* CalendarCustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCustomError.swift; sourceTree = "<group>"; };
+		C5E9B9FF232FB09800668F2E /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		CD864991698CD15B66E42367 /* Pods-Bold.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bold.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bold/Pods-Bold.release.xcconfig"; sourceTree = "<group>"; };
 		F107537522EF1E470078C71C /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		F107537722EF1E550078C71C /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
@@ -884,6 +892,9 @@
 				F107537522EF1E470078C71C /* Goal.swift */,
 				F107537722EF1E550078C71C /* Action.swift */,
 				F1F40610230313FF0091B774 /* Profile.swift */,
+				C5E9B9FB232FAD2300668F2E /* ResultCustomError.swift */,
+				C5E9B9FD232FADFA00668F2E /* CalendarCustomError.swift */,
+				C5E9B9FF232FB09800668F2E /* Event.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -939,6 +950,7 @@
 				F141668B22BD1F590020BF0F /* AudioService.swift */,
 				F1EBC7B122CF70A000BAA82D /* AudioPlayer.swift */,
 				C5C6C14B2320F23800C15C2B /* NotificationService.swift */,
+				C5E9B9F9232FAAF200668F2E /* CalendarService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1922,6 +1934,7 @@
 				F1F406322306F6BA0091B774 /* LevelOfMasteryTableViewCell.swift in Sources */,
 				F141668322BCD7D20020BF0F /* ManifestPresenter.swift in Sources */,
 				F14166A022C106210020BF0F /* HeaderActionPlanTableViewCell.swift in Sources */,
+				C5E9BA00232FB09800668F2E /* Event.swift in Sources */,
 				F1CECE1522E9C73400EA95EE /* ColorCreateGoalTableViewCell.swift in Sources */,
 				F1B2B1D622FC6C0000C327B0 /* MonthYearPickerView.swift in Sources */,
 				F141668C22BD1F590020BF0F /* AudioService.swift in Sources */,
@@ -1958,6 +1971,7 @@
 				F1CECE2522EA0AC000EA95EE /* IconCollectionViewCell.swift in Sources */,
 				F17CB26922A682130035ABAB /* RoundedButton.swift in Sources */,
 				F14166AC22C125A50020BF0F /* ActionCollectionTableViewCell.swift in Sources */,
+				C5E9B9FC232FAD2300668F2E /* ResultCustomError.swift in Sources */,
 				F1EB8DD622A8022500E3BC4C /* ForgotPasswordViewController.swift in Sources */,
 				F107538422F091C10078C71C /* HeaderConfigureTableViewCell.swift in Sources */,
 				C59E5E2423056A56005DCD18 /* ImagedTitleView.swift in Sources */,
@@ -2021,6 +2035,7 @@
 				F183303E22E6F0D300BB7A9E /* CreateGoalConfigurator.swift in Sources */,
 				F1EAF59E22E8AA9A008073D7 /* ConfigurateActionRouter.swift in Sources */,
 				F1E698AB2315643A00438E3E /* LevelOfMasteryRouter.swift in Sources */,
+				C5E9B9FE232FADFA00668F2E /* CalendarCustomError.swift in Sources */,
 				F1130CE9230FE058008FA60D /* ZSegmentedControl.swift in Sources */,
 				F183303022E617B900BB7A9E /* AllGoalsInteractor.swift in Sources */,
 				C5B1E55523043865000991DF /* ViewModelConfigurable.swift in Sources */,
@@ -2036,6 +2051,7 @@
 				F107537A22EF36670078C71C /* BoldTipsViewController.swift in Sources */,
 				F179975622AFB04B0039879F /* LocalizableViewController.swift in Sources */,
 				F1E698BB23157E5D00438E3E /* ArchivedGoalsInteractor.swift in Sources */,
+				C5E9B9FA232FAAF200668F2E /* CalendarService.swift in Sources */,
 				F183302522E6059600BB7A9E /* ActPresenter.swift in Sources */,
 				F1EAF59222E89925008073D7 /* HeaderWriteActionsTableViewCell.swift in Sources */,
 				F1F40635230AE2270091B774 /* LevelOfMasteryFooterView.swift in Sources */,
