@@ -120,6 +120,18 @@ extension LoginViewController: SignUpViewDelegate {
         switchAuth = true
         typeAuth = .logIn
     }
+    
+    func signUpView(_ signUpView: SignUpView, didCheckPrivacyPolicy isChecked: Bool) {
+        // TODO: - save privacy policy checked
+    }
+    
+    func signUpViewDidTapAtPrivacyPolicy() {
+        // TODO: - show privacy policy
+    }
+    
+    func signUpViewDidTapAtTermsOfUse() {
+        // TODO: - show terms of use
+    }
 }
 
 extension LoginViewController: UIScrollViewDelegate {

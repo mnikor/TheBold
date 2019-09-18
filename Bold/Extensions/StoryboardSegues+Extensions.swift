@@ -45,6 +45,9 @@ internal enum StoryboardSegue {
     case premium
     case termsPrivacy
   }
+  internal enum Splash: String, SegueType {
+    case showWelcomeViewController
+  }
   internal enum Think: String, SegueType {
     case citationIdentifier
     case showItem

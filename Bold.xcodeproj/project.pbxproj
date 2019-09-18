@@ -17,6 +17,9 @@
 		3EFCA3BF2306E00900129DB4 /* SettingsSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFCA3BE2306E00900129DB4 /* SettingsSectionModel.swift */; };
 		3EFCA3C12306E3F000129DB4 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EFCA3C02306E3F000129DB4 /* SettingsTableViewCell.xib */; };
 		AB3A5076A4778FC67A39C5DE /* Pods_Bold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F633E16C16CF1D2DB8E5B5 /* Pods_Bold.framework */; };
+		C56CD6E22330F80800322688 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CD6E12330F80800322688 /* VideoView.swift */; };
+		C56CD6E42330FC3F00322688 /* boldlogo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C56CD6E32330FC3A00322688 /* boldlogo.mp4 */; };
+		C56CD6E72331096B00322688 /* FadePresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CD6E62331096B00322688 /* FadePresentAnimationController.swift */; };
 		C59E5E1E23055BDD005DCD18 /* ConfigurableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59E5E1D23055BDD005DCD18 /* ConfigurableLabel.swift */; };
 		C59E5E2223056A30005DCD18 /* ImageTitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59E5E2123056A30005DCD18 /* ImageTitleViewModel.swift */; };
 		C59E5E2423056A56005DCD18 /* ImagedTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59E5E2323056A56005DCD18 /* ImagedTitleView.swift */; };
@@ -350,6 +353,9 @@
 		3EFCA3BC2306D46C00129DB4 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3EFCA3BE2306E00900129DB4 /* SettingsSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionModel.swift; sourceTree = "<group>"; };
 		3EFCA3C02306E3F000129DB4 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
+		C56CD6E12330F80800322688 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
+		C56CD6E32330FC3A00322688 /* boldlogo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = boldlogo.mp4; sourceTree = "<group>"; };
+		C56CD6E62331096B00322688 /* FadePresentAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadePresentAnimationController.swift; sourceTree = "<group>"; };
 		C59E5E1D23055BDD005DCD18 /* ConfigurableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableLabel.swift; sourceTree = "<group>"; };
 		C59E5E2123056A30005DCD18 /* ImageTitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTitleViewModel.swift; sourceTree = "<group>"; };
 		C59E5E2323056A56005DCD18 /* ImagedTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagedTitleView.swift; sourceTree = "<group>"; };
@@ -734,6 +740,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C56CD6E02330F7BF00322688 /* VideoView */ = {
+			isa = PBXGroup;
+			children = (
+				C56CD6E12330F80800322688 /* VideoView.swift */,
+			);
+			path = VideoView;
+			sourceTree = "<group>";
+		};
+		C56CD6E52331094D00322688 /* AnimationControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C56CD6E62331096B00322688 /* FadePresentAnimationController.swift */,
+			);
+			path = AnimationControllers;
+			sourceTree = "<group>";
+		};
 		C59E5E1C23055BBD005DCD18 /* ConfigurableLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1087,6 +1109,7 @@
 		F17CB26722A6735F0035ABAB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C56CD6E02330F7BF00322688 /* VideoView */,
 				C59E5E1F23056A0D005DCD18 /* ImagedTitleView */,
 				C59E5E1C23055BBD005DCD18 /* ConfigurableLabel */,
 				C5B1E55E23043D74000991DF /* UnderlinedImageTitleView */,
@@ -1214,6 +1237,7 @@
 		F18687DC229D56B00029A663 /* Bold */ = {
 			isa = PBXGroup;
 			children = (
+				C56CD6E52331094D00322688 /* AnimationControllers */,
 				C5C6C14D2320F5BB00C15C2B /* Bold.entitlements */,
 				F18687DD229D56B00029A663 /* AppDelegate.swift */,
 				F18687DF229D56B00029A663 /* BaseProtocols.swift */,
@@ -1317,6 +1341,7 @@
 			isa = PBXGroup;
 			children = (
 				F1EE4D4E229EA6620072F663 /* BackgroundVideo.MOV */,
+				C56CD6E32330FC3A00322688 /* boldlogo.mp4 */,
 				F186881A229E8DFF0029A663 /* Fonts */,
 				F18687E4229D56B10029A663 /* Assets.xcassets */,
 				F1868845229E98120029A663 /* Localizable.strings */,
@@ -1737,6 +1762,7 @@
 				F1C2534A22B2ACFC003156AA /* ActInactiveCollectionViewCell.xib in Resources */,
 				F107538522F091C10078C71C /* HeaderConfigureTableViewCell.xib in Resources */,
 				F179976222AFFA1D0039879F /* MenuBottomView.xib in Resources */,
+				C56CD6E42330FC3F00322688 /* boldlogo.mp4 in Resources */,
 				F1A79DC622D89C0C0018A8EF /* ListenOrReadMaterialView.xib in Resources */,
 				F18687F8229D602C0029A663 /* Feel.storyboard in Resources */,
 				F115629E22DF0B5C00399FA6 /* Description.storyboard in Resources */,
@@ -1908,6 +1934,7 @@
 				F1A79DCD22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.swift in Sources */,
 				C5A4853C2306B91B002CC62A /* CalendarAndHistoryViewController.swift in Sources */,
 				F1A79DC922D8A5620018A8EF /* ManageItTableViewCell.swift in Sources */,
+				C56CD6E72331096B00322688 /* FadePresentAnimationController.swift in Sources */,
 				F186880A229D7E1F0029A663 /* OnboardViewController.swift in Sources */,
 				F1C2534522B2ACAA003156AA /* GoalCollectionViewCell.swift in Sources */,
 				C59E5E34230593ED005DCD18 /* AccountDetailsPresenter.swift in Sources */,
@@ -2084,6 +2111,7 @@
 				F19257FF22E7529900FA5C6E /* CalendarActionsListConfigurator.swift in Sources */,
 				F179976522B10AD70039879F /* HeaderHomeView.swift in Sources */,
 				F183303222E617C700BB7A9E /* AllGoalsRouter.swift in Sources */,
+				C56CD6E22330F80800322688 /* VideoView.swift in Sources */,
 				F1F4060B230311240091B774 /* RequestDescriptor.swift in Sources */,
 				F107539022F0A2830078C71C /* DayOfWeekCollectionViewCell.swift in Sources */,
 				F1CCC70D22CCDBE400E7B637 /* PlayerListTableViewCell.swift in Sources */,
