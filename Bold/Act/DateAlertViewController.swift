@@ -11,6 +11,7 @@ import UIKit
 enum DateAlertType {
     case startDate
     case endDate
+    case time
     
     var titleText : String {
         switch self {
@@ -18,6 +19,8 @@ enum DateAlertType {
             return L10n.Act.Date.chooseStartDate
         case .endDate:
             return L10n.Act.Date.chooseEndDate
+        case .time:
+            return "Choose time"
         }
     }
 }
@@ -50,10 +53,7 @@ class DateAlertViewController: UIViewController {
     
     @IBAction func selectValueDatePicker(_ sender: UIDatePicker) {
         
-        let dateFormatter: DateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy hh:mm a"
-        let selectedDate: String = dateFormatter.string(from: sender.date)
-        print("Selected value \(selectedDate)")
+        print("Selected value \(DateFormatter.formatting(type: .startOrEndDate, date: sender.date))")
         selectDate = sender.date
     }
     
@@ -62,6 +62,7 @@ class DateAlertViewController: UIViewController {
 
         titleTextLabel.text = dateType.titleText
         datePicker.date = selectDate
+        datePicker.datePickerMode = dateType == .time ? .time : .date
         
         overlayView.alpha = 0
         bottomContentViewConstraint.constant = -self.contentView.bounds.height
@@ -72,12 +73,18 @@ class DateAlertViewController: UIViewController {
         showAnimateView()
     }
     
-    class func createController(type:DateAlertType, currentDate:Date?, tapConfirm: @escaping ((_ date: Date) -> Void)) -> DateAlertViewController {
+    class func createController(type:DateAlertType, currentDate:Date?, startDate: Date?, endDate:Date?, tapConfirm: @escaping ((_ date: Date) -> Void)) -> DateAlertViewController {
         let dateVC = StoryboardScene.Act.dateAlertViewController.instantiate()
         dateVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         dateVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         dateVC.confirmBlock = tapConfirm
         dateVC.dateType = type
+        if (startDate != nil) {
+            dateVC.datePicker.minimumDate = startDate
+        }
+        if (endDate != nil) {
+            dateVC.datePicker.maximumDate = endDate
+        }
         dateVC.selectDate = currentDate ?? Date()
         return dateVC
     }

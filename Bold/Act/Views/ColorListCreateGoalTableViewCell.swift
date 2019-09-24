@@ -45,7 +45,7 @@ class ColorListCreateGoalTableViewCell: BaseTableViewCell {
         collectionView.registerNib(ColorCollectionViewCell.self)
     }
     
-    func config(modelView: CreateGoalModel) {
+    func config(modelView: CreateGoalActionModel) {
         
         switch modelView.modelValue {
         case .colors(let colorList, let selectColor):

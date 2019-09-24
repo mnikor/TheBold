@@ -21,7 +21,7 @@ class ColorCreateGoalTableViewCell: BaseTableViewCell {
         colorView.layer.cornerRadius = colorView.bounds.size.height / 2
     }
     
-    func config(modelView: CreateGoalModel) {
+    func config(modelView: CreateGoalActionModel) {
         
         iconImageView.image = modelView.type.iconType()
         titleLabel.text = modelView.type.textType()

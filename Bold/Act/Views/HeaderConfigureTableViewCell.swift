@@ -18,15 +18,14 @@ class HeaderConfigureTableViewCell: BaseTableViewCell {
         
         self.selectionStyle = .none
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
-    func config(name: String) {
-        headerLabel.text = name
+    func config(modelView: ConfigureActionModelType) {
+
+        switch modelView {
+        case .header(let titleText):
+            headerLabel.text = titleText
+        default:
+            return
+        }
     }
-    
 }

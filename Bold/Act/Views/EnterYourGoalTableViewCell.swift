@@ -10,19 +10,18 @@ import UIKit
 
 class EnterYourGoalTableViewCell: BaseTableViewCell {
 
+    @IBOutlet weak var goalNameTextField : UITextField!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
-    func config() {
+    func config(modelView: ConfigureActionModelType) {
         
+        if case .createNewGoal(placeholder: let placeholder) = modelView {
+            goalNameTextField.placeholder = placeholder
+        }
     }
     
 }

@@ -19,7 +19,7 @@ class DayOfWeekCollectionViewCell: BaseCollectionViewCell {
         dayButton.borderWidth(color: Color(red: 233/255, green: 233/255, blue: 235/255, alpha: 1))
     }
 
-    func config(day: DayWeekType, selectDays:[DayWeekType]) {
+    func config(day: DaysOfWeekType, selectDays:[DaysOfWeekType]) {
 
         dayButton.setTitle(day.shortText, for: .normal)
         

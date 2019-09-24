@@ -97,14 +97,14 @@ extension CreateGoalViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let section = presenter.dataSource[section]
-        return section.items.count
+        let sectionDataSource = presenter.dataSource[section]
+        return sectionDataSource.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let section = presenter.dataSource[indexPath.section]
-        let item = section.items[indexPath.row]
+        let sectionDataSource = presenter.dataSource[indexPath.section]
+        let item = sectionDataSource.items[indexPath.row]
         
         switch item.type {
         case .headerWriteActivity:
@@ -138,9 +138,9 @@ extension CreateGoalViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         self.view.endEditing(true)
-        let section = presenter.dataSource[indexPath.section]
+        let sectionDataSource = presenter.dataSource[indexPath.section]
         
-        switch section.items[indexPath.row].type {
+        switch sectionDataSource.items[indexPath.row].type {
         case .starts:
             presenter.input(.showDateAlert(.startDate))
         case .ends:

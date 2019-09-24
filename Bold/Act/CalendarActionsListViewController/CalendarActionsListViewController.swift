@@ -19,7 +19,6 @@ class CalendarActionsListViewController: UIViewController, ViewProtocol {
     var configurator: Configurator! = CalendarActionsListConfigurator()
     
     var currentGoal: GoalEntity!
-    //var currentDate: Date = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -13,8 +13,10 @@ enum DataTablesType: String {
     case file = "File"
     case goal = "Goal"
     case action = "Action"
+    case event = "Event"
     case user = "User"
     case daysOfWeek = "DaysOfWeek"
+    case reminder = "Reminder"
 }
 
 struct DataConstants {

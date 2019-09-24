@@ -9,14 +9,16 @@
 import Foundation
 import UIKit
 
-enum StatusType: Int {
-    case wait = 0
+enum StatusType: Int16 {
+    case create = 0
+    case update
+    case wait
     case completed
     case failed
     case block
 }
 
-enum ColorGoalType: Int {
+enum ColorGoalType: Int16 {
     case none = 0
     case orange
     case red
@@ -45,7 +47,7 @@ enum ColorGoalType: Int {
     }
 }
 
-enum IdeasType: Int {
+enum IdeasType: Int16 {
     case none = 0
     case marathon
     case triathlon
@@ -158,6 +160,8 @@ enum AddActionCellType {
     case colorList
     case icons
     case iconsList
+    case when
+    case none
     
     func iconType() -> UIImage? {
         switch self {
@@ -171,7 +175,7 @@ enum AddActionCellType {
             return Asset.addActionStake.image
         case .share:
             return Asset.addActionShare.image
-        case .starts:
+        case .starts, .when:
             return Asset.addActionStartTime.image
         case .ends:
             return Asset.addActionEndTime.image
@@ -204,6 +208,8 @@ enum AddActionCellType {
             return L10n.Act.color
         case .icons:
             return L10n.Act.icons
+        case .when:
+            return L10n.Act.when
         default :
             return nil
         }
@@ -224,6 +230,153 @@ enum AddActionCellType {
             return true
         default:
             return false
+        }
+    }
+    
+}
+
+enum ConfigureActionType {
+    case header(HeaderType)
+    case body(BodyType)
+    
+    enum HeaderType {
+        case startDate
+        case endDate
+        case repeatAction
+        case remindMe
+        case when
+        case chooseGoal
+        case orCreateNew
+        
+        func titleText() -> String {
+            switch self {
+            case .startDate:
+                return L10n.Act.Duration.startDate
+            case .endDate:
+                return L10n.Act.Duration.endDate
+            case .repeatAction:
+                return L10n.Act.Duration.repeat
+            case .remindMe:
+                return L10n.Act.Reminders.remindMe
+            case .when:
+                return L10n.Act.Reminders.when
+            case .chooseGoal:
+                return L10n.Act.Goals.chooseGoal
+            case .orCreateNew:
+                return L10n.Act.Goals.orCreateNew
+            }
+        }
+    }
+    
+    enum BodyType {
+        case today
+        case tommorowStartDate
+        case tommorowEndDate
+        case chooseStartDate
+        case chooseEndDate
+        case afterOneWeek
+        case noRepeat
+        case everyDay
+        case daysOfWeek
+        case week
+        case noReminders
+        case beforeTheDay
+        case onTheDay
+        case setTime
+        case goalName
+        case goalNameSelect
+        case enterGoal
+        case none
+        
+        func titleText() -> String {
+            switch self {
+            case .today:
+                return L10n.Act.Duration.today
+            case .tommorowStartDate, .tommorowEndDate:
+                return L10n.Act.Duration.tommorow
+            case .chooseStartDate, .chooseEndDate:
+                return L10n.Act.Duration.chooseDate
+            case .afterOneWeek:
+                return L10n.Act.Duration.afterOneWeek
+            case .noRepeat:
+                return L10n.Act.Duration.noRepeat
+            case .everyDay:
+                return L10n.Act.Duration.everyDay
+            case .daysOfWeek:
+                return L10n.Act.Duration.daysOfWeek
+            case .noReminders:
+                return L10n.Act.Reminders.noReminders
+            case .beforeTheDay:
+                return L10n.Act.Reminders.beforeTheDay
+            case .onTheDay:
+                return L10n.Act.Reminders.onTheDay
+            case .setTime:
+                return L10n.Act.Reminders.setTime
+            case .enterGoal:
+                return L10n.Act.Goals.enterYourGoal
+            default:
+                return String()
+            }
+        }
+        
+        func accesoryIsHidden() -> Bool {
+            switch self {
+            case .chooseStartDate, .chooseEndDate, .daysOfWeek, .setTime:
+                return false
+            default:
+                return true
+            }
+        }
+        
+        func currentValueIsHidden() -> Bool {
+            switch self {
+            case .today:
+                return false
+            default:
+                return true
+            }
+        }
+    }
+}
+
+enum ActionDateType: Int16{
+    case today = 0
+    case tommorow
+    case afterOneWeek
+    case chooseDate
+}
+
+enum RemindMeType: Int16 {
+    case noReminders = 0
+    case beforeTheDay
+    case onTheDay
+}
+
+enum DaysOfWeekType : Int{
+    case sunday = 1
+    case monday
+    case tuesday
+    case wednesday
+    case thursday
+    case friday
+    case saturday
+    
+    var shortText : String {
+        switch self {
+        case .monday:
+            return L10n.Act.Duration.Day.mo
+        case .tuesday:
+            return L10n.Act.Duration.Day.tu
+        case .wednesday:
+            return L10n.Act.Duration.Day.we
+        case .thursday:
+            return L10n.Act.Duration.Day.th
+        case .friday:
+            return L10n.Act.Duration.Day.fr
+        case .saturday:
+            return L10n.Act.Duration.Day.sa
+        case .sunday:
+            return L10n.Act.Duration.Day.su
         }
     }
     

@@ -31,6 +31,8 @@ internal enum L10n {
   internal static let off = L10n.tr("Localizable", "Off")
   /// Okay
   internal static let okay = L10n.tr("Localizable", "Okay")
+  /// On
+  internal static let on = L10n.tr("Localizable", "On")
   /// Read preview
   internal static let readPreview = L10n.tr("Localizable", "ReadPreview")
   /// Save
@@ -93,6 +95,8 @@ internal enum L10n {
     internal static let starts = L10n.tr("Localizable", "Act.Starts")
     /// Today’s Actions
     internal static let todaysActions = L10n.tr("Localizable", "Act.TodaysActions")
+    /// When
+    internal static let when = L10n.tr("Localizable", "Act.When")
     /// You have 3 action with stakes
     internal static let youHaveActionWithStakes = L10n.tr("Localizable", "Act.YouHaveActionWithStakes")
     /// You have 3 tasks with stakes

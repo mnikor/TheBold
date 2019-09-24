@@ -84,6 +84,8 @@
 		F11562A422DF2E9A00399FA6 /* StakeActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11562A222DF2E9A00399FA6 /* StakeActionTableViewCell.xib */; };
 		F13DEAD322AAC0B700BC3CA6 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13DEAD222AAC0B700BC3CA6 /* SignUpView.swift */; };
 		F13DEAD522AAC0D500BC3CA6 /* SignUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F13DEAD422AAC0D500BC3CA6 /* SignUpView.xib */; };
+		F13FCBAE2337C13A00BAE544 /* Reminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBAC2337C13A00BAE544 /* Reminder+CoreDataProperties.swift */; };
+		F13FCBAF2337C13A00BAE544 /* Reminder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBAD2337C13A00BAE544 /* Reminder+CoreDataClass.swift */; };
 		F141668122BCD7A10020BF0F /* ManifestConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141668022BCD7A10020BF0F /* ManifestConfigurator.swift */; };
 		F141668322BCD7D20020BF0F /* ManifestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141668222BCD7D20020BF0F /* ManifestPresenter.swift */; };
 		F141668522BCD7E60020BF0F /* ManifestInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141668422BCD7E60020BF0F /* ManifestInteractor.swift */; };
@@ -107,6 +109,11 @@
 		F158E2C122C3C73F00FD671A /* ProgressHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F158E2C022C3C73F00FD671A /* ProgressHeaderView.xib */; };
 		F158E2C322C4E11600FD671A /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F158E2C222C4E11600FD671A /* NavigationView.swift */; };
 		F158E2C522C4E12A00FD671A /* NavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F158E2C422C4E12A00FD671A /* NavigationView.xib */; };
+		F15FB31C232FAF2B002F0C00 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15FB31B232FAF2A002F0C00 /* Event+CoreDataProperties.swift */; };
+		F15FB31D232FAF2B002F0C00 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15FB31A232FAF2A002F0C00 /* Event+CoreDataClass.swift */; };
+		F15FB320232FDE14002F0C00 /* CreateActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15FB31F232FDE14002F0C00 /* CreateActionViewModel.swift */; };
+		F15FB323232FDEC9002F0C00 /* ConfigurateActionSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15FB322232FDEC9002F0C00 /* ConfigurateActionSectionModel.swift */; };
+		F15FB3252330E413002F0C00 /* ConfigurateActionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15FB3242330E413002F0C00 /* ConfigurateActionCellModel.swift */; };
 		F162A77E22C12C05008292E8 /* ActionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F162A77C22C12C05008292E8 /* ActionCollectionViewCell.swift */; };
 		F162A77F22C12C05008292E8 /* ActionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F162A77D22C12C05008292E8 /* ActionCollectionViewCell.xib */; };
 		F162A78722C23352008292E8 /* ActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F162A78522C23352008292E8 /* ActionTableViewCell.swift */; };
@@ -349,10 +356,12 @@
 		F1F6ADC823210DB300F6A925 /* Content+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6ADB323210DB200F6A925 /* Content+CoreDataProperties.swift */; };
 		F1F6ADC923210DB300F6A925 /* Goal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6ADB423210DB200F6A925 /* Goal+CoreDataProperties.swift */; };
 		F1F6ADCC23210DC800F6A925 /* Bold.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1F6ADCA23210DC800F6A925 /* Bold.xcdatamodeld */; };
-		F1F6ADCF23210E7700F6A925 /* NumberFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6ADCD23210E7600F6A925 /* NumberFormatter+Extension.swift */; };
-		F1F6ADD023210E7700F6A925 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6ADCE23210E7700F6A925 /* DateFormatter+Extension.swift */; };
+		F1F6ADCF23210E7700F6A925 /* NumberFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6ADCD23210E7600F6A925 /* NumberFormatter+Extensions.swift */; };
+		F1F6ADD023210E7700F6A925 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6ADCE23210E7700F6A925 /* DateFormatter+Extensions.swift */; };
 		F1F6ADD2232128FF00F6A925 /* CreateGoalSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6ADD1232128FF00F6A925 /* CreateGoalSectionModel.swift */; };
-		F1F6ADD72321297700F6A925 /* CreateGoalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6ADD62321297700F6A925 /* CreateGoalModel.swift */; };
+		F1F6ADD72321297700F6A925 /* CreateGoalActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6ADD62321297700F6A925 /* CreateGoalActionModel.swift */; };
+		F1F6ADDB23261E6E00F6A925 /* CreateGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6ADDA23261E6E00F6A925 /* CreateGoalViewModel.swift */; };
+		F1F6ADDF232626DA00F6A925 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6ADDE232626DA00F6A925 /* Date+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -435,6 +444,8 @@
 		F11562A222DF2E9A00399FA6 /* StakeActionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StakeActionTableViewCell.xib; sourceTree = "<group>"; };
 		F13DEAD222AAC0B700BC3CA6 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		F13DEAD422AAC0D500BC3CA6 /* SignUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpView.xib; sourceTree = "<group>"; };
+		F13FCBAC2337C13A00BAE544 /* Reminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Reminder+CoreDataProperties.swift"; path = "/Users/aleksanderkovalov/Documents/Repositories/the-bold-ios/Bold/Data/Models/Reminder+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		F13FCBAD2337C13A00BAE544 /* Reminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Reminder+CoreDataClass.swift"; path = "/Users/aleksanderkovalov/Documents/Repositories/the-bold-ios/Bold/Data/Models/Reminder+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		F141668022BCD7A10020BF0F /* ManifestConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestConfigurator.swift; sourceTree = "<group>"; };
 		F141668222BCD7D20020BF0F /* ManifestPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestPresenter.swift; sourceTree = "<group>"; };
 		F141668422BCD7E60020BF0F /* ManifestInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestInteractor.swift; sourceTree = "<group>"; };
@@ -458,6 +469,11 @@
 		F158E2C022C3C73F00FD671A /* ProgressHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressHeaderView.xib; sourceTree = "<group>"; };
 		F158E2C222C4E11600FD671A /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		F158E2C422C4E12A00FD671A /* NavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationView.xib; sourceTree = "<group>"; };
+		F15FB31A232FAF2A002F0C00 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Event+CoreDataClass.swift"; path = "/Users/aleksanderkovalov/Documents/Repositories/the-bold-ios/Bold/Data/Models/Event+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		F15FB31B232FAF2A002F0C00 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Event+CoreDataProperties.swift"; path = "/Users/aleksanderkovalov/Documents/Repositories/the-bold-ios/Bold/Data/Models/Event+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		F15FB31F232FDE14002F0C00 /* CreateActionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateActionViewModel.swift; sourceTree = "<group>"; };
+		F15FB322232FDEC9002F0C00 /* ConfigurateActionSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurateActionSectionModel.swift; sourceTree = "<group>"; };
+		F15FB3242330E413002F0C00 /* ConfigurateActionCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurateActionCellModel.swift; sourceTree = "<group>"; };
 		F162A77C22C12C05008292E8 /* ActionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCollectionViewCell.swift; sourceTree = "<group>"; };
 		F162A77D22C12C05008292E8 /* ActionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionCollectionViewCell.xib; sourceTree = "<group>"; };
 		F162A78522C23352008292E8 /* ActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionTableViewCell.swift; sourceTree = "<group>"; };
@@ -702,10 +718,12 @@
 		F1F6ADB323210DB200F6A925 /* Content+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Content+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F1F6ADB423210DB200F6A925 /* Goal+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Goal+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F1F6ADCB23210DC800F6A925 /* Bold.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bold.xcdatamodel; sourceTree = "<group>"; };
-		F1F6ADCD23210E7600F6A925 /* NumberFormatter+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Extension.swift"; sourceTree = "<group>"; };
-		F1F6ADCE23210E7700F6A925 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
+		F1F6ADCD23210E7600F6A925 /* NumberFormatter+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Extensions.swift"; sourceTree = "<group>"; };
+		F1F6ADCE23210E7700F6A925 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		F1F6ADD1232128FF00F6A925 /* CreateGoalSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalSectionModel.swift; sourceTree = "<group>"; };
-		F1F6ADD62321297700F6A925 /* CreateGoalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalModel.swift; sourceTree = "<group>"; };
+		F1F6ADD62321297700F6A925 /* CreateGoalActionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalActionModel.swift; sourceTree = "<group>"; };
+		F1F6ADDA23261E6E00F6A925 /* CreateGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalViewModel.swift; sourceTree = "<group>"; };
+		F1F6ADDE232626DA00F6A925 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -956,6 +974,13 @@
 			path = ZSegmentedControl;
 			sourceTree = "<group>";
 		};
+		F13FCBB02339F93000BAE544 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F141668822BD00CB0020BF0F /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -1011,6 +1036,23 @@
 				F1A79DC522D89C0C0018A8EF /* ListenOrReadMaterialView.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F15FB31E232FDDFE002F0C00 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F15FB31F232FDE14002F0C00 /* CreateActionViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F15FB321232FDEA4002F0C00 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F15FB322232FDEC9002F0C00 /* ConfigurateActionSectionModel.swift */,
+				F15FB3242330E413002F0C00 /* ConfigurateActionCellModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F16F21D722F304AE004DC5F3 /* StakeViewController */ = {
@@ -1175,6 +1217,7 @@
 				F183303722E6F03700BB7A9E /* CreateActionPresenter.swift */,
 				F183303922E6F04500BB7A9E /* CreateActionInteractor.swift */,
 				F183303B22E6F05500BB7A9E /* CreateActionRouter.swift */,
+				F15FB31E232FDDFE002F0C00 /* Model */,
 			);
 			path = CreateActionViewController;
 			sourceTree = "<group>";
@@ -1273,8 +1316,9 @@
 				F1EA1CA622E0776600BB328F /* UIImageView+Extensions.swift */,
 				F1EA1CA822E07D2A00BB328F /* UILabel+Extensions.swift */,
 				F1EA1CAE22E0A71F00BB328F /* UIImage+Extensions.swift */,
-				F1F6ADCE23210E7700F6A925 /* DateFormatter+Extension.swift */,
-				F1F6ADCD23210E7600F6A925 /* NumberFormatter+Extension.swift */,
+				F1F6ADCE23210E7700F6A925 /* DateFormatter+Extensions.swift */,
+				F1F6ADCD23210E7600F6A925 /* NumberFormatter+Extensions.swift */,
+				F1F6ADDE232626DA00F6A925 /* Date+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1373,6 +1417,7 @@
 				F192580022E752A600FA5C6E /* CalendarActionsListPresenter.swift */,
 				F192580222E752B600FA5C6E /* CalendarActionsListInteractor.swift */,
 				F192580422E752C400FA5C6E /* CalendarActionsListRouter.swift */,
+				F13FCBB02339F93000BAE544 /* Model */,
 			);
 			path = CalendarActionsListViewController;
 			sourceTree = "<group>";
@@ -1619,6 +1664,7 @@
 				F1EAF59922E8AA79008073D7 /* ConfigurateActionPresenter.swift */,
 				F1EAF59B22E8AA89008073D7 /* ConfigurateActionInteractor.swift */,
 				F1EAF59D22E8AA9A008073D7 /* ConfigurateActionRouter.swift */,
+				F15FB321232FDEA4002F0C00 /* Model */,
 			);
 			path = ConfigurateActionViewController;
 			sourceTree = "<group>";
@@ -1684,8 +1730,12 @@
 				F1F6ADB423210DB200F6A925 /* Goal+CoreDataProperties.swift */,
 				F1F6ADAA23210DB200F6A925 /* Action+CoreDataClass.swift */,
 				F1F6ADA623210DB200F6A925 /* Action+CoreDataProperties.swift */,
+				F15FB31A232FAF2A002F0C00 /* Event+CoreDataClass.swift */,
+				F15FB31B232FAF2A002F0C00 /* Event+CoreDataProperties.swift */,
 				F1F6ADA923210DB200F6A925 /* DaysOfWeek+CoreDataClass.swift */,
 				F1F6ADAB23210DB200F6A925 /* DaysOfWeek+CoreDataProperties.swift */,
+				F13FCBAD2337C13A00BAE544 /* Reminder+CoreDataClass.swift */,
+				F13FCBAC2337C13A00BAE544 /* Reminder+CoreDataProperties.swift */,
 				F1F6ADAD23210DB200F6A925 /* Content+CoreDataClass.swift */,
 				F1F6ADB323210DB200F6A925 /* Content+CoreDataProperties.swift */,
 				F1F6ADA723210DB200F6A925 /* File+CoreDataClass.swift */,
@@ -1703,7 +1753,8 @@
 			isa = PBXGroup;
 			children = (
 				F1F6ADD1232128FF00F6A925 /* CreateGoalSectionModel.swift */,
-				F1F6ADD62321297700F6A925 /* CreateGoalModel.swift */,
+				F1F6ADD62321297700F6A925 /* CreateGoalActionModel.swift */,
+				F1F6ADDA23261E6E00F6A925 /* CreateGoalViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1935,6 +1986,7 @@
 				F1868852229E9DA20029A663 /* L10n-Constants.swift in Sources */,
 				F14166A522C115B50020BF0F /* PlayerListView.swift in Sources */,
 				F179974D22AE615D0039879F /* Localizable.swift in Sources */,
+				F1F6ADDF232626DA00F6A925 /* Date+Extensions.swift in Sources */,
 				F107539422F20C0B0078C71C /* EnterYourGoalTableViewCell.swift in Sources */,
 				F1F6ADB523210DB300F6A925 /* Enums.swift in Sources */,
 				F1D390F922D4E3F800DF8700 /* CitationViewController.swift in Sources */,
@@ -1981,6 +2033,7 @@
 				F186884C229E9BD80029A663 /* UIColor+Extensions.swift in Sources */,
 				C59E5E3823059414005DCD18 /* AccountDetailsRouter.swift in Sources */,
 				C5B1E56D23045FA4000991DF /* ProfileRouter.swift in Sources */,
+				F1F6ADDB23261E6E00F6A925 /* CreateGoalViewModel.swift in Sources */,
 				F179977222B1413A0039879F /* MenuTransitioningDelegate.swift in Sources */,
 				F1E698B42315723900438E3E /* DownloadsRouter.swift in Sources */,
 				F162A78722C23352008292E8 /* ActionTableViewCell.swift in Sources */,
@@ -2001,6 +2054,7 @@
 				F19A98A522D5FF4F00A0492E /* CustomDotsPageControl.swift in Sources */,
 				F1F406322306F6BA0091B774 /* LevelOfMasteryTableViewCell.swift in Sources */,
 				F141668322BCD7D20020BF0F /* ManifestPresenter.swift in Sources */,
+				F15FB323232FDEC9002F0C00 /* ConfigurateActionSectionModel.swift in Sources */,
 				F1F6ADC823210DB300F6A925 /* Content+CoreDataProperties.swift in Sources */,
 				F14166A022C106210020BF0F /* HeaderActionPlanTableViewCell.swift in Sources */,
 				F1CECE1522E9C73400EA95EE /* ColorCreateGoalTableViewCell.swift in Sources */,
@@ -2010,6 +2064,7 @@
 				F183301022E5CB2D00BB7A9E /* FeelConfigurator.swift in Sources */,
 				F1F6ADB623210DB300F6A925 /* DataSource+User.swift in Sources */,
 				F183302722E605A600BB7A9E /* ActInteractor.swift in Sources */,
+				F15FB31C232FAF2B002F0C00 /* Event+CoreDataProperties.swift in Sources */,
 				F183304222E6F0F000BB7A9E /* CreateGoalInteractor.swift in Sources */,
 				F1CCC70322CA0F2900E7B637 /* UITableView+Xib.swift in Sources */,
 				F158E2C322C4E11600FD671A /* NavigationView.swift in Sources */,
@@ -2019,6 +2074,7 @@
 				C59E5E3623059405005DCD18 /* AccountDetailsInteractor.swift in Sources */,
 				F1B2B1D222FC1A2100C327B0 /* CalendarDecorationView.swift in Sources */,
 				F1E698B723157E3D00438E3E /* ArchivedGoalsConfigurator.swift in Sources */,
+				F13FCBAF2337C13A00BAE544 /* Reminder+CoreDataClass.swift in Sources */,
 				C59E5E1E23055BDD005DCD18 /* ConfigurableLabel.swift in Sources */,
 				F1A79DD622DCAFA80018A8EF /* OverTabbarView.swift in Sources */,
 				F1EA1CA722E0776600BB328F /* UIImageView+Extensions.swift in Sources */,
@@ -2039,6 +2095,7 @@
 				F1CECE2522EA0AC000EA95EE /* IconCollectionViewCell.swift in Sources */,
 				F17CB26922A682130035ABAB /* RoundedButton.swift in Sources */,
 				F14166AC22C125A50020BF0F /* ActionCollectionTableViewCell.swift in Sources */,
+				F15FB320232FDE14002F0C00 /* CreateActionViewModel.swift in Sources */,
 				F1EB8DD622A8022500E3BC4C /* ForgotPasswordViewController.swift in Sources */,
 				F1F6ADB723210DB300F6A925 /* DataSource+Goals.swift in Sources */,
 				F1F6ADC323210DB300F6A925 /* User+CoreDataProperties.swift in Sources */,
@@ -2115,6 +2172,7 @@
 				F1130CE9230FE058008FA60D /* ZSegmentedControl.swift in Sources */,
 				F183303022E617B900BB7A9E /* AllGoalsInteractor.swift in Sources */,
 				C5B1E55523043865000991DF /* ViewModelConfigurable.swift in Sources */,
+				F15FB3252330E413002F0C00 /* ConfigurateActionCellModel.swift in Sources */,
 				F107538C22F09B640078C71C /* DaysOfWeekTableViewCell.swift in Sources */,
 				F141668522BCD7E60020BF0F /* ManifestInteractor.swift in Sources */,
 				F19A98A822D616FB00A0492E /* DontGiveUpAlertView.swift in Sources */,
@@ -2129,10 +2187,12 @@
 				F183302522E6059600BB7A9E /* ActPresenter.swift in Sources */,
 				F1EAF59222E89925008073D7 /* HeaderWriteActionsTableViewCell.swift in Sources */,
 				F1F40635230AE2270091B774 /* LevelOfMasteryFooterView.swift in Sources */,
+				F13FCBAE2337C13A00BAE544 /* Reminder+CoreDataProperties.swift in Sources */,
 				F1E698A72315641800438E3E /* LevelOfMasteryPresenter.swift in Sources */,
 				F1D390F722D4E3AB00DF8700 /* CitationPageViewController.swift in Sources */,
 				C59E5E30230581F0005DCD18 /* AccountDetailsViewController.swift in Sources */,
-				F1F6ADD023210E7700F6A925 /* DateFormatter+Extension.swift in Sources */,
+				F15FB31D232FAF2B002F0C00 /* Event+CoreDataClass.swift in Sources */,
+				F1F6ADD023210E7700F6A925 /* DateFormatter+Extensions.swift in Sources */,
 				F179977722B1413A0039879F /* SideMenuItemContent.swift in Sources */,
 				F1E8EFDA22F484B2006A9D39 /* CalendarTableViewCell.swift in Sources */,
 				F11562A022DF20B100399FA6 /* ActViewController.swift in Sources */,
@@ -2169,7 +2229,7 @@
 				F1EAF59C22E8AA89008073D7 /* ConfigurateActionInteractor.swift in Sources */,
 				F1EA1CB522E1BF4900BB328F /* AllGoalsViewController.swift in Sources */,
 				F179977A22B141FA0039879F /* HostViewController.swift in Sources */,
-				F1F6ADCF23210E7700F6A925 /* NumberFormatter+Extension.swift in Sources */,
+				F1F6ADCF23210E7700F6A925 /* NumberFormatter+Extensions.swift in Sources */,
 				F19A98B822D758CF00A0492E /* MissedYouTwoButtonAlertView.swift in Sources */,
 				F190357822D87AF8001BC996 /* FixedPaddingTextView.swift in Sources */,
 				F1CECE1922E9C75000EA95EE /* ColorListCreateGoalTableViewCell.swift in Sources */,
@@ -2187,7 +2247,7 @@
 				F115629C22DDB15900399FA6 /* DescriptionAndLikesCountViewController.swift in Sources */,
 				F107538822F093770078C71C /* BodyConfigureTableViewCell.swift in Sources */,
 				F183302C22E6178D00BB7A9E /* AllGoalsConfigurator.swift in Sources */,
-				F1F6ADD72321297700F6A925 /* CreateGoalModel.swift in Sources */,
+				F1F6ADD72321297700F6A925 /* CreateGoalActionModel.swift in Sources */,
 				F1130CDF230E937C008FA60D /* WMSegment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

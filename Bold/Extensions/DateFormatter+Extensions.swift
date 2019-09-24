@@ -10,9 +10,11 @@ import Foundation
 
 enum DateType : String {
     case createGoalOrAction = "E, d MMM, yyyy"
-    case paramsAction = "EEEE, d MMMM"
+    case configureAction = "EEEE, d MMMM"
     case select = "EEEE, d MMM"
     case headerGroup = "d MMMM, yyyy"
+    case timeAction = "h:mm a"
+    case startOrEndDate = "MM/dd/yyyy hh:mm a"
 }
 
 extension DateFormatter {
@@ -23,5 +25,4 @@ extension DateFormatter {
         dateFormatter.dateFormat = type.rawValue
         return dateFormatter.string(from: date)
     }
-    
 }

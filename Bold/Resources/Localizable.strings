@@ -10,6 +10,7 @@
 
 "ShowAll" = "Show all";
 "ViewAll" = "View all";
+"On" = "On";
 "Off" = "Off";
 "Unlock" = "Unlock";
 "Delete" = "Delete";
@@ -134,6 +135,7 @@
 "Act.Stake" = "Stake";
 "Act.ShareWithFriends" = "Share with friends";
 "Act.NoStake" = "No stake";
+"Act.When" = "When";
 
 "Act.HopefullyEmptyText" = "Hopefully, you're buzzing with nerves or excitement... Awesome. Now figure out what actions will achieve your goal.";
 

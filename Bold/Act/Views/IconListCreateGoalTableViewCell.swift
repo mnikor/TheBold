@@ -51,7 +51,7 @@ class IconListCreateGoalTableViewCell: BaseTableViewCell {
         collectionView.registerNib(IconCollectionViewCell.self)
     }
     
-    func config(modelView: CreateGoalModel) {
+    func config(modelView: CreateGoalActionModel) {
         
         switch modelView.modelValue {
         case .icons(let icons, let selectIcon, let selectColor):

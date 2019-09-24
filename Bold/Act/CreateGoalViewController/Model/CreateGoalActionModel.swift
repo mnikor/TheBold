@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum CreateGoalModelType {
+enum CreateCellModelType {
     case header(HeaderCreateType, String?)
     case date(String)
     case color(ColorGoalType)
@@ -16,27 +16,16 @@ enum CreateGoalModelType {
     case value(String?)
     case colors([ColorGoalType], ColorGoalType)
     case icons([IdeasType], IdeasType, ColorGoalType)
+    case none
 }
 
-class CreateGoalModel: NSObject {
+class CreateGoalActionModel: NSObject {
 
     var type: AddActionCellType
-    var modelValue: CreateGoalModelType
+    var modelValue: CreateCellModelType
     
-    init(type: AddActionCellType, modelValue: CreateGoalModelType) {
+    init(type: AddActionCellType, modelValue: CreateCellModelType) {
         self.type = type
         self.modelValue = modelValue
     }
-}
-
-struct CreateGoalViewModel {
-    let startDate : Date
-    let startDateString : String
-    let endDate : Date
-    let endDateString : String
-    let color : ColorGoalType
-    let icon : IdeasType
-    let nameGoal : String?
-    let colors : [ColorGoalType]
-    let icons : [IdeasType]
 }

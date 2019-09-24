@@ -9,7 +9,8 @@
 import Foundation
 
 enum ConfigurateActionInputRouter {
-    case er
+    case cancel
+    case presentSheet(DateAlertViewController)
 }
 
 protocol ConfigurateActionInputRouterProtocol {
@@ -29,10 +30,10 @@ class ConfigurateActionRouter: RouterProtocol, ConfigurateActionInputRouterProto
     func input(_ inputCase: ConfigurateActionInputRouter) {
         
         switch inputCase {
-        case .er:
-            print("dsfsf")
-        default:
-            print("sfsdf")
+        case .cancel:
+            viewController.navigationController?.popViewController(animated: true)
+        case .presentSheet(let dateAlertVC):
+            dateAlertVC.presentedBy(viewController)
         }
     }
 }

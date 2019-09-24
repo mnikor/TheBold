@@ -98,7 +98,7 @@ class CreateGoalPresenter: PresenterProtocol, CreateGoalInputPresenterProtocol {
     
     private func selectedDate(typeAlert: DateAlertType) {
         let currentDate = typeAlert == .startDate ? modelView.startDate : modelView.endDate
-        let alertVC = DateAlertViewController.createController(type: typeAlert, currentDate: currentDate) {[unowned self] (newDate) in
+        let alertVC = DateAlertViewController.createController(type: typeAlert, currentDate: currentDate, startDate: nil, endDate: nil) {[unowned self] (newDate) in
             if typeAlert == .startDate {
                 self.interactor.input(.updateStartDate(newDate))
             }else {
@@ -110,15 +110,15 @@ class CreateGoalPresenter: PresenterProtocol, CreateGoalInputPresenterProtocol {
     
     private func updateDataSource() -> [CreateGoalSectionModel] {
         
-        return [CreateGoalSectionModel(title: nil, items: [CreateGoalModel(type: .headerWriteActivity, modelValue: .header(.goal, modelView.nameGoal))
-            ]),
-                CreateGoalSectionModel(title: nil, items: [CreateGoalModel(type: .starts, modelValue: .date(modelView.startDateString)),
-                                                           CreateGoalModel(type: .ends, modelValue: .date(modelView.endDateString)),
-                                                           CreateGoalModel(type: .color, modelValue: .color(modelView.color)),
-                                                           CreateGoalModel(type: .colorList, modelValue: .colors(modelView.colors, modelView.color))
+        return [CreateGoalSectionModel(title: nil, items: [CreateGoalActionModel(type: .headerWriteActivity, modelValue: .header(.goal, modelView.nameGoal))
                     ]),
-                CreateGoalSectionModel(title: nil, items: [CreateGoalModel(type: .icons, modelValue: .icon(modelView.icon)),
-                                                           CreateGoalModel(type: .iconsList, modelValue: .icons(modelView.icons, modelView.icon, modelView.color))
+                CreateGoalSectionModel(title: nil, items: [CreateGoalActionModel(type: .starts, modelValue: .date(modelView.startDateString)),
+                                                           CreateGoalActionModel(type: .ends, modelValue: .date(modelView.endDateString)),
+                                                           CreateGoalActionModel(type: .color, modelValue: .color(modelView.color)),
+                                                           CreateGoalActionModel(type: .colorList, modelValue: .colors(modelView.colors, modelView.color))
+                    ]),
+                CreateGoalSectionModel(title: nil, items: [CreateGoalActionModel(type: .icons, modelValue: .icon(modelView.icon)),
+                                                           CreateGoalActionModel(type: .iconsList, modelValue: .icons(modelView.icons, modelView.icon, modelView.color))
                     ])
         ]
     }

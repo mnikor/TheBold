@@ -19,25 +19,34 @@ class BodyConfigureTableViewCell: BaseTableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-    func config(type: ConfigureActionType.BodyType, model: ConfigureActionModel) {
+    
+    func config(type:ConfigureActionType.BodyType, modelView: ConfigureActionModelType) {
         
-        checkImageView.image = type == model.isSelected ? Asset.checkIcon.image : UIImage()
-        configureTextLabel.textColor = type == model.isSelected ? ColorName.typographyBlack100.color : ColorName.typographyBlack50.color
-        configureTextLabel.text = type.titleText()
-        accessoryImageView.isHidden = type.accesoryIsHidden()
-        currentValueLabel.isHidden = type.currentValueIsHidden()
-        
-        if type == .daysOfWeek {
-            if type == model.isSelected {
-                UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions.curveLinear, animations: {
-                    self.accessoryImageView.transform = self.transform.rotated(by: CGFloat.pi / 2)
-                }, completion: nil)
-            }else {
-                UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions.curveLinear, animations: {
-                    self.accessoryImageView.transform = self.transform.rotated(by: CGFloat.zero)
-                }, completion: nil)
+        switch modelView {
+        case .body(title: let title, value: let value, accessory: let accessory, isSelected: let isSelected, textColor: let textColor):
+            checkImageView.image = isSelected == true ? Asset.checkIcon.image : UIImage()
+            configureTextLabel.textColor = textColor
+            configureTextLabel.text = title
+            currentValueLabel.text = value
+            accessoryImageView.isHidden = accessory
+            
+            if type == .daysOfWeek {
+                animate(isSelected: isSelected)
             }
+        default:
+            return
+        }
+    }
+    
+    private func animate(isSelected: Bool) {
+        if isSelected {
+            UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions.curveLinear, animations: {
+                self.accessoryImageView.transform = self.transform.rotated(by: CGFloat.pi / 2)
+            }, completion: nil)
+        }else {
+            UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions.curveLinear, animations: {
+                self.accessoryImageView.transform = self.transform.rotated(by: CGFloat.zero)
+            }, completion: nil)
         }
     }
     

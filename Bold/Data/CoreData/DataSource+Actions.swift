@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 protocol ActionsFunctionality {
     func createActions()
@@ -27,5 +28,17 @@ extension DataSource: ActionsFunctionality {
         
     }
     
-    
+    func updateAction(actionID: String, success: (Action?)->Void) {
+        
+        var results : Action?
+        let fetchRequest = NSFetchRequest<Action>(entityName: "Action")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", actionID)
+        do {
+            results = try DataSource.shared.backgroundContext.fetch(fetchRequest).first
+        } catch {
+            print(error)
+        }
+        
+        success(results)
+    }
 }

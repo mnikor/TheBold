@@ -12,6 +12,13 @@ enum CreateActionInputPresenter {
     case setting(AddActionCellType)
     case stake
     case share
+    case save
+    case cancel
+    
+    case createNewAction
+    case updateName(String)
+    case updateConfiguration
+    case updateStake(Float)
 }
 
 protocol CreateActionInputProtocol {
@@ -28,17 +35,36 @@ class CreateActionPresenter: PresenterProtocol, CreateActionInputProtocol {
     var interactor: Interactor!
     var router: Router!
     
-    lazy var listSettings : [Array] = {
-        return [
-            [AddActionEntity(type: .headerWriteActivity, currentValue: nil)],
-            
-            [AddActionEntity(type: .duration, currentValue: "Thu, 1 Feb, 2019"),
-            AddActionEntity(type: .reminder, currentValue: "Off"),
-            AddActionEntity(type: .goal, currentValue: "Marathon")],
-            
-            [AddActionEntity(type: .stake, currentValue: "No stake"),
-            AddActionEntity(type: .share, currentValue: nil)]]
+    var goal: Goal!
+    var newAction: Action!
+    
+    var modelView: CreateActionViewModel! {
+        didSet {
+            self.dataSource = updateDataSource()
+            self.viewController.tableView.reloadData()
+        }
+    }
+    
+    lazy var dataSource: [CreateGoalSectionModel] = {
+        guard let modelView = modelView else {
+            return []
+        }
+        return updateDataSource()
     }()
+    
+    private func updateDataSource() -> [CreateGoalSectionModel] {
+        
+        return [CreateGoalSectionModel(title: nil, items: [CreateGoalActionModel(type: .headerWriteActivity, modelValue: .header(.action, modelView.name))
+                    ]),
+                CreateGoalSectionModel(title: nil, items: [CreateGoalActionModel(type: .when, modelValue: .date(modelView.startDate)),
+                                                           CreateGoalActionModel(type: .reminder, modelValue: .value(modelView.reminder)),
+                                                           CreateGoalActionModel(type: .goal, modelValue: .value(modelView.goal))
+                    ]),
+                CreateGoalSectionModel(title: nil, items: [CreateGoalActionModel(type: .stake, modelValue: .value(modelView.stake)),
+                                                           CreateGoalActionModel(type: .share, modelValue: .none)
+                    ])
+        ]
+    }
     
     required init(view: View) {
         self.viewController = view
@@ -50,12 +76,36 @@ class CreateActionPresenter: PresenterProtocol, CreateActionInputProtocol {
     
     func input(_ inputCase: CreateActionInputPresenter) {
         switch inputCase {
+        case .createNewAction:
+            createNewAction()
+        case .updateName(let name):
+            interactor.input(.updateName(name))
+        case .updateConfiguration:
+            interactor.input(.updateConfiguration)
+        case .updateStake(let stake):
+            interactor.input(.updateStake(stake))
+            
         case .setting(let settingType):
             router.input(.presentSetting(settingType))
         case .stake:
             router.input(.stake)
         case .share:
             router.input(.share)
+        case .save:
+            interactor.input(.saveAction({ [unowned self] in
+                self.router.input(.cancel)
+            }))
+        case .cancel:
+            interactor.input(.deleteAction({ [unowned self] in
+                self.router.input(.cancel)
+            }))
+            
         }
+    }
+    
+    private func createNewAction() {
+        interactor.input(.createNewAction(goal, { [weak self] (modelView) in
+            self?.modelView = modelView
+        }))
     }
 }

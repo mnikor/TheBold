@@ -8,38 +8,8 @@
 
 import UIKit
 
-enum DayWeekType {
-    case monday
-    case tuesday
-    case wednesday
-    case thursday
-    case friday
-    case saturday
-    case sunday
-    
-    var shortText : String {
-        switch self {
-        case .monday:
-            return L10n.Act.Duration.Day.mo
-        case .tuesday:
-            return L10n.Act.Duration.Day.tu
-        case .wednesday:
-            return L10n.Act.Duration.Day.we
-        case .thursday:
-            return L10n.Act.Duration.Day.th
-        case .friday:
-            return L10n.Act.Duration.Day.fr
-        case .saturday:
-            return L10n.Act.Duration.Day.sa
-        case .sunday:
-            return L10n.Act.Duration.Day.su
-        }
-    }
-    
-}
-
 protocol DaysOfWeekTableViewCellDelegate: class {
-    func selectDay(selectDays: [DayWeekType])
+    func selectDay(selectDays: [DaysOfWeekType])
 }
 
 private struct Constants {
@@ -61,11 +31,11 @@ class DaysOfWeekTableViewCell: BaseTableViewCell {
     
     weak var delegate: DaysOfWeekTableViewCellDelegate?
     
-    lazy var days: [DayWeekType] = {
+    lazy var days: [DaysOfWeekType] = {
         return [.monday, .tuesday, .wednesday, .thursday, .friday, .saturday, .sunday]
     }()
     
-    var selectDays = [DayWeekType]()
+    var selectDays = [DaysOfWeekType]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -80,10 +50,15 @@ class DaysOfWeekTableViewCell: BaseTableViewCell {
         collectionView.registerNib(DayOfWeekCollectionViewCell.self)
     }
     
-    func config(selectDays: [DayWeekType]) {
+    func config(modelView: ConfigureActionModelType) {
         
-        self.selectDays = selectDays
-        collectionView.reloadData()
+        switch modelView {
+        case .daysOfWeek(let selectDays):
+            self.selectDays = selectDays
+            collectionView.reloadData()
+        default:
+            return
+        }
     }
 }
 

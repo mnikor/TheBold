@@ -18,6 +18,10 @@ protocol HeaderWriteActionsTableViewCellDelegate: class {
     func editingNameIdea(nameIdea: String)
 }
 
+extension HeaderWriteActionsTableViewCellDelegate {
+    func tapIdeas() {}
+}
+
 class HeaderWriteActionsTableViewCell: BaseTableViewCell {
 
     @IBOutlet weak var nameActionsTextField: UITextField!
@@ -36,7 +40,7 @@ class HeaderWriteActionsTableViewCell: BaseTableViewCell {
         nameActionsTextField.delegate = self
     }
     
-    func config(modelView: CreateGoalModel) {
+    func config(modelView: CreateGoalActionModel) {
         
         switch modelView.modelValue {
         case .header(let typeHeader, let nameString):

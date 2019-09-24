@@ -6,12 +6,13 @@
 //  Copyright © 2019 Alexander Kovalov. All rights reserved.
 //
 
-import Foundation
+import CoreData
 
 protocol GoalsFunctionality {
     func createNewGoal()
     func updateGoal()
     func deleteGoal()
+    func goalsList() -> [Goal]
 }
 
 extension DataSource: GoalsFunctionality {
@@ -25,5 +26,18 @@ extension DataSource: GoalsFunctionality {
     
     func deleteGoal() {
         
+    }
+    
+    func goalsList() -> [Goal] {
+        
+        var results = [Goal]()
+        let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
+        do {
+            results = try DataSource.shared.backgroundContext.fetch(fetchRequest)
+        } catch {
+            print(error)
+        }
+        
+        return results
     }
 }

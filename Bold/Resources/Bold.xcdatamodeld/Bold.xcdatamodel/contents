@@ -2,13 +2,17 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G87" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Action" representedClassName=".Action" syncable="YES">
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="endDateType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="remindMe" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="stake" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDateType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="content" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Content" inverseName="actions" inverseEntity="Content" syncable="YES"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="action" inverseEntity="Event" syncable="YES"/>
         <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="actions" inverseEntity="Goal" syncable="YES"/>
+        <relationship name="reminderMe" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Reminder" inverseName="action" inverseEntity="Reminder" syncable="YES"/>
         <relationship name="repeatAction" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DaysOfWeek" inverseName="action" inverseEntity="DaysOfWeek" syncable="YES"/>
     </entity>
     <entity name="Content" representedClassName=".Content" syncable="YES">
@@ -39,12 +43,23 @@
         <attribute name="wednesday" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="action" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Action" inverseName="repeatAction" inverseEntity="Action" syncable="YES"/>
     </entity>
+    <entity name="Event" representedClassName="Event" syncable="YES">
+        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reminderDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="stake" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="action" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Action" inverseName="events" inverseEntity="Action" syncable="YES"/>
+    </entity>
     <entity name="File" representedClassName=".File" syncable="YES">
         <attribute name="isAudio" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isDownloaded" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sequence" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="timeSpent" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="content" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Content" inverseName="files" inverseEntity="Content" syncable="YES"/>
     </entity>
@@ -52,11 +67,17 @@
         <attribute name="color" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="icon" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="actions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Action" inverseName="goal" inverseEntity="Action" syncable="YES"/>
+    </entity>
+    <entity name="Reminder" representedClassName=".Reminder" syncable="YES">
+        <attribute name="isSetTime" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="timeInterval" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="action" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Action" inverseName="reminderMe" inverseEntity="Action" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName=".User" syncable="YES">
         <attribute name="calendarOn" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -67,11 +88,13 @@
         <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Action" positionX="103.69140625" positionY="-223.24609375" width="128" height="178"/>
-        <element name="Content" positionX="316.390625" positionY="-89.78515625" width="128" height="283"/>
-        <element name="DaysOfWeek" positionX="-143.1875" positionY="-24.03515625" width="128" height="163"/>
-        <element name="File" positionX="106.078125" positionY="219.77734375" width="128" height="148"/>
-        <element name="Goal" positionX="-141.56640625" positionY="-223.41796875" width="128" height="163"/>
-        <element name="User" positionX="316.5" positionY="-219.1484375" width="128" height="135"/>
+        <element name="Action" positionX="107.0234375" positionY="-111.89453125" width="128" height="238"/>
+        <element name="Content" positionX="311.4296875" positionY="-12.078125" width="128" height="283"/>
+        <element name="DaysOfWeek" positionX="-74.8515625" positionY="264.7265625" width="128" height="163"/>
+        <element name="Event" positionX="-113.421875" positionY="-246.47265625" width="128" height="163"/>
+        <element name="File" positionX="106.078125" positionY="219.77734375" width="128" height="163"/>
+        <element name="Goal" positionX="-114.953125" positionY="-51.84375" width="128" height="163"/>
+        <element name="User" positionX="310.32421875" positionY="-190.5546875" width="128" height="135"/>
+        <element name="Reminder" positionX="-113.9375" positionY="145.5078125" width="128" height="103"/>
     </elements>
 </model>

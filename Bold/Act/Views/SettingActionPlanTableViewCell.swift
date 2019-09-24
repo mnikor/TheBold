@@ -16,7 +16,7 @@ class SettingActionPlanTableViewCell: BaseTableViewCell {
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var accessoryImageView: UIImageView!
 
-    func config(modelView: CreateGoalModel) {
+    func config(modelView: CreateGoalActionModel) {
         
         iconImageView.image = modelView.type.iconType()
         titleLabel.text = modelView.type.textType()

@@ -81,10 +81,12 @@ class CreateGoalInteractor: CreateGoalInputInteractorProtocol {
     
     private func createnewGoal() {
         newGoal = Goal()
+        newGoal.id = newGoal.objectID.uriRepresentation().lastPathComponent
         newGoal.startDate = Date() as NSDate
         newGoal.endDate = Date() as NSDate
-        newGoal.color = Int16(ColorGoalType.orange.rawValue)
-        newGoal.icon = Int16(IdeasType.marathon.rawValue)
+        newGoal.color = ColorGoalType.orange.rawValue
+        newGoal.icon = IdeasType.marathon.rawValue
+        newGoal.status = StatusType.wait.rawValue
         
         createModelView(goal: newGoal)
     }
@@ -95,8 +97,8 @@ class CreateGoalInteractor: CreateGoalInputInteractorProtocol {
                                             startDateString: dateFormatting(date: goal.startDate! as Date),
                                             endDate: goal.endDate! as Date,
                                             endDateString: dateFormatting(date: goal.endDate! as Date),
-                                            color: ColorGoalType(rawValue: Int(goal.color))!,
-                                            icon: IdeasType(rawValue: Int(goal.icon))!,
+                                            color: ColorGoalType(rawValue: goal.color)!,
+                                            icon: IdeasType(rawValue: goal.icon)!,
                                             nameGoal: goal.name,
                                             colors: colors,
                                             icons: icons)

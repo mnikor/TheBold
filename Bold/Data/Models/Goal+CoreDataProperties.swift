@@ -2,7 +2,7 @@
 //  Goal+CoreDataProperties.swift
 //  
 //
-//  Created by Alexander Kovalov on 9/3/19.
+//  Created by Alexander Kovalov on 9/11/19.
 //
 //
 
@@ -19,10 +19,10 @@ extension Goal {
     @NSManaged public var color: Int16
     @NSManaged public var endDate: NSDate?
     @NSManaged public var icon: Int16
-    @NSManaged public var id: Int32
+    @NSManaged public var id: String?
     @NSManaged public var name: String?
     @NSManaged public var startDate: NSDate?
-    @NSManaged public var status: String?
+    @NSManaged public var status: Int16
     @NSManaged public var actions: NSSet?
 
 }

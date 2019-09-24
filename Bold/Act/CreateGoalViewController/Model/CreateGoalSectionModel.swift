@@ -11,9 +11,9 @@ import UIKit
 class CreateGoalSectionModel: NSObject {
 
     var title: String?
-    var items: [CreateGoalModel]
+    var items: [CreateGoalActionModel]
     
-    init(title: String?, items: [CreateGoalModel]) {
+    init(title: String?, items: [CreateGoalActionModel]) {
         self.title = title
         self.items = items
     }
