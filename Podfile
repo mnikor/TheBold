@@ -14,5 +14,6 @@ target 'Bold' do
     pod 'JTAppleCalendar', '~> 8.0'
     pod 'SnapKit'
     pod 'Cosmos', '~> 19.0'
-
+    pod 'VisualEffectView', '~> 3.1.0'
+    
 end

@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
         
         logInView = SignUpView.loadViewFromNib()
         logInView.delegate = self
-        logInView.config(typeView: typeAuth, superView: self.scrollView)
+        logInView.config(typeView: typeAuth)
         logInView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.addSubview(logInView)
         
@@ -92,7 +92,7 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: SignUpViewDelegate {
     func tapForgot() {
-        performSegue(withIdentifier: StoryboardSegue.Auth.forgotPassword.rawValue, sender: nil)
+//        performSegue(withIdentifier: StoryboardSegue.Auth.forgotPassword.rawValue, sender: nil)
     }
     
     func tapSignUp() {
@@ -175,7 +175,7 @@ extension LoginViewController: UIScrollViewDelegate {
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y == 0 {
             if switchAuth == true {
-                logInView.config(typeView: typeAuth, superView: scrollView)
+                logInView.config(typeView: typeAuth)
                 self.scrollView.layoutIfNeeded()
                 scrollView.contentSize = CGSize(width: self.view.bounds.size.width, height: headerButton.bounds.height + logInView.bounds.height + bottomView.bounds.height)
                 scrollDirection = .up

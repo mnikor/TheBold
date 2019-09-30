@@ -23,9 +23,6 @@ internal enum StoryboardSegue {
     case shareWithFriendsIdentifier
     case stakeIdentifier
   }
-  internal enum Auth: String, SegueType {
-    case forgotPassword
-  }
   internal enum Feel: String, SegueType {
     case showItem
   }

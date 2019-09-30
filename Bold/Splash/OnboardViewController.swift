@@ -11,7 +11,7 @@ import SwiftVideoBackground
 
 let kVideoName = "BackgroundVideo.MOV"
 
-class OnboardViewController: UIViewController {
+class OnboardViewController: UIViewController, AlertDisplayable {
     
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -19,12 +19,25 @@ class OnboardViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var findYourBoldnessButton: RoundedButton!
     
+    private var signUpView: SignUpView = {
+        let view = SignUpView.loadViewFromNib()
+        view.authType = .signUp
+        return view
+    }()
+    
+    private var loginView: SignUpView = {
+        let view = SignUpView.loadViewFromNib()
+        view.authType = .logIn
+        return view
+    }()
+    
+    private var alertViewController: UIViewController?
+    
     let player = VideoBackground()
     let texts = [OnboardTypeText.feel, OnboardTypeText.think, OnboardTypeText.act]
     
     @IBAction func tapSignUp(_ sender: UIButton) {
-        
-        
+        alertViewController = showAlert(with: signUpView, completion: nil)
     }
     
     @IBAction func tapFindYourBoldness(_ sender: UIButton) {
@@ -42,6 +55,10 @@ class OnboardViewController: UIViewController {
         signUpButton.alpha = 0
         findYourBoldnessButton.alpha = 0
         collectionView.alpha = 0
+        signUpView.delegate = self
+        signUpView.config(typeView: signUpView.authType)
+        loginView.delegate = self
+        loginView.config(typeView: loginView.authType)
     }
     
     func animateContent() {
@@ -107,6 +124,46 @@ extension OnboardViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.pageControl.scroll_did(scrollView)
+    }
+    
+}
+
+extension OnboardViewController: SignUpViewDelegate {
+    func tapForgot() {
+        let forgotPasswordVC = StoryboardScene.Auth.forgotPasswordViewControllerIdentifier.instantiate()
+        alertViewController?.navigationController?.pushViewController(forgotPasswordVC, animated: true)
+    }
+    
+    func tapSignUp() {
+        print("tap Sign Up")
+    }
+    
+    func tapLogIn() {
+        print("tap Log In")
+    }
+    
+    func tapFacebook() {
+        print("Facebook")
+    }
+    
+    func tapShowSignUp() {
+        alertViewController = showAlert(with: signUpView, completion: nil)
+    }
+    
+    func tapShowLogIn() {
+        alertViewController = showAlert(with: loginView, completion: nil)
+    }
+    
+    func signUpView(_ signUpView: SignUpView, didCheckPrivacyPolicy isChecked: Bool) {
+        // TODO: - save privacy policy checked
+    }
+    
+    func signUpViewDidTapAtPrivacyPolicy() {
+        // TODO: - show privacy policy
+    }
+    
+    func signUpViewDidTapAtTermsOfUse() {
+        // TODO: - show terms of use
     }
     
 }

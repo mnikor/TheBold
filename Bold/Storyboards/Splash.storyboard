@@ -151,7 +151,6 @@
                                 </state>
                                 <connections>
                                     <action selector="tapSignUp:" destination="BMw-ec-akt" eventType="touchUpInside" id="UEC-6a-aoa"/>
-                                    <segue destination="dyA-el-3vU" kind="presentation" animates="NO" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="cx7-oW-8Sb"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoSmall" translatesAutoresizingMaskIntoConstraints="NO" id="nPv-mW-Bs9">

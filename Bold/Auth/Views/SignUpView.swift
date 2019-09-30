@@ -20,6 +20,9 @@ protocol SignUpViewDelegate: class {
     func tapFacebook()
     func tapShowSignUp()
     func tapShowLogIn()
+    func signUpView(_ signUpView: SignUpView, didCheckPrivacyPolicy isChecked: Bool)
+    func signUpViewDidTapAtPrivacyPolicy()
+    func signUpViewDidTapAtTermsOfUse()
 }
 
 class SignUpView: UIView {
@@ -27,8 +30,13 @@ class SignUpView: UIView {
     weak var delegate: SignUpViewDelegate?
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var yourNameTextField: UITextField!
+    @IBOutlet weak var emailTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var checkBoxImageView: UIImageView!
+    @IBOutlet weak var checkImageView: UIImageView!
+    @IBOutlet weak var privacyPolicyLabel: UILabel!
     @IBOutlet weak var forgotButton: UIButton!
     @IBOutlet weak var logInButton: RoundedButton!
     @IBOutlet weak var betweenButtonLabel: UILabel!
@@ -75,20 +83,11 @@ class SignUpView: UIView {
         roundCorners(corners: [.topLeft, .topRight], radius: 14.0)
     }
     
-    func config(typeView: TypeAuthView, superView : UIView) {
-
+    func config(typeView: TypeAuthView) {
         authType = typeView
         self.translatesAutoresizingMaskIntoConstraints = false
         
         Localize(typeView: typeView)
-        
-//        NSLayoutConstraint.activate([
-//            //authView.topAnchor.constraint(equalTo: self.topAnchor),
-//            self.bottomAnchor.constraint(equalTo: superView.bottomAnchor),
-//            self.leadingAnchor.constraint(equalTo: superView.leadingAnchor),
-////            self.trailingAnchor.constraint(equalTo: superView.trailingAnchor),
-//            ])
-        
     }
     
     private func Localize(typeView: TypeAuthView) {
@@ -100,19 +99,37 @@ class SignUpView: UIView {
             betweenButtonLabel.text = L10n.Authorization.orLoginWith
             bottomLabel.text = L10n.Authorization.haventAnAccount
             
-            verticalSpaceButtonConstraint.constant = 40
+//            verticalSpaceButtonConstraint.constant = 40
             forgotButton.isHidden = false
+            emailTopConstraint.constant = 100
+            yourNameTextField.isHidden = true
+            checkBoxImageView.isHidden = true
+            privacyPolicyLabel.isHidden = true
         case .signUp:
             titleLabel?.text = L10n.Authorization.signUp
             logInButton.setTitle(L10n.Authorization.signUpButton, for: .normal)
             betweenButtonLabel.text = L10n.Authorization.orSignUpWith
             bottomLabel.text = L10n.Authorization.haveAnAccount
+            privacyPolicyLabel.text = L10n.Authorization.termsAndPrivacy
             
-            verticalSpaceButtonConstraint.constant = 12
+//            verticalSpaceButtonConstraint.constant = 12
             forgotButton.isHidden = true
+            emailTopConstraint.constant = 153
+            yourNameTextField.isHidden = false
+            checkBoxImageView.isHidden = false
+            privacyPolicyLabel.isHidden = false
         }
         emailTextField.placeholder = L10n.Authorization.email
         passwordTextField.placeholder = L10n.Authorization.password
         facebookButton.setTitle(L10n.Authorization.facebook, for: .normal)
+        checkImageView.isHidden = true
+        setNeedsLayout()
+        layoutIfNeeded()
     }
+    
+    @IBAction func didTapAtCheckBox(_ sender: Any) {
+        checkImageView.isHidden = !checkImageView.isHidden
+        delegate?.signUpView(self, didCheckPrivacyPolicy: !checkImageView.isHidden)
+    }
+    
 }
