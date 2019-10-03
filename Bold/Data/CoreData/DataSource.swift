@@ -27,6 +27,8 @@ class DataSource {
     
     static let shared = DataSource()
     
+//    var updateDataSource : (()->Void)?
+    
     var viewContext: NSManagedObjectContext
     let persistentContainer: NSPersistentContainer
     let backgroundContext: NSManagedObjectContext
@@ -43,7 +45,28 @@ class DataSource {
         viewContext.automaticallyMergesChangesFromParent = true
         backgroundContext = container.newBackgroundContext()
         backgroundContext.automaticallyMergesChangesFromParent = true
+        
+//        addedNotification()
     }
+    
+//    func ifUpdateContext(update: @escaping ()->Void) {
+//        updateDataSource = update
+//    }
+    
+//    func addedNotification() {
+//        let notificationCenter = NotificationCenter.default
+//        notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: backgroundContext)
+//        notificationCenter.addObserver(self, selector: #selector(managedObjectContextWillSave), name: NSManagedObjectContextWillSaveNotification, object: managedObjectContext)
+//        notificationCenter.addObserver(self, selector: #selector(managedObjectContextDidSave), name: NSNotification.Name.NSManagedObjectContextDidSave, object: backgroundContext)
+//    }
+    
+//    @objc func managedObjectContextObjectsDidChange() {
+//        updateDataSource?()
+//    }
+    
+//    @objc func managedObjectContextDidSave() {
+//        updateDataSource?()
+//    }
     
     func saveBackgroundContext() {
         guard backgroundContext.hasChanges else {
@@ -51,6 +74,7 @@ class DataSource {
         }
         do {
             try backgroundContext.save()
+            //updateDataSource?()
         } catch {
             let error = error as NSError
             fatalError("Unresolved error \(error), \(error.userInfo)")

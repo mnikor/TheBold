@@ -9,7 +9,7 @@
 import Foundation
 
 enum CreateActionInputInteractor {
-    case createNewAction(Goal?, (CreateActionViewModel)->Void)
+    case createNewAction(goalID: String?, (CreateActionViewModel)->Void)
     case saveAction(()->Void)
     case deleteAction(()->Void)
     
@@ -36,9 +36,9 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
     
     func input(_ inputCase: CreateActionInputInteractor) {
         switch inputCase {
-        case .createNewAction(let goal, let complete):
+        case .createNewAction(goalID: let goalID, let complete):
             completeUpdate = complete
-            createNewAction(goal: goal)
+            createNewAction(goalID: goalID)
         case .saveAction(let complete):
             saveAction(complete)
         case .deleteAction(let complete):
@@ -168,7 +168,7 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
         complete()
     }
     
-    private func createNewAction(goal: Goal?) {
+    private func createNewAction(goalID: String?) {
         let newAction = Action()
         newAction.id = newAction.objectID.uriRepresentation().lastPathComponent
         newAction.startDateType = ActionDateType.today.rawValue
@@ -184,8 +184,10 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
         newAction.stake = 0
         newAction.status = StatusType.create.rawValue
         
-        if goal != nil {
-            newAction.goal = goal
+        if let goalIDTemp = goalID {
+            DataSource.shared.searchGoal(goalID: goalIDTemp) {[weak self] (goal) in
+                newAction.goal = goal
+            }
         }
         
         presenter.newAction = newAction

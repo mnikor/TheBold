@@ -14,6 +14,10 @@ private struct Constants {
     static let footerHeight : CGFloat = 11
 }
 
+protocol CreateActionViewControllerDelegate: class {
+    func actionWasCreated()
+}
+
 class CreateActionViewController: UIViewController, ViewProtocol {
     
     @IBOutlet weak var tableView: UITableView!
@@ -24,7 +28,23 @@ class CreateActionViewController: UIViewController, ViewProtocol {
     var presenter: Presenter!
     var configurator: Configurator! = CreateActionConfigurator()
     
+    weak var delegate: CreateActionViewControllerDelegate?
+    
     @IBOutlet weak var navBar: BlueNavigationBar!
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupConfiguration()
+    }
+    
+    convenience init() {
+        self.init()
+        setupConfiguration()
+    }
+    
+    func setupConfiguration() {
+        configurator.configure(with: self)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -39,8 +59,6 @@ class CreateActionViewController: UIViewController, ViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configurator.configure(with: self)
-        
         registerXibs()
         configNavigationController()
         configureTableView()

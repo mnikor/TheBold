@@ -15,7 +15,7 @@ enum StatusType: Int16 {
     case wait
     case completed
     case failed
-    case block
+    case locked
 }
 
 enum ColorGoalType: Int16 {

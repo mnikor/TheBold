@@ -120,12 +120,18 @@
 "Act.ActiveGoals" = "Active goals";
 "Act.YouHaveTasksWithStakes" = "You have 3 tasks with stakes";
 "Act.TodaysActions" = "Today’s Actions";
-"Act.YouHaveActionWithStakes" = "You have 3 action with stakes";
+"Act.YouHaveActionWithStakes" = "You have %@ action(s) with stakes";
 "Act.SeriouslyNoActions" = "Seriously no actions?";
 "Act.AllGoals" = "All goals";
 "Act.Hopefully" = "Hopefully, you're buzzing with nerves or excitement... Awesome. Now figure out what actions will achieve your goal.";
 
 "Act.GoalIsLocked" = "Goal is locked";
+"Act.DueOn" = "Due on";
+"Act.toCompleted" = "%@ to %@ completed";
+
+"Act.Missed" = "Missed!";
+"Act.StakeDollar" = "Stake — %@";
+"Act.ActionPlan" = "Action Plan";
 
 "Act.AddToActionPlan" = "Add to action plan";
 "Act.FindYourConfidence" = "Find your confidence";

@@ -12,7 +12,7 @@ protocol GoalsFunctionality {
     func createNewGoal()
     func updateGoal()
     func deleteGoal()
-    func goalsList() -> [Goal]
+    func goalsListForUpdate() -> [Goal]
 }
 
 extension DataSource: GoalsFunctionality {
@@ -28,7 +28,7 @@ extension DataSource: GoalsFunctionality {
         
     }
     
-    func goalsList() -> [Goal] {
+    func goalsListForUpdate() -> [Goal] {
         
         var results = [Goal]()
         let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
@@ -39,5 +39,31 @@ extension DataSource: GoalsFunctionality {
         }
         
         return results
+    }
+    
+    func goalsListForRead(success: ([Goal])->Void) {
+        
+        var results = [Goal]()
+        let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
+        do {
+            results = try DataSource.shared.viewContext.fetch(fetchRequest)
+            success(results)
+        } catch {
+            print(error)
+        }
+    }
+    
+    func searchGoal(goalID: String, success: (Goal?)->Void) {
+        
+        var results : Goal?
+        let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", goalID)
+        do {
+            results = try DataSource.shared.backgroundContext.fetch(fetchRequest).first
+        } catch {
+            print(error)
+        }
+        
+        success(results)
     }
 }

@@ -18,6 +18,7 @@ class CalendarAndHistoryViewController: UIViewController, ViewProtocol {
     var presenter: Presenter!
     var configurator: Configurator! = CalendarAndHistoryConfigurator()
     
+    var goalID: String?
     var currentGoal: GoalEntity!
     //var currentDate: Date = Date()
     
@@ -113,7 +114,7 @@ extension CalendarAndHistoryViewController: UITableViewDelegate, UITableViewData
             return cell
         case .stake:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as StakeActionTableViewCell
-            cell.config()
+            //cell.config(viewModel: <#T##CalendarModelType#>)
             cell.delegate = self
             return cell
         default :
@@ -143,11 +144,16 @@ extension CalendarAndHistoryViewController: StakeActionTableViewCellDelegate {
 
 extension CalendarAndHistoryViewController: CalendarTableViewCellDelegate {
     
+    func currentMonthInCalendar(date: Date) {
+        print("Change calendar month = \(date)")
+    }
+    
     func tapMonthTitle(date: Date) {
         presenter.input(.yearMonthAlert)
     }
     
     func selectDate(date: Date) {
-        presenter.currentDate = date
+        //resenter.currentDate = date
+        print("date = \(date)")
     }
 }

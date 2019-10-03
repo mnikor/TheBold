@@ -51,6 +51,8 @@ internal enum L10n {
   internal enum Act {
     /// Act Bold
     internal static let actBold = L10n.tr("Localizable", "Act.ActBold")
+    /// Action Plan
+    internal static let actionPlan = L10n.tr("Localizable", "Act.ActionPlan")
     /// Active goals
     internal static let activeGoals = L10n.tr("Localizable", "Act.ActiveGoals")
     /// Add to action plan
@@ -59,6 +61,8 @@ internal enum L10n {
     internal static let allGoals = L10n.tr("Localizable", "Act.AllGoals")
     /// Color
     internal static let color = L10n.tr("Localizable", "Act.Color")
+    /// Due on
+    internal static let dueOn = L10n.tr("Localizable", "Act.DueOn")
     /// Duration
     internal static let duration = L10n.tr("Localizable", "Act.Duration")
     /// Ends
@@ -79,6 +83,8 @@ internal enum L10n {
     internal static let icons = L10n.tr("Localizable", "Act.Icons")
     /// Ideas
     internal static let ideas = L10n.tr("Localizable", "Act.Ideas")
+    /// Missed!
+    internal static let missed = L10n.tr("Localizable", "Act.Missed")
     /// No stake
     internal static let noStake = L10n.tr("Localizable", "Act.NoStake")
     /// Reminder
@@ -91,14 +97,24 @@ internal enum L10n {
     internal static let shareWithFriends = L10n.tr("Localizable", "Act.ShareWithFriends")
     /// Stake
     internal static let stake = L10n.tr("Localizable", "Act.Stake")
+    /// Stake — %@
+    internal static func stakeDollar(_ p1: String) -> String {
+      return L10n.tr("Localizable", "Act.StakeDollar", p1)
+    }
     /// Starts
     internal static let starts = L10n.tr("Localizable", "Act.Starts")
+    /// %@ to %@ completed
+    internal static func toCompleted(_ p1: String, _ p2: String) -> String {
+      return L10n.tr("Localizable", "Act.toCompleted", p1, p2)
+    }
     /// Today’s Actions
     internal static let todaysActions = L10n.tr("Localizable", "Act.TodaysActions")
     /// When
     internal static let when = L10n.tr("Localizable", "Act.When")
-    /// You have 3 action with stakes
-    internal static let youHaveActionWithStakes = L10n.tr("Localizable", "Act.YouHaveActionWithStakes")
+    /// You have %@ action(s) with stakes
+    internal static func youHaveActionWithStakes(_ p1: String) -> String {
+      return L10n.tr("Localizable", "Act.YouHaveActionWithStakes", p1)
+    }
     /// You have 3 tasks with stakes
     internal static let youHaveTasksWithStakes = L10n.tr("Localizable", "Act.YouHaveTasksWithStakes")
     internal enum Create {

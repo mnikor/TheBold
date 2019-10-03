@@ -43,7 +43,7 @@
         <attribute name="wednesday" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="action" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Action" inverseName="repeatAction" inverseEntity="Action" syncable="YES"/>
     </entity>
-    <entity name="Event" representedClassName="Event" syncable="YES">
+    <entity name="Event" representedClassName=".Event" syncable="YES">
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>

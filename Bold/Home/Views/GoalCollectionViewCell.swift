@@ -8,13 +8,6 @@
 
 import UIKit
 
-enum GoalCellType {
-    case active
-    case locked
-    case completed
-    case failed
-}
-
 class GoalCollectionViewCell: BaseCollectionViewCell {
 
     @IBOutlet weak var goalView: UIView!
@@ -33,32 +26,21 @@ class GoalCollectionViewCell: BaseCollectionViewCell {
         goalProgressView.trackTintColor = .white
     }
 
-    func configCell(type: GoalEntity) {
+    func configCell(viewModel: GoalCollectionViewModel) {
         
-        switch type.active {
-        case .active:
-            goalProgressView.progressTintColor = ColorName.goalGreen.color
-            goalImageView.renderImageWithColor(image: Asset.menuAct.image, color: ColorName.goalGreen.color)
-            isDoneImageView.isHidden = true
-        case .locked:
-            goalProgressView.progressTintColor = ColorName.goalGreen.color
-            goalImageView.renderImageWithColor(image: Asset.menuAct.image, color: UIColor.white)
-            goalView.backgroundColor = ColorName.goalGreen.color
-            goalProgressView.progress = 1
-            titleLabel.textColor = .white
-            dueDateLabel.textColor = .white
-            goalProgressLabel.textColor = .white
-            goalProgressLabel.text = L10n.Act.goalIsLocked
-            isDoneImageView.isHidden = true
-        case .completed:
-            isDoneImageView.isHidden = false
-            isDoneImageView.image = Asset.completedIcon.image
-            goalProgressLabel.text = L10n.Profile.ArchivedGoals.completed
-        case .failed:
-            isDoneImageView.isHidden = false
-            isDoneImageView.image = Asset.failedIcon.image
-            goalProgressLabel.text = L10n.Profile.ArchivedGoals.failed
-        }
+        goalProgressView.trackTintColor = viewModel.backgroundColor
+        goalProgressView.progressTintColor = viewModel.progressTintColor
+        goalProgressView.progress = viewModel.progress
+        goalImageView.renderImageWithColor(image: viewModel.icon, color: viewModel.iconColor)
+        goalView.backgroundColor = viewModel.backgroundColor
+        titleLabel.textColor = viewModel.titleTextColor
+        dueDateLabel.textColor = viewModel.dueDateTextColor
+        goalProgressLabel.textColor = viewModel.progressTextColor
+        titleLabel.text = viewModel.title
+        dueDateLabel.text = viewModel.dueDate
+        goalProgressLabel.text = viewModel.progressText
+        isDoneImageView.image = viewModel.completedIcon
+        isDoneImageView.isHidden = viewModel.isHiddenCompletedIcon
     }
     
 }

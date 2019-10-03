@@ -67,4 +67,16 @@ extension Date {
         dateFormatter.dateFormat = "EEEE"
         return dateFormatter.string(from: self).capitalized
     }
+    
+    func monthOfYear() -> Date {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.month, .year], from: self)
+        return calendar.date(from: components)!
+    }
+    
+    func dayOfMonthOfYear() -> Date {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day, .month, .year], from: self)
+        return calendar.date(from: components)!
+    }
 }

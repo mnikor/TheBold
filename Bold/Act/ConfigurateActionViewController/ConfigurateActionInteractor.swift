@@ -10,6 +10,7 @@ import Foundation
 
 enum ConfigurateActionInputInteractor {
     case searchAction(String, (Action?)->Void)
+    case deleteAction(Action, ()->Void)
     case createWhenDataSource(([ConfigurateActionSectionModel])->Void)
     case createRemindMeDataSource(([ConfigurateActionSectionModel])->Void)
     case createGoalDataSource(([ConfigurateActionSectionModel])->Void)
@@ -56,10 +57,17 @@ class ConfigurateActionInteractor: ConfigurateActionInputInteractorProtocol {
             case 7: print("fsdf")
             default: print("sdfsd")
             }
-            
+        case .deleteAction(let action, let success):
+            deleteAction(action: action, success: success)
         default:
             print("")
         }
+    }
+    
+    func deleteAction(action: Action, success: ()->Void) {
+        DataSource.shared.backgroundContext.delete(action)
+        DataSource.shared.saveBackgroundContext()
+        success()
     }
     
     func searchAction(actionID: String, success:(Action?)->Void) {
@@ -334,7 +342,7 @@ class ConfigurateActionInteractor: ConfigurateActionInputInteractorProtocol {
     func updateGoal(success: ([ConfigurateActionSectionModel])->Void) {
         
         //if presenter.goalList == nil || presenter.goalList.isEmpty {
-            presenter.goalList = DataSource.shared.goalsList()
+            presenter.goalList = DataSource.shared.goalsListForUpdate()
         //}
         
         var section = [

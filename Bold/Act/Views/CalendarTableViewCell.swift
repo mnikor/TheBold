@@ -12,6 +12,7 @@ import JTAppleCalendar
 protocol CalendarTableViewCellDelegate: class {
     func selectDate(date: Date)
     func tapMonthTitle(date: Date)
+    func currentMonthInCalendar(date: Date)
 }
 
 private struct Constants {
@@ -43,15 +44,29 @@ class CalendarTableViewCell: BaseTableViewCell {
     private var startDate: Date!
     private var endDate: Date!
     
+    private var firstStart: Bool = true
+    
     var currentDate: Date!
     
     weak var delegate: CalendarTableViewCellDelegate?
     
-    var scheduleGroup : [String: [Date]]? {
+//    var scheduleGroup : [String: [Date]]? {
+//        didSet {
+//            calendarView.reloadData()
+//        }
+//    }
+    
+    var addSet : Set<Date>! {
         didSet {
             calendarView.reloadData()
         }
     }
+    
+//    var dataSource = [CalendarActionSectionModel]() {
+//        didSet {
+//            calendarView.reloadData()
+//        }
+//    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -62,7 +77,10 @@ class CalendarTableViewCell: BaseTableViewCell {
         calendarView.scrollDirection = .horizontal
         calendarView.scrollingMode   = .stopAtEachCalendarFrame
         calendarView.showsHorizontalScrollIndicator = false
-        calendarView.sectionInset = UIEdgeInsets(top: Constants.SectionInset.top, left: Constants.SectionInset.left, bottom: Constants.SectionInset.bottom, right: Constants.SectionInset.right)
+        calendarView.sectionInset = UIEdgeInsets(top: Constants.SectionInset.top,
+                                                 left: Constants.SectionInset.left,
+                                                 bottom: Constants.SectionInset.bottom,
+                                                 right: Constants.SectionInset.right)
         
         registerXibs()
     }
@@ -77,7 +95,29 @@ class CalendarTableViewCell: BaseTableViewCell {
         self.currentDate = date
         calendarView.selectDates([date])
         calendarView.scrollToHeaderForDate(date)
-        scheduleGroup = ["2019 01 10" : [Date()], "2019 01 15" : [Date()]]
+//        scheduleGroup = ["2019 09 28" : [Date()], "2019 09 29" : [Date(), Date()]]
+    }
+    
+    func config(date: Date, startDate: Date?, endDate: Date?, modelView: CalendarModelType) {
+        
+        if firstStart {
+            self.currentDate = date
+            calendarView.selectDates([date])
+            calendarView.scrollToHeaderForDate(date)
+            firstStart = false
+            
+            if startDate != nil {
+                self.startDate = startDate
+            }
+            if endDate != nil {
+                self.endDate = endDate
+            }
+        }
+
+        if case .calendar(dates: let dates) = modelView {
+            self.addSet = dates
+        }
+
     }
     
     func configureCell(view: JTACDayCell?, cellState: CellState) {
@@ -111,13 +151,16 @@ class CalendarTableViewCell: BaseTableViewCell {
             cell.selectView.backgroundColor = cellState.isSelected ? ColorName.typographyBlack50.color : .clear
         }
         
-        formatter.dateFormat = Constants.DateFormat.format
-        if scheduleGroup?[formatter.string(from: cellState.date)] != nil {
-            cell.dotView.isHidden = false
-        }
-        else {
+        if cellState.dateBelongsTo == .thisMonth {
+//            let filter = dataSource.filter { (sectionModel) -> Bool in
+//                return sectionModel.section.date.dayOfMonthOfYear() == cellState.date.dayOfMonthOfYear()
+//            }
+            cell.dotView.isHidden = !addSet.contains(cellState.date.dayOfMonthOfYear())
+            //filter.isEmpty == true
+        }else {
             cell.dotView.isHidden = true
         }
+        
     }
 }
 
@@ -127,8 +170,13 @@ extension CalendarTableViewCell: JTACMonthViewDataSource {
     func configureCalendar(_ calendar: JTACMonthView) -> ConfigurationParameters {
         
         formatter.dateFormat = Constants.DateFormat.format
-        startDate = formatter.date(from: "2001 01 01")!
-        endDate = formatter.date(from: "2031 01 01")!
+        if startDate == nil {
+            startDate = formatter.date(from: "2001 01 01")!
+        }
+        if endDate == nil {
+            endDate = formatter.date(from: "2031 01 01")!
+        }
+        
         
         return ConfigurationParameters(startDate: startDate,
                                        endDate: endDate,
@@ -176,6 +224,7 @@ extension CalendarTableViewCell: JTACMonthViewDelegate {
         let header = calendar.dequeueReusableJTAppleSupplementaryView(withReuseIdentifier: HeaderCalendarView.Identifier(), for: indexPath) as! HeaderCalendarView
         header.config(date: range.start, formatter: formatter)
         header.delegate = self
+        self.delegate?.currentMonthInCalendar(date: range.start)
         return header
     }
     
@@ -191,6 +240,7 @@ extension CalendarTableViewCell: HeaderCalendarViewDelegate {
     
     func tapMonthTitleButton(date: Date) {
         print("tapMonthTitleButton = \(date)")
+        firstStart = true
         delegate?.tapMonthTitle(date: date)
     }
 

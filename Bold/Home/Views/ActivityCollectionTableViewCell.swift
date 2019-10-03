@@ -128,7 +128,7 @@ extension ActivityCollectionTableViewCell: UICollectionViewDelegate, UICollectio
             return cell
         case .actActive, .activeGoals:
             let cell = collectionView.dequeReusableCell(indexPath: indexPath) as GoalCollectionViewCell
-            cell.configCell(type: GoalEntity(type: .BuildHouseForParents, active: .locked, progress: 0, total: 0))
+            //cell.configCell(view: GoalEntity(type: .BuildHouseForParents, active: .locked, progress: 0, total: 0))
             return cell
         default:
             return UICollectionViewCell()

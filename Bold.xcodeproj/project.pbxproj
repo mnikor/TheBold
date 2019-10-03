@@ -86,6 +86,13 @@
 		F13DEAD522AAC0D500BC3CA6 /* SignUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F13DEAD422AAC0D500BC3CA6 /* SignUpView.xib */; };
 		F13FCBAE2337C13A00BAE544 /* Reminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBAC2337C13A00BAE544 /* Reminder+CoreDataProperties.swift */; };
 		F13FCBAF2337C13A00BAE544 /* Reminder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBAD2337C13A00BAE544 /* Reminder+CoreDataClass.swift */; };
+		F13FCBB42339FBBC00BAE544 /* CalendarModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBB32339FBBC00BAE544 /* CalendarModelView.swift */; };
+		F13FCBB62339FCDB00BAE544 /* StakeActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBB52339FCDA00BAE544 /* StakeActionViewModel.swift */; };
+		F13FCBB82339FE4A00BAE544 /* CalendarActionSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBB72339FE4A00BAE544 /* CalendarActionSectionModel.swift */; };
+		F13FCBBA2339FE6300BAE544 /* CalendarActionItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBB92339FE6300BAE544 /* CalendarActionItemModel.swift */; };
+		F13FCBBC233A171C00BAE544 /* DataSource+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBBB233A171C00BAE544 /* DataSource+Events.swift */; };
+		F13FCBBF233A18D900BAE544 /* GoalCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBBE233A18D900BAE544 /* GoalCollectionViewModel.swift */; };
+		F13FCBC1233BC7DC00BAE544 /* TempStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBC0233BC7DC00BAE544 /* TempStructures.swift */; };
 		F141668122BCD7A10020BF0F /* ManifestConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141668022BCD7A10020BF0F /* ManifestConfigurator.swift */; };
 		F141668322BCD7D20020BF0F /* ManifestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141668222BCD7D20020BF0F /* ManifestPresenter.swift */; };
 		F141668522BCD7E60020BF0F /* ManifestInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141668422BCD7E60020BF0F /* ManifestInteractor.swift */; };
@@ -446,6 +453,13 @@
 		F13DEAD422AAC0D500BC3CA6 /* SignUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpView.xib; sourceTree = "<group>"; };
 		F13FCBAC2337C13A00BAE544 /* Reminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Reminder+CoreDataProperties.swift"; path = "/Users/aleksanderkovalov/Documents/Repositories/the-bold-ios/Bold/Data/Models/Reminder+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		F13FCBAD2337C13A00BAE544 /* Reminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Reminder+CoreDataClass.swift"; path = "/Users/aleksanderkovalov/Documents/Repositories/the-bold-ios/Bold/Data/Models/Reminder+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		F13FCBB32339FBBC00BAE544 /* CalendarModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModelView.swift; sourceTree = "<group>"; };
+		F13FCBB52339FCDA00BAE544 /* StakeActionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StakeActionViewModel.swift; sourceTree = "<group>"; };
+		F13FCBB72339FE4A00BAE544 /* CalendarActionSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActionSectionModel.swift; sourceTree = "<group>"; };
+		F13FCBB92339FE6300BAE544 /* CalendarActionItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActionItemModel.swift; sourceTree = "<group>"; };
+		F13FCBBB233A171C00BAE544 /* DataSource+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSource+Events.swift"; sourceTree = "<group>"; };
+		F13FCBBE233A18D900BAE544 /* GoalCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCollectionViewModel.swift; sourceTree = "<group>"; };
+		F13FCBC0233BC7DC00BAE544 /* TempStructures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempStructures.swift; sourceTree = "<group>"; };
 		F141668022BCD7A10020BF0F /* ManifestConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestConfigurator.swift; sourceTree = "<group>"; };
 		F141668222BCD7D20020BF0F /* ManifestPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestPresenter.swift; sourceTree = "<group>"; };
 		F141668422BCD7E60020BF0F /* ManifestInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestInteractor.swift; sourceTree = "<group>"; };
@@ -977,6 +991,18 @@
 		F13FCBB02339F93000BAE544 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F13FCBB72339FE4A00BAE544 /* CalendarActionSectionModel.swift */,
+				F13FCBB92339FE6300BAE544 /* CalendarActionItemModel.swift */,
+				F13FCBB32339FBBC00BAE544 /* CalendarModelView.swift */,
+				F13FCBB52339FCDA00BAE544 /* StakeActionViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F13FCBBD233A18B800BAE544 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F13FCBBE233A18D900BAE544 /* GoalCollectionViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1205,6 +1231,7 @@
 				F183302D22E617A300BB7A9E /* AllGoalsPresenter.swift */,
 				F183302F22E617B900BB7A9E /* AllGoalsInteractor.swift */,
 				F183303122E617C700BB7A9E /* AllGoalsRouter.swift */,
+				F13FCBBD233A18B800BAE544 /* Model */,
 			);
 			path = AllGoalsViewController;
 			sourceTree = "<group>";
@@ -1705,6 +1732,7 @@
 			isa = PBXGroup;
 			children = (
 				F1F6AD9E23210DB200F6A925 /* Enums.swift */,
+				F13FCBC0233BC7DC00BAE544 /* TempStructures.swift */,
 				F1F6AD9F23210DB200F6A925 /* CoreData */,
 				F1F6ADA523210DB200F6A925 /* Models */,
 			);
@@ -1717,6 +1745,7 @@
 				F1F6ADA023210DB200F6A925 /* DataSource+User.swift */,
 				F1F6ADA123210DB200F6A925 /* DataSource+Goals.swift */,
 				F1F6ADA223210DB200F6A925 /* DataSource+Actions.swift */,
+				F13FCBBB233A171C00BAE544 /* DataSource+Events.swift */,
 				F1F6ADA323210DB200F6A925 /* DataSource.swift */,
 				F1F6ADA423210DB200F6A925 /* DataSource+Contents.swift */,
 			);
@@ -1985,6 +2014,7 @@
 				F1130CDD230D4B6A008FA60D /* DownloadsViewController.swift in Sources */,
 				F1868852229E9DA20029A663 /* L10n-Constants.swift in Sources */,
 				F14166A522C115B50020BF0F /* PlayerListView.swift in Sources */,
+				F13FCBBC233A171C00BAE544 /* DataSource+Events.swift in Sources */,
 				F179974D22AE615D0039879F /* Localizable.swift in Sources */,
 				F1F6ADDF232626DA00F6A925 /* Date+Extensions.swift in Sources */,
 				F107539422F20C0B0078C71C /* EnterYourGoalTableViewCell.swift in Sources */,
@@ -2025,10 +2055,13 @@
 				F1A79DCD22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.swift in Sources */,
 				C5A4853C2306B91B002CC62A /* CalendarAndHistoryViewController.swift in Sources */,
 				F1A79DC922D8A5620018A8EF /* ManageItTableViewCell.swift in Sources */,
+				F13FCBBF233A18D900BAE544 /* GoalCollectionViewModel.swift in Sources */,
 				F186880A229D7E1F0029A663 /* OnboardViewController.swift in Sources */,
 				F1C2534522B2ACAA003156AA /* GoalCollectionViewCell.swift in Sources */,
 				C59E5E34230593ED005DCD18 /* AccountDetailsPresenter.swift in Sources */,
 				F179977622B1413A0039879F /* MenuViewController.swift in Sources */,
+				F13FCBC1233BC7DC00BAE544 /* TempStructures.swift in Sources */,
+				F13FCBBA2339FE6300BAE544 /* CalendarActionItemModel.swift in Sources */,
 				F1F6ADBA23210DB300F6A925 /* DataSource+Contents.swift in Sources */,
 				F186884C229E9BD80029A663 /* UIColor+Extensions.swift in Sources */,
 				C59E5E3823059414005DCD18 /* AccountDetailsRouter.swift in Sources */,
@@ -2096,6 +2129,7 @@
 				F17CB26922A682130035ABAB /* RoundedButton.swift in Sources */,
 				F14166AC22C125A50020BF0F /* ActionCollectionTableViewCell.swift in Sources */,
 				F15FB320232FDE14002F0C00 /* CreateActionViewModel.swift in Sources */,
+				F13FCBB42339FBBC00BAE544 /* CalendarModelView.swift in Sources */,
 				F1EB8DD622A8022500E3BC4C /* ForgotPasswordViewController.swift in Sources */,
 				F1F6ADB723210DB300F6A925 /* DataSource+Goals.swift in Sources */,
 				F1F6ADC323210DB300F6A925 /* User+CoreDataProperties.swift in Sources */,
@@ -2180,6 +2214,7 @@
 				F1EA1CC022E1EAE300BB328F /* UIViewController+Extensions.swift in Sources */,
 				F1C2533B22B2A78A003156AA /* ActivityCollectionViewCell.swift in Sources */,
 				3EFCA3BA2306D02800129DB4 /* SettingsModel.swift in Sources */,
+				F13FCBB82339FE4A00BAE544 /* CalendarActionSectionModel.swift in Sources */,
 				F183302E22E617A300BB7A9E /* AllGoalsPresenter.swift in Sources */,
 				F107537A22EF36670078C71C /* BoldTipsViewController.swift in Sources */,
 				F179975622AFB04B0039879F /* LocalizableViewController.swift in Sources */,
@@ -2193,6 +2228,7 @@
 				C59E5E30230581F0005DCD18 /* AccountDetailsViewController.swift in Sources */,
 				F15FB31D232FAF2B002F0C00 /* Event+CoreDataClass.swift in Sources */,
 				F1F6ADD023210E7700F6A925 /* DateFormatter+Extensions.swift in Sources */,
+				F13FCBB62339FCDB00BAE544 /* StakeActionViewModel.swift in Sources */,
 				F179977722B1413A0039879F /* SideMenuItemContent.swift in Sources */,
 				F1E8EFDA22F484B2006A9D39 /* CalendarTableViewCell.swift in Sources */,
 				F11562A022DF20B100399FA6 /* ActViewController.swift in Sources */,

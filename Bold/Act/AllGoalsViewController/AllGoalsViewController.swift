@@ -39,6 +39,12 @@ class AllGoalsViewController: UIViewController, ViewProtocol {
     var presenter: Presenter!
     var configurator: Configurator! = AllGoalsConfigurator()
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        presenter.input(.createDataSource)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,7 +67,6 @@ class AllGoalsViewController: UIViewController, ViewProtocol {
     }
     
     @objc func tapCreateAction() {
-        print("tapCreateAction")
         presenter.input(.addGoal)
     }
     
@@ -71,10 +76,10 @@ class AllGoalsViewController: UIViewController, ViewProtocol {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? CalendarActionsListViewController {
-            guard let selectGoal = sender as? GoalEntity else {
+            guard let selectGoal = sender as? Goal else {
                 return
             }
-            vc.currentGoal = selectGoal
+            vc.presenter.goal = selectGoal
         }
     }
     
@@ -86,13 +91,13 @@ class AllGoalsViewController: UIViewController, ViewProtocol {
 extension AllGoalsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.goalItems.count
+        return presenter.dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeReusableCell(indexPath: indexPath) as GoalCollectionViewCell
-        cell.configCell(type: presenter.goalItems[indexPath.row])
+        cell.configCell(viewModel: presenter.dataSource[indexPath.row])
         return cell
     }
     
@@ -105,7 +110,7 @@ extension AllGoalsViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: false)
-        presenter.input(.selectdItem(presenter.goalItems[indexPath.row]))
+        presenter.input(.selectdItem(presenter.dataSource[indexPath.row].goal))
     }
     
 }

@@ -48,9 +48,20 @@ class StakeActionTableViewCell: BaseTableViewCell {
         }
     }
     
-    func config() {
+    func config(viewModel: CalendarModelType) {
         
-        titleLabel.strikethrough(text: "Marathon")
+        if case .event(viewModel: let cellModel) = viewModel {
+            
+            statusImageView.renderImageWithColor(image: cellModel.statusIcon, color: cellModel.statusIconColor)
+            titleLabel.text = cellModel.title
+            subtitleLabel.text = cellModel.contentName
+            subtitleLabel.isHidden = cellModel.contentNameIsHidden
+            stakeLabel.text = cellModel.stake
+            stakeLabel.textColor = cellModel.stakeColor
+            pointsActivityLabel.text = cellModel.points
+        }
+        
+        //titleLabel.strikethrough(text: "Marathon")
     }
     
 }

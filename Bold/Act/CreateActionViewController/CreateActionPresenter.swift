@@ -35,7 +35,7 @@ class CreateActionPresenter: PresenterProtocol, CreateActionInputProtocol {
     var interactor: Interactor!
     var router: Router!
     
-    var goal: Goal!
+    var goalID: String?
     var newAction: Action!
     
     var modelView: CreateActionViewModel! {
@@ -93,6 +93,7 @@ class CreateActionPresenter: PresenterProtocol, CreateActionInputProtocol {
             router.input(.share)
         case .save:
             interactor.input(.saveAction({ [unowned self] in
+                //self.viewController.delegate?.actionWasCreated()
                 self.router.input(.cancel)
             }))
         case .cancel:
@@ -104,7 +105,7 @@ class CreateActionPresenter: PresenterProtocol, CreateActionInputProtocol {
     }
     
     private func createNewAction() {
-        interactor.input(.createNewAction(goal, { [weak self] (modelView) in
+        interactor.input(.createNewAction(goalID: goalID, { [weak self] (modelView) in
             self?.modelView = modelView
         }))
     }

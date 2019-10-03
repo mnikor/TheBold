@@ -15,6 +15,10 @@ enum DateType : String {
     case headerGroup = "d MMMM, yyyy"
     case timeAction = "h:mm a"
     case startOrEndDate = "MM/dd/yyyy hh:mm a"
+    case goalDueDate = "d MMM, yyyy"
+    case compareDateEvent = "dd/MM/yyyy"
+    case headerSomeDayEvent = "d MMMM"
+    case calendar = "yyyy MM dd"
 }
 
 extension DateFormatter {

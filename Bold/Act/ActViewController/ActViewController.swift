@@ -8,12 +8,6 @@
 
 import UIKit
 
-enum ActCellType {
-    case goals
-    case calendar
-    case stake
-}
-
 class ActViewController: UIViewController, SideMenuItemContent, ViewProtocol {
     
     typealias Presenter = ActPresenter
@@ -79,7 +73,7 @@ extension ActViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: StakeHeaderView.reuseIdentifier) as! StakeHeaderView
-        headerView.config(type: .plus)
+        //headerView.config(type: .plus)
         headerView.delegate = self
         return headerView
     }
@@ -96,7 +90,7 @@ extension ActViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         case .stake:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as StakeActionTableViewCell
-            cell.config()
+            //cell.config()
             cell.delegate = self
             return cell
         default :

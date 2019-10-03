@@ -10,7 +10,7 @@ import Foundation
 
 enum AllGoalsInputRouter {
     case addGoal
-    case selectGoal(GoalEntity)
+    case selectGoal(Goal)
 }
 
 protocol AllGoalsInputRouterProtocol {

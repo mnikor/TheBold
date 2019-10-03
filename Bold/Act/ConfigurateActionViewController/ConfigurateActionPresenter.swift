@@ -68,7 +68,9 @@ class ConfigurateActionPresenter: PresenterProtocol, ConfigurateActionInputPrese
         case .updateDataSource:
             self.typeDataSource()
         case .cancel:
-            router.input(.cancel)
+            interactor.input(.deleteAction(action, { [weak self] in
+                self?.router.input(.cancel)
+            }))
         case .selectBodyType(let bodyCellType, let index):
             selectBodyType(cellType: bodyCellType, index: index)
         case .showChooseStartDateSheet:
@@ -189,7 +191,9 @@ class ConfigurateActionPresenter: PresenterProtocol, ConfigurateActionInputPrese
         if let type = headerGoal?.type, case .header(_) = type {
             calculateIndex = calculateIndex - 1
         }
-
+        
+//        let goal = goalList[calculateIndex]
+//        goal.addToActions(action)
         action.goal = goalList[calculateIndex]
         typeDataSource()
     }

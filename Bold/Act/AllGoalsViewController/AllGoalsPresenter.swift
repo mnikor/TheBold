@@ -10,7 +10,8 @@ import Foundation
 
 enum AllGoalsInputPresenter {
     case addGoal
-    case selectdItem(GoalEntity)
+    case selectdItem(Goal?)
+    case createDataSource
 }
 
 protocol AllGoalsInputPresenterProtocol {
@@ -27,12 +28,7 @@ class AllGoalsPresenter: PresenterProtocol, AllGoalsInputPresenterProtocol {
     var interactor: Interactor!
     var router: Router!
     
-    lazy var goalItems : [GoalEntity] = {
-        return [GoalEntity(type: .launchStartUp, active: .locked, progress: 0, total: 0),
-                GoalEntity(type: .Community, active: .active, progress: 2, total: 5),
-                GoalEntity(type: .Marathon, active: .active, progress: 3, total: 4),
-                GoalEntity(type: .BuildHouseForParents, active: .active, progress: 2, total: 7)]
-    }()
+    var dataSource = [GoalCollectionViewModel]()
     
     required init(view: View) {
         self.viewController = view
@@ -47,16 +43,15 @@ class AllGoalsPresenter: PresenterProtocol, AllGoalsInputPresenterProtocol {
         case .addGoal:
             router.input(.addGoal)
         case .selectdItem(let selectGoal):
-            router.input(.selectGoal(selectGoal))
+            if let goal = selectGoal {
+                router.input(.selectGoal(goal))
+            }
+        case .createDataSource:
+            interactor.input(.createDataSource({[weak self] goalDataSource in
+                self?.dataSource = goalDataSource
+                self?.viewController.collectionView.reloadData()
+            }))
         }
     }
     
-}
-
-
-struct GoalEntity {
-    var type: GoalType
-    var active: GoalCellType
-    var progress: Int
-    var total: Int
 }

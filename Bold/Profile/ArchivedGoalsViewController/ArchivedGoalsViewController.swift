@@ -131,7 +131,7 @@ extension ArchivedGoalsViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeReusableCell(indexPath: indexPath) as GoalCollectionViewCell
-        cell.configCell(type: currentItems[indexPath.row])
+        //cell.configCell(view: currentItems[indexPath.row])
         return cell
     }
     
