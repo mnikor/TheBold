@@ -10,30 +10,17 @@ import UIKit
 
 class CalendarActionSectionModel: NSObject, Comparable {
     
-    static func < (lhs: CalendarActionSectionModel, rhs: CalendarActionSectionModel) -> Bool {
-        return lhs.section.date < rhs.section.date
-    }
-    
     var section: CalendarActionSectionViewModel
-    var items: [CalendarActionItemModel] 
-    
-//    init(type:ActHeaderType = .none, date: Date, title: String?, subtitle: String?, backgroundColor:Color = .white, imageButton:UIImage? = nil, rightButtonIsHidden:Bool = false, items:[CalendarActionItemModel]) {
-//
-//        self.type = type
-//        self.date = date
-//        self.title = title
-//        self.subtitle = subtitle
-//        self.backgroundColor = backgroundColor
-//        self.imageButton = imageButton
-//        self.rightButtonIsHidden = rightButtonIsHidden
-//        self.items = items
-//    }
+    var items: [CalendarActionItemModel]
     
     init(section: CalendarActionSectionViewModel, items: [CalendarActionItemModel]) {
         self.section = section
         self.items = items
     }
     
+    static func < (lhs: CalendarActionSectionModel, rhs: CalendarActionSectionModel) -> Bool {
+        return lhs.section.date < rhs.section.date
+    }
 }
 
 struct CalendarActionSectionViewModel {
@@ -45,7 +32,6 @@ struct CalendarActionSectionViewModel {
     let backgroundColor: Color
     let imageButton: UIImage?
     var rightButtonIsHidden : Bool
-    //let items: [CalendarActionItemModel]
 }
 
 struct RangeDatePeriod {
@@ -67,6 +53,13 @@ struct RangeDatePeriod {
         let startDate = self.end
         let endDate = Calendar.current.date(byAdding: .month, value: 1, to: self.end)!
         return RangeDatePeriod(start: startDate, end: endDate)
+    }
+    
+    func checkEndDates(endGoalDate: Date?) -> Bool {
+        if endGoalDate == nil {
+            return self.start > GlobalConstants.LimitDate.maxDate!
+        }
+        return self.start > endGoalDate!
     }
     
 }

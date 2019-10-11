@@ -9,7 +9,7 @@
 import Foundation
 
 enum CalendarActionsListInputPresenter {
-    case createDataSource(goalID: String)
+    case createDataSource(goalID: String?)
     
     case uploadNewEventsInDataSourceWhenScroll(Int)
     case scrollToMonthInCalendar(Date)
@@ -44,7 +44,7 @@ class CalendarActionsListPresenter: PresenterProtocol, CalendarActionsListInputP
         }
     }
     
-    var goalID : String?
+    var goalID : String!
     
     var calendarDataSource = Set<Date>()
     var dataSourceModel = [StakeActionViewModel]()
@@ -56,6 +56,7 @@ class CalendarActionsListPresenter: PresenterProtocol, CalendarActionsListInputP
     var isCalendarVisible: Bool = false
     
     var isLoadContent: Bool = false
+    var isNoMoreDownloadContent: Bool = false
     
     required init(view: View) {
         self.viewController = view
@@ -70,13 +71,13 @@ class CalendarActionsListPresenter: PresenterProtocol, CalendarActionsListInputP
         case .createDataSource(goalID: let goalID):
             createDataSource(goalID: goalID)
         case .uploadNewEventsInDataSourceWhenScroll(let count):
-            uploadNewEventInDataSource(count: count)
+            uploadNewEventInDataSourceWhenScrol(count: count)
         case .selectCalendarSection(date: let date):
             configDataSource(date: date)
         case .scrollToMonthInCalendar(let date):
             checkingMonthWhenScroll(date: date)
         case .createAction:
-            router.input(.presentdCreateAction(goalID: goal.id!))
+            router.input(.presentdCreateAction(goalID: goal?.id!))
         case .editAction(let entity):
             let editVC = EditActionPlanViewController.createController {
                 print("create")
@@ -98,7 +99,7 @@ class CalendarActionsListPresenter: PresenterProtocol, CalendarActionsListInputP
         
     }
     
-    private func createDataSource(goalID: String) {
+    private func createDataSource(goalID: String?) {
         baseDataSource.removeAll()
         calendarDataSource.removeAll()
         dataSourceModel.removeAll()
@@ -108,14 +109,18 @@ class CalendarActionsListPresenter: PresenterProtocol, CalendarActionsListInputP
         interactor.input(.createDataSource(goalID: goalID, startDate: rangeDate.start, endDate:rangeDate.end, success: { [weak self] dataSections in
             self?.baseDataSource += dataSections
             self?.configDataSource(date: nil)
+            self?.viewController.configTableView()
         }))
     }
     
-    private func uploadNewEventInDataSource(count: Int) {
-        if isLoadContent == false, count >= dataSource.count - 10, dataSource.isEmpty == false, isCalendarVisible == false {
+    private func uploadNewEventInDataSourceWhenScrol(count: Int) {
+        if isNoMoreDownloadContent == false, isLoadContent == false, count >= dataSource.count - 10, dataSource.isEmpty == false, isCalendarVisible == false {
             isLoadContent = true
             self.rangeDate = rangeDate.addOneMonthToRange()
-            interactor.input(.createDataSource(goalID: goalID!, startDate: rangeDate.start, endDate:rangeDate.end, success: { [weak self] dataSections in
+            if self.rangeDate.checkEndDates(endGoalDate: goal?.endDate as Date?) {
+                return
+            }
+            interactor.input(.createDataSource(goalID: goalID, startDate: rangeDate.start, endDate:rangeDate.end, success: { [weak self] dataSections in
                 self?.baseDataSource += dataSections
                 self?.configDataSource(date: nil)
             }))
@@ -157,7 +162,7 @@ class CalendarActionsListPresenter: PresenterProtocol, CalendarActionsListInputP
         }
         if search.isEmpty {
             self.rangeDate = RangeDatePeriod.initRange(date: date)
-            interactor.input(.createDataSource(goalID: goalID!, startDate: rangeDate.start, endDate:rangeDate.end, success: { [weak self] dataSections in
+            interactor.input(.createDataSource(goalID: goalID, startDate: rangeDate.start, endDate:rangeDate.end, success: { [weak self] dataSections in
                 self?.baseDataSource += dataSections
                 self?.configDataSource(date: nil)
             }))
@@ -178,7 +183,9 @@ class CalendarActionsListPresenter: PresenterProtocol, CalendarActionsListInputP
             let firstElem = baseDataSource.first
             firstElem?.section.type = ActHeaderType.calendar
             firstElem?.section.rightButtonIsHidden = false
-            input(.createDataSource(goalID: self.goal.id!))
+            if let goalIDTemp = self.goal?.id {
+                input(.createDataSource(goalID: goalIDTemp))
+            }
         }
         configDataSource(date: nil)
     }

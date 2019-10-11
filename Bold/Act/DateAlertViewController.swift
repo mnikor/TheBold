@@ -40,6 +40,7 @@ class DateAlertViewController: UIViewController {
     var confirmBlock : ((_ date: Date) -> Void)?
     var selectDate: Date!
     var dateType: DateAlertType!
+    var periodDate: RangeDatePeriod!
     
     @IBAction func tapConfirmButton(_ sender: UIButton) {
         
@@ -66,6 +67,11 @@ class DateAlertViewController: UIViewController {
         
         overlayView.alpha = 0
         bottomContentViewConstraint.constant = -self.contentView.bounds.height
+        
+        if (periodDate != nil) {
+            datePicker.minimumDate = periodDate.start
+            datePicker.maximumDate = periodDate.end
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -79,12 +85,11 @@ class DateAlertViewController: UIViewController {
         dateVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         dateVC.confirmBlock = tapConfirm
         dateVC.dateType = type
-        if (startDate != nil) {
-            dateVC.datePicker.minimumDate = startDate
+        
+        if type != .time, let startDateTemp = startDate, let endDateTemp = endDate {
+            dateVC.periodDate = RangeDatePeriod(start: startDateTemp, end: endDateTemp)
         }
-        if (endDate != nil) {
-            dateVC.datePicker.maximumDate = endDate
-        }
+        
         dateVC.selectDate = currentDate ?? Date()
         return dateVC
     }

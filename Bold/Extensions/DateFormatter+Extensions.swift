@@ -29,4 +29,11 @@ extension DateFormatter {
         dateFormatter.dateFormat = type.rawValue
         return dateFormatter.string(from: date)
     }
+    
+    class func formatting(type: DateType, dateString: String) -> Date? {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = type.rawValue
+        return dateFormatter.date(from: dateString)
+    }
 }

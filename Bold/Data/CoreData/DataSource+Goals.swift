@@ -45,6 +45,11 @@ extension DataSource: GoalsFunctionality {
         
         var results = [Goal]()
         let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
+        
+        let filterDate = Date().dayOfMonthOfYear() as NSDate
+        
+        fetchRequest.predicate = NSPredicate(format: "(endDate >= %@) AND (status = %d)", filterDate, StatusType.wait.rawValue)
+        
         do {
             results = try DataSource.shared.viewContext.fetch(fetchRequest)
             success(results)

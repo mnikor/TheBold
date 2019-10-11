@@ -64,13 +64,3 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
 }
 
 
-class HomeEntity: NSObject {
-    
-    var type : HomeActionsTypeCell
-    var items : Array<Any>?
-    
-    init(type: HomeActionsTypeCell, items: Array<Any>?) {
-        self.type = type
-        self.items = items
-    }
-}

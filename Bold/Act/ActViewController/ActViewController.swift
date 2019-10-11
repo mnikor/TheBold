@@ -32,9 +32,13 @@ class ActViewController: UIViewController, SideMenuItemContent, ViewProtocol {
         highNavigationBar.configItem(title: L10n.Act.actBold, titleImage: .none, leftButton: .showMenu, rightButton: .callendar)
         highNavigationBar.deleagte = self
         
+        presenter.input(.createDataSource)
+        configTableView()
+    }
+    
+    func configTableView() {
         tableView.tableFooterView = UIView()
         registerXibs()
-        
         tableView.estimatedSectionHeaderHeight = UITableView.automaticDimension
         tableView.sectionHeaderHeight = 84
     }
@@ -64,33 +68,60 @@ extension ActViewController: NavigationViewDelegate {
 extension ActViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return presenter.dataSource.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.actItems.count
+        return presenter.dataSource[section].items.count
     }
+    
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        presenter.input(.uploadNewEventsInDataSourceWhenScroll(indexPath.section))
+//    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: StakeHeaderView.reuseIdentifier) as! StakeHeaderView
-        //headerView.config(type: .plus)
-        headerView.delegate = self
+        let headerModel = presenter.dataSource[section].section
+        
+        switch headerModel {
+        case .calendar(viewModel: let viewModel):
+            headerView.config(viewModel: viewModel)
+            headerView.delegate = self
+        default:
+            return nil
+        }
         return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let headerModel = presenter.dataSource[section].section
+        switch headerModel {
+        case .calendar(viewModel: _):
+            return 84
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let act = presenter.actItems[indexPath.row]
-        switch act.type {
+        let item = presenter.dataSource[indexPath.section].items[indexPath.row]
+        
+        switch item.type {
         case .goals:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActivityCollectionTableViewCell
-            cell.configCell(entity: HomeEntity(type: .activeGoals, items: [1, 2, 3, 4]))
+            //cell.configCell(entity: HomeEntity(type: .activeGoals, items: [1, 2, 3, 4]))
+            
+            if case .goals(viewModel: let activityViewModel) = item.viewModel {
+                cell.configCell(viewModel: activityViewModel)
+            }
+            
             cell.delegate = self
             cell.backgroundColor = UIColor(red: 244/255, green: 245/255, blue: 249/255, alpha: 1)
             return cell
         case .stake:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as StakeActionTableViewCell
-            //cell.config()
+            cell.config(viewModel: item.viewModel)
             cell.delegate = self
             return cell
         default :
@@ -100,6 +131,8 @@ extension ActViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        
+        presenter.input(.selectEvent(indexPath: indexPath))
     }
 }
 

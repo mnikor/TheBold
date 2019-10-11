@@ -28,24 +28,42 @@ extension DataSource: EventFunctionality {
         
     }
     
-    func searchEventsInGoal(goalID: String, startDate:Date, endDate:Date, success:([Event])->Void) {
+    func searchEventsInGoal(goalID: String?, startDate:Date, endDate:Date, success:([Event])->Void) {
         
         var results = [Event]()
         let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
         let sort = NSSortDescriptor(key: "startDate", ascending: true)
         fetchRequest.sortDescriptors = [sort]
-        
-//        let startDate = Date().customTime(hour: 0, minute: 0)
-//        
-//            let calendar = Calendar.current
-//            let components = calendar.dateComponents([.month, .year], from: startDate)
-//        let firstDayMonthDate = calendar.date(from: components)!
-//            let endDate = Calendar.current.date(byAdding: .month, value: 1, to: firstDayMonthDate)!
-//        
         let start = startDate as NSDate
         let end = endDate as NSDate
         
-        fetchRequest.predicate = NSPredicate(format: "(startDate >= %@) AND (startDate <= %@) AND SUBQUERY(action, $act, $act.goal.id == '\(goalID)').@count > 0", start, end)
+        if let goalIDString = goalID {
+            fetchRequest.predicate = NSPredicate(format: "(startDate >= %@) AND (startDate <= %@) AND SUBQUERY(action, $act, $act.goal.id == '\(goalIDString)').@count > 0", start, end)
+        }else {
+            fetchRequest.predicate = NSPredicate(format: "(startDate >= %@) AND (startDate <= %@)", start, end)
+        }
+        
+        do {
+            results = try DataSource.shared.viewContext.fetch(fetchRequest)
+            success(results)
+        } catch {
+            print(error)
+        }
+    }
+    
+    func searchEventsInGoals(startDate:Date, offset: Int, success:([Event])->Void) {
+        
+        var results = [Event]()
+        let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
+        let sort = NSSortDescriptor(key: "startDate", ascending: true)
+        fetchRequest.sortDescriptors = [sort]
+        let start = startDate as NSDate
+        let nextDay = startDate.tommorowDay() as NSDate
+        
+        fetchRequest.fetchOffset = offset
+        fetchRequest.fetchLimit = 30
+        
+        fetchRequest.predicate = NSPredicate(format: "((startDate > %@) AND (startDate < %@) AND (status >= %d)) OR ((startDate => %@) AND (status = %d))", start, nextDay, StatusType.wait.rawValue, nextDay, StatusType.wait.rawValue)
         
         do {
             results = try DataSource.shared.viewContext.fetch(fetchRequest)

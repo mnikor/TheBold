@@ -8,75 +8,6 @@
 
 import UIKit
 
-private struct Constants {
-
-    struct CellSize {
-        static let feelAndThink = CGSize(width: 124, height: 172)
-        static let actNotActive = CGSize(width: 225, height: 102)
-        static let actActive = CGSize(width: 150, height: 181)
-        static let activeGoals = CGSize(width: 160, height: 181)
-        static let boldManifest = CGSize.zero
-    }
-    
-    struct rowHeight {
-        static let feelThinkActActiveActiveGoals:CGFloat = 310
-        static let actNotActive:CGFloat = 260
-        static let boldManifest:CGFloat = 106
-    }
-    
-    struct bottomCellHeight {
-        static let feelThinkActActiveActiveGoals:CGFloat = 30
-        static let actNotActive:CGFloat = 51
-        static let boldManifest:CGFloat = 0
-    }
-}
-
-enum HomeActionsTypeCell {
-    case feel
-    case think
-    case boldManifest
-    case actNotActive
-    case actActive
-    case activeGoals
-    
-    func rowHeight() -> CGFloat {
-        switch self {
-        case .feel, .think, .actActive, .activeGoals:
-            return Constants.rowHeight.feelThinkActActiveActiveGoals
-        case .actNotActive:
-            return Constants.rowHeight.actNotActive
-        case .boldManifest:
-            return Constants.rowHeight.boldManifest
-        }
-    }
-    
-    func bottomCellHeight() -> CGFloat {
-        switch self {
-        case .feel, .think, .actActive, .activeGoals:
-            return Constants.bottomCellHeight.feelThinkActActiveActiveGoals
-        case .actNotActive:
-            return Constants.bottomCellHeight.actNotActive
-        case .boldManifest:
-            return Constants.bottomCellHeight.boldManifest
-        }
-    }
-    
-    func collectionCellSize() -> CGSize {
-        switch self {
-        case .feel, .think:
-            return Constants.CellSize.feelAndThink
-        case .actNotActive:
-            return Constants.CellSize.actNotActive
-        case .actActive:
-            return Constants.CellSize.actActive
-        case .activeGoals:
-            return Constants.CellSize.activeGoals
-        case .boldManifest:
-            return Constants.CellSize.boldManifest
-        }
-    }
-}
-
 class HomeViewController: UIViewController, SideMenuItemContent, ViewProtocol {
 
     @IBOutlet weak var tableView: UITableView!
@@ -163,9 +94,9 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch presenter.actionItems[indexPath.row].type {
-        case .feel, .think, .actActive, .actNotActive, .activeGoals:
+        case .feel, .think, .actActive, .actNotActive, .activeGoals, .activeGoalsAct:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActivityCollectionTableViewCell
-            cell.configCell(entity: presenter.actionItems[indexPath.row])
+            //cell.configCell(entity: presenter.actionItems[indexPath.row])
             cell.cellBackground(indexPath: indexPath)
             cell.delegate = self
             return cell

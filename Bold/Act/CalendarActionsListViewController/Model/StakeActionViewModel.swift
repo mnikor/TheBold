@@ -45,6 +45,10 @@ struct StakeActionViewModel {
             points = "-\(Int(event.stake) + 10)"
         }else if case .wait? = StatusType(rawValue: event.status) {
             points = "+\(Int(event.stake) + 10)"
+            statusIcon = Asset.stakeOval.image
+        }
+        
+        if event.action?.content != nil {
             statusIcon = Asset.stakePlay.image
         }
 

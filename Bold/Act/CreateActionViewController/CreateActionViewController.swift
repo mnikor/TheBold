@@ -14,10 +14,6 @@ private struct Constants {
     static let footerHeight : CGFloat = 11
 }
 
-protocol CreateActionViewControllerDelegate: class {
-    func actionWasCreated()
-}
-
 class CreateActionViewController: UIViewController, ViewProtocol {
     
     @IBOutlet weak var tableView: UITableView!
@@ -27,8 +23,6 @@ class CreateActionViewController: UIViewController, ViewProtocol {
     
     var presenter: Presenter!
     var configurator: Configurator! = CreateActionConfigurator()
-    
-    weak var delegate: CreateActionViewControllerDelegate?
     
     @IBOutlet weak var navBar: BlueNavigationBar!
     

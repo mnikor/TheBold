@@ -27,7 +27,7 @@ class DataSource {
     
     static let shared = DataSource()
     
-//    var updateDataSource : (()->Void)?
+    private var updateDataSource : (()->Void)?
     
     var viewContext: NSManagedObjectContext
     let persistentContainer: NSPersistentContainer
@@ -46,27 +46,27 @@ class DataSource {
         backgroundContext = container.newBackgroundContext()
         backgroundContext.automaticallyMergesChangesFromParent = true
         
-//        addedNotification()
+        addedNotification()
     }
     
-//    func ifUpdateContext(update: @escaping ()->Void) {
-//        updateDataSource = update
-//    }
+    func ifUpdateContext(update: @escaping ()->Void) {
+        updateDataSource = update
+    }
     
-//    func addedNotification() {
-//        let notificationCenter = NotificationCenter.default
+    func addedNotification() {
+        let notificationCenter = NotificationCenter.default
 //        notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: backgroundContext)
 //        notificationCenter.addObserver(self, selector: #selector(managedObjectContextWillSave), name: NSManagedObjectContextWillSaveNotification, object: managedObjectContext)
-//        notificationCenter.addObserver(self, selector: #selector(managedObjectContextDidSave), name: NSNotification.Name.NSManagedObjectContextDidSave, object: backgroundContext)
-//    }
+        notificationCenter.addObserver(self, selector: #selector(managedObjectContextDidSave), name: NSNotification.Name.NSManagedObjectContextDidSave, object: backgroundContext)
+    }
     
-//    @objc func managedObjectContextObjectsDidChange() {
+//    private @objc func managedObjectContextObjectsDidChange() {
 //        updateDataSource?()
 //    }
     
-//    @objc func managedObjectContextDidSave() {
-//        updateDataSource?()
-//    }
+    @objc private func managedObjectContextDidSave() {
+        updateDataSource?()
+    }
     
     func saveBackgroundContext() {
         guard backgroundContext.hasChanges else {

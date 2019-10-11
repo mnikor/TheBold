@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 enum CalendarActionsListInputInteractor {
-    case createDataSource(goalID: String, startDate: Date, endDate:Date, success:([CalendarActionSectionModel])->Void)
+    case createDataSource(goalID: String?, startDate: Date, endDate:Date, success:([CalendarActionSectionModel])->Void)
 }
 
 protocol CalendarActionsListInputInteractorProtocol {
@@ -35,7 +35,7 @@ class CalendarActionsListInteractor: InteractorProtocol, CalendarActionsListInpu
         }
     }
     
-    func createDataSource(goalID: String, startDate: Date, endDate:Date, success: ([CalendarActionSectionModel])->Void) {
+    func createDataSource(goalID: String?, startDate: Date, endDate:Date, success: ([CalendarActionSectionModel])->Void) {
         
         DataSource.shared.searchEventsInGoal(goalID: goalID, startDate: startDate, endDate:endDate) { [weak self] (events) in
             let dataSource = events.compactMap { (event) -> StakeActionViewModel in

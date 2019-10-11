@@ -35,25 +35,24 @@ class CalendarActionsListViewController: UIViewController, ViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let goalID = presenter.goal.id {
-            presenter.input(.createDataSource(goalID: goalID))
-        }
+        presenter.input(.createDataSource(goalID: presenter.goal?.id))
+        
 //        DataSource.shared .updateDataSource = {
 //            print("dskjfhkjasdfkjashfkjshfkhsajkf")
 //        }
         
-//        DataSource.shared.ifUpdateContext {[weak self] in
-//            if let goalID = self?.presenter.goal.id {
-//                self?.presenter.input(.createDataSource(goalID: goalID))
-//            }
-//        }
+        DataSource.shared.ifUpdateContext {[weak self] in
+            if let goalID = self?.presenter.goal?.id {
+                self?.presenter.input(.createDataSource(goalID: goalID))
+            }
+        }
         
         configTableView()
         configNavigationController()
         registerXibs()
     }
 
-    private func configTableView() {
+    func configTableView() {
         tableView.backgroundView = presenter.dataSource.isEmpty ? EmptyActView.loadFromNib() : UIView()
         tableView.tableFooterView = UIView()
         tableView.estimatedSectionHeaderHeight = UITableView.automaticDimension
@@ -63,7 +62,7 @@ class CalendarActionsListViewController: UIViewController, ViewProtocol {
     private func configNavigationController() {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isHidden = false
-        navigationItem.title = presenter.goal.name
+        navigationItem.title = presenter.goal?.name ?? L10n.viewAll
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: Asset.plusTodayActions.image, style: .plain, target: self, action: #selector(tapCreateAction))
     }
     
@@ -125,12 +124,12 @@ extension CalendarActionsListViewController: UITableViewDelegate, UITableViewDat
         switch item.type {
         case .calendar:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as CalendarTableViewCell
-            cell.config(date: presenter.currentDate, startDate:presenter.goal.startDate as Date?, endDate:presenter.goal.endDate as Date?, modelView: item.modelView)
+            cell.config(date: presenter.currentDate, startDate:presenter.goal?.startDate as Date?, endDate:presenter.goal?.endDate as Date?, modelView: item.viewModel)
             cell.delegate = self
             return cell
         case .stake:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as StakeActionTableViewCell
-            cell.config(viewModel: item.modelView)
+            cell.config(viewModel: item.viewModel)
             cell.delegate = self
             return cell
         default :
@@ -144,7 +143,7 @@ extension CalendarActionsListViewController: UITableViewDelegate, UITableViewDat
         let section = presenter.dataSource[indexPath.section]
         let item = section.items[indexPath.row]
         
-        presenter.input(.editActionNew(item.modelView))
+        presenter.input(.editActionNew(item.viewModel))
     }
     
 }
@@ -189,14 +188,4 @@ extension CalendarActionsListViewController: CalendarTableViewCellDelegate {
         presenter.input(.selectCalendarSection(date: date))
         
     }
-}
-
-extension CalendarActionsListViewController: CreateActionViewControllerDelegate {
-    
-    func actionWasCreated() {
-        if let goalID = presenter.goal.id {
-            presenter.input(.createDataSource(goalID: goalID))
-        }
-    }
-    
 }

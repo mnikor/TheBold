@@ -11,7 +11,7 @@ import UIKit
 
 struct GoalCollectionViewModel {
     
-    let goal: Goal?
+    let goal: Goal!
     
     let progressTintColor: Color
     let iconColor: Color

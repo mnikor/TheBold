@@ -13,6 +13,7 @@ enum ActHeaderType {
     case list
     case plus
     case none
+    case hide
     
     func imageInButton() -> UIImage {
         switch self {

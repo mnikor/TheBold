@@ -17,15 +17,16 @@ enum ActCellType {
 enum CalendarModelType {
     case calendar(dates: Set<Date>)
     case event(viewModel: StakeActionViewModel)
+    case goals(viewModel: ActivityViewModel)
 }
 
 class CalendarActionItemModel: NSObject {
 
     let type: ActCellType
-    let modelView: CalendarModelType
+    let viewModel: CalendarModelType
     
     init(type: ActCellType, modelView: CalendarModelType) {
         self.type = type
-        self.modelView = modelView
+        self.viewModel = modelView
     }
 }

@@ -15,6 +15,7 @@ enum ActInputRouter {
     case allGoals
     case goalItem
     case longTapActionPresentedBy(StartActionViewController)
+    case showEditEvent(vc: EditActionPlanViewController)
 }
 
 protocol ActInputRouterProtocol {
@@ -41,6 +42,8 @@ class ActRouter: RouterProtocol, ActInputRouterProtocol {
             viewController.performSegue(withIdentifier: StoryboardSegue.Act.createActionFromActViewIdentifier.rawValue, sender: nil)
         case .allGoals:
             viewController.performSegue(withIdentifier: StoryboardSegue.Act.allGoallIdentifier.rawValue, sender: nil)
+        case .showEditEvent(vc: let editActionVC):
+            editActionVC.presentedBy(viewController)
         case .goalItem:
             print("goalItem")
         case .longTapActionPresentedBy(let vc):

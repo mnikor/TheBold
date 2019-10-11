@@ -15,6 +15,11 @@ enum ActPresenterInput {
     case allGoals
     case goalItem
     case longTapAction
+    
+    case createDataSource
+    case uploadNewEventsInDataSourceWhenScroll(Int)
+    
+    case selectEvent(indexPath: IndexPath)
 }
 
 protocol ActPresenterInputProtocol {
@@ -31,6 +36,11 @@ class ActPresenter: PresenterProtocol, ActPresenterInputProtocol {
     var interactor: Interactor!
     var router: Router!
     
+    var goalsSection : CalendarActionItemModel!
+    //var goalsDataSource = [Goal]()
+    var dataSourceModel = [StakeActionViewModel]()
+    var dataSource = [ActDataSourceItem]()
+    
     required init(view: View) {
         self.viewController = view
     }
@@ -39,16 +49,17 @@ class ActPresenter: PresenterProtocol, ActPresenterInputProtocol {
         
     }
     
-    lazy var actItems : [ActEntity] = {
-        return [ActEntity(type: .goals, items: [1, 2, 3, 4], selected: false),
-                ActEntity(type: .stake, items: nil, selected: false),
-                ActEntity(type: .stake, items: nil, selected: false),
-                ActEntity(type: .stake, items: nil, selected: false),
-                ActEntity(type: .stake, items: nil, selected: false)]
-    }()
-    
     func input(_ inputCase: ActPresenterInput) {
         switch inputCase {
+        case .createDataSource:
+            interactor.input(.createDataSource(success: {[weak self] in
+                print("success")
+                self?.viewController.tableView.reloadData()
+            }))
+        case .uploadNewEventsInDataSourceWhenScroll(let index):
+            uploadNewEventInDataSourceWhenScrol(count: index)
+        case .selectEvent(indexPath: let indexPath):
+            selectEvent(indexPath: indexPath)
         case .showMenu:
             router.input(.menuShow)
         case .calendar:
@@ -65,6 +76,30 @@ class ActPresenter: PresenterProtocol, ActPresenterInputProtocol {
             }
             router.input(.longTapActionPresentedBy(vc))
         }
+        
+    }
+    
+    private func selectEvent(indexPath: IndexPath){
+        
+        let item = dataSource[indexPath.section].items[indexPath.row]
+        
+        if case .event(viewModel: let viewModelStake) = item.viewModel {
+            
+            let editActionVC = EditActionPlanViewController.createController(tapOk: {
+                print("Ok")
+            }) {
+                print("Delete")
+            }
+            
+            router.input(.showEditEvent(vc: editActionVC))
+            print("\(viewModelStake.event)")
+        }
+    }
+    
+    private func uploadNewEventInDataSourceWhenScrol(count: Int) {
+        interactor.input(.createStakesSection(success: {
+            self.viewController.tableView.reloadData()
+        }))
     }
     
 }
