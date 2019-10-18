@@ -15,5 +15,7 @@ target 'Bold' do
     pod 'SnapKit'
     pod 'Cosmos', '~> 19.0'
     pod 'VisualEffectView', '~> 3.1.0'
+    pod 'SwiftyJSON'
+    pod 'KeychainAccess', '~> 3.1.2'
     
 end

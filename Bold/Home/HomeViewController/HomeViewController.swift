@@ -100,8 +100,7 @@ class HomeViewController: UIViewController, SideMenuItemContent, ViewProtocol {
         
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
-        headerHomeView = HeaderHomeView()
-        headerHomeView.contentView.frame = CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: headerHomeView.contentView.bounds.size.width)
+        configureHeaderView()
 //        let height = headerHomeView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
 //        var frame = headerHomeView.frame
 //        frame.size.height = height
@@ -113,6 +112,12 @@ class HomeViewController: UIViewController, SideMenuItemContent, ViewProtocol {
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
+    }
+    
+    func configureHeaderView() {
+        headerHomeView = HeaderHomeView()
+        headerHomeView.contentView.frame = CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: headerHomeView.contentView.bounds.size.width)
+        headerHomeView.setName(SessionManager.shared.profile?.firstName)
     }
     
     func registerXibs() {

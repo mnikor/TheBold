@@ -48,6 +48,14 @@ class MenuBottomView: UIView {
         userImageView.isHidden = type == .logIn
     }
     
+    func setName(_ name: String?) {
+        titleLabel.text = name
+    }
+    
+    func setLevel(_ level: String?) {
+        subtitleLabel.text = level
+    }
+    
     @IBAction func tapBottomView(_ sender: UIButton) {
         guard let typeView = typeView else {
             return

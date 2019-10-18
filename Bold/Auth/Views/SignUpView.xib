@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -37,7 +35,6 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="SE8-IQ-wGB"/>
                     </constraints>
-                    <nil key="textColor"/>
                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                 </textField>
@@ -53,7 +50,6 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="sHO-W2-BcB"/>
                     </constraints>
-                    <nil key="textColor"/>
                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                 </textField>
@@ -69,7 +65,6 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="DyO-6v-rP2"/>
                     </constraints>
-                    <nil key="textColor"/>
                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                 </textField>
@@ -165,6 +160,9 @@
                         <constraint firstAttribute="width" constant="40" id="Gf7-C8-Ops"/>
                     </constraints>
                     <state key="normal" image="passwordEye"/>
+                    <connections>
+                        <action selector="didTapMakePasswordVisible:" destination="577-zy-ts2" eventType="touchUpInside" id="Tka-OG-pob"/>
+                    </connections>
                 </button>
                 <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkBox" translatesAutoresizingMaskIntoConstraints="NO" id="lqK-JS-CW6">
                     <rect key="frame" x="27" y="310.5" width="20" height="20"/>

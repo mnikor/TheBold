@@ -34,6 +34,14 @@
 		C561C4042341FBD00073ABAC /* BlurTransitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C3FC2341FBD00073ABAC /* BlurTransitionView.swift */; };
 		C561C4052341FBD00073ABAC /* BlurAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C3FE2341FBD00073ABAC /* BlurAlertController.swift */; };
 		C561C4062341FBD00073ABAC /* BlurAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C3FF2341FBD00073ABAC /* BlurAlertView.swift */; };
+		C561C40A23436A1B0073ABAC /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C40923436A1B0073ABAC /* NetworkService.swift */; };
+		C561C40C23436A660073ABAC /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C40B23436A660073ABAC /* NetworkServiceProtocol.swift */; };
+		C561C40E234374650073ABAC /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C40D234374650073ABAC /* Endpoint.swift */; };
+		C561C410234470FD0073ABAC /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C40F234470FD0073ABAC /* SessionManager.swift */; };
+		C561C412234474850073ABAC /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C411234474850073ABAC /* KeychainManager.swift */; };
+		C561C41423447A9C0073ABAC /* ServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C41323447A9C0073ABAC /* ServerError.swift */; };
+		C561C41723447B5F0073ABAC /* ServerErrorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C41623447B5F0073ABAC /* ServerErrorFactory.swift */; };
+		C561C41923447E2C0073ABAC /* RequestParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C41823447E2C0073ABAC /* RequestParameter.swift */; };
 		C56CD6E22330F80800322688 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CD6E12330F80800322688 /* VideoView.swift */; };
 		C56CD6E42330FC3F00322688 /* boldlogo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C56CD6E32330FC3A00322688 /* boldlogo.mp4 */; };
 		C56CD6E72331096B00322688 /* FadePresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CD6E62331096B00322688 /* FadePresentAnimationController.swift */; };
@@ -53,6 +61,8 @@
 		C5A485402306B94E002CC62A /* CalendarAndHistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A4853F2306B94E002CC62A /* CalendarAndHistoryPresenter.swift */; };
 		C5A485422306B966002CC62A /* CalendarAndHistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A485412306B966002CC62A /* CalendarAndHistoryInteractor.swift */; };
 		C5A485442306B979002CC62A /* CalendarAndHistoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A485432306B979002CC62A /* CalendarAndHistoryRouter.swift */; };
+		C5AC072F2356FEDD00A145E2 /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AC072E2356FEDD00A145E2 /* ContentType.swift */; };
+		C5AC07312357187D00A145E2 /* LoginRequestDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AC07302357187D00A145E2 /* LoginRequestDescriptor.swift */; };
 		C5B1E54E23042913000991DF /* ImagedTitleSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1E54D23042913000991DF /* ImagedTitleSubtitleView.swift */; };
 		C5B1E55223042947000991DF /* ImagedTitleSubtitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1E55123042947000991DF /* ImagedTitleSubtitleViewModel.swift */; };
 		C5B1E55523043865000991DF /* ViewModelConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1E55423043865000991DF /* ViewModelConfigurable.swift */; };
@@ -387,6 +397,14 @@
 		C561C3FC2341FBD00073ABAC /* BlurTransitionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurTransitionView.swift; sourceTree = "<group>"; };
 		C561C3FE2341FBD00073ABAC /* BlurAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurAlertController.swift; sourceTree = "<group>"; };
 		C561C3FF2341FBD00073ABAC /* BlurAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurAlertView.swift; sourceTree = "<group>"; };
+		C561C40923436A1B0073ABAC /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		C561C40B23436A660073ABAC /* NetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProtocol.swift; sourceTree = "<group>"; };
+		C561C40D234374650073ABAC /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		C561C40F234470FD0073ABAC /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		C561C411234474850073ABAC /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		C561C41323447A9C0073ABAC /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
+		C561C41623447B5F0073ABAC /* ServerErrorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerErrorFactory.swift; sourceTree = "<group>"; };
+		C561C41823447E2C0073ABAC /* RequestParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestParameter.swift; sourceTree = "<group>"; };
 		C56CD6E12330F80800322688 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		C56CD6E32330FC3A00322688 /* boldlogo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = boldlogo.mp4; sourceTree = "<group>"; };
 		C56CD6E62331096B00322688 /* FadePresentAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadePresentAnimationController.swift; sourceTree = "<group>"; };
@@ -406,6 +424,8 @@
 		C5A4853F2306B94E002CC62A /* CalendarAndHistoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAndHistoryPresenter.swift; sourceTree = "<group>"; };
 		C5A485412306B966002CC62A /* CalendarAndHistoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAndHistoryInteractor.swift; sourceTree = "<group>"; };
 		C5A485432306B979002CC62A /* CalendarAndHistoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAndHistoryRouter.swift; sourceTree = "<group>"; };
+		C5AC072E2356FEDD00A145E2 /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
+		C5AC07302357187D00A145E2 /* LoginRequestDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestDescriptor.swift; sourceTree = "<group>"; };
 		C5B1E54D23042913000991DF /* ImagedTitleSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagedTitleSubtitleView.swift; sourceTree = "<group>"; };
 		C5B1E55123042947000991DF /* ImagedTitleSubtitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagedTitleSubtitleViewModel.swift; sourceTree = "<group>"; };
 		C5B1E55423043865000991DF /* ViewModelConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelConfigurable.swift; sourceTree = "<group>"; };
@@ -834,6 +854,14 @@
 			path = BlurAlertController;
 			sourceTree = "<group>";
 		};
+		C561C41523447B310073ABAC /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				C561C41623447B5F0073ABAC /* ServerErrorFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
 		C56CD6E02330F7BF00322688 /* VideoView */ = {
 			isa = PBXGroup;
 			children = (
@@ -959,6 +987,7 @@
 				C561C3E92341F79F0073ABAC /* AlertDisplayable.swift */,
 				C561C3E82341F79F0073ABAC /* AnimationTransitionView.swift */,
 				C5B1E55423043865000991DF /* ViewModelConfigurable.swift */,
+				C561C40B23436A660073ABAC /* NetworkServiceProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1013,6 +1042,10 @@
 				C5E9B9FB232FAD2300668F2E /* ResultCustomError.swift */,
 				C5E9B9FD232FADFA00668F2E /* CalendarCustomError.swift */,
 				C5E9B9FF232FB09800668F2E /* Event.swift */,
+				C561C40D234374650073ABAC /* Endpoint.swift */,
+				C561C41323447A9C0073ABAC /* ServerError.swift */,
+				C561C41823447E2C0073ABAC /* RequestParameter.swift */,
+				C5AC072E2356FEDD00A145E2 /* ContentType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1069,6 +1102,9 @@
 				F1EBC7B122CF70A000BAA82D /* AudioPlayer.swift */,
 				C5C6C14B2320F23800C15C2B /* NotificationService.swift */,
 				C5E9B9F9232FAAF200668F2E /* CalendarService.swift */,
+				C561C40923436A1B0073ABAC /* NetworkService.swift */,
+				C561C40F234470FD0073ABAC /* SessionManager.swift */,
+				C561C411234474850073ABAC /* KeychainManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1333,6 +1369,7 @@
 		F18687DC229D56B00029A663 /* Bold */ = {
 			isa = PBXGroup;
 			children = (
+				C561C41523447B310073ABAC /* Factories */,
 				C561C3DC2341F7430073ABAC /* CommonViewControllers */,
 				C56CD6E52331094D00322688 /* AnimationControllers */,
 				C5C6C14D2320F5BB00C15C2B /* Bold.entitlements */,
@@ -1397,6 +1434,7 @@
 				F1F4060823030B070091B774 /* Network.swift */,
 				F1F4060A230311240091B774 /* RequestDescriptor.swift */,
 				F1F4060C230313960091B774 /* ProfileRequestDescriptor.swift */,
+				C5AC07302357187D00A145E2 /* LoginRequestDescriptor.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -2001,6 +2039,7 @@
 				C561C4032341FBD00073ABAC /* BlurTransitionController.swift in Sources */,
 				F179974D22AE615D0039879F /* Localizable.swift in Sources */,
 				F107539422F20C0B0078C71C /* EnterYourGoalTableViewCell.swift in Sources */,
+				C5AC07312357187D00A145E2 /* LoginRequestDescriptor.swift in Sources */,
 				F1D390F922D4E3F800DF8700 /* CitationViewController.swift in Sources */,
 				F17CB27022A6CF230035ABAB /* OnboardCell.swift in Sources */,
 				F1F4060923030B070091B774 /* Network.swift in Sources */,
@@ -2008,6 +2047,7 @@
 				F1CCC71622CE46F600E7B637 /* UIView+Extensions.swift in Sources */,
 				F1EA1CB922E1C66B00BB328F /* CreateGoalViewController.swift in Sources */,
 				F1B2B1CC22FB698E00C327B0 /* HeaderCalendarView.swift in Sources */,
+				C5AC072F2356FEDD00A145E2 /* ContentType.swift in Sources */,
 				F10B69C822EB172900E47315 /* IdeasRouter.swift in Sources */,
 				F1EA1CAF22E0A71F00BB328F /* UIImage+Extensions.swift in Sources */,
 				F183303C22E6F05500BB7A9E /* CreateActionRouter.swift in Sources */,
@@ -2017,12 +2057,14 @@
 				F183301722E5CB7800BB7A9E /* FeelRouter.swift in Sources */,
 				F183303622E6F02800BB7A9E /* CreateActionConfigurator.swift in Sources */,
 				F17CB27422A7D0830035ABAB /* LoginViewController.swift in Sources */,
+				C561C41723447B5F0073ABAC /* ServerErrorFactory.swift in Sources */,
 				F16F21D622F304A4004DC5F3 /* StakeViewController.swift in Sources */,
 				F1EA1CAB22E0833400BB328F /* StakeHeaderView.swift in Sources */,
 				C561C3F62341FB900073ABAC /* CustomPresentViewController.swift in Sources */,
 				C561C3EA2341F79F0073ABAC /* AnimationTransitionView.swift in Sources */,
 				F19A98B022D7393C00A0492E /* CongratulationsAlertView.swift in Sources */,
 				F183303A22E6F04500BB7A9E /* CreateActionInteractor.swift in Sources */,
+				C561C40A23436A1B0073ABAC /* NetworkService.swift in Sources */,
 				3EFCA3BD2306D46C00129DB4 /* SettingsTableViewCell.swift in Sources */,
 				F1EBC7B222CF70A000BAA82D /* AudioPlayer.swift in Sources */,
 				F1EA1CB722E1C65900BB328F /* CreateActionViewController.swift in Sources */,
@@ -2104,6 +2146,7 @@
 				F11562A322DF2E9A00399FA6 /* StakeActionTableViewCell.swift in Sources */,
 				F1CECE2522EA0AC000EA95EE /* IconCollectionViewCell.swift in Sources */,
 				C561C3EB2341F79F0073ABAC /* AlertDisplayable.swift in Sources */,
+				C561C41923447E2C0073ABAC /* RequestParameter.swift in Sources */,
 				F17CB26922A682130035ABAB /* RoundedButton.swift in Sources */,
 				F14166AC22C125A50020BF0F /* ActionCollectionTableViewCell.swift in Sources */,
 				C561C4042341FBD00073ABAC /* BlurTransitionView.swift in Sources */,
@@ -2119,6 +2162,7 @@
 				C5B1E56723045F6C000991DF /* ProfileConfigurator.swift in Sources */,
 				F19257FC22E7526E00FA5C6E /* CalendarActionsListViewController.swift in Sources */,
 				C5A485402306B94E002CC62A /* CalendarAndHistoryPresenter.swift in Sources */,
+				C561C40C23436A660073ABAC /* NetworkServiceProtocol.swift in Sources */,
 				C561C3EF2341F7D80073ABAC /* UIButton+Extension.swift in Sources */,
 				F1EBC7B922D38C3300BAA82D /* ThinkViewController.swift in Sources */,
 				F1C2533322B297B9003156AA /* UnlockPremiumTableViewCell.swift in Sources */,
@@ -2192,6 +2236,7 @@
 				F179975622AFB04B0039879F /* LocalizableViewController.swift in Sources */,
 				F1E698BB23157E5D00438E3E /* ArchivedGoalsInteractor.swift in Sources */,
 				C5E9B9FA232FAAF200668F2E /* CalendarService.swift in Sources */,
+				C561C41423447A9C0073ABAC /* ServerError.swift in Sources */,
 				F183302522E6059600BB7A9E /* ActPresenter.swift in Sources */,
 				F1EAF59222E89925008073D7 /* HeaderWriteActionsTableViewCell.swift in Sources */,
 				F1F40635230AE2270091B774 /* LevelOfMasteryFooterView.swift in Sources */,
@@ -2216,12 +2261,14 @@
 				F183304B22E7150300BB7A9E /* PlayerInteractor.swift in Sources */,
 				F1EBC7B622D3772100BAA82D /* CitationTableViewCell.swift in Sources */,
 				C5B1E56923045F7B000991DF /* ProfileInteractor.swift in Sources */,
+				C561C412234474850073ABAC /* KeychainManager.swift in Sources */,
 				C59E5E2A23057703005DCD18 /* ButtonedTitleViewModel.swift in Sources */,
 				F1EAF59522E8A987008073D7 /* ConfigurateActionViewController.swift in Sources */,
 				C5B1E565230442FB000991DF /* ProfileViewController.swift in Sources */,
 				3EFCA3B72306BFA600129DB4 /* SettingsConfigurator.swift in Sources */,
 				F1E698C52317DFC700438E3E /* TermsPrivacyViewController.swift in Sources */,
 				F179976022AFF8A90039879F /* MenuBottomView.swift in Sources */,
+				C561C410234470FD0073ABAC /* SessionManager.swift in Sources */,
 				3EFCA3AF2306BF7C00129DB4 /* SettingsViewController.swift in Sources */,
 				F19257FF22E7529900FA5C6E /* CalendarActionsListConfigurator.swift in Sources */,
 				F179976522B10AD70039879F /* HeaderHomeView.swift in Sources */,
@@ -2253,6 +2300,7 @@
 				C5C6C14C2320F23800C15C2B /* NotificationService.swift in Sources */,
 				F107538822F093770078C71C /* BodyConfigureTableViewCell.swift in Sources */,
 				F183302C22E6178D00BB7A9E /* AllGoalsConfigurator.swift in Sources */,
+				C561C40E234374650073ABAC /* Endpoint.swift in Sources */,
 				F1130CDF230E937C008FA60D /* WMSegment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

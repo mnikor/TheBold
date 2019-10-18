@@ -129,17 +129,24 @@ extension OnboardViewController: UICollectionViewDelegate, UICollectionViewDataS
 }
 
 extension OnboardViewController: SignUpViewDelegate {
+    func signUpViewDidTapAtTermsOfUse() {
+        // add terms of use page
+    }
+    
     func tapForgot() {
         let forgotPasswordVC = StoryboardScene.Auth.forgotPasswordViewControllerIdentifier.instantiate()
         alertViewController?.navigationController?.pushViewController(forgotPasswordVC, animated: true)
     }
     
-    func tapSignUp() {
-        print("tap Sign Up")
-    }
-    
-    func tapLogIn() {
-        print("tap Log In")
+    func signUpViewDidTapSignUp(_ signUpView: SignUpView) {
+        switch signUpView {
+        case loginView:
+            login()
+        case self.signUpView:
+            signUp()
+        default:
+            break
+        }
     }
     
     func tapFacebook() {
@@ -154,16 +161,51 @@ extension OnboardViewController: SignUpViewDelegate {
         alertViewController = showAlert(with: loginView, completion: nil)
     }
     
-    func signUpView(_ signUpView: SignUpView, didCheckPrivacyPolicy isChecked: Bool) {
-        // TODO: - save privacy policy checked
-    }
-    
     func signUpViewDidTapAtPrivacyPolicy() {
         // TODO: - show privacy policy
     }
     
-    func signUpViewDidTapAtTermsOfUse() {
-        // TODO: - show terms of use
+    private func login() {
+        let email = loginView.email
+        // add email validation
+        let password = loginView.password
+        // add password validation
+        NetworkService.shared.login(email: email ?? "",
+                                    password: password ?? "") { [weak self] result in
+                                        switch result {
+                                        case .failure(let error):
+                                            // add error handling
+                                            break
+                                        case .success(let profile):
+                                            SessionManager.shared.profile = profile
+                                            let vc = StoryboardScene.Menu.initialScene.instantiate()
+                                            self?.alertViewController?.navigationController?.pushViewController(vc, animated: true)
+                                        }
+        }
+    }
+    
+    private func signUp() {
+        let name = signUpView.name
+        let email = signUpView.email
+        // add email validation
+        let password = signUpView.password
+        // add password validation
+        let acceptTerms = signUpView.acceptTerms
+        NetworkService.shared.signUp(firstName: name,
+                                     lastName: nil,
+                                     email: email ?? "",
+                                     password: password ?? "",
+                                     acceptTerms: acceptTerms) { [weak self] result in
+                                        switch result {
+                                        case .failure(let error):
+                                            // add error handling
+                                            break
+                                        case .success(let profile):
+                                            SessionManager.shared.profile = profile
+                                            let vc = StoryboardScene.Menu.initialScene.instantiate()
+                                            self?.alertViewController?.navigationController?.pushViewController(vc, animated: true)
+                                        }
+        }
     }
     
 }

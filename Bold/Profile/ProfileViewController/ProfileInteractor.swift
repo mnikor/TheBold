@@ -42,7 +42,7 @@ class ProfileInteractor: ProfileInteractorInputProtocol {
     
     private func createProfileDetailsSection() -> UserProfileDataSourceItem {
         let profileHeaderViewModel = ImagedTitleSubtitleViewModel(leftImage: Asset.menuUser.image,
-                                                                  title: "Johnathan Smith",
+                                                                  title: SessionManager.shared.profile?.fullName,
                                                                   attributedTitle: nil,
                                                                   subtitle: "Apprentice",
                                                                   attributedSubtitle: nil,
@@ -64,9 +64,9 @@ class ProfileInteractor: ProfileInteractorInputProtocol {
     
     private func createRateAppSection() -> UserProfileDataSourceItem {
         let rateAppViewModel = ImagedTitleViewModel(leftImage: Asset.rateApp.image,
-                                                                  title: "Johnathan Smith",
-                                                                  attributedTitle: nil,
-                                                                  rightImage: Asset.rightArrowProfileIcon.image)
+                                                    title: SessionManager.shared.profile?.fullName,
+                                                    attributedTitle: nil,
+                                                    rightImage: Asset.rightArrowProfileIcon.image)
         let rateAppItem = UserProfileListItem.imagedTitle(viewModel: rateAppViewModel)
         return (section: .rate,
                 items: [rateAppItem])

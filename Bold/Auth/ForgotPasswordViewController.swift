@@ -25,4 +25,9 @@ class ForgotPasswordViewController: LocalizableViewController {
         emailTextField.placeholder = L10n.Authorization.email
         sendMeButton.setTitle(L10n.Authorization.sendMePassword, for: .normal)
     }
+    
+    @IBAction func didTapAtSendMeButton(_ sender: RoundedButton) {
+        NetworkService.shared.resetPassword(email: emailTextField.text ?? "")
+    }
+    
 }

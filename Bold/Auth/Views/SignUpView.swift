@@ -15,12 +15,10 @@ enum TypeAuthView {
 
 protocol SignUpViewDelegate: class {
     func tapForgot()
-    func tapSignUp()
-    func tapLogIn()
+    func signUpViewDidTapSignUp(_ signUpView: SignUpView)
     func tapFacebook()
     func tapShowSignUp()
     func tapShowLogIn()
-    func signUpView(_ signUpView: SignUpView, didCheckPrivacyPolicy isChecked: Bool)
     func signUpViewDidTapAtPrivacyPolicy()
     func signUpViewDidTapAtTermsOfUse()
 }
@@ -28,6 +26,22 @@ protocol SignUpViewDelegate: class {
 class SignUpView: UIView {
     
     weak var delegate: SignUpViewDelegate?
+    
+    var name: String? {
+        return yourNameTextField.text
+    }
+    
+    var email: String? {
+        return emailTextField.text
+    }
+    
+    var password: String? {
+        return passwordTextField.text
+    }
+    
+    var acceptTerms: Bool {
+        return !checkImageView.isHidden
+    }
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var yourNameTextField: UITextField!
@@ -51,13 +65,12 @@ class SignUpView: UIView {
         delegate?.tapForgot()
     }
     
+    @IBAction func didTapMakePasswordVisible(_ sender: UIButton) {
+        passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
+    }
+    
     @IBAction func tapFirstButton(_ sender: Any) {
-        switch authType {
-        case .signUp:
-            delegate?.tapSignUp()
-        case .logIn:
-            delegate?.tapLogIn()
-        }
+        delegate?.signUpViewDidTapSignUp(self)
     }
     
     @IBAction func tapFacebookButton(_ sender: Any) {
@@ -129,7 +142,6 @@ class SignUpView: UIView {
     
     @IBAction func didTapAtCheckBox(_ sender: Any) {
         checkImageView.isHidden = !checkImageView.isHidden
-        delegate?.signUpView(self, didCheckPrivacyPolicy: !checkImageView.isHidden)
     }
     
 }

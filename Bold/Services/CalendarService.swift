@@ -127,7 +127,6 @@ class CalendarService {
                     completion(.failure(.calendarAccessDeniedOrRestricted))
                 }
             }
-            
         case .denied, .restricted:
             completion(.failure(.calendarAccessDeniedOrRestricted))
         }

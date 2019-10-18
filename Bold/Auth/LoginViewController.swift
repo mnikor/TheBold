@@ -91,6 +91,10 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: SignUpViewDelegate {
+    func signUpViewDidTapSignUp(_ signUpView: SignUpView) {
+        
+    }
+    
     func tapForgot() {
 //        performSegue(withIdentifier: StoryboardSegue.Auth.forgotPassword.rawValue, sender: nil)
     }
