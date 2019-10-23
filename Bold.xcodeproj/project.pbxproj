@@ -63,6 +63,8 @@
 		C5A485442306B979002CC62A /* CalendarAndHistoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A485432306B979002CC62A /* CalendarAndHistoryRouter.swift */; };
 		C5AC072F2356FEDD00A145E2 /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AC072E2356FEDD00A145E2 /* ContentType.swift */; };
 		C5AC07312357187D00A145E2 /* LoginRequestDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AC07302357187D00A145E2 /* LoginRequestDescriptor.swift */; };
+		C5AC0733235D75B400A145E2 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AC0732235D75B400A145E2 /* Content.swift */; };
+		C5AC0735235D992C00A145E2 /* ContentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AC0734235D992C00A145E2 /* ContentStatus.swift */; };
 		C5B1E54E23042913000991DF /* ImagedTitleSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1E54D23042913000991DF /* ImagedTitleSubtitleView.swift */; };
 		C5B1E55223042947000991DF /* ImagedTitleSubtitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1E55123042947000991DF /* ImagedTitleSubtitleViewModel.swift */; };
 		C5B1E55523043865000991DF /* ViewModelConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1E55423043865000991DF /* ViewModelConfigurable.swift */; };
@@ -426,6 +428,8 @@
 		C5A485432306B979002CC62A /* CalendarAndHistoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAndHistoryRouter.swift; sourceTree = "<group>"; };
 		C5AC072E2356FEDD00A145E2 /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
 		C5AC07302357187D00A145E2 /* LoginRequestDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestDescriptor.swift; sourceTree = "<group>"; };
+		C5AC0732235D75B400A145E2 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
+		C5AC0734235D992C00A145E2 /* ContentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStatus.swift; sourceTree = "<group>"; };
 		C5B1E54D23042913000991DF /* ImagedTitleSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagedTitleSubtitleView.swift; sourceTree = "<group>"; };
 		C5B1E55123042947000991DF /* ImagedTitleSubtitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagedTitleSubtitleViewModel.swift; sourceTree = "<group>"; };
 		C5B1E55423043865000991DF /* ViewModelConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelConfigurable.swift; sourceTree = "<group>"; };
@@ -1046,6 +1050,8 @@
 				C561C41323447A9C0073ABAC /* ServerError.swift */,
 				C561C41823447E2C0073ABAC /* RequestParameter.swift */,
 				C5AC072E2356FEDD00A145E2 /* ContentType.swift */,
+				C5AC0732235D75B400A145E2 /* Content.swift */,
+				C5AC0734235D992C00A145E2 /* ContentStatus.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2078,6 +2084,7 @@
 				C5A485422306B966002CC62A /* CalendarAndHistoryInteractor.swift in Sources */,
 				F1A79DCD22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.swift in Sources */,
 				C561C3F82341FB900073ABAC /* PresentAnimationController.swift in Sources */,
+				C5AC0735235D992C00A145E2 /* ContentStatus.swift in Sources */,
 				C5A4853C2306B91B002CC62A /* CalendarAndHistoryViewController.swift in Sources */,
 				F1A79DC922D8A5620018A8EF /* ManageItTableViewCell.swift in Sources */,
 				C56CD6E72331096B00322688 /* FadePresentAnimationController.swift in Sources */,
@@ -2218,6 +2225,7 @@
 				C561C3E42341F7840073ABAC /* ShapeButton.swift in Sources */,
 				F1EAF59E22E8AA9A008073D7 /* ConfigurateActionRouter.swift in Sources */,
 				F1E698AB2315643A00438E3E /* LevelOfMasteryRouter.swift in Sources */,
+				C5AC0733235D75B400A145E2 /* Content.swift in Sources */,
 				C5E9B9FE232FADFA00668F2E /* CalendarCustomError.swift in Sources */,
 				F1130CE9230FE058008FA60D /* ZSegmentedControl.swift in Sources */,
 				F183303022E617B900BB7A9E /* AllGoalsInteractor.swift in Sources */,

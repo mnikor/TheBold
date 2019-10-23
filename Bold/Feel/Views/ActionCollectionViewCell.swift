@@ -45,11 +45,25 @@ class ActionCollectionViewCell: BaseCollectionViewCell {
         // Initialization code
     }
 
-    func config() {
-        
-        guard let typeCell = actionSmallCellType(rawValue: Int(arc4random_uniform(3))) else { return }
+    func config(model: Content) {
+        let typeCell = getType(by: model.contentStatus)
         topLeftButton.setImage(typeCell.image(), for: .normal)
         topLeftButton.isHidden = typeCell.hidden()
+        titleLabel.text = model.title
+        if let imageURL = model.imageURL {
+            backgroundImageView.setImageAnimated(path: imageURL, placeholder: Asset.actionImage.image)
+        } else {
+            backgroundImageView.image = Asset.actionImage.image
+        }
+    }
+    
+    private func getType(by status: ContentStatus) -> actionSmallCellType {
+        switch status {
+        case .locked:
+            return .lock
+        case .unlocked:
+            return .none
+        }
     }
     
 }

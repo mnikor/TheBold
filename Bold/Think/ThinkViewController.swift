@@ -10,12 +10,9 @@ import UIKit
 
 class ThinkViewController: FeelViewController {
 
-    private lazy var thinkItems : [FeelEntity] = {
-        return [FeelEntity(type: .stories, items: [1, 2, 3 ,4]),
-                FeelEntity(type: .citate, items: []),
-                FeelEntity(type: .lessons, items: [1, 2, 3, 4, 5])]
-        
-    }()
+    override var contentTypes: [ContentType] {
+        return [.story, .quote, .lesson]
+    }
     
 //    override var feelItems: [FeelEntity] {
 //        get {return thinkItems}
@@ -24,8 +21,6 @@ class ThinkViewController: FeelViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        presenter.feelItems = thinkItems
         
         navigationController?.navigationBar.isHidden = true
         highNavigationBar.configItem(title: L10n.Think.thinkBold, titleImage: .none, leftButton: .showMenu, rightButton: .none)
@@ -49,18 +44,20 @@ class ThinkViewController: FeelViewController {
 extension ThinkViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        switch thinkItems[indexPath.row].type {
+        let item = items[indexPath.row]
+        switch item.type {
         case .stories, .lessons:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActionCollectionTableViewCell
             cell.delegate = self
-            cell.config(entity: presenter.feelItems[indexPath.row])
+            cell.config(entity: items[indexPath.row])
             cell.cellBackground(indexPath: indexPath)
             return cell
         case .citate:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as CitationTableViewCell
             cell.delegate = self
-            //cell.config()
+            if let quote = item.items.first {
+                cell.config(authorName: quote.authorName, body: quote.body)
+            }
             cell.cellBackground(indexPath: indexPath)
             return cell
         default:

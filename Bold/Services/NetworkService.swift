@@ -164,15 +164,21 @@ class NetworkService {
         }
     }
     
-    func getContent(with type: ContentType) {
+    func getContent(with type: ContentType, completion: ((Result<[Content]>) -> Void)?) {
         sendRequest(endpoint: String(format: Endpoint.contentObjectsWithType.rawValue, type.rawValue),
                     method: .get,
                     parameters: [:]) { result in
                         switch result {
                         case .failure(let error):
-                            break
+                            completion?(.failure(error))
                         case .success(let data):
-                            print("requestSended")
+                            guard let dataArray = data.array
+                                else {
+                                    completion?(.failure(ServerErrorFactory.unknown))
+                                    return
+                            }
+                            let contentArray = dataArray.compactMap { Content.mapJSON($0) }
+                            completion?(.success(contentArray))
                         }
         }
     }

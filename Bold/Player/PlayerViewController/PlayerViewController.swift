@@ -122,7 +122,6 @@ class PlayerViewController: UIViewController, ViewProtocol {
         addSwipe()
         configureSliderAction()
         AudioService.shared.delegate = self
-        NetworkService.shared.getContent(with: .hypnosis)
     }
     
     override func viewWillAppear(_ animated: Bool) {

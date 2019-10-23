@@ -12,6 +12,7 @@ enum FeelPresenterInput  {
     case menuShow
     case showAll(FeelTypeCell)
     case showPlayer
+    case prepareDataSource(types: [ContentType], completion: (([FeelEntity]) -> Void)?)
 }
 
 protocol FeelPresenterProtocol {
@@ -36,13 +37,6 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
         
     }
     
-    lazy var feelItems : [FeelEntity] = {
-        return [FeelEntity(type: .meditation, items: [1, 2, 3 ,4]),
-                FeelEntity(type: .hypnosis, items: [1, 2, 3]),
-                FeelEntity(type: .pepTalk, items: [1, 2, 3, 4, 5])]
-        
-    }()
-    
     func input(_ inputCase: FeelPresenterInput) {
         switch inputCase {
         case .menuShow:
@@ -51,6 +45,38 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
             router.input(.showAll(typeCell))
         case .showPlayer:
             showPlayer()
+        case .prepareDataSource(types: let types, completion: let completion):
+            prepareDataSource(types: types, completion: completion)
+        }
+    }
+    
+    private func prepareDataSource(types: [ContentType], completion: (([FeelEntity]) -> Void)?) {
+        interactor.input(.prepareDataSource(contentTypeArray: types, completion: { [weak self] result in
+            guard let self = self else { return }
+            let sortedResult = result.sorted { (content1, content2) -> Bool in
+                let content1Index = types.firstIndex(of: content1.key) ?? 0
+                let content2Index = types.firstIndex(of: content2.key) ?? 0
+                return content1Index < content2Index
+            }
+            let entities = sortedResult.compactMap { FeelEntity(type: self.getCellType(by: $0.key), items: $0.value) }
+            completion?(entities)
+        }))
+    }
+    
+    private func getCellType(by contentType: ContentType) -> FeelTypeCell {
+        switch contentType {
+        case .hypnosis:
+            return .hypnosis
+        case .lesson:
+            return .lessons
+        case .meditation:
+            return .meditation
+        case .preptalk:
+            return .pepTalk
+        case .quote:
+            return .citate
+        case .story:
+            return .stories
         }
     }
     
@@ -62,5 +88,5 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
 
 struct FeelEntity {
     var type : FeelTypeCell
-    var items: Array<Any>
+    var items: Array<Content>
 }

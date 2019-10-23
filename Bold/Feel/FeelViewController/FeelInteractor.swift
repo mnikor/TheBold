@@ -10,6 +10,7 @@ import Foundation
 
 enum FeelInteractorInput {
     case prepareTracks
+    case prepareDataSource(contentTypeArray: [ContentType], completion: (([ContentType: [Content]]) -> Void))
 }
 
 protocol FeelInteractorInputProtocol: InteractorProtocol {
@@ -22,6 +23,9 @@ class FeelInteractor: FeelInteractorInputProtocol {
     
     weak var presenter: FeelPresenter!
     
+    private var dataSource: [ContentType: [Content]] = [:]
+    private var count = 0
+    
     required init(presenter: Presenter) {
         self.presenter = presenter
     }
@@ -30,6 +34,9 @@ class FeelInteractor: FeelInteractorInputProtocol {
         switch inputCase {
         case .prepareTracks:
             prepareTracks()
+        case .prepareDataSource(contentTypeArray: let contentTypes, completion: let completion):
+            count = contentTypes.count
+            prepareDataSource(contentTypeArray: contentTypes, completion: completion)
         }
     }
     
@@ -39,6 +46,26 @@ class FeelInteractor: FeelInteractorInputProtocol {
             tracks.append(AudioPlayerTrackInfo(trackName: "Track\(index)", artistName: "Artist\(index)", duration: formatTimeInterval(1254) , path: .remote("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-\(index).mp3")))
         }
         AudioService.shared.tracks = tracks
+    }
+    
+    private func prepareDataSource(contentTypeArray: [ContentType], completion: (([ContentType: [Content]]) -> Void)?) {
+        var contentTypeArray = contentTypeArray
+        guard let type = contentTypeArray.first else { return }
+        NetworkService.shared.getContent(with: type) { [weak self] result in
+            guard let self = self else { return }
+            
+            self.prepareDataSource(contentTypeArray: Array(contentTypeArray.dropFirst()), completion: completion)
+            
+            switch result {
+            case .failure(let error):
+                self.count -= 1
+            case .success(let content):
+                self.dataSource[type] = content
+            }
+            if self.dataSource.keys.count == self.count {
+                completion?(self.dataSource)
+            }
+        }
     }
     
     private func formatTimeInterval(_ timeInterval: TimeInterval) -> String {
