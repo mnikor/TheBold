@@ -78,6 +78,8 @@ class ActionTableViewCell: BaseTableViewCell {
         self.item = item
         configHeader(type: item.header!)
         configButton(item: item)
+        titleTextView.text = item.data.title
+        backgroundImageView.setImageAnimated(path: item.data.imageURL ?? "", placeholder: Asset.actionBackground.image)
         
         //guard let tempHeaderType = HeaderType(rawValue: UInt(arc4random_uniform(3))) else { return }
 //        configHeader(type: headerType)

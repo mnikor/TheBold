@@ -34,7 +34,7 @@ extension ActionsListViewController{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         
-        if presenter.actions[indexPath.row].type == .action {
+        if actions[indexPath.row].type == .action {
             let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
             navigationController?.present(vc, animated: true, completion: nil)
         }

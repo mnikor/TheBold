@@ -197,14 +197,18 @@ extension HomeViewController: UITableViewDelegate {
 //MARK:- ActivityCollectionTableViewCellDelegate
 
 extension HomeViewController: ActivityCollectionTableViewCellDelegate {
+    func activityCollectionTableViewCell(_ activityCollectionTableViewCell: ActivityCollectionTableViewCell, didTapAtItem indexPath: IndexPath) {
+        guard let cellIndexPath = tableView.indexPath(for: activityCollectionTableViewCell) else { return }
+        let item = presenter.actionItems[cellIndexPath.row].items?[indexPath.row]
+        if let contentType = item as? FeelTypeCell {
+            presenter.input(.actionItem(contentType))
+        }
+    }
     
     func tapShowAllActivity(type: FeelTypeCell) {
         presenter.input(.actionAll(type))
     }
     
-    func tapItemCollection() {
-        presenter.input(.actionItem)
-    }
 }
 
 

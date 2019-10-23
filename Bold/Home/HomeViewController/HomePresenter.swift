@@ -11,7 +11,7 @@ import Foundation
 enum HomePresenterInput {
     case menuShow
     case actionAll(FeelTypeCell)
-    case actionItem
+    case actionItem(FeelTypeCell)
     case unlockBoldManifest
     case createGoal
 }
@@ -39,9 +39,9 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
     }
     
     lazy var actionItems : [HomeEntity] = {
-        return [HomeEntity(type: .feel, items: [1, 2, 3, 4]),
+        return [HomeEntity(type: .feel, items: [FeelTypeCell.meditation, FeelTypeCell.hypnosis, FeelTypeCell.pepTalk]),
                 HomeEntity(type: .boldManifest, items: nil),
-                HomeEntity(type: .think, items: [1, 2, 3, 4]),
+                HomeEntity(type: .think, items: [FeelTypeCell.stories, FeelTypeCell.citate, FeelTypeCell.lessons]),
                 HomeEntity(type: .actActive, items: [1, 2, 3, 4]),
                 HomeEntity(type: .actNotActive, items: [1])]
     }()
@@ -53,8 +53,8 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
             router.input(.menuShow)
         case .actionAll(let type):
             router.input(.actionAll(type))
-        case .actionItem:
-            router.input(.actionItem)
+        case .actionItem(let type):
+            router.input(.actionItem(type))
         case .unlockBoldManifest:
             router.input(.unlockBoldManifest)
         case .createGoal:

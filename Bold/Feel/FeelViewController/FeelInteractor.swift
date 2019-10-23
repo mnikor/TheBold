@@ -9,7 +9,7 @@
 import Foundation
 
 enum FeelInteractorInput {
-    case prepareTracks
+    case prepareTracks(content: Content)
     case prepareDataSource(contentTypeArray: [ContentType], completion: (([ContentType: [Content]]) -> Void))
 }
 
@@ -32,19 +32,16 @@ class FeelInteractor: FeelInteractorInputProtocol {
     
     func input(_ inputCase: FeelInteractorInput) {
         switch inputCase {
-        case .prepareTracks:
-            prepareTracks()
+        case .prepareTracks(content: let content):
+            prepareTracks(for: content)
         case .prepareDataSource(contentTypeArray: let contentTypes, completion: let completion):
             count = contentTypes.count
             prepareDataSource(contentTypeArray: contentTypes, completion: completion)
         }
     }
     
-    private func prepareTracks() {
-        var tracks = [AudioPlayerTrackInfo]()
-        for index in 1 ... 5 {
-            tracks.append(AudioPlayerTrackInfo(trackName: "Track\(index)", artistName: "Artist\(index)", duration: formatTimeInterval(1254) , path: .remote("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-\(index).mp3")))
-        }
+    private func prepareTracks(for content: Content) {
+        let tracks = content.audiosURLs.compactMap { AudioPlayerTrackInfo(trackName: $0, artistName: $0, duration: formatTimeInterval(1254), path: .remote($0)) }
         AudioService.shared.tracks = tracks
     }
     

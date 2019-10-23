@@ -17,5 +17,9 @@ class ActivityCollectionViewCell: BaseCollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func config(with type: FeelTypeCell) {
+        titleLabel.text = type.titleText()
+    }
 
 }

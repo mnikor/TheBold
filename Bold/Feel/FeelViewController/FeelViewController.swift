@@ -80,10 +80,10 @@ extension FeelViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK:- ActionCollectionTableViewCellDelegate
 
 extension FeelViewController: ActionCollectionTableViewCellDelegate {
-    
-    @objc func tapItemCollection() {
-        print("Show item")
-        presenter.input(.showPlayer)
+    func actionCollectionTableViewCell(_ actionCollectionTableViewCell: ActionCollectionTableViewCell, didTapAtItem indexPath: IndexPath) {
+        guard let cellIndexPath = tableView.indexPath(for: actionCollectionTableViewCell) else { return }
+        let item = items[cellIndexPath.row].items[indexPath.row]
+        presenter.input(.showPlayer(item: item))
     }
     
     func tapShowAll(typeCells: FeelTypeCell)  {

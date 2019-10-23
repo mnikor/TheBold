@@ -11,7 +11,7 @@ import Foundation
 enum FeelPresenterInput  {
     case menuShow
     case showAll(FeelTypeCell)
-    case showPlayer
+    case showPlayer(item: Content)
     case prepareDataSource(types: [ContentType], completion: (([FeelEntity]) -> Void)?)
 }
 
@@ -43,8 +43,8 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
             router.input(.menuShow)
         case .showAll(let typeCell):
             router.input(.showAll(typeCell))
-        case .showPlayer:
-            showPlayer()
+        case .showPlayer(item: let content):
+            showPlayer(for: content)
         case .prepareDataSource(types: let types, completion: let completion):
             prepareDataSource(types: types, completion: completion)
         }
@@ -80,8 +80,8 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
         }
     }
     
-    private func showPlayer() {
-        interactor.input(.prepareTracks)
+    private func showPlayer(for content: Content) {
+        interactor.input(.prepareTracks(content: content))
         router.input(.showPlayer)
     }
 }

@@ -18,8 +18,11 @@ extension UIImageView {
     }
 
     func setImageAnimated(path: String, placeholder: UIImage? = nil, forceFade: Bool = false) {
-        let url = URL(string: path)
-        setImageAnimated(url: url, placeholder: placeholder, forceFade: forceFade)
+        if let url = URL(string: path) {
+            setImageAnimated(url: url, placeholder: placeholder, forceFade: forceFade)
+        } else {
+            image = placeholder
+        }
     }
     
     func setImageAnimated(url: URL?, placeholder: UIImage? = nil, forceFade: Bool = false) {
@@ -36,7 +39,8 @@ extension UIImageView {
             SDWebImageManager.shared.loadImage(with: url,
                                                progress: nil) { [weak self] (image, data, error, cache, finished, url) in
                                                 guard let self = self else { return }
-                                                if finished {
+                                                if finished,
+                                                    image != nil {
                                                     self.image = image
                                                 }
             }

@@ -112,15 +112,16 @@ extension ActViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK:- ActivityCollectionTableViewCellDelegate
 
 extension ActViewController: ActivityCollectionTableViewCellDelegate {
+    func activityCollectionTableViewCell(_ activityCollectionTableViewCell: ActivityCollectionTableViewCell, didTapAtItem indexPath: IndexPath) {
+        print("tapItemCollection")
+        presenter.input(.goalItem)
+    }
+    
     func tapShowAllActivity(type: FeelTypeCell) {
         print("tapShowAllActivity")
         presenter.input(.allGoals)
     }
     
-    func tapItemCollection() {
-        print("tapItemCollection")
-        presenter.input(.goalItem)
-    }
 }
 
 // MARK:- StakeHeaderViewDelegate
