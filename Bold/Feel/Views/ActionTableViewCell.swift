@@ -36,6 +36,7 @@ class ActionTableViewCell: BaseTableViewCell {
 
     weak var delegate: ActionTableViewCellDelegate?
     
+    @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var leftHeaderButton: UIButton!
     @IBOutlet weak var rightHeaderLabel: UILabel!
@@ -80,6 +81,7 @@ class ActionTableViewCell: BaseTableViewCell {
         configButton(item: item)
         titleTextView.text = item.data.title
         backgroundImageView.setImageAnimated(path: item.data.imageURL ?? "", placeholder: Asset.actionBackground.image)
+        authorNameLabel.text = item.data.authorName
         
         //guard let tempHeaderType = HeaderType(rawValue: UInt(arc4random_uniform(3))) else { return }
 //        configHeader(type: headerType)

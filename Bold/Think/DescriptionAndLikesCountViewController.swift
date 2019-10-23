@@ -22,10 +22,17 @@ class DescriptionAndLikesCountViewController: UIViewController {
     }
     
     var percent : CGFloat = 0
+    var content: Content?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        config()
+    }
+    
+    private func config() {
+        categoryLabel.text = content?.type.rawValue.capitalized
+        titleLabel.text = content?.title
         likseCountView.configView(superView: view)
         likseCountView.delegate = self
     }

@@ -36,6 +36,7 @@ extension ActionsListViewController{
         
         if actions[indexPath.row].type == .action {
             let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
+            vc.content = actions[indexPath.row].data
             navigationController?.present(vc, animated: true, completion: nil)
         }
         
