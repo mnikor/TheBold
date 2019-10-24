@@ -177,6 +177,9 @@ fileprivate extension MenuContainerViewController {
         if menuViewController == nil {
             fatalError("Invalid `menuViewController` value. It should not be nil")
         }
+        if #available(iOS 13, *) {
+            menuViewController.modalPresentationStyle = .fullScreen
+        }
         present(menuViewController, animated: true, completion: nil)
         isShown = true
     }

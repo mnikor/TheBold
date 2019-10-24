@@ -41,6 +41,8 @@ class OnboardViewController: UIViewController, AlertDisplayable {
     }
     
     @IBAction func tapFindYourBoldness(_ sender: UIButton) {
+        let vc = StoryboardScene.Menu.initialScene.instantiate()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     override func viewDidLoad() {
