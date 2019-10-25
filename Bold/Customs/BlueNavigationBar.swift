@@ -39,7 +39,7 @@ class BlueNavigationBar: UINavigationBar {
         commonSetup()
     }
 
-    func commonSetup() {
+    private func commonSetup() {
         delegate = self
         isTranslucent = false
         barTintColor = ColorName.primaryBlue.color
@@ -50,7 +50,7 @@ class BlueNavigationBar: UINavigationBar {
         createButtons()
     }
     
-    func createButtons() {
+    private func createButtons() {
         let saveButton = UIBarButtonItem(title: L10n.save, style: .plain, target: self, action: #selector(tapSaveButton))
         topItem?.rightBarButtonItem = saveButton
         let cancelButton = UIBarButtonItem(title: L10n.cancel, style: .plain, target: self, action: #selector(tapCancelButton))
@@ -67,6 +67,7 @@ class BlueNavigationBar: UINavigationBar {
     
     func configure(type: NavBarCreateType, save: @escaping block, cancel: @escaping block) {
         
+        topItem?.rightBarButtonItem?.isEnabled = false
         tapSave = save
         tapCancel = cancel
         topItem?.title = type.title

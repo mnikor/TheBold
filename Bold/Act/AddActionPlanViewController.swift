@@ -13,37 +13,50 @@ class AddActionPlanViewController: UIViewController {
     @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var addActionView: UIView!
     
+    @IBOutlet weak var contentView: UIView!
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addActionButton: RoundedButton!
     
     @IBOutlet weak var bottomAddActionConstraint: NSLayoutConstraint!
     
+    var addActionVC : CreateActionViewController!
+    var contentID : String?
     var activeOkButton : (() -> Void)?
     
+    var navVC : UINavigationController!
+    
     @IBAction func tapAddActionButton(_ sender: UIButton) {
+        addActionVC.presenter.input(.save)
         activeOkButton?()
         hideAnimateView()
     }
     
-    lazy var listSettings : [AddActionEntity] = {
-        return [
-                AddActionEntity(type: .duration, currentValue: "Thu, 1 Feb, 2019"),
-                AddActionEntity(type: .reminder, currentValue: "Off"),
-                AddActionEntity(type: .goal, currentValue: "Marathon"),
-                AddActionEntity(type: .stake, currentValue: "No stake"),
-                AddActionEntity(type: .share, currentValue: nil)]
-    }()
-    
     class func createController(tapOk: @escaping (() -> Void)) -> AddActionPlanViewController {
+
         let addVC = StoryboardScene.Act.addActionPlanViewController.instantiate()
+        //let navVC = UINavigationController(rootViewController: addVC)
         addVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         addVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         addVC.activeOkButton = tapOk
         return addVC
     }
     
+    class func createController(contentID: String?, tapOk: @escaping (() -> Void)) -> AddActionPlanViewController {
+
+        let addVC = StoryboardScene.Act.addActionPlanViewController.instantiate()
+        //let navVC = UINavigationController(rootViewController: addVC)
+        addVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        addVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        addVC.activeOkButton = tapOk
+        addVC.contentID = contentID
+        return addVC
+    }
+    
     func presentedBy(_ vc: UIViewController) {
-        vc.present(self, animated: false, completion: nil)
+        let navVC = UINavigationController(rootViewController: self)
+        navVC.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        vc.present(navVC, animated: false, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -54,23 +67,43 @@ class AddActionPlanViewController: UIViewController {
         overlayView.alpha = 0
         bottomAddActionConstraint.constant = -self.addActionView.bounds.height
         
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 56
-        tableView.tableFooterView = UIView()
-        registerXibs()
-        
-        addHeader()
         addSwipe()
-        
+        displayContentController()
     }
     
-    func addHeader() {
-        listSettings.insert(AddActionEntity(type: .headerAddToPlan, currentValue: nil), at: 0)
+    func displayContentController() {
+        self.addActionVC = StoryboardScene.Act.createActionViewController.instantiate()
+        //navVC = UINavigationController(rootViewController: addActionVC)
+        addActionVC.presenter.baseConfigType = .createNewActionSheet(contentID: contentID)
+        
+//        //self.storyboard?.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController
+//
+//         if let addActionVC = self.addActionVC {
+//            addActionVC.willMove(toParent: self)
+//
+//             // Add to containerview
+//            self.contentView.addSubview(addActionVC.view)
+//            self.addChild(addActionVC)
+//            addActionVC.didMove(toParent: self)
+//       }
+        
+        if let addActionVC = addActionVC {
+            // call before adding child view controller's view as subview
+            addChild(addActionVC)
+
+            addActionVC.view.frame = contentView.bounds
+            contentView.addSubview(addActionVC.view)
+
+            // call before adding child view controller's view as subview
+            addActionVC.didMove(toParent: self)
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showAnimateView()
+        
     }
     
     func addSwipe() {
@@ -113,40 +146,5 @@ class AddActionPlanViewController: UIViewController {
         })
     }
     
-}
-
-extension AddActionPlanViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listSettings.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        switch listSettings[indexPath.row].type {
-        case .headerAddToPlan:
-            let cell = tableView.dequeReusableCell(indexPath: indexPath) as HeaderActionPlanTableViewCell
-            return cell
-        case .headerEditAction:
-            let cell = tableView.dequeReusableCell(indexPath: indexPath) as HeaderTitleActionPlanTableViewCell
-            return cell
-        case .duration, .reminder, .goal, .stake, .share :
-            let cell = tableView.dequeReusableCell(indexPath: indexPath) as SettingActionPlanTableViewCell
-            //cell.config(item: listSettings[indexPath.row])
-            return cell
-        default:
-            return UITableViewCell()
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
-    }
-}
-
-struct AddActionEntity {
-    var type: AddActionCellType
-    var currentValue : Any?
 }
 

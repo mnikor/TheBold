@@ -10,6 +10,8 @@ import UIKit
 
 enum CreateCellModelType {
     case header(HeaderCreateType, String?)
+    case headerEdit(statusEdit: Bool, name: String?)
+    case headerContent(SmallContentViewModel?)
     case date(String)
     case color(ColorGoalType)
     case icon(IdeasType)

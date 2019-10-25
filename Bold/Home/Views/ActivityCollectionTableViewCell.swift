@@ -10,7 +10,7 @@ import UIKit
 
 protocol ActivityCollectionTableViewCellDelegate: class {
     func tapShowAllActivity(type: FeelTypeCell)
-    func tapItemCollection()
+    func tapItemCollection(goal: Goal)
 }
 
 class ActivityCollectionTableViewCell: BaseTableViewCell {
@@ -178,7 +178,14 @@ extension ActivityCollectionTableViewCell: UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.tapItemCollection()
+        
+        let item = dataSource[indexPath.row]
+        switch item {
+        case .goal(goal: let goalViewModel):
+            delegate?.tapItemCollection(goal: goalViewModel.goal)
+        default:
+            return
+        }
         
         //print("Activity type = \(entity.type) index tap = \(indexPath.row)")
     }

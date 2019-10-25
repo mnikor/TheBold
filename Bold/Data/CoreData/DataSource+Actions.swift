@@ -10,22 +10,25 @@ import Foundation
 import CoreData
 
 protocol ActionsFunctionality {
-    func createActions()
-    func updateActions()
-    func deleteActions()
+    func createAction()
+    func updateAction(actionID: String, success: (Action?)->Void)
+    func deleteAction(actionID: String, success: ()->Void)
 }
 
 extension DataSource: ActionsFunctionality {
-    func createActions() {
+    
+    func createAction() {
         
     }
     
-    func updateActions() {
+    func deleteAction(actionID: String, success: ()->Void) {
         
-    }
-    
-    func deleteActions() {
-        
+        updateAction(actionID: actionID) { (result) in
+            guard let action = result else { return }
+            DataSource.shared.backgroundContext.delete(action)
+            DataSource.shared.saveBackgroundContext()
+            success()
+        }
     }
     
     func updateAction(actionID: String, success: (Action?)->Void) {

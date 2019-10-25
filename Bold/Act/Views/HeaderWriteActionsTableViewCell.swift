@@ -15,7 +15,8 @@ enum HeaderCreateType {
 
 protocol HeaderWriteActionsTableViewCellDelegate: class {
     func tapIdeas()
-    func editingNameIdea(nameIdea: String)
+    func updateNameIdea(nameIdea: String)
+    func editingName(name: String)
 }
 
 extension HeaderWriteActionsTableViewCellDelegate {
@@ -54,6 +55,10 @@ class HeaderWriteActionsTableViewCell: BaseTableViewCell {
         }
     }
     
+    @IBAction func changedName(_ sender: UITextField) {
+        delegate?.editingName(name: sender.text!)
+    }
+    
 }
 
 extension HeaderWriteActionsTableViewCell: UITextFieldDelegate {
@@ -64,7 +69,6 @@ extension HeaderWriteActionsTableViewCell: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        delegate?.editingNameIdea(nameIdea: textField.text!)
+        delegate?.updateNameIdea(nameIdea: textField.text!)
     }
-    
 }

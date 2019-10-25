@@ -92,6 +92,13 @@ class DataSource {
         }
     }
     
+    func resetBackgroundContext() {
+        guard backgroundContext.hasChanges else {
+            return
+        }
+        backgroundContext.reset()
+    }
+    
     func entityForName(name: DataTablesType) -> NSEntityDescription? {
         return NSEntityDescription.entity(forEntityName: name.rawValue, in: DataSource.shared.backgroundContext)
     }

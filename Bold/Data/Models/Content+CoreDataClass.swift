@@ -18,4 +18,8 @@ public class Content: NSManagedObject {
         self.init(entity: entity!, insertInto: DataSource.shared.backgroundContext)
     }
     
+    func searchContent() {
+        
+    }
+    
 }

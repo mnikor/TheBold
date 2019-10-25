@@ -18,4 +18,11 @@ public class Reminder: NSManagedObject {
         self.init(entity: entity!, insertInto: DataSource.shared.backgroundContext)
     }
     
+    func cloneInBackgroundContext() -> Reminder {
+        let clone = Reminder()
+        clone.type = self.type
+        clone.isSetTime = self.isSetTime
+        clone.timeInterval = self.timeInterval
+        return clone
+    }
 }

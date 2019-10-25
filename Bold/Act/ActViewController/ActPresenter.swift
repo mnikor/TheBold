@@ -7,16 +7,19 @@
 //
 
 import Foundation
+import UIKit
 
 enum ActPresenterInput {
     case showMenu
     case calendar
     case tapPlus
     case allGoals
-    case goalItem
+    case goalItem(goal: Goal)
     case longTapAction
     
     case createDataSource
+    case updateDataSource
+    case doneEvent(eventID: String?)
     case uploadNewEventsInDataSourceWhenScroll(Int)
     
     case selectEvent(indexPath: IndexPath)
@@ -56,8 +59,13 @@ class ActPresenter: PresenterProtocol, ActPresenterInputProtocol {
                 print("success")
                 self?.viewController.tableView.reloadData()
             }))
+        case .updateDataSource:
+            print("dsfsdfsdfdsfsdf")
+        case .doneEvent(eventID: let eventID):
+            print("done event")
         case .uploadNewEventsInDataSourceWhenScroll(let index):
             uploadNewEventInDataSourceWhenScrol(count: index)
+        
         case .selectEvent(indexPath: let indexPath):
             selectEvent(indexPath: indexPath)
         case .showMenu:
@@ -68,8 +76,10 @@ class ActPresenter: PresenterProtocol, ActPresenterInputProtocol {
             router.input(.tapPlus)
         case .allGoals:
             router.input(.allGoals)
-        case .goalItem:
-            router.input(.goalItem)
+        case .goalItem(goal: let goal):
+            let calendarVC = StoryboardScene.Act.calendarActionsListViewController.instantiate()
+            calendarVC.presenter.goal = goal
+            router.input(.goalItem(calendarVC: calendarVC))
         case .longTapAction:
             let vc = StartActionViewController.createController {
                 print("Start")
@@ -85,10 +95,21 @@ class ActPresenter: PresenterProtocol, ActPresenterInputProtocol {
         
         if case .event(viewModel: let viewModelStake) = item.viewModel {
             
-            let editActionVC = EditActionPlanViewController.createController(tapOk: {
+            let editActionVC = EditActionPlanViewController.createController(actionID: viewModelStake.event.action?.id, eventID: viewModelStake.event.id, tapOk: { [unowned self] in
                 print("Ok")
+                //self.input(.doneEvent(eventID: <#T##String?#>))
+                //self.input(.doneEvent(eventID: viewModelStake.event.id))
+                self.interactor.input(.doneEvent(eventID: viewModelStake.event.id, success: {
+                    self.viewController.tableView.reloadData()
+                }))
             }) {
                 print("Delete")
+                
+                let vc = BaseAlertViewController.showAlert(type: .dontGiveUp4) {
+                    print("--- Delete ---")
+                }
+                
+                vc.presentedBy(self.viewController)
             }
             
             router.input(.showEditEvent(vc: editActionVC))
@@ -100,6 +121,12 @@ class ActPresenter: PresenterProtocol, ActPresenterInputProtocol {
         interactor.input(.createStakesSection(success: {
             self.viewController.tableView.reloadData()
         }))
+    }
+    
+    private func deleteAction(actionID: String, success: ()->Void) {
+        DataSource.shared.deleteAction(actionID: actionID) {
+            print("dsfdsf")
+        }
     }
     
 }

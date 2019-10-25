@@ -63,7 +63,7 @@ struct GoalCollectionViewModel {
         let progress = countEvent == 0 ? Float(countEvent) : Float(completedEvent)/Float(countEvent)
         
         switch StatusType(rawValue: goal.status) ?? StatusType.locked {
-        case .wait, .create, .update:
+        case .wait, .create, .update, .completeUpdate:
             completedIcon = nil
         case .locked:
             icon = Asset.goalLockIcon.image

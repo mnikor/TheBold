@@ -14,6 +14,7 @@ enum StatusType: Int16 {
     case update
     case wait
     case completed
+    case completeUpdate
     case failed
     case locked
 }

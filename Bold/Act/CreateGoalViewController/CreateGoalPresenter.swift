@@ -63,6 +63,7 @@ class CreateGoalPresenter: PresenterProtocol, CreateGoalInputPresenterProtocol {
     func input(_ inputCase: CreateGoalInputPresenter) {
         switch inputCase {
         case .save:
+            viewController.view.endEditing(true)
             interactor.input(.saveGoal({ [weak self] in
                 self?.router.input(.cancel)
             })) 
@@ -76,6 +77,8 @@ class CreateGoalPresenter: PresenterProtocol, CreateGoalInputPresenterProtocol {
             selectIdea = idea
             self.interactor.input(.updateName(idea.titleText()))
             self.interactor.input(.updateIcon(idea))
+        case .updateName(let name):
+            self.interactor.input(.updateName(name))
         case .showDateAlert(let typeAlert):
             selectedDate(typeAlert: typeAlert)
         case .updateColor(let color):
@@ -84,8 +87,10 @@ class CreateGoalPresenter: PresenterProtocol, CreateGoalInputPresenterProtocol {
             self.interactor.input(.updateIcon(iconType))
         case .createNewGoal:
             createNewGoal()
-        default:
-            return
+        case .updateStartDate(_):
+            print("case .updateStartDate(_)")
+        case .updateEndDate(_):
+            print("case .updateEndDate(_)")
         }
     }
     

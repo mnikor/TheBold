@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -17,28 +14,33 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderTitleActionPlanTableViewCell" id="KGk-i7-Jjw" customClass="HeaderTitleActionPlanTableViewCell" customModule="Bold" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderTitleActionPlanTableViewCell" id="KGk-i7-Jjw" customClass="HeaderTitleActionPlanTableViewCell" customModule="Bold" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="55.5"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2hu-Sp-CwW">
-                        <rect key="frame" x="24" y="5" width="335" height="45.5"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2hu-Sp-CwW">
+                        <rect key="frame" x="23" y="5" width="336" height="45.5"/>
                         <subviews>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Run 5 km at morning" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hko-jh-YTP">
-                                <rect key="frame" x="0.0" y="0.0" width="246" height="45.5"/>
-                                <nil key="textColor"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Run 5 km at morning" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hko-jh-YTP">
+                                <rect key="frame" x="0.0" y="0.0" width="283" height="45.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="22"/>
                                 <textInputTraits key="textInputTraits" textContentType="organization-title"/>
+                                <connections>
+                                    <action selector="changedName:" destination="KGk-i7-Jjw" eventType="editingChanged" id="cCl-3E-kij"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iU9-Tl-3pl">
-                                <rect key="frame" x="290" y="0.0" width="45" height="45.5"/>
+                                <rect key="frame" x="291" y="0.0" width="45" height="45.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="7oi-7l-dcP"/>
                                 </constraints>
                                 <state key="normal" image="editDisableIcon"/>
+                                <connections>
+                                    <action selector="tapEditAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2wo-gD-dsb"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -47,13 +49,17 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="2hu-Sp-CwW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="6K0-MP-qee"/>
+                    <constraint firstItem="2hu-Sp-CwW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="23" id="6K0-MP-qee"/>
                     <constraint firstAttribute="trailing" secondItem="2hu-Sp-CwW" secondAttribute="trailing" constant="16" id="s4L-3a-ams"/>
                     <constraint firstItem="2hu-Sp-CwW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="t1I-KB-5Fe"/>
                     <constraint firstAttribute="bottom" secondItem="2hu-Sp-CwW" secondAttribute="bottom" constant="5" id="xVG-L7-mg2"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="editTextButton" destination="iU9-Tl-3pl" id="X1d-9m-G96"/>
+                <outlet property="titleTextField" destination="hko-jh-YTP" id="lwh-a6-xF8"/>
+            </connections>
+            <point key="canvasLocation" x="140" y="121"/>
         </tableViewCell>
     </objects>
     <resources>

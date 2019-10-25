@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 enum ActInputRouter {
     case menuShow
     case calendar
     case tapPlus
     case allGoals
-    case goalItem
+    case goalItem(calendarVC: CalendarActionsListViewController)
     case longTapActionPresentedBy(StartActionViewController)
     case showEditEvent(vc: EditActionPlanViewController)
 }
@@ -44,10 +45,10 @@ class ActRouter: RouterProtocol, ActInputRouterProtocol {
             viewController.performSegue(withIdentifier: StoryboardSegue.Act.allGoallIdentifier.rawValue, sender: nil)
         case .showEditEvent(vc: let editActionVC):
             editActionVC.presentedBy(viewController)
-        case .goalItem:
-            print("goalItem")
+        case .goalItem(calendarVC: let calendarVC):
+            viewController.navigationController?.pushViewController(calendarVC, animated: true)
         case .longTapActionPresentedBy(let vc):
-            vc.presentedBy(viewController)
+            vc.presentedBy(viewController.navigationController!)
         }
     }
 }

@@ -48,6 +48,18 @@ class ActViewController: UIViewController, SideMenuItemContent, ViewProtocol {
         tableView.registerNib(StakeActionTableViewCell.self)
         tableView.registerHeaderFooterNib(StakeHeaderView.self)
     }
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? CalendarActionsListViewController {
+            guard let selectGoal = sender as? Goal else {
+                return
+            }
+            vc.presenter.goal = selectGoal
+        }
+    }
 }
 
 // MARK:- UITableViewDelegate, NavigationViewDelegate
@@ -139,14 +151,15 @@ extension ActViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK:- ActivityCollectionTableViewCellDelegate
 
 extension ActViewController: ActivityCollectionTableViewCellDelegate {
+    
     func tapShowAllActivity(type: FeelTypeCell) {
         print("tapShowAllActivity")
         presenter.input(.allGoals)
     }
     
-    func tapItemCollection() {
+    func tapItemCollection(goal: Goal) {
         print("tapItemCollection")
-        presenter.input(.goalItem)
+        presenter.input(.goalItem(goal: goal))
     }
 }
 

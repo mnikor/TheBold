@@ -156,11 +156,16 @@ extension CreateGoalViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension CreateGoalViewController: HeaderWriteActionsTableViewCellDelegate {
     
+    func editingName(name: String) {
+        navBar.topItem?.rightBarButtonItem?.isEnabled = name.count >= 3
+    }
+    
+    
     func tapIdeas() {
         presenter.input(.showIdeas)
     }
     
-    func editingNameIdea(nameIdea: String) {
+    func updateNameIdea(nameIdea: String) {
         presenter.input(.updateName(nameIdea))
     }
 }

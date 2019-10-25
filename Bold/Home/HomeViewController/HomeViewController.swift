@@ -124,12 +124,13 @@ extension HomeViewController: UITableViewDelegate {
 
 extension HomeViewController: ActivityCollectionTableViewCellDelegate {
     
-    func tapShowAllActivity(type: FeelTypeCell) {
-        presenter.input(.actionAll(type))
+    func tapItemCollection(goal: Goal) {
+        presenter.input(.actionItem)
     }
     
-    func tapItemCollection() {
-        presenter.input(.actionItem)
+    
+    func tapShowAllActivity(type: FeelTypeCell) {
+        presenter.input(.actionAll(type))
     }
 }
 

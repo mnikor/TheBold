@@ -7,16 +7,22 @@
 //
 
 import Foundation
+import UIKit
 
 struct CreateActionViewModel {
     let name : String?
-    //let startDate : Date
     let startDate : String
-    //let endDate : Date
-    //let endDateString : String
-    //let repeatType : [DaysOfWeekType]
     let reminder : String
-    //let whenReminder : Date?
     let goal : String?
     let stake : String
+    let content : SmallContentViewModel?
 }
+
+struct SmallContentViewModel {
+    let image: UIImage
+    let title: String
+    let subtitle: String?
+    let points: String
+    let shapeIcon: UIImage
+}
+//icon: UIImage, title: String, subtitle: String, points: String

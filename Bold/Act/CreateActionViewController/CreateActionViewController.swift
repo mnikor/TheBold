@@ -24,6 +24,7 @@ class CreateActionViewController: UIViewController, ViewProtocol {
     var presenter: Presenter!
     var configurator: Configurator! = CreateActionConfigurator()
     
+    @IBOutlet weak var navBarTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var navBar: BlueNavigationBar!
     
     required init?(coder aDecoder: NSCoder) {
@@ -48,6 +49,7 @@ class CreateActionViewController: UIViewController, ViewProtocol {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.isHidden = false
+        //DataSource.shared.resetBackgroundContext()
     }
     
     override func viewDidLoad() {
@@ -57,21 +59,35 @@ class CreateActionViewController: UIViewController, ViewProtocol {
         configNavigationController()
         configureTableView()
         
-        presenter.input(.createNewAction)
+        if case .editActionSheet(actionID: let actionID) = presenter.baseConfigType {
+            presenter.input(.searchAction(actionID: actionID))
+        }else {
+            presenter.input(.createNewAction)
+        }
     }
     
     func configureTableView() {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = Constants.rowHeight
         tableView.tableFooterView = UIView()
-        let viewHeader = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: Constants.headerHeight))
-        viewHeader.backgroundColor = ColorName.tableViewBackground.color
-        tableView.tableHeaderView = viewHeader
+        navBar.isHidden = presenter.baseConfigType != .createNewActionVC
+        if presenter.baseConfigType == .createNewActionVC {
+            let viewHeader = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: Constants.headerHeight))
+            viewHeader.backgroundColor = ColorName.tableViewBackground.color
+            tableView.tableHeaderView = viewHeader
+        }else {
+            navBarTopConstraint.constant = -navBar.bounds.size.height
+            tableView.backgroundColor = .white
+            tableView.isScrollEnabled = false
+        }
+        
     }
     
     func registerXibs() {
         tableView.registerNib(HeaderWriteActionsTableViewCell.self)
         tableView.registerNib(SettingActionPlanTableViewCell.self)
+        tableView.registerNib(HeaderTitleActionPlanTableViewCell.self)
+        tableView.registerNib(HeaderActionPlanTableViewCell.self)
     }
 
     func configNavigationController() {
@@ -98,19 +114,6 @@ class CreateActionViewController: UIViewController, ViewProtocol {
             guard let settingType = sender as? AddActionCellType else {return}
             vc.settingsActionType = settingType
             vc.actionID = presenter.newAction.id
-            
-//            guard let action = presenter.newAction else {return}
-            
-//            switch settingType {
-//            case .when:
-//                vc.modelViewType = ConfigureCellModelViewType.duration(startDate: action.startDate as Date? , endDate: action.endDate as Date?, repeatDay: action.repeatAction)
-//            case .reminder:
-//                vc.modelViewType = ConfigureCellModelViewType.reminders(reminder: action.reminder)
-//            case .goal:
-//                vc.modelViewType = ConfigureCellModelViewType.goals(goalID: action.goal?.id)
-//            default:
-//                return
-//            }
         }
         
         if let vc = segue.destination as? StakeViewController {
@@ -141,11 +144,11 @@ extension CreateActionViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let viewFooter = UIView()
         viewFooter.backgroundColor = ColorName.tableViewBackground.color
-        return viewFooter
+        return presenter.baseConfigType == .createNewActionVC ? viewFooter : nil
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return Constants.footerHeight
+        return presenter.baseConfigType == .createNewActionVC ? Constants.footerHeight : 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -168,6 +171,15 @@ extension CreateActionViewController: UITableViewDelegate, UITableViewDataSource
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as SettingActionPlanTableViewCell
             cell.config(modelView: item)
             return cell
+        case .headerEditAction:
+            let cell = tableView.dequeReusableCell(indexPath: indexPath) as HeaderTitleActionPlanTableViewCell
+            cell.config(modelView: item)
+            cell.delegate = self
+            return cell
+        case .headerAddToPlan:
+            let cell = tableView.dequeReusableCell(indexPath: indexPath) as HeaderActionPlanTableViewCell
+            cell.config(modelView: item)
+            return cell
         default:
             return UITableViewCell()
         }
@@ -180,6 +192,22 @@ extension CreateActionViewController: UITableViewDelegate, UITableViewDataSource
         let sectionDataSource = presenter.dataSource[indexPath.section]
         let item = sectionDataSource.items[indexPath.row]
         
+        
+        if case .editActionSheet(actionID: _) = presenter.baseConfigType {
+            if presenter.isEditAction == false {
+                return
+            }
+        }
+        
+//        switch presenter.baseConfigType {
+//        case .editActionSheet(actionID: _):
+//            if presenter.isEditAction == false {
+//                return
+//            }
+//        default:
+//            fallthrough
+//        }
+
         switch item.type {
             case .duration, .reminder, .goal, .when:
                 presenter.input(.setting(item.type))
@@ -198,7 +226,11 @@ extension CreateActionViewController: UITableViewDelegate, UITableViewDataSource
 
 extension CreateActionViewController: HeaderWriteActionsTableViewCellDelegate {
     
-    func editingNameIdea(nameIdea: String) {
+    func editingName(name: String) {
+        presenter.input(.validate(nameAction: name))
+    }
+    
+    func updateNameIdea(nameIdea: String) {
         presenter.input(.updateName(nameIdea))
     }
 }
@@ -219,5 +251,26 @@ extension CreateActionViewController: StakeViewControllerDelegate {
     
     func confirmStake(stake: Float) {
         presenter.input(.updateStake(stake))
+    }
+}
+
+
+// MARK: - HeaderTitleActionPlanTableViewCellDelegate
+
+extension CreateActionViewController: HeaderTitleActionPlanTableViewCellDelegate {
+    
+    func changeEditAction() {
+        if presenter.isEditAction == true {
+            view.endEditing(true)
+            presenter.input(.updateAction(success: {
+                print("updateAction success")
+            }))
+        }
+        presenter.isEditAction = !presenter.isEditAction
+        presenter.input(.updateConfiguration)
+    }
+    
+    func updateNameAction(newName: String) {
+        presenter.input(.updateName(newName))
     }
 }

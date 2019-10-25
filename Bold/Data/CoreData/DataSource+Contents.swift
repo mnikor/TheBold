@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 protocol ContentFunctionality {
     func addContent()
@@ -27,5 +28,17 @@ extension DataSource: ContentFunctionality {
         
     }
     
-    
+    func searchContent(contentID: String, success: (Content?)->Void) {
+        
+        var results : Content?
+        let fetchRequest = NSFetchRequest<Content>(entityName: "Content")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", contentID)
+        do {
+            results = try DataSource.shared.backgroundContext.fetch(fetchRequest).first
+        } catch {
+            print(error)
+        }
+        
+        success(results)
+    }
 }

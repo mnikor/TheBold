@@ -9,9 +9,10 @@
 import Foundation
 
 enum CreateActionInputInteractor {
-    case createNewAction(goalID: String?, (CreateActionViewModel)->Void)
+    case createNewAction(goalID: String?, contentID: String?, (CreateActionViewModel)->Void)
+    case searchAction(actionID: String?, (CreateActionViewModel)->Void)
     case saveAction(()->Void)
-    case deleteAction(()->Void)
+    case updateAction(()->Void)
     
     case updateName(String)
     case updateConfiguration
@@ -36,13 +37,16 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
     
     func input(_ inputCase: CreateActionInputInteractor) {
         switch inputCase {
-        case .createNewAction(goalID: let goalID, let complete):
+        case .createNewAction(goalID: let goalID, contentID: let contentID, let complete):
             completeUpdate = complete
-            createNewAction(goalID: goalID)
+            createNewAction(goalID: goalID, contentID: contentID)
+        case .searchAction(actionID: let actionID, let complete):
+            completeUpdate = complete
+            searchAction(actionID: actionID)
         case .saveAction(let complete):
             saveAction(complete)
-        case .deleteAction(let complete):
-            deleteAction(action: presenter.newAction, complete)
+        case .updateAction(let complete):
+            updateAction(complete)
             
         case .updateName(let name):
             presenter.newAction.name = name
@@ -61,10 +65,30 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
         complete()
     }
     
+    private func updateAction(_ complete:()->Void) {
+        
+        guard let actionID = presenter.updateAction.id else { return }
+        
+        DataSource.shared.listDeleteEvent(actionID: actionID, deleteDate: Date()) {[weak self] in
+            self?.presenter.updateAction.status = StatusType.completeUpdate.rawValue
+            self?.saveAction(complete)
+        }
+    }
+    
     private func createEvents(action: Action) {
         
         var startDate = action.startDate! as Date
         let endDate = action.endDate! as Date
+        
+        switch presenter.baseConfigType {
+        case .createNewActionVC:
+            print("createNewActionVC")
+        case .createNewActionSheet(contentID: _):
+            print("createNewActionSheet(contentID: _)")
+        case .editActionSheet(actionID: _):
+            print("editActionSheet(actionID: _)")
+            startDate = Date().baseTime()
+        }
         
         let repeatDays = checkRepeatDayOfWeek(repeatDays: presenter.newAction.repeatAction)
         
@@ -162,13 +186,7 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
         return selectDaysSet
     }
     
-    private func deleteAction(action:Action, _ complete:()->Void) {
-        DataSource.shared.backgroundContext.delete(action)
-        DataSource.shared.saveBackgroundContext()
-        complete()
-    }
-    
-    private func createNewAction(goalID: String?) {
+    private func createNewAction(goalID: String?, contentID: String?) {
         let newAction = Action()
         newAction.id = newAction.objectID.uriRepresentation().lastPathComponent
         newAction.startDateType = ActionDateType.today.rawValue
@@ -185,8 +203,14 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
         newAction.status = StatusType.create.rawValue
         
         if let goalIDTemp = goalID {
-            DataSource.shared.searchGoal(goalID: goalIDTemp) {[weak self] (goal) in
+            DataSource.shared.searchGoal(goalID: goalIDTemp) { (goal) in
                 newAction.goal = goal
+            }
+        }
+        
+        if let contentIDTemp = contentID {
+            DataSource.shared.searchContent(contentID: contentIDTemp) { (content) in
+                newAction.content = content
             }
         }
         
@@ -194,13 +218,34 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
         createModelView(action: newAction)
     }
     
+    private func searchAction(actionID: String?) {
+        
+        if let actionIDTemp = actionID {
+            DataSource.shared.updateAction(actionID: actionIDTemp) {[weak self] (action) in
+                self?.presenter.newAction = action?.cloneInBackgroundContext()
+                self?.presenter.updateAction = action
+                if let searchAction = action {
+                    self?.createModelView(action: searchAction)
+                }
+            }
+        }
+        
+    }
+    
     private func createModelView(action: Action) {
+        
+        var content : SmallContentViewModel?
+        
+        if case .createNewActionSheet(contentID: _) = presenter.baseConfigType {
+            content = SmallContentViewModel(image: Asset.addActionHeader.image, title: L10n.Act.addToActionPlan, subtitle: action.content?.title, points: "+10", shapeIcon: Asset.addActionShape.image)
+        }
         
         let modelView = CreateActionViewModel(name: action.name,
                                               startDate: dateFormatting(date: action.startDate! as Date),
                                               reminder: statusReminder(action: action),
                                               goal: currentGoal(goal: action.goal),
-                                              stake: stakeStatus(action: action))
+                                              stake: stakeStatus(action: action),
+                                              content: content)
         
         completeUpdate(modelView)
     }

@@ -157,7 +157,7 @@ class BaseAlertViewController: UIViewController {
         return alertVC
     }
     
-    func present(_ vc: UIViewController) {
+    func presentedBy(_ vc: UIViewController) {
         vc.present(self, animated: false, completion: nil)
     }
     

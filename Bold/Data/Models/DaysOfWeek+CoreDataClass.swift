@@ -18,4 +18,16 @@ public class DaysOfWeek: NSManagedObject {
         self.init(entity: entity!, insertInto: DataSource.shared.backgroundContext)
     }
     
+    func cloneInBackgroundContext() -> DaysOfWeek {
+        let clone = DaysOfWeek()
+        clone.friday = self.friday
+        clone.monday = self.monday
+        clone.saturday = self.saturday
+        clone.sunday = self.sunday
+        clone.thursday = self.thursday
+        clone.tuesday = self.tuesday
+        clone.wednesday = self.wednesday
+        return clone
+    }
+    
 }

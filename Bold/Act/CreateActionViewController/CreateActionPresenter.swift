@@ -8,14 +8,50 @@
 
 import Foundation
 
+enum CreateNewActionType {
+    case createNewActionVC
+    case createNewActionSheet(contentID: String?)
+    case editActionSheet(actionID: String?)
+}
+
+extension CreateNewActionType: Equatable {
+    
+    public static func ==(lhs: CreateNewActionType, rhs: CreateNewActionType) -> Bool {
+        
+        switch (lhs, rhs) {
+        case (.createNewActionVC, .createNewActionVC):
+            return true
+        case (.createNewActionSheet, .createNewActionSheet):
+            return true
+        case (.editActionSheet(actionID: let a), .editActionSheet(actionID: let b)):
+            return a == b
+        case (.editActionSheet(_), _):
+            return false
+        case (.createNewActionSheet, .createNewActionVC):
+            return false
+        case (.createNewActionVC, .createNewActionSheet):
+            return false
+        case (_, .editActionSheet(_)):
+            return false
+        }
+        
+    }
+    
+}
+
 enum CreateActionInputPresenter {
     case setting(AddActionCellType)
     case stake
     case share
     case save
     case cancel
+    case validate(nameAction: String)
     
     case createNewAction
+    case searchAction(actionID: String?)
+    case updateAction(success: ()->Void)
+    case deleteAction(success: ()->Void)
+    
     case updateName(String)
     case updateConfiguration
     case updateStake(Float)
@@ -36,7 +72,12 @@ class CreateActionPresenter: PresenterProtocol, CreateActionInputProtocol {
     var router: Router!
     
     var goalID: String?
+    var contentID: String?
     var newAction: Action!
+    var updateAction: Action!
+    var isEditAction: Bool = false
+    
+    var baseConfigType = CreateNewActionType.createNewActionVC
     
     var modelView: CreateActionViewModel! {
         didSet {
@@ -52,20 +93,6 @@ class CreateActionPresenter: PresenterProtocol, CreateActionInputProtocol {
         return updateDataSource()
     }()
     
-    private func updateDataSource() -> [CreateGoalSectionModel] {
-        
-        return [CreateGoalSectionModel(title: nil, items: [CreateGoalActionModel(type: .headerWriteActivity, modelValue: .header(.action, modelView.name))
-                    ]),
-                CreateGoalSectionModel(title: nil, items: [CreateGoalActionModel(type: .when, modelValue: .date(modelView.startDate)),
-                                                           CreateGoalActionModel(type: .reminder, modelValue: .value(modelView.reminder)),
-                                                           CreateGoalActionModel(type: .goal, modelValue: .value(modelView.goal))
-                    ]),
-                CreateGoalSectionModel(title: nil, items: [CreateGoalActionModel(type: .stake, modelValue: .value(modelView.stake)),
-                                                           CreateGoalActionModel(type: .share, modelValue: .none)
-                    ])
-        ]
-    }
-    
     required init(view: View) {
         self.viewController = view
     }
@@ -78,12 +105,21 @@ class CreateActionPresenter: PresenterProtocol, CreateActionInputProtocol {
         switch inputCase {
         case .createNewAction:
             createNewAction()
+        case .searchAction(actionID: let actionID):
+            editAction(actionID: actionID)
+        case .updateAction(success: let success):
+            updateAction(success: success)
         case .updateName(let name):
             interactor.input(.updateName(name))
         case .updateConfiguration:
+            if let name = newAction.name {
+                input(.validate(nameAction: name))
+            }
             interactor.input(.updateConfiguration)
         case .updateStake(let stake):
             interactor.input(.updateStake(stake))
+        case .deleteAction(success: let success):
+            deleteAction(success)
             
         case .setting(let settingType):
             router.input(.presentSetting(settingType))
@@ -92,21 +128,70 @@ class CreateActionPresenter: PresenterProtocol, CreateActionInputProtocol {
         case .share:
             router.input(.share)
         case .save:
+            viewController.view.endEditing(true)
             interactor.input(.saveAction({ [unowned self] in
                 //self.viewController.delegate?.actionWasCreated()
                 self.router.input(.cancel)
             }))
         case .cancel:
-            interactor.input(.deleteAction({ [unowned self] in
+            deleteAction { [unowned self] in
                 self.router.input(.cancel)
-            }))
-            
+            }
+        case .validate(nameAction: let name):
+            viewController.navBar.topItem?.rightBarButtonItem?.isEnabled = (name.count >= 3 && newAction.goal != nil)
         }
     }
     
+    private func updateDataSource() -> [CreateGoalSectionModel] {
+        
+        let headerCell : CreateGoalSectionModel!
+        
+        switch baseConfigType {
+        case .createNewActionVC:
+            headerCell = CreateGoalSectionModel(title: nil, items: [CreateGoalActionModel(type: .headerWriteActivity, modelValue: .header(.action, modelView.name))])
+        case .createNewActionSheet:
+            headerCell = CreateGoalSectionModel(title: nil, items: [CreateGoalActionModel(type: .headerAddToPlan, modelValue: .headerContent(modelView.content))])
+        case .editActionSheet:
+            headerCell = CreateGoalSectionModel(title: nil, items: [CreateGoalActionModel(type: .headerEditAction, modelValue: .headerEdit(statusEdit: isEditAction, name: modelView.name))])
+        }
+        
+        return [headerCell,
+                CreateGoalSectionModel(title: nil, items: [CreateGoalActionModel(type: .when, modelValue: .date(modelView.startDate)),
+                                                           CreateGoalActionModel(type: .reminder, modelValue: .value(modelView.reminder)),
+                                                           CreateGoalActionModel(type: .goal, modelValue: .value(modelView.goal))
+                    ]),
+                CreateGoalSectionModel(title: nil, items: [CreateGoalActionModel(type: .stake, modelValue: .value(modelView.stake)),
+                                                           CreateGoalActionModel(type: .share, modelValue: .none)
+                    ])
+        ]
+    }
+    
     private func createNewAction() {
-        interactor.input(.createNewAction(goalID: goalID, { [weak self] (modelView) in
+        interactor.input(.createNewAction(goalID: goalID, contentID: contentID, { [weak self] (modelView) in
             self?.modelView = modelView
         }))
+    }
+    
+    private func editAction(actionID: String?) {
+        interactor.input(.searchAction(actionID: actionID, { [weak self] (modelView) in
+            self?.modelView = modelView
+        }))
+    }
+    
+    private func updateAction(success: ()->Void) {
+        interactor.input(.updateAction({
+            print("Update Action Completed !!!")
+        }))
+    }
+    
+    private func deleteAction(_ complete:()->Void) {
+        if newAction != nil {
+            DataSource.shared.backgroundContext.delete(newAction)
+        }
+        if updateAction != nil {
+            DataSource.shared.backgroundContext.delete(updateAction)
+        }
+        DataSource.shared.saveBackgroundContext()
+        complete()
     }
 }

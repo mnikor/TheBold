@@ -28,6 +28,24 @@ extension DataSource: EventFunctionality {
         
     }
     
+    func doneEvent(eventID: String, success: ()->Void) {
+        
+        var results : Event?
+        let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", eventID)
+        do {
+            results = try DataSource.shared.backgroundContext.fetch(fetchRequest).first
+        } catch {
+            print(error)
+        }
+        
+        if let result = results {
+            result.status = StatusType.completed.rawValue
+            DataSource.shared.saveBackgroundContext()
+        }
+        success()
+    }
+    
     func searchEventsInGoal(goalID: String?, startDate:Date, endDate:Date, success:([Event])->Void) {
         
         var results = [Event]()
@@ -102,9 +120,30 @@ extension DataSource: EventFunctionality {
         let sort = NSSortDescriptor(key: "startDate", ascending: true)
         fetchRequest.sortDescriptors = [sort]
         
-        
         fetchRequest.predicate = NSPredicate(format: "SUBQUERY(action, $act, $act.goal.id == '\(goalID)').@count > 0")
         
         return NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataSource.shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+    }
+    
+    func listDeleteEvent(actionID: String, deleteDate: Date, success:()->Void) {
+        
+        var results = [Event]()
+        let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
+        let sort = NSSortDescriptor(key: "startDate", ascending: true)
+        fetchRequest.sortDescriptors = [sort]
+        let currentDate = deleteDate as NSDate
+        
+        fetchRequest.predicate = NSPredicate(format: "(startDate > %@) AND SUBQUERY(action, $act, $act.id == '\(actionID)').@count > 0", currentDate)
+        
+        do {
+            results = try DataSource.shared.backgroundContext.fetch(fetchRequest)
+            for event in results {
+                DataSource.shared.backgroundContext.delete(event)
+            }
+            success()
+        } catch {
+            print(error)
+        }
+        
     }
 }
