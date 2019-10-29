@@ -45,6 +45,16 @@ class ConfigurateActionViewController: UIViewController, ViewProtocol {
         super.viewWillDisappear(animated)
         delegate?.updateConfiguration()
     }
+
+    func createGoal() {
+        
+//        headers = [
+//        ConfigureActionModel(headerType: ConfigureActionType.header(.chooseGoal),
+//                                        bodysType: [ConfigureActionType.body(.goalName)]),
+//                   
+//                   ConfigureActionModel(headerType: ConfigureActionType.header(.orCreateNew),
+//                                        bodysType: [ConfigureActionType.body(.enterGoal)])]
+    }
     
     func configureTableView() {
         tableView.rowHeight = UITableView.automaticDimension

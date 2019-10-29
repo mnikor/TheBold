@@ -149,6 +149,8 @@ internal enum Asset {
   internal static let actionShape = ImageAsset(name: "actionShape")
   internal static let arrowBack = ImageAsset(name: "arrowBack")
   internal static let calendarBlueIcon = ImageAsset(name: "calendarBlueIcon")
+  internal static let check = ImageAsset(name: "check")
+  internal static let checkBox = ImageAsset(name: "checkBox")
   internal static let citationBackground = ImageAsset(name: "citationBackground")
   internal static let facebook = ImageAsset(name: "facebook")
   internal static let feelBackground = ImageAsset(name: "feelBackground")

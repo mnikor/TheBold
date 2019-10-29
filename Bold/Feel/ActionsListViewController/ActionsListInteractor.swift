@@ -8,7 +8,15 @@
 
 import Foundation
 
-class ActionsListInteractor: InteractorProtocol {
+enum ActionsListInteractorInput {
+    case prepareDataSource(contentType: ContentType, completion: (([ActivityContent]) -> Void))
+}
+
+protocol ActionsListInteractorInputProtocol: InteractorProtocol {
+    func input(_ inputCase: ActionsListInteractorInput)
+}
+
+class ActionsListInteractor: ActionsListInteractorInputProtocol {
     
     typealias Presenter = ActionsListPresenter
     
@@ -17,4 +25,23 @@ class ActionsListInteractor: InteractorProtocol {
     required init(presenter: Presenter) {
         self.presenter = presenter
     }
+    
+    func input(_ inputCase: ActionsListInteractorInput) {
+        switch inputCase {
+        case .prepareDataSource(contentType: let type, completion: let completion):
+            prepareDataSource(contentType: type, completion: completion)
+        }
+    }
+    
+    private func prepareDataSource(contentType: ContentType, completion: (([ActivityContent]) -> Void)?) {
+        NetworkService.shared.getContent(with: contentType) { result in
+            switch result {
+            case .failure(let error):
+                break
+            case .success(let content):
+                completion?(content)
+            }
+        }
+    }
+    
 }

@@ -44,7 +44,9 @@ internal enum StoryboardScene {
   internal enum Auth: StoryboardType {
     internal static let storyboardName = "Auth"
 
-    internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: Auth.self)
+    internal static let forgotPasswordViewControllerIdentifier = SceneType<Bold.ForgotPasswordViewController>(storyboard: Auth.self, identifier: "ForgotPasswordViewControllerIdentifier")
+
+    internal static let forgotSuccessViewControllerIdentifier = SceneType<Bold.ForgotSuccessViewController>(storyboard: Auth.self, identifier: "ForgotSuccessViewControllerIdentifier")
   }
   internal enum Description: StoryboardType {
     internal static let storyboardName = "Description"
@@ -92,7 +94,11 @@ internal enum StoryboardScene {
   internal enum Splash: StoryboardType {
     internal static let storyboardName = "Splash"
 
-    internal static let initialScene = InitialSceneType<Bold.OnboardViewController>(storyboard: Splash.self)
+    internal static let initialScene = InitialSceneType<Bold.SplashViewController>(storyboard: Splash.self)
+
+    internal static let onboardViewControllerIdentifier = SceneType<Bold.OnboardViewController>(storyboard: Splash.self, identifier: "OnboardViewControllerIdentifier")
+
+    internal static let splashViewControllerIdentifier = SceneType<Bold.SplashViewController>(storyboard: Splash.self, identifier: "SplashViewControllerIdentifier")
   }
   internal enum Think: StoryboardType {
     internal static let storyboardName = "Think"

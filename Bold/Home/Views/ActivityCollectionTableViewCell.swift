@@ -10,7 +10,11 @@ import UIKit
 
 protocol ActivityCollectionTableViewCellDelegate: class {
     func tapShowAllActivity(type: FeelTypeCell)
+
     func tapItemCollection(goal: Goal)
+
+    func activityCollectionTableViewCell(_ activityCollectionTableViewCell: ActivityCollectionTableViewCell, didTapAtItem indexPath: IndexPath)
+
 }
 
 class ActivityCollectionTableViewCell: BaseTableViewCell {
@@ -168,6 +172,19 @@ extension ActivityCollectionTableViewCell: UICollectionViewDelegate, UICollectio
         
         switch item {
         case .goal(goal: let goalViewModel):
+//=======
+//        switch entity.type {
+//        case .feel, .think:
+//            let cell = collectionView.dequeReusableCell(indexPath: indexPath) as ActivityCollectionViewCell
+//            if let type = entity.items?[indexPath.row] as? FeelTypeCell {
+//                cell.config(with: type)
+//            }
+//            return cell
+//        case .actNotActive:
+//            let cell = collectionView.dequeReusableCell(indexPath: indexPath) as ActInactiveCollectionViewCell
+//            return cell
+//        case .actActive, .activeGoals:
+//>>>>>>> feature/Notifications
             let cell = collectionView.dequeReusableCell(indexPath: indexPath) as GoalCollectionViewCell
             cell.configCell(viewModel: goalViewModel)
             return cell
@@ -178,6 +195,8 @@ extension ActivityCollectionTableViewCell: UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        delegate?.activityCollectionTableViewCell(self, didTapAtItem: indexPath)
         
         let item = dataSource[indexPath.row]
         switch item {

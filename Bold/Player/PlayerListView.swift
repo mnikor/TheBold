@@ -18,9 +18,7 @@ class PlayerListView: UIView {
     var superView: UIView!
     
     lazy var ListItems : [SongEntity] = {
-        return [SongEntity(name: "Fundamentals of practice", duration: "3:24"),
-                SongEntity(name: "Introduction", duration: "8:00"),
-                SongEntity(name: "Meditation", duration: "0:50")]
+        return AudioService.shared.tracks.compactMap { SongEntity(name: $0.trackName, duration: $0.duration)}
     }()
     
     @IBAction func tapHideListButton(_ sender: UIButton) {
@@ -57,7 +55,12 @@ class PlayerListView: UIView {
             self.rightAnchor.constraint(equalTo: superView.rightAnchor),
             topBottomAnchor])
         
+        updateData()
         showViewAnimate()
+    }
+    
+    func updateData() {
+        ListItems = AudioService.shared.tracks.compactMap { SongEntity(name: $0.trackName, duration: $0.duration)}
     }
 
     func showViewAnimate() {
@@ -96,7 +99,7 @@ extension PlayerListView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         
-        print("Select track = \(ListItems[indexPath.row])")
+        AudioService.shared.input(.play(trackIndex: indexPath.row))
         hideViewAnimate()
     }
     

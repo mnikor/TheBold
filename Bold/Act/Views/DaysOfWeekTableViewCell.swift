@@ -8,6 +8,57 @@
 
 import UIKit
 
+enum DayWeekType {
+    case monday
+    case tuesday
+    case wednesday
+    case thursday
+    case friday
+    case saturday
+    case sunday
+    
+    var shortText : String {
+        switch self {
+        case .monday:
+            return L10n.Act.Duration.Day.mo
+        case .tuesday:
+            return L10n.Act.Duration.Day.tu
+        case .wednesday:
+            return L10n.Act.Duration.Day.we
+        case .thursday:
+            return L10n.Act.Duration.Day.th
+        case .friday:
+            return L10n.Act.Duration.Day.fr
+        case .saturday:
+            return L10n.Act.Duration.Day.sa
+        case .sunday:
+            return L10n.Act.Duration.Day.su
+        }
+    }
+    
+    var weekdayIndex: Int? {
+        let weekdaySymbol: String
+        switch self {
+        case .monday:
+            weekdaySymbol = "Monday"
+        case .tuesday:
+            weekdaySymbol = "Tuesday"
+        case .wednesday:
+            weekdaySymbol = "Wednesday"
+        case .thursday:
+            weekdaySymbol = "Thursday"
+        case .friday:
+            weekdaySymbol = "Friday"
+        case .saturday:
+            weekdaySymbol = "Saturday"
+        case .sunday:
+            weekdaySymbol = "Sunday"
+        }
+        return Calendar.autoupdatingCurrent.weekdaySymbols.firstIndex(of: weekdaySymbol)
+    }
+    
+}
+
 protocol DaysOfWeekTableViewCellDelegate: class {
     func selectDay(selectDays: [DaysOfWeekType])
 }

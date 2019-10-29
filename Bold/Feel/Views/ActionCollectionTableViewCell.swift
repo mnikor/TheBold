@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ActionCollectionTableViewCellDelegate: class {
-    func tapItemCollection()
+    func actionCollectionTableViewCell(_ actionCollectionTableViewCell: ActionCollectionTableViewCell, didTapAtItem indexPath: IndexPath)
     func tapShowAll(typeCells: FeelTypeCell)
 }
 
@@ -102,13 +102,14 @@ extension ActionCollectionTableViewCell: UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeReusableCell(indexPath: indexPath) as ActionCollectionViewCell
-        cell.config()
+        let item = entity.items[indexPath.row]
+        //cell.config(model: item)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: false)
-        delegate?.tapItemCollection()
+        delegate?.actionCollectionTableViewCell(self, didTapAtItem: indexPath)
         print("Select type = \(entity.type), index = \(indexPath.row)")
     }
     

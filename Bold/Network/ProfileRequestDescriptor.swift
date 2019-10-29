@@ -11,7 +11,7 @@ import Alamofire
 struct PinRequestDescriptor: RequestDescriptor {
     
     typealias ResponseType = String
-    let profile: ProfileTemp
+    let profile: Profile
     
     var path: String {
         return "users/profile"

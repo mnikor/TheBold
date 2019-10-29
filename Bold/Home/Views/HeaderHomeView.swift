@@ -42,6 +42,16 @@ class HeaderHomeView: UIView {
         //contentView.fixInView(self)
     }
     
+    func setName(_ name: String?) {
+        if let name = name {
+            welcomeLabel.text = "Welcome back,"
+            usernameLabel.text = name + "!"
+        } else {
+            welcomeLabel.text = "Welcome back!"
+            usernameLabel.text = nil
+        }
+    }
+    
 //    class func loadFromNib() -> HeaderHomeView {
 //        let headerView: HeaderHomeView = Bundle.main.loadNibNamed("HeaderHomeView", owner: self, options: nil)?.first as! HeaderHomeView
 //        return headerView

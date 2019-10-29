@@ -23,9 +23,6 @@ internal enum StoryboardSegue {
     case shareWithFriendsIdentifier
     case stakeIdentifier
   }
-  internal enum Auth: String, SegueType {
-    case forgotPassword
-  }
   internal enum Feel: String, SegueType {
     case showItem
   }
@@ -44,6 +41,9 @@ internal enum StoryboardSegue {
   internal enum Settings: String, SegueType {
     case premium
     case termsPrivacy
+  }
+  internal enum Splash: String, SegueType {
+    case showWelcomeViewController
   }
   internal enum Think: String, SegueType {
     case citationIdentifier

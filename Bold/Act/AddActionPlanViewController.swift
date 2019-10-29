@@ -61,8 +61,6 @@ class AddActionPlanViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        addActionView.roundCorners(corners: [.topLeft, .topRight], radius: 10)
         
         overlayView.alpha = 0
         bottomAddActionConstraint.constant = -self.addActionView.bounds.height
@@ -97,13 +95,20 @@ class AddActionPlanViewController: UIViewController {
             // call before adding child view controller's view as subview
             addActionVC.didMove(toParent: self)
         }
-        
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        addActionView.roundCorners(corners: [.topLeft, .topRight], radius: 10)
+    }
+    
+    func addHeader() {
+        //listSettings.insert(AddActionEntity(type: .headerAddToPlan, currentValue: nil), at: 0)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showAnimateView()
-        
     }
     
     func addSwipe() {

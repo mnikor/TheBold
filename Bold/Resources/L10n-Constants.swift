@@ -313,6 +313,8 @@ internal enum L10n {
     internal static let orSignUpWith = L10n.tr("Localizable", "Authorization.OrSignUpWith")
     /// Password
     internal static let password = L10n.tr("Localizable", "Authorization.Password")
+    /// Privacy Policy
+    internal static let privacyPolicy = L10n.tr("Localizable", "Authorization.PrivacyPolicy")
     /// Put your email below and we'll send your password
     internal static let putYourEmailBelowAndWellSendYourPassword = L10n.tr("Localizable", "Authorization.PutYourEmailBelowAndWellSendYourPassword")
     /// Send me password
@@ -323,6 +325,10 @@ internal enum L10n {
     internal static let signUpButton = L10n.tr("Localizable", "Authorization.SignUpButton")
     /// Success!
     internal static let success = L10n.tr("Localizable", "Authorization.Success")
+    /// Terms
+    internal static let terms = L10n.tr("Localizable", "Authorization.Terms")
+    /// I agree with Terms and Privacy Policy
+    internal static let termsAndPrivacy = L10n.tr("Localizable", "Authorization.TermsAndPrivacy")
     /// Your password was send.
     internal static let yourPasswordWasSend = L10n.tr("Localizable", "Authorization.YourPasswordWasSend")
   }

@@ -11,7 +11,7 @@ import Foundation
 enum HomeInputRouter {
     case menuShow
     case actionAll(FeelTypeCell)
-    case actionItem
+    case actionItem(FeelTypeCell)
     case unlockBoldManifest
     case createGoal
 }
@@ -37,8 +37,9 @@ class HomeRouter: RouterProtocol, HomeInputRouterProtocol {
         case .actionAll:
             guard let feelVC = StoryboardScene.Feel.storyboard.instantiateInitialViewController() else { return }
             HostViewController.showController(newVC: feelVC)
-        case .actionItem:
+        case .actionItem(let type):
             let actionListVC = StoryboardScene.Feel.actionsListViewController.instantiate()
+            actionListVC.typeVC = type
             viewController.navigationController?.pushViewController(actionListVC, animated: true)
         case .unlockBoldManifest:
             viewController.performSegue(withIdentifier: StoryboardSegue.Home.manifestIdentifier.rawValue, sender: nil)

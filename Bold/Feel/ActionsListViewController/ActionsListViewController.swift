@@ -25,9 +25,10 @@ class ActionsListViewController: UIViewController, ViewProtocol {
 
     @IBOutlet weak var highNavigationBar: NavigationView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var playerView: PlayerSmallView!
     
     var typeVC : FeelTypeCell = .meditation
+    
+    var actions: [ActionEntity] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,7 @@ class ActionsListViewController: UIViewController, ViewProtocol {
         
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 60))
         registerXibs()
+        prepareDataSource()
     }
     
     func registerXibs() {
@@ -46,6 +48,14 @@ class ActionsListViewController: UIViewController, ViewProtocol {
         tableView.registerNib(ListenOrReadTableViewCell.self)
         tableView.registerNib(ManageItTableViewCell.self)
     }
+    
+    private func prepareDataSource() {
+        presenter.input(.prepareDataSource(type: typeVC, completion: { [weak self] actions in
+            self?.actions = actions
+            self?.tableView.reloadData()
+        }))
+    }
+    
 }
 
 
@@ -68,14 +78,14 @@ extension ActionsListViewController: NavigationViewDelegate {
 extension ActionsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.actions.count
+        return actions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch presenter.actions[indexPath.row].type {
+        switch actions[indexPath.row].type {
         case .action:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActionTableViewCell
-            cell.config(item: presenter.actions[indexPath.row])
+            cell.config(item: actions[indexPath.row])
             cell.delegate = self
             return cell
         case .songOrListen:
@@ -145,7 +155,7 @@ extension ActionsListViewController: ActionTableViewCellDelegate {
         
         print("download")
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-        let item = presenter.actions[indexPath.row]
+        let item = actions[indexPath.row]
         item.download = !item.download
         tableView.reloadRows(at: [indexPath], with: .none)
     }
@@ -156,7 +166,7 @@ extension ActionsListViewController: ActionTableViewCellDelegate {
         
         print("like")
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-        let item = presenter.actions[indexPath.row]
+        let item = actions[indexPath.row]
         item.like = !item.like
         tableView.reloadRows(at: [indexPath], with: .none)
     }

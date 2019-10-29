@@ -21,6 +21,10 @@ class LeftMenuViewController: MenuViewController {
         menuItems = [.home, .feel, .think, .act, .settings]
         menuBottomView.delegate = self
     }
+    
+    private func configureBottomView() {
+        menuBottomView.setName(SessionManager.shared.profile?.firstName)
+    }
 }
 
 extension LeftMenuViewController: UITableViewDelegate, UITableViewDataSource {

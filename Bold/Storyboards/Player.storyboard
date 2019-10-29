@@ -152,7 +152,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HL1-d4-Mb1">
-                                                <rect key="frame" x="0.0" y="117.5" width="315" height="26.5"/>
+                                                <rect key="frame" x="0.0" y="105.5" width="315" height="38.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="IVc-Ee-4CC">
                                                         <rect key="frame" x="0.0" y="0.0" width="315" height="15.5"/>
@@ -171,13 +171,12 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ksC-lG-tSV">
-                                                        <rect key="frame" x="0.0" y="23.5" width="315" height="3"/>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="NYZ-HS-Niq">
+                                                        <rect key="frame" x="-2" y="23.5" width="319" height="16"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="3" id="ruz-r6-S9u"/>
+                                                            <constraint firstAttribute="height" constant="15" id="f4d-1N-h4e"/>
                                                         </constraints>
-                                                        <color key="progressTintColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </progressView>
+                                                    </slider>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -231,8 +230,8 @@
                         <outlet property="playerListView" destination="NTY-ph-J1u" id="bE1-I2-uSw"/>
                         <outlet property="playerView" destination="0zP-6N-xZO" id="X8Q-gi-iVh"/>
                         <outlet property="previousButton" destination="aoz-CO-NJX" id="9o7-xJ-l2c"/>
-                        <outlet property="progressView" destination="ksC-lG-tSV" id="cS2-Ia-7Se"/>
                         <outlet property="recommendationLabel" destination="3ZC-0M-jgV" id="ieK-qK-tbD"/>
+                        <outlet property="slider" destination="NYZ-HS-Niq" id="Gro-T5-P3h"/>
                         <outlet property="subtitleSongLabel" destination="suq-Sx-4Eb" id="wlS-0l-gfE"/>
                         <outlet property="titleImageView" destination="0bv-WW-br8" id="bMr-yY-yig"/>
                         <outlet property="titleSongLabel" destination="r0M-be-Ocq" id="HuI-P9-vPs"/>

@@ -19,6 +19,10 @@ class FeelViewController: UIViewController, SideMenuItemContent, ViewProtocol {
     
     var presenter : Presenter!
     var configurator : Configurator! = FeelConfigurator()
+    var contentTypes: [ContentType] {
+        return [.meditation, .hypnosis, .preptalk]
+    }
+    var items: [FeelEntity] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +35,20 @@ class FeelViewController: UIViewController, SideMenuItemContent, ViewProtocol {
         
         tableView.tableFooterView = UIView()
         registerXibs()
+        prepareDataSource()
     }
     
     func registerXibs() {
         tableView.registerNib(ActionCollectionTableViewCell.self)
     }
+    
+    private func prepareDataSource() {
+        presenter.input(.prepareDataSource(types: contentTypes, completion: { [weak self] items in
+            self?.items = items
+            self?.tableView.reloadData()
+        }))
+    }
+    
 }
 
 
@@ -51,13 +64,13 @@ extension FeelViewController: NavigationViewDelegate {
 
 extension FeelViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.feelItems.count
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActionCollectionTableViewCell
         cell.delegate = self
-        cell.config(entity: presenter.feelItems[indexPath.row])
+        cell.config(entity: items[indexPath.row])
         cell.cellBackground(indexPath: indexPath)
         return cell
     }
@@ -67,10 +80,10 @@ extension FeelViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK:- ActionCollectionTableViewCellDelegate
 
 extension FeelViewController: ActionCollectionTableViewCellDelegate {
-    
-    @objc func tapItemCollection() {
-        print("Show item")
-        presenter.input(.showPlayer)
+    func actionCollectionTableViewCell(_ actionCollectionTableViewCell: ActionCollectionTableViewCell, didTapAtItem indexPath: IndexPath) {
+        guard let cellIndexPath = tableView.indexPath(for: actionCollectionTableViewCell) else { return }
+        let item = items[cellIndexPath.row].items[indexPath.row]
+        presenter.input(.showPlayer(item: item))
     }
     
     func tapShowAll(typeCells: FeelTypeCell)  {
@@ -81,11 +94,7 @@ extension FeelViewController: ActionCollectionTableViewCellDelegate {
     func showAll(typeCells: FeelTypeCell) {
         performSegue(withIdentifier: StoryboardSegue.Feel.showItem.rawValue, sender: typeCells)
     }
-
-    @objc func showPlayer() {
-        let player = PlayerViewController.createController()
-        player.present(self)
-    }
+    
 }
 
 

@@ -30,6 +30,8 @@ class CitationTableViewCell: BaseTableViewCell {
         delegate?.tapMoreInfoButton()
     }
     
-    func config() {
+    func config(authorName: String, body: String) {
+        authorNameLabel.text = authorName
+        citationTextLabel.text = body
     }
 }

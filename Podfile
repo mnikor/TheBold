@@ -14,5 +14,9 @@ target 'Bold' do
     pod 'JTAppleCalendar', '~> 8.0'
     pod 'SnapKit'
     pod 'Cosmos', '~> 19.0'
-
+    pod 'VisualEffectView', '~> 3.1.0'
+    pod 'SwiftyJSON'
+    pod 'KeychainAccess', '~> 3.1.2'
+    pod 'SDWebImage'
+    
 end

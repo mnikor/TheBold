@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BMw-ec-akt">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WIf-zC-O2x">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,54 +17,73 @@
     </customFonts>
     <scenes>
         <!--Splash View Controller-->
-        <scene sceneID="yF9-NH-FWq">
+        <scene sceneID="e6o-aX-639">
             <objects>
-                <viewController id="ce7-Mj-wwq" customClass="SplashViewController" customModule="Bold" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ax3-Jf-7o8">
+                <viewController storyboardIdentifier="SplashViewControllerIdentifier" id="WIf-zC-O2x" customClass="SplashViewController" customModule="Bold" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lC5-u3-Uij">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashBackground" translatesAutoresizingMaskIntoConstraints="NO" id="bQ9-jO-Ovl">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make waves, moves mountains" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lQf-ye-XbN">
-                                <rect key="frame" x="53.5" y="367" width="268.5" height="21"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoSmall" translatesAutoresizingMaskIntoConstraints="NO" id="k2i-1m-uhF">
-                                <rect key="frame" x="126.5" y="290" width="122" height="57"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HT4-wv-7M9">
+                                <rect key="frame" x="67" y="333" width="241" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="122" id="9mi-9D-1Kq"/>
-                                    <constraint firstAttribute="height" constant="57" id="pZB-LH-Wji"/>
+                                    <constraint firstAttribute="height" constant="1" id="Ute-do-pYl"/>
                                 </constraints>
-                            </imageView>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IYQ-e5-zu5" customClass="VideoView" customModule="Bold" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P4h-Xa-lK3">
+                                <rect key="frame" x="24" y="388" width="327" height="22"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make waves, moves mountains" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yM0-pT-yJw">
+                                        <rect key="frame" x="0.0" y="0.0" width="327" height="22"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
+                                        <color key="textColor" red="0.58823529411764708" green="0.61176470588235299" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="yM0-pT-yJw" firstAttribute="centerX" secondItem="P4h-Xa-lK3" secondAttribute="centerX" id="GcB-gn-wxt"/>
+                                    <constraint firstItem="yM0-pT-yJw" firstAttribute="leading" secondItem="P4h-Xa-lK3" secondAttribute="leading" id="Vdk-gF-u0r"/>
+                                    <constraint firstItem="yM0-pT-yJw" firstAttribute="centerY" secondItem="P4h-Xa-lK3" secondAttribute="centerY" id="WTq-u4-f0L"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="spo-j4-csO"/>
+                                    <constraint firstItem="yM0-pT-yJw" firstAttribute="top" secondItem="P4h-Xa-lK3" secondAttribute="top" id="w2B-eX-fo2"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="bQ9-jO-Ovl" firstAttribute="leading" secondItem="ax3-Jf-7o8" secondAttribute="leading" id="AZm-Ql-d32"/>
-                            <constraint firstAttribute="trailing" secondItem="bQ9-jO-Ovl" secondAttribute="trailing" id="Ezf-6Q-Crn"/>
-                            <constraint firstItem="lQf-ye-XbN" firstAttribute="top" secondItem="k2i-1m-uhF" secondAttribute="bottom" constant="20" id="IZc-Dm-PIJ"/>
-                            <constraint firstItem="k2i-1m-uhF" firstAttribute="centerY" secondItem="ax3-Jf-7o8" secondAttribute="centerY" constant="-15" id="M5x-Xz-0R3"/>
-                            <constraint firstAttribute="bottom" secondItem="bQ9-jO-Ovl" secondAttribute="bottom" id="R9D-XE-fBW"/>
-                            <constraint firstItem="bQ9-jO-Ovl" firstAttribute="top" secondItem="ax3-Jf-7o8" secondAttribute="top" id="bAw-Rh-Ynv"/>
-                            <constraint firstItem="k2i-1m-uhF" firstAttribute="centerX" secondItem="ax3-Jf-7o8" secondAttribute="centerX" id="rX5-ot-DTK"/>
-                            <constraint firstItem="lQf-ye-XbN" firstAttribute="centerX" secondItem="ax3-Jf-7o8" secondAttribute="centerX" id="yJQ-g8-o0B"/>
+                            <constraint firstAttribute="trailing" secondItem="IYQ-e5-zu5" secondAttribute="trailing" id="CGM-Ys-eK8"/>
+                            <constraint firstAttribute="bottom" secondItem="IYQ-e5-zu5" secondAttribute="bottom" id="J71-7Y-5nO"/>
+                            <constraint firstItem="P4h-Xa-lK3" firstAttribute="centerX" secondItem="hkg-qV-8FE" secondAttribute="centerX" id="JQP-1I-xVW"/>
+                            <constraint firstItem="IYQ-e5-zu5" firstAttribute="top" secondItem="lC5-u3-Uij" secondAttribute="top" id="Mhr-ft-t66"/>
+                            <constraint firstItem="P4h-Xa-lK3" firstAttribute="top" secondItem="HT4-wv-7M9" secondAttribute="top" multiplier="361:333.5" constant="27.5" id="Q4S-Sq-za7"/>
+                            <constraint firstItem="HT4-wv-7M9" firstAttribute="centerX" secondItem="hkg-qV-8FE" secondAttribute="centerX" id="TOp-cq-NsD"/>
+                            <constraint firstItem="HT4-wv-7M9" firstAttribute="leading" secondItem="hkg-qV-8FE" secondAttribute="leading" constant="67" id="afF-kP-Tcx"/>
+                            <constraint firstItem="P4h-Xa-lK3" firstAttribute="leading" secondItem="hkg-qV-8FE" secondAttribute="leading" constant="24" id="dSs-fZ-zsb"/>
+                            <constraint firstItem="HT4-wv-7M9" firstAttribute="centerY" secondItem="hkg-qV-8FE" secondAttribute="centerY" id="pLP-U6-947"/>
+                            <constraint firstItem="IYQ-e5-zu5" firstAttribute="leading" secondItem="lC5-u3-Uij" secondAttribute="leading" id="uDF-ty-fBt"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="czb-ns-KMc"/>
+                        <viewLayoutGuide key="safeArea" id="hkg-qV-8FE"/>
                     </view>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="label" destination="yM0-pT-yJw" id="BXC-s8-YzZ"/>
+                        <outlet property="videoView" destination="IYQ-e5-zu5" id="8SH-kf-54W"/>
+                        <segue destination="BMw-ec-akt" kind="presentation" identifier="showWelcomeViewController" modalPresentationStyle="overCurrentContext" id="SwA-Fi-q54"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Qo-ai-uX2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wha-d5-00S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="127.2" y="97.601199400299862"/>
+            <point key="canvasLocation" x="22" y="98"/>
         </scene>
         <!--Onboard View Controller-->
         <scene sceneID="aYp-e5-mK3">
             <objects>
-                <viewController id="BMw-ec-akt" customClass="OnboardViewController" customModule="Bold" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardViewControllerIdentifier" id="BMw-ec-akt" customClass="OnboardViewController" customModule="Bold" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6WR-8P-DcS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,7 +99,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OnboardCell" id="iWw-Js-82x" customClass="OnboardCell" customModule="Bold" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="86.5" width="375" height="474"/>
+                                        <rect key="frame" x="0.0" y="96.5" width="375" height="474"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="474"/>
@@ -132,7 +149,6 @@
                                 </state>
                                 <connections>
                                     <action selector="tapSignUp:" destination="BMw-ec-akt" eventType="touchUpInside" id="UEC-6a-aoa"/>
-                                    <segue destination="dyA-el-3vU" kind="presentation" animates="NO" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="cx7-oW-8Sb"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoSmall" translatesAutoresizingMaskIntoConstraints="NO" id="nPv-mW-Bs9">
@@ -178,7 +194,7 @@
                                 </constraints>
                                 <state key="normal" title="Find your boldness"/>
                                 <connections>
-                                    <action selector="tapFindYourBoldness:" destination="BMw-ec-akt" eventType="touchUpInside" id="XHR-zJ-jLg"/>
+                                    <segue destination="gS9-Ma-Lj6" kind="showDetail" id="tb6-GI-5CP"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -193,8 +209,8 @@
                             <constraint firstItem="vuB-i4-1i8" firstAttribute="top" secondItem="heu-Ud-E3f" secondAttribute="bottom" constant="50" id="a8s-Sj-fzz"/>
                             <constraint firstItem="N0M-5R-WiM" firstAttribute="leading" secondItem="naN-Dj-9kM" secondAttribute="leading" id="baP-T1-wXe"/>
                             <constraint firstItem="N0M-5R-WiM" firstAttribute="trailing" secondItem="naN-Dj-9kM" secondAttribute="trailing" id="bgx-3l-xo6"/>
-                            <constraint firstItem="zE9-4p-6wz" firstAttribute="top" secondItem="6WR-8P-DcS" secondAttribute="top" constant="25" id="cfn-my-bRM"/>
-                            <constraint firstItem="nPv-mW-Bs9" firstAttribute="top" secondItem="6WR-8P-DcS" secondAttribute="top" constant="30" id="lmB-a9-VKI"/>
+                            <constraint firstItem="zE9-4p-6wz" firstAttribute="top" secondItem="naN-Dj-9kM" secondAttribute="top" constant="25" id="cfn-my-bRM"/>
+                            <constraint firstItem="nPv-mW-Bs9" firstAttribute="top" secondItem="naN-Dj-9kM" secondAttribute="top" constant="30" id="lmB-a9-VKI"/>
                             <constraint firstItem="vuB-i4-1i8" firstAttribute="leading" secondItem="naN-Dj-9kM" secondAttribute="leading" constant="25" id="sro-gw-JVh"/>
                             <constraint firstItem="N0M-5R-WiM" firstAttribute="top" secondItem="6WR-8P-DcS" secondAttribute="top" id="zIR-HA-NYe"/>
                         </constraints>
@@ -203,7 +219,9 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="collectionView" destination="N0M-5R-WiM" id="d95-IK-S9L"/>
                         <outlet property="findYourBoldnessButton" destination="vuB-i4-1i8" id="PfA-LH-eSN"/>
+                        <outlet property="logoImageView" destination="nPv-mW-Bs9" id="w3w-pH-gPv"/>
                         <outlet property="pageControl" destination="heu-Ud-E3f" id="3Tx-iM-2ee"/>
                         <outlet property="signUpButton" destination="zE9-4p-6wz" id="LwQ-NF-hXH"/>
                     </connections>
@@ -212,17 +230,18 @@
             </objects>
             <point key="canvasLocation" x="1005.6" y="97.601199400299862"/>
         </scene>
-        <!--Auth-->
-        <scene sceneID="ghM-HG-lZX">
+        <!--Menu-->
+        <scene sceneID="phZ-LC-NqZ">
             <objects>
-                <viewControllerPlaceholder storyboardName="Auth" id="dyA-el-3vU" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="45B-P6-PUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Menu" id="gS9-Ma-Lj6" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="CTJ-pX-Sq1"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VE4-aZ-6L6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1668" y="-225"/>
+            <point key="canvasLocation" x="1689" y="-206"/>
         </scene>
     </scenes>
     <resources>
         <image name="logoSmall" width="60" height="28"/>
-        <image name="splashBackground" width="375" height="667"/>
     </resources>
 </document>

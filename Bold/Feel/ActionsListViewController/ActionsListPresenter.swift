@@ -9,6 +9,7 @@
 import Foundation
 
 enum ActionsListPresenterInput {
+    case prepareDataSource(type: FeelTypeCell, completion: (([ActionEntity]) -> Void))
     case back
     case info
     case unlockActionCard
@@ -37,17 +38,6 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
     var interactor: ActionsListInteractor!
     var router: ActionsListRouter!
     
-    lazy var actions : [ActionEntity] = {
-        return [ActionEntity(type: .action, header: .duration, download: true, like: true),
-                ActionEntity(type: .action, header: .points, download: false, like: false),
-                ActionEntity(type: .action, header: .unlock, download: false, like: false),
-                ActionEntity(type: .manageIt, header: nil, download: false, like: false),
-                ActionEntity(type: .action, header: .unlock, download: false, like: false),
-                ActionEntity(type: .action, header: .unlock, download: false, like: false),
-                ActionEntity(type: .songOrListen, header: nil, download: false, like: false)
-        ]
-    }()
-    
     required init(view: View) {
         self.viewController = view
     }
@@ -59,6 +49,8 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
     func input(_ inputCase: ActionsListPresenterInput) {
         
         switch inputCase {
+        case .prepareDataSource(type: let type, completion: let completion):
+            prepareDataSource(type: type, completion: completion)
         case .back:
             router.input(.back)
         case .info:
@@ -88,6 +80,31 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
             print("readPreview")
         }
     }
+    
+    private func prepareDataSource(type: FeelTypeCell, completion: (([ActionEntity]) -> Void)?) {
+        interactor.input(.prepareDataSource(contentType: getContentType(by: type)) { content in
+            let actions = content.compactMap { ActionEntity(type: .action, header: $0.contentStatus == .locked ? .unlock : .points , download: false, like: false, data: $0) }
+            completion?(actions)
+        })
+    }
+    
+    private func getContentType(by type: FeelTypeCell) -> ContentType {
+        switch type {
+        case .citate:
+            return .quote
+        case .hypnosis:
+            return .hypnosis
+        case .lessons:
+            return .lesson
+        case .meditation:
+            return .meditation
+        case .pepTalk:
+            return .preptalk
+        case .stories:
+            return .story
+        }
+    }
+    
 }
 
 
@@ -96,11 +113,13 @@ class ActionEntity: NSObject {
     var header : HeaderType?
     var download : Bool
     var like : Bool
+    var data: ActivityContent
     
-    init(type: ActionCellType, header: HeaderType?, download: Bool, like: Bool) {
+    init(type: ActionCellType, header: HeaderType?, download: Bool, like: Bool, data: ActivityContent) {
         self.type = type
         self.header = header
         self.download = download
         self.like = like
+        self.data = data
     }
 }
