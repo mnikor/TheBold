@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ActivityCollectionTableViewCellDelegate: class {
-    func tapShowAllActivity(type: FeelTypeCell)
+    func tapShowAllActivity(type: HomeActionsTypeCell)
 
     func tapItemCollection(goal: Goal)
 
@@ -35,7 +35,7 @@ class ActivityCollectionTableViewCell: BaseTableViewCell {
     
     @IBAction func tapAllActivityButton(_ sender: UIButton) {
         print("Tap Show All Activity")
-        delegate?.tapShowAllActivity(type: .meditation)
+        delegate?.tapShowAllActivity(type: itemViewModel.type)
     }
     
     override func awakeFromNib() {
@@ -60,82 +60,24 @@ class ActivityCollectionTableViewCell: BaseTableViewCell {
         collectionView.registerNib(GoalCollectionViewCell.self)
     }
     
-//    func configCell(entity: HomeEntity) {
-//
-//        self.entity = entity
-//        bottomCollectionConstraint.constant = entity.type.bottomCellHeight()
-//
-//        switch entity.type {
-//        case .actNotActive :
-//            showAllButton.isUserInteractionEnabled = false
-//            showAllButton.setTitle(nil, for: .normal)
-//            showAllButton.setImage(Asset.plusIcon.image, for: .normal)
-//            showAllButton.leftTitleInButton()
-//            showAllButton.rightImageInButton()
-//        case .actActive :
-//            showAllButton.isUserInteractionEnabled = false
-//            showAllButton.setTitle(nil, for: .normal)
-//            showAllButton.setImage(Asset.plusIcon.image, for: .normal)
-//            showAllButton.leftTitleInButton()
-//            showAllButton.rightImageInButton()
-//        case .activeGoals:
-//            showAllButton.isUserInteractionEnabled = true
-//            showAllButton.setTitle("Show all", for: .normal)
-//            showAllButton.setImage(Asset.rightArrowIcon.image, for: .normal)
-//            showAllButton.leftTitleInButton()
-//            showAllButton.rightImageInButton()
-//        default:
-//            showAllButton.isUserInteractionEnabled = true
-//            showAllButton.setTitle("Show all", for: .normal)
-//            showAllButton.setImage(Asset.rightArrowIcon.image, for: .normal)
-//            showAllButton.leftTitleInButton()
-//            showAllButton.rightImageInButton()
-//        }
-//
-//        switch entity.type {
-//        case .feel:
-//            activityImageView.image = Asset.menuFeel.image
-//            titleLabel.text = "Feel Bold"
-//            subtitleLabel.text = "Rewire your mind"
-//        case .think:
-//            activityImageView.image = Asset.menuThink.image
-//            titleLabel.text = "Think Bold"
-//            subtitleLabel.text = "Jump into other bold minds"
-//        case .actActive, .actNotActive:
-//            activityImageView.image = Asset.menuAct.image
-//            titleLabel.text = "Act Bold"
-//            subtitleLabel.text = "Take a next step"
-//        case .activeGoals:
-//            activityImageView.isHidden = true
-//            titleLabel.text = "Active goals"
-//            subtitleLabel.text = "You have 3 tasks with stakes"
-//        default:
-//            break
-//        }
-//
-//        collectionView.reloadData()
-//    }
-    
     func configCell(viewModel: ActivityViewModel) {
         
-            activityImageView.isHidden = viewModel.imageIsHidden
-            activityImageView.image = viewModel.image
-            titleLabel.text = viewModel.title
-            subtitleLabel.text = viewModel.subtitle
-            showAllButton.isUserInteractionEnabled = viewModel.enabledButton
-            showAllButton.setTitle(viewModel.titleButton, for: .normal)
-            showAllButton.setImage(viewModel.imageButton, for: .normal)
-            showAllButton.leftTitleInButton()
-            showAllButton.rightImageInButton()
-            //collectionView
-            //heightCollectionConstraint.constant =
-            //bottomCollectionConstraint.constant =
-            
+        activityImageView.isHidden = viewModel.imageIsHidden
+        activityImageView.image = viewModel.image
+        titleLabel.text = viewModel.title
+        subtitleLabel.text = viewModel.subtitle
+        showAllButton.isUserInteractionEnabled = viewModel.enabledButton
+        showAllButton.setTitle(viewModel.titleButton, for: .normal)
+        showAllButton.setImage(viewModel.imageButton, for: .normal)
+        showAllButton.leftTitleInButton()
+        showAllButton.rightImageInButton()
+        //collectionView
+        //heightCollectionConstraint.constant =
+        //bottomCollectionConstraint.constant =
         
         itemViewModel = viewModel
         
-            
-            dataSource = viewModel.items
+        dataSource = viewModel.items
         
         collectionView.reloadData()
     }
@@ -153,45 +95,16 @@ extension ActivityCollectionTableViewCell: UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let item = dataSource[indexPath.row]
-        
-//        switch item.type {
-//        case .feel, .think:
-//            let cell = collectionView.dequeReusableCell(indexPath: indexPath) as ActivityCollectionViewCell
-//            return cell
-//        case .actNotActive:
-//            let cell = collectionView.dequeReusableCell(indexPath: indexPath) as ActInactiveCollectionViewCell
-//            return cell
-//        case .actActive, .activeGoals:
-//            let cell = collectionView.dequeReusableCell(indexPath: indexPath) as GoalCollectionViewCell
-//            //cell.configCell(view: GoalEntity(type: .BuildHouseForParents, active: .locked, progress: 0, total: 0))
-//            //cell.configCell(viewModel: <#T##GoalCollectionViewModel#>)
-//            return cell
-//        default:
-//            return UICollectionViewCell()
-//        }
-        
         switch item {
-        case .goal(goal: let goalViewModel):
-//=======
-//        switch entity.type {
-//        case .feel, .think:
-//            let cell = collectionView.dequeReusableCell(indexPath: indexPath) as ActivityCollectionViewCell
-//            if let type = entity.items?[indexPath.row] as? FeelTypeCell {
-//                cell.config(with: type)
-//            }
-//            return cell
-//        case .actNotActive:
-//            let cell = collectionView.dequeReusableCell(indexPath: indexPath) as ActInactiveCollectionViewCell
-//            return cell
-//        case .actActive, .activeGoals:
-//>>>>>>> feature/Notifications
-            let cell = collectionView.dequeReusableCell(indexPath: indexPath) as GoalCollectionViewCell
-            cell.configCell(viewModel: goalViewModel)
+        case .content(content: let content):
+            let cell = collectionView.dequeReusableCell(indexPath: indexPath) as ActivityCollectionViewCell
+            cell.config(with: content)
             return cell
-        default:
-            return UICollectionViewCell()
+        case .goal(goal: let goal):
+            let cell = collectionView.dequeReusableCell(indexPath: indexPath) as GoalCollectionViewCell
+            cell.configCell(viewModel: goal)
+            return cell
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

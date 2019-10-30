@@ -103,7 +103,7 @@ extension ActionCollectionTableViewCell: UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeReusableCell(indexPath: indexPath) as ActionCollectionViewCell
         let item = entity.items[indexPath.row]
-        //cell.config(model: item)
+        cell.config(model: item)
         return cell
     }
     

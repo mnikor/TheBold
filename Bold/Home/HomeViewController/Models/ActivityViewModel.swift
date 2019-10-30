@@ -40,7 +40,7 @@ struct ActivityViewModel {
         
     }
     
-    static func createViewModel(type: HomeActionsTypeCell, goals:[GoalCollectionViewModel], itemCount: Int) -> ActivityViewModel {
+    static func createViewModel(type: HomeActionsTypeCell, goals:[GoalCollectionViewModel], content: [ContentViewModel] , itemCount: Int) -> ActivityViewModel {
         
         //let type = HomeActionsTypeCell.activeGoals
         var enabledButton : Bool
@@ -78,6 +78,7 @@ struct ActivityViewModel {
             imageButton = Asset.rightArrowIcon.image
         }
         
+        items += content.compactMap { ActivityItemsViewModel.content(content: $0) }
         
         switch type {
         case .feel:
@@ -107,14 +108,14 @@ struct ActivityViewModel {
             break
         }
         
-        return ActivityViewModel(type: type, rowHeight: type.rowHeight(), bottomCellHeight: type.bottomCellHeight(), collectionCellSize: type.collectionCellSize(), image: imageIcon, imageIsHidden: imageIsHidden, title: titleText, subtitle: subtitleText, titleButton: titleButton, enabledButton: enabledButton, imageButton: imageButton, items: items)
+        return ActivityViewModel(type: type, rowHeight: type.rowHeight(), bottomCellHeight: type.bottomCellHeight(), collectionCellSize: type.collectionCellSize(), image: imageIcon, imageIsHidden: imageIsHidden, title: titleText ?? "", subtitle: subtitleText ?? "", titleButton: titleButton, enabledButton: enabledButton, imageButton: imageButton, items: items)
     }
     
 }
 
 struct ContentViewModel {
     
-    let backgroundImage: UIImage
+    let backgroundImage: UIImage?
     let title: String
     
 }

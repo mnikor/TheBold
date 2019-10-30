@@ -118,6 +118,7 @@ class AudioService: NSObject, AudioServiceProtocol {
     }
     
     func input(_ inputCase: AudioServiceInput) {
+        guard tracks.count > 0 else { return }
         switch inputCase {
         case .play(let index):
             currentTrackIndex = index ?? currentTrackIndex

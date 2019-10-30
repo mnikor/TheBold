@@ -98,10 +98,11 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch presenter.actionItems[indexPath.row].type {
+        let item = presenter.actionItems[indexPath.row]
+        switch item.type {
         case .feel, .think, .actActive, .actNotActive, .activeGoals, .activeGoalsAct:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActivityCollectionTableViewCell
-            //cell.configCell(entity: presenter.actionItems[indexPath.row])
+            cell.configCell(viewModel: item)
             cell.cellBackground(indexPath: indexPath)
             cell.delegate = self
             return cell
@@ -130,17 +131,15 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: ActivityCollectionTableViewCellDelegate {
     func activityCollectionTableViewCell(_ activityCollectionTableViewCell: ActivityCollectionTableViewCell, didTapAtItem indexPath: IndexPath) {
         guard let cellIndexPath = tableView.indexPath(for: activityCollectionTableViewCell) else { return }
-        let item = presenter.actionItems[cellIndexPath.row].items?[indexPath.row]
-        if let contentType = item as? FeelTypeCell {
-            presenter.input(.actionItem(contentType))
-        }
+        let item = presenter.actionItems[cellIndexPath.row]
+        presenter.input(.actionItem(item, indexPath.row))
     }
     
     func tapItemCollection(goal: Goal) {
        // presenter.input(.actionItem)
     }
     
-    func tapShowAllActivity(type: FeelTypeCell) {
+    func tapShowAllActivity(type: HomeActionsTypeCell) {
         presenter.input(.actionAll(type))
     }
 }

@@ -42,6 +42,10 @@
 		C56CD6E22330F80800322688 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CD6E12330F80800322688 /* VideoView.swift */; };
 		C56CD6E42330FC3F00322688 /* boldlogo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C56CD6E32330FC3A00322688 /* boldlogo.mp4 */; };
 		C56CD6E72331096B00322688 /* FadePresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CD6E62331096B00322688 /* FadePresentAnimationController.swift */; };
+		C577363723691FFF0018063B /* Reminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577363323691FFF0018063B /* Reminder+CoreDataProperties.swift */; };
+		C577363823691FFF0018063B /* Reminder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577363423691FFF0018063B /* Reminder+CoreDataClass.swift */; };
+		C577363923691FFF0018063B /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577363523691FFF0018063B /* Event+CoreDataProperties.swift */; };
+		C577363A23691FFF0018063B /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577363623691FFF0018063B /* Event+CoreDataClass.swift */; };
 		C59E5E1E23055BDD005DCD18 /* ConfigurableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59E5E1D23055BDD005DCD18 /* ConfigurableLabel.swift */; };
 		C59E5E2223056A30005DCD18 /* ImageTitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59E5E2123056A30005DCD18 /* ImageTitleViewModel.swift */; };
 		C59E5E2423056A56005DCD18 /* ImagedTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59E5E2323056A56005DCD18 /* ImagedTitleView.swift */; };
@@ -71,6 +75,7 @@
 		C5B1E56B23045F99000991DF /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1E56A23045F99000991DF /* ProfilePresenter.swift */; };
 		C5B1E56D23045FA4000991DF /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1E56C23045FA4000991DF /* ProfileRouter.swift */; };
 		C5C6C14C2320F23800C15C2B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C6C14B2320F23800C15C2B /* NotificationService.swift */; };
+		C5E517B82369B0CB00E8635F /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E517B72369B0CB00E8635F /* UIApplication+Extension.swift */; };
 		C5E9B9FA232FAAF200668F2E /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E9B9F9232FAAF200668F2E /* CalendarService.swift */; };
 		F104353E2348C80D0086673C /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F104353D2348C80D0086673C /* ActivityViewModel.swift */; };
 		F1043541234B70CF0086673C /* ActSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1043540234B70CF0086673C /* ActSectionViewModel.swift */; };
@@ -114,8 +119,6 @@
 		F11562A422DF2E9A00399FA6 /* StakeActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11562A222DF2E9A00399FA6 /* StakeActionTableViewCell.xib */; };
 		F13DEAD322AAC0B700BC3CA6 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13DEAD222AAC0B700BC3CA6 /* SignUpView.swift */; };
 		F13DEAD522AAC0D500BC3CA6 /* SignUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F13DEAD422AAC0D500BC3CA6 /* SignUpView.xib */; };
-		F13FCBAE2337C13A00BAE544 /* Reminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBAC2337C13A00BAE544 /* Reminder+CoreDataProperties.swift */; };
-		F13FCBAF2337C13A00BAE544 /* Reminder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBAD2337C13A00BAE544 /* Reminder+CoreDataClass.swift */; };
 		F13FCBB42339FBBC00BAE544 /* CalendarModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBB32339FBBC00BAE544 /* CalendarModelView.swift */; };
 		F13FCBB62339FCDB00BAE544 /* StakeActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBB52339FCDA00BAE544 /* StakeActionViewModel.swift */; };
 		F13FCBB82339FE4A00BAE544 /* CalendarActionSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBB72339FE4A00BAE544 /* CalendarActionSectionModel.swift */; };
@@ -146,8 +149,6 @@
 		F158E2C122C3C73F00FD671A /* ProgressHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F158E2C022C3C73F00FD671A /* ProgressHeaderView.xib */; };
 		F158E2C322C4E11600FD671A /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F158E2C222C4E11600FD671A /* NavigationView.swift */; };
 		F158E2C522C4E12A00FD671A /* NavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F158E2C422C4E12A00FD671A /* NavigationView.xib */; };
-		F15FB31C232FAF2B002F0C00 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15FB31B232FAF2A002F0C00 /* Event+CoreDataProperties.swift */; };
-		F15FB31D232FAF2B002F0C00 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15FB31A232FAF2A002F0C00 /* Event+CoreDataClass.swift */; };
 		F15FB320232FDE14002F0C00 /* CreateActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15FB31F232FDE14002F0C00 /* CreateActionViewModel.swift */; };
 		F15FB323232FDEC9002F0C00 /* ConfigurateActionSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15FB322232FDEC9002F0C00 /* ConfigurateActionSectionModel.swift */; };
 		F15FB3252330E413002F0C00 /* ConfigurateActionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15FB3242330E413002F0C00 /* ConfigurateActionCellModel.swift */; };
@@ -448,6 +449,10 @@
 		C56CD6E12330F80800322688 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		C56CD6E32330FC3A00322688 /* boldlogo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = boldlogo.mp4; sourceTree = "<group>"; };
 		C56CD6E62331096B00322688 /* FadePresentAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadePresentAnimationController.swift; sourceTree = "<group>"; };
+		C577363323691FFF0018063B /* Reminder+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Reminder+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C577363423691FFF0018063B /* Reminder+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Reminder+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C577363523691FFF0018063B /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C577363623691FFF0018063B /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C59E5E1D23055BDD005DCD18 /* ConfigurableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableLabel.swift; sourceTree = "<group>"; };
 		C59E5E2123056A30005DCD18 /* ImageTitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTitleViewModel.swift; sourceTree = "<group>"; };
 		C59E5E2323056A56005DCD18 /* ImagedTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagedTitleView.swift; sourceTree = "<group>"; };
@@ -478,6 +483,7 @@
 		C5B1E56C23045FA4000991DF /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		C5C6C14B2320F23800C15C2B /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		C5C6C14D2320F5BB00C15C2B /* Bold.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bold.entitlements; sourceTree = "<group>"; };
+		C5E517B72369B0CB00E8635F /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		C5E9B9F9232FAAF200668F2E /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		CD864991698CD15B66E42367 /* Pods-Bold.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bold.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bold/Pods-Bold.release.xcconfig"; sourceTree = "<group>"; };
 		F104353D2348C80D0086673C /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
@@ -522,8 +528,6 @@
 		F11562A222DF2E9A00399FA6 /* StakeActionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StakeActionTableViewCell.xib; sourceTree = "<group>"; };
 		F13DEAD222AAC0B700BC3CA6 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		F13DEAD422AAC0D500BC3CA6 /* SignUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpView.xib; sourceTree = "<group>"; };
-		F13FCBAC2337C13A00BAE544 /* Reminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Reminder+CoreDataProperties.swift"; path = "/Users/aleksanderkovalov/Documents/Repositories/the-bold-ios/Bold/Data/Models/Reminder+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		F13FCBAD2337C13A00BAE544 /* Reminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Reminder+CoreDataClass.swift"; path = "/Users/aleksanderkovalov/Documents/Repositories/the-bold-ios/Bold/Data/Models/Reminder+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		F13FCBB32339FBBC00BAE544 /* CalendarModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModelView.swift; sourceTree = "<group>"; };
 		F13FCBB52339FCDA00BAE544 /* StakeActionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StakeActionViewModel.swift; sourceTree = "<group>"; };
 		F13FCBB72339FE4A00BAE544 /* CalendarActionSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActionSectionModel.swift; sourceTree = "<group>"; };
@@ -554,8 +558,6 @@
 		F158E2C022C3C73F00FD671A /* ProgressHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressHeaderView.xib; sourceTree = "<group>"; };
 		F158E2C222C4E11600FD671A /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		F158E2C422C4E12A00FD671A /* NavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationView.xib; sourceTree = "<group>"; };
-		F15FB31A232FAF2A002F0C00 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Event+CoreDataClass.swift"; path = "/Users/aleksanderkovalov/Documents/Repositories/the-bold-ios/Bold/Data/Models/Event+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		F15FB31B232FAF2A002F0C00 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Event+CoreDataProperties.swift"; path = "/Users/aleksanderkovalov/Documents/Repositories/the-bold-ios/Bold/Data/Models/Event+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		F15FB31F232FDE14002F0C00 /* CreateActionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateActionViewModel.swift; sourceTree = "<group>"; };
 		F15FB322232FDEC9002F0C00 /* ConfigurateActionSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurateActionSectionModel.swift; sourceTree = "<group>"; };
 		F15FB3242330E413002F0C00 /* ConfigurateActionCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurateActionCellModel.swift; sourceTree = "<group>"; };
@@ -1552,6 +1554,7 @@
 				F1F6ADCE23210E7700F6A925 /* DateFormatter+Extensions.swift */,
 				F1F6ADCD23210E7600F6A925 /* NumberFormatter+Extensions.swift */,
 				F1F6ADDE232626DA00F6A925 /* Date+Extensions.swift */,
+				C5E517B72369B0CB00E8635F /* UIApplication+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1981,16 +1984,16 @@
 		F1F6ADA523210DB200F6A925 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C577363623691FFF0018063B /* Event+CoreDataClass.swift */,
+				C577363523691FFF0018063B /* Event+CoreDataProperties.swift */,
+				C577363423691FFF0018063B /* Reminder+CoreDataClass.swift */,
+				C577363323691FFF0018063B /* Reminder+CoreDataProperties.swift */,
 				F1F6ADB223210DB200F6A925 /* Goal+CoreDataClass.swift */,
 				F1F6ADB423210DB200F6A925 /* Goal+CoreDataProperties.swift */,
 				F1F6ADAA23210DB200F6A925 /* Action+CoreDataClass.swift */,
 				F1F6ADA623210DB200F6A925 /* Action+CoreDataProperties.swift */,
-				F15FB31A232FAF2A002F0C00 /* Event+CoreDataClass.swift */,
-				F15FB31B232FAF2A002F0C00 /* Event+CoreDataProperties.swift */,
 				F1F6ADA923210DB200F6A925 /* DaysOfWeek+CoreDataClass.swift */,
 				F1F6ADAB23210DB200F6A925 /* DaysOfWeek+CoreDataProperties.swift */,
-				F13FCBAD2337C13A00BAE544 /* Reminder+CoreDataClass.swift */,
-				F13FCBAC2337C13A00BAE544 /* Reminder+CoreDataProperties.swift */,
 				F1F6ADAD23210DB200F6A925 /* Content+CoreDataClass.swift */,
 				F1F6ADB323210DB200F6A925 /* Content+CoreDataProperties.swift */,
 				F1F6ADA723210DB200F6A925 /* File+CoreDataClass.swift */,
@@ -2340,7 +2343,6 @@
 				F183301022E5CB2D00BB7A9E /* FeelConfigurator.swift in Sources */,
 				F1F6ADB623210DB300F6A925 /* DataSource+User.swift in Sources */,
 				F183302722E605A600BB7A9E /* ActInteractor.swift in Sources */,
-				F15FB31C232FAF2B002F0C00 /* Event+CoreDataProperties.swift in Sources */,
 				F183304222E6F0F000BB7A9E /* CreateGoalInteractor.swift in Sources */,
 				F1CCC70322CA0F2900E7B637 /* UITableView+Xib.swift in Sources */,
 				F158E2C322C4E11600FD671A /* NavigationView.swift in Sources */,
@@ -2350,7 +2352,6 @@
 				C59E5E3623059405005DCD18 /* AccountDetailsInteractor.swift in Sources */,
 				F1B2B1D222FC1A2100C327B0 /* CalendarDecorationView.swift in Sources */,
 				F1E698B723157E3D00438E3E /* ArchivedGoalsConfigurator.swift in Sources */,
-				F13FCBAF2337C13A00BAE544 /* Reminder+CoreDataClass.swift in Sources */,
 				C59E5E1E23055BDD005DCD18 /* ConfigurableLabel.swift in Sources */,
 				F1A79DD622DCAFA80018A8EF /* OverTabbarView.swift in Sources */,
 				F1EA1CA722E0776600BB328F /* UIImageView+Extensions.swift in Sources */,
@@ -2371,6 +2372,7 @@
 				F1EA1CA922E07D2A00BB328F /* UILabel+Extensions.swift in Sources */,
 				F11562A322DF2E9A00399FA6 /* StakeActionTableViewCell.swift in Sources */,
 				F1CECE2522EA0AC000EA95EE /* IconCollectionViewCell.swift in Sources */,
+				C5E517B82369B0CB00E8635F /* UIApplication+Extension.swift in Sources */,
 				C561C3EB2341F79F0073ABAC /* AlertDisplayable.swift in Sources */,
 				F17CB26922A682130035ABAB /* RoundedButton.swift in Sources */,
 				F14166AC22C125A50020BF0F /* ActionCollectionTableViewCell.swift in Sources */,
@@ -2378,6 +2380,7 @@
 				F13FCBB42339FBBC00BAE544 /* CalendarModelView.swift in Sources */,
 				C561C4042341FBD00073ABAC /* BlurTransitionView.swift in Sources */,
 				F1EB8DD622A8022500E3BC4C /* ForgotPasswordViewController.swift in Sources */,
+				C577363723691FFF0018063B /* Reminder+CoreDataProperties.swift in Sources */,
 				F1F6ADB723210DB300F6A925 /* DataSource+Goals.swift in Sources */,
 				F1F6ADC323210DB300F6A925 /* User+CoreDataProperties.swift in Sources */,
 				F107538422F091C10078C71C /* HeaderConfigureTableViewCell.swift in Sources */,
@@ -2481,12 +2484,10 @@
 				F183302522E6059600BB7A9E /* ActPresenter.swift in Sources */,
 				F1EAF59222E89925008073D7 /* HeaderWriteActionsTableViewCell.swift in Sources */,
 				F1F40635230AE2270091B774 /* LevelOfMasteryFooterView.swift in Sources */,
-				F13FCBAE2337C13A00BAE544 /* Reminder+CoreDataProperties.swift in Sources */,
 				F1E698A72315641800438E3E /* LevelOfMasteryPresenter.swift in Sources */,
 				F1D390F722D4E3AB00DF8700 /* CitationPageViewController.swift in Sources */,
 				F1B4A8A7234E1C6D0080950E /* GlobalConstants.swift in Sources */,
 				C59E5E30230581F0005DCD18 /* AccountDetailsViewController.swift in Sources */,
-				F15FB31D232FAF2B002F0C00 /* Event+CoreDataClass.swift in Sources */,
 				F1F6ADD023210E7700F6A925 /* DateFormatter+Extensions.swift in Sources */,
 				F13FCBB62339FCDB00BAE544 /* StakeActionViewModel.swift in Sources */,
 				F179977722B1413A0039879F /* SideMenuItemContent.swift in Sources */,
@@ -2494,6 +2495,7 @@
 				C561C3F52341FB900073ABAC /* DismissAnimationController.swift in Sources */,
 				F11562A022DF20B100399FA6 /* ActViewController.swift in Sources */,
 				F179977822B1413A0039879F /* Options.swift in Sources */,
+				C577363823691FFF0018063B /* Reminder+CoreDataClass.swift in Sources */,
 				F1130CEF230FFBEA008FA60D /* SettingsDownloadTableViewCell.swift in Sources */,
 				F1E698C22317DF9100438E3E /* PremiumViewController.swift in Sources */,
 				F1F6ADBD23210DB300F6A925 /* ActionTemp.swift in Sources */,
@@ -2502,6 +2504,7 @@
 				F183304922E714F600BB7A9E /* PlayerPresenter.swift in Sources */,
 				F183302922E605B500BB7A9E /* ActRouter.swift in Sources */,
 				F1868807229D7DF60029A663 /* SplashViewController.swift in Sources */,
+				C577363923691FFF0018063B /* Event+CoreDataProperties.swift in Sources */,
 				F19A98A322D4F3C300A0492E /* CitationBaseViewController.swift in Sources */,
 				F1C2535322B3F9F8003156AA /* HomeRouter.swift in Sources */,
 				3EFCA3BF2306E00900129DB4 /* SettingsSectionModel.swift in Sources */,
@@ -2519,6 +2522,7 @@
 				C561C410234470FD0073ABAC /* SessionManager.swift in Sources */,
 				3EFCA3AF2306BF7C00129DB4 /* SettingsViewController.swift in Sources */,
 				F19257FF22E7529900FA5C6E /* CalendarActionsListConfigurator.swift in Sources */,
+				C577363A23691FFF0018063B /* Event+CoreDataClass.swift in Sources */,
 				F179976522B10AD70039879F /* HeaderHomeView.swift in Sources */,
 				F183303222E617C700BB7A9E /* AllGoalsRouter.swift in Sources */,
 				C56CD6E22330F80800322688 /* VideoView.swift in Sources */,

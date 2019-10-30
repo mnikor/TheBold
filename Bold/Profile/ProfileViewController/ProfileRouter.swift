@@ -10,6 +10,7 @@ import UIKit
 
 enum ProfileRouterInput {
     case performSegue(segueType: StoryboardSegue.Profile)
+    case logout
 }
 
 protocol ProfileRouterInputProtocol: RouterProtocol {
@@ -29,6 +30,11 @@ class ProfileRouter: ProfileRouterInputProtocol {
         switch inputCase {
         case .performSegue(segueType: let segue):
             viewController.perform(segue: segue, sender: nil)
+        case .logout:
+            guard let viewController = StoryboardScene.Splash.storyboard.instantiateInitialViewController()
+                else { return }
+            UIApplication.setRootView(viewController,
+                                      animated: true)
         }
     }
     

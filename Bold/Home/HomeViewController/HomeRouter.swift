@@ -6,11 +6,11 @@
 //  Copyright © 2019 Alexander Kovalov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum HomeInputRouter {
     case menuShow
-    case actionAll(FeelTypeCell)
+    case actionAll(HomeActionsTypeCell)
     case actionItem(FeelTypeCell)
     case unlockBoldManifest
     case createGoal
@@ -34,9 +34,26 @@ class HomeRouter: RouterProtocol, HomeInputRouterProtocol {
         switch inputCase {
         case .menuShow:
             viewController.showSideMenu()
-        case .actionAll:
-            guard let feelVC = StoryboardScene.Feel.storyboard.instantiateInitialViewController() else { return }
-            HostViewController.showController(newVC: feelVC)
+        case .actionAll(let type):
+            let viewController: UIViewController?
+            switch type {
+            case .feel:
+                viewController = StoryboardScene.Feel.storyboard.instantiateInitialViewController()
+            case .think:
+                viewController = StoryboardScene.Think.storyboard.instantiateInitialViewController()
+            case .actActive:
+                viewController = UIViewController()
+            case .actNotActive:
+                viewController = UIViewController()
+            case .boldManifest:
+                viewController = UIViewController()
+            case .activeGoals, .activeGoalsAct:
+                viewController = UIViewController()
+                break
+            }
+            if let newVC = viewController {
+                HostViewController.showController(newVC: newVC)
+            }
         case .actionItem(let type):
             let actionListVC = StoryboardScene.Feel.actionsListViewController.instantiate()
             actionListVC.typeVC = type

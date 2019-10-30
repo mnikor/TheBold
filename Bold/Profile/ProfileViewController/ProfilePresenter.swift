@@ -86,6 +86,8 @@ class ProfilePresenter: ProfilePresenterInputProtocol {
     }
     
     private func logout() {
+        SessionManager.shared.killSession()
+        router.input(.logout)
         // TODO
     }
     

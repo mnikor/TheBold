@@ -262,7 +262,7 @@ class ActInteractor: InteractorProtocol, ActInteractorProtocol {
     
     private func createGoalsSection(goals: [GoalCollectionViewModel], itemsCount: Int) -> ActivityViewModel {
         
-        let activityModel = ActivityViewModel.createViewModel(type: .activeGoalsAct, goals: goals, itemCount: itemsCount)
+        let activityModel = ActivityViewModel.createViewModel(type: .activeGoalsAct, goals: goals, content: [], itemCount: itemsCount)
         return activityModel
     }
     

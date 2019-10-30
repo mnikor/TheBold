@@ -21,5 +21,14 @@ class ActivityCollectionViewCell: BaseCollectionViewCell {
     func config(with type: FeelTypeCell) {
         titleLabel.text = type.titleText()
     }
+    
+    func config(with viewModel: ContentViewModel) {
+        titleLabel.text = viewModel.title
+        if let backgroundImage = viewModel.backgroundImage {
+            backgroundImageView.image = backgroundImage
+        } else {
+            backgroundImageView.image = Asset.feelBackground.image
+        }
+    }
 
 }

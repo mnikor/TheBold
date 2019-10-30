@@ -181,7 +181,9 @@ extension OnboardViewController: SignUpViewDelegate {
                                         case .success(let profile):
                                             SessionManager.shared.profile = profile
                                             let vc = StoryboardScene.Menu.initialScene.instantiate()
-                                            self?.alertViewController?.navigationController?.pushViewController(vc, animated: true)
+                                            UIApplication.setRootView(vc,
+                                                                      animated: true)
+//                                            self?.alertViewController?.navigationController?.pushViewController(vc, animated: true)
                                         }
         }
     }
@@ -205,7 +207,9 @@ extension OnboardViewController: SignUpViewDelegate {
                                         case .success(let profile):
                                             SessionManager.shared.profile = profile
                                             let vc = StoryboardScene.Menu.initialScene.instantiate()
-                                            self?.alertViewController?.navigationController?.pushViewController(vc, animated: true)
+                                            UIApplication.setRootView(vc,
+                                            animated: true)
+//                                            self?.alertViewController?.navigationController?.pushViewController(vc, animated: true)
                                         }
         }
     }
