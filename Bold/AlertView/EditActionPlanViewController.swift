@@ -18,16 +18,16 @@ class EditActionPlanViewController: AddActionPlanViewController {
     var eventID : String?
     
     override class func createController(tapOk: @escaping (() -> Void)) -> EditActionPlanViewController {
-        let addVC = StoryboardScene.Act.editActionPlanViewController.instantiate()
+        let addVC = StoryboardScene.AlertView.editActionPlanViewController.instantiate()
         addVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         addVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         addVC.activeOkButton = tapOk
         return addVC
     }
     
-    class func createController(actionID: String?, eventID: String?, tapOk: @escaping (() -> Void), delete: @escaping (() -> Void)) -> EditActionPlanViewController {
+    class func createController(actionID: String?, eventID: String?, tapOk: @escaping (() -> Void), tapDelete: @escaping (() -> Void)) -> EditActionPlanViewController {
         let addVC = createController(tapOk: tapOk)
-        addVC.actionDeleteButton = delete
+        addVC.actionDeleteButton = tapDelete
         addVC.actionID = actionID
         addVC.eventID = eventID
         return addVC

@@ -12,12 +12,8 @@ class AddActionPlanViewController: UIViewController {
 
     @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var addActionView: UIView!
-    
     @IBOutlet weak var contentView: UIView!
-    
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addActionButton: RoundedButton!
-    
     @IBOutlet weak var bottomAddActionConstraint: NSLayoutConstraint!
     
     var addActionVC : CreateActionViewController!
@@ -34,8 +30,7 @@ class AddActionPlanViewController: UIViewController {
     
     class func createController(tapOk: @escaping (() -> Void)) -> AddActionPlanViewController {
 
-        let addVC = StoryboardScene.Act.addActionPlanViewController.instantiate()
-        //let navVC = UINavigationController(rootViewController: addVC)
+        let addVC = StoryboardScene.AlertView.addActionPlanViewController.instantiate()
         addVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         addVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         addVC.activeOkButton = tapOk
@@ -44,8 +39,7 @@ class AddActionPlanViewController: UIViewController {
     
     class func createController(contentID: String?, tapOk: @escaping (() -> Void)) -> AddActionPlanViewController {
 
-        let addVC = StoryboardScene.Act.addActionPlanViewController.instantiate()
-        //let navVC = UINavigationController(rootViewController: addVC)
+        let addVC = StoryboardScene.AlertView.addActionPlanViewController.instantiate()
         addVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         addVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         addVC.activeOkButton = tapOk
@@ -71,7 +65,6 @@ class AddActionPlanViewController: UIViewController {
     
     func displayContentController() {
         self.addActionVC = StoryboardScene.Act.createActionViewController.instantiate()
-        //navVC = UINavigationController(rootViewController: addActionVC)
         addActionVC.presenter.baseConfigType = .createNewActionSheet(contentID: contentID)
         
 //        //self.storyboard?.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController
@@ -102,10 +95,6 @@ class AddActionPlanViewController: UIViewController {
         addActionView.roundCorners(corners: [.topLeft, .topRight], radius: 10)
     }
     
-    func addHeader() {
-        //listSettings.insert(AddActionEntity(type: .headerAddToPlan, currentValue: nil), at: 0)
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showAnimateView()
@@ -126,12 +115,6 @@ class AddActionPlanViewController: UIViewController {
     @objc func actionSwipe() {
         hideAnimateView()
     }
-    
-    func registerXibs() {
-        tableView.registerNib(HeaderActionPlanTableViewCell.self)
-        tableView.registerNib(HeaderTitleActionPlanTableViewCell.self)
-        tableView.registerNib(SettingActionPlanTableViewCell.self)
-    }
 
     func showAnimateView() {
         UIView.animate(withDuration: 0.5, animations: {
@@ -147,7 +130,9 @@ class AddActionPlanViewController: UIViewController {
             self.bottomAddActionConstraint.constant = -self.addActionView.bounds.height
             self.view.layoutIfNeeded()
         }, completion: { (_) in
-            self.dismiss(animated: false, completion: nil)
+            //self.dismiss(animated: false, completion: nil)
+            self.view.removeFromSuperview()
+            self.removeFromParent()
         })
     }
     

@@ -38,7 +38,7 @@ class StartActionViewController: UIViewController {
     }
     
      class func createController(tapOk: @escaping (() -> Void)) -> StartActionViewController {
-        let addVC = StoryboardScene.Act.startActionViewController.instantiate()
+        let addVC = StoryboardScene.AlertView.startActionViewController.instantiate()
         addVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         addVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         addVC.activeStartButton = tapOk
@@ -84,7 +84,9 @@ class StartActionViewController: UIViewController {
             self.bottomContentViewConstraint.constant = -self.contentView.bounds.height
             self.view.layoutIfNeeded()
         }, completion: { (_) in
-            self.dismiss(animated: false, completion: nil)
+            //self.dismiss(animated: false, completion: nil)
+            self.view.removeFromSuperview()
+            self.removeFromParent()
         })
     }
 }

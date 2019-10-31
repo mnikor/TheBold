@@ -28,21 +28,25 @@ class CongratulationsAlertView: UIView {
         return nibView
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        configButtons()
-    }
-    
     func config(type: BoldAlertType) {
         iconImageView.image = type.icon()
         titleILabel.text = type.titleText()
         textLabel.text = type.text()
+        if let points = type.points {
+            configButtons(points: points)
+        }else {
+            configButtons()
+        }
+    }
+    
+    func configButtons(points: Int) {
+        okButton.setTitle(L10n.get + " \(points)", for: .normal)
+        okButton.setImage(Asset.shapeWhiteButton.image, for: .normal)
+        okButton.positionImageAfterText(padding: 3)
     }
     
     func configButtons() {
-        okButton.setTitle(L10n.get + " 50", for: .normal)
-        okButton.setImage(Asset.shapeWhiteButton.image, for: .normal)
-        okButton.positionImageAfterText(padding: 3)
+        
     }
     
 }
