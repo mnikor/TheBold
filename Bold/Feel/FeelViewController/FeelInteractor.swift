@@ -41,8 +41,7 @@ class FeelInteractor: FeelInteractorInputProtocol {
     }
     
     private func prepareTracks(for content: ActivityContent) {
-        let tracks = content.audiosURLs.compactMap { AudioPlayerTrackInfo(trackName: $0, artistName: $0, duration: formatTimeInterval(1254), path: .remote($0)) }
-        AudioService.shared.tracks = tracks
+        AudioService.shared.tracks = content.audioTracks
     }
     
     private func prepareDataSource(contentTypeArray: [ContentType], completion: (([ContentType: [ActivityContent]]) -> Void)?) {

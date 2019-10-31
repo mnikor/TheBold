@@ -49,7 +49,7 @@ extension ThinkViewController {
         case .stories, .lessons:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActionCollectionTableViewCell
             cell.delegate = self
-            cell.config(entity: items[indexPath.row])
+            cell.config(entity: item)
             cell.cellBackground(indexPath: indexPath)
             return cell
         case .citate:

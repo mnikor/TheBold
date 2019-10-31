@@ -22,7 +22,7 @@ struct ActivityContent {
     var largeImageURL: String?
     var likesCount: Int
     var authorPhotoURL: String?
-    var audiosURLs: [String]
+    var audioTracks: [AudioPlayerTrackInfo]
     var documentURL: String?
     
     static func mapJSON(_ json: JSON) -> ActivityContent? {
@@ -41,12 +41,11 @@ struct ActivityContent {
             typeString = String(typeString.dropFirst(ResponseKeys.typePrefix.count))
         }
         guard let type = ContentType(rawValue: typeString.lowercased()) else { return nil }
-        let audiosURL: [String]
-        if let audiosURLsString = json[ResponseKeys.audiosURLs].string,
-            !audiosURLsString.isEmpty {
-            audiosURL = audiosURLsString.split(separator: ",").compactMap { String($0) }
+        let audioTracks: [AudioPlayerTrackInfo]
+        if let audioTracksArray = json[ResponseKeys.audioTracks].array {
+            audioTracks = audioTracksArray.compactMap { AudioPlayerTrackInfo(trackName: $0[ResponseKeys.audioName].stringValue, artistName: "", duration: "0:00", path: .remote($0[ResponseKeys.audioURL].stringValue)) }
         } else {
-            audiosURL = []
+            audioTracks = []
         }
         return ActivityContent(id: id,
                        title: title,
@@ -61,7 +60,7 @@ struct ActivityContent {
                        largeImageURL: json[ResponseKeys.largeImageURL].string,
                        likesCount: likesCount,
                        authorPhotoURL: json[ResponseKeys.authorPhotoURL].string,
-                       audiosURLs: audiosURL,
+                       audioTracks: audioTracks,
                        documentURL: json[ResponseKeys.documentURL].string)
     }
     
@@ -82,6 +81,8 @@ private struct ResponseKeys {
     static let largeImageURL = "large_image_url"
     static let likesCount = "likes_count"
     static let authorPhotoURL = "author_photo_url"
-    static let audiosURLs = "audios_url"
+    static let audioTracks = "audios"
+    static let audioName = "name"
+    static let audioURL = "url"
     static let documentURL = "document_url"
 }
