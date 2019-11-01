@@ -8,79 +8,14 @@
 
 import UIKit
 
-enum BoldAlertType {
-    case congratulations1
-    case congratulations2
-    case goalIsAchievedMadeImportantDecision
-    case goalIsAchievedAchievedYourGoal
-    case youveMissedYourActionOneButton
-    case youveMissedYourActionTwoButton
-    case dontGiveUp1
-    case dontGiveUp2
-    case dontGiveUp3
-    case dontGiveUp4
-    case dontGiveUp5
-    
-    func icon() -> UIImage {
-        switch self {
-        case .congratulations1, .congratulations2, .goalIsAchievedAchievedYourGoal, .goalIsAchievedMadeImportantDecision:
-            return Asset.clapIcon.image
-        case .youveMissedYourActionTwoButton:
-            return Asset.lockIcon.image
-        case .youveMissedYourActionOneButton, .dontGiveUp1, .dontGiveUp2, .dontGiveUp3, .dontGiveUp4, .dontGiveUp5:
-            return Asset.shapeOrangeIcon.image
-        }
-    }
-    
-    func titleText() -> String {
-        switch self {
-        case .congratulations1, .congratulations2:
-            return L10n.Alert.congratulations
-        case .goalIsAchievedAchievedYourGoal, .goalIsAchievedMadeImportantDecision:
-            return L10n.Alert.goalIsAchieved
-        case .youveMissedYourActionTwoButton, .youveMissedYourActionOneButton:
-            return L10n.Alert.youveMissedYourAction
-        case .dontGiveUp1, .dontGiveUp2, .dontGiveUp3, .dontGiveUp4, .dontGiveUp5:
-            return L10n.Alert.dontGiveUp
-        }
-    }
-    
-    func text() -> String {
-        switch self {
-        case .congratulations1:
-            return L10n.Alert.congratulationsText1
-        case .congratulations2:
-            return L10n.Alert.congratulationsText2
-        case .goalIsAchievedAchievedYourGoal:
-            return L10n.Alert.importantDecision
-        case .goalIsAchievedMadeImportantDecision:
-            return L10n.Alert.goalFantastic
-        case .youveMissedYourActionOneButton:
-            return L10n.Alert.dontGiveUpKeepGoing
-        case .youveMissedYourActionTwoButton:
-            return L10n.Alert.yourGoalIsLockedNow
-        case .dontGiveUp1:
-            return L10n.Alert.sometimesItsHardToFollowYourPlansLaterDate
-        case .dontGiveUp2:
-            return L10n.Alert.sometimesGoalsBecomeIrrelevant
-        case .dontGiveUp3:
-            return L10n.Alert.sometimesActionsBecomeIrrelevantAsWeAdaptOurStrategy
-        case .dontGiveUp4:
-            return L10n.Alert.areYouSureYouWantToDeleteThisStake
-        case .dontGiveUp5:
-            return L10n.Alert.sometimesItsHardToFollowYourPlansDeleteThisTask
-        }
-    }
-}
-
 class BaseAlertViewController: UIViewController {
 
     @IBOutlet weak var overlayView: UIView!
     
     var typeAlert : BoldAlertType!
     
-    private var activeOkButton: (() -> Void)?
-    private var activeCancelButton: (() -> Void)?
+    private var activeOkButton: VoidCallback?
+    private var activeCancelButton: VoidCallback?
     
     private var viewAlert : UIView!
     private var topConstrain: NSLayoutConstraint!
@@ -92,7 +27,7 @@ class BaseAlertViewController: UIViewController {
         overlayView.alpha = 0
  
         switch typeAlert {
-        case .congratulations1?, .congratulations2?, .goalIsAchievedAchievedYourGoal?, .goalIsAchievedMadeImportantDecision?:
+        case .congratulationsAction1?, .congratulationsAction2?, .goalIsAchievedAchievedYourGoal?, .goalIsAchievedMadeImportantDecision?:
             viewAlert = CongratulationsAlertView.loadViewFromNib() as CongratulationsAlertView
             guard let viewAlert = viewAlert as? CongratulationsAlertView else {return}
             viewAlert.config(type: typeAlert)
@@ -100,7 +35,7 @@ class BaseAlertViewController: UIViewController {
                 self.activeOkButton?()
                 self.hideAnimateView()
             }
-        case .youveMissedYourActionOneButton?:
+        case .youveMissedYourAction?:
             viewAlert = MissedYouOneButtonAlertView.loadViewFromNib() as MissedYouOneButtonAlertView
             guard let viewAlert = viewAlert as? MissedYouOneButtonAlertView else {return}
             viewAlert.config(type: typeAlert)
@@ -108,7 +43,7 @@ class BaseAlertViewController: UIViewController {
                 self.activeOkButton?()
                 self.hideAnimateView()
             }
-        case .youveMissedYourActionTwoButton?:
+        case .youveMissedYourActionLock?:
             viewAlert = MissedYouTwoButtonAlertView.loadViewFromNib() as MissedYouTwoButtonAlertView
             guard let viewAlert = viewAlert as? MissedYouTwoButtonAlertView else {return}
             viewAlert.config(type: typeAlert)
@@ -119,7 +54,7 @@ class BaseAlertViewController: UIViewController {
             viewAlert.activeCancelButton = { [unowned self] in
                 self.hideAnimateView()
             }
-        case .dontGiveUp1?, .dontGiveUp2?, .dontGiveUp3?, .dontGiveUp4?, .dontGiveUp5?:
+        case .dontGiveUpMoveToLaterDate?, .dontGiveUpDeleteGoal?, .dontGiveUpDeleteAction?, .dontGiveUpDeleteStake?, .dontGiveUpDeleteThisTask?:
             viewAlert = DontGiveUpAlertView.loadViewFromNib() as DontGiveUpAlertView
             guard let viewAlert = viewAlert as? DontGiveUpAlertView else {return}
             viewAlert.config(type: typeAlert)
@@ -149,16 +84,12 @@ class BaseAlertViewController: UIViewController {
     }
 
     class func showAlert(type: BoldAlertType, tapOk: @escaping (() -> Void)) -> BaseAlertViewController {
-        let alertVC = StoryboardScene.Act.baseAlertViewController.instantiate()
+        let alertVC = StoryboardScene.AlertView.baseAlertViewController.instantiate()
         alertVC.typeAlert = type
         alertVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         alertVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         alertVC.activeOkButton = tapOk
         return alertVC
-    }
-    
-    func presentedBy(_ vc: UIViewController) {
-        vc.present(self, animated: false, completion: nil)
     }
     
     override func viewWillLayoutSubviews() {
@@ -189,7 +120,9 @@ class BaseAlertViewController: UIViewController {
             self.topConstrain.isActive = true
             self.view.layoutIfNeeded()
         }, completion: { (_) in
-            self.dismiss(animated: false, completion: nil)
+            //self.dismiss(animated: false, completion: nil)
+            self.view.removeFromSuperview()
+            self.removeFromParent()
         })
     }
     

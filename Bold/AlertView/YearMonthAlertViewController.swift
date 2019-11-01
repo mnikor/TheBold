@@ -53,7 +53,7 @@ class YearMonthAlertViewController: UIViewController {
     }
     
     class func createController(currentDate:Date, tapConfirm: @escaping ((_ date: Date) -> Void)) -> YearMonthAlertViewController {
-        let dateVC = StoryboardScene.Act.yearMonthAlertViewController.instantiate()
+        let dateVC = StoryboardScene.AlertView.yearMonthAlertViewController.instantiate()
         dateVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         dateVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         dateVC.confirmBlock = tapConfirm
@@ -79,7 +79,9 @@ class YearMonthAlertViewController: UIViewController {
             self.bottomContentViewConstraint.constant = -self.contentView.bounds.height
             self.view.layoutIfNeeded()
         }, completion: { (_) in
-            self.dismiss(animated: false, completion: nil)
+            //self.dismiss(animated: false, completion: nil)
+            self.view.removeFromSuperview()
+            self.removeFromParent()
         })
     }
 

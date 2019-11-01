@@ -16,8 +16,8 @@ class DontGiveUpAlertView: MissedYouTwoButtonAlertView {
         return nibView
     }
     
-    override func configButtons() {
-        okButton.setTitle(L10n.yes + ", -10", for: .normal)
+    override func configButtons(points: Int) {
+        okButton.setTitle(L10n.yes + ", \(points)", for: .normal)
         okButton.setImage(Asset.shapeBlueButton.image, for: .normal)
         okButton.positionImageAfterText(padding: 3)
         cancelButton.setTitle(L10n.no, for: .normal)

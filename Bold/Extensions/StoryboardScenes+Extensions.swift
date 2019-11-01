@@ -17,10 +17,6 @@ internal enum StoryboardScene {
 
     internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: Act.self)
 
-    internal static let addActionPlanViewController = SceneType<Bold.AddActionPlanViewController>(storyboard: Act.self, identifier: "AddActionPlanViewController")
-
-    internal static let baseAlertViewController = SceneType<Bold.BaseAlertViewController>(storyboard: Act.self, identifier: "BaseAlertViewController")
-
     internal static let boldTipsViewController = SceneType<Bold.BoldTipsViewController>(storyboard: Act.self, identifier: "BoldTipsViewController")
 
     internal static let calendarActionsListViewController = SceneType<Bold.CalendarActionsListViewController>(storyboard: Act.self, identifier: "CalendarActionsListViewController")
@@ -29,17 +25,24 @@ internal enum StoryboardScene {
 
     internal static let createGoalViewController = SceneType<Bold.CreateGoalViewController>(storyboard: Act.self, identifier: "CreateGoalViewController")
 
-    internal static let dateAlertViewController = SceneType<Bold.DateAlertViewController>(storyboard: Act.self, identifier: "DateAlertViewController")
-
-    internal static let downloadsActionViewController = SceneType<Bold.DownloadsActionViewController>(storyboard: Act.self, identifier: "DownloadsActionViewController")
-
-    internal static let editActionPlanViewController = SceneType<Bold.EditActionPlanViewController>(storyboard: Act.self, identifier: "EditActionPlanViewController")
-
     internal static let ideasViewController = SceneType<Bold.IdeasViewController>(storyboard: Act.self, identifier: "IdeasViewController")
+  }
+  internal enum AlertView: StoryboardType {
+    internal static let storyboardName = "AlertView"
 
-    internal static let startActionViewController = SceneType<Bold.StartActionViewController>(storyboard: Act.self, identifier: "StartActionViewController")
+    internal static let addActionPlanViewController = SceneType<Bold.AddActionPlanViewController>(storyboard: AlertView.self, identifier: "AddActionPlanViewController")
 
-    internal static let yearMonthAlertViewController = SceneType<Bold.YearMonthAlertViewController>(storyboard: Act.self, identifier: "YearMonthAlertViewController")
+    internal static let baseAlertViewController = SceneType<Bold.BaseAlertViewController>(storyboard: AlertView.self, identifier: "BaseAlertViewController")
+
+    internal static let dateAlertViewController = SceneType<Bold.DateAlertViewController>(storyboard: AlertView.self, identifier: "DateAlertViewController")
+
+    internal static let downloadsActionViewController = SceneType<Bold.DownloadsActionViewController>(storyboard: AlertView.self, identifier: "DownloadsActionViewController")
+
+    internal static let editActionPlanViewController = SceneType<Bold.EditActionPlanViewController>(storyboard: AlertView.self, identifier: "EditActionPlanViewController")
+
+    internal static let startActionViewController = SceneType<Bold.StartActionViewController>(storyboard: AlertView.self, identifier: "StartActionViewController")
+
+    internal static let yearMonthAlertViewController = SceneType<Bold.YearMonthAlertViewController>(storyboard: AlertView.self, identifier: "YearMonthAlertViewController")
   }
   internal enum Auth: StoryboardType {
     internal static let storyboardName = "Auth"

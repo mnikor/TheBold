@@ -80,7 +80,7 @@ class DateAlertViewController: UIViewController {
     }
     
     class func createController(type:DateAlertType, currentDate:Date?, startDate: Date?, endDate:Date?, tapConfirm: @escaping ((_ date: Date) -> Void)) -> DateAlertViewController {
-        let dateVC = StoryboardScene.Act.dateAlertViewController.instantiate()
+        let dateVC = StoryboardScene.AlertView.dateAlertViewController.instantiate()
         dateVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         dateVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         dateVC.confirmBlock = tapConfirm
@@ -112,7 +112,9 @@ class DateAlertViewController: UIViewController {
             self.bottomContentViewConstraint.constant = -self.contentView.bounds.height
             self.view.layoutIfNeeded()
         }, completion: { (_) in
-            self.dismiss(animated: false, completion: nil)
+            //self.dismiss(animated: false, completion: nil)
+            self.view.removeFromSuperview()
+            self.removeFromParent()
         })
     }
     

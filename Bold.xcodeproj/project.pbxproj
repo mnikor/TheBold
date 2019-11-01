@@ -158,6 +158,7 @@
 		F162A78822C23352008292E8 /* ActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F162A78622C23352008292E8 /* ActionTableViewCell.xib */; };
 		F162A78B22C2400D008292E8 /* ListenOrReadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F162A78922C2400D008292E8 /* ListenOrReadTableViewCell.swift */; };
 		F162A78C22C2400D008292E8 /* ListenOrReadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F162A78A22C2400D008292E8 /* ListenOrReadTableViewCell.xib */; };
+		F169675C236ACD9F004BB9BA /* BoldTypealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169675B236ACD9F004BB9BA /* BoldTypealias.swift */; };
 		F16F21D622F304A4004DC5F3 /* StakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16F21D522F304A4004DC5F3 /* StakeViewController.swift */; };
 		F179974D22AE615D0039879F /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F179974C22AE615D0039879F /* Localizable.swift */; };
 		F179974F22AE619C0039879F /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F179974E22AE619C0039879F /* EmptyView.swift */; };
@@ -249,6 +250,8 @@
 		F186884E229E9BD80029A663 /* StoryboardScenes+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F186884A229E9BD80029A663 /* StoryboardScenes+Extensions.swift */; };
 		F1868850229E9D970029A663 /* Assets-Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F186884F229E9D970029A663 /* Assets-Constants.swift */; };
 		F1868852229E9DA20029A663 /* L10n-Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1868851229E9DA20029A663 /* L10n-Constants.swift */; };
+		F187147F2369A01D000F764C /* AlertViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F187147E2369A01D000F764C /* AlertViewService.swift */; };
+		F18714832369A0ED000F764C /* AlertView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F18714822369A0ED000F764C /* AlertView.storyboard */; };
 		F190357822D87AF8001BC996 /* FixedPaddingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190357722D87AF8001BC996 /* FixedPaddingTextView.swift */; };
 		F19257FC22E7526E00FA5C6E /* CalendarActionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19257FB22E7526E00FA5C6E /* CalendarActionsListViewController.swift */; };
 		F19257FF22E7529900FA5C6E /* CalendarActionsListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19257FE22E7529900FA5C6E /* CalendarActionsListConfigurator.swift */; };
@@ -567,6 +570,7 @@
 		F162A78622C23352008292E8 /* ActionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionTableViewCell.xib; sourceTree = "<group>"; };
 		F162A78922C2400D008292E8 /* ListenOrReadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenOrReadTableViewCell.swift; sourceTree = "<group>"; };
 		F162A78A22C2400D008292E8 /* ListenOrReadTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListenOrReadTableViewCell.xib; sourceTree = "<group>"; };
+		F169675B236ACD9F004BB9BA /* BoldTypealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldTypealias.swift; sourceTree = "<group>"; };
 		F16F21D522F304A4004DC5F3 /* StakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StakeViewController.swift; sourceTree = "<group>"; };
 		F179974C22AE615D0039879F /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		F179974E22AE619C0039879F /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
@@ -660,6 +664,8 @@
 		F186884A229E9BD80029A663 /* StoryboardScenes+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoryboardScenes+Extensions.swift"; sourceTree = "<group>"; };
 		F186884F229E9D970029A663 /* Assets-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Assets-Constants.swift"; sourceTree = "<group>"; };
 		F1868851229E9DA20029A663 /* L10n-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "L10n-Constants.swift"; sourceTree = "<group>"; };
+		F187147E2369A01D000F764C /* AlertViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewService.swift; sourceTree = "<group>"; };
+		F18714822369A0ED000F764C /* AlertView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlertView.storyboard; sourceTree = "<group>"; };
 		F190357722D87AF8001BC996 /* FixedPaddingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedPaddingTextView.swift; sourceTree = "<group>"; };
 		F19257FB22E7526E00FA5C6E /* CalendarActionsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActionsListViewController.swift; sourceTree = "<group>"; };
 		F19257FE22E7529900FA5C6E /* CalendarActionsListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActionsListConfigurator.swift; sourceTree = "<group>"; };
@@ -1211,6 +1217,7 @@
 				C561C40923436A1B0073ABAC /* NetworkService.swift */,
 				C561C40F234470FD0073ABAC /* SessionManager.swift */,
 				C561C411234474850073ABAC /* KeychainManager.swift */,
+				F187147E2369A01D000F764C /* AlertViewService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1505,6 +1512,7 @@
 				F179974C22AE615D0039879F /* Localizable.swift */,
 				F179974E22AE619C0039879F /* EmptyView.swift */,
 				F179975522AFB04B0039879F /* LocalizableViewController.swift */,
+				F169675B236ACD9F004BB9BA /* BoldTypealias.swift */,
 				F1F44A592368711600F977D1 /* Models */,
 				F1F6AD9D23210DB200F6A925 /* Data */,
 				C5B1E5532304384A000991DF /* Protocols */,
@@ -1520,6 +1528,7 @@
 				F141669422C0E2560020BF0F /* Feel */,
 				F1CCC70F22CE220E00E7B637 /* Think */,
 				3EFCA3AD2306BF5E00129DB4 /* Settings */,
+				F18714842369A27D000F764C /* AlertView */,
 				F1CCC70E22CE21E500E7B637 /* Act */,
 				F1CCC71122CE222E00E7B637 /* Profile */,
 				F1868805229D79740029A663 /* API */,
@@ -1580,6 +1589,7 @@
 				F18687F7229D602C0029A663 /* Feel.storyboard */,
 				F18687F9229D60410029A663 /* Think.storyboard */,
 				F18687FB229D60510029A663 /* Act.storyboard */,
+				F18714822369A0ED000F764C /* AlertView.storyboard */,
 				F18687F3229D5FFD0029A663 /* Settings.storyboard */,
 				F18687FD229D609C0029A663 /* Profile.storyboard */,
 				F141668D22BD28760020BF0F /* Player.storyboard */,
@@ -1647,6 +1657,21 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		F18714842369A27D000F764C /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				F158273E22EB569E007B9023 /* DateAlertViewController.swift */,
+				F1B2B1D322FC62DD00C327B0 /* YearMonthAlertViewController.swift */,
+				F1CCC71222CE228800E7B637 /* AddActionPlanViewController.swift */,
+				F1CCC71D22CE854900E7B637 /* EditActionPlanViewController.swift */,
+				F19A98AD22D6551E00A0492E /* BaseAlertViewController.swift */,
+				F19A98BB22D7A06F00A0492E /* StartActionViewController.swift */,
+				F1130CEB230FF34E008FA60D /* DownloadsActionViewController.swift */,
+				F19A98A622D6167D00A0492E /* AlertViews */,
+			);
+			path = AlertView;
+			sourceTree = "<group>";
+		};
 		F19257FD22E7527B00FA5C6E /* CalendarActionsListViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1708,14 +1733,6 @@
 				F107537D22EF39210078C71C /* ShareWithFriendsViewController */,
 				F16F21D722F304AE004DC5F3 /* StakeViewController */,
 				F107537922EF36670078C71C /* BoldTipsViewController.swift */,
-				F158273E22EB569E007B9023 /* DateAlertViewController.swift */,
-				F1B2B1D322FC62DD00C327B0 /* YearMonthAlertViewController.swift */,
-				F1CCC71222CE228800E7B637 /* AddActionPlanViewController.swift */,
-				F1CCC71D22CE854900E7B637 /* EditActionPlanViewController.swift */,
-				F19A98BB22D7A06F00A0492E /* StartActionViewController.swift */,
-				F1130CEB230FF34E008FA60D /* DownloadsActionViewController.swift */,
-				F19A98AD22D6551E00A0492E /* BaseAlertViewController.swift */,
-				F19A98A622D6167D00A0492E /* AlertViews */,
 				F1CCC71422CE256400E7B637 /* Views */,
 			);
 			path = Act;
@@ -2164,6 +2181,7 @@
 				F11562A422DF2E9A00399FA6 /* StakeActionTableViewCell.xib in Resources */,
 				F19A98BA22D758E700A0492E /* MissedYouTwoButtonAlertView.xib in Resources */,
 				F158E2C522C4E12A00FD671A /* NavigationView.xib in Resources */,
+				F18714832369A0ED000F764C /* AlertView.storyboard in Resources */,
 				F141668E22BD28760020BF0F /* Player.storyboard in Resources */,
 				F107538D22F09B640078C71C /* DaysOfWeekTableViewCell.xib in Resources */,
 				F1868840229E90EF0029A663 /* Montserrat-ExtraBold.ttf in Resources */,
@@ -2239,6 +2257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F187147F2369A01D000F764C /* AlertViewService.swift in Sources */,
 				F183304D22E7151400BB7A9E /* PlayerRouter.swift in Sources */,
 				F10B69CB22EB2D9100E47315 /* IdeasTableViewCell.swift in Sources */,
 				F141668122BCD7A10020BF0F /* ManifestConfigurator.swift in Sources */,
@@ -2433,6 +2452,7 @@
 				C5B1E54E23042913000991DF /* ImagedTitleSubtitleView.swift in Sources */,
 				F1E698B02315721E00438E3E /* DownloadsPresenter.swift in Sources */,
 				F183304722E714E800BB7A9E /* PlayerConfigurator.swift in Sources */,
+				F169675C236ACD9F004BB9BA /* BoldTypealias.swift in Sources */,
 				F1F406262306F3D80091B774 /* LevelOfMasteryViewController.swift in Sources */,
 				F1C2535022B3F9C5003156AA /* HomeInteractor.swift in Sources */,
 				F1043541234B70CF0086673C /* ActSectionViewModel.swift in Sources */,

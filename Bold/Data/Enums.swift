@@ -382,3 +382,87 @@ enum DaysOfWeekType : Int{
     }
     
 }
+
+enum BoldAlertType {
+    case congratulationsAction1
+    case congratulationsAction2
+    case goalIsAchievedMadeImportantDecision
+    case goalIsAchievedAchievedYourGoal
+    case youveMissedYourAction
+    case youveMissedYourActionLock
+    case dontGiveUpMoveToLaterDate
+    case dontGiveUpDeleteGoal
+    case dontGiveUpDeleteAction
+    case dontGiveUpDeleteStake
+    case dontGiveUpDeleteThisTask
+    
+    var points : Int? {
+        switch self {
+        case .congratulationsAction1, .congratulationsAction2:
+            return PointsForAction.congratulationsAction
+        case .goalIsAchievedMadeImportantDecision, .goalIsAchievedAchievedYourGoal:
+            return PointsForAction.congratulationsGoal
+        case .dontGiveUpMoveToLaterDate:
+            return PointsForAction.moveToLaterDate
+        case .youveMissedYourActionLock, .youveMissedYourAction:
+            return nil
+        case .dontGiveUpDeleteGoal:
+            return PointsForAction.deleteGoal
+        case .dontGiveUpDeleteAction, .dontGiveUpDeleteThisTask:
+            return PointsForAction.deleteAction
+        case .dontGiveUpDeleteStake:
+            return PointsForAction.deleteStake
+        }
+    }
+    
+    func icon() -> UIImage {
+        switch self {
+        case .congratulationsAction1, .congratulationsAction2, .goalIsAchievedAchievedYourGoal, .goalIsAchievedMadeImportantDecision:
+            return Asset.clapIcon.image
+        case .youveMissedYourActionLock:
+            return Asset.lockIcon.image
+        case .youveMissedYourAction, .dontGiveUpMoveToLaterDate, .dontGiveUpDeleteGoal, .dontGiveUpDeleteAction, .dontGiveUpDeleteStake, .dontGiveUpDeleteThisTask:
+            return Asset.shapeOrangeIcon.image
+        }
+    }
+    
+    func titleText() -> String {
+        switch self {
+        case .congratulationsAction1, .congratulationsAction2:
+            return L10n.Alert.congratulations
+        case .goalIsAchievedAchievedYourGoal, .goalIsAchievedMadeImportantDecision:
+            return L10n.Alert.goalIsAchieved
+        case .youveMissedYourActionLock, .youveMissedYourAction:
+            return L10n.Alert.youveMissedYourAction
+        case .dontGiveUpMoveToLaterDate, .dontGiveUpDeleteGoal, .dontGiveUpDeleteAction, .dontGiveUpDeleteStake, .dontGiveUpDeleteThisTask:
+            return L10n.Alert.dontGiveUp
+        }
+    }
+    
+    func text() -> String {
+        switch self {
+        case .congratulationsAction1:
+            return L10n.Alert.congratulationsText1
+        case .congratulationsAction2:
+            return L10n.Alert.congratulationsText2
+        case .goalIsAchievedAchievedYourGoal:
+            return L10n.Alert.importantDecision
+        case .goalIsAchievedMadeImportantDecision:
+            return L10n.Alert.goalFantastic
+        case .youveMissedYourAction:
+            return L10n.Alert.dontGiveUpKeepGoing
+        case .youveMissedYourActionLock:
+            return L10n.Alert.yourGoalIsLockedNow
+        case .dontGiveUpMoveToLaterDate:
+            return L10n.Alert.sometimesItsHardToFollowYourPlansLaterDate
+        case .dontGiveUpDeleteGoal:
+            return L10n.Alert.sometimesGoalsBecomeIrrelevant
+        case .dontGiveUpDeleteAction:
+            return L10n.Alert.sometimesActionsBecomeIrrelevantAsWeAdaptOurStrategy
+        case .dontGiveUpDeleteStake:
+            return L10n.Alert.areYouSureYouWantToDeleteThisStake
+        case .dontGiveUpDeleteThisTask:
+            return L10n.Alert.sometimesItsHardToFollowYourPlansDeleteThisTask
+        }
+    }
+}

@@ -54,8 +54,8 @@ class DownloadsActionViewController: UIViewController {
         tableView.registerNib(SettingsDownloadTableViewCell.self)
     }
     
-    class func createController(item: DownloadsEntity, tapAddPlan: @escaping (() -> Void), tapDelete: @escaping (() -> Void)) -> DownloadsActionViewController {
-        let addVC = StoryboardScene.Act.downloadsActionViewController.instantiate()
+    class func createController(item: DownloadsEntity?, tapAddPlan: @escaping (() -> Void), tapDelete: @escaping (() -> Void)) -> DownloadsActionViewController {
+        let addVC = StoryboardScene.AlertView.downloadsActionViewController.instantiate()
         addVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         addVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         addVC.currentItem = item
@@ -103,7 +103,9 @@ class DownloadsActionViewController: UIViewController {
             self.bottomContentViewConstraint.constant = -self.contentView.bounds.height
             self.view.layoutIfNeeded()
         }, completion: { (_) in
-            self.dismiss(animated: false, completion: nil)
+            //self.dismiss(animated: false, completion: nil)
+            self.view.removeFromSuperview()
+            self.removeFromParent()
         })
     }
 
