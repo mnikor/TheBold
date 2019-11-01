@@ -98,6 +98,16 @@ class AlertViewService: NSObject, AlertViewServiceInputProtocol {
         viewcontroller.view.layoutIfNeeded()
     }
     
+    private func showAlertControllerWithNavigation(_ viewcontroller: UIViewController) {
+        
+        let navVC = UINavigationController(rootViewController: viewcontroller)
+        UIApplication.shared.keyWindow?.rootViewController?.addChild(navVC)
+        UIApplication.shared.keyWindow?.rootViewController?.view.addSubview(navVC.view)
+        
+        viewcontroller.view.setNeedsLayout()
+        viewcontroller.view.layoutIfNeeded()
+    }
+    
     // MARK: - Create Functions
     
     private func createViewController(type: BoldAlertType, tapOk: @escaping VoidCallback) {
@@ -115,7 +125,7 @@ class AlertViewService: NSObject, AlertViewServiceInputProtocol {
     private func editAction(actionID: String?, eventID: String?, tapOk: @escaping VoidCallback, tapDelete: @escaping VoidCallback) {
         
         let editVC = EditActionPlanViewController.createController(actionID: actionID, eventID: eventID, tapOk: tapOk, tapDelete: tapDelete)
-        showAlertController(editVC)
+        showAlertControllerWithNavigation(editVC)
     }
     
     private func startActionForContent(tapStartNow: @escaping VoidCallback) {

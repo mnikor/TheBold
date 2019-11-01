@@ -95,21 +95,17 @@ class ActPresenter: PresenterProtocol, ActPresenterInputProtocol {
         
         if case .event(viewModel: let viewModelStake) = item.viewModel {
             
-            AlertViewService.shared.input(.missedYourAction(tapOkay: {
-                print("dsfs")
+            AlertViewService.shared.input(.editAction(actionID: viewModelStake.event.action?.id, eventID: viewModelStake.event.id, tapAddPlan: {
+                print("Ok")
+                self.interactor.input(.doneEvent(eventID: viewModelStake.event.id, success: {
+                                    self.viewController.tableView.reloadData()
+                                }))
+            }, tapDelete: {
+                print("tapDelete")
+                AlertViewService.shared.input(.deleteAction(tapYes: {
+                    print("--- Delete ---")
+                }))
             }))
-            
-//            AlertViewService.shared.input(.editAction(actionID: viewModelStake.event.action?.id, eventID: viewModelStake.event.id, tapAddPlan: {
-//                print("Ok")
-//                self.interactor.input(.doneEvent(eventID: viewModelStake.event.id, success: {
-//                                    self.viewController.tableView.reloadData()
-//                                }))
-//            }, tapDelete: {
-//                print("tapDelete")
-//                AlertViewService.shared.input(.deleteAction(tapYes: {
-//                    print("--- Delete ---")
-//                }))
-//            }))
             
 //            let editActionVC = EditActionPlanViewController.createController(actionID: viewModelStake.event.action?.id, eventID: viewModelStake.event.id, tapOk: { [unowned self] in
 //                print("Ok")

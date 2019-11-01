@@ -130,9 +130,9 @@ class AddActionPlanViewController: UIViewController {
             self.bottomAddActionConstraint.constant = -self.addActionView.bounds.height
             self.view.layoutIfNeeded()
         }, completion: { (_) in
-            //self.dismiss(animated: false, completion: nil)
-            self.view.removeFromSuperview()
-            self.removeFromParent()
+            self.dismiss(animated: false, completion: nil)
+            self.navigationController?.view.removeFromSuperview()
+            self.navigationController?.removeFromParent()
         })
     }
     
