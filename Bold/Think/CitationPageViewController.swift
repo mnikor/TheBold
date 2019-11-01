@@ -17,16 +17,20 @@ class CitationPageViewController: UIPageViewController {
 
     weak var pageDelegate: CitationPageViewControllerDelegate?
     
-    private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [createArrayViewController(type: .orange),
-        createArrayViewController(type: .blue),
-        createArrayViewController(type: .ink)]
-    }()
+    var quotes: [ActivityContent] = []
     
-    private func createArrayViewController(type: CitationType) -> UIViewController {
+    private var orderedViewControllers: [UIViewController] = []
+    
+//    private(set) lazy var orderedViewControllers: [UIViewController] = {
+//        return [createArrayViewController(type: .orange),
+//        createArrayViewController(type: .blue),
+//        createArrayViewController(type: .ink)]
+//    }()
+    
+    private func createArrayViewController(quote: ActivityContent) -> UIViewController {
         
         let vc = StoryboardScene.Think.citationViewController.instantiate() as CitationViewController
-        vc.type = type
+        vc.quote = quote
         return vc
     }
     
@@ -36,11 +40,17 @@ class CitationPageViewController: UIPageViewController {
         dataSource = self
         delegate = self
         
+        configureOrderedViewControllers()
+        
         pageDelegate?.citationPageViewController(self, numberOfPages: orderedViewControllers.count)
         
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
+    }
+    
+    private func configureOrderedViewControllers() {
+        orderedViewControllers = quotes.compactMap { createArrayViewController(quote: $0) }
     }
 
 }

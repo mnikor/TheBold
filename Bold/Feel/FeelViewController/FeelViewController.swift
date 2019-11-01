@@ -83,7 +83,7 @@ extension FeelViewController: ActionCollectionTableViewCellDelegate {
     func actionCollectionTableViewCell(_ actionCollectionTableViewCell: ActionCollectionTableViewCell, didTapAtItem indexPath: IndexPath) {
         guard let cellIndexPath = tableView.indexPath(for: actionCollectionTableViewCell) else { return }
         let item = items[cellIndexPath.row].items[indexPath.row]
-        presenter.input(.showPlayer(item: item))
+        presenter.input(.showDetails(item: item))
     }
     
     func tapShowAll(typeCells: FeelTypeCell)  {
@@ -107,6 +107,9 @@ extension FeelViewController {
             let vc = segue.destination as! ActionsListViewController
             guard let type = sender as? FeelTypeCell else {return}
             vc.typeVC = type
+        } else if let vc = segue.destination as? CitationBaseViewController,
+            let quotes = items.first(where: { $0.type == .citate }) {
+            vc.quotes = quotes.items
         }
     }
 }

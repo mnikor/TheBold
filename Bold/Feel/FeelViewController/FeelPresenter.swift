@@ -11,7 +11,7 @@ import Foundation
 enum FeelPresenterInput  {
     case menuShow
     case showAll(FeelTypeCell)
-    case showPlayer(item: ActivityContent)
+    case showDetails(item: ActivityContent)
     case prepareDataSource(types: [ContentType], completion: (([FeelEntity]) -> Void)?)
 }
 
@@ -43,8 +43,8 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
             router.input(.menuShow)
         case .showAll(let typeCell):
             router.input(.showAll(typeCell))
-        case .showPlayer(item: let content):
-            showPlayer(for: content)
+        case .showDetails(item: let content):
+            showDetails(for: content)
         case .prepareDataSource(types: let types, completion: let completion):
             prepareDataSource(types: types, completion: completion)
         }
@@ -80,9 +80,18 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
         }
     }
     
-    private func showPlayer(for content: ActivityContent) {
-        interactor.input(.prepareTracks(content: content))
-        router.input(.showPlayer)
+    private func showDetails(for content: ActivityContent) {
+        switch content.type {
+        case .lesson:
+            let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
+            vc.content = content
+            router.input(.present(vc))
+        default:
+            interactor.input(.prepareTracks(content: content))
+            router.input(.showPlayer)
+        }
+        
+        
     }
 }
 

@@ -6,12 +6,13 @@
 //  Copyright © 2019 Alexander Kovalov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum FeelInputRouter {
     case menuShow
     case showAll(FeelTypeCell)
     case showPlayer
+    case present(UIViewController)
 }
 
 protocol FeelInputRouterProtocol {
@@ -37,6 +38,8 @@ class FeelRouter: RouterProtocol, FeelInputRouterProtocol {
             viewController.performSegue(withIdentifier: StoryboardSegue.Feel.showItem.rawValue, sender: typeCell)
         case .showPlayer:
             AudioService.shared.showPlayerFullScreen()
+        case .present(let vc):
+            viewController.navigationController?.present(vc, animated: true)
         }
     }
 }

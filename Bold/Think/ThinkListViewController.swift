@@ -33,14 +33,26 @@ extension ActionsListViewController{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        let content = actions[indexPath.row].data
         
-        if actions[indexPath.row].type == .action {
+        switch content.type {
+        case .lesson:
             let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
             vc.content = actions[indexPath.row].data
             navigationController?.present(vc, animated: true, completion: nil)
+        default:
+            AudioService.shared.tracks = content.audioTracks
+            AudioService.shared.showPlayerFullScreen()
         }
         
+//        if actions[indexPath.row].type == .action {
+//            let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
+//            vc.content = actions[indexPath.row].data
+//            navigationController?.present(vc, animated: true, completion: nil)
+//        }
+        
     }
+    
 }
 
 

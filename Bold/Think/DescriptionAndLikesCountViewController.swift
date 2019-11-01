@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import PDFKit
 
 class DescriptionAndLikesCountViewController: UIViewController {
     
     @IBOutlet var likseCountView: OverTabbarView!
     
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var pdfContainerView: UIView!
+    @IBOutlet weak var pdfContainerHeightConstraint: NSLayoutConstraint!
     
     @IBAction func tapCloseButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -24,10 +27,18 @@ class DescriptionAndLikesCountViewController: UIViewController {
     var percent : CGFloat = 0
     var content: ActivityContent?
     
+    private var pdfView: UIView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         config()
+        configurePDFView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        configurePDFDocument()
     }
     
     private func config() {
@@ -35,6 +46,36 @@ class DescriptionAndLikesCountViewController: UIViewController {
         titleLabel.text = content?.title
         likseCountView.configView(superView: view)
         likseCountView.delegate = self
+        imageView.setImageAnimated(path: content?.imageURL ?? "",
+                                   placeholder: Asset.serfer.image)
+    }
+    
+    private func configurePDFView() {
+        if #available(iOS 11.0, *) {
+            pdfView = PDFView()
+            guard let pdfView = pdfView as? PDFView else { return }
+            pdfContainerView.addSubview(pdfView)
+            pdfView.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
+            pdfView.autoScales = true
+            pdfView.delegate = self
+        }
+    }
+    
+    private func configurePDFDocument() {
+        if #available(iOS 11.0, *) {
+            guard let content = content,
+                let documentURL = URL(string: content.documentURL ?? ""),
+                let document = PDFDocument(url: documentURL),
+                let pdfView = pdfView as? PDFView
+                else { return }
+            pdfView.document = document
+            if let documentView = pdfView.documentView {
+                pdfContainerHeightConstraint.constant = documentView.frame.size.height
+                pdfContainerView.layoutIfNeeded()
+            }
+        }
     }
     
 }
@@ -91,4 +132,8 @@ extension DescriptionAndLikesCountViewController: UIScrollViewDelegate {
             likseCountView.moveConstraintView(percent: percent)
         }
     }
+}
+
+extension DescriptionAndLikesCountViewController: PDFViewDelegate {
+    
 }

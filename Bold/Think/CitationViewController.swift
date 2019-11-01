@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum CitationType {
+enum CitationType: Int {
     case orange
     case blue
     case ink
@@ -23,6 +23,12 @@ enum CitationType {
             return ColorName.typographyBlack100.color
         }
     }
+    
+    static func randomColor() -> Color {
+        let value = Int.random(in: (0 ... 101)) % 3
+        return CitationType(rawValue: value)?.backgroundcolor() ??  ColorName.typographyBlack100.color
+    }
+    
 }
 
 class CitationViewController: UIViewController {
@@ -36,12 +42,19 @@ class CitationViewController: UIViewController {
         self.shareContent(item: nil)
     }
     
-    var type: CitationType = .orange
+    var quote: ActivityContent?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = type.backgroundcolor()
+        self.view.backgroundColor = CitationType.randomColor()
+        configure()
+    }
+    
+    func configure() {
+        authorNameLabel.text = quote?.authorName
+        authorImageView.setImageAnimated(path: quote?.imageURL ?? "")
+        citationTextLabel.text = quote?.body
     }
 
 }

@@ -16,6 +16,8 @@ class CitationBaseViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    var quotes: [ActivityContent] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -23,6 +25,7 @@ class CitationBaseViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let tutorialPageViewController = segue.destination as? CitationPageViewController {
+            tutorialPageViewController.quotes = quotes
             tutorialPageViewController.pageDelegate = self
         }
     }
