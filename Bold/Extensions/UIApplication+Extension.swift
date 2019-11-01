@@ -10,6 +10,17 @@ import UIKit
 
 extension UIApplication {
     
+    static var topViewController: UIViewController? {
+        if var topViewController = UIApplication.shared.keyWindow?.rootViewController {
+            while let presentedViewController = topViewController.presentedViewController {
+                topViewController = presentedViewController
+            }
+            return topViewController
+        }
+        
+        return nil
+    }
+    
     public static func setRootView(_ viewController: UIViewController,
                                    animated: Bool = true,
                                    duration: TimeInterval = 0.5,
@@ -28,4 +39,5 @@ extension UIApplication {
             completion?()
         }
     }
+    
 }

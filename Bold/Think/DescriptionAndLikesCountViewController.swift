@@ -19,9 +19,15 @@ class DescriptionAndLikesCountViewController: UIViewController {
     @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var pdfContainerView: UIView!
     @IBOutlet weak var pdfContainerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var playerButton: UIButton!
     
     @IBAction func tapCloseButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func didTapAtPlayerButton(_ sender: UIButton) {
+        AudioService.shared.tracks = content?.audioTracks ?? []
+        AudioService.shared.showPlayerFullScreen()
     }
     
     var percent : CGFloat = 0
@@ -48,6 +54,10 @@ class DescriptionAndLikesCountViewController: UIViewController {
         likseCountView.delegate = self
         imageView.setImageAnimated(path: content?.imageURL ?? "",
                                    placeholder: Asset.serfer.image)
+        playerButton.cornerRadius()
+        playerButton.positionImageBeforeText(padding: 8)
+        playerButton.shadow()
+        playerButton.isHidden = (content?.audioTracks ?? []).isEmpty
     }
     
     private func configurePDFView() {
@@ -56,10 +66,17 @@ class DescriptionAndLikesCountViewController: UIViewController {
             guard let pdfView = pdfView as? PDFView else { return }
             pdfContainerView.addSubview(pdfView)
             pdfView.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
+                make.top.equalToSuperview().offset(25)
+                make.leading.trailing.bottom.equalToSuperview()
             }
+            pdfContainerView.bringSubviewToFront(playerButton)
             pdfView.autoScales = true
             pdfView.delegate = self
+            if #available(iOS 12.0, *) {
+                pdfView.pageShadowsEnabled = false
+            } else {
+                pdfView.displaysPageBreaks = false
+            }
         }
     }
     
@@ -72,7 +89,7 @@ class DescriptionAndLikesCountViewController: UIViewController {
                 else { return }
             pdfView.document = document
             if let documentView = pdfView.documentView {
-                pdfContainerHeightConstraint.constant = documentView.frame.size.height
+                pdfContainerHeightConstraint.constant = documentView.frame.size.height + 25
                 pdfContainerView.layoutIfNeeded()
             }
         }

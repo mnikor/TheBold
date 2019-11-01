@@ -179,7 +179,7 @@ class AudioService: NSObject, AudioServiceProtocol {
     func showPlayerFullScreen() {
         let playerVC = PlayerViewController.createController()
         delegate = playerVC
-        UIApplication.shared.keyWindow?.rootViewController?.present(playerVC, animated: true, completion: nil)
+        UIApplication.topViewController?.present(playerVC, animated: true, completion: nil)
     }
     
 }

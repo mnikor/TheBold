@@ -82,7 +82,7 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
     
     private func showDetails(for content: ActivityContent) {
         switch content.type {
-        case .lesson:
+        case .lesson, .story:
             let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
             vc.content = content
             router.input(.present(vc))

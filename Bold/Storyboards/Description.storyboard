@@ -78,8 +78,26 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ub-wy-29P">
                                         <rect key="frame" x="0.0" y="320" width="375" height="300"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zr7-su-X8u">
+                                                <rect key="frame" x="120" y="-25" width="135" height="50"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="9de-h4-jgG"/>
+                                                    <constraint firstAttribute="width" constant="135" id="Y12-bL-xCH"/>
+                                                </constraints>
+                                                <state key="normal" title="Listen" image="headphones">
+                                                    <color key="titleColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTapAtPlayerButton:" destination="QsE-0b-bcy" eventType="touchUpInside" id="3TH-hx-57V"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
+                                            <constraint firstItem="Zr7-su-X8u" firstAttribute="top" secondItem="2Ub-wy-29P" secondAttribute="top" constant="-25" id="9hq-t1-DId"/>
+                                            <constraint firstItem="Zr7-su-X8u" firstAttribute="centerX" secondItem="2Ub-wy-29P" secondAttribute="centerX" id="Con-Bh-Yxc"/>
                                             <constraint firstAttribute="height" constant="300" id="EqD-yi-kn0"/>
                                         </constraints>
                                     </view>
@@ -142,6 +160,7 @@
                         <outlet property="likseCountView" destination="OhM-eB-W6J" id="Izb-0p-oOi"/>
                         <outlet property="pdfContainerHeightConstraint" destination="EqD-yi-kn0" id="Tb5-Q7-6lR"/>
                         <outlet property="pdfContainerView" destination="2Ub-wy-29P" id="XQU-Ft-w1j"/>
+                        <outlet property="playerButton" destination="Zr7-su-X8u" id="gZc-Yu-bCP"/>
                         <outlet property="titleLabel" destination="qBA-wK-wW2" id="zlC-cs-Zov"/>
                         <outlet property="toolbar" destination="D9H-Rb-vNn" id="gu6-ud-O7Y"/>
                     </connections>
