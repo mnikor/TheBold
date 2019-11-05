@@ -41,8 +41,8 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
     
     var actionItems: [ActivityViewModel] = []
     
-    private var feelContent: [FeelTypeCell] = [.meditation, .hypnosis, .pepTalk]
-    private var thinkContent: [FeelTypeCell] = [.stories, .citate, .lessons]
+    private var feelContent: [FeelTypeCell] = [.meditation, .pepTalk, .hypnosis]
+    private var thinkContent: [FeelTypeCell] = [.lessons, .stories, .citate]
     
     func input(_ inputCase: HomePresenterInput) {
         
@@ -76,7 +76,8 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
     private func prepareDataSource() {
         let feel = ActivityViewModel.createViewModel(type: .feel,
                                                      goals: [],
-                                                     content: feelContent.compactMap { ContentViewModel(backgroundImage: nil, title: $0.titleText() ?? "") },
+                                                     content: feelContent.compactMap { ContentViewModel(backgroundImage: $0.categoryImage(),
+                                                                                                        title: $0.categoryName()) },
                                                      itemCount: feelContent.count)
         let boldManifest = ActivityViewModel.createViewModel(type: .boldManifest,
                                                              goals: [],
@@ -84,7 +85,8 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
                                                              itemCount: 0)
         let think = ActivityViewModel.createViewModel(type: .think,
                                                       goals: [],
-                                                      content: thinkContent.compactMap { ContentViewModel(backgroundImage: nil, title: $0.titleText() ?? "") },
+                                                      content: thinkContent.compactMap { ContentViewModel(backgroundImage: $0.categoryImage(),
+                                                                                                          title: $0.categoryName()) },
                                                       itemCount: thinkContent.count)
         let actActive = ActivityViewModel.createViewModel(type: .actActive,
                                                          goals: [],

@@ -42,6 +42,7 @@ class MenuBottomView: UIView {
         Bundle.main.loadNibNamed("MenuBottomView", owner: self)
         contentView.fixInView(self)
         backgroundColor = .clear
+        userImageView.cornerRadius = 26.5
     }
     
     func config(type: MenuBottomViewType) {
@@ -50,6 +51,10 @@ class MenuBottomView: UIView {
     
     func setName(_ name: String?) {
         titleLabel.text = name
+    }
+    
+    func setUserImage(imagePath: String?) {
+        userImageView.setImageAnimated(path: imagePath ?? "", completion: { SessionManager.shared.profile?.image = $0 })
     }
     
     func setLevel(_ level: String?) {

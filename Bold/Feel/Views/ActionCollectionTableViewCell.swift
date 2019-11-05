@@ -21,6 +21,40 @@ enum FeelTypeCell: Int {
     case citate
     case lessons
     
+    func categoryName() -> String {
+        switch self {
+        case .meditation:
+            return "Meditations"
+        case .hypnosis:
+            return "Hypnosis"
+        case .pepTalk:
+            return "Pep-Talks"
+        case .stories:
+            return "Stories"
+        case .citate:
+            return "Thoughts"
+        case .lessons:
+            return "Lessons"
+        }
+    }
+    
+    func categoryImage() -> UIImage? {
+        switch self {
+        case .meditation:
+            return Asset.meditation.image
+        case .hypnosis:
+            return nil
+        case .pepTalk:
+            return Asset.peptalks.image
+        case .stories:
+            return Asset.stories.image
+        case .lessons:
+            return Asset.lessons.image
+        case .citate:
+            return nil
+        }
+    }
+    
     func titleText() -> String? {
         switch self {
         case .meditation:

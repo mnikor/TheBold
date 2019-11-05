@@ -21,17 +21,32 @@ extension AlertDisplayable where Self: UIViewController {
         navigationController.navigationBar.isHidden = true
         navigationController.modalPresentationStyle = .overFullScreen
         if let tabBarController = tabBarController {
-            if let _ = tabBarController.presentedViewController {
-                dismiss(animated: true)
+            if var presentingViewController = tabBarController.presentedViewController {
+                while let presentedViewController = presentingViewController.presentedViewController {
+                    presentingViewController = presentedViewController
+                }
+                presentingViewController.present(navigationController,
+                                                 animated: false,
+                                                 completion: completion)
+            } else {
+                tabBarController.present(navigationController,
+                                         animated: false,
+                                         completion: completion)
             }
-            tabBarController.present(navigationController,
-                                     animated: false,
-                                     completion: completion)
+            
         } else {
-            if let _ = presentedViewController {
-                dismiss(animated: true)
+            if var presentingViewController = self.presentedViewController {
+                while let presentedViewController = presentingViewController.presentedViewController {
+                    presentingViewController = presentedViewController
+                }
+                presentingViewController.present(navigationController,
+                                                 animated: false,
+                                                 completion: completion)
+            } else {
+                present(navigationController,
+                        animated: false,
+                        completion: completion)
             }
-            present(navigationController, animated: false, completion: completion)
         }
         return blurAlertController
     }

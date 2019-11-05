@@ -14,6 +14,18 @@ class NetworkService {
     
     private let baseURL = "https://the-bold-staging.herokuapp.com/api/v1"
     
+    private var headers: [String : String] {
+        var headers = [String: String]()
+        if let token = SessionManager.shared.token {
+            headers.updateValue(token, forKey: "X-Auth-Token")
+        }
+        //        if let apiToken = SessionManager.shared.apiToken {
+        //            headers.updateValue(apiToken, forKey: "X-Api-Token")
+        //        }
+        headers.updateValue("asqwjeqehqk", forKey: "X-Api-Token")
+        return headers
+    }
+    
     private init() { }
     
     func facebookAuth(facebookToken: String) {
@@ -92,7 +104,7 @@ class NetworkService {
         }
     }
     
-    func editProfile(firstName: String?, lastName: String?, image: Data?, completion: ((Result<Profile>) -> Void)?) {
+    func editProfile(firstName: String? = nil, lastName: String? = nil, completion: ((Result<Profile>) -> Void)?) {
         var params: [String: Any] = [:]
         if let firstName = firstName {
             params.updateValue(firstName, forKey: RequestParameter.usersFirstName)
@@ -100,9 +112,7 @@ class NetworkService {
         if let lastName = lastName {
             params.updateValue(lastName, forKey: RequestParameter.usersLastName)
         }
-        if let image = image {
-            params.updateValue(image, forKey: RequestParameter.usersImage)
-        }
+        
         sendRequest(endpoint: Endpoint.profile.rawValue,
                     method: .put,
                     parameters: params) { result in
@@ -118,6 +128,29 @@ class NetworkService {
                                         }
                                         completion?(.success(profile))
                                     }
+        }
+    }
+    
+    func uploadImage(imageData: Data, completion: ((Result<Profile>) -> Void)?) {
+        var headers = self.headers
+        headers.updateValue("multipart/form-data", forKey: "Content-type")
+        sendMultipartRequest(endpoint: Endpoint.profile.rawValue,
+                             method: .put,
+                             parameters: [:],
+                             imageData: imageData,
+                             headers: headers) { result in
+                                switch result {
+                                case .failure(let error):
+                                    // TODO: - error handling
+                                    break
+                                case .success(let jsonData):
+                                    guard let profile = Profile.mapJSON(jsonData)
+                                        else {
+                                            completion?(.failure(ServerErrorFactory.unknown))
+                                            return
+                                    }
+                                    completion?(.success(profile))
+                                }
         }
     }
     
@@ -274,16 +307,39 @@ class NetworkService {
         }
     }
     
-    private func sendRequest(endpoint: String, method: HTTPMethod, parameters: [String : Any], headers: [String : String] = [:], completion: ((Result<JSON>) -> Void)?) {
-        let encodingType: ParameterEncoding = URLEncoding.default //(method == .get) ? URLEncoding.default : JSONEncoding.default
-        var headers = headers
-        if let token = SessionManager.shared.token {
-            headers.updateValue(token, forKey: "X-Auth-Token")
+    private func sendMultipartRequest(endpoint: String, method: HTTPMethod, parameters: [String: Any], imageData: Data?, headers: [String: String], completion: ((Result<JSON>) -> Void)?) {
+        let url = baseURL + endpoint
+        let encodingType: ParameterEncoding = URLEncoding.default
+        Alamofire.upload(multipartFormData: { multipartFormData in
+            for (key, value) in parameters {
+                multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!,
+                                         withName: key as String)
+            }
+            
+            if let data = imageData {
+                multipartFormData.append(data,
+                                         withName: RequestParameter.usersImage,
+                                         fileName: "image.png",
+                                         mimeType: "image/png")
+            }
+        }, usingThreshold: UInt64.init(),
+           to: url,
+           method: method,
+           headers: headers) { result in
+            switch result {
+            case .success(request: let uploadRequest, streamingFromDisk: let streamingFromDisk, streamFileURL: let streamFileURL):
+                uploadRequest.responseJSON { [weak self] response in
+                    guard let self = self else { return }
+                    completion?(self.parseResponse(response))
+                }
+            case .failure(let error):
+                completion?(.failure(error))
+            }
         }
-//        if let apiToken = SessionManager.shared.apiToken {
-//            headers.updateValue(apiToken, forKey: "X-Api-Token")
-//        }
-        headers.updateValue("asqwjeqehqk", forKey: "X-Api-Token")
+    }
+    
+    private func sendRequest(endpoint: String, method: HTTPMethod, parameters: [String : Any], completion: ((Result<JSON>) -> Void)?) {
+        let encodingType: ParameterEncoding = URLEncoding.default //(method == .get) ? URLEncoding.default : JSONEncoding.default
         Alamofire.request(baseURL + endpoint,
                           method: method,
                           parameters: parameters,

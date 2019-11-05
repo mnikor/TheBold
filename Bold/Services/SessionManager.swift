@@ -18,7 +18,11 @@ class SessionManager {
     private(set) var token = KeychainManager.keychain[Constants.tokenKey]
     private(set) var apiToken = KeychainManager.keychain[Constants.apiTokenKey]
     
-    var profile: Profile?
+    var profile: Profile? {
+        didSet {
+            NotificationCenter.default.post(name: .profileChanged, object: nil, userInfo: nil)
+        }
+    }
     
     // MARK: - Life cycle
     private init() { }

@@ -39,6 +39,11 @@
 		C561C410234470FD0073ABAC /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C40F234470FD0073ABAC /* SessionManager.swift */; };
 		C561C412234474850073ABAC /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C411234474850073ABAC /* KeychainManager.swift */; };
 		C561C41723447B5F0073ABAC /* ServerErrorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C41623447B5F0073ABAC /* ServerErrorFactory.swift */; };
+		C565090F236C64B40072ADF9 /* ChangePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C565090E236C64B40072ADF9 /* ChangePhotoView.swift */; };
+		C5650911236C651C0072ADF9 /* ChangePhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5650910236C651C0072ADF9 /* ChangePhotoView.xib */; };
+		C5650914236FDD6A0072ADF9 /* AllowCameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5650913236FDD6A0072ADF9 /* AllowCameraView.xib */; };
+		C5650916236FE4D30072ADF9 /* AllowCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5650915236FE4D30072ADF9 /* AllowCameraView.swift */; };
+		C565091823713ED50072ADF9 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C565091723713ED50072ADF9 /* NotificationName+Extension.swift */; };
 		C56CD6E22330F80800322688 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CD6E12330F80800322688 /* VideoView.swift */; };
 		C56CD6E42330FC3F00322688 /* boldlogo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C56CD6E32330FC3A00322688 /* boldlogo.mp4 */; };
 		C56CD6E72331096B00322688 /* FadePresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CD6E62331096B00322688 /* FadePresentAnimationController.swift */; };
@@ -449,6 +454,11 @@
 		C561C40F234470FD0073ABAC /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		C561C411234474850073ABAC /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		C561C41623447B5F0073ABAC /* ServerErrorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerErrorFactory.swift; sourceTree = "<group>"; };
+		C565090E236C64B40072ADF9 /* ChangePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhotoView.swift; sourceTree = "<group>"; };
+		C5650910236C651C0072ADF9 /* ChangePhotoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePhotoView.xib; sourceTree = "<group>"; };
+		C5650913236FDD6A0072ADF9 /* AllowCameraView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllowCameraView.xib; sourceTree = "<group>"; };
+		C5650915236FE4D30072ADF9 /* AllowCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowCameraView.swift; sourceTree = "<group>"; };
+		C565091723713ED50072ADF9 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
 		C56CD6E12330F80800322688 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		C56CD6E32330FC3A00322688 /* boldlogo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = boldlogo.mp4; sourceTree = "<group>"; };
 		C56CD6E62331096B00322688 /* FadePresentAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadePresentAnimationController.swift; sourceTree = "<group>"; };
@@ -1564,6 +1574,7 @@
 				F1F6ADCD23210E7600F6A925 /* NumberFormatter+Extensions.swift */,
 				F1F6ADDE232626DA00F6A925 /* Date+Extensions.swift */,
 				C5E517B72369B0CB00E8635F /* UIApplication+Extension.swift */,
+				C565091723713ED50072ADF9 /* NotificationName+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1953,6 +1964,10 @@
 				F1130CE2230EC5BD008FA60D /* DownloadTableViewCell.xib */,
 				F1130CED230FFBEA008FA60D /* SettingsDownloadTableViewCell.swift */,
 				F1130CEE230FFBEA008FA60D /* SettingsDownloadTableViewCell.xib */,
+				C565090E236C64B40072ADF9 /* ChangePhotoView.swift */,
+				C5650910236C651C0072ADF9 /* ChangePhotoView.xib */,
+				C5650913236FDD6A0072ADF9 /* AllowCameraView.xib */,
+				C5650915236FE4D30072ADF9 /* AllowCameraView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2153,7 +2168,9 @@
 				F19A98B622D7575C00A0492E /* MissedYouOneButtonAlertView.xib in Resources */,
 				F186883E229E90EF0029A663 /* Montserrat-Regular.ttf in Resources */,
 				F1CECE1622E9C73400EA95EE /* ColorCreateGoalTableViewCell.xib in Resources */,
+				C5650914236FDD6A0072ADF9 /* AllowCameraView.xib in Resources */,
 				F10B69CC22EB2D9100E47315 /* IdeasTableViewCell.xib in Resources */,
+				C5650911236C651C0072ADF9 /* ChangePhotoView.xib in Resources */,
 				F1CECE1A22E9C75000EA95EE /* ColorListCreateGoalTableViewCell.xib in Resources */,
 				F18687FA229D60410029A663 /* Think.storyboard in Resources */,
 				F14166A122C106210020BF0F /* HeaderActionPlanTableViewCell.xib in Resources */,
@@ -2277,6 +2294,7 @@
 				F1D390F922D4E3F800DF8700 /* CitationViewController.swift in Sources */,
 				F17CB27022A6CF230035ABAB /* OnboardCell.swift in Sources */,
 				F1F4060923030B070091B774 /* Network.swift in Sources */,
+				C565090F236C64B40072ADF9 /* ChangePhotoView.swift in Sources */,
 				C59E5E3223058BA6005DCD18 /* ButtonedTitleCell.swift in Sources */,
 				F1CCC71622CE46F600E7B637 /* UIView+Extensions.swift in Sources */,
 				F1EA1CB922E1C66B00BB328F /* CreateGoalViewController.swift in Sources */,
@@ -2560,11 +2578,13 @@
 				F1CECE1922E9C75000EA95EE /* ColorListCreateGoalTableViewCell.swift in Sources */,
 				F186884D229E9BD80029A663 /* UIFont+Extensions.swift in Sources */,
 				C5A4853E2306B934002CC62A /* CalendarAndHistoryConfigurator.swift in Sources */,
+				C565091823713ED50072ADF9 /* NotificationName+Extension.swift in Sources */,
 				F1130CDB230D4B54008FA60D /* ArchivedGoalsViewController.swift in Sources */,
 				F141669B22C0EDD20020BF0F /* SettingActionPlanTableViewCell.swift in Sources */,
 				F183302322E6058100BB7A9E /* ActConfigurator.swift in Sources */,
 				F17CB26D22A6BDA60035ABAB /* SCPageControlView.swift in Sources */,
 				F1CCC70522CA11FB00E7B637 /* BaseTableViewCell.swift in Sources */,
+				C5650916236FE4D30072ADF9 /* AllowCameraView.swift in Sources */,
 				C561C3E52341F7840073ABAC /* InitView.swift in Sources */,
 				F107537C22EF391A0078C71C /* ShareWithFriendsViewController.swift in Sources */,
 				F183304422E6F0FD00BB7A9E /* CreateGoalRouter.swift in Sources */,

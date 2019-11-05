@@ -53,7 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func getRootViewController() -> UIViewController {
+        let rootViewController: UIViewController
         if let authToken = SessionManager.shared.token {
+            rootViewController = StoryboardScene.Menu.storyboard.instantiateInitialViewController() ?? UIViewController()
             NetworkService.shared.profile { result in
                 switch result {
                 case .failure(let error):
@@ -61,12 +63,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     break
                 case .success(let profile):
                     SessionManager.shared.profile = profile
+                    
                 }
             }
-            return StoryboardScene.Menu.storyboard.instantiateInitialViewController() ?? UIViewController()
         } else {
-            return StoryboardScene.Splash.storyboard.instantiateInitialViewController() ?? UIViewController()
+            rootViewController = StoryboardScene.Splash.storyboard.instantiateInitialViewController() ?? UIViewController()
         }
+        return rootViewController
     }
 
 }

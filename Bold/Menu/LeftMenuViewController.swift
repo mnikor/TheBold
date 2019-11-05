@@ -17,14 +17,28 @@ class LeftMenuViewController: MenuViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        registerForNotifications()
         menuItems = [.home, .feel, .think, .act, .settings]
         menuBottomView.delegate = self
+        configureBottomView()
+    }
+    
+    private func registerForNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(profileChanged(_:)),
+                                               name: .profileChanged,
+                                               object: nil)
     }
     
     private func configureBottomView() {
         menuBottomView.setName(SessionManager.shared.profile?.firstName)
+        menuBottomView.setUserImage(imagePath: SessionManager.shared.profile?.imageURL)
     }
+    
+    @objc private func profileChanged(_ notification: Notification) {
+        configureBottomView()
+    }
+    
 }
 
 extension LeftMenuViewController: UITableViewDelegate, UITableViewDataSource {
