@@ -59,7 +59,10 @@ class HomeRouter: RouterProtocol, HomeInputRouterProtocol {
             actionListVC.typeVC = type
             viewController.navigationController?.pushViewController(actionListVC, animated: true)
         case .unlockBoldManifest:
-            viewController.performSegue(withIdentifier: StoryboardSegue.Home.manifestIdentifier.rawValue, sender: nil)
+//            viewController.performSegue(withIdentifier: StoryboardSegue.Home.manifestIdentifier.rawValue, sender: nil)
+            let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
+            vc.viewModel = DescriptionViewModel.boldManifestInfo
+            viewController.navigationController?.present(vc, animated: true, completion: nil)
         case .createGoal:
             let createGoalVC = StoryboardScene.Act.createGoalViewController.instantiate()
             viewController.navigationController?.pushViewController(createGoalVC, animated: true)

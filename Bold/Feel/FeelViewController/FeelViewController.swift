@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class FeelViewController: UIViewController, SideMenuItemContent, ViewProtocol {
     
@@ -43,7 +44,10 @@ class FeelViewController: UIViewController, SideMenuItemContent, ViewProtocol {
     }
     
     private func prepareDataSource() {
+        SVProgressHUD.setContainerView(view)
+        SVProgressHUD.show()
         presenter.input(.prepareDataSource(types: contentTypes, completion: { [weak self] items in
+            SVProgressHUD.dismiss()
             self?.items = items
             self?.tableView.reloadData()
         }))

@@ -29,7 +29,7 @@ class ThinkListViewController: ActionsListViewController {
 
 }
 
-extension ActionsListViewController{
+extension ActionsListViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
@@ -38,10 +38,11 @@ extension ActionsListViewController{
         switch content.type {
         case .lesson, .story:
             let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
-            vc.content = actions[indexPath.row].data
+            vc.viewModel = DescriptionViewModel.map(activityContent: actions[indexPath.row].data)
             navigationController?.present(vc, animated: true, completion: nil)
         default:
             AudioService.shared.tracks = content.audioTracks
+            AudioService.shared.image = .path(content.imageURL)
             AudioService.shared.showPlayerFullScreen()
         }
         

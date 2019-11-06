@@ -84,7 +84,7 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
         switch content.type {
         case .lesson, .story:
             let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
-            vc.content = content
+            vc.viewModel = DescriptionViewModel.map(activityContent: content)
             router.input(.present(vc))
         default:
             interactor.input(.prepareTracks(content: content))

@@ -11,7 +11,7 @@ import UIKit
 
 enum ActionsListInputRouter {
     case back
-    case info
+    case info(FeelTypeCell)
     case presentedBy(AddActionPlanViewController)
 }
 
@@ -33,8 +33,10 @@ class ActionsListRouter: RouterProtocol, ActionsListRouterProtocol {
         switch inputCase {
         case .back:
             viewController.navigationController?.popViewController(animated: true)
-        case .info:
-            print("info")
+        case .info(let type):
+            let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
+            vc.viewModel = DescriptionViewModel.map(feelType: type)
+            viewController.navigationController?.present(vc, animated: true, completion: nil)
         case .presentedBy(let vController):
             vController.presentedBy(viewController)
         }

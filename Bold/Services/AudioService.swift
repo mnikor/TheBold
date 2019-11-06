@@ -43,6 +43,7 @@ class AudioService: NSObject, AudioServiceProtocol {
     
     let smallPlayer = PlayerSmallView()
     var tracks: [AudioPlayerTrackInfo] = []
+    var image: Image?
     
     weak var delegate: AudioServiceDelegate?
     let player = AudioPlayer()
@@ -179,7 +180,7 @@ class AudioService: NSObject, AudioServiceProtocol {
     func showPlayerFullScreen() {
         let playerVC = PlayerViewController.createController()
         delegate = playerVC
-        UIApplication.topViewController?.present(playerVC, animated: true, completion: nil)
+        UIApplication.topViewController?.present(playerVC, animated: true)
     }
     
 }
