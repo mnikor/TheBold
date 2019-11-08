@@ -89,21 +89,35 @@ class ActivityCollectionTableViewCell: BaseTableViewCell {
 extension ActivityCollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource.count
+        switch itemViewModel.type {
+        case .actActive, .activeGoals, .activeGoalsAct, .actNotActive :
+            return dataSource.isEmpty ? 1 : dataSource.count
+        default:
+            return dataSource.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let item = dataSource[indexPath.row]
-        switch item {
-        case .content(content: let content):
-            let cell = collectionView.dequeReusableCell(indexPath: indexPath) as ActivityCollectionViewCell
-            cell.config(with: content)
-            return cell
-        case .goal(goal: let goal):
-            let cell = collectionView.dequeReusableCell(indexPath: indexPath) as GoalCollectionViewCell
-            cell.configCell(viewModel: goal)
-            return cell
+        if !dataSource.isEmpty {
+            let item = dataSource[indexPath.row]
+            switch item {
+            case .content(content: let content):
+                let cell = collectionView.dequeReusableCell(indexPath: indexPath) as ActivityCollectionViewCell
+                cell.config(with: content)
+                return cell
+            case .goal(goal: let goal):
+                let cell = collectionView.dequeReusableCell(indexPath: indexPath) as GoalCollectionViewCell
+                cell.configCell(viewModel: goal)
+                return cell
+            }
+        } else {
+            switch itemViewModel.type {
+            case .actActive, .activeGoals, .activeGoalsAct, .actNotActive :
+                let cell = collectionView.dequeReusableCell(indexPath: indexPath) as ActInactiveCollectionViewCell
+                return cell
+            default:
+                return UICollectionViewCell()
+            }
         }
     }
     
@@ -129,6 +143,14 @@ extension ActivityCollectionTableViewCell: UICollectionViewDelegate, UICollectio
 extension ActivityCollectionTableViewCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if dataSource.isEmpty {
+            switch itemViewModel.type {
+                case .actActive, .activeGoals, .activeGoalsAct, .actNotActive :
+                    return CGSize(width: 225, height: 102)
+                default:
+                    return itemViewModel.collectionCellSize
+            }
+        }
         //let item = dataSource[indexPath.row]
         return itemViewModel.collectionCellSize //item.collectionCellSize
         //return entity.type.collectionCellSize()
