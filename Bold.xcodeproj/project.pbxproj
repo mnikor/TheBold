@@ -117,6 +117,7 @@
 		F11562A022DF20B100399FA6 /* ActViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F115629F22DF20B100399FA6 /* ActViewController.swift */; };
 		F11562A322DF2E9A00399FA6 /* StakeActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11562A122DF2E9A00399FA6 /* StakeActionTableViewCell.swift */; };
 		F11562A422DF2E9A00399FA6 /* StakeActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11562A222DF2E9A00399FA6 /* StakeActionTableViewCell.xib */; };
+		F12815E7236B298500CAE49B /* LevelOfMasteryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12815E6236B298500CAE49B /* LevelOfMasteryService.swift */; };
 		F13DEAD322AAC0B700BC3CA6 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13DEAD222AAC0B700BC3CA6 /* SignUpView.swift */; };
 		F13DEAD522AAC0D500BC3CA6 /* SignUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F13DEAD422AAC0D500BC3CA6 /* SignUpView.xib */; };
 		F13FCBB42339FBBC00BAE544 /* CalendarModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBB32339FBBC00BAE544 /* CalendarModelView.swift */; };
@@ -300,6 +301,10 @@
 		F1C2535022B3F9C5003156AA /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C2534F22B3F9C5003156AA /* HomeInteractor.swift */; };
 		F1C2535322B3F9F8003156AA /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C2535222B3F9F8003156AA /* HomeRouter.swift */; };
 		F1C2535622BA8064003156AA /* ManifestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C2535522BA8063003156AA /* ManifestViewController.swift */; };
+		F1C745F323707B61004D689F /* LevelBold.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C745F223707B61004D689F /* LevelBold.swift */; };
+		F1C745F523707E57004D689F /* PointBold.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C745F423707E57004D689F /* PointBold.swift */; };
+		F1C745F723718AA7004D689F /* LimitsLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C745F623718AA7004D689F /* LimitsLevel.swift */; };
+		F1C745FA23757665004D689F /* LevelOfMasteryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C745F923757665004D689F /* LevelOfMasteryEntity.swift */; };
 		F1CCC70322CA0F2900E7B637 /* UITableView+Xib.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCC70222CA0F2900E7B637 /* UITableView+Xib.swift */; };
 		F1CCC70522CA11FB00E7B637 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCC70422CA11FB00E7B637 /* BaseTableViewCell.swift */; };
 		F1CCC70722CA5E3700E7B637 /* ActionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCC70622CA5E3700E7B637 /* ActionsListViewController.swift */; };
@@ -529,6 +534,7 @@
 		F115629F22DF20B100399FA6 /* ActViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActViewController.swift; sourceTree = "<group>"; };
 		F11562A122DF2E9A00399FA6 /* StakeActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StakeActionTableViewCell.swift; sourceTree = "<group>"; };
 		F11562A222DF2E9A00399FA6 /* StakeActionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StakeActionTableViewCell.xib; sourceTree = "<group>"; };
+		F12815E6236B298500CAE49B /* LevelOfMasteryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfMasteryService.swift; sourceTree = "<group>"; };
 		F13DEAD222AAC0B700BC3CA6 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		F13DEAD422AAC0D500BC3CA6 /* SignUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpView.xib; sourceTree = "<group>"; };
 		F13FCBB32339FBBC00BAE544 /* CalendarModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModelView.swift; sourceTree = "<group>"; };
@@ -714,6 +720,10 @@
 		F1C2534F22B3F9C5003156AA /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		F1C2535222B3F9F8003156AA /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		F1C2535522BA8063003156AA /* ManifestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestViewController.swift; sourceTree = "<group>"; };
+		F1C745F223707B61004D689F /* LevelBold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelBold.swift; sourceTree = "<group>"; };
+		F1C745F423707E57004D689F /* PointBold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointBold.swift; sourceTree = "<group>"; };
+		F1C745F623718AA7004D689F /* LimitsLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitsLevel.swift; sourceTree = "<group>"; };
+		F1C745F923757665004D689F /* LevelOfMasteryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfMasteryEntity.swift; sourceTree = "<group>"; };
 		F1CCC70222CA0F2900E7B637 /* UITableView+Xib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Xib.swift"; sourceTree = "<group>"; };
 		F1CCC70422CA11FB00E7B637 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		F1CCC70622CA5E3700E7B637 /* ActionsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsListViewController.swift; sourceTree = "<group>"; };
@@ -1218,6 +1228,8 @@
 				C561C40F234470FD0073ABAC /* SessionManager.swift */,
 				C561C411234474850073ABAC /* KeychainManager.swift */,
 				F187147E2369A01D000F764C /* AlertViewService.swift */,
+				F12815E6236B298500CAE49B /* LevelOfMasteryService.swift */,
+				F1C745F123707B33004D689F /* LevelOfMastery */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1720,6 +1732,24 @@
 			path = Manifest;
 			sourceTree = "<group>";
 		};
+		F1C745F123707B33004D689F /* LevelOfMastery */ = {
+			isa = PBXGroup;
+			children = (
+				F1C745F223707B61004D689F /* LevelBold.swift */,
+				F1C745F623718AA7004D689F /* LimitsLevel.swift */,
+				F1C745F423707E57004D689F /* PointBold.swift */,
+			);
+			path = LevelOfMastery;
+			sourceTree = "<group>";
+		};
+		F1C745F823757649004D689F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F1C745F923757665004D689F /* LevelOfMasteryEntity.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F1CCC70E22CE21E500E7B637 /* Act */ = {
 			isa = PBXGroup;
 			children = (
@@ -1830,6 +1860,7 @@
 				F1E698A62315641800438E3E /* LevelOfMasteryPresenter.swift */,
 				F1E698A82315642C00438E3E /* LevelOfMasteryInteractor.swift */,
 				F1E698AA2315643A00438E3E /* LevelOfMasteryRouter.swift */,
+				F1C745F823757649004D689F /* Models */,
 			);
 			path = LevelOfMasteryViewController;
 			sourceTree = "<group>";
@@ -2270,6 +2301,7 @@
 				F13FCBBC233A171C00BAE544 /* DataSource+Events.swift in Sources */,
 				C561C4032341FBD00073ABAC /* BlurTransitionController.swift in Sources */,
 				F179974D22AE615D0039879F /* Localizable.swift in Sources */,
+				F1C745F323707B61004D689F /* LevelBold.swift in Sources */,
 				F1F6ADDF232626DA00F6A925 /* Date+Extensions.swift in Sources */,
 				F107539422F20C0B0078C71C /* EnterYourGoalTableViewCell.swift in Sources */,
 				F1F6ADB523210DB300F6A925 /* Enums.swift in Sources */,
@@ -2315,6 +2347,7 @@
 				C561C3F82341FB900073ABAC /* PresentAnimationController.swift in Sources */,
 				C5A4853C2306B91B002CC62A /* CalendarAndHistoryViewController.swift in Sources */,
 				F1A79DC922D8A5620018A8EF /* ManageItTableViewCell.swift in Sources */,
+				F1C745FA23757665004D689F /* LevelOfMasteryEntity.swift in Sources */,
 				F13FCBBF233A18D900BAE544 /* GoalCollectionViewModel.swift in Sources */,
 				C56CD6E72331096B00322688 /* FadePresentAnimationController.swift in Sources */,
 				F186880A229D7E1F0029A663 /* OnboardViewController.swift in Sources */,
@@ -2437,6 +2470,7 @@
 				F18687E0229D56B00029A663 /* BaseProtocols.swift in Sources */,
 				F192580522E752C400FA5C6E /* CalendarActionsListRouter.swift in Sources */,
 				F183301522E5CB6A00BB7A9E /* FeelInteractor.swift in Sources */,
+				F1C745F723718AA7004D689F /* LimitsLevel.swift in Sources */,
 				F183301322E5CB5700BB7A9E /* FeelPresenter.swift in Sources */,
 				F19A98AE22D6551E00A0492E /* BaseAlertViewController.swift in Sources */,
 				F179977322B1413A0039879F /* MenuContainerViewController.swift in Sources */,
@@ -2451,6 +2485,7 @@
 				F1E698B22315722C00438E3E /* DownloadsInteractor.swift in Sources */,
 				C5B1E54E23042913000991DF /* ImagedTitleSubtitleView.swift in Sources */,
 				F1E698B02315721E00438E3E /* DownloadsPresenter.swift in Sources */,
+				F12815E7236B298500CAE49B /* LevelOfMasteryService.swift in Sources */,
 				F183304722E714E800BB7A9E /* PlayerConfigurator.swift in Sources */,
 				F169675C236ACD9F004BB9BA /* BoldTypealias.swift in Sources */,
 				F1F406262306F3D80091B774 /* LevelOfMasteryViewController.swift in Sources */,
@@ -2503,6 +2538,7 @@
 				C5E9B9FA232FAAF200668F2E /* CalendarService.swift in Sources */,
 				F183302522E6059600BB7A9E /* ActPresenter.swift in Sources */,
 				F1EAF59222E89925008073D7 /* HeaderWriteActionsTableViewCell.swift in Sources */,
+				F1C745F523707E57004D689F /* PointBold.swift in Sources */,
 				F1F40635230AE2270091B774 /* LevelOfMasteryFooterView.swift in Sources */,
 				F1E698A72315641800438E3E /* LevelOfMasteryPresenter.swift in Sources */,
 				F1D390F722D4E3AB00DF8700 /* CitationPageViewController.swift in Sources */,

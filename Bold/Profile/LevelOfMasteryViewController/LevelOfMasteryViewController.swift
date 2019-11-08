@@ -8,14 +8,16 @@
 
 import UIKit
 
-enum LevelOfMasteryType {
+enum LevelType {
     case apprentice
     case risingPower
     case intermidiate
     case seasoned
     case unstoppable
     
-    var iconImage : UIImage {
+    static let types: [LevelType] = [apprentice, risingPower, intermidiate, seasoned, unstoppable]
+    
+    var iconImage : UIImage? {
         switch self {
         case .apprentice:
             return Asset.apprentice.image
@@ -30,7 +32,7 @@ enum LevelOfMasteryType {
         }
     }
     
-    var titleText : String {
+    var titleText : String? {
         switch self {
         case .apprentice:
             return L10n.Profile.LevelOfMastery.apprentice
@@ -42,6 +44,54 @@ enum LevelOfMasteryType {
             return L10n.Profile.LevelOfMastery.seasoned
         case .unstoppable:
             return L10n.Profile.LevelOfMastery.unstoppable
+        }
+    }
+    
+    var limits: LimitsLevel {
+        switch self {
+        case .apprentice:
+            return LimitsLevel(limitsLevels:
+                [
+                    SimpleLevel(type: .points(500) , description: "23123123")
+                ]
+            )
+                //[LimitsLevel(points: 500, goalMid: 0, goalLong: 0, description: "123213")]
+        case .risingPower:
+            return LimitsLevel(limitsLevels:
+                [
+                    SimpleLevel(type: .points(300), description: L10n.Profile.LevelOfMastery.points(300)),
+                    SimpleLevel(type: .goals(goalMid: 1, goalLong: 0), description: L10n.Profile.LevelOfMastery.RisingPower.midTermGoalAchieved)
+                ]
+            )
+                //[LimitsLevel(points: 300, goalMid: 1, goalLong: 0, description: L10n.Profile.LevelOfMastery.RisingPower.midTermGoalAchieved)]
+        case .intermidiate:
+            return LimitsLevel(limitsLevels:
+                [
+                    SimpleLevel(type: .points(600), description: L10n.Profile.LevelOfMastery.points(600)),
+                    SimpleLevel(type: .goals(goalMid: 3, goalLong: 0), description: L10n.Profile.LevelOfMastery.Intermidiate.midTermGoals)
+                ]
+            )
+                //[LimitsLevel(points: 600, goalMid: 3, goalLong: 0, description: L10n.Profile.LevelOfMastery.Intermidiate.midTermGoals)]
+        case .seasoned:
+            return LimitsLevel(limitsLevels:
+                [
+                    SimpleLevel(type: .points(1000), description: L10n.Profile.LevelOfMastery.Seasoned.minPoints(1000)),
+                    SimpleLevel(type: .goals(goalMid: 5, goalLong: 1), description: L10n.Profile.LevelOfMastery.Seasoned.longTermAndMidTermAchievedOrLongTermGoalsAchieved),
+                    SimpleLevel(type: .goals(goalMid: 0, goalLong: 2), description: L10n.Profile.LevelOfMastery.Seasoned.longTermAndMidTermAchievedOrLongTermGoalsAchieved)
+                ]
+            )
+//                [LimitsLevel(points: 1000, goalMid: 5, goalLong: 1, description: L10n.Profile.LevelOfMastery.Seasoned.minPoints(1000)),
+//                    LimitsLevel(points: 1000, goalMid: 0, goalLong: 2, description: L10n.Profile.LevelOfMastery.Seasoned.longTermAndMidTermAchievedOrLongTermGoalsAchieved)]
+        case .unstoppable:
+            return LimitsLevel(limitsLevels:
+                [
+                    SimpleLevel(type: .points(2000), description: L10n.Profile.LevelOfMastery.points(2000)),
+                    SimpleLevel(type: .goals(goalMid: 7, goalLong: 1), description: L10n.Profile.LevelOfMastery.Unstoppable.longTermAndLongTermGoalsAchievedAndMidTermAchieved),
+                    SimpleLevel(type: .goals(goalMid: 0, goalLong: 3), description: L10n.Profile.LevelOfMastery.Unstoppable.longTermAndLongTermGoalsAchievedAndMidTermAchieved)
+                ]
+            )
+//                [LimitsLevel(points: 2000, goalMid: 7, goalLong: 1, description: L10n.Profile.LevelOfMastery.points(2000)),
+//                    LimitsLevel(points: 2000, goalMid: 0, goalLong: 3, description: L10n.Profile.LevelOfMastery.Unstoppable.longTermAndLongTermGoalsAchievedAndMidTermAchieved)]
         }
     }
     
@@ -58,38 +108,6 @@ class LevelOfMasteryViewController: UIViewController, ViewProtocol {
     var presenter: Presenter!
     var configurator: Configurator! = Configurator()
     
-    lazy var levels: [LevelOfMasteryEntity] = {
-        
-        return [LevelOfMasteryEntity(type: .apprentice,
-                              isLock: false,
-                              progress: 75,
-                              params: [CheckLevelEntity(checkPoint: true, titleText: "400 of 500 points", points: 500, timeDuration: nil)]),
-        LevelOfMasteryEntity(type: .risingPower,
-                             isLock: true,
-                             progress: 0,
-                             params: [CheckLevelEntity(checkPoint: true, titleText: "300 points", points: 300, timeDuration: nil),
-                                      CheckLevelEntity(checkPoint: true, titleText: "1 mid-term goal achieved", points: nil, timeDuration: Date()),
-            ]),
-        LevelOfMasteryEntity(type: .intermidiate,
-                             isLock: true,
-                             progress: 0,
-                             params: [CheckLevelEntity(checkPoint: true, titleText: "600 points", points: 600, timeDuration: nil),
-                                      CheckLevelEntity(checkPoint: true, titleText: "3 mid-term goals", points: nil, timeDuration: Date()),
-            ]),
-        LevelOfMasteryEntity(type: .seasoned,
-                             isLock: true,
-                             progress: 0,
-                             params: [CheckLevelEntity(checkPoint: true, titleText: "Min 1000 points", points: 1000, timeDuration: nil),
-                                      CheckLevelEntity(checkPoint: true, titleText: "1 long-term and 5 mid-term achieved. Or 2 long-term goals achieved", points: nil, timeDuration: Date()),
-            ]),
-        LevelOfMasteryEntity(type: .unstoppable,
-                             isLock: true,
-                             progress: 0,
-                             params: [CheckLevelEntity(checkPoint: true, titleText: "2000 points", points: 2000, timeDuration: nil),
-                                      CheckLevelEntity(checkPoint: true, titleText: "3 long-term and 1 long-term goals achieved and 7 mid-term achieved", points: nil, timeDuration: Date()),
-            ])]
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -98,6 +116,8 @@ class LevelOfMasteryViewController: UIViewController, ViewProtocol {
         configureNavigationBar()
         setupTableView()
         registerXibs()
+        
+        presenter.input(.createDataSource)
     }
     
     private func configureNavigationBar() {
@@ -137,29 +157,15 @@ class LevelOfMasteryViewController: UIViewController, ViewProtocol {
 
 extension LevelOfMasteryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return levels.count
+        return presenter.levels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let level = levels[indexPath.row]
+        let level = presenter.levels[indexPath.row]
         let cell = tableView.dequeReusableCell(indexPath: indexPath) as LevelOfMasteryTableViewCell
         cell.config(level: level)
         return cell
     }
     
-}
-
-struct LevelOfMasteryEntity {
-    var type: LevelOfMasteryType
-    var isLock: Bool
-    var progress: Int
-    var params: [CheckLevelEntity]
-}
-
-struct CheckLevelEntity {
-    var checkPoint: Bool = false
-    var titleText: String
-    var points: Int?
-    var timeDuration: Date?
 }

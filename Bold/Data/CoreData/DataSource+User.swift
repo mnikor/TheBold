@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 protocol UserFunctionality {
     func addUser()
@@ -27,5 +28,18 @@ extension DataSource: UserFunctionality {
         
     }
     
+    func readUser() -> User? {
+        
+        var result : User?
+        let fetchRequest = NSFetchRequest<User>(entityName: "User")
+        
+        do {
+            result = try DataSource.shared.backgroundContext.fetch(fetchRequest).first
+        } catch {
+            print(error)
+        }
+        
+        return result
+    }
     
 }

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class HeaderHomeView: UIView {
 
@@ -15,13 +17,15 @@ class HeaderHomeView: UIView {
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var yourProgressLabel: UILabel!
-    @IBOutlet weak var apprenticeLabel: UILabel!
+    @IBOutlet weak var levelNameLabel: UILabel!
     @IBOutlet weak var masteryLabel: UILabel!
     @IBOutlet weak var currentPointsLabel: UILabel!
     @IBOutlet weak var iconPointImageView: UIImageView!
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var boldnessLabel: UILabel!
+    
+    let disposeBag = DisposeBag()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,6 +44,8 @@ class HeaderHomeView: UIView {
         self.addSubview(contentView)
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         //contentView.fixInView(self)
+        
+        configure()
     }
     
     func setName(_ name: String?) {
@@ -52,8 +58,14 @@ class HeaderHomeView: UIView {
         }
     }
     
-//    class func loadFromNib() -> HeaderHomeView {
-//        let headerView: HeaderHomeView = Bundle.main.loadNibNamed("HeaderHomeView", owner: self, options: nil)?.first as! HeaderHomeView
-//        return headerView
-//    }
+    func configure() {
+        
+       LevelOfMasteryService.shared.changePoints.subscribe(onNext: {[weak self] (levelInfo) in
+            
+        self?.levelNameLabel.text = levelInfo.level.type.titleText
+        self?.currentPointsLabel.text = "\(levelInfo.currentPoint)/\(levelInfo.level.limits.first?.points ?? 0)"
+        
+       }).disposed(by: disposeBag)
+    }
+    
 }

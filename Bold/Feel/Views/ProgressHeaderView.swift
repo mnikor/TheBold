@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ProgressHeaderView: UIView {
 
@@ -15,6 +17,8 @@ class ProgressHeaderView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var pointsImageView: UIImageView!
+    
+    let disposeBag = DisposeBag()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,10 +38,15 @@ class ProgressHeaderView: UIView {
     }
     
     func config() {
-        progressView.progress = 0.75
-        titleLabel.text = L10n.Feel.apprentice
-        pointsLabel.text = "345"
         pointsImageView.image = Asset.feelShape.image
+        
+        LevelOfMasteryService.shared.changePoints.subscribe(onNext: {[weak self] (levelInfo) in
+             
+            self?.titleLabel.text = levelInfo.level.type.titleText
+            self?.pointsLabel.text = "\(levelInfo.currentPoint)"
+            self?.progressView.progress = Float(levelInfo.currentPoint)/Float(levelInfo.level.limits.first!.points)
+         
+        }).disposed(by: disposeBag)
     }
 
 }

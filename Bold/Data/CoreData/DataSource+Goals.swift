@@ -71,4 +71,19 @@ extension DataSource: GoalsFunctionality {
         
         success(results)
     }
+    
+    func listLevelOfMasteryGoal() -> [Goal] {
+        
+        var results = [Goal]()
+        let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
+        fetchRequest.predicate = NSPredicate(format: "status = %d", StatusType.completed.rawValue)
+        
+        do {
+            results = try DataSource.shared.viewContext.fetch(fetchRequest)
+        } catch {
+            print(error)
+        }
+        
+        return results
+    }
 }

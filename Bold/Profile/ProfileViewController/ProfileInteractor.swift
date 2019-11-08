@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 enum ProfileInteractorInput {
     case prepareDataSource(([UserProfileDataSourceItem]) -> Void)
     
@@ -41,6 +42,7 @@ class ProfileInteractor: ProfileInteractorInputProtocol {
     }
     
     private func createProfileDetailsSection() -> UserProfileDataSourceItem {
+        
         let profileHeaderViewModel = ImagedTitleSubtitleViewModel(leftImage: Asset.menuUser.image,
                                                                   title: SessionManager.shared.profile?.fullName,
                                                                   attributedTitle: nil,

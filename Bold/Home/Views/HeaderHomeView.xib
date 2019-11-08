@@ -15,12 +15,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeaderHomeView" customModule="Bold" customModuleProvider="target">
             <connections>
-                <outlet property="apprenticeLabel" destination="Ate-Sj-dgO" id="BGs-R1-Mhs"/>
                 <outlet property="backgroundImageView" destination="pl4-gl-v45" id="Zd2-il-C4m"/>
                 <outlet property="boldnessLabel" destination="nOw-1N-1RO" id="eyF-U6-GsI"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="jbF-Df-EBV"/>
                 <outlet property="currentPointsLabel" destination="9sy-qB-cCT" id="cne-UK-CJj"/>
                 <outlet property="iconPointImageView" destination="tQ3-Ge-evL" id="uYK-Co-SKg"/>
+                <outlet property="levelNameLabel" destination="Ate-Sj-dgO" id="BGs-R1-Mhs"/>
                 <outlet property="masteryLabel" destination="C7m-n2-5tr" id="1JP-pN-Iho"/>
                 <outlet property="pointsLabel" destination="EVS-ik-eKb" id="OQX-D4-Tlr"/>
                 <outlet property="timeLabel" destination="gfW-4W-QRm" id="fFQ-ua-sXx"/>

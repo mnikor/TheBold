@@ -398,10 +398,14 @@ internal enum L10n {
       internal static let longTermGoalsDuration = L10n.tr("Localizable", "Profile.LevelOfMastery.LongTermGoalsDuration")
       /// Mid-term goals — duration 3 to 6 months
       internal static let midTermGoalsDuration = L10n.tr("Localizable", "Profile.LevelOfMastery.MidTermGoalsDuration")
-      /// of 5 points
-      internal static let of = L10n.tr("Localizable", "Profile.LevelOfMastery.Of")
-      ///  points
-      internal static let points = L10n.tr("Localizable", "Profile.LevelOfMastery.Points")
+      /// %d points
+      internal static func points(_ p1: Int) -> String {
+        return L10n.tr("Localizable", "Profile.LevelOfMastery.Points", p1)
+      }
+      /// %d of %d points
+      internal static func pointsOfPoints(_ p1: Int, _ p2: Int) -> String {
+        return L10n.tr("Localizable", "Profile.LevelOfMastery.PointsOfPoints", p1, p2)
+      }
       /// Rising power
       internal static let risingPower = L10n.tr("Localizable", "Profile.LevelOfMastery.RisingPower")
       /// Seasoned
@@ -419,8 +423,10 @@ internal enum L10n {
       internal enum Seasoned {
         /// 1 long-term and 5 mid-term achieved. Or 2 long-term goals achieved
         internal static let longTermAndMidTermAchievedOrLongTermGoalsAchieved = L10n.tr("Localizable", "Profile.LevelOfMastery.Seasoned.LongTermAndMidTermAchievedOrLongTermGoalsAchieved")
-        /// Min 1000 points
-        internal static let minPoints = L10n.tr("Localizable", "Profile.LevelOfMastery.Seasoned.MinPoints")
+        /// Min %d points
+        internal static func minPoints(_ p1: Int) -> String {
+          return L10n.tr("Localizable", "Profile.LevelOfMastery.Seasoned.MinPoints", p1)
+        }
       }
       internal enum Unstoppable {
         /// 3 long-term and 1 long-term goals achieved and 7 mid-term achieved
