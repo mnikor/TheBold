@@ -56,12 +56,12 @@ enum FeelTypeCell: Int {
         }
     }
     
-    func categoryImage() -> UIImage? {
+    func categoryImage() -> UIImage {
         switch self {
         case .meditation:
             return Asset.meditation.image
         case .hypnosis:
-            return nil
+            return Asset.hypnosis.image
         case .pepTalk:
             return Asset.peptalks.image
         case .stories:
@@ -69,7 +69,7 @@ enum FeelTypeCell: Int {
         case .lessons:
             return Asset.lessons.image
         case .citate:
-            return nil
+            return Asset.quotes.image
         }
     }
     

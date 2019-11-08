@@ -31,6 +31,8 @@ class ActionsListViewController: UIViewController, ViewProtocol {
     
     var actions: [ActionEntity] = []
     
+    private let loader = LoaderView(frame: .zero)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,10 +53,9 @@ class ActionsListViewController: UIViewController, ViewProtocol {
     }
     
     private func prepareDataSource() {
-        SVProgressHUD.setContainerView(view)
-        SVProgressHUD.show()
+        loader.start(in: self.view)
         presenter.input(.prepareDataSource(type: typeVC, completion: { [weak self] actions in
-            SVProgressHUD.dismiss()
+            self?.loader.stop()
             self?.actions = actions
             self?.tableView.reloadData()
         }))

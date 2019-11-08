@@ -25,6 +25,8 @@ class FeelViewController: UIViewController, SideMenuItemContent, ViewProtocol {
     }
     var items: [FeelEntity] = []
     
+    private var loader = LoaderView(frame: .zero)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,10 +46,9 @@ class FeelViewController: UIViewController, SideMenuItemContent, ViewProtocol {
     }
     
     private func prepareDataSource() {
-        SVProgressHUD.setContainerView(view)
-        SVProgressHUD.show()
+        loader.start(in: self.view)
         presenter.input(.prepareDataSource(types: contentTypes, completion: { [weak self] items in
-            SVProgressHUD.dismiss()
+            self?.loader.stop()
             self?.items = items
             self?.tableView.reloadData()
         }))

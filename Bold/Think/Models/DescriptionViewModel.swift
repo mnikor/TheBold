@@ -51,6 +51,26 @@ struct DescriptionViewModel {
                                     isLikesEnabled: false)
     }
     
+    static var privacyPolicy: DescriptionViewModel {
+        return DescriptionViewModel(image: .image(Asset.privacyHeader.image),
+                                    documentURL: Bundle.main.url(forResource: "Privacy", withExtension: "pdf"),
+                                    likesCount: nil,
+                                    title: "Privacy policy",
+                                    category: nil,
+                                    audioTracks: [],
+                                    isLikesEnabled: false)
+    }
+    
+    static var termsOfUse: DescriptionViewModel {
+        return DescriptionViewModel(image: .image(Asset.privacyHeader.image),
+                                    documentURL: Bundle.main.url(forResource: "Terms", withExtension: "pdf"),
+                                    likesCount: nil,
+                                    title: "Terms & Conditions",
+                                    category: nil,
+                                    audioTracks: [],
+                                    isLikesEnabled: false)
+    }
+    
 }
 
 enum Image {

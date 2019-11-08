@@ -86,6 +86,10 @@
 		C5DCDEC52372973C0018DEA4 /* Meditations.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDEC02372973C0018DEA4 /* Meditations.pdf */; };
 		C5DCDEC62372973C0018DEA4 /* Hypnosis.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDEC12372973C0018DEA4 /* Hypnosis.pdf */; };
 		C5DCDEC72372973C0018DEA4 /* Pep-Talks.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDEC22372973C0018DEA4 /* Pep-Talks.pdf */; };
+		C5DCDECB2373D78A0018DEA4 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCDECA2373D78A0018DEA4 /* SettingsService.swift */; };
+		C5DCDECD237458580018DEA4 /* Privacy.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDECC237458580018DEA4 /* Privacy.pdf */; };
+		C5DCDECF2374587C0018DEA4 /* Terms.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDECE2374587C0018DEA4 /* Terms.pdf */; };
+		C5DCDED123752F640018DEA4 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCDED023752F640018DEA4 /* LoaderView.swift */; };
 		C5E517B82369B0CB00E8635F /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E517B72369B0CB00E8635F /* UIApplication+Extension.swift */; };
 		C5E9B9FA232FAAF200668F2E /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E9B9F9232FAAF200668F2E /* CalendarService.swift */; };
 		F104353E2348C80D0086673C /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F104353D2348C80D0086673C /* ActivityViewModel.swift */; };
@@ -508,6 +512,10 @@
 		C5DCDEC02372973C0018DEA4 /* Meditations.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Meditations.pdf; sourceTree = "<group>"; };
 		C5DCDEC12372973C0018DEA4 /* Hypnosis.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Hypnosis.pdf; sourceTree = "<group>"; };
 		C5DCDEC22372973C0018DEA4 /* Pep-Talks.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Pep-Talks.pdf"; sourceTree = "<group>"; };
+		C5DCDECA2373D78A0018DEA4 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		C5DCDECC237458580018DEA4 /* Privacy.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Privacy.pdf; sourceTree = "<group>"; };
+		C5DCDECE2374587C0018DEA4 /* Terms.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Terms.pdf; sourceTree = "<group>"; };
+		C5DCDED023752F640018DEA4 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		C5E517B72369B0CB00E8635F /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		C5E9B9F9232FAAF200668F2E /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		CD864991698CD15B66E42367 /* Pods-Bold.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bold.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bold/Pods-Bold.release.xcconfig"; sourceTree = "<group>"; };
@@ -1248,6 +1256,7 @@
 				C561C40F234470FD0073ABAC /* SessionManager.swift */,
 				C561C411234474850073ABAC /* KeychainManager.swift */,
 				F187147E2369A01D000F764C /* AlertViewService.swift */,
+				C5DCDECA2373D78A0018DEA4 /* SettingsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1409,6 +1418,7 @@
 				F17CB26822A682130035ABAB /* RoundedButton.swift */,
 				F190357722D87AF8001BC996 /* FixedPaddingTextView.swift */,
 				F1CCC70422CA11FB00E7B637 /* BaseTableViewCell.swift */,
+				C5DCDED023752F640018DEA4 /* LoaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1649,6 +1659,8 @@
 		F186880B229E82360029A663 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C5DCDECE2374587C0018DEA4 /* Terms.pdf */,
+				C5DCDECC237458580018DEA4 /* Privacy.pdf */,
 				C5DCDEBF2372973B0018DEA4 /* Bold Manifest .mp3 */,
 				C5DCDEC12372973C0018DEA4 /* Hypnosis.pdf */,
 				C5DCDEBE2372973B0018DEA4 /* Manifest.pdf */,
@@ -2169,10 +2181,12 @@
 				F107539522F20C0B0078C71C /* EnterYourGoalTableViewCell.xib in Resources */,
 				F1C2534A22B2ACFC003156AA /* ActInactiveCollectionViewCell.xib in Resources */,
 				F107538522F091C10078C71C /* HeaderConfigureTableViewCell.xib in Resources */,
+				C5DCDECD237458580018DEA4 /* Privacy.pdf in Resources */,
 				F179976222AFFA1D0039879F /* MenuBottomView.xib in Resources */,
 				C56CD6E42330FC3F00322688 /* boldlogo.mp4 in Resources */,
 				F1A79DC622D89C0C0018A8EF /* ListenOrReadMaterialView.xib in Resources */,
 				F18687F8229D602C0029A663 /* Feel.storyboard in Resources */,
+				C5DCDECF2374587C0018DEA4 /* Terms.pdf in Resources */,
 				F115629E22DF0B5C00399FA6 /* Description.storyboard in Resources */,
 				F1EBC7B022CF63D200BAA82D /* Bomfunk Mcs - Freestyler.mp3 in Resources */,
 				F1EE4D4F229EA6620072F663 /* BackgroundVideo.MOV in Resources */,
@@ -2343,6 +2357,7 @@
 				C561C41723447B5F0073ABAC /* ServerErrorFactory.swift in Sources */,
 				F16F21D622F304A4004DC5F3 /* StakeViewController.swift in Sources */,
 				F1EA1CAB22E0833400BB328F /* StakeHeaderView.swift in Sources */,
+				C5DCDED123752F640018DEA4 /* LoaderView.swift in Sources */,
 				C561C3F62341FB900073ABAC /* CustomPresentViewController.swift in Sources */,
 				C561C3EA2341F79F0073ABAC /* AnimationTransitionView.swift in Sources */,
 				F19A98B022D7393C00A0492E /* CongratulationsAlertView.swift in Sources */,
@@ -2467,6 +2482,7 @@
 				C5A485402306B94E002CC62A /* CalendarAndHistoryPresenter.swift in Sources */,
 				C561C40C23436A660073ABAC /* NetworkServiceProtocol.swift in Sources */,
 				C561C3EF2341F7D80073ABAC /* UIButton+Extension.swift in Sources */,
+				C5DCDECB2373D78A0018DEA4 /* SettingsService.swift in Sources */,
 				F1EBC7B922D38C3300BAA82D /* ThinkViewController.swift in Sources */,
 				F1F6ADBC23210DB300F6A925 /* File+CoreDataClass.swift in Sources */,
 				F1C2533322B297B9003156AA /* UnlockPremiumTableViewCell.swift in Sources */,

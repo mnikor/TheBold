@@ -74,7 +74,6 @@ class SettingsPresenter: SettingsPresenterInputProtocol {
                     ]),
                 SettingsSectionModel(header: L10n.Settings.synchronise, items: [
                     SettingsModel(title: L10n.Settings.iosCalendar, accessoryType: .toggle, toggleInitialValue: getInitialValue(for: .iosCalendar), cellType: .iosCalendar),
-                    SettingsModel(title: L10n.Settings.googleCalendar, accessoryType: .toggle, toggleInitialValue: getInitialValue(for: .googleCalendar), cellType: .googleCalendar),
                     SettingsModel(title: L10n.Settings.inCloud, accessoryType: .toggle, toggleInitialValue: getInitialValue(for: .iCloud), cellType: .iCloud)
                     ]),
                 SettingsSectionModel(header: L10n.Settings.offline, items: [

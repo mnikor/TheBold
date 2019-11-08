@@ -45,9 +45,16 @@ class SettingsRouter: SettingsInputRouterProtocol {
             if cellType == .premium {
                 viewController.perform(segue: StoryboardSegue.Settings.premium)
                 //viewController = storyboard.instantiateViewController(withIdentifier: StoryboardSegue.Settings.premium.rawValue)
-            } else if cellType == .terms || cellType == .privacy {
-                viewController.perform(segue: StoryboardSegue.Settings.termsPrivacy)
+            } else if cellType == .terms {
+//                viewController.perform(segue: StoryboardSegue.Settings.termsPrivacy)
+                let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
+                vc.viewModel = DescriptionViewModel.termsOfUse
+                viewController.navigationController?.present(vc, animated: true, completion: nil)
                 //viewController = storyboard.instantiateViewController(withIdentifier: StoryboardSegue.Settings.termsPrivacy.rawValue)
+            } else if cellType == .privacy {
+                let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
+                vc.viewModel = DescriptionViewModel.termsOfUse
+                viewController.navigationController?.present(vc, animated: true, completion: nil)
             }
             //viewController.present(viewController, animated: true, completion: nil)
         case .showMenu:
