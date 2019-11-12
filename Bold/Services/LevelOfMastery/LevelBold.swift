@@ -19,7 +19,7 @@ class LevelBold {
     // MARK: - Public Properties
     let type: LevelType
     var status: StatusLevelsType
-    let limits: [LimitsLevel]
+    let limits: LimitsLevel
     
     var isCurrentLevel: Bool = false
     
@@ -29,10 +29,13 @@ class LevelBold {
         //for completionPercentage
         get {
             let currentLimit = LevelOfMasteryService.shared.currentLimit!
-            let limit = limits.first!
+            let limit = limits
             
-            let limitItems: [Int] = [limit.points, limit.goalMid, limit.goalLong]
-            let currentItems: [Int] = [currentLimit.points, currentLimit.goalMid, currentLimit.goalLong]
+            let currentParamLimit = currentLimit.getAllLimits()
+            let itemLimit = limit.getAllLimits()
+            
+            let currentItems: [Int] = [currentParamLimit.points, currentParamLimit.goalMid, currentParamLimit.goalLong]
+            let limitItems: [Int] = [itemLimit.points, itemLimit.goalMid, itemLimit.goalLong]
             
             var count: Int = 0
             var sum: Int = 0

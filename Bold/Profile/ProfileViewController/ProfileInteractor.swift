@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import RxSwift
+import RxCocoa
 
 enum ProfileInteractorInput {
     case prepareDataSource(([UserProfileDataSourceItem]) -> Void)
@@ -22,6 +23,7 @@ class ProfileInteractor: ProfileInteractorInputProtocol {
     typealias Presenter = ProfilePresenter
     
     weak var presenter: Presenter!
+    let disposeBag = DisposeBag()
     
     required init(presenter: Presenter) {
         self.presenter = presenter
@@ -30,23 +32,32 @@ class ProfileInteractor: ProfileInteractorInputProtocol {
     func input(_ inputCase: ProfileInteractorInput) {
         switch inputCase {
         case .prepareDataSource(let completion):
-            completion(prepareDataSource())
+            prepareDataSource(completed: completion)
         }
     }
     
-    private func prepareDataSource() -> [UserProfileDataSourceItem] {
-        return [createProfileDetailsSection(),
-                createAdditionalInfoSection(),
-                createRateAppSection(),
-                createLogoutSection()]
+    private func prepareDataSource(completed: @escaping ([UserProfileDataSourceItem])->Void ) {
+        
+        LevelOfMasteryService.shared.changePoints.subscribe(onNext: {[unowned self] (levelInfo) in
+        
+            let dataSourceArray = [self.createProfileDetailsSection(nameLevel: levelInfo.level.type.titleText!),
+                                   self.createAdditionalInfoSection(),
+                                   self.createRateAppSection(),
+                                   self.createLogoutSection()]
+        
+            completed(dataSourceArray)
+            
+        }).disposed(by: disposeBag)
+        
+        
     }
     
-    private func createProfileDetailsSection() -> UserProfileDataSourceItem {
+    private func createProfileDetailsSection(nameLevel: String) -> UserProfileDataSourceItem {
         
         let profileHeaderViewModel = ImagedTitleSubtitleViewModel(leftImage: Asset.menuUser.image,
                                                                   title: SessionManager.shared.profile?.fullName,
                                                                   attributedTitle: nil,
-                                                                  subtitle: "Apprentice",
+                                                                  subtitle: nameLevel,
                                                                   attributedSubtitle: nil,
                                                                   rightImage: Asset.rightArrowProfileIcon.image)
         let profileHeader = UserProfileListItem.imagedTitleSubtitle(viewModel: profileHeaderViewModel)

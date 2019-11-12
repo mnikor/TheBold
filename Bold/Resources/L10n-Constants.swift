@@ -402,10 +402,8 @@ internal enum L10n {
       internal static func points(_ p1: Int) -> String {
         return L10n.tr("Localizable", "Profile.LevelOfMastery.Points", p1)
       }
-      /// %d of %d points
-      internal static func pointsOfPoints(_ p1: Int, _ p2: Int) -> String {
-        return L10n.tr("Localizable", "Profile.LevelOfMastery.PointsOfPoints", p1, p2)
-      }
+      ///  of 500 points
+      internal static let pointsOfPoints = L10n.tr("Localizable", "Profile.LevelOfMastery.PointsOfPoints")
       /// Rising power
       internal static let risingPower = L10n.tr("Localizable", "Profile.LevelOfMastery.RisingPower")
       /// Seasoned

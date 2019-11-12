@@ -44,7 +44,7 @@ class ProgressHeaderView: UIView {
              
             self?.titleLabel.text = levelInfo.level.type.titleText
             self?.pointsLabel.text = "\(levelInfo.currentPoint)"
-            self?.progressView.progress = Float(levelInfo.currentPoint)/Float(levelInfo.level.limits.first!.points)
+            self?.progressView.progress = Float(levelInfo.level.completionPercentage) / 100
          
         }).disposed(by: disposeBag)
     }

@@ -51,34 +51,29 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
             let level = LevelBold(type: type)
             self.levelsArray.append(level)
         }
-        print("\(self.levelsArray)")
     }
     
     var levels: [LevelBold] {
         
         let currentLevel = getCurrentLevel()
         var updatedLevels = [LevelBold]()
-        var isNextProgress = false
         var isOtherLevelsDisable = false
         for level in levelsArray {
-            level.status = .active
             
             // Set Disable Levels
             if isOtherLevelsDisable {
                 level.status = .disable
             }
             
-            // Set Level in progress
-            if isNextProgress {
-                level.status = .progress
-                isNextProgress = false
-                isOtherLevelsDisable = true
+            // Set Active Levels
+            if level.type.rawValue < currentLevel.type.rawValue {
+                level.status = .active
             }
             
-            // Set Active Levels
             if level.type == currentLevel.type {
+                level.status = .progress
                 level.isCurrentLevel = true
-                isNextProgress = true
+                isOtherLevelsDisable = true
             }
             
             updatedLevels.append(level)
@@ -113,14 +108,23 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
         let goalMidArray: [Goal] = achievedGoals.filter({ $0.timeSpentType == .mid })
         let goalLongArray: [Goal] = achievedGoals.filter({ $0.timeSpentType == .long })
         
-        currentLimit = LimitsLevel(points: points, goalMid: goalMidArray.count, goalLong: goalLongArray.count)
+        currentLimit = LimitsLevel(limitPoint: SimpleLevel(type: .points(points)),
+                                   limitsGoal: [SimpleLevel(type: .goals(goalMid: goalMidArray.count, goalLong: goalLongArray.count))])
+        
         var currentLevel = levelsArray.first!
         
         for level in levelsArray {
-            for limit in level.limits {
-
-                if currentLimit.compare(limit: limit) {
+            
+            if currentLimit.limitPoint.compare(limit: level.limits.limitPoint) {
+                
+                if level.limits.limitsGoal.isEmpty {
                     currentLevel = level
+                }
+                
+                for limit in level.limits.limitsGoal {
+                    if currentLimit.limitsGoal.first!.compare(limit: limit) {
+                        currentLevel = level
+                    }
                 }
             }
         }

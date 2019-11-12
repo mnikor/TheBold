@@ -258,7 +258,7 @@
 "Profile.LevelOfMastery.Unstoppable" = "Unstoppable";
 "Profile.LevelOfMastery.MidTermGoalsDuration" = "Mid-term goals — duration 3 to 6 months";
 "Profile.LevelOfMastery.LongTermGoalsDuration" = "Long-term goals — duration more than 10 months";
-"Profile.LevelOfMastery.PointsOfPoints" = "%d of %d points";
+"Profile.LevelOfMastery.PointsOfPoints" = " of 500 points";
 "Profile.LevelOfMastery.Points" = "%d points";
 "Profile.LevelOfMastery.RisingPower.MidTermGoalAchieved" = "1 mid-term goal achieved";
 "Profile.LevelOfMastery.Intermidiate.MidTermGoals" = "3 mid-term goals";

@@ -85,7 +85,7 @@ class LevelOfMasteryTableViewCell: BaseTableViewCell {
             descriptionLabel.isHidden = true
             return
         }
-        checkImageView.image = checkLevel.checkPoint == true ? Asset.checkIcon.image : nil
+        checkImageView.image = checkLevel.checkPoint == true ? Asset.checkIcon.image : Asset.checkDisableIcon.image
         descriptionLabel.text = checkLevel.titleText
     }
     

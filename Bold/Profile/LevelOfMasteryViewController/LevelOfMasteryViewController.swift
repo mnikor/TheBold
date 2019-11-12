@@ -8,8 +8,8 @@
 
 import UIKit
 
-enum LevelType {
-    case apprentice
+enum LevelType: Int {
+    case apprentice = 0
     case risingPower
     case intermidiate
     case seasoned
@@ -50,48 +50,26 @@ enum LevelType {
     var limits: LimitsLevel {
         switch self {
         case .apprentice:
-            return LimitsLevel(limitsLevels:
-                [
-                    SimpleLevel(type: .points(500) , description: "23123123")
-                ]
-            )
-                //[LimitsLevel(points: 500, goalMid: 0, goalLong: 0, description: "123213")]
+            return LimitsLevel(limitPoint: SimpleLevel(type: .points(500) , description: L10n.Profile.LevelOfMastery.points(500)),
+                               limitsGoal: [])
         case .risingPower:
-            return LimitsLevel(limitsLevels:
-                [
-                    SimpleLevel(type: .points(300), description: L10n.Profile.LevelOfMastery.points(300)),
-                    SimpleLevel(type: .goals(goalMid: 1, goalLong: 0), description: L10n.Profile.LevelOfMastery.RisingPower.midTermGoalAchieved)
-                ]
-            )
-                //[LimitsLevel(points: 300, goalMid: 1, goalLong: 0, description: L10n.Profile.LevelOfMastery.RisingPower.midTermGoalAchieved)]
+            return LimitsLevel(limitPoint: SimpleLevel(type: .points(300), description: L10n.Profile.LevelOfMastery.points(300)),
+                               limitsGoal: [SimpleLevel(type: .goals(goalMid: 1, goalLong: 0), description: L10n.Profile.LevelOfMastery.RisingPower.midTermGoalAchieved)])
         case .intermidiate:
-            return LimitsLevel(limitsLevels:
-                [
-                    SimpleLevel(type: .points(600), description: L10n.Profile.LevelOfMastery.points(600)),
-                    SimpleLevel(type: .goals(goalMid: 3, goalLong: 0), description: L10n.Profile.LevelOfMastery.Intermidiate.midTermGoals)
-                ]
-            )
-                //[LimitsLevel(points: 600, goalMid: 3, goalLong: 0, description: L10n.Profile.LevelOfMastery.Intermidiate.midTermGoals)]
+            return LimitsLevel(limitPoint: SimpleLevel(type: .points(600), description: L10n.Profile.LevelOfMastery.points(600)),
+                               limitsGoal: [SimpleLevel(type: .goals(goalMid: 3, goalLong: 0), description: L10n.Profile.LevelOfMastery.Intermidiate.midTermGoals)])
         case .seasoned:
-            return LimitsLevel(limitsLevels:
-                [
-                    SimpleLevel(type: .points(1000), description: L10n.Profile.LevelOfMastery.Seasoned.minPoints(1000)),
-                    SimpleLevel(type: .goals(goalMid: 5, goalLong: 1), description: L10n.Profile.LevelOfMastery.Seasoned.longTermAndMidTermAchievedOrLongTermGoalsAchieved),
-                    SimpleLevel(type: .goals(goalMid: 0, goalLong: 2), description: L10n.Profile.LevelOfMastery.Seasoned.longTermAndMidTermAchievedOrLongTermGoalsAchieved)
-                ]
-            )
-//                [LimitsLevel(points: 1000, goalMid: 5, goalLong: 1, description: L10n.Profile.LevelOfMastery.Seasoned.minPoints(1000)),
-//                    LimitsLevel(points: 1000, goalMid: 0, goalLong: 2, description: L10n.Profile.LevelOfMastery.Seasoned.longTermAndMidTermAchievedOrLongTermGoalsAchieved)]
+            return LimitsLevel(limitPoint: SimpleLevel(type: .points(1000), description: L10n.Profile.LevelOfMastery.Seasoned.minPoints(1000)),
+                               limitsGoal: [
+                                SimpleLevel(type: .goals(goalMid: 5, goalLong: 1), description: L10n.Profile.LevelOfMastery.Seasoned.longTermAndMidTermAchievedOrLongTermGoalsAchieved),
+                                SimpleLevel(type: .goals(goalMid: 0, goalLong: 2), description: L10n.Profile.LevelOfMastery.Seasoned.longTermAndMidTermAchievedOrLongTermGoalsAchieved)
+            ])
         case .unstoppable:
-            return LimitsLevel(limitsLevels:
-                [
-                    SimpleLevel(type: .points(2000), description: L10n.Profile.LevelOfMastery.points(2000)),
-                    SimpleLevel(type: .goals(goalMid: 7, goalLong: 1), description: L10n.Profile.LevelOfMastery.Unstoppable.longTermAndLongTermGoalsAchievedAndMidTermAchieved),
-                    SimpleLevel(type: .goals(goalMid: 0, goalLong: 3), description: L10n.Profile.LevelOfMastery.Unstoppable.longTermAndLongTermGoalsAchievedAndMidTermAchieved)
-                ]
-            )
-//                [LimitsLevel(points: 2000, goalMid: 7, goalLong: 1, description: L10n.Profile.LevelOfMastery.points(2000)),
-//                    LimitsLevel(points: 2000, goalMid: 0, goalLong: 3, description: L10n.Profile.LevelOfMastery.Unstoppable.longTermAndLongTermGoalsAchievedAndMidTermAchieved)]
+            return LimitsLevel(limitPoint: SimpleLevel(type: .points(2000), description: L10n.Profile.LevelOfMastery.points(2000)),
+                               limitsGoal: [
+                                SimpleLevel(type: .goals(goalMid: 7, goalLong: 1), description: L10n.Profile.LevelOfMastery.Unstoppable.longTermAndLongTermGoalsAchievedAndMidTermAchieved),
+                                SimpleLevel(type: .goals(goalMid: 0, goalLong: 3), description: L10n.Profile.LevelOfMastery.Unstoppable.longTermAndLongTermGoalsAchievedAndMidTermAchieved)
+            ])
         }
     }
     

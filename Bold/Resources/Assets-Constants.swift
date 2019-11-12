@@ -71,6 +71,7 @@ internal enum Asset {
   internal static let homeHeader2Bacground = ImageAsset(name: "homeHeader2Bacground")
   internal static let homeHeaderBackground = ImageAsset(name: "homeHeaderBackground")
   internal static let homeHeaderShape = ImageAsset(name: "homeHeaderShape")
+  internal static let checkDisableIcon = ImageAsset(name: "checkDisableIcon")
   internal static let checkIcon = ImageAsset(name: "checkIcon")
   internal static let completeToWin = ImageAsset(name: "completeToWin")
   internal static let emotional = ImageAsset(name: "emotional")

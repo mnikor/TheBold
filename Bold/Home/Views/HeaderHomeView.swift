@@ -63,7 +63,8 @@ class HeaderHomeView: UIView {
        LevelOfMasteryService.shared.changePoints.subscribe(onNext: {[weak self] (levelInfo) in
             
         self?.levelNameLabel.text = levelInfo.level.type.titleText
-        self?.currentPointsLabel.text = "\(levelInfo.currentPoint)/\(levelInfo.level.limits.first?.points ?? 0)"
+        let currentLimits = levelInfo.level.limits.getAllLimits()
+        self?.currentPointsLabel.text = "\(levelInfo.currentPoint)/\(currentLimits.points)"
         
        }).disposed(by: disposeBag)
     }

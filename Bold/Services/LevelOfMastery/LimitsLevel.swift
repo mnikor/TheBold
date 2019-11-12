@@ -62,15 +62,36 @@ enum LimitType: Equatable {
 //}
 
 struct LimitsLevel {
-    var limitsPoint: [SimpleLevel]
-    var completed: Bool = false
+    var limitPoint: SimpleLevel
+    var limitsGoal: [SimpleLevel]
+    //var completed: Bool = false
+    
+    func getAllLimits() -> (points: Int, goalMid: Int, goalLong: Int) {
+        
+        var points : Int = 0
+        var goalMid : Int = 0
+        var goalLong : Int = 0
+        
+        if case .points(let pointsTemp) = self.limitPoint.type {
+            points = pointsTemp
+        }
+        
+        if self.limitsGoal.isEmpty == false {
+            if case .goals(goalMid: let goalMidTemp, goalLong: let goalLongTemp) = self.limitsGoal.first!.type{
+                goalMid = goalMidTemp
+                goalLong = goalLongTemp
+            }
+        }
+        
+        return (points, goalMid, goalLong)
+    }
 }
 
 struct SimpleLevel {
     var completed: Bool = false
     let type: LimitType
-    let description: String
-    let isRequired: Bool = false
+    var description: String = ""
+    //let isRequired: Bool = false
     
     func compare(limit: SimpleLevel) -> Bool {
         
