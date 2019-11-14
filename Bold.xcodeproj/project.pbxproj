@@ -39,6 +39,11 @@
 		C561C410234470FD0073ABAC /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C40F234470FD0073ABAC /* SessionManager.swift */; };
 		C561C412234474850073ABAC /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C411234474850073ABAC /* KeychainManager.swift */; };
 		C561C41723447B5F0073ABAC /* ServerErrorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C41623447B5F0073ABAC /* ServerErrorFactory.swift */; };
+		C565090F236C64B40072ADF9 /* ChangePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C565090E236C64B40072ADF9 /* ChangePhotoView.swift */; };
+		C5650911236C651C0072ADF9 /* ChangePhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5650910236C651C0072ADF9 /* ChangePhotoView.xib */; };
+		C5650914236FDD6A0072ADF9 /* AllowCameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5650913236FDD6A0072ADF9 /* AllowCameraView.xib */; };
+		C5650916236FE4D30072ADF9 /* AllowCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5650915236FE4D30072ADF9 /* AllowCameraView.swift */; };
+		C565091823713ED50072ADF9 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C565091723713ED50072ADF9 /* NotificationName+Extension.swift */; };
 		C56CD6E22330F80800322688 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CD6E12330F80800322688 /* VideoView.swift */; };
 		C56CD6E42330FC3F00322688 /* boldlogo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C56CD6E32330FC3A00322688 /* boldlogo.mp4 */; };
 		C56CD6E72331096B00322688 /* FadePresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CD6E62331096B00322688 /* FadePresentAnimationController.swift */; };
@@ -75,6 +80,16 @@
 		C5B1E56B23045F99000991DF /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1E56A23045F99000991DF /* ProfilePresenter.swift */; };
 		C5B1E56D23045FA4000991DF /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1E56C23045FA4000991DF /* ProfileRouter.swift */; };
 		C5C6C14C2320F23800C15C2B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C6C14B2320F23800C15C2B /* NotificationService.swift */; };
+		C5DCDEBD237293540018DEA4 /* DescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCDEBC237293540018DEA4 /* DescriptionViewModel.swift */; };
+		C5DCDEC32372973C0018DEA4 /* Manifest.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDEBE2372973B0018DEA4 /* Manifest.pdf */; };
+		C5DCDEC42372973C0018DEA4 /* Bold Manifest .mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDEBF2372973B0018DEA4 /* Bold Manifest .mp3 */; };
+		C5DCDEC52372973C0018DEA4 /* Meditations.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDEC02372973C0018DEA4 /* Meditations.pdf */; };
+		C5DCDEC62372973C0018DEA4 /* Hypnosis.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDEC12372973C0018DEA4 /* Hypnosis.pdf */; };
+		C5DCDEC72372973C0018DEA4 /* Pep-Talks.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDEC22372973C0018DEA4 /* Pep-Talks.pdf */; };
+		C5DCDECB2373D78A0018DEA4 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCDECA2373D78A0018DEA4 /* SettingsService.swift */; };
+		C5DCDECD237458580018DEA4 /* Privacy.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDECC237458580018DEA4 /* Privacy.pdf */; };
+		C5DCDECF2374587C0018DEA4 /* Terms.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDECE2374587C0018DEA4 /* Terms.pdf */; };
+		C5DCDED123752F640018DEA4 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCDED023752F640018DEA4 /* LoaderView.swift */; };
 		C5E517B82369B0CB00E8635F /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E517B72369B0CB00E8635F /* UIApplication+Extension.swift */; };
 		C5E9B9FA232FAAF200668F2E /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E9B9F9232FAAF200668F2E /* CalendarService.swift */; };
 		F104353E2348C80D0086673C /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F104353D2348C80D0086673C /* ActivityViewModel.swift */; };
@@ -453,6 +468,11 @@
 		C561C40F234470FD0073ABAC /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		C561C411234474850073ABAC /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		C561C41623447B5F0073ABAC /* ServerErrorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerErrorFactory.swift; sourceTree = "<group>"; };
+		C565090E236C64B40072ADF9 /* ChangePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhotoView.swift; sourceTree = "<group>"; };
+		C5650910236C651C0072ADF9 /* ChangePhotoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePhotoView.xib; sourceTree = "<group>"; };
+		C5650913236FDD6A0072ADF9 /* AllowCameraView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllowCameraView.xib; sourceTree = "<group>"; };
+		C5650915236FE4D30072ADF9 /* AllowCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowCameraView.swift; sourceTree = "<group>"; };
+		C565091723713ED50072ADF9 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
 		C56CD6E12330F80800322688 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		C56CD6E32330FC3A00322688 /* boldlogo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = boldlogo.mp4; sourceTree = "<group>"; };
 		C56CD6E62331096B00322688 /* FadePresentAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadePresentAnimationController.swift; sourceTree = "<group>"; };
@@ -490,6 +510,16 @@
 		C5B1E56C23045FA4000991DF /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		C5C6C14B2320F23800C15C2B /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		C5C6C14D2320F5BB00C15C2B /* Bold.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bold.entitlements; sourceTree = "<group>"; };
+		C5DCDEBC237293540018DEA4 /* DescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewModel.swift; sourceTree = "<group>"; };
+		C5DCDEBE2372973B0018DEA4 /* Manifest.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Manifest.pdf; sourceTree = "<group>"; };
+		C5DCDEBF2372973B0018DEA4 /* Bold Manifest .mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Bold Manifest .mp3"; sourceTree = "<group>"; };
+		C5DCDEC02372973C0018DEA4 /* Meditations.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Meditations.pdf; sourceTree = "<group>"; };
+		C5DCDEC12372973C0018DEA4 /* Hypnosis.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Hypnosis.pdf; sourceTree = "<group>"; };
+		C5DCDEC22372973C0018DEA4 /* Pep-Talks.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Pep-Talks.pdf"; sourceTree = "<group>"; };
+		C5DCDECA2373D78A0018DEA4 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		C5DCDECC237458580018DEA4 /* Privacy.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Privacy.pdf; sourceTree = "<group>"; };
+		C5DCDECE2374587C0018DEA4 /* Terms.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Terms.pdf; sourceTree = "<group>"; };
+		C5DCDED023752F640018DEA4 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		C5E517B72369B0CB00E8635F /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		C5E9B9F9232FAAF200668F2E /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		CD864991698CD15B66E42367 /* Pods-Bold.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bold.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bold/Pods-Bold.release.xcconfig"; sourceTree = "<group>"; };
@@ -1135,6 +1165,14 @@
 			path = FellPlayerViewController;
 			sourceTree = "<group>";
 		};
+		C5DCDEBB2372931F0018DEA4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C5DCDEBC237293540018DEA4 /* DescriptionViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F104353C2348C7F80086673C /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1228,6 +1266,7 @@
 				F187147E2369A01D000F764C /* AlertViewService.swift */,
 				F12815E6236B298500CAE49B /* LevelOfMasteryService.swift */,
 				F1C745F123707B33004D689F /* LevelOfMastery */,
+				C5DCDECA2373D78A0018DEA4 /* SettingsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1389,6 +1428,7 @@
 				F17CB26822A682130035ABAB /* RoundedButton.swift */,
 				F190357722D87AF8001BC996 /* FixedPaddingTextView.swift */,
 				F1CCC70422CA11FB00E7B637 /* BaseTableViewCell.swift */,
+				C5DCDED023752F640018DEA4 /* LoaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1574,6 +1614,7 @@
 				F1F6ADCD23210E7600F6A925 /* NumberFormatter+Extensions.swift */,
 				F1F6ADDE232626DA00F6A925 /* Date+Extensions.swift */,
 				C5E517B72369B0CB00E8635F /* UIApplication+Extension.swift */,
+				C565091723713ED50072ADF9 /* NotificationName+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1628,6 +1669,13 @@
 		F186880B229E82360029A663 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C5DCDECE2374587C0018DEA4 /* Terms.pdf */,
+				C5DCDECC237458580018DEA4 /* Privacy.pdf */,
+				C5DCDEBF2372973B0018DEA4 /* Bold Manifest .mp3 */,
+				C5DCDEC12372973C0018DEA4 /* Hypnosis.pdf */,
+				C5DCDEBE2372973B0018DEA4 /* Manifest.pdf */,
+				C5DCDEC02372973C0018DEA4 /* Meditations.pdf */,
+				C5DCDEC22372973C0018DEA4 /* Pep-Talks.pdf */,
 				F1EE4D4E229EA6620072F663 /* BackgroundVideo.MOV */,
 				F1F6ADCA23210DC800F6A925 /* Bold.xcdatamodeld */,
 				C56CD6E32330FC3A00322688 /* boldlogo.mp4 */,
@@ -1768,6 +1816,7 @@
 		F1CCC70F22CE220E00E7B637 /* Think */ = {
 			isa = PBXGroup;
 			children = (
+				C5DCDEBB2372931F0018DEA4 /* Models */,
 				F1EBC7B822D38C3300BAA82D /* ThinkViewController.swift */,
 				F1EBC7BA22D38E8100BAA82D /* ThinkListViewController.swift */,
 				F19A98A422D5FF4F00A0492E /* CustomDotsPageControl.swift */,
@@ -1981,6 +2030,10 @@
 				F1130CE2230EC5BD008FA60D /* DownloadTableViewCell.xib */,
 				F1130CED230FFBEA008FA60D /* SettingsDownloadTableViewCell.swift */,
 				F1130CEE230FFBEA008FA60D /* SettingsDownloadTableViewCell.xib */,
+				C565090E236C64B40072ADF9 /* ChangePhotoView.swift */,
+				C5650910236C651C0072ADF9 /* ChangePhotoView.xib */,
+				C5650913236FDD6A0072ADF9 /* AllowCameraView.xib */,
+				C5650915236FE4D30072ADF9 /* AllowCameraView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2152,21 +2205,27 @@
 				F14166AD22C125A50020BF0F /* ActionCollectionTableViewCell.xib in Resources */,
 				F158E2C122C3C73F00FD671A /* ProgressHeaderView.xib in Resources */,
 				F1C2533422B297B9003156AA /* UnlockPremiumTableViewCell.xib in Resources */,
+				C5DCDEC62372973C0018DEA4 /* Hypnosis.pdf in Resources */,
 				F107539522F20C0B0078C71C /* EnterYourGoalTableViewCell.xib in Resources */,
 				F1C2534A22B2ACFC003156AA /* ActInactiveCollectionViewCell.xib in Resources */,
 				F107538522F091C10078C71C /* HeaderConfigureTableViewCell.xib in Resources */,
+				C5DCDECD237458580018DEA4 /* Privacy.pdf in Resources */,
 				F179976222AFFA1D0039879F /* MenuBottomView.xib in Resources */,
 				C56CD6E42330FC3F00322688 /* boldlogo.mp4 in Resources */,
 				F1A79DC622D89C0C0018A8EF /* ListenOrReadMaterialView.xib in Resources */,
 				F18687F8229D602C0029A663 /* Feel.storyboard in Resources */,
+				C5DCDECF2374587C0018DEA4 /* Terms.pdf in Resources */,
 				F115629E22DF0B5C00399FA6 /* Description.storyboard in Resources */,
 				F1EBC7B022CF63D200BAA82D /* Bomfunk Mcs - Freestyler.mp3 in Resources */,
 				F1EE4D4F229EA6620072F663 /* BackgroundVideo.MOV in Resources */,
+				C5DCDEC32372973C0018DEA4 /* Manifest.pdf in Resources */,
+				C5DCDEC42372973C0018DEA4 /* Bold Manifest .mp3 in Resources */,
 				F162A78822C23352008292E8 /* ActionTableViewCell.xib in Resources */,
 				F1CECE2222E9E5D600EA95EE /* ColorCollectionViewCell.xib in Resources */,
 				F1868832229E90EF0029A663 /* Montserrat-Bold.ttf in Resources */,
 				F1EA1CB322E0BFCE00BB328F /* EmptyActView.xib in Resources */,
 				F1EA1CAD22E0834D00BB328F /* StakeHeaderView.xib in Resources */,
+				C5DCDEC52372973C0018DEA4 /* Meditations.pdf in Resources */,
 				F1EAF59322E89925008073D7 /* HeaderWriteActionsTableViewCell.xib in Resources */,
 				F1868838229E90EF0029A663 /* Montserrat-Medium.ttf in Resources */,
 				F1A79DCA22D8A5620018A8EF /* ManageItTableViewCell.xib in Resources */,
@@ -2181,7 +2240,10 @@
 				F19A98B622D7575C00A0492E /* MissedYouOneButtonAlertView.xib in Resources */,
 				F186883E229E90EF0029A663 /* Montserrat-Regular.ttf in Resources */,
 				F1CECE1622E9C73400EA95EE /* ColorCreateGoalTableViewCell.xib in Resources */,
+				C5DCDEC72372973C0018DEA4 /* Pep-Talks.pdf in Resources */,
+				C5650914236FDD6A0072ADF9 /* AllowCameraView.xib in Resources */,
 				F10B69CC22EB2D9100E47315 /* IdeasTableViewCell.xib in Resources */,
+				C5650911236C651C0072ADF9 /* ChangePhotoView.xib in Resources */,
 				F1CECE1A22E9C75000EA95EE /* ColorListCreateGoalTableViewCell.xib in Resources */,
 				F18687FA229D60410029A663 /* Think.storyboard in Resources */,
 				F14166A122C106210020BF0F /* HeaderActionPlanTableViewCell.xib in Resources */,
@@ -2306,6 +2368,7 @@
 				F1D390F922D4E3F800DF8700 /* CitationViewController.swift in Sources */,
 				F17CB27022A6CF230035ABAB /* OnboardCell.swift in Sources */,
 				F1F4060923030B070091B774 /* Network.swift in Sources */,
+				C565090F236C64B40072ADF9 /* ChangePhotoView.swift in Sources */,
 				C59E5E3223058BA6005DCD18 /* ButtonedTitleCell.swift in Sources */,
 				F1CCC71622CE46F600E7B637 /* UIView+Extensions.swift in Sources */,
 				F1EA1CB922E1C66B00BB328F /* CreateGoalViewController.swift in Sources */,
@@ -2323,6 +2386,7 @@
 				C561C41723447B5F0073ABAC /* ServerErrorFactory.swift in Sources */,
 				F16F21D622F304A4004DC5F3 /* StakeViewController.swift in Sources */,
 				F1EA1CAB22E0833400BB328F /* StakeHeaderView.swift in Sources */,
+				C5DCDED123752F640018DEA4 /* LoaderView.swift in Sources */,
 				C561C3F62341FB900073ABAC /* CustomPresentViewController.swift in Sources */,
 				C561C3EA2341F79F0073ABAC /* AnimationTransitionView.swift in Sources */,
 				F19A98B022D7393C00A0492E /* CongratulationsAlertView.swift in Sources */,
@@ -2411,6 +2475,7 @@
 				F1CECE1D22E9C77600EA95EE /* IconListCreateGoalTableViewCell.swift in Sources */,
 				F107538122EF496F0078C71C /* ShareButtonTableViewCell.swift in Sources */,
 				F1868850229E9D970029A663 /* Assets-Constants.swift in Sources */,
+				C5DCDEBD237293540018DEA4 /* DescriptionViewModel.swift in Sources */,
 				F1F44A662368711700F977D1 /* ServerError.swift in Sources */,
 				F1EBC7BB22D38E8100BAA82D /* ThinkListViewController.swift in Sources */,
 				F19A98B422D7573000A0492E /* MissedYouOneButtonAlertView.swift in Sources */,
@@ -2447,6 +2512,7 @@
 				C5A485402306B94E002CC62A /* CalendarAndHistoryPresenter.swift in Sources */,
 				C561C40C23436A660073ABAC /* NetworkServiceProtocol.swift in Sources */,
 				C561C3EF2341F7D80073ABAC /* UIButton+Extension.swift in Sources */,
+				C5DCDECB2373D78A0018DEA4 /* SettingsService.swift in Sources */,
 				F1EBC7B922D38C3300BAA82D /* ThinkViewController.swift in Sources */,
 				F1F6ADBC23210DB300F6A925 /* File+CoreDataClass.swift in Sources */,
 				F1C2533322B297B9003156AA /* UnlockPremiumTableViewCell.swift in Sources */,
@@ -2592,11 +2658,13 @@
 				F1CECE1922E9C75000EA95EE /* ColorListCreateGoalTableViewCell.swift in Sources */,
 				F186884D229E9BD80029A663 /* UIFont+Extensions.swift in Sources */,
 				C5A4853E2306B934002CC62A /* CalendarAndHistoryConfigurator.swift in Sources */,
+				C565091823713ED50072ADF9 /* NotificationName+Extension.swift in Sources */,
 				F1130CDB230D4B54008FA60D /* ArchivedGoalsViewController.swift in Sources */,
 				F141669B22C0EDD20020BF0F /* SettingActionPlanTableViewCell.swift in Sources */,
 				F183302322E6058100BB7A9E /* ActConfigurator.swift in Sources */,
 				F17CB26D22A6BDA60035ABAB /* SCPageControlView.swift in Sources */,
 				F1CCC70522CA11FB00E7B637 /* BaseTableViewCell.swift in Sources */,
+				C5650916236FE4D30072ADF9 /* AllowCameraView.swift in Sources */,
 				C561C3E52341F7840073ABAC /* InitView.swift in Sources */,
 				F107537C22EF391A0078C71C /* ShareWithFriendsViewController.swift in Sources */,
 				F183304422E6F0FD00BB7A9E /* CreateGoalRouter.swift in Sources */,

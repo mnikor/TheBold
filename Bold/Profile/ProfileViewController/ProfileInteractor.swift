@@ -12,7 +12,7 @@ import RxCocoa
 
 enum ProfileInteractorInput {
     case prepareDataSource(([UserProfileDataSourceItem]) -> Void)
-    
+    case setPhoto(imageData: Data)
 }
 
 protocol ProfileInteractorInputProtocol: InteractorProtocol {
@@ -33,6 +33,20 @@ class ProfileInteractor: ProfileInteractorInputProtocol {
         switch inputCase {
         case .prepareDataSource(let completion):
             prepareDataSource(completed: completion)
+        case .setPhoto(imageData: let imageData):
+            setPhoto(imageData: imageData)
+        }
+    }
+    
+    private func setPhoto(imageData: Data) {
+        NetworkService.shared.uploadImage(imageData: imageData) { result in
+            switch result {
+            case .failure(let error):
+                // TODO: - error handling
+                break
+            case .success(let profile):
+                SessionManager.shared.profile = profile
+            }
         }
     }
     
@@ -53,8 +67,9 @@ class ProfileInteractor: ProfileInteractorInputProtocol {
     }
     
     private func createProfileDetailsSection(nameLevel: String) -> UserProfileDataSourceItem {
-        
-        let profileHeaderViewModel = ImagedTitleSubtitleViewModel(leftImage: Asset.menuUser.image,
+    
+        let profileHeaderViewModel = ImagedTitleSubtitleViewModel(leftImagePath: SessionManager.shared.profile?.imageURL,
+                                                                  imageLoadingCompletion: { SessionManager.shared.profile?.image = $0 },
                                                                   title: SessionManager.shared.profile?.fullName,
                                                                   attributedTitle: nil,
                                                                   subtitle: nameLevel,

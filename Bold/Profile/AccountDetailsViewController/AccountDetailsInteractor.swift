@@ -51,18 +51,17 @@ class AccountDetailsInteractor: AccountDetailsInteractorInputProtocol {
     }
     
     private func updateItem(_ item: AccountDetailsItem, with value: String?, completion: ((_ item: AccountDetailsItem, _ viewModel: ButtonedTitleViewModel) -> Void)?) {
-        guard var profile = SessionManager.shared.profile else { return }
+        var firstName: String?
+        var lastName: String?
         switch item {
         case .firstName:
-            profile.firstName = value
+            firstName = value
         case .lastName:
-            profile.lastName = value
-        case .email:
-            profile.email = value ?? profile.email
+            lastName = value
         default:
-            break
+            return
         }
-        NetworkService.shared.editProfile(firstName: profile.firstName, lastName: profile.lastName, image: nil) { [weak self] result in
+        NetworkService.shared.editProfile(firstName: firstName, lastName: lastName) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .failure(let error):

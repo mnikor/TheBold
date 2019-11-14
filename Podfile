@@ -18,5 +18,6 @@ target 'Bold' do
     pod 'SwiftyJSON'
     pod 'KeychainAccess', '~> 3.1.2'
     pod 'SDWebImage'
+    pod 'SVProgressHUD'
     
 end

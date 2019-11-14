@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 enum ActionCellType {
     case action
@@ -30,6 +31,8 @@ class ActionsListViewController: UIViewController, ViewProtocol {
     
     var actions: [ActionEntity] = []
     
+    private let loader = LoaderView(frame: .zero)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -50,7 +53,9 @@ class ActionsListViewController: UIViewController, ViewProtocol {
     }
     
     private func prepareDataSource() {
+        loader.start(in: self.view)
         presenter.input(.prepareDataSource(type: typeVC, completion: { [weak self] actions in
+            self?.loader.stop()
             self?.actions = actions
             self?.tableView.reloadData()
         }))
@@ -68,7 +73,7 @@ extension ActionsListViewController: NavigationViewDelegate {
     }
     
     func tapInfoAction() {
-        presenter.input(.info)
+        presenter.input(.info(typeVC))
     }
 }
 

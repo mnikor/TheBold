@@ -9,7 +9,8 @@
 import UIKit
 
 struct ImagedTitleSubtitleViewModel {
-    let leftImage: UIImage?
+    let leftImagePath: String?
+    let imageLoadingCompletion: ((UIImage?) -> Void)?
     let title: String?
     let attributedTitle: NSAttributedString?
     let subtitle: String?

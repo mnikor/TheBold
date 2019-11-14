@@ -8,12 +8,27 @@
 
 import SnapKit
 
+protocol ImagedTitleSubtitleViewDelegate: class {
+    func imagedTitleSubtitleViewDidTapAtLeftImage()
+}
+
 class ImagedTitleSubtitleView: ConfigurableView {
+    weak var delegate: ImagedTitleSubtitleViewDelegate?
     
     private let leftImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.layer.cornerRadius = 14.5
+        imageView.layer.cornerRadius = 27
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    
+    private let iconImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFit
+        imageView.cornerRadius = 10
+        imageView.image = Asset.cameraGrayscale.image
         return imageView
     }()
     
@@ -60,6 +75,7 @@ class ImagedTitleSubtitleView: ConfigurableView {
     private func configure() {
         backgroundColor = .white
         configureLeftImageView()
+        configureIconImageView()
         configureContainerView()
         configureTitleLabel()
         configureSubtitleLabel()
@@ -71,8 +87,20 @@ class ImagedTitleSubtitleView: ConfigurableView {
         leftImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(19)
             make.leading.equalToSuperview().offset(24)
-            make.width.height.equalTo(39)
+            make.width.height.equalTo(54)
             make.centerY.equalToSuperview()
+        }
+        leftImageView.isUserInteractionEnabled = true
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapAtLeftImageView))
+        leftImageView.addGestureRecognizer(tapRecognizer)
+    }
+    
+    private func configureIconImageView() {
+        addSubview(iconImageView)
+        iconImageView.snp.makeConstraints { make in
+            make.leading.equalTo(leftImageView).offset(36)
+            make.top.equalTo(leftImageView).offset(36)
+            make.width.height.equalTo(20)
         }
     }
     
@@ -111,7 +139,7 @@ class ImagedTitleSubtitleView: ConfigurableView {
     }
     
     func configure(with viewModel: ImagedTitleSubtitleViewModel) {
-        leftImageView.image = viewModel.leftImage
+        leftImageView.setImageAnimated(path: viewModel.leftImagePath ?? "", completion: viewModel.imageLoadingCompletion)
         if let title = viewModel.attributedTitle {
             titleLabel.attributedText = title
         } else {
@@ -125,6 +153,10 @@ class ImagedTitleSubtitleView: ConfigurableView {
         }
         
         rightImageView.image = viewModel.rightImage
+    }
+    
+    @objc private func didTapAtLeftImageView() {
+        delegate?.imagedTitleSubtitleViewDidTapAtLeftImage()
     }
     
 }

@@ -24,6 +24,7 @@ class FeelInteractor: FeelInteractorInputProtocol {
     weak var presenter: FeelPresenter!
     
     private var dataSource: [ContentType: [ActivityContent]] = [:]
+    private var emptyDataSource: [ContentType: [ActivityContent]] = [:]
     private var count = 0
     
     required init(presenter: Presenter) {
@@ -36,12 +37,22 @@ class FeelInteractor: FeelInteractorInputProtocol {
             prepareTracks(for: content)
         case .prepareDataSource(contentTypeArray: let contentTypes, completion: let completion):
             count = contentTypes.count
+            createEmptyDataSource(contentTypes: contentTypes)
+            dataSource = [:]
             prepareDataSource(contentTypeArray: contentTypes, completion: completion)
         }
     }
     
     private func prepareTracks(for content: ActivityContent) {
         AudioService.shared.tracks = content.audioTracks
+        AudioService.shared.image = .path(content.imageURL)
+    }
+    
+    private func createEmptyDataSource(contentTypes: [ContentType]) {
+        emptyDataSource = [:]
+        for contentType in contentTypes {
+            emptyDataSource[contentType] = []
+        }
     }
     
     private func prepareDataSource(contentTypeArray: [ContentType], completion: (([ContentType: [ActivityContent]]) -> Void)?) {
@@ -59,7 +70,11 @@ class FeelInteractor: FeelInteractorInputProtocol {
                 self.dataSource[type] = content
             }
             if self.dataSource.keys.count == self.count {
-                completion?(self.dataSource)
+                if self.dataSource.keys.isEmpty {
+                    completion?(self.emptyDataSource)
+                } else {
+                    completion?(self.dataSource)
+                }
             }
         }
     }

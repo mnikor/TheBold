@@ -17,15 +17,15 @@ extension UIImageView {
         self.tintColor = color
     }
 
-    func setImageAnimated(path: String, placeholder: UIImage? = nil, forceFade: Bool = false) {
+    func setImageAnimated(path: String, placeholder: UIImage? = nil, forceFade: Bool = false, completion: ((UIImage?) -> Void)? = nil) {
         if let url = URL(string: path) {
-            setImageAnimated(url: url, placeholder: placeholder, forceFade: forceFade)
+            setImageAnimated(url: url, placeholder: placeholder, forceFade: forceFade, completion: completion)
         } else {
             image = placeholder
         }
     }
     
-    func setImageAnimated(url: URL?, placeholder: UIImage? = nil, forceFade: Bool = false) {
+    func setImageAnimated(url: URL?, placeholder: UIImage? = nil, forceFade: Bool = false, completion: ((UIImage?) -> Void)? = nil) {
         let theBoldCache = SDImageCache(namespace: "theBold")
         theBoldCache.config.maxDiskAge = 2678400
         theBoldCache.config.shouldCacheImagesInMemory = true
@@ -34,14 +34,15 @@ extension UIImageView {
         let cacheKey = SDWebImageManager.shared.cacheKey(for: url)
         if let image = theBoldCache.imageFromCache(forKey: cacheKey) {
             self.image = image
+            completion?(image)
         } else {
             image = placeholder
             SDWebImageManager.shared.loadImage(with: url,
                                                progress: nil) { [weak self] (image, data, error, cache, finished, url) in
                                                 guard let self = self else { return }
-                                                if finished,
-                                                    image != nil {
-                                                    self.image = image
+                                                if finished {
+                                                    self.image = image ?? placeholder
+                                                    completion?(image)
                                                 }
             }
         }

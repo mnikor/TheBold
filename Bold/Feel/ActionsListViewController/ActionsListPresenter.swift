@@ -11,7 +11,7 @@ import Foundation
 enum ActionsListPresenterInput {
     case prepareDataSource(type: FeelTypeCell, completion: (([ActionEntity]) -> Void))
     case back
-    case info
+    case info(FeelTypeCell)
     case unlockActionCard
     case share
     case download
@@ -53,8 +53,8 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
             prepareDataSource(type: type, completion: completion)
         case .back:
             router.input(.back)
-        case .info:
-            router.input(.info)
+        case .info(let type):
+            router.input(.info(type))
         case .unlockActionCard:
             print("dsf")
         case .share:

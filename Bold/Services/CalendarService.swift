@@ -26,7 +26,7 @@ class CalendarService {
     }
     
     private func getAuthorizationStatus() -> EKAuthorizationStatus {
-        return EKEventStore.authorizationStatus(for: .event)
+        return SettingsService.shared.syncWithIOSCalendar ? EKEventStore.authorizationStatus(for: .event) : .denied
     }
     
     private func generateEvent(from event: CalendarEvent) -> EKEvent {

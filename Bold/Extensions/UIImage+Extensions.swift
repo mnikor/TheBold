@@ -43,4 +43,19 @@ extension UIImage {
         return image
     }
     
+    func withColor(_ color: UIColor) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        let context = UIGraphicsGetCurrentContext()
+        context?.translateBy(x: 0, y: self.size.height)
+        context?.scaleBy(x: 1, y: -1)
+        context?.setBlendMode(CGBlendMode.normal)
+        let rect = CGRect(origin: .zero, size: self.size)
+        context?.clip(to: rect, mask: self.cgImage!)
+        color.setFill()
+        context?.fill(rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+    
 }

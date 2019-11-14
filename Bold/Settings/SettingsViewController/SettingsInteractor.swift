@@ -39,9 +39,29 @@ class SettingsInteractor: SettingsInteractorInputProtocol {
     func input(_ inputCase: SettingsInteractorInput) {
         switch inputCase {
         case .getInitialValue(let cellType, let completion):
-            completion(UserDefaults.standard.bool(forKey: cellType.rawValue))
+            let value: Bool
+            switch cellType {
+            case .iosCalendar:
+                value = SettingsService.shared.syncWithIOSCalendar
+            case .iCloud:
+                value = SettingsService.shared.syncWithICloud
+            case .onWifi:
+                value = SettingsService.shared.downloadOnWiFiOnly
+            default:
+                value = UserDefaults.standard.bool(forKey: cellType.rawValue)
+            }
+            completion(value)
         case .putInitialValue(let cellType, let value):
-            UserDefaults.standard.set(value, forKey: cellType.rawValue)
+            switch cellType {
+            case .iosCalendar:
+                SettingsService.shared.syncWithIOSCalendar = value
+            case .iCloud:
+                SettingsService.shared.syncWithICloud = value
+            case .onWifi:
+                SettingsService.shared.downloadOnWiFiOnly = value
+            default:
+                UserDefaults.standard.set(value, forKey: cellType.rawValue)
+            }
         }
     }
 }

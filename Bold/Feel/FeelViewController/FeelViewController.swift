@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class FeelViewController: UIViewController, SideMenuItemContent, ViewProtocol {
     
@@ -23,6 +24,8 @@ class FeelViewController: UIViewController, SideMenuItemContent, ViewProtocol {
         return [.meditation, .hypnosis, .preptalk]
     }
     var items: [FeelEntity] = []
+    
+    private var loader = LoaderView(frame: .zero)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +46,9 @@ class FeelViewController: UIViewController, SideMenuItemContent, ViewProtocol {
     }
     
     private func prepareDataSource() {
+        loader.start(in: self.view)
         presenter.input(.prepareDataSource(types: contentTypes, completion: { [weak self] items in
+            self?.loader.stop()
             self?.items = items
             self?.tableView.reloadData()
         }))

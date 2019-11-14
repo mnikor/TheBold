@@ -26,7 +26,7 @@ class HomeViewController: UIViewController, SideMenuItemContent, ViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        registerForNotifications()
         configurator.configure(with: self)
         
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -54,6 +54,13 @@ class HomeViewController: UIViewController, SideMenuItemContent, ViewProtocol {
     func registerXibs() {
         tableView.registerNib(UnlockPremiumTableViewCell.self)
         tableView.registerNib(ActivityCollectionTableViewCell.self)
+    }
+    
+    private func registerForNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(profileChanged(_:)),
+                                               name: .profileChanged,
+                                               object: nil)
     }
     
     override func viewDidLayoutSubviews() {
@@ -84,6 +91,10 @@ class HomeViewController: UIViewController, SideMenuItemContent, ViewProtocol {
             // This only seems to be necessary on iOS 9.
             tableView.layoutIfNeeded()
         }
+    }
+    
+    @objc private func profileChanged(_ notification: Notification) {
+        headerHomeView.setName(SessionManager.shared.profile?.firstName)
     }
     
 }

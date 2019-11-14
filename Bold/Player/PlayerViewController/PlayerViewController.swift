@@ -117,7 +117,18 @@ class PlayerViewController: UIViewController, ViewProtocol {
         super.viewDidLoad()
 
         configurator.configure(with: self)
-        
+        switch AudioService.shared.image {
+        case .image(let image):
+            if let image = image {
+                titleImageView.image = image
+            } else {
+                titleImageView.image = Asset.playerBackground.image
+            }
+        case .path(let path):
+            setImage(imagePath: path)
+        case nil:
+            titleImageView.image = Asset.playerBackground.image
+        }
         toolBar.setShadowImage(UIImage(), forToolbarPosition: .any)
         addSwipe()
         configureSliderAction()
@@ -131,6 +142,15 @@ class PlayerViewController: UIViewController, ViewProtocol {
         } else {
             playerIsPlaying()
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        playerListView.configView(superView: playerView)
+    }
+    
+    func setImage(imagePath: String?) {
+        titleImageView.setImageAnimated(path: imagePath ?? "", placeholder: Asset.playerBackground.image)
     }
     
     private func configureSliderAction() {

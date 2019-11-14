@@ -156,11 +156,23 @@ extension OnboardViewController: SignUpViewDelegate {
     }
     
     func tapShowSignUp() {
-        alertViewController = showAlert(with: signUpView, completion: nil)
+        if let alertViewController = alertViewController {
+        alertViewController.dismiss(animated: true) { [weak self] in
+            self?.alertViewController = self?.showAlert(with: self?.signUpView ?? UIView(), completion: nil)
+        }
+        } else {
+            alertViewController = showAlert(with: signUpView, completion: nil)
+        }
     }
     
     func tapShowLogIn() {
-        alertViewController = showAlert(with: loginView, completion: nil)
+        if let alertViewController = alertViewController {
+        alertViewController.dismiss(animated: true) { [weak self] in
+            self?.alertViewController = self?.showAlert(with: self?.loginView ?? UIView(), completion: nil)
+        }
+        } else {
+            alertViewController = showAlert(with: loginView, completion: nil)
+        }
     }
     
     func signUpViewDidTapAtPrivacyPolicy() {

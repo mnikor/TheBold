@@ -23,6 +23,8 @@ class Profile: NSObject {
         }
     }
     
+    var image: UIImage?
+    
     var id : Int
     var email : String
     var status: String?

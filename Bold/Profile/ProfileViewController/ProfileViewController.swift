@@ -43,7 +43,8 @@ enum ProfileAdditionalInfoCell: CaseIterable {
 }
 
 enum ProfileViewInput {
-    
+    case choosePhotoFromGallery
+    case makeAPhoto
 }
 
 protocol ProfileViewInputProtocol: ViewProtocol {
@@ -52,7 +53,7 @@ protocol ProfileViewInputProtocol: ViewProtocol {
 
 typealias UserProfileDataSourceItem = (section: UserProfileSection, items: [UserProfileListItem])
 
-class ProfileViewController: UIViewController, SideMenuItemContent, ProfileViewInputProtocol {
+class ProfileViewController: UIViewController, SideMenuItemContent, ProfileViewInputProtocol, AlertDisplayable {
     typealias Presenter = ProfilePresenter
     typealias Configurator = ProfileConfigurator
     
@@ -71,8 +72,16 @@ class ProfileViewController: UIViewController, SideMenuItemContent, ProfileViewI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerForNotifications()
         configurator.configure(with: self)
         configure()
+    }
+    
+    private func registerForNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(profileChanged(_:)),
+                                               name: .profileChanged,
+                                               object: nil)
     }
     
     private func configure() {
@@ -96,14 +105,43 @@ class ProfileViewController: UIViewController, SideMenuItemContent, ProfileViewI
         tableView.delegate = self
     }
     
-    private func prepareDataSource() {
-        presenter.input(.prepareDataSource({ [weak self] in self?.dataSource = $0 }))
+    private func prepareDataSource(completion: (() -> Void)? = nil) {
+        presenter.input(.prepareDataSource({ [weak self] dataSource in
+            self?.dataSource = dataSource
+            completion?()
+        }))
     }
     
     func input(_ inputCase: ProfileViewInput) {
         switch inputCase {
-            
+        case .choosePhotoFromGallery:
+            choosePhotoFromGallery()
+        case .makeAPhoto:
+            makeAPhoto()
         }
+    }
+    
+    private func choosePhotoFromGallery() {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary;
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    private func makeAPhoto() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    @objc private func profileChanged(_ notification: Notification) {
+        prepareDataSource { [weak self] in self?.tableView.reloadData() }
     }
     
 }
@@ -122,7 +160,9 @@ extension ProfileViewController: UITableViewDataSource {
         switch item {
         case .imagedTitleSubtitle(viewModel: let viewModel):
             let cell: ConfigurableTableViewCell<ImagedTitleSubtitleView> = tableView.dequeReusableCell(indexPath: indexPath)
-            cell.setCellCreateViewBlock({ return ImagedTitleSubtitleView() })
+            cell.setCellCreateViewBlock({ let view = ImagedTitleSubtitleView()
+                view.delegate = self
+                return view })
             cell.configure(with: viewModel)
             return cell
         case .imagedTitle(viewModel: let viewModel):
@@ -195,4 +235,44 @@ extension ProfileViewController: NavigationViewDelegate {
         showSideMenu()
     }
 
+}
+
+extension ProfileViewController: ImagedTitleSubtitleViewDelegate {
+    func imagedTitleSubtitleViewDidTapAtLeftImage() {
+        presenter.input(.didTapAtProfilePhoto)
+    }
+}
+
+extension ProfileViewController: ChangePhotoViewDelegate {
+    func changePhotoViewDidTapAtChoosePhotoButton() {
+        presenter.input(.choosePhotoFromGallery)
+    }
+    
+    func changePhotoViewDidTapAtMakeAPhotoButton() {
+        presenter.input(.makeAPhoto)
+    }
+    
+}
+
+extension ProfileViewController: AllowCameraViewDelegate {
+    func allowCameraViewDidTapAtNoButton() {
+        presenter.input(.allowCameraUse(false))
+    }
+    
+    func allowCameraViewDidTapAtYesButton() {
+        presenter.input(.allowCameraUse(true))
+    }
+    
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as? UIImage
+        if let imageData = image?.pngData() {
+            presenter.input(.setPhoto(imageData))
+        }
+//        contactImage.image = image
+        dismiss(animated: true, completion: nil)
+    }
+    
 }

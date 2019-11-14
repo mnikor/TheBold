@@ -21,6 +21,58 @@ enum FeelTypeCell: Int {
     case citate
     case lessons
     
+    var documentURL: URL? {
+        return Bundle.main.url(forResource: categoryName(), withExtension: "pdf")
+    }
+    
+    var descriptionImage: UIImage? {
+        switch self {
+        case .meditation:
+            return Asset.meditationsMain.image
+        case .hypnosis:
+            return Asset.hypnosisMain.image
+        case .pepTalk:
+            return Asset.peptalksMain.image
+        default:
+            break
+        }
+        return nil
+    }
+    
+    func categoryName() -> String {
+        switch self {
+        case .meditation:
+            return "Meditations"
+        case .hypnosis:
+            return "Hypnosis"
+        case .pepTalk:
+            return "Pep-Talks"
+        case .stories:
+            return "Stories"
+        case .citate:
+            return "Thoughts"
+        case .lessons:
+            return "Lessons"
+        }
+    }
+    
+    func categoryImage() -> UIImage {
+        switch self {
+        case .meditation:
+            return Asset.meditation.image
+        case .hypnosis:
+            return Asset.hypnosis.image
+        case .pepTalk:
+            return Asset.peptalks.image
+        case .stories:
+            return Asset.stories.image
+        case .lessons:
+            return Asset.lessons.image
+        case .citate:
+            return Asset.quotes.image
+        }
+    }
+    
     func titleText() -> String? {
         switch self {
         case .meditation:

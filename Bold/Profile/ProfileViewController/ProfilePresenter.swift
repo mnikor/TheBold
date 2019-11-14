@@ -11,12 +11,17 @@ import UIKit
 enum ProfilePresenterInput {
     case prepareDataSource(([UserProfileDataSourceItem]) -> Void)
     case profileInfo
+    case didTapAtProfilePhoto
+    case choosePhotoFromGallery
+    case allowCameraUse(Bool)
+    case makeAPhoto
     case accountDetails
     case archivedGoals
     case downloads
     case calendar
     case rateApp
     case logout
+    case setPhoto(Data)
 }
 
 protocol ProfilePresenterInputProtocol: PresenterProtocol {
@@ -32,6 +37,8 @@ class ProfilePresenter: ProfilePresenterInputProtocol {
     var interactor: Interactor!
     var router: Router!
     
+    private var alertController: UIViewController?
+    
     required init(view: View) {
         viewController = view
     }
@@ -46,6 +53,8 @@ class ProfilePresenter: ProfilePresenterInputProtocol {
             interactor.input(.prepareDataSource(completion))
         case .profileInfo:
             profileInfo()
+        case .didTapAtProfilePhoto:
+            didTapAtProfilePhoto()
         case .accountDetails:
             accountDetails()
         case .archivedGoals:
@@ -58,11 +67,33 @@ class ProfilePresenter: ProfilePresenterInputProtocol {
             rateApp()
         case .logout:
             logout()
+        case .choosePhotoFromGallery:
+            choosePhotoFromGalery()
+        case .makeAPhoto:
+            makeAPhoto()
+        case .allowCameraUse(let allowed):
+            allowCameraUse(allowed: allowed)
+        case .setPhoto(let imageData):
+            setPhoto(imageData: imageData)
         }
     }
     
     private func profileInfo() {
         router.input(.performSegue(segueType: .levelOfMasteryIdentifier))
+    }
+    
+    private func didTapAtProfilePhoto() {
+        if let alertController = alertController {
+            alertController.dismiss(animated: true) { [weak self] in
+                let contentView = ChangePhotoView.loadFromNib()
+                contentView.delegate = self?.viewController
+                self?.alertController = self?.viewController.showAlert(with: contentView, completion: nil)
+            }
+        } else {
+            let contentView = ChangePhotoView.loadFromNib()
+            contentView.delegate = viewController
+            alertController = viewController.showAlert(with: contentView, completion: nil)
+        }
     }
     
     private func accountDetails() {
@@ -89,6 +120,48 @@ class ProfilePresenter: ProfilePresenterInputProtocol {
         SessionManager.shared.killSession()
         router.input(.logout)
         // TODO
+    }
+    
+    private func choosePhotoFromGalery() {
+        if let alertController = alertController {
+            alertController.dismiss(animated: true) { [weak self] in
+                self?.viewController.input(.choosePhotoFromGallery)
+            }
+        } else {
+            viewController.input(.choosePhotoFromGallery)
+        }
+    }
+    
+    private func makeAPhoto() {
+        if let alertController = alertController {
+            alertController.dismiss(animated: true) { [weak self] in
+                let contentView = AllowCameraView.loadFromNib()
+                contentView.delegate = self?.viewController
+                self?.alertController = self?.viewController.showAlert(with: contentView, completion: nil)
+            }
+        } else {
+            let contentView = AllowCameraView.loadFromNib()
+            contentView.delegate = viewController
+            alertController = viewController.showAlert(with: contentView, completion: nil)
+        }
+    }
+    
+    private func allowCameraUse(allowed: Bool) {
+        if allowed {
+            if let alertController = alertController {
+                alertController.dismiss(animated: true) { [weak self] in
+                    self?.viewController.input(.makeAPhoto)
+                }
+            } else {
+                viewController.input(.makeAPhoto)
+            }
+        } else {
+            
+        }
+    }
+    
+    private func setPhoto(imageData: Data) {
+        interactor.input(.setPhoto(imageData: imageData))
     }
     
 }

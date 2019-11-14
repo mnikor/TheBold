@@ -13,6 +13,7 @@ PODS:
     - SDWebImage/Core (= 5.2.3)
   - SDWebImage/Core (5.2.3)
   - SnapKit (5.0.0)
+  - SVProgressHUD (2.2.5)
   - SwiftGen (6.1.0)
   - SwiftVideoBackground (3.3.0)
   - SwiftyJSON (5.0.0)
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - RxSwift
   - SDWebImage
   - SnapKit
+  - SVProgressHUD
   - SwiftGen (~> 6.0)
   - SwiftVideoBackground
   - SwiftyJSON
@@ -48,6 +50,7 @@ SPEC REPOS:
     - VisualEffectView
   trunk:
     - SDWebImage
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
@@ -59,11 +62,12 @@ SPEC CHECKSUMS:
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
   SDWebImage: 46a7f73228f84ce80990c786e4372cf4db5875ce
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
   SwiftVideoBackground: ebcc843d4cbcfc520e42472dad80925a6433da06
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   VisualEffectView: bde340c8268765c2d71f7f115930733ba7e4a926
 
-PODFILE CHECKSUM: d4f96f8df669eb977e26e2ae6050756685867193
+PODFILE CHECKSUM: 274353d68c430d1d0ae5d437c5b1e2691e5f1c27
 
 COCOAPODS: 1.8.4
