@@ -16,6 +16,7 @@ class EditActionPlanViewController: AddActionPlanViewController {
     var actionDeleteButton : (() -> Void)?
     var actionID : String?
     var eventID : String?
+    var points : Int!
     
     override class func createController(tapOk: @escaping (() -> Void)) -> EditActionPlanViewController {
         let addVC = StoryboardScene.AlertView.editActionPlanViewController.instantiate()
@@ -25,11 +26,12 @@ class EditActionPlanViewController: AddActionPlanViewController {
         return addVC
     }
     
-    class func createController(actionID: String?, eventID: String?, tapOk: @escaping (() -> Void), tapDelete: @escaping (() -> Void)) -> EditActionPlanViewController {
+    class func createController(actionID: String?, eventID: String?, points: Int, tapOk: @escaping (() -> Void), tapDelete: @escaping (() -> Void)) -> EditActionPlanViewController {
         let addVC = createController(tapOk: tapOk)
         addVC.actionDeleteButton = tapDelete
         addVC.actionID = actionID
         addVC.eventID = eventID
+        addVC.points = points
         return addVC
     }
     
@@ -50,24 +52,23 @@ class EditActionPlanViewController: AddActionPlanViewController {
         }
     
     @IBAction func tapDeleteButton(_ sender: UIButton) {
-//        addActionVC.presenter.input(.deleteAction(success: { [weak self] in
-//
-//        }))
+
+        if let actionIDTemp = actionID {
+            deleteAction(actionID: actionIDTemp)
+        }
+        
         actionDeleteButton?()
         hideAnimateView()
     }
     
     @IBAction func tapDoneButton(_ sender: Any) {
-//        addActionVC.presenter.input(.updateAction(success: {
-//            print("updateAction success")
-//        }))
         
-        guard let eventID = eventID else { return }
-        
-        DataSource.shared.doneEvent(eventID: eventID) { [weak self] in
-            self?.activeOkButton?()
-            self?.hideAnimateView()
+        if let eventIDTemp = eventID {
+            tapDoneEvent(eventID: eventIDTemp)
         }
+        
+        activeOkButton?()
+        hideAnimateView()
     }
     
     override func viewDidLoad() {
@@ -76,4 +77,20 @@ class EditActionPlanViewController: AddActionPlanViewController {
         deleteButton.setTitle(L10n.delete, for: .normal)
     }
     
+    private func tapDoneEvent(eventID: String) {
+        DataSource.shared.doneEvent(eventID: eventID) {
+            print("Done Event")
+        }
+    }
+    
+    private func deleteAction(actionID: String) {
+        
+        AlertViewService.shared.input(.deleteAction(points: points, tapYes: {
+            
+            LevelOfMasteryService.shared.input(.addPoints(points: PointsForAction.deleteAction))
+            DataSource.shared.deleteAction(actionID: actionID) {
+                print("--- Delete ---")
+            }
+        }))
+    }
 }

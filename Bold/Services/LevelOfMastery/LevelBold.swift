@@ -19,10 +19,9 @@ class LevelBold {
     // MARK: - Public Properties
     let type: LevelType
     var status: StatusLevelsType
-    let limits: LimitsLevel
+    var limits: LimitsLevel
     
     var isCurrentLevel: Bool = false
-    
     
     private var percent: Int?
     var completionPercentage: Int {

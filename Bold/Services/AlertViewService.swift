@@ -19,17 +19,17 @@ struct PointsForAction {
 }
 
 enum AlertViewServiceInput {
-    case congratulationsAction(tapGet: VoidCallback)
-    case congratulationsGoal(tapGet: VoidCallback)
-    case moveToLaterDate(tapYes: VoidCallback)
+    case congratulationsAction(points: Int, tapGet: VoidCallback)
+    case congratulationsGoal(points: Int, tapGet: VoidCallback)
+    case moveToLaterDate(points: Int, tapYes: VoidCallback)
     case missedYourActionLock(tapUnlock: VoidCallback)
     case missedYourAction(tapOkay: VoidCallback)
-    case deleteGoal(tapYes: VoidCallback)
-    case deleteAction(tapYes: VoidCallback)
-    case deleteStake(tapYes: VoidCallback)
+    case deleteGoal(points: Int, tapYes: VoidCallback)
+    case deleteAction(points: Int, tapYes: VoidCallback)
+    case deleteStake(points: Int, tapYes: VoidCallback)
     
     case addAction(tapAddPlan: VoidCallback)
-    case editAction(actionID: String?, eventID: String?, tapAddPlan: VoidCallback, tapDelete: VoidCallback)
+    case editAction(actionID: String?, eventID: String?, points: Int, tapAddPlan: VoidCallback, tapDelete: VoidCallback)
     
     case startActionForContent(tapStartNow: VoidCallback)
     case startActionForContentOrDelete(item: DownloadsEntity?, tapAddPlan: VoidCallback, tapDelete: VoidCallback)
@@ -49,27 +49,27 @@ class AlertViewService: NSObject, AlertViewServiceInputProtocol {
     func input(_ inputCase: AlertViewServiceInput) {
         
         switch inputCase {
-        case .congratulationsAction(tapGet: let tapGet):
-            createViewController(type: randomAlert(types: [.congratulationsAction1, .congratulationsAction2]), tapOk: tapGet)
-        case .congratulationsGoal(tapGet: let tapGet):
-            createViewController(type: randomAlert(types: [.goalIsAchievedMadeImportantDecision, .goalIsAchievedAchievedYourGoal]), tapOk: tapGet)
-        case .moveToLaterDate(tapYes: let tapYes):
-            createViewController(type: .dontGiveUpMoveToLaterDate, tapOk: tapYes)
+        case .congratulationsAction(points: let points, tapGet: let tapGet):
+            createViewController(points: points, type: randomAlert(types: [.congratulationsAction1, .congratulationsAction2]), tapOk: tapGet)
+        case .congratulationsGoal(points: let points, tapGet: let tapGet):
+            createViewController(points: points, type: randomAlert(types: [.goalIsAchievedMadeImportantDecision, .goalIsAchievedAchievedYourGoal]), tapOk: tapGet)
+        case .moveToLaterDate(points: let points, tapYes: let tapYes):
+            createViewController(points: points, type: .dontGiveUpMoveToLaterDate, tapOk: tapYes)
         case .missedYourActionLock(tapUnlock: let tapUnlock):
-            createViewController(type: .youveMissedYourActionLock, tapOk: tapUnlock)
+            createViewController(points: 0, type: .youveMissedYourActionLock, tapOk: tapUnlock)
         case .missedYourAction(tapOkay: let tapOkay):
-            createViewController(type: .youveMissedYourAction, tapOk: tapOkay)
-        case .deleteGoal(tapYes: let tapYes):
-            createViewController(type: .dontGiveUpDeleteGoal, tapOk: tapYes)
-        case .deleteAction(tapYes: let tapYes):
-            createViewController(type: randomAlert(types: [.dontGiveUpDeleteAction, .dontGiveUpDeleteThisTask]), tapOk: tapYes)
-        case .deleteStake(tapYes: let tapYes):
-            createViewController(type: .dontGiveUpDeleteStake, tapOk: tapYes)
+            createViewController(points: 0, type: .youveMissedYourAction, tapOk: tapOkay)
+        case .deleteGoal(points: let points, tapYes: let tapYes):
+            createViewController(points: points, type: .dontGiveUpDeleteGoal, tapOk: tapYes)
+        case .deleteAction(points: let points, tapYes: let tapYes):
+            createViewController(points: points, type: randomAlert(types: [.dontGiveUpDeleteAction, .dontGiveUpDeleteThisTask]), tapOk: tapYes)
+        case .deleteStake(points: let points, tapYes: let tapYes):
+            createViewController(points: points, type: .dontGiveUpDeleteStake, tapOk: tapYes)
             
         case .addAction(tapAddPlan: let tapAddPlan):
             createAddAction(tapAdd: tapAddPlan)
-        case .editAction(actionID: let actionID, eventID: let eventID, tapAddPlan: let tapAddPlan, tapDelete: let tapDelete):
-            editAction(actionID: actionID, eventID: eventID, tapOk: tapAddPlan, tapDelete: tapDelete)
+        case .editAction(actionID: let actionID, eventID: let eventID, points: let points, tapAddPlan: let tapAddPlan, tapDelete: let tapDelete):
+            editAction(actionID: actionID, eventID: eventID, points: points, tapOk: tapAddPlan, tapDelete: tapDelete)
             
         case .startActionForContent(tapStartNow: let tapStartNow):
             startActionForContent(tapStartNow: tapStartNow)
@@ -110,9 +110,9 @@ class AlertViewService: NSObject, AlertViewServiceInputProtocol {
     
     // MARK: - Create Functions
     
-    private func createViewController(type: BoldAlertType, tapOk: @escaping VoidCallback) {
+    private func createViewController(points: Int, type: BoldAlertType, tapOk: @escaping VoidCallback) {
         
-        let alertVC = BaseAlertViewController.showAlert(type: type, tapOk: tapOk)
+        let alertVC = BaseAlertViewController.showAlert(points: points, type: type, tapOk: tapOk)
         showAlertController(alertVC)
     }
     
@@ -122,9 +122,9 @@ class AlertViewService: NSObject, AlertViewServiceInputProtocol {
         showAlertController(addVC)
     }
     
-    private func editAction(actionID: String?, eventID: String?, tapOk: @escaping VoidCallback, tapDelete: @escaping VoidCallback) {
+    private func editAction(actionID: String?, eventID: String?, points: Int, tapOk: @escaping VoidCallback, tapDelete: @escaping VoidCallback) {
         
-        let editVC = EditActionPlanViewController.createController(actionID: actionID, eventID: eventID, tapOk: tapOk, tapDelete: tapDelete)
+        let editVC = EditActionPlanViewController.createController(actionID: actionID, eventID: eventID, points: points, tapOk: tapOk, tapDelete: tapDelete)
         showAlertControllerWithNavigation(editVC)
     }
     

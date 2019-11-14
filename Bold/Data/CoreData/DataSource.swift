@@ -7,6 +7,8 @@
 //
 
 import CoreData
+import RxSwift
+import RxCocoa
 
 enum DataTablesType: String {
     case content = "Content"
@@ -27,11 +29,14 @@ class DataSource {
     
     static let shared = DataSource()
     
-    private var updateDataSource : (()->Void)?
-    
     var viewContext: NSManagedObjectContext
     let persistentContainer: NSPersistentContainer
     let backgroundContext: NSManagedObjectContext
+    
+    private let changeContextVariable : BehaviorRelay<String> = BehaviorRelay(value: "Update")
+    var changeContext : Observable<String> {
+        return changeContextVariable.asObservable()
+    }
     
     private init() {
         let container = NSPersistentContainer(name: DataConstants.coreDataModel)
@@ -49,10 +54,6 @@ class DataSource {
         addedNotification()
     }
     
-    func ifUpdateContext(update: @escaping ()->Void) {
-        updateDataSource = update
-    }
-    
     func addedNotification() {
         let notificationCenter = NotificationCenter.default
 //        notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: backgroundContext)
@@ -60,12 +61,8 @@ class DataSource {
         notificationCenter.addObserver(self, selector: #selector(managedObjectContextDidSave), name: NSNotification.Name.NSManagedObjectContextDidSave, object: backgroundContext)
     }
     
-//    private @objc func managedObjectContextObjectsDidChange() {
-//        updateDataSource?()
-//    }
-    
     @objc private func managedObjectContextDidSave() {
-        updateDataSource?()
+        changeContextVariable.accept("ContextDidSave")
     }
     
     func saveBackgroundContext() {

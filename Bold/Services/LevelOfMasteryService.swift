@@ -20,16 +20,16 @@ struct LevelInfoObserv {
 }
 
 enum LevelOfMasteryServiceInput {
+    case calculateProgress
     case currentLevel(level: Callback<LevelBold>)
     case getAllLevels(levels: Callback<[LevelBold]>)
-    //case currentPoints(points: Callback<(Int)>)
+    case checkAllGoalsAndAction
     case addPoints(points: Int)
-    case deductPoints(points: Int)
+    case unlockGoal(goalID: String)
 }
 
 protocol LevelOfMasteryServiceProtocol :class {
     func input(_ inputCase: LevelOfMasteryServiceInput)
-    func currentPoints() -> Int
 }
 
 class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
@@ -43,8 +43,6 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
     var changePoints : Observable<LevelInfoObserv> {
         return changePointsVariable.asObservable()
     }
-    
-    var points = PointBold()
     
     private override init() {
         for type in LevelType.types {
@@ -76,40 +74,56 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
                 isOtherLevelsDisable = true
             }
             
+            // check level limit
+            
+            if currentLimit.limitPoint.compare(limit: level.limits.limitPoint) {
+                    
+                level.limits.limitPoint.completed = true
+                    
+                var count = 0
+                    for limit in level.limits.limitsGoal {
+                        if  currentLimit.limitsGoal.first!.compare(limit: limit) {
+                            level.limits.limitsGoal[count].completed = true
+                        }
+                        count += 1
+                    }
+                }
+                
             updatedLevels.append(level)
         }
         return updatedLevels
     }
     
-    
     func input(_ inputCase: LevelOfMasteryServiceInput) {
         
         switch inputCase {
+        case .calculateProgress:
+            calculateProgress()
         case .currentLevel(level: let levelCallback):
             getCurrentLevel(level: levelCallback)
         case .getAllLevels(levels: let levelsCallback):
             levelsCallback(levels)
         case .addPoints(points: let points):
-            print("\(points)")
-        case .deductPoints(points: let points):
-            print("\(points)")
-//        case .currentPoints(points: let pointsCallBack):
-//            pointsCallBack(PointBold().currentPoints)
+            addPoints(points: points)
+        case .unlockGoal(goalID: let goalID):
+            unlockGoal(goalID: goalID)
+        case .checkAllGoalsAndAction:
+            checkAllEvents()
         }
     }
     
     
     // MARK: - Public funcs
-    func getCurrentLevel() -> LevelBold {
+    private func getCurrentLevel() -> LevelBold {
         
-        let points: Int = PointBold().currentPoints
+        let points: Int = currentPoints()
         let achievedGoals: [Goal] = getAchievedGoals()
         
         let goalMidArray: [Goal] = achievedGoals.filter({ $0.timeSpentType == .mid })
         let goalLongArray: [Goal] = achievedGoals.filter({ $0.timeSpentType == .long })
         
-        currentLimit = LimitsLevel(limitPoint: SimpleLevel(type: .points(points)),
-                                   limitsGoal: [SimpleLevel(type: .goals(goalMid: goalMidArray.count, goalLong: goalLongArray.count))])
+        currentLimit = LimitsLevel(limitPoint: SimpleLimitLevel(type: .points(points)),
+                                   limitsGoal: [SimpleLimitLevel(type: .goals(goalMid: goalMidArray.count, goalLong: goalLongArray.count))])
         
         var currentLevel = levelsArray.first!
         
@@ -127,28 +141,128 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
                     }
                 }
             }
+            
+            if currentLevel.type != level.type {
+                currentLevel = level
+                break
+            }
         }
         
         currentLevel.status = .active
         return currentLevel
     }
     
-    func currentPoints() -> Int {
-       return PointBold().currentPoints
+    private func currentPoints() -> Int {
+        let pointsData = Int(DataSource.shared.readUser().levelOfMasteryPoints)
+       return pointsData
     }
     
-    func getCurrentLevel(level: Callback<LevelBold>) {
+    private func getCurrentLevel(level: Callback<LevelBold>) {
         level(getCurrentLevel())
     }
     
     // MARK: - Private funcs
-    func getAchievedGoals() -> [Goal] {
+    private func getAchievedGoals() -> [Goal] {
         return DataSource.shared.listLevelOfMasteryGoal()
     }
     
-    func addPoints() {
-        
-        let levelInfoTest = LevelInfoObserv(level: getCurrentLevel(), currentPoint: PointBold().currentPoints)
+    private func calculateProgress() {
+        let levelInfoTest = LevelInfoObserv(level: getCurrentLevel(), currentPoint: currentPoints())
         changePointsVariable.accept(levelInfoTest)
+    }
+    
+    private func addPoints(points: Int) {
+        
+        let user = DataSource.shared.readUser()
+        var newPoint = (user.levelOfMasteryPoints) + Int32(points)
+        
+        if newPoint < 0 {
+            newPoint = 0
+        }
+        user.levelOfMasteryPoints = newPoint
+        DataSource.shared.saveBackgroundContext()
+        
+        calculateProgress()
+    }
+    
+    private func checkAllEvents() {
+        checkOverdueStatusEvents()
+    }
+    
+    private func checkOverdueStatusEvents() {
+        let events = DataSource.shared.searchOverdueEvents()
+        
+        if events.isEmpty {
+            checkOverdueStatusActions()
+            return
+        }
+        
+        let _ = events.compactMap { (event) -> Event? in
+            event.status = StatusType.failed.rawValue
+            
+            if let action = event.action {
+                action.status = StatusType.failed.rawValue
+                if let goal = action.goal {
+                    goal.status = StatusType.locked.rawValue
+                }
+            }
+            
+            return event
+        }
+        
+        AlertViewService.shared.input(.missedYourAction(tapOkay: {
+            print("OK")
+        }))
+        
+        DataSource.shared.saveBackgroundContext()
+        checkOverdueStatusActions()
+    }
+    
+    private func checkOverdueStatusActions() {
+        let actions = DataSource.shared.searchOverdueActions()
+        
+        if actions.isEmpty {
+            checkOverdueStatusGoals()
+            return
+        }
+        
+        let _ = actions.compactMap { (action) -> Action? in
+            action.status = StatusType.failed.rawValue
+            
+            if let goal = action.goal {
+                goal.status = StatusType.locked.rawValue
+            }
+            
+            return action
+        }
+        
+        AlertViewService.shared.input(.missedYourAction(tapOkay: {
+            print("OK")
+        }))
+        
+        DataSource.shared.saveBackgroundContext()
+        checkOverdueStatusGoals()
+    }
+    
+    private func unlockGoal(goalID: String) {
+//        DataSource.shared.searchGoal(goalID: goalID) { (goal) in
+//            goal?.status = StatusType.wait.rawValue
+//            DataSource.shared.saveBackgroundContext()
+//        }
+    }
+    
+    private func checkOverdueStatusGoals() {
+        let goals = DataSource.shared.searchOverdueGoals()
+        
+        if goals.isEmpty {
+            return
+        }
+        
+        let _ = goals.compactMap { (goal) -> Goal? in
+            goal.status = StatusType.failed.rawValue
+            return goal
+        }
+        
+        DataSource.shared.saveBackgroundContext()
     }
 }

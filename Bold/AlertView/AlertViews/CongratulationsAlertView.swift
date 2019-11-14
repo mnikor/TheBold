@@ -28,11 +28,11 @@ class CongratulationsAlertView: UIView {
         return nibView
     }
     
-    func config(type: BoldAlertType) {
+    func config(points: Int, type: BoldAlertType) {
         iconImageView.image = type.icon()
         titleILabel.text = type.titleText()
         textLabel.text = type.text()
-        if let points = type.points {
+        if points != 0 {
             configButtons(points: points)
         }else {
             configButtons()

@@ -22,8 +22,9 @@ public class CircularProgressBar: CALayer {
         didSet {
             progressLabel.text = "\(Int(progress))%"
             innerTrackShapeLayer.strokeEnd = progress / 100
-            if progress > 100 {
-                progressLabel.text = "100%"
+            if progress >= 100 {
+                progressLabel.text = ""
+                innerTrackShapeLayer.strokeEnd = 0
             }
         }
     }

@@ -11,7 +11,7 @@ import Foundation
 enum ActInputInteractor {
     case searchGoals
     case searchEvents
-    case doneEvent(eventID: String?, success: ()->Void)
+//    case doneEvent(eventID: String?, success: ()->Void)
     
     case createDataSource(success: ()->Void)
     case createGoalsSection(success: ()->Void)
@@ -42,8 +42,8 @@ class ActInteractor: InteractorProtocol, ActInteractorProtocol {
             print("sdasd")
         case .searchEvents:
             print("sdasd")
-        case .doneEvent(eventID: let eventID, success: let success):
-            doneEvent(eventID: eventID, success: success)
+//        case .doneEvent(eventID: let eventID, success: let success):
+//            doneEvent(eventID: eventID, success: success)
         case .createGoalsSection(success: let success):
             createGoalsSection(success: success)
         case .createStakesSection(success: let success):
@@ -79,42 +79,6 @@ class ActInteractor: InteractorProtocol, ActInteractorProtocol {
                 success()
             })
         }
-    }
-    
-    private func doneEvent(eventID: String?, success: ()->Void) {
-        
-        guard let eventIDTemp = eventID else { return }
-        presenter.dataSource.removeAll()
-        
-        loadGoals {[weak self] (goalSection) in
-            
-            let item = CalendarActionItemModel(type: .goals, modelView: CalendarModelType.goals(viewModel: goalSection))
-            let goalSection = ActDataSourceItem(section: ActSectionModelType.goal,
-                                                items: [item])
-            self?.presenter.dataSource = [goalSection]
-        }
-        
-        //loadEvents {[weak self] (eventsList) in
-        
-        presenter.dataSourceModel.removeAll { (eventModel) -> Bool in
-            return eventModel.event.id == eventIDTemp
-        }
-        
-        createHeaders(viewModels: presenter!.dataSourceModel, completed: { (sectionStake) in
-            
-            let transformSection = sectionStake.compactMap { (calendarSection) -> ActDataSourceItem in
-                return (section: ActSectionModelType.calendar(viewModel: calendarSection.section),
-                        items: calendarSection.items)
-            }
-            
-            if let todayActionEmpty = checkTodayActionEmpty(sectionStake: sectionStake) {
-                presenter.dataSource.append(todayActionEmpty)
-            }
-            
-            //self?.presenter.dataSourceModel += eventsList
-            presenter.dataSource += transformSection
-            success()
-        })
     }
     
 //    private func updateDataSource(success:()->Void) {

@@ -71,7 +71,7 @@ class ConfigurateActionInteractor: ConfigurateActionInputInteractorProtocol {
     }
     
     func searchAction(actionID: String, success:(Action?)->Void) {
-        DataSource.shared.updateAction(actionID: actionID, success: success)
+        DataSource.shared.searchAction(actionID: actionID, success: success)
     }
     
     // MARK: - Create models

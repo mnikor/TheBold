@@ -9,15 +9,19 @@
 import Foundation
 import UIKit
 
+// MARK: StatusType
+
 enum StatusType: Int16 {
     case create = 0
     case update
     case wait
-    case completed
     case completeUpdate
+    case completed
     case failed
     case locked
 }
+
+// MARK: ColorGoalType
 
 enum ColorGoalType: Int16 {
     case none = 0
@@ -47,6 +51,8 @@ enum ColorGoalType: Int16 {
         }
     }
 }
+
+// MARK: IdeasType
 
 enum IdeasType: Int16 {
     case none = 0
@@ -146,6 +152,8 @@ enum IdeasType: Int16 {
     }
 }
 
+// MARK: AddActionCellType
+
 enum AddActionCellType {
     case headerAddToPlan
     case headerEditAction
@@ -235,6 +243,8 @@ enum AddActionCellType {
     }
     
 }
+
+// MARK: ConfigureActionType
 
 enum ConfigureActionType {
     case header(HeaderType)
@@ -340,6 +350,8 @@ enum ConfigureActionType {
     }
 }
 
+// MARK: ActionDateType
+
 enum ActionDateType: Int16{
     case today = 0
     case tommorow
@@ -347,11 +359,15 @@ enum ActionDateType: Int16{
     case chooseDate
 }
 
+// MARK: RemindMeType
+
 enum RemindMeType: Int16 {
     case noReminders = 0
     case beforeTheDay
     case onTheDay
 }
+
+// MARK: DaysOfWeekType
 
 enum DaysOfWeekType : Int{
     case sunday = 1
@@ -383,6 +399,8 @@ enum DaysOfWeekType : Int{
     
 }
 
+// MARK: BoldAlertType
+
 enum BoldAlertType {
     case congratulationsAction1
     case congratulationsAction2
@@ -396,24 +414,24 @@ enum BoldAlertType {
     case dontGiveUpDeleteStake
     case dontGiveUpDeleteThisTask
     
-    var points : Int? {
-        switch self {
-        case .congratulationsAction1, .congratulationsAction2:
-            return PointsForAction.congratulationsAction
-        case .goalIsAchievedMadeImportantDecision, .goalIsAchievedAchievedYourGoal:
-            return PointsForAction.congratulationsGoal
-        case .dontGiveUpMoveToLaterDate:
-            return PointsForAction.moveToLaterDate
-        case .youveMissedYourActionLock, .youveMissedYourAction:
-            return nil
-        case .dontGiveUpDeleteGoal:
-            return PointsForAction.deleteGoal
-        case .dontGiveUpDeleteAction, .dontGiveUpDeleteThisTask:
-            return PointsForAction.deleteAction
-        case .dontGiveUpDeleteStake:
-            return PointsForAction.deleteStake
-        }
-    }
+//    var points : Int? {
+//        switch self {
+//        case .congratulationsAction1, .congratulationsAction2:
+//            return PointsForAction.congratulationsAction
+//        case .goalIsAchievedMadeImportantDecision, .goalIsAchievedAchievedYourGoal:
+//            return PointsForAction.congratulationsGoal
+//        case .dontGiveUpMoveToLaterDate:
+//            return PointsForAction.moveToLaterDate
+//        case .youveMissedYourActionLock, .youveMissedYourAction:
+//            return nil
+//        case .dontGiveUpDeleteGoal:
+//            return PointsForAction.deleteGoal
+//        case .dontGiveUpDeleteAction, .dontGiveUpDeleteThisTask:
+//            return PointsForAction.deleteAction
+//        case .dontGiveUpDeleteStake:
+//            return PointsForAction.deleteStake
+//        }
+//    }
     
     func icon() -> UIImage {
         switch self {
@@ -465,4 +483,73 @@ enum BoldAlertType {
             return L10n.Alert.sometimesItsHardToFollowYourPlansDeleteThisTask
         }
     }
+}
+
+// MARK: LevelType
+
+enum LevelType: Int {
+    case apprentice = 0
+    case risingPower
+    case intermidiate
+    case seasoned
+    case unstoppable
+    
+    static let types: [LevelType] = [apprentice, risingPower, intermidiate, seasoned, unstoppable]
+    
+    var iconImage : UIImage? {
+        switch self {
+        case .apprentice:
+            return Asset.apprentice.image
+        case .risingPower:
+            return Asset.risingPower.image
+        case .intermidiate:
+            return Asset.intermediate.image
+        case .seasoned:
+            return Asset.seasoned.image
+        case .unstoppable:
+            return Asset.unstoppable.image
+        }
+    }
+    
+    var titleText : String? {
+        switch self {
+        case .apprentice:
+            return L10n.Profile.LevelOfMastery.apprentice
+        case .risingPower:
+            return L10n.Profile.LevelOfMastery.risingPower
+        case .intermidiate:
+            return L10n.Profile.LevelOfMastery.intermidiate
+        case .seasoned:
+            return L10n.Profile.LevelOfMastery.seasoned
+        case .unstoppable:
+            return L10n.Profile.LevelOfMastery.unstoppable
+        }
+    }
+    
+    var limits: LimitsLevel {
+        switch self {
+        case .apprentice:
+            return LimitsLevel(limitPoint: SimpleLimitLevel(type: .points(500) , description: L10n.Profile.LevelOfMastery.points(500)),
+                               limitsGoal: [])
+        case .risingPower:
+            return LimitsLevel(limitPoint: SimpleLimitLevel(type: .points(300), description: L10n.Profile.LevelOfMastery.points(300)),
+                               limitsGoal: [SimpleLimitLevel(type: .goals(goalMid: 1, goalLong: 0), description: L10n.Profile.LevelOfMastery.RisingPower.midTermGoalAchieved)])
+        case .intermidiate:
+            return LimitsLevel(limitPoint: SimpleLimitLevel(type: .points(600), description: L10n.Profile.LevelOfMastery.points(600)),
+                               limitsGoal: [SimpleLimitLevel(type: .goals(goalMid: 3, goalLong: 0), description: L10n.Profile.LevelOfMastery.Intermidiate.midTermGoals)])
+        case .seasoned:
+            return LimitsLevel(limitPoint: SimpleLimitLevel(type: .points(1000), description: L10n.Profile.LevelOfMastery.Seasoned.minPoints(1000)),
+                               limitsGoal: [
+                                SimpleLimitLevel(type: .goals(goalMid: 5, goalLong: 1), description: L10n.Profile.LevelOfMastery.Seasoned.longTermAndMidTermAchievedOrLongTermGoalsAchieved),
+                                SimpleLimitLevel(type: .goals(goalMid: 0, goalLong: 2), description: L10n.Profile.LevelOfMastery.Seasoned.longTermAndMidTermAchievedOrLongTermGoalsAchieved)
+            ])
+        case .unstoppable:
+            return LimitsLevel(limitPoint: SimpleLimitLevel(type: .points(2000), description: L10n.Profile.LevelOfMastery.points(2000)),
+                               limitsGoal: [
+                                SimpleLimitLevel(type: .goals(goalMid: 7, goalLong: 1), description: L10n.Profile.LevelOfMastery.Unstoppable.longTermAndLongTermGoalsAchievedAndMidTermAchieved),
+                                SimpleLimitLevel(type: .goals(goalMid: 0, goalLong: 3), description: L10n.Profile.LevelOfMastery.Unstoppable.longTermAndLongTermGoalsAchievedAndMidTermAchieved)
+            ])
+        }
+    }
+    
 }

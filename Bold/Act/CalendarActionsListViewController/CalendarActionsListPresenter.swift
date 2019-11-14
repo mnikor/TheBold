@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 enum CalendarActionsListInputPresenter {
     case createDataSource(goalID: String?)
@@ -22,6 +24,8 @@ enum CalendarActionsListInputPresenter {
     case calendarHeader(ActHeaderType)
     case longTapAction
     case yearMonthAlert(date: Date)
+    
+    case subscribeToUpdate
 }
 
 protocol CalendarActionsListInputPresenterProtocol {
@@ -37,6 +41,8 @@ class CalendarActionsListPresenter: PresenterProtocol, CalendarActionsListInputP
     weak var viewController: View!
     var interactor: Interactor!
     var router: Router!
+    
+    let disposeBag = DisposeBag()
     
     var currentDate : Date! {
         didSet(newValue) {
@@ -95,6 +101,8 @@ class CalendarActionsListPresenter: PresenterProtocol, CalendarActionsListInputP
                 self?.checkedMonthWhenNewMonth(date: selectDate)
             }
             router.input(.yearMonthAlert(vc))
+        case .subscribeToUpdate:
+            subscribeToUpdate()
         }
         
     }
@@ -188,6 +196,15 @@ class CalendarActionsListPresenter: PresenterProtocol, CalendarActionsListInputP
             }
         }
         configDataSource(date: nil)
+    }
+    
+    private func subscribeToUpdate() {
+        
+        DataSource.shared.changeContext.subscribe(onNext: { (_) in
+            if let goalID = self.goal?.id {
+                self.input(.createDataSource(goalID: goalID))
+            }
+        }).disposed(by: disposeBag)
     }
 }
 

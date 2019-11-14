@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 enum MenuBottomViewType {
     case user
@@ -28,6 +30,8 @@ class MenuBottomView: UIView {
     weak var delegate: MenuBottomViewDelegate?
     var typeView: MenuBottomViewType? = .user
     
+    let disposeBag = DisposeBag()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -42,6 +46,7 @@ class MenuBottomView: UIView {
         Bundle.main.loadNibNamed("MenuBottomView", owner: self)
         contentView.fixInView(self)
         backgroundColor = .clear
+        subscribeUpdateLevel()
     }
     
     func config(type: MenuBottomViewType) {
@@ -54,6 +59,12 @@ class MenuBottomView: UIView {
     
     func setLevel(_ level: String?) {
         subtitleLabel.text = level
+    }
+    
+    private func subscribeUpdateLevel() {
+        LevelOfMasteryService.shared.changePoints.subscribe(onNext: {[weak self] (levelInfo) in
+            self?.subtitleLabel.text = levelInfo.level.type.titleText
+        }).disposed(by: disposeBag)
     }
     
     @IBAction func tapBottomView(_ sender: UIButton) {

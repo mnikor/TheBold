@@ -48,7 +48,7 @@ extension DataSource: GoalsFunctionality {
         
         let filterDate = Date().dayOfMonthOfYear() as NSDate
         
-        fetchRequest.predicate = NSPredicate(format: "(endDate >= %@) AND (status = %d)", filterDate, StatusType.wait.rawValue)
+        fetchRequest.predicate = NSPredicate(format: "(endDate >= %@) AND ((status = %d) OR (status = %d))", filterDate, StatusType.wait.rawValue, StatusType.locked.rawValue)
         
         do {
             results = try DataSource.shared.viewContext.fetch(fetchRequest)
@@ -77,6 +77,25 @@ extension DataSource: GoalsFunctionality {
         var results = [Goal]()
         let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
         fetchRequest.predicate = NSPredicate(format: "status = %d", StatusType.completed.rawValue)
+        
+        do {
+            results = try DataSource.shared.viewContext.fetch(fetchRequest)
+        } catch {
+            print(error)
+        }
+        
+        return results
+    }
+    
+    func searchOverdueGoals() -> [Goal] {
+        
+        var results = [Goal]()
+        let filterDate = Date().dayOfMonthOfYear() as NSDate
+        
+        let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
+        let sort = NSSortDescriptor(key: "startDate", ascending: true)
+        fetchRequest.sortDescriptors = [sort]
+        fetchRequest.predicate = NSPredicate(format: "endDate < %@ AND status < %d", filterDate, StatusType.completed.rawValue)
         
         do {
             results = try DataSource.shared.viewContext.fetch(fetchRequest)

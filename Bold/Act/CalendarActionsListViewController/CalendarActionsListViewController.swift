@@ -36,16 +36,7 @@ class CalendarActionsListViewController: UIViewController, ViewProtocol {
         super.viewDidLoad()
         
         presenter.input(.createDataSource(goalID: presenter.goal?.id))
-        
-//        DataSource.shared .updateDataSource = {
-//            print("dskjfhkjasdfkjashfkjshfkhsajkf")
-//        }
-        
-        DataSource.shared.ifUpdateContext {[weak self] in
-            if let goalID = self?.presenter.goal?.id {
-                self?.presenter.input(.createDataSource(goalID: goalID))
-            }
-        }
+        presenter.input(.subscribeToUpdate)
         
         configTableView()
         configNavigationController()
@@ -163,8 +154,8 @@ extension CalendarActionsListViewController: StakeHeaderViewDelegate {
 
 extension CalendarActionsListViewController: StakeActionTableViewCellDelegate {
     
-    func tapLongPress() {
-        presenter.input(.longTapAction)
+    func tapLongPress(event: Event) {
+        
     }
 }
 

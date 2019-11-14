@@ -34,6 +34,7 @@ class LevelOfMasteryTableViewCell: BaseTableViewCell {
     @IBOutlet weak var description2Label: UILabel!
     @IBOutlet weak var lockImageView: UIImageView!
     @IBOutlet weak var progressView: UIView!
+    @IBOutlet weak var checkLevelImageView: UIImageView!
     
     var progressRing: CircularProgressBar!
     
@@ -92,6 +93,7 @@ class LevelOfMasteryTableViewCell: BaseTableViewCell {
     func ProgresOrLock(level: LevelOfMasteryEntity) {
         progressView.isHidden = level.isLock
         lockImageView.isHidden = !level.isLock
+        checkLevelImageView.isHidden = level.progress < 100
         if !level.isLock {
             self.progressRing.progress = CGFloat(level.progress)
         }

@@ -39,17 +39,13 @@ class AllGoalsViewController: UIViewController, ViewProtocol {
     var presenter: Presenter!
     var configurator: Configurator! = AllGoalsConfigurator()
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        presenter.input(.createDataSource)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configurator.configure(with: self)
         
+        presenter.input(.subscribeToUpdate)
+        presenter.input(.createDataSource)
         configNavigationController()
         registerXibs()
     }

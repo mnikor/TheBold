@@ -12,6 +12,10 @@ import CoreData
 @objc(Event)
 public class Event: NSManagedObject {
 
+    var calculatePoints: Int {
+        return (Int(self.stake) + 10)
+    }
+    
     convenience init() {
         
         let entity = DataSource.shared.entityForName(name: .event)

@@ -42,9 +42,9 @@ struct StakeActionViewModel {
             statusIcon = Asset.stakeOval.image
             stake = L10n.Act.missed
             stakeColor = ColorGoalType.red.colorGoal()
-            points = "-\(Int(event.stake) + 10)"
+            points = "-\(event.calculatePoints)"
         }else if case .wait? = StatusType(rawValue: event.status) {
-            points = "+\(Int(event.stake) + 10)"
+            points = "+\(event.calculatePoints)"
             statusIcon = Asset.stakeOval.image
         }
         

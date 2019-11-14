@@ -42,8 +42,37 @@ extension DataSource: EventFunctionality {
         if let result = results {
             result.status = StatusType.completed.rawValue
             DataSource.shared.saveBackgroundContext()
+            
+            AlertViewService.shared.input(.congratulationsAction(points: result.calculatePoints, tapGet: {
+                LevelOfMasteryService.shared.input(.addPoints(points: PointsForAction.congratulationsAction))
+            }))
+            checkAllEventOfAction(actionID: result.action!.id!)
         }
         success()
+    }
+    
+    func checkAllEventOfAction(actionID: String) {
+        
+        var results : [Event]!
+        let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
+        fetchRequest.predicate = NSPredicate(format: "((status = %d) OR (status = %d)) AND SUBQUERY(action, $act, $act.id == '\(actionID)').@count > 0", StatusType.completed.rawValue, StatusType.failed.rawValue)
+        do {
+            results = try DataSource.shared.backgroundContext.fetch(fetchRequest)
+        } catch {
+            print(error)
+        }
+        
+        if results.isEmpty {
+            return
+        }
+        
+        DataSource.shared.searchAction(actionID: actionID) { (action) in
+            if action?.events?.count == results.count {
+                action?.status = StatusType.completed.rawValue
+                DataSource.shared.saveBackgroundContext()
+            }
+            checkAllActionOfGoal(goalID: action!.id!)
+        }
     }
     
     func searchEventsInGoal(goalID: String?, startDate:Date, endDate:Date, success:([Event])->Void) {
@@ -145,5 +174,24 @@ extension DataSource: EventFunctionality {
             print(error)
         }
         
+    }
+    
+    func searchOverdueEvents() -> [Event] {
+        
+        var results = [Event]()
+        let filterDate = Date().dayOfMonthOfYear() as NSDate
+        
+        let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
+        let sort = NSSortDescriptor(key: "startDate", ascending: true)
+        fetchRequest.sortDescriptors = [sort]
+        fetchRequest.predicate = NSPredicate(format: "endDate < %@ AND status < %d", filterDate, StatusType.completed.rawValue)
+        
+        do {
+            results = try DataSource.shared.backgroundContext.fetch(fetchRequest)
+        } catch {
+            print(error)
+        }
+        
+        return results
     }
 }

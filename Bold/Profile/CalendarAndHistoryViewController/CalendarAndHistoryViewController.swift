@@ -134,7 +134,7 @@ extension CalendarAndHistoryViewController: UITableViewDelegate, UITableViewData
 
 extension CalendarAndHistoryViewController: StakeActionTableViewCellDelegate {
     
-    func tapLongPress() {
+    func tapLongPress(event: Event) {
         presenter.input(.longTapAction)
     }
 }

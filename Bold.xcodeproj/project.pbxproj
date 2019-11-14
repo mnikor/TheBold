@@ -302,7 +302,6 @@
 		F1C2535322B3F9F8003156AA /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C2535222B3F9F8003156AA /* HomeRouter.swift */; };
 		F1C2535622BA8064003156AA /* ManifestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C2535522BA8063003156AA /* ManifestViewController.swift */; };
 		F1C745F323707B61004D689F /* LevelBold.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C745F223707B61004D689F /* LevelBold.swift */; };
-		F1C745F523707E57004D689F /* PointBold.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C745F423707E57004D689F /* PointBold.swift */; };
 		F1C745F723718AA7004D689F /* LimitsLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C745F623718AA7004D689F /* LimitsLevel.swift */; };
 		F1C745FA23757665004D689F /* LevelOfMasteryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C745F923757665004D689F /* LevelOfMasteryEntity.swift */; };
 		F1CCC70322CA0F2900E7B637 /* UITableView+Xib.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCC70222CA0F2900E7B637 /* UITableView+Xib.swift */; };
@@ -721,7 +720,6 @@
 		F1C2535222B3F9F8003156AA /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		F1C2535522BA8063003156AA /* ManifestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestViewController.swift; sourceTree = "<group>"; };
 		F1C745F223707B61004D689F /* LevelBold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelBold.swift; sourceTree = "<group>"; };
-		F1C745F423707E57004D689F /* PointBold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointBold.swift; sourceTree = "<group>"; };
 		F1C745F623718AA7004D689F /* LimitsLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitsLevel.swift; sourceTree = "<group>"; };
 		F1C745F923757665004D689F /* LevelOfMasteryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfMasteryEntity.swift; sourceTree = "<group>"; };
 		F1CCC70222CA0F2900E7B637 /* UITableView+Xib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Xib.swift"; sourceTree = "<group>"; };
@@ -1737,7 +1735,6 @@
 			children = (
 				F1C745F223707B61004D689F /* LevelBold.swift */,
 				F1C745F623718AA7004D689F /* LimitsLevel.swift */,
-				F1C745F423707E57004D689F /* PointBold.swift */,
 			);
 			path = LevelOfMastery;
 			sourceTree = "<group>";
@@ -2538,7 +2535,6 @@
 				C5E9B9FA232FAAF200668F2E /* CalendarService.swift in Sources */,
 				F183302522E6059600BB7A9E /* ActPresenter.swift in Sources */,
 				F1EAF59222E89925008073D7 /* HeaderWriteActionsTableViewCell.swift in Sources */,
-				F1C745F523707E57004D689F /* PointBold.swift in Sources */,
 				F1F40635230AE2270091B774 /* LevelOfMasteryFooterView.swift in Sources */,
 				F1E698A72315641800438E3E /* LevelOfMasteryPresenter.swift in Sources */,
 				F1D390F722D4E3AB00DF8700 /* CitationPageViewController.swift in Sources */,

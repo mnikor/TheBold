@@ -221,7 +221,7 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
     private func searchAction(actionID: String?) {
         
         if let actionIDTemp = actionID {
-            DataSource.shared.updateAction(actionID: actionIDTemp) {[weak self] (action) in
+            DataSource.shared.searchAction(actionID: actionIDTemp) {[weak self] (action) in
                 self?.presenter.newAction = action?.cloneInBackgroundContext()
                 self?.presenter.updateAction = action
                 if let searchAction = action {

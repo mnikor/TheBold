@@ -7,11 +7,14 @@
 //
 
 import Foundation
+import RxCocoa
+import RxSwift
 
 enum AllGoalsInputPresenter {
     case addGoal
     case selectdItem(Goal?)
     case createDataSource
+    case subscribeToUpdate
 }
 
 protocol AllGoalsInputPresenterProtocol {
@@ -28,6 +31,7 @@ class AllGoalsPresenter: PresenterProtocol, AllGoalsInputPresenterProtocol {
     var interactor: Interactor!
     var router: Router!
     
+    let disposeBag = DisposeBag()
     var dataSource = [GoalCollectionViewModel]()
     
     required init(view: View) {
@@ -43,15 +47,35 @@ class AllGoalsPresenter: PresenterProtocol, AllGoalsInputPresenterProtocol {
         case .addGoal:
             router.input(.addGoal)
         case .selectdItem(let selectGoal):
-            if let goal = selectGoal {
-                router.input(.selectGoal(goal))
-            }
+            selectGoalAction(selectGoal)
         case .createDataSource:
             interactor.input(.createDataSource({[weak self] goalDataSource in
                 self?.dataSource = goalDataSource
                 self?.viewController.collectionView.reloadData()
             }))
+        case .subscribeToUpdate:
+            subscribeToUpdate()
         }
+    }
+    
+    private func selectGoalAction(_ selectGoal: Goal?) {
+        
+        guard let goal = selectGoal else { return }
+        
+        if goal.status == StatusType.locked.rawValue {
+            AlertViewService.shared.input(.missedYourActionLock(tapUnlock: {
+                LevelOfMasteryService.shared.input(.unlockGoal(goalID: goal.id!))
+            }))
+        }else {
+            router.input(.selectGoal(goal))
+        }
+    }
+    
+    private func subscribeToUpdate() {
+        
+        DataSource.shared.changeContext.subscribe(onNext: {[weak self] (_) in
+            self?.input(.createDataSource)
+        }).disposed(by: disposeBag)
     }
     
 }

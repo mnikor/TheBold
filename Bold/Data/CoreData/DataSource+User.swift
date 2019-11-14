@@ -28,9 +28,9 @@ extension DataSource: UserFunctionality {
         
     }
     
-    func readUser() -> User? {
+    func readUser() -> User {
         
-        var result : User?
+        var result : User!
         let fetchRequest = NSFetchRequest<User>(entityName: "User")
         
         do {
@@ -39,7 +39,24 @@ extension DataSource: UserFunctionality {
             print(error)
         }
         
+        if result == nil {
+            return createNewUser()
+        }
+        
         return result
     }
     
+    func createNewUser() -> User {
+        
+        let user = User()
+        user.calendarOn = false
+        user.downloadOnlyWifiOn = false
+        user.iCloudOn = false
+        user.levelOfMasteryPoints = 0
+        user.token = nil
+        user.firstOpenIdeas = true
+        
+        DataSource.shared.saveBackgroundContext()
+        return user
+    }
 }

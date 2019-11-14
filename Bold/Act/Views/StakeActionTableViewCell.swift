@@ -9,7 +9,7 @@
 import UIKit
 
 protocol StakeActionTableViewCellDelegate: class {
-    func tapLongPress()
+    func tapLongPress(event: Event)
 }
 
 class StakeActionTableViewCell: BaseTableViewCell {
@@ -27,6 +27,8 @@ class StakeActionTableViewCell: BaseTableViewCell {
     
     weak var delegate: StakeActionTableViewCellDelegate?
     
+    private var event: Event!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -37,14 +39,14 @@ class StakeActionTableViewCell: BaseTableViewCell {
     func addLongTapRecognizer() {
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(activeLongPress(gesture:)))
         longPress.minimumPressDuration = 1.0
-        //longPress.delegate = self
+        longPress.delegate = self
         contentActionView.addGestureRecognizer(longPress)
     }
     
     @objc func activeLongPress(gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
             print("Long press")
-            delegate?.tapLongPress()
+            delegate?.tapLongPress(event: event)
         }
     }
     
@@ -52,6 +54,7 @@ class StakeActionTableViewCell: BaseTableViewCell {
         
         if case .event(viewModel: let cellModel) = viewModel {
             
+            event = cellModel.event
             statusImageView.renderImageWithColor(image: cellModel.statusIcon, color: cellModel.statusIconColor)
             titleLabel.text = cellModel.title
             subtitleLabel.text = cellModel.contentName
@@ -60,8 +63,6 @@ class StakeActionTableViewCell: BaseTableViewCell {
             stakeLabel.textColor = cellModel.stakeColor
             pointsActivityLabel.text = cellModel.points
         }
-        
-        //titleLabel.strikethrough(text: "Marathon")
     }
     
 }

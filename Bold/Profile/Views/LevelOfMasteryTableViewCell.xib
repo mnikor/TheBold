@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,17 +19,26 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="122"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="121.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="122"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdP-UC-Bjb">
-                        <rect key="frame" x="20" y="6" width="335" height="109.5"/>
+                        <rect key="frame" x="20" y="6" width="335" height="110"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHa-7M-Afb">
                                 <rect key="frame" x="260" y="15" width="55" height="55"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkPremiumParams" translatesAutoresizingMaskIntoConstraints="NO" id="pyM-Hs-jW0">
+                                        <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="pyM-Hs-jW0" firstAttribute="leading" secondItem="NHa-7M-Afb" secondAttribute="leading" id="3Zn-vK-uKv"/>
+                                    <constraint firstAttribute="bottom" secondItem="pyM-Hs-jW0" secondAttribute="bottom" id="90J-Hv-Nl8"/>
                                     <constraint firstAttribute="width" constant="55" id="Zey-ug-h4B"/>
+                                    <constraint firstAttribute="trailing" secondItem="pyM-Hs-jW0" secondAttribute="trailing" id="cJ9-NQ-Tgu"/>
+                                    <constraint firstItem="pyM-Hs-jW0" firstAttribute="top" secondItem="NHa-7M-Afb" secondAttribute="top" id="d4v-uL-ugS"/>
                                     <constraint firstAttribute="height" constant="55" id="slR-DF-ep0"/>
                                 </constraints>
                             </view>
@@ -43,7 +50,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3yb-wv-YNn">
-                                <rect key="frame" x="25" y="25" width="282" height="62.5"/>
+                                <rect key="frame" x="25" y="25" width="282" height="63"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="apprentice" translatesAutoresizingMaskIntoConstraints="NO" id="Eom-fc-Eax">
                                         <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
@@ -53,7 +60,7 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="mFO-jd-kKI">
-                                        <rect key="frame" x="65" y="0.0" width="217" height="62.5"/>
+                                        <rect key="frame" x="65" y="0.0" width="217" height="63"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apprentice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Cm-S9-CA9">
                                                 <rect key="frame" x="0.0" y="0.0" width="217" height="18.5"/>
@@ -80,7 +87,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="F3I-pL-Q1u">
-                                                <rect key="frame" x="0.0" y="42.5" width="217" height="20"/>
+                                                <rect key="frame" x="0.0" y="42.5" width="217" height="20.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkIcon" translatesAutoresizingMaskIntoConstraints="NO" id="lY8-3y-Bzh">
                                                         <rect key="frame" x="0.0" y="0.0" width="13" height="10"/>
@@ -90,7 +97,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 long-term and 5 mid-term achieved. Or 2 long-term goals achieved" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53M-bp-P7f">
-                                                        <rect key="frame" x="27" y="0.0" width="190" height="20"/>
+                                                        <rect key="frame" x="27" y="0.0" width="190" height="20.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="11"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -128,6 +135,7 @@
                 <outlet property="baseView" destination="hdP-UC-Bjb" id="f85-ms-ZTk"/>
                 <outlet property="check1ImageView" destination="H41-MZ-6Lr" id="Xlt-KY-Lvs"/>
                 <outlet property="check2ImageView" destination="lY8-3y-Bzh" id="KrK-Cr-HWF"/>
+                <outlet property="checkLevelImageView" destination="pyM-Hs-jW0" id="fIp-Xq-Wzq"/>
                 <outlet property="description1Label" destination="lGh-my-5S3" id="JAE-BB-XPd"/>
                 <outlet property="description2Label" destination="53M-bp-P7f" id="vfz-Ez-r3H"/>
                 <outlet property="iconLevelImageView" destination="Eom-fc-Eax" id="oTb-D0-EeD"/>
@@ -135,12 +143,13 @@
                 <outlet property="progressView" destination="NHa-7M-Afb" id="7pV-rR-kJc"/>
                 <outlet property="titleLevelLabel" destination="4Cm-S9-CA9" id="U4d-09-eGi"/>
             </connections>
-            <point key="canvasLocation" x="-73" y="37"/>
+            <point key="canvasLocation" x="-73.188405797101453" y="36.160714285714285"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="apprentice" width="27" height="39"/>
         <image name="checkIcon" width="18" height="14"/>
+        <image name="checkPremiumParams" width="18" height="14"/>
         <image name="lock" width="24" height="24"/>
     </resources>
 </document>

@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = rootViewController
         self.window?.makeKeyAndVisible()
         
+        LevelOfMasteryService.shared.input(.calculateProgress)
+        LevelOfMasteryService.shared.input(.checkAllGoalsAndAction)
+        
         NotificationService.shared.delegate = self
         // Override point for customization after application launch.
         return true

@@ -21,6 +21,8 @@ class BaseAlertViewController: UIViewController {
     private var topConstrain: NSLayoutConstraint!
     private var bottomConstraint: NSLayoutConstraint!
     
+    private var points: Int!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,7 +32,7 @@ class BaseAlertViewController: UIViewController {
         case .congratulationsAction1?, .congratulationsAction2?, .goalIsAchievedAchievedYourGoal?, .goalIsAchievedMadeImportantDecision?:
             viewAlert = CongratulationsAlertView.loadViewFromNib() as CongratulationsAlertView
             guard let viewAlert = viewAlert as? CongratulationsAlertView else {return}
-            viewAlert.config(type: typeAlert)
+            viewAlert.config(points: points, type: typeAlert)
             viewAlert.activeOkButton = { [unowned self] in
                 self.activeOkButton?()
                 self.hideAnimateView()
@@ -38,7 +40,7 @@ class BaseAlertViewController: UIViewController {
         case .youveMissedYourAction?:
             viewAlert = MissedYouOneButtonAlertView.loadViewFromNib() as MissedYouOneButtonAlertView
             guard let viewAlert = viewAlert as? MissedYouOneButtonAlertView else {return}
-            viewAlert.config(type: typeAlert)
+            viewAlert.config(points: points, type: typeAlert)
             viewAlert.activeOkButton = { [unowned self] in
                 self.activeOkButton?()
                 self.hideAnimateView()
@@ -46,7 +48,7 @@ class BaseAlertViewController: UIViewController {
         case .youveMissedYourActionLock?:
             viewAlert = MissedYouTwoButtonAlertView.loadViewFromNib() as MissedYouTwoButtonAlertView
             guard let viewAlert = viewAlert as? MissedYouTwoButtonAlertView else {return}
-            viewAlert.config(type: typeAlert)
+            viewAlert.config(points: points, type: typeAlert)
             viewAlert.activeOkButton = { [unowned self] in
                 self.activeOkButton?()
                 self.hideAnimateView()
@@ -57,7 +59,7 @@ class BaseAlertViewController: UIViewController {
         case .dontGiveUpMoveToLaterDate?, .dontGiveUpDeleteGoal?, .dontGiveUpDeleteAction?, .dontGiveUpDeleteStake?, .dontGiveUpDeleteThisTask?:
             viewAlert = DontGiveUpAlertView.loadViewFromNib() as DontGiveUpAlertView
             guard let viewAlert = viewAlert as? DontGiveUpAlertView else {return}
-            viewAlert.config(type: typeAlert)
+            viewAlert.config(points: points, type: typeAlert)
             viewAlert.activeOkButton = { [unowned self] in
                 self.activeOkButton?()
                 self.hideAnimateView()
@@ -83,9 +85,10 @@ class BaseAlertViewController: UIViewController {
             ])
     }
 
-    class func showAlert(type: BoldAlertType, tapOk: @escaping (() -> Void)) -> BaseAlertViewController {
+    class func showAlert(points: Int, type: BoldAlertType, tapOk: @escaping (() -> Void)) -> BaseAlertViewController {
         let alertVC = StoryboardScene.AlertView.baseAlertViewController.instantiate()
         alertVC.typeAlert = type
+        alertVC.points = points
         alertVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         alertVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         alertVC.activeOkButton = tapOk

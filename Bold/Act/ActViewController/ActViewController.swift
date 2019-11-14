@@ -33,6 +33,8 @@ class ActViewController: UIViewController, SideMenuItemContent, ViewProtocol {
         highNavigationBar.deleagte = self
         
         presenter.input(.createDataSource)
+        presenter.input(.subscribeToUpdate)
+        
         configTableView()
     }
     
@@ -178,8 +180,8 @@ extension ActViewController: StakeHeaderViewDelegate {
 }
 
 extension ActViewController: StakeActionTableViewCellDelegate {
-    func tapLongPress() {
-        print("tapLongPress")
-        presenter.input(.longTapAction)
+    
+    func tapLongPress(event: Event) {
+        presenter.input(.longTapAction(event: event))
     }
 }

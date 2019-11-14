@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 enum ActPresenterInput {
     case showMenu
@@ -15,7 +17,7 @@ enum ActPresenterInput {
     case tapPlus
     case allGoals
     case goalItem(goal: Goal)
-    case longTapAction
+    case longTapAction(event: Event)
     
     case createDataSource
     case updateDataSource
@@ -23,6 +25,7 @@ enum ActPresenterInput {
     case uploadNewEventsInDataSourceWhenScroll(Int)
     
     case selectEvent(indexPath: IndexPath)
+    case subscribeToUpdate
 }
 
 protocol ActPresenterInputProtocol {
@@ -39,6 +42,7 @@ class ActPresenter: PresenterProtocol, ActPresenterInputProtocol {
     var interactor: Interactor!
     var router: Router!
     
+    let disposeBag = DisposeBag()
     var goalsSection : CalendarActionItemModel!
     //var goalsDataSource = [Goal]()
     var dataSourceModel = [StakeActionViewModel]()
@@ -80,13 +84,22 @@ class ActPresenter: PresenterProtocol, ActPresenterInputProtocol {
             let calendarVC = StoryboardScene.Act.calendarActionsListViewController.instantiate()
             calendarVC.presenter.goal = goal
             router.input(.goalItem(calendarVC: calendarVC))
-        case .longTapAction:
-            let vc = StartActionViewController.createController {
-                print("Start")
-            }
-            router.input(.longTapActionPresentedBy(vc))
+        case .longTapAction(event: let event):
+            longTapAction(event: event)
+        case .subscribeToUpdate:
+            subscribeToUpdate()
         }
         
+    }
+    
+    private func longTapAction(event: Event) {
+        
+        if let content = event.action?.content {
+            
+            AlertViewService.shared.input(.startActionForContent(tapStartNow: {
+                print("Start content - \(content)")
+            }))
+        }
     }
     
     private func selectEvent(indexPath: IndexPath){
@@ -95,37 +108,11 @@ class ActPresenter: PresenterProtocol, ActPresenterInputProtocol {
         
         if case .event(viewModel: let viewModelStake) = item.viewModel {
             
-            AlertViewService.shared.input(.editAction(actionID: viewModelStake.event.action?.id, eventID: viewModelStake.event.id, tapAddPlan: {
-                print("Ok")
-                self.interactor.input(.doneEvent(eventID: viewModelStake.event.id, success: {
-                                    self.viewController.tableView.reloadData()
-                                }))
+            AlertViewService.shared.input(.editAction(actionID: viewModelStake.event.action?.id, eventID: viewModelStake.event.id, points: viewModelStake.event.calculatePoints, tapAddPlan: {
+                //self.tapDoneEvent(eventID: viewModelStake.event.id!)
             }, tapDelete: {
-                print("tapDelete")
-                AlertViewService.shared.input(.deleteAction(tapYes: {
-                    print("--- Delete ---")
-                }))
+                //self.deleteAction(actionID: viewModelStake.event.action!.id!)
             }))
-            
-//            let editActionVC = EditActionPlanViewController.createController(actionID: viewModelStake.event.action?.id, eventID: viewModelStake.event.id, tapOk: { [unowned self] in
-//                print("Ok")
-//                //self.input(.doneEvent(eventID: <#T##String?#>))
-//                //self.input(.doneEvent(eventID: viewModelStake.event.id))
-//                self.interactor.input(.doneEvent(eventID: viewModelStake.event.id, success: {
-//                    self.viewController.tableView.reloadData()
-//                }))
-//            }) {
-//                print("Delete")
-//
-//                let vc = BaseAlertViewController.showAlert(type: .dontGiveUp4) {
-//                    print("--- Delete ---")
-//                }
-//
-//                vc.presentedBy(self.viewController)
-//            }
-            
-//            router.input(.showEditEvent(vc: editActionVC))
-//            print("\(viewModelStake.event)")
         }
     }
     
@@ -135,10 +122,27 @@ class ActPresenter: PresenterProtocol, ActPresenterInputProtocol {
         }))
     }
     
-    private func deleteAction(actionID: String, success: ()->Void) {
-        DataSource.shared.deleteAction(actionID: actionID) {
-            print("dsfdsf")
-        }
+//    private func tapDoneEvent(eventID: String) {
+//        DataSource.shared.doneEvent(eventID: eventID) {
+//            print("Done Event")
+//        }
+//    }
+//    
+//    private func deleteAction(actionID: String) {
+//        AlertViewService.shared.input(.deleteAction(tapYes: {
+//            
+//            LevelOfMasteryService.shared.input(.addPoints(points: PointsForAction.deleteAction))
+//            DataSource.shared.deleteAction(actionID: actionID) {
+//                print("--- Delete ---")
+//            }
+//        }))
+//    }
+    
+     private func subscribeToUpdate() {
+
+        DataSource.shared.changeContext.subscribe(onNext: { (_) in
+            self.input(.createDataSource)
+        }).disposed(by: disposeBag)
     }
     
 }
