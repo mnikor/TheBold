@@ -34,17 +34,6 @@ class ArchivedGoalsViewController: UIViewController, ViewProtocol {
     @IBOutlet weak var segmentControl: WMSegment!
     @IBOutlet weak var collectionView: UICollectionView!
     
-//    lazy var currentItems : [GoalEntity] = {
-//        return goalItems
-//    }()
-    
-//    lazy var goalItems : [GoalEntity] = {
-//        return [GoalEntity(type: .launchStartUp, active: .completed, progress: 0, total: 0),
-//                GoalEntity(type: .Community, active: .failed, progress: 2, total: 5),
-//                GoalEntity(type: .Marathon, active: .failed, progress: 3, total: 4),
-//                GoalEntity(type: .BuildHouseForParents, active: .failed, progress: 2, total: 7)]
-//    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -8,13 +8,6 @@
 
 import Foundation
 
-struct GoalEntity {
-    var type: GoalType
-    var active: GoalCellType
-    var progress: Int
-    var total: Int
-}
-
 enum GoalCellType {
     case active
     case locked

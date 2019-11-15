@@ -19,7 +19,6 @@ class CalendarAndHistoryViewController: UIViewController, ViewProtocol {
     var configurator: Configurator! = CalendarAndHistoryConfigurator()
     
     var goalID: String?
-    var currentGoal: GoalEntity!
     //var currentDate: Date = Date()
     
     override func viewDidLoad() {
