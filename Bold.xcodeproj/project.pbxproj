@@ -141,7 +141,6 @@
 		F13FCBBA2339FE6300BAE544 /* CalendarActionItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBB92339FE6300BAE544 /* CalendarActionItemModel.swift */; };
 		F13FCBBC233A171C00BAE544 /* DataSource+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBBB233A171C00BAE544 /* DataSource+Events.swift */; };
 		F13FCBBF233A18D900BAE544 /* GoalCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBBE233A18D900BAE544 /* GoalCollectionViewModel.swift */; };
-		F13FCBC1233BC7DC00BAE544 /* TempStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBC0233BC7DC00BAE544 /* TempStructures.swift */; };
 		F141668122BCD7A10020BF0F /* ManifestConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141668022BCD7A10020BF0F /* ManifestConfigurator.swift */; };
 		F141668322BCD7D20020BF0F /* ManifestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141668222BCD7D20020BF0F /* ManifestPresenter.swift */; };
 		F141668522BCD7E60020BF0F /* ManifestInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141668422BCD7E60020BF0F /* ManifestInteractor.swift */; };
@@ -572,7 +571,6 @@
 		F13FCBB92339FE6300BAE544 /* CalendarActionItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActionItemModel.swift; sourceTree = "<group>"; };
 		F13FCBBB233A171C00BAE544 /* DataSource+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSource+Events.swift"; sourceTree = "<group>"; };
 		F13FCBBE233A18D900BAE544 /* GoalCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCollectionViewModel.swift; sourceTree = "<group>"; };
-		F13FCBC0233BC7DC00BAE544 /* TempStructures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempStructures.swift; sourceTree = "<group>"; };
 		F141668022BCD7A10020BF0F /* ManifestConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestConfigurator.swift; sourceTree = "<group>"; };
 		F141668222BCD7D20020BF0F /* ManifestPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestPresenter.swift; sourceTree = "<group>"; };
 		F141668422BCD7E60020BF0F /* ManifestInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestInteractor.swift; sourceTree = "<group>"; };
@@ -2059,7 +2057,6 @@
 			children = (
 				F1F6AD9E23210DB200F6A925 /* Enums.swift */,
 				F1B4A8A6234E1C6D0080950E /* GlobalConstants.swift */,
-				F13FCBC0233BC7DC00BAE544 /* TempStructures.swift */,
 				F1F6AD9F23210DB200F6A925 /* CoreData */,
 				F1F6ADA523210DB200F6A925 /* Models */,
 			);
@@ -2416,7 +2413,6 @@
 				C59E5E34230593ED005DCD18 /* AccountDetailsPresenter.swift in Sources */,
 				F1F44A652368711700F977D1 /* ResultCustomError.swift in Sources */,
 				F179977622B1413A0039879F /* MenuViewController.swift in Sources */,
-				F13FCBC1233BC7DC00BAE544 /* TempStructures.swift in Sources */,
 				F1F44A632368711700F977D1 /* CalendarEvent.swift in Sources */,
 				F13FCBBA2339FE6300BAE544 /* CalendarActionItemModel.swift in Sources */,
 				F1F6ADBA23210DB300F6A925 /* DataSource+Contents.swift in Sources */,
