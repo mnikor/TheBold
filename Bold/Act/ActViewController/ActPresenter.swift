@@ -89,7 +89,6 @@ class ActPresenter: PresenterProtocol, ActPresenterInputProtocol {
         case .subscribeToUpdate:
             subscribeToUpdate()
         }
-        
     }
     
     private func longTapAction(event: Event) {
@@ -108,7 +107,9 @@ class ActPresenter: PresenterProtocol, ActPresenterInputProtocol {
         
         if case .event(viewModel: let viewModelStake) = item.viewModel {
             
-            AlertViewService.shared.input(.editAction(actionID: viewModelStake.event.action?.id, eventID: viewModelStake.event.id, points: viewModelStake.event.calculatePoints, tapAddPlan: {
+            let points = viewModelStake.event.calculatePoints
+            
+            AlertViewService.shared.input(.editAction(actionID: viewModelStake.event.action?.id, eventID: viewModelStake.event.id, points: points, tapAddPlan: {
                 //self.tapDoneEvent(eventID: viewModelStake.event.id!)
             }, tapDelete: {
                 //self.deleteAction(actionID: viewModelStake.event.action!.id!)

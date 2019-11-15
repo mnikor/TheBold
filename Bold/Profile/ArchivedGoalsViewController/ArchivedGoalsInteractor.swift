@@ -8,7 +8,15 @@
 
 import Foundation
 
-class ArchivedGoalsInteractor: InteractorProtocol {
+enum ArchievedGoalsInputInteractor {
+    case createDataSource(Callback<[GoalCollectionViewModel]>)
+}
+
+protocol ArchivedGoalsInteractorProtocol {
+    func input(_ inputCase: ArchievedGoalsInputInteractor)
+}
+
+class ArchivedGoalsInteractor: InteractorProtocol, ArchivedGoalsInteractorProtocol {
     
     typealias Presenter = ArchivedGoalsPresenter
     
@@ -16,5 +24,22 @@ class ArchivedGoalsInteractor: InteractorProtocol {
     
     required init(presenter: Presenter) {
         self.presenter = presenter
+    }
+    
+    func input(_ inputCase: ArchievedGoalsInputInteractor) {
+        switch inputCase {
+        case .createDataSource(let completed):
+            createDataSource(success: completed)
+        }
+    }
+    
+    private func createDataSource(success: ([GoalCollectionViewModel])->Void) {
+        
+        DataSource.shared.goalsListForArchieved {(goalList) in
+            let dataSource = goalList.compactMap { (goal) -> GoalCollectionViewModel in
+                return GoalCollectionViewModel.createGoalModel(goal: goal)
+            }
+            success(dataSource)
+        }
     }
 }

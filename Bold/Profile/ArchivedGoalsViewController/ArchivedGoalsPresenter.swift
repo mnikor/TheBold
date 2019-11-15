@@ -8,8 +8,16 @@
 
 import Foundation
 
+enum ArchievedGoalType {
+    case all
+    case completed
+    case failed
+}
+
 enum ArchivedGoalsPresenterInput {
     case close
+    case createDataSource(ArchievedGoalType)
+    case selectdItem(Goal?)
 }
 
 protocol ArchivedGoalsPresenterInputProtocol:PresenterProtocol {
@@ -26,6 +34,13 @@ class ArchivedGoalsPresenter: ArchivedGoalsPresenterInputProtocol {
     var interactor: ArchivedGoalsInteractor!
     var router: ArchivedGoalsRouter!
     
+    var dataSourceAll = [GoalCollectionViewModel]()
+    var dataSource = [GoalCollectionViewModel]() {
+        didSet {
+            viewController.collectionView.reloadData()
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
     }
     
@@ -37,6 +52,40 @@ class ArchivedGoalsPresenter: ArchivedGoalsPresenterInputProtocol {
         switch inputCase {
         case .close:
             router.input(.close)
+        case .createDataSource(let type):
+            createDataSource(type: type)
+        case .selectdItem(let goal):
+            selectGoalAction(goal)
         }
     }
+    
+    private func createDataSource(type: ArchievedGoalType) {
+        
+        switch type {
+        case .all:
+            if dataSourceAll.isEmpty {
+                interactor.input(.createDataSource({[weak self] goalDataSource in
+                    self?.dataSourceAll = goalDataSource
+                    self?.dataSource = goalDataSource
+                }))
+            }else {
+                dataSource = dataSourceAll
+            }
+        case .completed:
+            dataSource = dataSourceAll.filter({ (goalModel) -> Bool in
+                return goalModel.goal.status == StatusType.completed.rawValue
+            })
+        case .failed:
+            dataSource = dataSourceAll.filter({ (goalModel) -> Bool in
+                return goalModel.goal.status == StatusType.failed.rawValue
+            })
+        }
+    }
+    
+    private func selectGoalAction(_ selectGoal: Goal?) {
+        
+        guard let goal = selectGoal else { return }
+        print("Goal - \(goal)")
+    }
+    
 }

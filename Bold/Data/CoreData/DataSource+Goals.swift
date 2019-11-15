@@ -58,6 +58,23 @@ extension DataSource: GoalsFunctionality {
         }
     }
     
+    func goalsListForArchieved(success: ([Goal])->Void) {
+        
+        var results = [Goal]()
+        let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
+        
+        let filterDate = Date().dayOfMonthOfYear() as NSDate
+        
+        fetchRequest.predicate = NSPredicate(format: "(endDate >= %@) AND ((status = %d) OR (status = %d))", filterDate, StatusType.completed.rawValue, StatusType.failed.rawValue)
+        
+        do {
+            results = try DataSource.shared.viewContext.fetch(fetchRequest)
+            success(results)
+        } catch {
+            print(error)
+        }
+    }
+    
     func searchGoal(goalID: String, success: (Goal?)->Void) {
         
         var results : Goal?

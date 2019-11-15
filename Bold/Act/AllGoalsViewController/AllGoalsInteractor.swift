@@ -35,7 +35,7 @@ class AllGoalsInteractor: InteractorProtocol, AllGoalsInputInteractorProtocol {
         }
     }
     
-    func createDataSource(success: ([GoalCollectionViewModel])->Void) {
+    private func createDataSource(success: ([GoalCollectionViewModel])->Void) {
         
         DataSource.shared.goalsListForRead {(goalList) in
             let dataSource = goalList.compactMap { (goal) -> GoalCollectionViewModel in

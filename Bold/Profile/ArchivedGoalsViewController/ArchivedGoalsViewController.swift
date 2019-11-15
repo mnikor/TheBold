@@ -34,21 +34,23 @@ class ArchivedGoalsViewController: UIViewController, ViewProtocol {
     @IBOutlet weak var segmentControl: WMSegment!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    lazy var currentItems : [GoalEntity] = {
-        return goalItems
-    }()
+//    lazy var currentItems : [GoalEntity] = {
+//        return goalItems
+//    }()
     
-    lazy var goalItems : [GoalEntity] = {
-        return [GoalEntity(type: .launchStartUp, active: .completed, progress: 0, total: 0),
-                GoalEntity(type: .Community, active: .failed, progress: 2, total: 5),
-                GoalEntity(type: .Marathon, active: .failed, progress: 3, total: 4),
-                GoalEntity(type: .BuildHouseForParents, active: .failed, progress: 2, total: 7)]
-    }()
+//    lazy var goalItems : [GoalEntity] = {
+//        return [GoalEntity(type: .launchStartUp, active: .completed, progress: 0, total: 0),
+//                GoalEntity(type: .Community, active: .failed, progress: 2, total: 5),
+//                GoalEntity(type: .Marathon, active: .failed, progress: 3, total: 4),
+//                GoalEntity(type: .BuildHouseForParents, active: .failed, progress: 2, total: 7)]
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configurator.configure(with: self)
+        
+        presenter.input(.createDataSource(.all))
         
         collectionView.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.9607843137, blue: 0.9725490196, alpha: 1)
         configSegmentControl()
@@ -95,21 +97,17 @@ class ArchivedGoalsViewController: UIViewController, ViewProtocol {
         switch sender.selectedSegmentIndex {
         case 0:
             print("all")
-            currentItems = goalItems
+            presenter.input(.createDataSource(.all))
         case 1:
             print("completed")
-            currentItems = goalItems.filter({ (item) -> Bool in
-                return item.active == .completed
-            })
+            presenter.input(.createDataSource(.completed))
         case 2:
             print("failed")
-            currentItems = goalItems.filter({ (item) -> Bool in
-                return item.active == .failed
-            })
+            presenter.input(.createDataSource(.failed))
         default:
             print("default item")
         }
-        collectionView.reloadData()
+        //collectionView.reloadData()
     }
     
     /*
@@ -126,16 +124,14 @@ class ArchivedGoalsViewController: UIViewController, ViewProtocol {
 
 extension ArchivedGoalsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return currentItems.count
+        return presenter.dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeReusableCell(indexPath: indexPath) as GoalCollectionViewCell
-        //cell.configCell(view: currentItems[indexPath.row])
+        cell.configCell(viewModel: presenter.dataSource[indexPath.row])
         return cell
     }
-    
-    
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
