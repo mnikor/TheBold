@@ -54,6 +54,12 @@ class FeelViewController: UIViewController, SideMenuItemContent, ViewProtocol {
         }))
     }
     
+    private func showAll(feelType: FeelTypeCell) {
+        let vc = StoryboardScene.Feel.actionsListViewController.instantiate()
+        vc.typeVC = feelType
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 
@@ -93,7 +99,8 @@ extension FeelViewController: ActionCollectionTableViewCellDelegate {
     
     func tapShowAll(typeCells: FeelTypeCell)  {
         print("Show all")
-        presenter.input(.showAll(typeCells))
+        showAll(feelType: typeCells)
+//        presenter.input(.showAll(typeCells))
     }
     
     func showAll(typeCells: FeelTypeCell) {

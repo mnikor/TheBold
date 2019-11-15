@@ -21,7 +21,9 @@ enum StatusType: Int16 {
     case locked
 }
 
-enum ColorGoalType: Int16, CaseIterable {
+// MARK: ColorGoalType
+
+enum ColorGoalType: Int16 {
     case none = 0
     case orange
     case red

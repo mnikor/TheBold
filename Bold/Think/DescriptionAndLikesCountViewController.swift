@@ -35,12 +35,21 @@ class DescriptionAndLikesCountViewController: UIViewController {
     var viewModel: DescriptionViewModel?
     
     private var pdfView: UIView?
+    private var loader = LoaderView(frame: .zero)
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         config()
         configurePDFView()
+        registerForNotifications()
+        loadPDFDocument()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        loader.start(in: view)
+        view.bringSubviewToFront(loader)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -85,13 +94,32 @@ class DescriptionAndLikesCountViewController: UIViewController {
             }
             pdfContainerView.bringSubviewToFront(playerButton)
             pdfView.autoScales = true
-            pdfView.delegate = self
+            pdfView.backgroundColor = .clear
             if #available(iOS 12.0, *) {
                 pdfView.pageShadowsEnabled = false
             } else {
                 pdfView.displaysPageBreaks = false
             }
+            
         }
+    }
+    
+    private func registerForNotifications() {
+        if #available(iOS 11.0, *) {
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(documentChanged(_:)),
+                                                   name: Notification.Name.PDFViewDocumentChanged,
+                                                   object: nil)
+        }
+    }
+    
+    private func loadPDFDocument() {
+        guard let url = viewModel?.documentURL
+            else { return }
+        
+        let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
+        let downloadTask = urlSession.downloadTask(with: url)
+        downloadTask.resume()
     }
     
     private func configurePDFDocument() {
@@ -104,8 +132,13 @@ class DescriptionAndLikesCountViewController: UIViewController {
             if let documentView = pdfView.documentView {
                 pdfContainerHeightConstraint.constant = documentView.frame.size.height + 25
                 pdfContainerView.layoutIfNeeded()
+                pdfView.backgroundColor = .white
             }
         }
+    }
+    
+    @objc private func documentChanged(_ notification: Notification) {
+        loader.stop()
     }
     
 }
@@ -121,6 +154,7 @@ extension DescriptionAndLikesCountViewController: OverTabbarViewDelegate {
     func tapShare() {
         self.shareContent(item: nil)
     }
+    
 }
 
 extension DescriptionAndLikesCountViewController: UIScrollViewDelegate {
@@ -163,8 +197,23 @@ extension DescriptionAndLikesCountViewController: UIScrollViewDelegate {
             likseCountView.moveConstraintView(percent: percent)
         }
     }
+    
 }
 
-extension DescriptionAndLikesCountViewController: PDFViewDelegate {
+extension DescriptionAndLikesCountViewController: URLSessionDownloadDelegate {
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        guard let url = downloadTask.originalRequest?.url else { return }
+        let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let pdfDirectory = documentsPath.appendingPathComponent("PDF")
+        let destinationURL = pdfDirectory.appendingPathComponent(url.lastPathComponent)
+        
+        try? FileManager.default.removeItem(at: destinationURL)
+        
+        do {
+            try FileManager.default.copyItem(at: location, to: destinationURL)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
     
 }

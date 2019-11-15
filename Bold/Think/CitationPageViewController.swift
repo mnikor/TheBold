@@ -27,10 +27,11 @@ class CitationPageViewController: UIPageViewController {
 //        createArrayViewController(type: .ink)]
 //    }()
     
-    private func createArrayViewController(quote: ActivityContent) -> UIViewController {
+    private func createArrayViewController(quote: ActivityContent, color: ColorGoalType) -> UIViewController {
         
         let vc = StoryboardScene.Think.citationViewController.instantiate() as CitationViewController
         vc.quote = quote
+        vc.color = color
         return vc
     }
     
@@ -50,7 +51,11 @@ class CitationPageViewController: UIPageViewController {
     }
     
     private func configureOrderedViewControllers() {
-        orderedViewControllers = quotes.compactMap { createArrayViewController(quote: $0) }
+        orderedViewControllers = []
+        
+        for index in (0 ..< quotes.count) {
+            orderedViewControllers.append(createArrayViewController(quote: quotes[index], color: ColorGoalType(rawValue: Int16((index % 6) + 1))!))
+        }
     }
 
 }

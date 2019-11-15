@@ -95,10 +95,19 @@ class CreateGoalPresenter: PresenterProtocol, CreateGoalInputPresenterProtocol {
     }
     
     private func selectedIdea() {
-        let ideasVC = StoryboardScene.Act.ideasViewController.instantiate()
-        ideasVC.delegate = viewController
-        ideasVC.selectIdea = selectIdea
-        router.input(.ideasPresent(ideasVC))
+        if UserDefaults.standard.bool(forKey: "BoldTips") {
+            let ideasVC = StoryboardScene.Act.ideasViewController.instantiate()
+            ideasVC.delegate = viewController
+            ideasVC.selectIdea = selectIdea
+            router.input(.ideasPresent(ideasVC))
+        } else {
+            UserDefaults.standard.set(true, forKey: "BoldTips")
+            
+            let vc = StoryboardScene.Act.boldTipsViewController.instantiate()
+            vc.delegate = viewController
+            vc.selectIdea = selectIdea
+            viewController.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     private func selectedDate(typeAlert: DateAlertType) {

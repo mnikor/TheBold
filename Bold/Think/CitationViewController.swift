@@ -43,11 +43,12 @@ class CitationViewController: UIViewController {
     }
     
     var quote: ActivityContent?
+    var color: ColorGoalType = .none
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = CitationType.randomColor()
+        self.view.backgroundColor = color.colorGoal()
         configure()
     }
     

@@ -43,7 +43,13 @@ struct ActivityContent {
         guard let type = ContentType(rawValue: typeString.lowercased()) else { return nil }
         let audioTracks: [AudioPlayerTrackInfo]
         if let audioTracksArray = json[ResponseKeys.audioTracks].array {
-            audioTracks = audioTracksArray.compactMap { AudioPlayerTrackInfo(trackName: $0[ResponseKeys.audioName].stringValue, artistName: "", duration: "0:00", path: .remote($0[ResponseKeys.audioURL].stringValue)) }
+            audioTracks = audioTracksArray.compactMap { item in
+                var trackName = item[ResponseKeys.audioName].stringValue
+                if let extRange = trackName.range(of: ".mp3") {
+                    trackName.removeSubrange(extRange)
+                }
+                
+                return AudioPlayerTrackInfo(trackName: trackName, artistName: "", duration: "0:00", path: .remote(item[ResponseKeys.audioURL].stringValue)) }
         } else {
             audioTracks = []
         }

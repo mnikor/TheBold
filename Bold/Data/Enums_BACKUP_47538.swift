@@ -21,7 +21,13 @@ enum StatusType: Int16 {
     case locked
 }
 
+<<<<<<< Updated upstream
+// MARK: ColorGoalType
+
+enum ColorGoalType: Int16 {
+=======
 enum ColorGoalType: Int16, CaseIterable {
+>>>>>>> Stashed changes
     case none = 0
     case orange
     case red
