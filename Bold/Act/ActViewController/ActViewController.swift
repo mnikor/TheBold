@@ -168,6 +168,10 @@ extension ActViewController: ActivityCollectionTableViewCellDelegate {
         presenter.input(.goalItem(goal: goal))
     }
     
+    func tapEmptyGoalsCell(type: ActivityViewModel) {
+        presenter.input(.tapPlus)
+    }
+    
 }
 
 // MARK:- StakeHeaderViewDelegate

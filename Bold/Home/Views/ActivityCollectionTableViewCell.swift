@@ -14,6 +14,8 @@ protocol ActivityCollectionTableViewCellDelegate: class {
     func tapItemCollection(goal: Goal)
 
     func activityCollectionTableViewCell(_ activityCollectionTableViewCell: ActivityCollectionTableViewCell, didTapAtItem indexPath: IndexPath)
+    
+    func tapEmptyGoalsCell(type: ActivityViewModel)
 
 }
 
@@ -124,13 +126,22 @@ extension ActivityCollectionTableViewCell: UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         delegate?.activityCollectionTableViewCell(self, didTapAtItem: indexPath)
-        
-        let item = dataSource[indexPath.row]
-        switch item {
-        case .goal(goal: let goalViewModel):
-            delegate?.tapItemCollection(goal: goalViewModel.goal)
-        default:
-            return
+        if !dataSource.isEmpty {
+            let item = dataSource[indexPath.row]
+            
+            switch item {
+            case .goal(goal: let goalViewModel):
+                delegate?.tapItemCollection(goal: goalViewModel.goal)
+            default:
+                return
+            }
+        } else {
+            switch itemViewModel.type {
+            case .actActive, .activeGoals, .activeGoalsAct, .actNotActive:
+                delegate?.tapEmptyGoalsCell(type: itemViewModel)
+            default:
+                return
+            }
         }
         
         //print("Activity type = \(entity.type) index tap = \(indexPath.row)")

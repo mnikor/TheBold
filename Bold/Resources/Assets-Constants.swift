@@ -265,6 +265,7 @@ internal enum Asset {
   internal static let emailLogo = ImageAsset(name: "emailLogo")
   internal static let facebookLogo = ImageAsset(name: "facebookLogo")
   internal static let logoBoldShareFriend = ImageAsset(name: "logoBoldShareFriend")
+  internal static let shareBackground = ImageAsset(name: "shareBackground")
   internal static let sliderShadowThumb = ImageAsset(name: "SliderShadowThumb")
   internal static let think15 = ImageAsset(name: "Think_1.5")
   internal static let actionShape = ImageAsset(name: "actionShape")

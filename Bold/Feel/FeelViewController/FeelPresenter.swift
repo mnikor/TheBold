@@ -88,7 +88,7 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
             router.input(.present(vc))
         default:
             interactor.input(.prepareTracks(content: content))
-            router.input(.showPlayer)
+            router.input(.showPlayer(isPlaying: content.type != .meditation))
         }
         
         

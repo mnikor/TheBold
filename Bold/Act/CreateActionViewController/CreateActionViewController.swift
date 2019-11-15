@@ -14,7 +14,7 @@ private struct Constants {
     static let footerHeight : CGFloat = 11
 }
 
-class CreateActionViewController: UIViewController, ViewProtocol {
+class CreateActionViewController: UIViewController, ViewProtocol, AlertDisplayable {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,6 +26,8 @@ class CreateActionViewController: UIViewController, ViewProtocol {
     
     @IBOutlet weak var navBarTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var navBar: BlueNavigationBar!
+    
+    private var shareView = ShareView.loadFromNib()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -39,6 +41,7 @@ class CreateActionViewController: UIViewController, ViewProtocol {
     
     func setupConfiguration() {
         configurator.configure(with: self)
+        shareView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -214,7 +217,8 @@ extension CreateActionViewController: UITableViewDelegate, UITableViewDataSource
             case .stake:
                 presenter.input(.stake)
             case .share:
-                presenter.input(.share)
+                showAlert(with: shareView)
+//                presenter.input(.share)
             default:
                 return
         }
@@ -273,4 +277,19 @@ extension CreateActionViewController: HeaderTitleActionPlanTableViewCellDelegate
     func updateNameAction(newName: String) {
         presenter.input(.updateName(newName))
     }
+}
+
+extension CreateActionViewController: ShareViewDelegate {
+    func shareWithFacebook(goal: Goal) {
+        print("facebook")
+    }
+    
+    func shareWithEmail(goal: Goal) {
+        print("facebook")
+    }
+    
+    func download(goal: Goal) {
+        print("facebook")
+    }
+    
 }

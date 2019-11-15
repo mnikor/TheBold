@@ -13,24 +13,23 @@ class BoldTipsViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var getIdeasButton: UIButton!
     
+    weak var delegate: IdeasViewControllerDeleagte?
+    var selectIdea: IdeasType = .marathon
     
     @IBOutlet weak var tapGetIdeasButton: RoundedButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        tapGetIdeasButton.addTarget(self,
+                                    action: #selector(getIdeas),
+                                    for: .touchUpInside)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc private func getIdeas() {
+        let ideasVC = StoryboardScene.Act.ideasViewController.instantiate()
+        ideasVC.delegate = delegate
+        ideasVC.selectIdea = selectIdea
+        navigationController?.pushViewController(ideasVC, animated: true)
     }
-    */
 
 }

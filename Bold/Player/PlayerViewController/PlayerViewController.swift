@@ -73,7 +73,7 @@ class PlayerViewController: UIViewController, ViewProtocol {
         }
     }
     
-    private func play() {
+    func play() {
         state = .playing
         slider.value = 0
         service.input(.play(trackIndex: nil))
@@ -137,9 +137,7 @@ class PlayerViewController: UIViewController, ViewProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if !AudioService.shared.isPlaying() {
-            play()
-        } else {
+        if AudioService.shared.isPlaying() {
             playerIsPlaying()
         }
     }
@@ -183,8 +181,13 @@ class PlayerViewController: UIViewController, ViewProtocol {
     }
     
     @objc func userSwipe() {
-        dismiss(animated: true) {
-            AudioService.shared.showSmallPlayer()
+        if AudioService.shared.isPlaying() {
+            dismiss(animated: true) {
+                AudioService.shared.showSmallPlayer()
+            }
+        } else {
+            AudioService.shared.input(.stop)
+            dismiss(animated: true)
         }
     }
     

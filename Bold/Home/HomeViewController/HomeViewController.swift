@@ -153,6 +153,11 @@ extension HomeViewController: ActivityCollectionTableViewCellDelegate {
     func tapShowAllActivity(type: HomeActionsTypeCell) {
         presenter.input(.actionAll(type))
     }
+    
+    func tapEmptyGoalsCell(type: ActivityViewModel) {
+        presenter.input(.createGoal)
+    }
+    
 }
 
 

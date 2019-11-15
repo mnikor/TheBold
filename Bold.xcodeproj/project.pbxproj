@@ -17,6 +17,8 @@
 		3EFCA3BF2306E00900129DB4 /* SettingsSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFCA3BE2306E00900129DB4 /* SettingsSectionModel.swift */; };
 		3EFCA3C12306E3F000129DB4 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EFCA3C02306E3F000129DB4 /* SettingsTableViewCell.xib */; };
 		AB3A5076A4778FC67A39C5DE /* Pods_Bold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F633E16C16CF1D2DB8E5B5 /* Pods_Bold.framework */; };
+		C561531D237D1714001FD9D8 /* ShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C561531C237D1714001FD9D8 /* ShareView.xib */; };
+		C561531F237D249D001FD9D8 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561531E237D249D001FD9D8 /* ShareView.swift */; };
 		C561C3E32341F7840073ABAC /* AlertContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C3DE2341F7840073ABAC /* AlertContentView.swift */; };
 		C561C3E42341F7840073ABAC /* ShapeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C3DF2341F7840073ABAC /* ShapeButton.swift */; };
 		C561C3E52341F7840073ABAC /* InitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C3E02341F7840073ABAC /* InitView.swift */; };
@@ -445,6 +447,8 @@
 		3EFCA3BC2306D46C00129DB4 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3EFCA3BE2306E00900129DB4 /* SettingsSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionModel.swift; sourceTree = "<group>"; };
 		3EFCA3C02306E3F000129DB4 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
+		C561531C237D1714001FD9D8 /* ShareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareView.xib; sourceTree = "<group>"; };
+		C561531E237D249D001FD9D8 /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		C561C3DE2341F7840073ABAC /* AlertContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertContentView.swift; sourceTree = "<group>"; };
 		C561C3DF2341F7840073ABAC /* ShapeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeButton.swift; sourceTree = "<group>"; };
 		C561C3E02341F7840073ABAC /* InitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitView.swift; sourceTree = "<group>"; };
@@ -922,6 +926,15 @@
 				CD864991698CD15B66E42367 /* Pods-Bold.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		C561531B237D16EF001FD9D8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C561531C237D1714001FD9D8 /* ShareView.xib */,
+				C561531E237D249D001FD9D8 /* ShareView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		C561C3DC2341F7430073ABAC /* CommonViewControllers */ = {
@@ -1482,6 +1495,7 @@
 		F183302A22E6175C00BB7A9E /* AllGoalsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C561531B237D16EF001FD9D8 /* Views */,
 				F1EA1CB422E1BF4900BB328F /* AllGoalsViewController.swift */,
 				F183302B22E6178D00BB7A9E /* AllGoalsConfigurator.swift */,
 				F183302D22E617A300BB7A9E /* AllGoalsPresenter.swift */,
@@ -2213,6 +2227,7 @@
 				F18687F8229D602C0029A663 /* Feel.storyboard in Resources */,
 				C5DCDECF2374587C0018DEA4 /* Terms.pdf in Resources */,
 				F115629E22DF0B5C00399FA6 /* Description.storyboard in Resources */,
+				C561531D237D1714001FD9D8 /* ShareView.xib in Resources */,
 				F1EBC7B022CF63D200BAA82D /* Bomfunk Mcs - Freestyler.mp3 in Resources */,
 				F1EE4D4F229EA6620072F663 /* BackgroundVideo.MOV in Resources */,
 				C5DCDEC32372973C0018DEA4 /* Manifest.pdf in Resources */,
@@ -2435,6 +2450,7 @@
 				C5B1E56323043DC2000991DF /* UnderlinedImageTitleViewModel.swift in Sources */,
 				F179975E22AFF77B0039879F /* MenuTableViewCell.swift in Sources */,
 				F1E698A52315640400438E3E /* LevelOfMasteryConfigurator.swift in Sources */,
+				C561531F237D249D001FD9D8 /* ShareView.swift in Sources */,
 				F1F6ADC523210DB300F6A925 /* User+CoreDataClass.swift in Sources */,
 				F1F6ADB923210DB300F6A925 /* DataSource.swift in Sources */,
 				F1C2534C22B3F977003156AA /* HomeConfigurator.swift in Sources */,

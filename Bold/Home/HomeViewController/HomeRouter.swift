@@ -41,15 +41,10 @@ class HomeRouter: RouterProtocol, HomeInputRouterProtocol {
                 viewController = StoryboardScene.Feel.storyboard.instantiateInitialViewController()
             case .think:
                 viewController = StoryboardScene.Think.storyboard.instantiateInitialViewController()
-            case .actActive:
-                viewController = UIViewController()
-            case .actNotActive:
-                viewController = UIViewController()
+            case .actActive, .actNotActive, .activeGoalsAct, .activeGoals:
+                viewController = StoryboardScene.Act.storyboard.instantiateInitialViewController()
             case .boldManifest:
                 viewController = UIViewController()
-            case .activeGoals, .activeGoalsAct:
-                viewController = UIViewController()
-                break
             }
             if let newVC = viewController {
                 HostViewController.showController(newVC: newVC)

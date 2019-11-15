@@ -183,6 +183,15 @@ class AudioService: NSObject, AudioServiceProtocol {
         UIApplication.topViewController?.present(playerVC, animated: true)
     }
     
+    func startPlayer(isPlaying: Bool) {
+        let playerVC = PlayerViewController.createController()
+        delegate = playerVC
+        if isPlaying {
+            playerVC.play()
+        }
+        UIApplication.topViewController?.present(playerVC, animated: true)
+    }
+    
 }
 
 extension AudioService: AudioPlayerDelegate {

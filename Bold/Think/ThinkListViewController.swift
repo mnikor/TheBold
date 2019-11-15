@@ -43,7 +43,7 @@ extension ActionsListViewController {
         default:
             AudioService.shared.tracks = content.audioTracks
             AudioService.shared.image = .path(content.imageURL)
-            AudioService.shared.showPlayerFullScreen()
+            AudioService.shared.startPlayer(isPlaying: content.type != .meditation)
         }
         
 //        if actions[indexPath.row].type == .action {
