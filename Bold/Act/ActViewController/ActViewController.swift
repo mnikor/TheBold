@@ -121,21 +121,21 @@ extension ActViewController: UITableViewDelegate, UITableViewDataSource {
         
         let item = presenter.dataSource[indexPath.section].items[indexPath.row]
         
-        switch item.type {
-        case .goals:
+        switch item {
+        case .goals(viewModel: _):
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActivityCollectionTableViewCell
             //cell.configCell(entity: HomeEntity(type: .activeGoals, items: [1, 2, 3, 4]))
             
-            if case .goals(viewModel: let activityViewModel) = item.viewModel {
+            if case .goals(viewModel: let activityViewModel) = item {
                 cell.configCell(viewModel: activityViewModel)
             }
             
             cell.delegate = self
             cell.backgroundColor = UIColor(red: 244/255, green: 245/255, blue: 249/255, alpha: 1)
             return cell
-        case .stake:
+        case .event(viewModel: _):
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as StakeActionTableViewCell
-            cell.config(viewModel: item.viewModel)
+            cell.config(viewModel: item)
             cell.delegate = self
             return cell
         default :

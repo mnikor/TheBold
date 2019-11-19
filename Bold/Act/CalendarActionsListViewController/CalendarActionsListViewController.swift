@@ -112,15 +112,15 @@ extension CalendarActionsListViewController: UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = presenter.dataSource[indexPath.section]
         let item = section.items[indexPath.row]
-        switch item.type {
-        case .calendar:
+        switch item {
+        case .calendar(dates: _):
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as CalendarTableViewCell
-            cell.config(date: presenter.currentDate, startDate:presenter.goal?.startDate as Date?, endDate:presenter.goal?.endDate as Date?, modelView: item.viewModel)
+            cell.config(date: presenter.currentDate, startDate:presenter.goal?.startDate as Date?, endDate:presenter.goal?.endDate as Date?, modelView: item)
             cell.delegate = self
             return cell
-        case .stake:
+        case .event(viewModel: _):
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as StakeActionTableViewCell
-            cell.config(viewModel: item.viewModel)
+            cell.config(viewModel: item)
             cell.delegate = self
             return cell
         default :
@@ -134,7 +134,7 @@ extension CalendarActionsListViewController: UITableViewDelegate, UITableViewDat
         let section = presenter.dataSource[indexPath.section]
         let item = section.items[indexPath.row]
         
-        presenter.input(.editActionNew(item.viewModel))
+        presenter.input(.editActionNew(item))
     }
     
 }

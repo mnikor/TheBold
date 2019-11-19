@@ -43,7 +43,7 @@ class ActPresenter: PresenterProtocol, ActPresenterInputProtocol {
     var router: Router!
     
     let disposeBag = DisposeBag()
-    var goalsSection : CalendarActionItemModel!
+    var goalsSection : CalendarModelType!
     //var goalsDataSource = [Goal]()
     var dataSourceModel = [StakeActionViewModel]()
     var dataSource = [ActDataSourceItem]()
@@ -105,7 +105,7 @@ class ActPresenter: PresenterProtocol, ActPresenterInputProtocol {
         
         let item = dataSource[indexPath.section].items[indexPath.row]
         
-        if case .event(viewModel: let viewModelStake) = item.viewModel {
+        if case .event(viewModel: let viewModelStake) = item {
             
             let points = viewModelStake.event.calculatePoints
             
@@ -146,10 +146,4 @@ class ActPresenter: PresenterProtocol, ActPresenterInputProtocol {
         }).disposed(by: disposeBag)
     }
     
-}
-
-struct ActEntity {
-    var type: ActCellType
-    var items: Array<Any>?
-    var selected: Bool
 }

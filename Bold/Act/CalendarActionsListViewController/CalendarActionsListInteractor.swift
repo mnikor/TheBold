@@ -59,8 +59,8 @@ class CalendarActionsListInteractor: InteractorProtocol, CalendarActionsListInpu
         section = groupedItems.map({ (arg) -> CalendarActionSectionModel in
             
             let (key, value) = arg
-            let items = value.compactMap({ (itemViewModel) -> CalendarActionItemModel in
-                return CalendarActionItemModel(type: .stake, modelView: .event(viewModel: itemViewModel))
+            let items = value.compactMap({ (itemViewModel) -> CalendarModelType in
+                return CalendarModelType.event(viewModel: itemViewModel)
             })
             
             var type: ActHeaderType = .none

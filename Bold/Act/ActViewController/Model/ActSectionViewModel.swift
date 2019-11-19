@@ -18,4 +18,4 @@ enum ActSectionModelType {
     //let items : [CalendarActionItemModel]
 //}
 
-typealias ActDataSourceItem = (section: ActSectionModelType, items: [CalendarActionItemModel])
+typealias ActDataSourceItem = (section: ActSectionModelType, items: [CalendarModelType])

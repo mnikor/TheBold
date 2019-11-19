@@ -140,7 +140,7 @@ class CalendarActionsListPresenter: PresenterProtocol, CalendarActionsListInputP
         dataSource.removeAll()
         if isCalendarVisible == true {
             calendarSection.items.removeAll()
-            calendarSection.items.append(CalendarActionItemModel(type: .calendar, modelView: .calendar(dates: calendarDataSource)))
+            calendarSection.items.append(.calendar(dates: calendarDataSource))
             if let newDate = date {
                 
                 let search = baseDataSource.filter { (sectionModel) -> Bool in
@@ -205,16 +205,5 @@ class CalendarActionsListPresenter: PresenterProtocol, CalendarActionsListInputP
                 self.input(.createDataSource(goalID: goalID))
             }
         }).disposed(by: disposeBag)
-    }
-}
-
-
-class CalendarEntity {
-    var headerType: ActHeaderType
-    var items: Array<ActEntity>
-    
-    init(headerType: ActHeaderType, items: Array<ActEntity>) {
-        self.headerType = headerType
-        self.items = items
     }
 }

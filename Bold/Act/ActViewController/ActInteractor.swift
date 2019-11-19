@@ -55,7 +55,7 @@ class ActInteractor: InteractorProtocol, ActInteractorProtocol {
         
         loadGoals {[weak self] (goalSection) in
             
-            let item = CalendarActionItemModel(type: .goals, modelView: CalendarModelType.goals(viewModel: goalSection))
+            let item = CalendarModelType.goals(viewModel: goalSection)
             let goalSection = ActDataSourceItem(section: ActSectionModelType.goal,
                                                 items: [item])
             self?.presenter.dataSource = [goalSection]
@@ -119,7 +119,7 @@ class ActInteractor: InteractorProtocol, ActInteractorProtocol {
         
         loadGoals {[weak self] (goalSection) in
             
-            let item = CalendarActionItemModel(type: .goals, modelView: CalendarModelType.goals(viewModel: goalSection))
+            let item = CalendarModelType.goals(viewModel: goalSection)
             let goalSection = ActDataSourceItem(section: ActSectionModelType.goal,
                                                 items: [item])
             self?.presenter.dataSource = [goalSection]
@@ -191,8 +191,8 @@ class ActInteractor: InteractorProtocol, ActInteractorProtocol {
         section = groupedItems.map({ (arg) -> CalendarActionSectionModel in
             
             let (key, value) = arg
-            let items = value.compactMap({ (itemViewModel) -> CalendarActionItemModel in
-                return CalendarActionItemModel(type: .stake, modelView: .event(viewModel: itemViewModel))
+            let items = value.compactMap({ (itemViewModel) -> CalendarModelType in
+                return CalendarModelType.event(viewModel: itemViewModel)
             })
             
             var type: ActHeaderType = .none

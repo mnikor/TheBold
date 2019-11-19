@@ -137,10 +137,9 @@
 		F12815E7236B298500CAE49B /* LevelOfMasteryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12815E6236B298500CAE49B /* LevelOfMasteryService.swift */; };
 		F13DEAD322AAC0B700BC3CA6 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13DEAD222AAC0B700BC3CA6 /* SignUpView.swift */; };
 		F13DEAD522AAC0D500BC3CA6 /* SignUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F13DEAD422AAC0D500BC3CA6 /* SignUpView.xib */; };
-		F13FCBB42339FBBC00BAE544 /* CalendarModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBB32339FBBC00BAE544 /* CalendarModelView.swift */; };
 		F13FCBB62339FCDB00BAE544 /* StakeActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBB52339FCDA00BAE544 /* StakeActionViewModel.swift */; };
 		F13FCBB82339FE4A00BAE544 /* CalendarActionSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBB72339FE4A00BAE544 /* CalendarActionSectionModel.swift */; };
-		F13FCBBA2339FE6300BAE544 /* CalendarActionItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBB92339FE6300BAE544 /* CalendarActionItemModel.swift */; };
+		F13FCBBA2339FE6300BAE544 /* CalendarModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBB92339FE6300BAE544 /* CalendarModelType.swift */; };
 		F13FCBBC233A171C00BAE544 /* DataSource+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBBB233A171C00BAE544 /* DataSource+Events.swift */; };
 		F13FCBBF233A18D900BAE544 /* GoalCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBBE233A18D900BAE544 /* GoalCollectionViewModel.swift */; };
 		F141668122BCD7A10020BF0F /* ManifestConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141668022BCD7A10020BF0F /* ManifestConfigurator.swift */; };
@@ -160,6 +159,14 @@
 		F14166A522C115B50020BF0F /* PlayerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14166A422C115B50020BF0F /* PlayerListView.swift */; };
 		F14166AC22C125A50020BF0F /* ActionCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14166AA22C125A50020BF0F /* ActionCollectionTableViewCell.swift */; };
 		F14166AD22C125A50020BF0F /* ActionCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F14166AB22C125A50020BF0F /* ActionCollectionTableViewCell.xib */; };
+		F15699BD2383FD5E001E3D7B /* BaseStakesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15699BC2383FD5E001E3D7B /* BaseStakesListViewController.swift */; };
+		F15699BF2383FD71001E3D7B /* BaseStakesListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15699BE2383FD71001E3D7B /* BaseStakesListConfigurator.swift */; };
+		F15699C12383FD82001E3D7B /* BaseStakesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15699C02383FD82001E3D7B /* BaseStakesListPresenter.swift */; };
+		F15699C32383FD98001E3D7B /* BaseStakesListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15699C22383FD97001E3D7B /* BaseStakesListInteractor.swift */; };
+		F15699C52383FDAB001E3D7B /* BaseStakesListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15699C42383FDAB001E3D7B /* BaseStakesListRouter.swift */; };
+		F15699C72384097B001E3D7B /* DeleteClassAndStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15699C62384097B001E3D7B /* DeleteClassAndStructure.swift */; };
+		F15699C923841F46001E3D7B /* RangeDatePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15699C823841F46001E3D7B /* RangeDatePeriod.swift */; };
+		F15699CB238424A9001E3D7B /* CalendarActionSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15699CA238424A9001E3D7B /* CalendarActionSectionViewModel.swift */; };
 		F158273F22EB569E007B9023 /* DateAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F158273E22EB569E007B9023 /* DateAlertViewController.swift */; };
 		F158E2BC22C3C2C300FD671A /* FeelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F158E2BA22C3C2C300FD671A /* FeelViewController.swift */; };
 		F158E2BF22C3C72800FD671A /* ProgressHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F158E2BE22C3C72800FD671A /* ProgressHeaderView.swift */; };
@@ -569,10 +576,9 @@
 		F12815E6236B298500CAE49B /* LevelOfMasteryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfMasteryService.swift; sourceTree = "<group>"; };
 		F13DEAD222AAC0B700BC3CA6 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		F13DEAD422AAC0D500BC3CA6 /* SignUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpView.xib; sourceTree = "<group>"; };
-		F13FCBB32339FBBC00BAE544 /* CalendarModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModelView.swift; sourceTree = "<group>"; };
 		F13FCBB52339FCDA00BAE544 /* StakeActionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StakeActionViewModel.swift; sourceTree = "<group>"; };
 		F13FCBB72339FE4A00BAE544 /* CalendarActionSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActionSectionModel.swift; sourceTree = "<group>"; };
-		F13FCBB92339FE6300BAE544 /* CalendarActionItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActionItemModel.swift; sourceTree = "<group>"; };
+		F13FCBB92339FE6300BAE544 /* CalendarModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModelType.swift; sourceTree = "<group>"; };
 		F13FCBBB233A171C00BAE544 /* DataSource+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSource+Events.swift"; sourceTree = "<group>"; };
 		F13FCBBE233A18D900BAE544 /* GoalCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCollectionViewModel.swift; sourceTree = "<group>"; };
 		F141668022BCD7A10020BF0F /* ManifestConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestConfigurator.swift; sourceTree = "<group>"; };
@@ -592,6 +598,14 @@
 		F14166A422C115B50020BF0F /* PlayerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListView.swift; sourceTree = "<group>"; };
 		F14166AA22C125A50020BF0F /* ActionCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		F14166AB22C125A50020BF0F /* ActionCollectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionCollectionTableViewCell.xib; sourceTree = "<group>"; };
+		F15699BC2383FD5E001E3D7B /* BaseStakesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStakesListViewController.swift; sourceTree = "<group>"; };
+		F15699BE2383FD71001E3D7B /* BaseStakesListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStakesListConfigurator.swift; sourceTree = "<group>"; };
+		F15699C02383FD82001E3D7B /* BaseStakesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStakesListPresenter.swift; sourceTree = "<group>"; };
+		F15699C22383FD97001E3D7B /* BaseStakesListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStakesListInteractor.swift; sourceTree = "<group>"; };
+		F15699C42383FDAB001E3D7B /* BaseStakesListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStakesListRouter.swift; sourceTree = "<group>"; };
+		F15699C62384097B001E3D7B /* DeleteClassAndStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteClassAndStructure.swift; sourceTree = "<group>"; };
+		F15699C823841F46001E3D7B /* RangeDatePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeDatePeriod.swift; sourceTree = "<group>"; };
+		F15699CA238424A9001E3D7B /* CalendarActionSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActionSectionViewModel.swift; sourceTree = "<group>"; };
 		F158273E22EB569E007B9023 /* DateAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAlertViewController.swift; sourceTree = "<group>"; };
 		F158E2BA22C3C2C300FD671A /* FeelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelViewController.swift; sourceTree = "<group>"; };
 		F158E2BE22C3C72800FD671A /* ProgressHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHeaderView.swift; sourceTree = "<group>"; };
@@ -1196,6 +1210,7 @@
 			isa = PBXGroup;
 			children = (
 				F1043540234B70CF0086673C /* ActSectionViewModel.swift */,
+				F15699C62384097B001E3D7B /* DeleteClassAndStructure.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1244,12 +1259,25 @@
 			path = ZSegmentedControl;
 			sourceTree = "<group>";
 		};
+		F118C0242382BD1A004DC743 /* BaseStakeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F15699BC2383FD5E001E3D7B /* BaseStakesListViewController.swift */,
+				F15699BE2383FD71001E3D7B /* BaseStakesListConfigurator.swift */,
+				F15699C02383FD82001E3D7B /* BaseStakesListPresenter.swift */,
+				F15699C22383FD97001E3D7B /* BaseStakesListInteractor.swift */,
+				F15699C42383FDAB001E3D7B /* BaseStakesListRouter.swift */,
+			);
+			path = BaseStakeViewController;
+			sourceTree = "<group>";
+		};
 		F13FCBB02339F93000BAE544 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				F13FCBB72339FE4A00BAE544 /* CalendarActionSectionModel.swift */,
-				F13FCBB92339FE6300BAE544 /* CalendarActionItemModel.swift */,
-				F13FCBB32339FBBC00BAE544 /* CalendarModelView.swift */,
+				F15699CA238424A9001E3D7B /* CalendarActionSectionViewModel.swift */,
+				F15699C823841F46001E3D7B /* RangeDatePeriod.swift */,
+				F13FCBB92339FE6300BAE544 /* CalendarModelType.swift */,
 				F13FCBB52339FCDA00BAE544 /* StakeActionViewModel.swift */,
 			);
 			path = Model;
@@ -1810,6 +1838,7 @@
 		F1CCC70E22CE21E500E7B637 /* Act */ = {
 			isa = PBXGroup;
 			children = (
+				F118C0242382BD1A004DC743 /* BaseStakeViewController */,
 				F183302122E6051B00BB7A9E /* ActViewController */,
 				F183302A22E6175C00BB7A9E /* AllGoalsViewController */,
 				F19257FD22E7527B00FA5C6E /* CalendarActionsListViewController */,
@@ -2429,7 +2458,7 @@
 				F1F44A652368711700F977D1 /* ResultCustomError.swift in Sources */,
 				F179977622B1413A0039879F /* MenuViewController.swift in Sources */,
 				F1F44A632368711700F977D1 /* CalendarEvent.swift in Sources */,
-				F13FCBBA2339FE6300BAE544 /* CalendarActionItemModel.swift in Sources */,
+				F13FCBBA2339FE6300BAE544 /* CalendarModelType.swift in Sources */,
 				F1F6ADBA23210DB300F6A925 /* DataSource+Contents.swift in Sources */,
 				F186884C229E9BD80029A663 /* UIColor+Extensions.swift in Sources */,
 				C59E5E3823059414005DCD18 /* AccountDetailsRouter.swift in Sources */,
@@ -2455,6 +2484,7 @@
 				F1F6ADB923210DB300F6A925 /* DataSource.swift in Sources */,
 				F1C2534C22B3F977003156AA /* HomeConfigurator.swift in Sources */,
 				F19A98A522D5FF4F00A0492E /* CustomDotsPageControl.swift in Sources */,
+				F15699C52383FDAB001E3D7B /* BaseStakesListRouter.swift in Sources */,
 				F1F406322306F6BA0091B774 /* LevelOfMasteryTableViewCell.swift in Sources */,
 				F141668322BCD7D20020BF0F /* ManifestPresenter.swift in Sources */,
 				F15FB323232FDEC9002F0C00 /* ConfigurateActionSectionModel.swift in Sources */,
@@ -2473,6 +2503,7 @@
 				F158E2C322C4E11600FD671A /* NavigationView.swift in Sources */,
 				F1F6ADC123210DB300F6A925 /* ProfileTemp.swift in Sources */,
 				F183301A22E5CBCC00BB7A9E /* ActionsListConfigurator.swift in Sources */,
+				F15699C12383FD82001E3D7B /* BaseStakesListPresenter.swift in Sources */,
 				C5B1E56B23045F99000991DF /* ProfilePresenter.swift in Sources */,
 				C59E5E3623059405005DCD18 /* AccountDetailsInteractor.swift in Sources */,
 				F1B2B1D222FC1A2100C327B0 /* CalendarDecorationView.swift in Sources */,
@@ -2493,6 +2524,7 @@
 				F19A98B422D7573000A0492E /* MissedYouOneButtonAlertView.swift in Sources */,
 				F1CCC71322CE228800E7B637 /* AddActionPlanViewController.swift in Sources */,
 				F183302022E5CBF700BB7A9E /* ActionsListRouter.swift in Sources */,
+				F15699C72384097B001E3D7B /* DeleteClassAndStructure.swift in Sources */,
 				F1130CE3230EC5BD008FA60D /* DownloadTableViewCell.swift in Sources */,
 				F1EA1CBE22E1EA9500BB328F /* UITableViewCell+Extensions.swift in Sources */,
 				F1EA1CA922E07D2A00BB328F /* UILabel+Extensions.swift in Sources */,
@@ -2503,7 +2535,6 @@
 				F17CB26922A682130035ABAB /* RoundedButton.swift in Sources */,
 				F14166AC22C125A50020BF0F /* ActionCollectionTableViewCell.swift in Sources */,
 				F15FB320232FDE14002F0C00 /* CreateActionViewModel.swift in Sources */,
-				F13FCBB42339FBBC00BAE544 /* CalendarModelView.swift in Sources */,
 				C561C4042341FBD00073ABAC /* BlurTransitionView.swift in Sources */,
 				F1EB8DD622A8022500E3BC4C /* ForgotPasswordViewController.swift in Sources */,
 				C577363723691FFF0018063B /* Reminder+CoreDataProperties.swift in Sources */,
@@ -2518,6 +2549,7 @@
 				F1F6ADD2232128FF00F6A925 /* CreateGoalSectionModel.swift in Sources */,
 				F179977522B1413A0039879F /* SideMenuItemOptions.swift in Sources */,
 				C5A4853923069B0C002CC62A /* EditAccountDetailsViewController.swift in Sources */,
+				F15699BF2383FD71001E3D7B /* BaseStakesListConfigurator.swift in Sources */,
 				C5B1E56723045F6C000991DF /* ProfileConfigurator.swift in Sources */,
 				F1F44A682368711700F977D1 /* ActivityContent.swift in Sources */,
 				F19257FC22E7526E00FA5C6E /* CalendarActionsListViewController.swift in Sources */,
@@ -2556,7 +2588,9 @@
 				3EFCA3B52306BF9C00129DB4 /* SettingsRouter.swift in Sources */,
 				F1CCC71B22CE49EC00E7B637 /* HeaderTitleActionPlanTableViewCell.swift in Sources */,
 				F183303822E6F03700BB7A9E /* CreateActionPresenter.swift in Sources */,
+				F15699CB238424A9001E3D7B /* CalendarActionSectionViewModel.swift in Sources */,
 				F162A77E22C12C05008292E8 /* ActionCollectionViewCell.swift in Sources */,
+				F15699C923841F46001E3D7B /* RangeDatePeriod.swift in Sources */,
 				F1E698B22315722C00438E3E /* DownloadsInteractor.swift in Sources */,
 				C5B1E54E23042913000991DF /* ImagedTitleSubtitleView.swift in Sources */,
 				F1E698B02315721E00438E3E /* DownloadsPresenter.swift in Sources */,
@@ -2686,7 +2720,9 @@
 				F1F44A6A2368711700F977D1 /* CalendarCustomError.swift in Sources */,
 				F104353E2348C80D0086673C /* ActivityViewModel.swift in Sources */,
 				F107538822F093770078C71C /* BodyConfigureTableViewCell.swift in Sources */,
+				F15699C32383FD98001E3D7B /* BaseStakesListInteractor.swift in Sources */,
 				F183302C22E6178D00BB7A9E /* AllGoalsConfigurator.swift in Sources */,
+				F15699BD2383FD5E001E3D7B /* BaseStakesListViewController.swift in Sources */,
 				F1F6ADD72321297700F6A925 /* CreateGoalActionModel.swift in Sources */,
 				C5C6C14C2320F23800C15C2B /* NotificationService.swift in Sources */,
 				F107538822F093770078C71C /* BodyConfigureTableViewCell.swift in Sources */,
