@@ -226,22 +226,16 @@ class NotificationService: NSObject {
             let trigger = self.createReminderTrigger(date: Date(timeIntervalSinceNow: 2), reminderType: .none)
             content.categoryIdentifier = CategoryIdentifier.rating.rawValue
             let requestIdentifier = UUID().uuidString
-            self.actionCompletions[requestIdentifier] = self.yesNoActionIdentifiers.compactMap { action in
-                let actionCompletion: () -> Void
+            self.actionCompletions[requestIdentifier] = self.ratingActionIdentifiers.compactMap { action in
                 switch action {
-                case .rate:
-                    actionCompletion = self.rateAppCompletion
-                case .feedback:
-                    actionCompletion = self.sendFeedbackCompletion
                 case .reminder:
-                    actionCompletion = {
+                    return (action, {
                         let newTrigger = self.createReminderTrigger(date: Date(timeIntervalSinceNow: 24 * 60 * 60), reminderType: .none)
                         self.addRequest(with: requestIdentifier, content: content, trigger: newTrigger)
-                    }
+                    })
                 default:
-                    actionCompletion = { }
+                    return nil
                 }
-                return (action, actionCompletion)
             }
             self.addRequest(with: requestIdentifier, content: content, trigger: trigger)
         }
@@ -323,10 +317,19 @@ extension NotificationService: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let requestIdentifier = response.notification.request.identifier
         if let actionIdentifier = ActionIdentifier(rawValue: response.actionIdentifier) {
-            actionCompletions[requestIdentifier]?
-                .first(where: { identifier, completion in identifier == actionIdentifier })?
-                .completion()
-            actionCompletions.removeValue(forKey: requestIdentifier)
+            switch actionIdentifier {
+            case .rate:
+                rateAppCompletion()
+                return
+            case .feedback:
+                sendFeedbackCompletion()
+                return
+            default:
+                actionCompletions[requestIdentifier]?
+                    .first(where: { identifier, completion in identifier == actionIdentifier })?
+                    .completion()
+                actionCompletions.removeValue(forKey: requestIdentifier)
+            }
         }
         
         delegate?.userNotificationCenter?(center, didReceive: response, withCompletionHandler: completionHandler)
