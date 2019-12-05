@@ -25,6 +25,8 @@ class FeelViewController: UIViewController, SideMenuItemContent, ViewProtocol {
     }
     var items: [FeelEntity] = []
     
+    private var selectedContent: ActivityContent?
+    
     private var loader = LoaderView(frame: .zero)
     
     override func viewDidLoad() {
@@ -94,6 +96,7 @@ extension FeelViewController: ActionCollectionTableViewCellDelegate {
     func actionCollectionTableViewCell(_ actionCollectionTableViewCell: ActionCollectionTableViewCell, didTapAtItem indexPath: IndexPath) {
         guard let cellIndexPath = tableView.indexPath(for: actionCollectionTableViewCell) else { return }
         let item = items[cellIndexPath.row].items[indexPath.row]
+        selectedContent = item
         presenter.input(.showDetails(item: item))
     }
     
@@ -126,4 +129,19 @@ extension FeelViewController {
     }
 }
 
+extension FeelViewController: PlayerViewControllerDelegate {
+    func saveContent() {
+        guard let content = selectedContent else { return }
+        DataSource.shared.saveContent(content: content)
+    }
+    
+    func removeFromCache() {
+        guard let content = selectedContent else { return }
+        DataSource.shared.deleteContent(content: content)
+    }
 
+    func likeContent(_ isLiked: Bool) {
+        guard let content = selectedContent else { return }
+    }
+    
+}

@@ -17,6 +17,7 @@ enum ActInputRouter {
     case goalItem(calendarVC: CalendarActionsListViewController)
     case longTapActionPresentedBy(StartActionViewController)
     case showEditEvent(vc: EditActionPlanViewController)
+    case createGoal
 }
 
 protocol ActInputRouterProtocol {
@@ -49,6 +50,9 @@ class ActRouter: RouterProtocol, ActInputRouterProtocol {
             viewController.navigationController?.pushViewController(calendarVC, animated: true)
         case .longTapActionPresentedBy(let vc):
             vc.presentedBy(viewController.navigationController!)
+        case .createGoal:
+            let vc = StoryboardScene.Act.createGoalViewController.instantiate()
+            viewController.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

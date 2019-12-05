@@ -18,8 +18,17 @@ struct DescriptionViewModel {
     var isLikesEnabled: Bool
     
     static func map(activityContent: ActivityContent) -> DescriptionViewModel {
+        let documentURL: URL?
+        switch activityContent.documentURL {
+        case .local(let path):
+            documentURL = URL(fileURLWithPath: path)
+        case .remote(let urlString):
+            documentURL = URL(string: urlString)
+        case nil:
+            documentURL = nil
+        }
         return DescriptionViewModel(image: .path(activityContent.imageURL),
-                                    documentURL: URL(string: activityContent.documentURL ?? ""),
+                                    documentURL: documentURL,
                                     likesCount: activityContent.likesCount,
                                     title: activityContent.title,
                                     category: activityContent.type,

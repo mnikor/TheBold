@@ -39,7 +39,7 @@ class DownloadTableViewCell: BaseTableViewCell {
 
     func config(downloads: DownloadsEntity, action:Bool) {
         item = downloads
-        coverImageView.image = downloads.image
+        coverImageView.setImageAnimated(path: downloads.imagePath ?? "", placeholder: Asset.serfer.image)
         tiltleLabel.text = downloads.title
         groupLabel.text = downloads.group
         treeDotsButton.isHidden = action

@@ -48,7 +48,6 @@ class HomeViewController: UIViewController, SideMenuItemContent, ViewProtocol {
     func configureHeaderView() {
         headerHomeView = HeaderHomeView()
         headerHomeView.contentView.frame = CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: headerHomeView.contentView.bounds.size.width)
-        headerHomeView.setName(SessionManager.shared.profile?.firstName)
     }
     
     func registerXibs() {
@@ -94,7 +93,7 @@ class HomeViewController: UIViewController, SideMenuItemContent, ViewProtocol {
     }
     
     @objc private func profileChanged(_ notification: Notification) {
-        headerHomeView.setName(SessionManager.shared.profile?.firstName)
+        headerHomeView.configureTitle()
     }
     
 }

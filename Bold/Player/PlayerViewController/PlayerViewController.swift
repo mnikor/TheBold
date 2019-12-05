@@ -15,10 +15,18 @@ enum PlayerState {
     case paused
 }
 
+protocol PlayerViewControllerDelegate: class {
+    func saveContent()
+    func removeFromCache()
+    func likeContent(_ isLiked: Bool)
+}
+
 class PlayerViewController: UIViewController, ViewProtocol {
     
     typealias Presenter = PlayerPresenter
     typealias Configurator = PlayerConfigurator
+    
+    weak var delegate: PlayerViewControllerDelegate?
     
     var presenter: Presenter!
     var configurator: Configurator! = PlayerConfigurator()
@@ -97,12 +105,18 @@ class PlayerViewController: UIViewController, ViewProtocol {
         buttonsToolbar.dowload = !buttonsToolbar.dowload
         downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
         downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
+        if buttonsToolbar.dowload {
+            delegate?.saveContent()
+        } else {
+            delegate?.removeFromCache()
+        }
     }
     
     @IBAction func tapLikeButton(_ sender: UIBarButtonItem) {
         buttonsToolbar.like = !buttonsToolbar.like
         likeButton.image = buttonsToolbar.like == false ? Asset.playerLikeIcon.image : Asset.playerLikedIcon.image
         likeButton.tintColor = buttonsToolbar.like == false ? .gray : ColorName.primaryRed.color
+        delegate?.likeContent(buttonsToolbar.like)
     }
     
     

@@ -27,6 +27,14 @@ class HeaderHomeView: UIView {
     
     let disposeBag = DisposeBag()
     
+    private var pointsStartValue = 0
+    private var pointsEndValue = 100
+    private var boldnessStartValue = 0
+    private var boldnessEndValue = 45
+    private var startDate = Date()
+    private var animationDuration = 0.8
+    private var pointsLimit = 300
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -48,25 +56,61 @@ class HeaderHomeView: UIView {
         configure()
     }
     
-    func setName(_ name: String?) {
-        if let name = name {
-            welcomeLabel.text = "Welcome back,"
-            usernameLabel.text = name + "!"
+    func configureTitle() {
+        if UserDefaults.standard.bool(forKey: "first entrance") {
+            welcomeLabel.text = "Welcome"
+            UserDefaults.standard.setValue(false, forKey: "first entrance")
         } else {
-            welcomeLabel.text = "Welcome back!"
-            usernameLabel.text = nil
+            welcomeLabel.text = "Welcome back"
+        }
+        
+        if let profile = SessionManager.shared.profile {
+            welcomeLabel.text = (welcomeLabel.text ?? "") + "\(profile.firstName == nil ? "!" : ",")"
+            usernameLabel.text = profile.firstName == nil ? "" : "\(profile.firstName ?? "")!"
+        } else {
+            welcomeLabel.text = (welcomeLabel.text ?? "")
+            usernameLabel.text = "Bold Man!"
         }
     }
     
+    func set(points: Int, boldness: Int) {
+        pointsStartValue = Int(currentPointsLabel.text?.components(separatedBy: "/").first ?? "0") ?? 0
+        boldnessStartValue = Int(timeLabel.text?.components(separatedBy: "min").first ?? "0" ) ?? 0
+        
+        pointsEndValue = points
+        boldnessEndValue = boldness
+        
+        let displayLink = CADisplayLink(target: self, selector: #selector(animateValues))
+        displayLink.add(to: .main, forMode: .default)
+        startDate = Date()
+    }
+    
     func configure() {
+        configureTitle()
         
        LevelOfMasteryService.shared.changePoints.subscribe(onNext: {[weak self] (levelInfo) in
             
         self?.levelNameLabel.text = levelInfo.level.type.titleText
         let currentLimits = levelInfo.level.limits.getAllLimits()
         self?.currentPointsLabel.text = "\(levelInfo.currentPoint)/\(currentLimits.points)"
+        self?.pointsLimit = currentLimits.points
         
        }).disposed(by: disposeBag)
+    }
+    
+    @objc private func animateValues() {
+        let timeInterval = Date().timeIntervalSince(startDate)
+        guard timeInterval < animationDuration
+            else {
+                currentPointsLabel.text = "\(pointsEndValue)/\(pointsLimit)"
+                timeLabel.text = "\(boldnessEndValue)min"
+                return
+        }
+        let percentage = timeInterval / animationDuration
+        let pointsNewValue = Double(pointsEndValue - pointsStartValue) * percentage
+        let boldnessNewValue = Double(boldnessEndValue - boldnessStartValue) * percentage
+        currentPointsLabel.text = "\(Int(pointsNewValue))/\(pointsLimit)"
+        timeLabel.text = "\(Int(boldnessNewValue))min"
     }
     
 }

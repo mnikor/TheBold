@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol EnterYourGoalDelegate: class {
+    func didChangeGoal(text: String)
+}
+
 class EnterYourGoalTableViewCell: BaseTableViewCell {
+    
+    weak var delegate: EnterYourGoalDelegate?
 
     @IBOutlet weak var goalNameTextField : UITextField!
     

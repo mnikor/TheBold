@@ -8,6 +8,15 @@
 
 import UIKit
 
+enum DownloadsCategory: CaseIterable {
+    case all
+    case meditation
+    case peptalk
+    case hypnosis
+    case stories
+    case lessons
+}
+
 class DownloadsViewController: UIViewController, ViewProtocol {
     
     typealias Presenter = DownloadsPresenter
@@ -19,20 +28,27 @@ class DownloadsViewController: UIViewController, ViewProtocol {
     @IBOutlet weak var segmentedtControl: ZSegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
-    lazy var currentDownloads: [DownloadsEntity] = {
-        return downloads
-    }()
+    var downloads: [DownloadsEntity] = []
     
-    lazy var downloads: [DownloadsEntity] = {
-        return [DownloadsEntity(image: Asset.serfer.image, title: "Managing team", type: .lessons, group: "Lesson"),
-                DownloadsEntity(image: Asset.serfer.image, title: "Leading with purpose", type: .meditation, group: "Meditation"),
-                DownloadsEntity(image: Asset.serfer.image, title: "Managing conﬂict", type: .lessons, group: "Lesson"),
-                DownloadsEntity(image: Asset.serfer.image, title: "Managing uncertainty", type: .meditation, group: "Meditation"),
-                DownloadsEntity(image: Asset.serfer.image, title: "Managing team", type: .lessons, group: "Lesson"),
-                DownloadsEntity(image: Asset.serfer.image, title: "Leading with purpose", type: .meditation, group: "Meditation"),
-                DownloadsEntity(image: Asset.serfer.image, title: "Managing conﬂict", type: .lessons, group: "Lesson"),
-                DownloadsEntity(image: Asset.serfer.image, title: "Managing uncertainty", type: .meditation, group: "Meditation")]
-    }()
+    private var selectedContent: ActivityContent?
+    private var selectedCategory: DownloadsCategory = .all
+    
+    private var currentDownloads: [DownloadsEntity] {
+        switch selectedCategory {
+        case .all:
+            return downloads
+        case .meditation:
+            return downloads.filter { $0.type == .meditation }
+        case .peptalk:
+            return downloads.filter { $0.type == .pepTalk }
+        case .hypnosis:
+            return downloads.filter { $0.type == .hypnosis }
+        case .stories:
+            return downloads.filter { $0.type == .stories }
+        case .lessons:
+            return downloads.filter { $0.type == .lessons }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +59,7 @@ class DownloadsViewController: UIViewController, ViewProtocol {
         configureNavigationBar()
         registerXibs()
         configSegmentControl()
+        prepareDataSource()
     }
     
     func registerXibs() {
@@ -57,6 +74,31 @@ class DownloadsViewController: UIViewController, ViewProtocol {
                                                 style: .plain, target: self, action: #selector(didTapAtBackBarButtonItem(_:)))
         navigationItem.setLeftBarButton(leftBarButtonItem, animated: true)
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.4745098039, green: 0.5568627451, blue: 0.8509803922, alpha: 1)
+    }
+    
+    func prepareDataSource() {
+        presenter.input(.prepareDataSource(completion: { [weak self] content in
+            guard let self = self else { return }
+            self.downloads = content.compactMap { DownloadsEntity(imagePath: $0.imageURL, title: $0.title, type: self.feelType(from: $0.type), group: $0.type.rawValue.capitalized, content: $0) }
+            self.tableView.reloadData()
+        }))
+    }
+    
+    private func feelType(from contentType: ContentType) -> FeelTypeCell {
+        switch contentType {
+        case .hypnosis:
+            return .hypnosis
+        case .lesson:
+            return .lessons
+        case .meditation:
+            return .meditation
+        case .preptalk:
+            return .pepTalk
+        case .quote:
+            return .citate
+        case .story:
+            return .stories
+        }
     }
     
     private func prepareTitleView() -> UILabel {
@@ -96,53 +138,25 @@ extension DownloadsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeReusableCell(indexPath: indexPath) as DownloadTableViewCell
         cell.config(downloads: currentDownloads[indexPath.row], action: false)
         cell.delegate = self
         return cell
     }
-}
-
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let content = currentDownloads[indexPath.row].content
+        selectedContent = content
+        presenter.input(.showDetails(content))
+    }
+    
+}
 
 extension DownloadsViewController: ZSegmentedControlSelectedProtocol {
     
     func segmentedControlSelectedIndex(_ index: Int, animated: Bool, segmentedControl: ZSegmentedControl) {
-        print("select index = \(index)")
-        
-        switch index {
-        case 0:
-            print("all")
-            currentDownloads = downloads
-        case 1:
-            print("meditation")
-            currentDownloads = downloads.filter({ (item) -> Bool in
-                return item.type == .meditation
-            })
-        case 2:
-            print("pepTalk")
-            currentDownloads = downloads.filter({ (item) -> Bool in
-                return item.type == .pepTalk
-            })
-        case 3:
-            print("hypnosis")
-            currentDownloads = downloads.filter({ (item) -> Bool in
-                return item.type == .hypnosis
-            })
-        case 4:
-            print("stories")
-            currentDownloads = downloads.filter({ (item) -> Bool in
-                return item.type == .stories
-            })
-        case 5:
-            print("lessons")
-            currentDownloads = downloads.filter({ (item) -> Bool in
-                return item.type == .lessons
-            })
-        default:
-            print("default item")
-        }
+        selectedCategory = DownloadsCategory.allCases[index]
         tableView.reloadData()
     }
 }
@@ -152,18 +166,43 @@ extension DownloadsViewController: DownloadTableViewCellDelegate {
     func tapThreeDots(item: DownloadsEntity) {
         print("tapThreeDots")
         
-        let action = DownloadsActionViewController.createController(item: item, tapAddPlan: {
-            print("Add to Plan")
-        }) {
-            print("Delete")
+        let action = DownloadsActionViewController.createController(item: item, tapAddPlan: { [weak self] in
+            let vc = AddActionPlanViewController.createController(contentID: String(item.content.id), tapOk: { [weak self] in
+                
+            })
+            self?.dismiss(animated: true)
+            self?.present(vc, animated: true)
+        }) { [weak self] in
+            DataSource.shared.deleteContent(content: item.content)
+            self?.downloads.removeAll(where: { $0.content.id == item.content.id })
+            self?.tableView.reloadData()
+            self?.dismiss(animated: true)
         }
         action.presentedBy(self)
     }
 }
 
+extension DownloadsViewController: PlayerViewControllerDelegate {
+    func saveContent() {
+        guard let content = selectedContent else { return }
+        DataSource.shared.saveContent(content: content)
+    }
+    
+    func removeFromCache() {
+        guard let content = selectedContent else { return }
+        DataSource.shared.deleteContent(content: content)
+    }
+    
+    func likeContent(_ isLiked: Bool) {
+        guard let content = selectedContent else { return }
+    }
+    
+}
+
 struct DownloadsEntity {
-    let image: UIImage
+    let imagePath: String?
     let title: String
     let type: FeelTypeCell
     let group: String
+    let content: ActivityContent
 }

@@ -23,12 +23,93 @@ enum RepeatType {
 enum ReminderType {
     case beforeTheDay
     case onTheDay
+    case none
 }
+
+enum StandardNotification {
+    case actionCompleteWithStake
+    case actionCompleteWithoutStake
+    case actionWasNotAccomplished
+    case goalAchieved
+    case goalDeleted(completion: (Bool) -> Void)
+    case actionDeleted(completion: (Bool) -> Void)
+    case reminderOneDayBefore(actionTitle: String, date: Date, type: ReminderType)
+    case reminderOnDay(actionTitle: String, stake: Int, date: Date, type: ReminderType)
+    case levelOfMasteryAchieved(newLevelTitle: String)
+    case actionsAndContentCompleted
+    
+    var body: String {
+        switch self {
+        case .actionCompleteWithStake:
+            return "Congratulations! You have completed your action, saved your stake and earned points. Keep crushing your action plan!!!"
+        case .actionCompleteWithoutStake:
+            return "Congratulations! You have completed your action and earned points. Keep crushing your action plan!!!"
+        case .actionWasNotAccomplished:
+            return "You've missed your action. Don’t give up, keep going!"
+        case .goalAchieved:
+            return "Fantastic! You have achieved your goal. Congratulations, you get additional points!!!"
+        case .goalDeleted:
+            return "Sometimes goals become irrelevant! Confirm deletion (-50 points)"
+        case .actionDeleted:
+            return "Sometimes actions become irrelevant as we adapt our strategy! Confirm deletion (-10 points)"
+        case .reminderOneDayBefore(actionTitle: let title, _, _):
+            return "You have an action due to be completed tomorrow… \(title)"
+        case .reminderOnDay(actionTitle: let title, stake: let stake, _, _):
+            return "You have an action due to be completed today… \(title). With a stake of $\(stake) Make sure to complete it to win your stake!"
+        case .levelOfMasteryAchieved(newLevelTitle: let title):
+            return "Incredible, you just moved to another Level of Mastery! Now you are \(title) Keep mastering yourself."
+        case .actionsAndContentCompleted:
+            return "Are you finding The Bold app helpful?"
+        }
+    }
+}
+
+private enum CategoryIdentifier: String {
+    case yesNo = "y/n"
+    case rating
+}
+
+enum ActionIdentifier: String {
+    case yes
+    case no
+    case rate
+    case feedback
+    case reminder
+    
+    var title: String {
+        switch self {
+        case .yes:
+            return "Yes"
+        case .no:
+            return "No"
+        case .rate:
+            return "Yes - rate it"
+        case .feedback:
+            return "No, send feedback"
+        case .reminder:
+            return "Remind me later"
+        }
+    }
+}
+
+typealias ActionCompletion = (actionIdentifier: ActionIdentifier, completion: () -> Void)
 
 class NotificationService: NSObject {
     static let shared = NotificationService()
     
     weak var delegate: UNUserNotificationCenterDelegate?
+    
+    private var actionCompletions: [String: [ActionCompletion]] = [:]
+    private let yesNoActionIdentifiers: [ActionIdentifier] = [.yes, .no]
+    private let ratingActionIdentifiers: [ActionIdentifier] = [.rate, .feedback, .reminder]
+    
+    private let rateAppCompletion: () -> Void = {
+        print("rate app")
+    }
+    
+    private let sendFeedbackCompletion: () -> Void = {
+        print("send feedback")
+    }
     
     private override init() {
         super.init()
@@ -41,6 +122,7 @@ class NotificationService: NSObject {
                 print("User has declined notifications")
             }
         }
+        configureCategories()
     }
     
     func updateDeviceToken(_ token: Data) {
@@ -48,6 +130,23 @@ class NotificationService: NSObject {
 //        if let fcmToken = Messaging.messaging().fcmToken {
 //            AppSettings.shared.pushToken = fcmToken
 //        }
+    }
+    
+    func createStandardNotification(_ notification: StandardNotification) {
+        switch notification {
+        case .actionDeleted(completion: let completion):
+            createYesNoNotification(message: notification.body, completion: completion)
+        case .goalDeleted(completion: let completion):
+            createYesNoNotification(message: notification.body, completion: completion)
+        case .actionsAndContentCompleted:
+            createRatingNotification(message: notification.body)
+        case .reminderOnDay(actionTitle: let title, stake: _, date: let date, type: let type):
+            createReminder(title: title, body: notification.body, date: date, reminderType: type, identifier: nil)
+        case .reminderOneDayBefore(actionTitle: let title, date: let date, type: let type):
+            createReminder(title: title, body: notification.body, date: date, reminderType: type, identifier: nil)
+        default:
+            createReminder(title: "Bold", body: notification.body, date: Date(timeIntervalSinceNow: 5), reminderType: .none, identifier: nil)
+        }
     }
     
     func getLocalNotificationStatus(_ completion: @escaping (NotificationAuthorizationStatus) -> Void) {
@@ -101,6 +200,74 @@ class NotificationService: NSObject {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier] )
     }
     
+    private func createYesNoNotification(message: String, completion: @escaping (Bool) -> Void) {
+        getLocalNotificationStatus { [weak self] status in
+            guard let self = self,
+                status == .authorized
+                else { return }
+            let content = self.configureLocalNotificationContent(title: "", body: message)
+            let trigger = self.createReminderTrigger(date: Date(timeIntervalSinceNow: 2), reminderType: .none)
+            content.categoryIdentifier = CategoryIdentifier.yesNo.rawValue
+            let requestIdentifier = UUID().uuidString
+            self.actionCompletions[requestIdentifier] = self.yesNoActionIdentifiers.compactMap { action in
+                let actionCompletion: () -> Void = { completion( action != .no) }
+                return (action, actionCompletion)
+            }
+            self.addRequest(with: requestIdentifier, content: content, trigger: trigger)
+        }
+    }
+    
+    private func createRatingNotification(message: String ) {
+        getLocalNotificationStatus { [weak self] status in
+            guard let self = self,
+                status == .authorized
+                else { return }
+            let content = self.configureLocalNotificationContent(title: "", body: message)
+            let trigger = self.createReminderTrigger(date: Date(timeIntervalSinceNow: 2), reminderType: .none)
+            content.categoryIdentifier = CategoryIdentifier.rating.rawValue
+            let requestIdentifier = UUID().uuidString
+            self.actionCompletions[requestIdentifier] = self.yesNoActionIdentifiers.compactMap { action in
+                let actionCompletion: () -> Void
+                switch action {
+                case .rate:
+                    actionCompletion = self.rateAppCompletion
+                case .feedback:
+                    actionCompletion = self.sendFeedbackCompletion
+                case .reminder:
+                    actionCompletion = {
+                        let newTrigger = self.createReminderTrigger(date: Date(timeIntervalSinceNow: 24 * 60 * 60), reminderType: .none)
+                        self.addRequest(with: requestIdentifier, content: content, trigger: newTrigger)
+                    }
+                default:
+                    actionCompletion = { }
+                }
+                return (action, actionCompletion)
+            }
+            self.addRequest(with: requestIdentifier, content: content, trigger: trigger)
+        }
+    }
+    
+    private func configureCategories() {
+        let yesNoCategory = configureCategory(with: .yesNo,
+                                              actionIdentifiers: yesNoActionIdentifiers)
+        let ratingCategory = configureCategory(with: .rating,
+                                               actionIdentifiers: ratingActionIdentifiers)
+        
+        UNUserNotificationCenter.current().setNotificationCategories([yesNoCategory, ratingCategory])
+    }
+    
+    private func configureCategory(with identifier: CategoryIdentifier, actionIdentifiers: [ActionIdentifier]) -> UNNotificationCategory {
+        let actions = actionIdentifiers.compactMap { UNNotificationAction(identifier: $0.rawValue,
+                                                                          title: $0.title,
+                                                                          options: []) }
+        let intentIdentifiers = actionIdentifiers.compactMap { $0.rawValue }
+        
+        return UNNotificationCategory(identifier: identifier.rawValue,
+                                      actions: actions,
+                                      intentIdentifiers: intentIdentifiers,
+                                      options: [])
+    }
+    
     private func configureLocalNotificationContent(title: String, body: String) -> UNMutableNotificationContent {
         let content = UNMutableNotificationContent()
         content.title = title
@@ -127,11 +294,11 @@ class NotificationService: NSObject {
         switch reminderType {
         case .beforeTheDay:
             triggerDate = Date(timeIntervalSinceNow: date.timeIntervalSinceNow - (24 * 60 * 60))
-        case .onTheDay:
+        case .onTheDay, .none:
             triggerDate = date
         }
         var triggerDaily = Calendar.current.dateComponents([.year, .month, .day], from: triggerDate)
-        triggerDaily.hour = 12
+        triggerDaily.hour = reminderType != .none ? 12 : triggerDaily.hour
         return UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: false)
     }
     
@@ -154,6 +321,14 @@ extension NotificationService: UNUserNotificationCenterDelegate {
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let requestIdentifier = response.notification.request.identifier
+        if let actionIdentifier = ActionIdentifier(rawValue: response.actionIdentifier) {
+            actionCompletions[requestIdentifier]?
+                .first(where: { identifier, completion in identifier == actionIdentifier })?
+                .completion()
+            actionCompletions.removeValue(forKey: requestIdentifier)
+        }
+        
         delegate?.userNotificationCenter?(center, didReceive: response, withCompletionHandler: completionHandler)
     }
     

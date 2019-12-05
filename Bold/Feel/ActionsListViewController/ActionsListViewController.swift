@@ -31,7 +31,10 @@ class ActionsListViewController: UIViewController, ViewProtocol {
     
     var actions: [ActionEntity] = []
     
+    private var selectedContent: ActivityContent?
+    
     private let loader = LoaderView(frame: .zero)
+    private var viewDidAppearAnimated: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,6 +105,20 @@ extension ActionsListViewController: UITableViewDelegate, UITableViewDataSource 
             cell.config(type: .baseThreeCells)
             cell.delegate = self
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let height = cell.frame.height
+        if viewDidAppearAnimated {
+            let animation = TableViewCellAnimationFactory.moveUp(rowHeight: height, duration: 0.2, delayFactor: 0.07)
+            let animator = TableViewCellAnimator(animation: animation)
+            animator.animate(cell: cell, at: indexPath, in: tableView)
+        } else {
+            let animation = TableViewCellAnimationFactory.slideIn(duration: 0.15, delayFactor: 0.05)
+            let animator = TableViewCellAnimator(animation: animation)
+            animator.animate(cell: cell, at: indexPath, in: tableView)
+            viewDidAppearAnimated = tableView.frame.height <= (CGFloat(indexPath.row + 1) * height)
         }
     }
     
@@ -179,4 +196,51 @@ extension ActionsListViewController: ActionTableViewCellDelegate {
     func tapAddActionPlanButton() {
         presenter.input(.addActionPlan)
     }
+}
+
+extension ActionsListViewController {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        let content = actions[indexPath.row].data
+        
+        switch content.type {
+        case .lesson, .story:
+            let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
+            vc.viewModel = DescriptionViewModel.map(activityContent: content)
+            selectedContent = content
+            vc.audioPlayerDelegate = self
+            navigationController?.present(vc, animated: true, completion: nil)
+        default:
+            AudioService.shared.tracks = content.audioTracks
+            AudioService.shared.image = .path(content.imageURL)
+            AudioService.shared.startPlayer(isPlaying: content.type != .meditation)
+            AudioService.shared.playerDelegate = self
+        }
+        
+//        if actions[indexPath.row].type == .action {
+//            let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
+//            vc.content = actions[indexPath.row].data
+//            navigationController?.present(vc, animated: true, completion: nil)
+//        }
+        
+    }
+    
+}
+
+extension ActionsListViewController: PlayerViewControllerDelegate {
+    func saveContent() {
+        guard let content = selectedContent else { return }
+        DataSource.shared.saveContent(content: content)
+    }
+    
+    func removeFromCache() {
+        guard let content = selectedContent else { return }
+        DataSource.shared.deleteContent(content: content)
+    }
+    
+    func likeContent(_ isLiked: Bool) {
+        guard let content = selectedContent else { return }
+    }
+    
 }

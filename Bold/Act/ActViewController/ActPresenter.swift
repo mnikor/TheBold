@@ -26,6 +26,7 @@ enum ActPresenterInput {
     
     case selectEvent(indexPath: IndexPath)
     case subscribeToUpdate
+    case createGoal
 }
 
 protocol ActPresenterInputProtocol {
@@ -88,6 +89,8 @@ class ActPresenter: PresenterProtocol, ActPresenterInputProtocol {
             longTapAction(event: event)
         case .subscribeToUpdate:
             subscribeToUpdate()
+        case .createGoal:
+            router.input(.createGoal)
         }
     }
     

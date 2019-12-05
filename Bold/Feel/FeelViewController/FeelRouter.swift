@@ -37,6 +37,7 @@ class FeelRouter: RouterProtocol, FeelInputRouterProtocol {
         case .showAll(let typeCell):
             viewController.performSegue(withIdentifier: StoryboardSegue.Feel.showItem.rawValue, sender: typeCell)
         case .showPlayer(isPlaying: let isPlaying):
+            AudioService.shared.playerDelegate = viewController
             AudioService.shared.startPlayer(isPlaying: isPlaying)
         case .present(let vc):
             viewController.navigationController?.present(vc, animated: true)

@@ -32,12 +32,13 @@ class LoaderView: UIImageView {
         self.animationDuration = 1.2
     }
     
-    func start(in containerView: UIView) {
+    func start(in containerView: UIView, yOffset: CGFloat = 0) {
         containerView.addSubview(self)
         self.snp.makeConstraints { make in
             make.width.equalToSuperview().multipliedBy(0.2)
             make.height.equalTo(self.snp.width)
-            make.center.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(yOffset)
         }
         self.startAnimating()
     }

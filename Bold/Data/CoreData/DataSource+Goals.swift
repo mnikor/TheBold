@@ -25,7 +25,9 @@ extension DataSource: GoalsFunctionality {
     }
     
     func deleteGoal() {
-        
+        NotificationService.shared.createStandardNotification(.goalDeleted(completion: { confirmationResult in
+            // TODO: - delete goal if true
+        }))
     }
     
     func goalsListForUpdate() -> [Goal] {

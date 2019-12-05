@@ -169,7 +169,7 @@ extension ActViewController: ActivityCollectionTableViewCellDelegate {
     }
     
     func tapEmptyGoalsCell(type: ActivityViewModel) {
-        presenter.input(.tapPlus)
+        presenter.input(.createGoal)
     }
     
 }

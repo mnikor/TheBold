@@ -23,7 +23,7 @@ struct ActivityContent {
     var likesCount: Int
     var authorPhotoURL: String?
     var audioTracks: [AudioPlayerTrackInfo]
-    var documentURL: String?
+    var documentURL: FilePath?
     
     static func mapJSON(_ json: JSON) -> ActivityContent? {
         guard let id = json[ResponseKeys.id].int,
@@ -53,6 +53,14 @@ struct ActivityContent {
         } else {
             audioTracks = []
         }
+        let documentURL: FilePath?
+        
+        if let url = json[ResponseKeys.documentURL].string {
+            documentURL = .remote(url)
+        } else {
+            documentURL = nil
+        }
+        
         return ActivityContent(id: id,
                        title: title,
                        type: type,
@@ -67,7 +75,50 @@ struct ActivityContent {
                        likesCount: likesCount,
                        authorPhotoURL: json[ResponseKeys.authorPhotoURL].string,
                        audioTracks: audioTracks,
-                       documentURL: json[ResponseKeys.documentURL].string)
+                       documentURL: documentURL)
+    }
+    
+    static func map(content: Content) -> ActivityContent? {
+        guard let type = ContentType(rawValue: content.type ?? "") else { return nil }
+        let audioFilesMO: [File] = content.files?.filter { $0.isAudio } ?? []
+        let tracks: [AudioPlayerTrackInfo] = audioFilesMO.compactMap { file in
+            let filePath: FilePath
+            if let path = file.path {
+                filePath = .local(path)
+            } else {
+                filePath = .remote(file.url ?? "")
+            }
+            return AudioPlayerTrackInfo(trackName: file.name ?? "",
+                                        artistName: "",
+                                        duration: "0:00",
+                                        path: filePath)
+            } ?? []
+        let pdfDocument = content.files?.first(where: { !$0.isAudio })
+        let documentURL: FilePath?
+        
+        if let path = pdfDocument?.path {
+            documentURL = .local(path)
+        } else if let url = pdfDocument?.url {
+            documentURL = .remote(url)
+        } else {
+            documentURL = nil
+        }
+        
+        return ActivityContent(id: Int(content.id),
+                               title: content.title ?? "",
+                               type: type,
+                               body: content.type ?? "",
+                               authorName: content.authorName ?? "",
+                               footer: content.footer ?? "",
+                               pointOfUnlock: Int(content.pointsUnlock),
+                               contentStatus: content.isLock ? .locked : .unlocked,
+                               imageURL: content.imageUrl,
+                               smallImageURL: content.smallImage,
+                               largeImageURL: content.largeImage,
+                               likesCount: Int(content.likesCount),
+                               authorPhotoURL: content.authorPhotoUrl,
+                               audioTracks: tracks,
+                               documentURL: documentURL)
     }
     
 }

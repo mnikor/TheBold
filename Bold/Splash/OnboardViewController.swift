@@ -179,11 +179,16 @@ extension OnboardViewController: SignUpViewDelegate {
         // TODO: - show privacy policy
     }
     
+    private func validateData(in signUpView: SignUpView) -> Bool {
+        let email = signUpView.email
+        let password = signUpView.password
+        return !((Validator.shared.validate(text: email ?? "", type: .email) == .invalid) || (Validator.shared.validate(text: password ?? "", type: .password) == .invalid))
+    }
+    
     private func login() {
+        guard validateData(in: loginView) else { return }
         let email = loginView.email
-        // add email validation
         let password = loginView.password
-        // add password validation
         NetworkService.shared.login(email: email ?? "",
                                     password: password ?? "") { [weak self] result in
                                         switch result {
@@ -201,12 +206,13 @@ extension OnboardViewController: SignUpViewDelegate {
     }
     
     private func signUp() {
+        let acceptTerms = signUpView.acceptTerms
+        guard acceptTerms,
+            validateData(in: signUpView)
+            else { return }
         let name = signUpView.name
         let email = signUpView.email
-        // add email validation
         let password = signUpView.password
-        // add password validation
-        let acceptTerms = signUpView.acceptTerms
         NetworkService.shared.signUp(firstName: name,
                                      lastName: nil,
                                      email: email ?? "",
@@ -217,6 +223,7 @@ extension OnboardViewController: SignUpViewDelegate {
                                             // add error handling
                                             break
                                         case .success(let profile):
+                                            UserDefaults.standard.setValue(true, forKey: "first entrance")
                                             SessionManager.shared.profile = profile
                                             let vc = StoryboardScene.Menu.initialScene.instantiate()
                                             UIApplication.setRootView(vc,
