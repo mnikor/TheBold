@@ -12,6 +12,7 @@ struct RangeDatePeriod {
     var start: Date!
     var end: Date!
     
+    //инициализация начального месяца ивентов
     static func initRange(date: Date) -> RangeDatePeriod {
         
         let startDate = date.customTime(hour: 0, minute: 0)
@@ -22,6 +23,7 @@ struct RangeDatePeriod {
         return RangeDatePeriod(start: startDate, end: endDate)
     }
     
+    //добавляем еще один месяц для следующего месяца периода
     func addOneMonthToRange() -> RangeDatePeriod {
         
         let startDate = self.end
@@ -29,6 +31,7 @@ struct RangeDatePeriod {
         return RangeDatePeriod(start: startDate, end: endDate)
     }
     
+    //проверяем последний ли месяц периодов
     func checkEndDates(endGoalDate: Date?) -> Bool {
         if endGoalDate == nil {
             return self.start > GlobalConstants.LimitDate.maxDate!

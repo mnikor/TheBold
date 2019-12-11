@@ -8,21 +8,21 @@
 
 import Foundation
 
-class CalendarAndHistoryConfigurator: ConfiguratorProtocol {
+class CalendarAndHistoryConfigurator: BaseStakesListConfigurator {
     
-    typealias View = CalendarAndHistoryViewController
+//    typealias View = CalendarAndHistoryViewController
     
     //MARK: ConfiguratorProtocol
     
-    func configure(with viewController: CalendarAndHistoryViewController) {
-        
-        let presenter = CalendarAndHistoryPresenter(view: viewController)
-        let interactor = CalendarAndHistoryInteractor(presenter: presenter)
-        let router = CalendarAndHistoryRouter(viewController: viewController)
-        
-        viewController.presenter = presenter
-        presenter.interactor = interactor
-        presenter.router = router
-        
-    }
+//    func configure(with viewController: CalendarAndHistoryViewController) {
+//
+//        let presenter = CalendarAndHistoryPresenter(view: viewController)
+//        let interactor = CalendarAndHistoryInteractor(presenter: presenter)
+//        let router = CalendarAndHistoryRouter(viewController: viewController)
+//
+//        viewController.presenter = presenter
+//        presenter.interactor = interactor
+//        presenter.router = router
+//
+//    }
 }

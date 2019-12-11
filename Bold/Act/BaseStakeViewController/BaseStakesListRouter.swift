@@ -7,3 +7,52 @@
 //
 
 import Foundation
+
+enum BaseStakesListInputRouter {
+    case presentdCreateAction(goalID: String?)
+//    case editAction(EditActionPlanViewController)
+    case yearMonthAlert(YearMonthAlertViewController)
+    case allGoals
+    case goalItem(calendarVC: CalendarActionsListViewController)
+    case longTapActionPresentedBy(StartActionViewController)
+    case showEditEvent(vc: EditActionPlanViewController)
+}
+
+protocol BaseStakesListInputRouterProtocol {
+    func input(_ inputCase: BaseStakesListInputRouter)
+}
+
+class BaseStakesListRouter: RouterProtocol, BaseStakesListInputRouterProtocol {
+    
+    typealias View = BaseStakesListViewController
+    
+    weak var viewController: View!
+    
+    required init(viewController: View) {
+        self.viewController = viewController
+    }
+    
+    func input(_ inputCase: BaseStakesListInputRouter) {
+        switch inputCase {
+        
+        case .presentdCreateAction(let goalID):
+            let vc = StoryboardScene.Act.createActionViewController.instantiate()
+            vc.presenter.goalID = goalID
+            viewController.navigationController?.pushViewController(vc, animated: true)
+//        case .editAction(let editVC):
+//            editVC.presentedBy(viewController)
+        case .yearMonthAlert(let dateAlert):
+            dateAlert.presentedBy(viewController)
+        
+        case .allGoals:
+            viewController.performSegue(withIdentifier: StoryboardSegue.Act.allGoallIdentifier.rawValue, sender: nil)
+        case .goalItem(calendarVC: let calendarVC):
+            viewController.navigationController?.pushViewController(calendarVC, animated: true)
+        case .longTapActionPresentedBy(let vc):
+            vc.presentedBy(viewController.navigationController!)
+        case .showEditEvent(vc: let editActionVC):
+            editActionVC.presentedBy(viewController)
+        }
+    }
+ 
+}

@@ -10,6 +10,7 @@ import UIKit
 
 enum ActHeaderType {
     case calendar
+    case goal
     case list
     case plus
     case none

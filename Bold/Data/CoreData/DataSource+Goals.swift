@@ -58,6 +58,48 @@ extension DataSource: GoalsFunctionality {
         }
     }
     
+    func goalsEndDateForAll() -> Date? {
+        
+        var results = [Goal]()
+        let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
+        let sort = NSSortDescriptor(key: "endDate", ascending: false)
+        let endDate = Date().dayOfMonthOfYear() as NSDate
+        
+        fetchRequest.sortDescriptors = [sort]
+        fetchRequest.predicate = NSPredicate(format: "(endDate >= %@) AND ((status = %d) OR (status = %d))", endDate, StatusType.wait.rawValue, StatusType.locked.rawValue)
+        
+        do {
+            results = try DataSource.shared.viewContext.fetch(fetchRequest)
+            
+        } catch {
+            print(error)
+        }
+        
+        guard let goal = results.first else { return nil }
+        return goal.endDate as Date?
+    }
+    
+    func goalsStartDateForArchieve() -> Date? {
+        
+        var results = [Goal]()
+        let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
+        let sort = NSSortDescriptor(key: "startDate", ascending: true)
+        let startDate = Date().beforeTheDay().dayOfMonthOfYear() as NSDate
+        
+        fetchRequest.sortDescriptors = [sort]
+        fetchRequest.predicate = NSPredicate(format: "(startDate <= %@)", startDate, StatusType.completed.rawValue, StatusType.failed.rawValue)
+        
+        do {
+            results = try DataSource.shared.viewContext.fetch(fetchRequest)
+            
+        } catch {
+            print(error)
+        }
+        
+        guard let goal = results.first else { return nil }
+        return goal.startDate as Date?
+    }
+    
     func goalsListForArchieved(success: ([Goal])->Void) {
         
         var results = [Goal]()

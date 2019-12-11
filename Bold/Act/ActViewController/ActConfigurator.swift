@@ -8,20 +8,20 @@
 
 import Foundation
 
-class ActConfigurator: ConfiguratorProtocol {
+class ActConfigurator: BaseStakesListConfigurator {
     
-    typealias View = ActViewController
-    
-    //MARK: ConfiguratorProtocol
-    
-    func configure(with viewController: View) {
-        
-        let presenter = ActPresenter(view: viewController)
-        let interactor = ActInteractor(presenter: presenter)
-        let router = ActRouter(viewController: viewController)
-        
-        viewController.presenter = presenter
-        presenter.interactor = interactor
-        presenter.router = router
-    }
+//    typealias View = ActViewController
+//
+//    //MARK: ConfiguratorProtocol
+//
+//    func configure(with viewController: View) {
+//
+//        let presenter = ActPresenter(view: viewController)
+//        let interactor = ActInteractor(presenter: presenter)
+//        let router = ActRouter(viewController: viewController)
+//
+//        viewController.presenter = presenter
+//        presenter.interactor = interactor
+//        presenter.router = router
+//    }
 }

@@ -164,7 +164,6 @@
 		F15699C12383FD82001E3D7B /* BaseStakesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15699C02383FD82001E3D7B /* BaseStakesListPresenter.swift */; };
 		F15699C32383FD98001E3D7B /* BaseStakesListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15699C22383FD97001E3D7B /* BaseStakesListInteractor.swift */; };
 		F15699C52383FDAB001E3D7B /* BaseStakesListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15699C42383FDAB001E3D7B /* BaseStakesListRouter.swift */; };
-		F15699C72384097B001E3D7B /* DeleteClassAndStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15699C62384097B001E3D7B /* DeleteClassAndStructure.swift */; };
 		F15699C923841F46001E3D7B /* RangeDatePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15699C823841F46001E3D7B /* RangeDatePeriod.swift */; };
 		F15699CB238424A9001E3D7B /* CalendarActionSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15699CA238424A9001E3D7B /* CalendarActionSectionViewModel.swift */; };
 		F158273F22EB569E007B9023 /* DateAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F158273E22EB569E007B9023 /* DateAlertViewController.swift */; };
@@ -603,7 +602,6 @@
 		F15699C02383FD82001E3D7B /* BaseStakesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStakesListPresenter.swift; sourceTree = "<group>"; };
 		F15699C22383FD97001E3D7B /* BaseStakesListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStakesListInteractor.swift; sourceTree = "<group>"; };
 		F15699C42383FDAB001E3D7B /* BaseStakesListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStakesListRouter.swift; sourceTree = "<group>"; };
-		F15699C62384097B001E3D7B /* DeleteClassAndStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteClassAndStructure.swift; sourceTree = "<group>"; };
 		F15699C823841F46001E3D7B /* RangeDatePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeDatePeriod.swift; sourceTree = "<group>"; };
 		F15699CA238424A9001E3D7B /* CalendarActionSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActionSectionViewModel.swift; sourceTree = "<group>"; };
 		F158273E22EB569E007B9023 /* DateAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAlertViewController.swift; sourceTree = "<group>"; };
@@ -1210,7 +1208,6 @@
 			isa = PBXGroup;
 			children = (
 				F1043540234B70CF0086673C /* ActSectionViewModel.swift */,
-				F15699C62384097B001E3D7B /* DeleteClassAndStructure.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2524,7 +2521,6 @@
 				F19A98B422D7573000A0492E /* MissedYouOneButtonAlertView.swift in Sources */,
 				F1CCC71322CE228800E7B637 /* AddActionPlanViewController.swift in Sources */,
 				F183302022E5CBF700BB7A9E /* ActionsListRouter.swift in Sources */,
-				F15699C72384097B001E3D7B /* DeleteClassAndStructure.swift in Sources */,
 				F1130CE3230EC5BD008FA60D /* DownloadTableViewCell.swift in Sources */,
 				F1EA1CBE22E1EA9500BB328F /* UITableViewCell+Extensions.swift in Sources */,
 				F1EA1CA922E07D2A00BB328F /* UILabel+Extensions.swift in Sources */,

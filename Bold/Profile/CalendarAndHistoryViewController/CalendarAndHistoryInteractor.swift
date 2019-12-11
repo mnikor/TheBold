@@ -8,13 +8,6 @@
 
 import Foundation
 
-class CalendarAndHistoryInteractor: InteractorProtocol {
+class CalendarAndHistoryInteractor: BaseStakesListInteractor {
     
-    typealias Presenter = CalendarAndHistoryPresenter
-    
-    weak var presenter: Presenter!
-    
-    required init(presenter: Presenter) {
-        self.presenter = presenter
-    }
 }

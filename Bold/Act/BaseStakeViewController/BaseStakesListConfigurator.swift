@@ -7,3 +7,22 @@
 //
 
 import Foundation
+
+class BaseStakesListConfigurator: ConfiguratorProtocol {
+    
+    typealias View = BaseStakesListViewController
+    
+    //MARK: ConfiguratorProtocol
+    
+    func configure(with viewController: BaseStakesListViewController) {
+        
+        let presenter = BaseStakesListPresenter(view: viewController)
+        let interactor = BaseStakesListInteractor(presenter: presenter)
+        let router = BaseStakesListRouter(viewController: viewController)
+        
+        viewController.presenter = presenter
+        presenter.interactor = interactor
+        presenter.router = router
+        
+    }
+}

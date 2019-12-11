@@ -47,7 +47,7 @@ class MonthYearPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataS
         onDateSelected = dateSelected
         
         let year = NSCalendar(identifier: NSCalendar.Identifier.gregorian)!.component(.year, from: currentDate)
-        let month = NSCalendar(identifier: NSCalendar.Identifier.gregorian)!.component(.month, from: currentDate)
+        let month = NSCalendar(identifier: NSCalendar.Identifier.gregorian)!.component(.month, from: currentDate) - 1
         let monthStr = formatter.monthSymbols[month].capitalized
         
         guard let yearIndex = self.years.firstIndex(of: year) else {
@@ -57,7 +57,7 @@ class MonthYearPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataS
             return
         }
         
-        self.selectRow(monthIndex - 1, inComponent: 0, animated: false)
+        self.selectRow(monthIndex, inComponent: 0, animated: false)
         self.selectRow(yearIndex, inComponent: 1, animated: false)
     }
     

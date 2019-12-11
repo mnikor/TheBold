@@ -112,7 +112,7 @@ class DateAlertViewController: UIViewController {
             self.bottomContentViewConstraint.constant = -self.contentView.bounds.height
             self.view.layoutIfNeeded()
         }, completion: { (_) in
-            //self.dismiss(animated: false, completion: nil)
+            self.dismiss(animated: false, completion: nil)
             self.view.removeFromSuperview()
             self.removeFromParent()
         })

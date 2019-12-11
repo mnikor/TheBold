@@ -98,19 +98,40 @@ extension DataSource: EventFunctionality {
         }
     }
     
-    func searchEventsInGoals(startDate:Date, offset: Int, success:([Event])->Void) {
-        
+    func searchEventsInAllGoals(firstRequest:Bool, startDate:Date, endDate:Date, success:([Event])->Void) {
+
         var results = [Event]()
         let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
         let sort = NSSortDescriptor(key: "startDate", ascending: true)
         fetchRequest.sortDescriptors = [sort]
         let start = startDate as NSDate
         let nextDay = startDate.tommorowDay() as NSDate
+        let end = endDate as NSDate
+
+        if firstRequest {
+            fetchRequest.predicate = NSPredicate(format: "((startDate => %@) AND (startDate < %@)) OR ((startDate => %@) AND (startDate < %@) AND (status = %d))", start, nextDay, nextDay, end, StatusType.wait.rawValue)
+        }else {
+            fetchRequest.predicate = NSPredicate(format: "((startDate => %@) AND (startDate < %@) AND (status = %d))", start, end, StatusType.wait.rawValue)
+        }
         
-        fetchRequest.fetchOffset = offset
-        fetchRequest.fetchLimit = 30
-        
-        fetchRequest.predicate = NSPredicate(format: "((startDate > %@) AND (startDate < %@) AND (status >= %d)) OR ((startDate => %@) AND (status = %d))", start, nextDay, StatusType.wait.rawValue, nextDay, StatusType.wait.rawValue)
+        do {
+            results = try DataSource.shared.viewContext.fetch(fetchRequest)
+            success(results)
+        } catch {
+            print(error)
+        }
+    }
+    
+    func searchEventsInAllGoalsArchive(startDate:Date, endDate:Date, success:([Event])->Void) {
+
+        var results = [Event]()
+        let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
+        let sort = NSSortDescriptor(key: "startDate", ascending: true)
+        fetchRequest.sortDescriptors = [sort]
+        let start = startDate as NSDate
+        let end = endDate as NSDate
+
+        fetchRequest.predicate = NSPredicate(format: "((startDate => %@) AND (startDate < %@) AND ((status = %d) OR (status = %d)))", start, end, StatusType.completed.rawValue, StatusType.failed.rawValue)
         
         do {
             results = try DataSource.shared.viewContext.fetch(fetchRequest)
@@ -193,5 +214,9 @@ extension DataSource: EventFunctionality {
         }
         
         return results
+    }
+    
+    func countEvents() {
+        
     }
 }

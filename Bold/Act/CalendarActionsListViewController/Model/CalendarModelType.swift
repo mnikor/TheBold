@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum CalendarModelType {
+enum CalendarModelType213 {
     case calendar(dates: Set<Date>)
     case event(viewModel: StakeActionViewModel)
     case goals(viewModel: ActivityViewModel)

@@ -11,11 +11,16 @@ import Foundation
 enum ActSectionModelType {
     case goal
     case calendar(viewModel: CalendarActionSectionViewModel)
+    case stake(viewModel: CalendarActionSectionViewModel)
 }
 
-//struct ActSectionViewModel {
-//    let section : ActSectionModelType
-    //let items : [CalendarActionItemModel]
-//}
+enum CalendarModelType {
+    case calendar(dates: Set<Date>)
+    case event(viewModel: StakeActionViewModel)
+    case goals(viewModel: ActivityViewModel)
+}
 
-typealias ActDataSourceItem = (section: ActSectionModelType, items: [CalendarModelType])
+struct ActDataSourceViewModel {
+    var section : ActSectionModelType
+    var items : [CalendarModelType]
+}
