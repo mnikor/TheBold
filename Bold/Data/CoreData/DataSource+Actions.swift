@@ -12,7 +12,7 @@ import CoreData
 protocol ActionsFunctionality {
     func createAction()
     func searchAction(actionID: String, success: (Action?)->Void)
-    func deleteAction(actionID: String, success: ()->Void)
+    func deleteAction(actionID: String, success: @escaping ()->Void)
 }
 
 extension DataSource: ActionsFunctionality {
@@ -21,15 +21,19 @@ extension DataSource: ActionsFunctionality {
         
     }
     
-    func deleteAction(actionID: String, success: ()->Void) {
+    func deleteAction(actionID: String, success: @escaping ()->Void) {
         
         searchAction(actionID: actionID) { (result) in
             guard let action = result else { return }
             let goalID = action.id
-            DataSource.shared.backgroundContext.delete(action)
-            DataSource.shared.saveBackgroundContext()
-            checkAllActionOfGoal(goalID: goalID!)
-            success()
+            NotificationService.shared.createStandardNotification(.actionDeleted(completion: { [weak self] confirmationResult in
+                if confirmationResult {
+                    DataSource.shared.backgroundContext.delete(action)
+                    DataSource.shared.saveBackgroundContext()
+                    self?.checkAllActionOfGoal(goalID: goalID!)
+                    success()
+                }
+            }))
         }
     }
     
@@ -52,6 +56,7 @@ extension DataSource: ActionsFunctionality {
             if goal?.actions?.count == results.count {
                 goal?.status = StatusType.completed.rawValue
                 DataSource.shared.saveBackgroundContext()
+                NotificationService.shared.createStandardNotification(.goalAchieved)
                 AlertViewService.shared.input(.congratulationsGoal(points: PointsForAction.congratulationsGoal, tapGet: {
                     LevelOfMasteryService.shared.input(.addPoints(points: PointsForAction.congratulationsGoal))
                 }))

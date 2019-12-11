@@ -20,6 +20,12 @@ class DescriptionAndLikesCountViewController: UIViewController {
     @IBOutlet weak var pdfContainerView: UIView!
     @IBOutlet weak var pdfContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var playerButton: UIButton!
+    @IBOutlet weak var downloadButton: UIBarButtonItem!
+    @IBOutlet weak var likeButton: UIBarButtonItem!
+    
+    var buttonsToolbar = StateStatusButtonToolbar()
+    
+    private var isDocumentLoaded: Bool = false
     
     @IBAction func tapCloseButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -28,33 +34,67 @@ class DescriptionAndLikesCountViewController: UIViewController {
     @IBAction func didTapAtPlayerButton(_ sender: UIButton) {
         AudioService.shared.tracks = viewModel?.audioTracks ?? []
         AudioService.shared.image = viewModel?.image
-        AudioService.shared.showPlayerFullScreen()
+        AudioService.shared.startPlayer(isPlaying: true)
+        AudioService.shared.playerDelegate = audioPlayerDelegate
+    }
+    
+    @IBAction func didTapAtDownloadButton(_ sender: UIBarButtonItem) {
+        buttonsToolbar.dowload = !buttonsToolbar.dowload
+        downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
+        downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
+        if buttonsToolbar.dowload {
+            audioPlayerDelegate?.saveContent()
+        } else {
+            audioPlayerDelegate?.removeFromCache()
+        }
+    }
+    
+    @IBAction func didTapAtAddActionPlan(_ sender: UIBarButtonItem) {
+        let vc = AddActionPlanViewController.createController {
+            print("tap add action")
+        }
+        vc.presentedBy(self)
+    }
+    
+    @IBAction func didTapAtLikeButton(_ sender: UIBarButtonItem) {
+        buttonsToolbar.like = !buttonsToolbar.like
+        likeButton.image = buttonsToolbar.like == false ? Asset.playerLikeIcon.image : Asset.playerLikedIcon.image
+        likeButton.tintColor = buttonsToolbar.like == false ? .gray : ColorName.primaryRed.color
+        audioPlayerDelegate?.likeContent(buttonsToolbar.like)
     }
     
     var percent : CGFloat = 0
     var viewModel: DescriptionViewModel?
+    weak var audioPlayerDelegate: PlayerViewControllerDelegate?
     
     private var pdfView: UIView?
     private var loader = LoaderView(frame: .zero)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         config()
         configurePDFView()
         registerForNotifications()
-        loadPDFDocument()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        loader.start(in: view)
-        view.bringSubviewToFront(loader)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if !isDocumentLoaded {
+            let centerY = UIScreen.main.bounds.height / 2
+            let loaderHeight = UIScreen.main.bounds.width * 0.2
+            let yOffSet = ((loaderHeight * 0.5) + 355) - centerY
+            loader.start(in: view, yOffset: yOffSet < 0 ? 0 : yOffSet)
+            view.bringSubviewToFront(loader)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        configurePDFDocument()
+        if !isDocumentLoaded {
+            DispatchQueue.global().async { [weak self] in
+                self?.configurePDFDocument()
+            }
+        }
     }
     
     private func config() {
@@ -113,32 +153,27 @@ class DescriptionAndLikesCountViewController: UIViewController {
         }
     }
     
-    private func loadPDFDocument() {
-        guard let url = viewModel?.documentURL
-            else { return }
-        
-        let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
-        let downloadTask = urlSession.downloadTask(with: url)
-        downloadTask.resume()
-    }
-    
     private func configurePDFDocument() {
         if #available(iOS 11.0, *) {
             guard let documentURL = viewModel?.documentURL,
                 let document = PDFDocument(url: documentURL),
                 let pdfView = pdfView as? PDFView
                 else { return }
-            pdfView.document = document
-            if let documentView = pdfView.documentView {
-                pdfContainerHeightConstraint.constant = documentView.frame.size.height + 25
-                pdfContainerView.layoutIfNeeded()
-                pdfView.backgroundColor = .white
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                pdfView.document = document
+                if let documentView = pdfView.documentView {
+                    self.pdfContainerHeightConstraint.constant = documentView.frame.size.height + 25
+                    self.pdfContainerView.layoutIfNeeded()
+                    pdfView.backgroundColor = .white
+                }
             }
         }
     }
     
     @objc private func documentChanged(_ notification: Notification) {
         loader.stop()
+        isDocumentLoaded = true
     }
     
 }
@@ -195,24 +230,6 @@ extension DescriptionAndLikesCountViewController: UIScrollViewDelegate {
             }
             toolbar.alpha = 1 - percent
             likseCountView.moveConstraintView(percent: percent)
-        }
-    }
-    
-}
-
-extension DescriptionAndLikesCountViewController: URLSessionDownloadDelegate {
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        guard let url = downloadTask.originalRequest?.url else { return }
-        let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let pdfDirectory = documentsPath.appendingPathComponent("PDF")
-        let destinationURL = pdfDirectory.appendingPathComponent(url.lastPathComponent)
-        
-        try? FileManager.default.removeItem(at: destinationURL)
-        
-        do {
-            try FileManager.default.copyItem(at: location, to: destinationURL)
-        } catch let error {
-            print(error.localizedDescription)
         }
     }
     

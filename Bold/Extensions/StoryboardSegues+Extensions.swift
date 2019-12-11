@@ -14,7 +14,6 @@ import UIKit
 internal enum StoryboardSegue {
   internal enum Act: String, SegueType {
     case allGoallIdentifier
-    case calendarFromActViewIdentifier
     case calendarListIdentifier
     case configurateActionIdentifier
     case createActionFromActViewIdentifier

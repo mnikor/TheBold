@@ -47,6 +47,7 @@ class AudioService: NSObject, AudioServiceProtocol {
     
     weak var delegate: AudioServiceDelegate?
     let player = AudioPlayer()
+    weak var playerDelegate: PlayerViewControllerDelegate?
     
     private var currentTrackIndex: Int = 0
     
@@ -178,18 +179,25 @@ class AudioService: NSObject, AudioServiceProtocol {
     }
     
     func showPlayerFullScreen() {
-        let playerVC = PlayerViewController.createController()
-        delegate = playerVC
-        UIApplication.topViewController?.present(playerVC, animated: true)
+        smallPlayer.animateDisappearing() { [unowned self] in
+            let playerVC = PlayerViewController.createController()
+            self.delegate = playerVC
+            playerVC.delegate = self.playerDelegate
+            UIApplication.topViewController?.present(playerVC, animated: true)
+        }
     }
     
     func startPlayer(isPlaying: Bool) {
-        let playerVC = PlayerViewController.createController()
-        delegate = playerVC
-        if isPlaying {
-            playerVC.play()
+        smallPlayer.animateDisappearing() { [unowned self] in
+            let playerVC = PlayerViewController.createController()
+            self.delegate = playerVC
+            playerVC.delegate = self.playerDelegate
+            UIApplication.topViewController?.present(playerVC, animated: true) {
+                if isPlaying {
+                    playerVC.play()
+                }
+            }
         }
-        UIApplication.topViewController?.present(playerVC, animated: true)
     }
     
 }

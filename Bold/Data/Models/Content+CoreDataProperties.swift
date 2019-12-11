@@ -27,11 +27,10 @@ extension Content {
     @NSManaged public var likesCount: Int16
     @NSManaged public var pointsUnlock: Int16
     @NSManaged public var smallImage: String?
-    @NSManaged public var subtitle: String?
     @NSManaged public var title: String?
     @NSManaged public var type: String?
     @NSManaged public var actions: NSSet?
-    @NSManaged public var files: NSSet?
+    @NSManaged public var files: Set<File>?
 
 }
 

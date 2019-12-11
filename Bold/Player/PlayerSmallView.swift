@@ -29,7 +29,7 @@ class PlayerSmallView: UIView {
     
     @IBAction func tapCloseButton(_ sender: UIButton) {
         AudioService.shared.input(.stop)
-        animateDisappering()
+        animateDisappearing()
     }
     
     override init(frame: CGRect) {
@@ -59,7 +59,7 @@ class PlayerSmallView: UIView {
     }
     
     @IBAction func didTapAtView(_ sender: UITapGestureRecognizer) {
-        animateDisappering {
+        animateDisappearing {
             AudioService.shared.showPlayerFullScreen()
         }
     }
@@ -71,7 +71,7 @@ class PlayerSmallView: UIView {
         })
     }
     
-    private func animateDisappering(completion: (() -> Void)? = nil) {
+    func animateDisappearing(completion: (() -> Void)? = nil) {
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
             self?.frame.origin.y = UIScreen.main.bounds.maxY
         }) { [weak self] _ in

@@ -238,7 +238,7 @@ extension BaseStakesListViewController: ActivityCollectionTableViewCellDelegate 
     }
     
     func tapEmptyGoalsCell(type: ActivityViewModel) {
-//        presenter.input(.tapPlus)
+        presenter.input(.tapPlus)
     }
     
 }

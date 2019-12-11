@@ -16,6 +16,8 @@ enum BaseStakesListInputRouter {
     case goalItem(calendarVC: CalendarActionsListViewController)
     case longTapActionPresentedBy(StartActionViewController)
     case showEditEvent(vc: EditActionPlanViewController)
+    case tapPlus
+//    case createGoal
 }
 
 protocol BaseStakesListInputRouterProtocol {
@@ -52,6 +54,12 @@ class BaseStakesListRouter: RouterProtocol, BaseStakesListInputRouterProtocol {
             vc.presentedBy(viewController.navigationController!)
         case .showEditEvent(vc: let editActionVC):
             editActionVC.presentedBy(viewController)
+        
+        case .tapPlus:
+            viewController.performSegue(withIdentifier: StoryboardSegue.Act.createActionFromActViewIdentifier.rawValue, sender: nil)
+//        case .createGoal:
+//            let vc = StoryboardScene.Act.createGoalViewController.instantiate()
+//            viewController.navigationController?.pushViewController(vc, animated: true)
         }
     }
  

@@ -14,7 +14,7 @@ class DownloadsConfigurator: ConfiguratorProtocol {
     
     func configure(with viewController: View) {
         
-        let presenter = DownloadsPresenter(viewController: viewController)
+        let presenter = DownloadsPresenter(view: viewController)
         let interactor = DownloadsInteractor(presenter: presenter)
         let router = DownloadsRouter(viewController: viewController)
         

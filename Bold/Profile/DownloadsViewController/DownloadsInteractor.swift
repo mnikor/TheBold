@@ -8,7 +8,15 @@
 
 import Foundation
 
-class DownloadsInteractor: InteractorProtocol {
+enum DownloadsInteractorInput {
+    case prepareDataSource(completion: (([ActivityContent]) -> Void))
+}
+
+protocol DownloadsInteractorInputProtocol: InteractorProtocol {
+    func input(_ inputCase: DownloadsInteractorInput)
+}
+
+class DownloadsInteractor: DownloadsInteractorInputProtocol {
     
     typealias Presenter = DownloadsPresenter
     
@@ -16,5 +24,16 @@ class DownloadsInteractor: InteractorProtocol {
     
     required init(presenter: Presenter) {
         self.presenter = presenter
+    }
+    
+    func input(_ inputCase: DownloadsInteractorInput) {
+        switch inputCase {
+        case .prepareDataSource(completion: let completion):
+            prepareDataSource(completion: completion)
+        }
+    }
+    
+    private func prepareDataSource(completion: (([ActivityContent]) -> Void)?) {
+        completion?(DataSource.shared.contentList().compactMap { ActivityContent.map(content: $0) })
     }
 }

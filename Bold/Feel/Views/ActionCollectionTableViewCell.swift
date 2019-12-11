@@ -149,7 +149,7 @@ class ActionCollectionTableViewCell: BaseTableViewCell {
 
 extension ActionCollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return entity.items.count
+        return entity.items.count > 3 ? 3 : entity.items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -163,6 +163,17 @@ extension ActionCollectionTableViewCell: UICollectionViewDelegate, UICollectionV
         collectionView.deselectItem(at: indexPath, animated: false)
         delegate?.actionCollectionTableViewCell(self, didTapAtItem: indexPath)
         print("Select type = \(entity.type), index = \(indexPath.row)")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let lastVisibleCell = collectionView.visibleCells.last,
+            let lastVisibleIndexPath = collectionView.indexPath(for: lastVisibleCell),
+            lastVisibleIndexPath.row > indexPath.row {
+            return
+        }
+        let animation = CollectionViewCellAnimationFactory.moveIn(cellWidth: cell.frame.width, duration: 0.15, delayFactor: 0.05)
+        let animator = CollectionViewCellAnimator(animation: animation)
+        animator.animate(cell: cell, at: indexPath, in: collectionView)
     }
     
 }

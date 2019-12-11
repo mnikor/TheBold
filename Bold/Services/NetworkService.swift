@@ -361,6 +361,11 @@ class NetworkService {
         }
     }
     
+    func loadFile(with urlString: String?, completion: @escaping (((path: String, url: String)?) -> Void)) {
+        let fileLoader = FileLoader(downloadCompletion: completion)
+        fileLoader.load(from: urlString ?? "")
+    }
+    
     private func sendRequest(endpoint: String, method: HTTPMethod, parameters: [String : Any], completion: ((Result<JSON>) -> Void)?) {
         let encodingType: ParameterEncoding = URLEncoding.default //(method == .get) ? URLEncoding.default : JSONEncoding.default
         Alamofire.request(baseURL + endpoint,

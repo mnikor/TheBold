@@ -42,7 +42,7 @@ extension DataSource: EventFunctionality {
         if let result = results {
             result.status = StatusType.completed.rawValue
             DataSource.shared.saveBackgroundContext()
-            
+            NotificationService.shared.createStandardNotification( result.stake != 0 ? .actionCompleteWithStake : .actionCompleteWithoutStake)
             AlertViewService.shared.input(.congratulationsAction(points: result.calculatePoints, tapGet: {
                 LevelOfMasteryService.shared.input(.addPoints(points: PointsForAction.congratulationsAction))
             }))

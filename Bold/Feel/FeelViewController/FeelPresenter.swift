@@ -85,6 +85,7 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
         case .lesson, .story:
             let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
             vc.viewModel = DescriptionViewModel.map(activityContent: content)
+            vc.audioPlayerDelegate = viewController
             router.input(.present(vc))
         default:
             interactor.input(.prepareTracks(content: content))

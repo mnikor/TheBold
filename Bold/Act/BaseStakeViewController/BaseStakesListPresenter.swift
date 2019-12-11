@@ -64,6 +64,9 @@ enum BaseStakesListInputPresenter {
     case longTapAction(event: Event)
     //по нажатию на экшен показываем алерт редактирования или перевода в статус сделано
     case selectEvent(indexPath: IndexPath)
+    
+    case tapPlus
+//    case createGoal
 }
 
 protocol BaseStakesListInputPresenterProtocol {
@@ -153,6 +156,11 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
             
         case .selectEvent(indexPath: let indexPath):
             selectEvent(indexPath: indexPath)
+            
+        case .tapPlus:
+            router.input(.tapPlus)
+//        case .createGoal:
+//            router.input(.createGoal)
         }
     }
     
