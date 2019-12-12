@@ -62,21 +62,34 @@ class LevelOfMasteryViewController: UIViewController, ViewProtocol {
     
     private func registerXibs() {
         tableView.registerNib(LevelOfMasteryTableViewCell.self)
+        tableView.registerNib(UnlockPremiumTableViewCell.self)
     }
 
 }
 
 extension LevelOfMasteryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.levels.count
+        return presenter.levels.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let level = presenter.levels[indexPath.row]
-        let cell = tableView.dequeReusableCell(indexPath: indexPath) as LevelOfMasteryTableViewCell
-        cell.config(level: level)
-        return cell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeReusableCell(indexPath: indexPath) as UnlockPremiumTableViewCell
+            cell.delegate = self
+            return cell
+        } else {
+            let level = presenter.levels[indexPath.row - 1]
+            let cell = tableView.dequeReusableCell(indexPath: indexPath) as LevelOfMasteryTableViewCell
+            cell.config(level: level)
+            return cell
+        }
+    }
+    
+}
+
+extension LevelOfMasteryViewController: UnlockPremiumTableViewCellDelegate {
+    func tapUnlockPremium() {
+        presenter.input(.unlockPremium)
     }
     
 }

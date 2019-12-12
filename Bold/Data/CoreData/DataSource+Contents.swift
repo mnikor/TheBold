@@ -12,6 +12,7 @@ import CoreData
 protocol ContentFunctionality {
     func saveContent(content: ActivityContent)
     func deleteContent(content: ActivityContent)
+    func contains(content: ActivityContent) -> Bool
 }
 
 extension DataSource: ContentFunctionality {
@@ -23,7 +24,7 @@ extension DataSource: ContentFunctionality {
         return content
     }
     
-    private func fetchContent(activityContent: ActivityContent) -> Content? {
+    func fetchContent(activityContent: ActivityContent) -> Content? {
         let fetchRequest: NSFetchRequest<Content> = Content.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %d", Int32(activityContent.id))
         return (try? DataSource.shared.backgroundContext.fetch(fetchRequest))?.first
@@ -66,6 +67,10 @@ extension DataSource: ContentFunctionality {
         }
         
         success(results)
+    }
+    
+    func contains(content: ActivityContent) -> Bool {
+        return fetchContent(activityContent: content) != nil
     }
     
     func contentList() -> [Content] {

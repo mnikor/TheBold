@@ -56,6 +56,7 @@ extension DataSource: GoalsFunctionality {
             results = try DataSource.shared.viewContext.fetch(fetchRequest)
             success(results)
         } catch {
+            success([])
             print(error)
         }
     }

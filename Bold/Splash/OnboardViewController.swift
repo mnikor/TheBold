@@ -223,7 +223,7 @@ extension OnboardViewController: SignUpViewDelegate {
                                             // add error handling
                                             break
                                         case .success(let profile):
-                                            UserDefaults.standard.setValue(true, forKey: "first entrance")
+                                            SettingsService.shared.firstEntrance = true
                                             SessionManager.shared.profile = profile
                                             let vc = StoryboardScene.Menu.initialScene.instantiate()
                                             UIApplication.setRootView(vc,

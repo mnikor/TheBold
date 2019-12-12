@@ -210,11 +210,13 @@ extension ActionsListViewController {
             vc.viewModel = DescriptionViewModel.map(activityContent: content)
             selectedContent = content
             vc.audioPlayerDelegate = self
+            vc.isDownloadedContent = DataSource.shared.contains(content: content)
             navigationController?.present(vc, animated: true, completion: nil)
         default:
             AudioService.shared.tracks = content.audioTracks
             AudioService.shared.image = .path(content.imageURL)
-            AudioService.shared.startPlayer(isPlaying: content.type != .meditation)
+            AudioService.shared.startPlayer(isPlaying: content.type != .meditation,
+                                            isDownloadedContent: DataSource.shared.contains(content: content))
             AudioService.shared.playerDelegate = self
         }
         
@@ -241,6 +243,39 @@ extension ActionsListViewController: PlayerViewControllerDelegate {
     
     func likeContent(_ isLiked: Bool) {
         guard let content = selectedContent else { return }
+    }
+    
+    func playerStoped(with totalDuration: TimeInterval) {
+        guard let type = selectedContent?.type else { return }
+        let durationInMinutes = Int(totalDuration / 60)
+        boldnessChanged(duration: durationInMinutes)
+        switch type {
+        case .meditation:
+            if durationInMinutes >= 7 {
+                updatePoints()
+            }
+        case .hypnosis:
+            if durationInMinutes >= 20 {
+                updatePoints()
+            }
+        case .preptalk:
+            if totalDuration >= 3 {
+                updatePoints()
+            }
+        case .story:
+            // TODO: - story duration
+            break
+        case .lesson, .quote:
+            break
+        }
+    }
+    
+    private func boldnessChanged(duration: Int) {
+        SettingsService.shared.boldness += duration
+    }
+    
+    private func updatePoints() {
+        LevelOfMasteryService.shared.input(.addPoints(points: 10))
     }
     
 }

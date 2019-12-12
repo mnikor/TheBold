@@ -83,7 +83,21 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
     
     private func prepareDataSource(type: FeelTypeCell, completion: (([ActionEntity]) -> Void)?) {
         interactor.input(.prepareDataSource(contentType: getContentType(by: type)) { content in
-            let actions = content.compactMap { ActionEntity(type: .action, header: $0.contentStatus == .locked ? .unlock : .points , download: false, like: false, data: $0) }
+            let actions: [ActionEntity] = content.compactMap { activityContent in
+                if let savedContent = DataSource.shared.fetchContent(activityContent: activityContent),
+                    let savedActivityContent = ActivityContent.map(content: savedContent) {
+                    return ActionEntity(type: .action,
+                                        header: savedActivityContent.contentStatus == .locked ? .unlock : .points ,
+                                        download: true,
+                                        like: false,
+                                        data: savedActivityContent)
+                }
+                return ActionEntity(type: .action,
+                                    header: activityContent.contentStatus == .locked ? .unlock : .points ,
+                                    download: false,
+                                    like: false,
+                                    data: activityContent)
+            }
             completion?(actions)
         })
     }

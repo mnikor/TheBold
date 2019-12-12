@@ -485,7 +485,7 @@ enum BoldAlertType {
 
 // MARK: LevelType
 
-enum LevelType: Int {
+enum LevelType: Int, CaseIterable {
     case apprentice = 0
     case risingPower
     case intermidiate

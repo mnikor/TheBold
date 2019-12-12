@@ -69,15 +69,14 @@ struct ActivityViewModel {
             enabledButton = true
             titleButton = L10n.showAll
             imageButton = Asset.rightArrowIcon.image
-            items = goals.compactMap { (goal) -> ActivityItemsViewModel in
-                return .goal(goal: goal)
-            }
         default:
             enabledButton = true
             titleButton = L10n.showAll
             imageButton = Asset.rightArrowIcon.image
         }
-        
+        items = goals.compactMap { (goal) -> ActivityItemsViewModel in
+            return .goal(goal: goal)
+        }
         items += content.compactMap { ActivityItemsViewModel.content(content: $0) }
         
         switch type {

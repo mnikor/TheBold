@@ -18,9 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        if UserDefaults.standard.object(forKey: "first entrance") == nil {
-            UserDefaults.standard.setValue(true, forKey: "first entrance")
-        }
         let rootViewController = getRootViewController()
         self.window?.rootViewController = rootViewController
         self.window?.makeKeyAndVisible()

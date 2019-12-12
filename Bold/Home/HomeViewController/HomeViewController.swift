@@ -8,7 +8,15 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, SideMenuItemContent, ViewProtocol {
+enum HomeViewInput {
+    case goalsUpdated
+}
+
+protocol HomeViewInputProtocol: class {
+    func input(_ inputCase: HomeViewInput)
+}
+
+class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputProtocol {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,13 +32,16 @@ class HomeViewController: UIViewController, SideMenuItemContent, ViewProtocol {
     var presenter: Presenter!
     var configurator: Configurator! = HomeConfigurator()
     
+    private var actionItems: [ActivityViewModel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerForNotifications()
         configurator.configure(with: self)
         
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        
+        presenter.input(.subscribeForUpdates)
+        prepareDataSource()
         configureHeaderView()
 //        let height = headerHomeView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
 //        var frame = headerHomeView.frame
@@ -60,6 +71,13 @@ class HomeViewController: UIViewController, SideMenuItemContent, ViewProtocol {
                                                selector: #selector(profileChanged(_:)),
                                                name: .profileChanged,
                                                object: nil)
+    }
+    
+    private func prepareDataSource() {
+        presenter.input(.prepareDataSource({ [weak self] actionItems in
+            self?.actionItems = actionItems
+            self?.tableView.reloadData()
+        }))
     }
     
     override func viewDidLayoutSubviews() {
@@ -92,6 +110,18 @@ class HomeViewController: UIViewController, SideMenuItemContent, ViewProtocol {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        headerHomeView.setBoldness(boldness: SettingsService.shared.boldness)
+    }
+    
+    func input(_ inputCase: HomeViewInput) {
+        switch inputCase {
+        case .goalsUpdated:
+            prepareDataSource()
+        }
+    }
+    
     @objc private func profileChanged(_ notification: Notification) {
         headerHomeView.configureTitle()
     }
@@ -104,11 +134,11 @@ class HomeViewController: UIViewController, SideMenuItemContent, ViewProtocol {
 extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.actionItems.count
+        return actionItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = presenter.actionItems[indexPath.row]
+        let item = actionItems[indexPath.row]
         switch item.type {
         case .feel, .think, .actActive, .actNotActive, .activeGoals, .activeGoalsAct:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActivityCollectionTableViewCell
@@ -131,7 +161,7 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return presenter.actionItems[indexPath.row].type.rowHeight()
+        return actionItems[indexPath.row].type.rowHeight()
     }
 }
 
@@ -141,7 +171,7 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: ActivityCollectionTableViewCellDelegate {
     func activityCollectionTableViewCell(_ activityCollectionTableViewCell: ActivityCollectionTableViewCell, didTapAtItem indexPath: IndexPath) {
         guard let cellIndexPath = tableView.indexPath(for: activityCollectionTableViewCell) else { return }
-        let item = presenter.actionItems[cellIndexPath.row]
+        let item = actionItems[cellIndexPath.row]
         presenter.input(.actionItem(item, indexPath.row))
     }
     

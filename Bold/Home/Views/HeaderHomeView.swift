@@ -30,10 +30,11 @@ class HeaderHomeView: UIView {
     private var pointsStartValue = 0
     private var pointsEndValue = 100
     private var boldnessStartValue = 0
-    private var boldnessEndValue = 45
-    private var startDate = Date()
+    private var boldnessEndValue = 0
+    private var pointsStartDate = Date()
+    private var boldnessStartDate = Date()
     private var animationDuration = 0.8
-    private var pointsLimit = 300
+    private var pointsLimit = LevelType.allCases.first?.limits.getAllLimits().points ?? 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -57,9 +58,9 @@ class HeaderHomeView: UIView {
     }
     
     func configureTitle() {
-        if UserDefaults.standard.bool(forKey: "first entrance") {
+        if SettingsService.shared.firstEntrance {
             welcomeLabel.text = "Welcome"
-            UserDefaults.standard.setValue(false, forKey: "first entrance")
+            SettingsService.shared.firstEntrance = false
         } else {
             welcomeLabel.text = "Welcome back"
         }
@@ -73,16 +74,22 @@ class HeaderHomeView: UIView {
         }
     }
     
-    func set(points: Int, boldness: Int) {
+    func set(points: Int) {
         pointsStartValue = Int(currentPointsLabel.text?.components(separatedBy: "/").first ?? "0") ?? 0
-        boldnessStartValue = Int(timeLabel.text?.components(separatedBy: "min").first ?? "0" ) ?? 0
-        
         pointsEndValue = points
+        
+        let displayLink = CADisplayLink(target: self, selector: #selector(animatePoints))
+        displayLink.add(to: .main, forMode: .default)
+        pointsStartDate = Date()
+    }
+    
+    func setBoldness(boldness: Int) {
+        boldnessStartValue = Int(timeLabel.text?.components(separatedBy: "min").first ?? "0" ) ?? 0
         boldnessEndValue = boldness
         
-        let displayLink = CADisplayLink(target: self, selector: #selector(animateValues))
+        let displayLink = CADisplayLink(target: self, selector: #selector(animateBoldness))
         displayLink.add(to: .main, forMode: .default)
-        startDate = Date()
+        pointsStartDate = Date()
     }
     
     func configure() {
@@ -92,14 +99,13 @@ class HeaderHomeView: UIView {
             
         self?.levelNameLabel.text = levelInfo.level.type.titleText
         let currentLimits = levelInfo.level.limits.getAllLimits()
-        self?.currentPointsLabel.text = "\(levelInfo.currentPoint)/\(currentLimits.points)"
         self?.pointsLimit = currentLimits.points
-        
+        self?.set(points: levelInfo.currentPoint)
        }).disposed(by: disposeBag)
     }
     
-    @objc private func animateValues() {
-        let timeInterval = Date().timeIntervalSince(startDate)
+    @objc private func animatePoints() {
+        let timeInterval = Date().timeIntervalSince(pointsStartDate)
         guard timeInterval < animationDuration
             else {
                 currentPointsLabel.text = "\(pointsEndValue)/\(pointsLimit)"
@@ -108,8 +114,19 @@ class HeaderHomeView: UIView {
         }
         let percentage = timeInterval / animationDuration
         let pointsNewValue = Double(pointsEndValue - pointsStartValue) * percentage
-        let boldnessNewValue = Double(boldnessEndValue - boldnessStartValue) * percentage
+        pointsLimit = LevelType.allCases.compactMap({ $0.limits.getAllLimits().points }).sorted().first(where: { $0 > Int(pointsNewValue) }) ?? 0
         currentPointsLabel.text = "\(Int(pointsNewValue))/\(pointsLimit)"
+    }
+    
+    @objc private func animateBoldness() {
+        let timeInterval = Date().timeIntervalSince(boldnessStartDate)
+        guard timeInterval < animationDuration
+            else {
+                timeLabel.text = "\(boldnessEndValue)min"
+                return
+        }
+        let percentage = timeInterval / animationDuration
+        let boldnessNewValue = Double(boldnessEndValue - boldnessStartValue) * percentage
         timeLabel.text = "\(Int(boldnessNewValue))min"
     }
     
