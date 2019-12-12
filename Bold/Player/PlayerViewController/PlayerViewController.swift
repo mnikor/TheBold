@@ -19,6 +19,7 @@ protocol PlayerViewControllerDelegate: class {
     func saveContent()
     func removeFromCache()
     func likeContent(_ isLiked: Bool)
+    func playerStoped(with totalDuration: TimeInterval)
 }
 
 class PlayerViewController: UIViewController, ViewProtocol {
@@ -30,6 +31,8 @@ class PlayerViewController: UIViewController, ViewProtocol {
     
     var presenter: Presenter!
     var configurator: Configurator! = PlayerConfigurator()
+    
+    var isDownloadedContent: Bool = false
 
     @IBOutlet weak var playerView: UIView!
     @IBOutlet var playerListView: PlayerListView!
@@ -102,13 +105,11 @@ class PlayerViewController: UIViewController, ViewProtocol {
     }
     
     @IBAction func tapDownloadButton(_ sender: UIBarButtonItem) {
-        buttonsToolbar.dowload = !buttonsToolbar.dowload
-        downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
-        downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
-        if buttonsToolbar.dowload {
+        if !isDownloadedContent && !buttonsToolbar.dowload {
+            buttonsToolbar.dowload = !buttonsToolbar.dowload
+            downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
+            downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
             delegate?.saveContent()
-        } else {
-            delegate?.removeFromCache()
         }
     }
     
@@ -147,6 +148,7 @@ class PlayerViewController: UIViewController, ViewProtocol {
         addSwipe()
         configureSliderAction()
         AudioService.shared.delegate = self
+        configureDowloadButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -159,6 +161,12 @@ class PlayerViewController: UIViewController, ViewProtocol {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         playerListView.configView(superView: playerView)
+    }
+    
+    private func configureDowloadButton() {
+        buttonsToolbar.dowload = isDownloadedContent
+        downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
+        downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
     }
     
     func setImage(imagePath: String?) {

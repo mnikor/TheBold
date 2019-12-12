@@ -60,7 +60,7 @@ class PlayerSmallView: UIView {
     
     @IBAction func didTapAtView(_ sender: UITapGestureRecognizer) {
         animateDisappearing {
-            AudioService.shared.showPlayerFullScreen()
+            AudioService.shared.showPlayerFullScreen(isDownloadedContent: AudioService.shared.isDownloadedContent)
         }
     }
     

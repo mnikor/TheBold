@@ -12,6 +12,7 @@ import UIKit
 enum LevelOfMasteryPresenterInput {
     case close
     case createDataSource
+    case unlockPremium
 }
 
 protocol LevelOfMasteryInputProtocol: PresenterProtocol {
@@ -47,6 +48,8 @@ class LevelOfMasteryPresenter: LevelOfMasteryInputProtocol {
                 self.levels = levelsMastery
                 self.viewController.tableView.reloadData()
             }))
+        case .unlockPremium:
+            router.input(.unlockPremium)
         }
     }
     

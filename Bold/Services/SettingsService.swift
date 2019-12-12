@@ -33,10 +33,34 @@ class SettingsService {
         }
     }
     
+    var firstEntrance: Bool {
+        didSet {
+            if firstEntrance != oldValue {
+                UserDefaults.standard.set(firstEntrance, forKey: DefaultsKeys.firstEntrance)
+            }
+        }
+    }
+    
+    var boldness: Int {
+        didSet {
+            if boldness != oldValue {
+                UserDefaults.standard.set(boldness, forKey: DefaultsKeys.boldness)
+            }
+        }
+    }
+    
     private init() {
         self.syncWithIOSCalendar = UserDefaults.standard.bool(forKey: DefaultsKeys.syncWithIOSCalendar)
         self.syncWithICloud = UserDefaults.standard.bool(forKey: DefaultsKeys.syncWithICloud)
         self.downloadOnWiFiOnly = UserDefaults.standard.bool(forKey: DefaultsKeys.downloadOnWiFiOnly)
+        if UserDefaults.standard.object(forKey: DefaultsKeys.firstEntrance) == nil {
+            UserDefaults.standard.setValue(true, forKey: DefaultsKeys.firstEntrance)
+        }
+        if UserDefaults.standard.object(forKey: DefaultsKeys.boldness) == nil {
+            UserDefaults.standard.set(0, forKey: DefaultsKeys.boldness)
+        }
+        firstEntrance = UserDefaults.standard.bool(forKey: DefaultsKeys.firstEntrance)
+        boldness = UserDefaults.standard.integer(forKey: DefaultsKeys.boldness)
     }
     
 }
@@ -45,4 +69,6 @@ private struct DefaultsKeys {
     static let syncWithIOSCalendar = "syncWithIOSCalendar"
     static let syncWithICloud = "syncWithICloud"
     static let downloadOnWiFiOnly = "downloadOnWiFiOnly"
+    static let firstEntrance = "first entrance"
+    static let boldness = "boldness"
 }

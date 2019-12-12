@@ -50,9 +50,7 @@ class ProgressHeaderView: UIView {
         
         LevelOfMasteryService.shared.changePoints.subscribe(onNext: {[weak self] (levelInfo) in
             self?.titleLabel.text = levelInfo.level.type.titleText
-            self?.set(points: levelInfo.currentPoint, progress: Float(levelInfo.level.completionPercentage) / 100)
-//            self?.pointsLabel.text = "\(levelInfo.currentPoint)"
-//            self?.progressView.progress = Float(levelInfo.level.completionPercentage) / 100
+            self?.set(points: levelInfo.currentPoint)
          
         }).disposed(by: disposeBag)
         
@@ -64,11 +62,9 @@ class ProgressHeaderView: UIView {
         displayLink.add(to: .main, forMode: .default)
     }
     
-    func set(points: Int, progress: Float) {
+    func set(points: Int) {//, progress: Float) {
         pointsStartValue = Int(pointsLabel.text ?? "") ?? 0
         pointsEndValue = points
-        progressStartValue = progressView.progress
-        progressEndValue = progress
         startDate = Date()
     }
     
@@ -78,12 +74,13 @@ class ProgressHeaderView: UIView {
         let timeInterval = Date().timeIntervalSince(startDate)
         if timeInterval > animationDuration {
             pointsLabel.text = "\(pointsEndValue)"
-            progressView.progress = progressEndValue
+            progressView.progress = Float(pointsEndValue) / Float(LevelType.allCases.compactMap({ $0.limits.getAllLimits().points }).sorted().first(where: { Int($0) > pointsEndValue }) ?? 1)
             return
         }
         let percentage = timeInterval / animationDuration
         let currentPoints = Double(pointsStartValue) + (percentage * Double(pointsEndValue - pointsStartValue))
-        progressView.progress = progressStartValue + (Float(percentage) * (progressEndValue - progressStartValue))
+        
+        progressView.progress = Float(currentPoints) / Float(LevelType.allCases.compactMap({ $0.limits.getAllLimits().points }).sorted().first(where: { Double($0) > currentPoints }) ?? 1)
         pointsLabel.text = "\(Int(currentPoints))"
     }
 

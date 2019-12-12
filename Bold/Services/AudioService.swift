@@ -50,6 +50,10 @@ class AudioService: NSObject, AudioServiceProtocol {
     weak var playerDelegate: PlayerViewControllerDelegate?
     
     private var currentTrackIndex: Int = 0
+    private(set) var isDownloadedContent: Bool = false
+    
+    private var totalDuration: TimeInterval = 0
+    private var startDate = Date()
     
     override private init() {
         super.init()
@@ -115,6 +119,29 @@ class AudioService: NSObject, AudioServiceProtocol {
         player.play(with: tracks[currentTrackIndex])
     }
     
+    private func play(index: Int?) {
+        currentTrackIndex = index ?? currentTrackIndex
+        player.play(with: tracks[currentTrackIndex])
+        totalDuration = 0
+        startDate = Date()
+    }
+    
+    private func pause() {
+        totalDuration += Date().timeIntervalSince(startDate)
+        player.pause()
+    }
+    
+    private func resume() {
+        startDate = Date()
+        player.resume()
+    }
+    
+    private func stop() {
+        totalDuration += Date().timeIntervalSince(startDate)
+        player.stop()
+        playerDelegate?.playerStoped(with: totalDuration)
+    }
+    
     func addSubscriber(_ subscriber: AudioServiceDelegate) {
         
     }
@@ -123,18 +150,17 @@ class AudioService: NSObject, AudioServiceProtocol {
         guard tracks.count > 0 else { return }
         switch inputCase {
         case .play(let index):
-            currentTrackIndex = index ?? currentTrackIndex
-            player.play(with: tracks[currentTrackIndex])
+            play(index: index)
         case .playPrevious:
             playPrevious()
         case .playNext:
             playNext()
         case .stop:
-            player.stop()
+            stop()
         case .pause:
-            player.pause()
+            pause()
         case .resume:
-            player.resume()
+            resume()
         case .restart:
             player.restart()
         case .seek(to: let time):
@@ -178,20 +204,26 @@ class AudioService: NSObject, AudioServiceProtocol {
         smallPlayer.animateAppearing()
     }
     
-    func showPlayerFullScreen() {
+    func showPlayerFullScreen(isDownloadedContent: Bool) {
         smallPlayer.animateDisappearing() { [unowned self] in
+            self.stop()
             let playerVC = PlayerViewController.createController()
             self.delegate = playerVC
+            self.isDownloadedContent = isDownloadedContent
             playerVC.delegate = self.playerDelegate
+            playerVC.isDownloadedContent = isDownloadedContent
             UIApplication.topViewController?.present(playerVC, animated: true)
         }
     }
     
-    func startPlayer(isPlaying: Bool) {
+    func startPlayer(isPlaying: Bool, isDownloadedContent: Bool) {
         smallPlayer.animateDisappearing() { [unowned self] in
+            self.stop()
             let playerVC = PlayerViewController.createController()
             self.delegate = playerVC
+            self.isDownloadedContent = isDownloadedContent
             playerVC.delegate = self.playerDelegate
+            playerVC.isDownloadedContent = isDownloadedContent
             UIApplication.topViewController?.present(playerVC, animated: true) {
                 if isPlaying {
                     playerVC.play()

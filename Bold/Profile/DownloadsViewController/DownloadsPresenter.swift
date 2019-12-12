@@ -60,12 +60,16 @@ class DownloadsPresenter: DownloadsPresenterInputProtocol {
     
     private func showPlayer(content: ActivityContent) {
         AudioService.shared.tracks = content.audioTracks
-        AudioService.shared.startPlayer(isPlaying: content.type != .meditation)
+        AudioService.shared.startPlayer(isPlaying: content.type != .meditation,
+                                        isDownloadedContent: DataSource.shared.contains(content: content))
+        AudioService.shared.playerDelegate = viewController
     }
     
     private func showDescription(content: ActivityContent) {
         let descriptionVC = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
         descriptionVC.viewModel = DescriptionViewModel.map(activityContent: content)
+        descriptionVC.isDownloadedContent = DataSource.shared.contains(content: content)
+        descriptionVC.audioPlayerDelegate = viewController
         viewController.navigationController?.present(descriptionVC, animated: true)
     }
     

@@ -81,15 +81,17 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
     }
     
     private func showDetails(for content: ActivityContent) {
+        let isDownloadedContent = DataSource.shared.contains(content: content)
         switch content.type {
         case .lesson, .story:
             let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
             vc.viewModel = DescriptionViewModel.map(activityContent: content)
             vc.audioPlayerDelegate = viewController
+            vc.isDownloadedContent = isDownloadedContent
             router.input(.present(vc))
         default:
             interactor.input(.prepareTracks(content: content))
-            router.input(.showPlayer(isPlaying: content.type != .meditation))
+            router.input(.showPlayer(isPlaying: content.type != .meditation, isDownloadedContent: isDownloadedContent))
         }
         
         

@@ -11,6 +11,7 @@ import UIKit
 
 enum LevelOfMasteryRouterInput {
     case close
+    case unlockPremium
 }
 
 protocol LevelOfMasteryProtocol: RouterProtocol {
@@ -31,6 +32,10 @@ class LevelOfMasteryRouter: LevelOfMasteryProtocol {
         switch inputCase {
         case .close:
             viewController.navigationController?.popViewController(animated: true)
+        case .unlockPremium:
+            let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
+            vc.viewModel = DescriptionViewModel.boldManifestInfo
+            viewController.navigationController?.present(vc, animated: true, completion: nil)
         }
     }
 }

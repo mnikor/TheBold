@@ -26,6 +26,7 @@ class DescriptionAndLikesCountViewController: UIViewController {
     var buttonsToolbar = StateStatusButtonToolbar()
     
     private var isDocumentLoaded: Bool = false
+    var isDownloadedContent = false
     
     @IBAction func tapCloseButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -34,18 +35,16 @@ class DescriptionAndLikesCountViewController: UIViewController {
     @IBAction func didTapAtPlayerButton(_ sender: UIButton) {
         AudioService.shared.tracks = viewModel?.audioTracks ?? []
         AudioService.shared.image = viewModel?.image
-        AudioService.shared.startPlayer(isPlaying: true)
+        AudioService.shared.startPlayer(isPlaying: true, isDownloadedContent: isDownloadedContent)
         AudioService.shared.playerDelegate = audioPlayerDelegate
     }
     
     @IBAction func didTapAtDownloadButton(_ sender: UIBarButtonItem) {
-        buttonsToolbar.dowload = !buttonsToolbar.dowload
-        downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
-        downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
-        if buttonsToolbar.dowload {
+        if !isDownloadedContent && !buttonsToolbar.dowload {
+            buttonsToolbar.dowload = !buttonsToolbar.dowload
+            downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
+            downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
             audioPlayerDelegate?.saveContent()
-        } else {
-            audioPlayerDelegate?.removeFromCache()
         }
     }
     
@@ -98,6 +97,7 @@ class DescriptionAndLikesCountViewController: UIViewController {
     }
     
     private func config() {
+        configureDowloadButton()
         categoryLabel.text = viewModel?.category?.rawValue.capitalized
         titleLabel.text = viewModel?.title
         likseCountView.configView(superView: view)
@@ -121,6 +121,12 @@ class DescriptionAndLikesCountViewController: UIViewController {
         playerButton.shadow()
         playerButton.isHidden = (viewModel?.audioTracks ?? []).isEmpty
         likseCountView.isHidden = viewModel?.isLikesEnabled == false
+    }
+    
+    private func configureDowloadButton() {
+        buttonsToolbar.dowload = isDownloadedContent
+        downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
+        downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
     }
     
     private func configurePDFView() {

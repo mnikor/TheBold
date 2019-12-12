@@ -9,6 +9,7 @@
 import Foundation
 
 enum HomePresenterInput {
+    case prepareDataSource(([ActivityViewModel]) -> Void)
     case menuShow
     case actionAll(HomeActionsTypeCell)
     case actionItem(ActivityViewModel, Int)
@@ -32,21 +33,16 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
     
     required init(view: View) {
         self.viewController = view
-        prepareDataSource()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        prepareDataSource()
     }
-    
-    var actionItems: [ActivityViewModel] = []
-    
-    private var feelContent: [FeelTypeCell] = [.meditation, .pepTalk, .hypnosis]
-    private var thinkContent: [FeelTypeCell] = [.lessons, .stories, .citate]
     
     func input(_ inputCase: HomePresenterInput) {
         
         switch inputCase {
+        case .prepareDataSource(let completion):
+            interactor.input(.prepareDataSource(completion))
         case .menuShow:
             router.input(.menuShow)
         case .actionAll(let type):
@@ -61,42 +57,10 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
     }
     
     private func actionItem(viewModel: ActivityViewModel, at index: Int) {
-        switch viewModel.type {
-        case .feel:
-            let item = feelContent[index]
-            router.input(.actionItem(item))
-        case .think:
-            let item = thinkContent[index]
-            router.input(.actionItem(item))
-        default:
-            break
-        }
-    }
-    
-    private func prepareDataSource() {
-        let feel = ActivityViewModel.createViewModel(type: .feel,
-                                                     goals: [],
-                                                     content: feelContent.compactMap { ContentViewModel(backgroundImage: $0.categoryImage(),
-                                                                                                        title: $0.categoryName()) },
-                                                     itemCount: feelContent.count)
-        let boldManifest = ActivityViewModel.createViewModel(type: .boldManifest,
-                                                             goals: [],
-                                                             content: [],
-                                                             itemCount: 0)
-        let think = ActivityViewModel.createViewModel(type: .think,
-                                                      goals: [],
-                                                      content: thinkContent.compactMap { ContentViewModel(backgroundImage: $0.categoryImage(),
-                                                                                                          title: $0.categoryName()) },
-                                                      itemCount: thinkContent.count)
-        let actActive = ActivityViewModel.createViewModel(type: .actActive,
-                                                         goals: [],
-                                                         content: [],
-                                                         itemCount: 0)
-        let actNotActive = ActivityViewModel.createViewModel(type: .actNotActive,
-                                                             goals: [],
-                                                             content: [],
-                                                             itemCount: 0)
-        actionItems = [feel, boldManifest, think, actActive, actNotActive]
+        interactor.input(.getFeelType(type: viewModel.type, index: index, completion: { [weak self] feelType in
+            guard let feelType = feelType else { return }
+            self?.router.input(.actionItem(feelType))
+        }))
     }
     
 }
