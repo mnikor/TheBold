@@ -8,7 +8,15 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, SideMenuItemContent, ViewProtocol {
+enum HomeViewInput {
+    case goalsUpdated
+}
+
+protocol HomeViewInputProtocol: class {
+    func input(_ inputCase: HomeViewInput)
+}
+
+class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputProtocol {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -32,6 +40,7 @@ class HomeViewController: UIViewController, SideMenuItemContent, ViewProtocol {
         configurator.configure(with: self)
         
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        presenter.input(.subscribeForUpdates)
         prepareDataSource()
         configureHeaderView()
 //        let height = headerHomeView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
@@ -104,6 +113,13 @@ class HomeViewController: UIViewController, SideMenuItemContent, ViewProtocol {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         headerHomeView.setBoldness(boldness: SettingsService.shared.boldness)
+    }
+    
+    func input(_ inputCase: HomeViewInput) {
+        switch inputCase {
+        case .goalsUpdated:
+            prepareDataSource()
+        }
     }
     
     @objc private func profileChanged(_ notification: Notification) {

@@ -118,6 +118,7 @@ class CreateGoalPresenter: PresenterProtocol, CreateGoalInputPresenterProtocol {
             }else {
                 self.interactor.input(.updateEndDate(newDate))
             }
+            self.viewController.dismiss(animated: true)
         }
         router.input(.presentDateAlert(alertVC))
     }

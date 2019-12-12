@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import RxCocoa
+import RxSwift
 
 enum HomePresenterInput {
     case prepareDataSource(([ActivityViewModel]) -> Void)
@@ -15,6 +17,7 @@ enum HomePresenterInput {
     case actionItem(ActivityViewModel, Int)
     case unlockBoldManifest
     case createGoal
+    case subscribeForUpdates
 }
 
 protocol HomePresenterInputProtocol {
@@ -30,6 +33,8 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
     weak var viewController: View!
     var interactor: Interactor!
     var router: Router!
+    
+    private var disposeBag = DisposeBag()
     
     required init(view: View) {
         self.viewController = view
@@ -53,6 +58,8 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
             router.input(.unlockBoldManifest)
         case .createGoal:
             router.input(.createGoal)
+        case .subscribeForUpdates:
+            subscribeForUpdates()
         }
     }
     
@@ -61,6 +68,12 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
             guard let feelType = feelType else { return }
             self?.router.input(.actionItem(feelType))
         }))
+    }
+    
+    private func subscribeForUpdates() {
+        DataSource.shared.changeContext.subscribe(onNext: {[weak self] (_) in
+            self?.viewController.input(.goalsUpdated)
+        }).disposed(by: disposeBag)
     }
     
 }
