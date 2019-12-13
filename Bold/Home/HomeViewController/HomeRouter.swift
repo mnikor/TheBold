@@ -35,20 +35,7 @@ class HomeRouter: RouterProtocol, HomeInputRouterProtocol {
         case .menuShow:
             viewController.showSideMenu()
         case .actionAll(let type):
-            let viewController: UIViewController?
-            switch type {
-            case .feel:
-                viewController = StoryboardScene.Feel.storyboard.instantiateInitialViewController()
-            case .think:
-                viewController = StoryboardScene.Think.storyboard.instantiateInitialViewController()
-            case .actActive, .actNotActive, .activeGoalsAct, .activeGoals:
-                viewController = StoryboardScene.Act.storyboard.instantiateInitialViewController()
-            case .boldManifest:
-                viewController = UIViewController()
-            }
-            if let newVC = viewController {
-                HostViewController.showController(newVC: newVC)
-            }
+            actionAll(type: type)
         case .actionItem(let type):
             let actionListVC = StoryboardScene.Feel.actionsListViewController.instantiate()
             actionListVC.typeVC = type
@@ -63,4 +50,21 @@ class HomeRouter: RouterProtocol, HomeInputRouterProtocol {
             viewController.navigationController?.pushViewController(createGoalVC, animated: true)
         }
     }
+    
+    private func actionAll(type: HomeActionsTypeCell) {
+        switch type {
+        case .feel:
+            let viewController = StoryboardScene.Feel.storyboard.instantiateInitialViewController()
+            HostViewController.showController(newVC: viewController ?? UIViewController())
+        case .think:
+            let viewController = StoryboardScene.Think.storyboard.instantiateInitialViewController()
+            HostViewController.showController(newVC: viewController ?? UIViewController())
+        case .actActive, .actNotActive, .activeGoalsAct, .activeGoals:
+            let viewController = StoryboardScene.Act.createGoalViewController.instantiate()
+            self.viewController.navigationController?.pushViewController(viewController, animated: true)
+        case .boldManifest:
+            break
+        }
+    }
+    
 }

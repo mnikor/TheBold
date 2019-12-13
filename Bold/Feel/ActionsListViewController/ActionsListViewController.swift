@@ -109,16 +109,11 @@ extension ActionsListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let height = cell.frame.height
-        if viewDidAppearAnimated {
-            let animation = TableViewCellAnimationFactory.moveUp(rowHeight: height, duration: 0.2, delayFactor: 0.07)
-            let animator = TableViewCellAnimator(animation: animation)
-            animator.animate(cell: cell, at: indexPath, in: tableView)
-        } else {
+        if !viewDidAppearAnimated {
             let animation = TableViewCellAnimationFactory.slideIn(duration: 0.15, delayFactor: 0.05)
             let animator = TableViewCellAnimator(animation: animation)
             animator.animate(cell: cell, at: indexPath, in: tableView)
-            viewDidAppearAnimated = tableView.frame.height <= (CGFloat(indexPath.row + 1) * height)
+            viewDidAppearAnimated = tableView.frame.height <= (CGFloat(indexPath.row + 1) * cell.frame.height)
         }
     }
     

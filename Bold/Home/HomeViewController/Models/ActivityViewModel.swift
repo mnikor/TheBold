@@ -62,7 +62,7 @@ struct ActivityViewModel {
             titleButton = nil
             imageButton = Asset.plusIcon.image
         case .actActive :
-            enabledButton = false
+            enabledButton = true
             titleButton = nil
             imageButton = Asset.plusIcon.image
         case .activeGoals, .activeGoalsAct:

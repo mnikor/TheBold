@@ -68,25 +68,11 @@ class HomeInteractor: HomeInteractorInputProtocol {
                                                                                                             title: $0.categoryName()) },
                                                         itemCount: thinkContent.count)
         DataSource.shared.goalsListForRead(success: { goals in
-            var activeGoals = [Goal]()
-            var notActiveGoals = [Goal]()
-            for goal in goals {
-                guard let endDate = goal.endDate as Date? else { continue }
-                if endDate >= Date() {
-                    activeGoals.append(goal)
-                } else {
-                    notActiveGoals.append(goal)
-                }
-            }
             let actActive = ActivityViewModel.createViewModel(type: .actActive,
-                                                              goals: activeGoals.compactMap { GoalCollectionViewModel.createGoalModel(goal: $0) },
+                                                              goals: goals.compactMap { GoalCollectionViewModel.createGoalModel(goal: $0) },
                                                               content: [],
-                                                              itemCount: activeGoals.count)
-            let actNotActive = ActivityViewModel.createViewModel(type: .actNotActive,
-                                                                 goals: notActiveGoals.compactMap { GoalCollectionViewModel.createGoalModel(goal: $0) },
-                                                                 content: [],
-                                                                 itemCount: notActiveGoals.count)
-            completion([feel, boldManifest, think, actActive, actNotActive])
+                                                              itemCount: goals.count)
+            completion([feel, boldManifest, think, actActive])
         })
          
     }

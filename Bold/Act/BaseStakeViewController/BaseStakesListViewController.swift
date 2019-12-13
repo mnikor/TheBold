@@ -222,7 +222,7 @@ extension BaseStakesListViewController: CalendarTableViewCellDelegate {
 // MARK:- ActivityCollectionTableViewCellDelegate
 
 extension BaseStakesListViewController: ActivityCollectionTableViewCellDelegate {
-    func tapShowAllActivity(type: HomeActionsTypeCell) {
+    func tapShowAllActivity(type: HomeActionsTypeCell?) {
         print("tapShowAllActivity")
         presenter.router.input(.allGoals)
     }
@@ -237,7 +237,7 @@ extension BaseStakesListViewController: ActivityCollectionTableViewCellDelegate 
         presenter.input(.goalItem(goal: goal))
     }
     
-    func tapEmptyGoalsCell(type: ActivityViewModel) {
+    func tapEmptyGoalsCell(type: ActivityViewModel?) {
         presenter.input(.tapPlus)
     }
     

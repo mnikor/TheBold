@@ -9,13 +9,13 @@
 import UIKit
 
 protocol ActivityCollectionTableViewCellDelegate: class {
-    func tapShowAllActivity(type: HomeActionsTypeCell)
+    func tapShowAllActivity(type: HomeActionsTypeCell?)
 
     func tapItemCollection(goal: Goal)
 
     func activityCollectionTableViewCell(_ activityCollectionTableViewCell: ActivityCollectionTableViewCell, didTapAtItem indexPath: IndexPath)
     
-    func tapEmptyGoalsCell(type: ActivityViewModel)
+    func tapEmptyGoalsCell(type: ActivityViewModel?)
 
 }
 
@@ -32,12 +32,12 @@ class ActivityCollectionTableViewCell: BaseTableViewCell {
     weak var delegate : ActivityCollectionTableViewCellDelegate?
     //var entity : HomeEntity!
     
-    var itemViewModel : ActivityViewModel!
+    var itemViewModel : ActivityViewModel?
     var dataSource = [ActivityItemsViewModel]()
     
     @IBAction func tapAllActivityButton(_ sender: UIButton) {
         print("Tap Show All Activity")
-        delegate?.tapShowAllActivity(type: itemViewModel.type)
+        delegate?.tapShowAllActivity(type: itemViewModel?.type)
     }
     
     override func awakeFromNib() {
@@ -91,7 +91,7 @@ class ActivityCollectionTableViewCell: BaseTableViewCell {
 extension ActivityCollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch itemViewModel.type {
+        switch itemViewModel?.type {
         case .actActive, .activeGoals, .activeGoalsAct, .actNotActive :
             return dataSource.isEmpty ? 1 : dataSource.count
         default:
@@ -113,7 +113,7 @@ extension ActivityCollectionTableViewCell: UICollectionViewDelegate, UICollectio
                 return cell
             }
         } else {
-            switch itemViewModel.type {
+            switch itemViewModel?.type {
             case .actActive, .activeGoals, .activeGoalsAct, .actNotActive :
                 let cell = collectionView.dequeReusableCell(indexPath: indexPath) as ActInactiveCollectionViewCell
                 return cell
@@ -136,7 +136,7 @@ extension ActivityCollectionTableViewCell: UICollectionViewDelegate, UICollectio
                 return
             }
         } else {
-            switch itemViewModel.type {
+            switch itemViewModel?.type {
             case .actActive, .activeGoals, .activeGoalsAct, .actNotActive:
                 delegate?.tapEmptyGoalsCell(type: itemViewModel)
             default:
@@ -155,15 +155,15 @@ extension ActivityCollectionTableViewCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if dataSource.isEmpty {
-            switch itemViewModel.type {
+            switch itemViewModel?.type {
                 case .actActive, .activeGoals, .activeGoalsAct, .actNotActive :
                     return CGSize(width: 225, height: 102)
                 default:
-                    return itemViewModel.collectionCellSize
+                    return itemViewModel?.collectionCellSize ?? .zero
             }
         }
         //let item = dataSource[indexPath.row]
-        return itemViewModel.collectionCellSize //item.collectionCellSize
+        return itemViewModel?.collectionCellSize ?? .zero //item.collectionCellSize
         //return entity.type.collectionCellSize()
     }
     
