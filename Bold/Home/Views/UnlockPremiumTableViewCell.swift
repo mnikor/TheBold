@@ -10,6 +10,7 @@ import UIKit
 
 protocol UnlockPremiumTableViewCellDelegate: class {
     func tapUnlockPremium()
+    func tapBoldManifest()
 }
 
 class UnlockPremiumTableViewCell: BaseTableViewCell {
@@ -19,9 +20,14 @@ class UnlockPremiumTableViewCell: BaseTableViewCell {
     @IBOutlet weak var unlockButton: RoundedButton!
     
     weak var delegate: UnlockPremiumTableViewCellDelegate?
+    private var type : HomeActionsTypeCell!
     
     @IBAction func tapUnlockButton(_ sender: UIButton) {
-        delegate?.tapUnlockPremium()
+        if type == HomeActionsTypeCell.boldManifest {
+            delegate?.tapBoldManifest()
+        }else {
+            delegate?.tapUnlockPremium()
+        }
     }
     
     override func awakeFromNib() {
@@ -31,10 +37,22 @@ class UnlockPremiumTableViewCell: BaseTableViewCell {
         self.selectionStyle = .none
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func configCell(type: HomeActionsTypeCell) {
+        
+        self.type = type
+        
+        switch type {
+        case .boldManifest:
+            titleLabel.text = L10n.Home.boldManifest
+            subtiltleLabel.text = L10n.Home.findOutWhatItMeansToBeBold
+            unlockButton.setTitle(L10n.Home.findOut, for: .normal)
+        case .unlockPremium:
+            titleLabel.text = L10n.Home.unlockPremium
+            subtiltleLabel.text = L10n.Home.andGetAccessToAllResources
+            unlockButton.setTitle(L10n.Home.unlock, for: .normal)
+        default:
+            break
+        }
     }
     
 }

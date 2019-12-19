@@ -13,6 +13,7 @@ enum HomeInputRouter {
     case actionAll(HomeActionsTypeCell)
     case actionItem(FeelTypeCell)
     case unlockBoldManifest
+    case showBoldManifest
     case createGoal
 }
 
@@ -21,7 +22,7 @@ protocol HomeInputRouterProtocol: RouterProtocol {
 }
 
 class HomeRouter: RouterProtocol, HomeInputRouterProtocol {
-
+    
     typealias View = HomeViewController
     
     weak var viewController: View!
@@ -41,7 +42,9 @@ class HomeRouter: RouterProtocol, HomeInputRouterProtocol {
             actionListVC.typeVC = type
             viewController.navigationController?.pushViewController(actionListVC, animated: true)
         case .unlockBoldManifest:
-//            viewController.performSegue(withIdentifier: StoryboardSegue.Home.manifestIdentifier.rawValue, sender: nil)
+            let vc = StoryboardScene.Settings.premiumViewController.instantiate()
+            viewController.navigationController?.present(vc, animated: true, completion: nil)
+        case .showBoldManifest:
             let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
             vc.viewModel = DescriptionViewModel.boldManifestInfo
             viewController.navigationController?.present(vc, animated: true, completion: nil)
@@ -62,7 +65,7 @@ class HomeRouter: RouterProtocol, HomeInputRouterProtocol {
         case .actActive, .actNotActive, .activeGoalsAct, .activeGoals:
             let viewController = StoryboardScene.Act.createGoalViewController.instantiate()
             self.viewController.navigationController?.pushViewController(viewController, animated: true)
-        case .boldManifest:
+        case .boldManifest, .unlockPremium:
             break
         }
     }

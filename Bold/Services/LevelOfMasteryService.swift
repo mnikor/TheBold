@@ -40,6 +40,7 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
     var currentLimit: LimitsLevel!
     
     private let changePointsVariable : BehaviorRelay<LevelInfoObserv> = BehaviorRelay(value: LevelInfoObserv(level: LevelBold(type: .apprentice), currentPoint: 0))
+    
     var changePoints : Observable<LevelInfoObserv> {
         return changePointsVariable.asObservable()
     }
@@ -188,7 +189,8 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
     private func checkAllEvents() {
         checkOverdueStatusEvents()
     }
-    
+
+    //проверяем все ивенты на то есть ли просроченные
     private func checkOverdueStatusEvents() {
         let events = DataSource.shared.searchOverdueEvents()
         
@@ -218,6 +220,7 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
         checkOverdueStatusActions()
     }
     
+    //проверяем все экшены на то есть ли просроченные
     private func checkOverdueStatusActions() {
         let actions = DataSource.shared.searchOverdueActions()
         
@@ -235,10 +238,6 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
             
             return action
         }
-        
-        AlertViewService.shared.input(.missedYourAction(tapOkay: {
-            print("OK")
-        }))
         
         DataSource.shared.saveBackgroundContext()
         checkOverdueStatusGoals()

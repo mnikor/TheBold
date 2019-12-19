@@ -58,7 +58,7 @@ class HomeInteractor: HomeInteractorInputProtocol {
                                                        content: feelContent.compactMap { ContentViewModel(backgroundImage: $0.categoryImage(),
                                                                                                           title: $0.categoryName()) },
                                                        itemCount: feelContent.count)
-          let boldManifest = ActivityViewModel.createViewModel(type: .boldManifest,
+          let boldManifest = ActivityViewModel.createViewModel(type: randomVisibleButton(),
                                                                goals: [],
                                                                content: [],
                                                                itemCount: 0)
@@ -77,4 +77,7 @@ class HomeInteractor: HomeInteractorInputProtocol {
          
     }
     
+    private func randomVisibleButton() -> HomeActionsTypeCell {
+        return Int(arc4random_uniform(UInt32(10)))%2 == 0 ? HomeActionsTypeCell.boldManifest : HomeActionsTypeCell.unlockPremium
+    }
 }

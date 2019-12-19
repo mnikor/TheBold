@@ -25,9 +25,6 @@ internal enum StoryboardSegue {
   internal enum Feel: String, SegueType {
     case showItem
   }
-  internal enum Home: String, SegueType {
-    case manifestIdentifier
-  }
   internal enum Profile: String, SegueType {
     case archivedGoalsIdentifier
     case downloadsIdentifier

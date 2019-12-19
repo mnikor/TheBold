@@ -152,6 +152,7 @@ enum HomeActionsTypeCell {
     case feel
     case think
     case boldManifest
+    case unlockPremium
     case actNotActive
     case actActive
     case activeGoals
@@ -163,7 +164,7 @@ enum HomeActionsTypeCell {
             return Constants.rowHeight.feelThinkActActiveActiveGoals
         case .actNotActive:
             return Constants.rowHeight.actNotActive
-        case .boldManifest:
+        case .boldManifest, .unlockPremium:
             return Constants.rowHeight.boldManifest
         }
     }
@@ -174,7 +175,7 @@ enum HomeActionsTypeCell {
             return Constants.bottomCellHeight.feelThinkActActiveActiveGoals
         case .actNotActive:
             return Constants.bottomCellHeight.actNotActive
-        case .boldManifest:
+        case .boldManifest, .unlockPremium:
             return Constants.bottomCellHeight.boldManifest
         }
     }
@@ -189,7 +190,7 @@ enum HomeActionsTypeCell {
             return Constants.CellSize.actActive
         case .activeGoals, .activeGoalsAct:
             return Constants.CellSize.activeGoals
-        case .boldManifest:
+        case .boldManifest, .unlockPremium:
             return Constants.CellSize.boldManifest
         }
     }

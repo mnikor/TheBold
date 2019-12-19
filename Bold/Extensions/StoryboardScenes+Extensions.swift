@@ -55,8 +55,6 @@ internal enum StoryboardScene {
     internal static let storyboardName = "Description"
 
     internal static let descriptionAndLikesCountViewController = SceneType<Bold.DescriptionAndLikesCountViewController>(storyboard: Description.self, identifier: "DescriptionAndLikesCountViewController")
-
-    internal static let manifestViewController = SceneType<Bold.ManifestViewController>(storyboard: Description.self, identifier: "ManifestViewController")
   }
   internal enum Feel: StoryboardType {
     internal static let storyboardName = "Feel"
@@ -69,8 +67,6 @@ internal enum StoryboardScene {
     internal static let storyboardName = "Home"
 
     internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: Home.self)
-
-    internal static let manifestViewController = SceneType<Bold.ManifestViewController>(storyboard: Home.self, identifier: "ManifestViewController")
   }
   internal enum Menu: StoryboardType {
     internal static let storyboardName = "Menu"
@@ -93,6 +89,8 @@ internal enum StoryboardScene {
     internal static let storyboardName = "Settings"
 
     internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: Settings.self)
+
+    internal static let premiumViewController = SceneType<Bold.PremiumViewController>(storyboard: Settings.self, identifier: "PremiumViewController")
   }
   internal enum Splash: StoryboardType {
     internal static let storyboardName = "Splash"

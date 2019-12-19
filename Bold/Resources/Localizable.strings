@@ -80,6 +80,16 @@
 "Player.NextPractices" = "Next practices";
 
 
+// Home
+
+"Home.BoldManifest" = "Bold Manifest";
+"Home.FindOutWhatItMeansToBeBold" = "Find out what it means to be bold";
+"Home.FindOut" = "Find Out";
+"Home.UnlockPremium" = "Unlock Premium";
+"Home.AndGetAccessToAllResources" = "And get access to all resources";
+"Home.Unlock" = "Unlock";
+
+
 // Feel
 
 "Feel.FeelBold" = "Feel Bold";

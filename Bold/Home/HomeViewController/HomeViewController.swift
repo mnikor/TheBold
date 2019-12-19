@@ -146,8 +146,9 @@ extension HomeViewController: UITableViewDataSource {
             cell.cellBackground(indexPath: indexPath)
             cell.delegate = self
             return cell
-        case .boldManifest :
+        case .boldManifest, .unlockPremium :
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as UnlockPremiumTableViewCell
+            cell.configCell(type: item.type)
             cell.delegate = self
             cell.cellBackground(indexPath: indexPath)
             return cell
@@ -194,6 +195,10 @@ extension HomeViewController: ActivityCollectionTableViewCellDelegate {
 // MARK:- UnlockPremiumTableViewCellDelegate
 
 extension HomeViewController: UnlockPremiumTableViewCellDelegate {
+    
+    func tapBoldManifest() {
+        presenter.input(.showBoldManifest)
+    }
     
     func tapUnlockPremium() {
         presenter.input(.unlockBoldManifest)

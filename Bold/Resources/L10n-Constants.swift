@@ -352,6 +352,21 @@ internal enum L10n {
     internal static let pepTalkSubtitle = L10n.tr("Localizable", "Feel.Pep-talkSubtitle")
   }
 
+  internal enum Home {
+    /// And get access to all resources
+    internal static let andGetAccessToAllResources = L10n.tr("Localizable", "Home.AndGetAccessToAllResources")
+    /// Bold Manifest
+    internal static let boldManifest = L10n.tr("Localizable", "Home.BoldManifest")
+    /// Find Out
+    internal static let findOut = L10n.tr("Localizable", "Home.FindOut")
+    /// Find out what it means to be bold
+    internal static let findOutWhatItMeansToBeBold = L10n.tr("Localizable", "Home.FindOutWhatItMeansToBeBold")
+    /// Unlock
+    internal static let unlock = L10n.tr("Localizable", "Home.Unlock")
+    /// Unlock Premium
+    internal static let unlockPremium = L10n.tr("Localizable", "Home.UnlockPremium")
+  }
+
   internal enum Menu {
     /// Act
     internal static let act = L10n.tr("Localizable", "Menu.Act")

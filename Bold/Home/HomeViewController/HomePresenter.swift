@@ -16,6 +16,7 @@ enum HomePresenterInput {
     case actionAll(HomeActionsTypeCell)
     case actionItem(ActivityViewModel, Int)
     case unlockBoldManifest
+    case showBoldManifest
     case createGoal
     case subscribeForUpdates
 }
@@ -56,6 +57,8 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
             actionItem(viewModel: viewModel, at: index)
         case .unlockBoldManifest:
             router.input(.unlockBoldManifest)
+        case .showBoldManifest:
+            router.input(.showBoldManifest)
         case .createGoal:
             router.input(.createGoal)
         case .subscribeForUpdates:

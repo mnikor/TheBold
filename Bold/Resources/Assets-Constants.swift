@@ -222,7 +222,6 @@ internal enum Asset {
   internal static let headphones = ImageAsset(name: "headphones")
   internal static let likeIcon = ImageAsset(name: "likeIcon")
   internal static let likeRedIcon = ImageAsset(name: "likeRedIcon")
-  internal static let manifestBody = ImageAsset(name: "manifestBody")
   internal static let playButtonIcon = ImageAsset(name: "playButtonIcon")
   internal static let shareBlueIcon = ImageAsset(name: "shareBlueIcon")
   internal static let menuAct = ImageAsset(name: "menuAct")

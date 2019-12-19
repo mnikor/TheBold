@@ -88,6 +88,9 @@ extension LevelOfMasteryViewController: UITableViewDelegate, UITableViewDataSour
 }
 
 extension LevelOfMasteryViewController: UnlockPremiumTableViewCellDelegate {
+    func tapBoldManifest() {
+    }
+    
     func tapUnlockPremium() {
         presenter.input(.unlockPremium)
     }

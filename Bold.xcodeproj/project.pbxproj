@@ -150,10 +150,6 @@
 		F13FCBBA2339FE6300BAE544 /* CalendarModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBB92339FE6300BAE544 /* CalendarModelType.swift */; };
 		F13FCBBC233A171C00BAE544 /* DataSource+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBBB233A171C00BAE544 /* DataSource+Events.swift */; };
 		F13FCBBF233A18D900BAE544 /* GoalCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBBE233A18D900BAE544 /* GoalCollectionViewModel.swift */; };
-		F141668122BCD7A10020BF0F /* ManifestConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141668022BCD7A10020BF0F /* ManifestConfigurator.swift */; };
-		F141668322BCD7D20020BF0F /* ManifestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141668222BCD7D20020BF0F /* ManifestPresenter.swift */; };
-		F141668522BCD7E60020BF0F /* ManifestInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141668422BCD7E60020BF0F /* ManifestInteractor.swift */; };
-		F141668722BCD7FA0020BF0F /* ManifestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141668622BCD7FA0020BF0F /* ManifestRouter.swift */; };
 		F141668A22BD00F20020BF0F /* VideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141668922BD00F20020BF0F /* VideoService.swift */; };
 		F141668C22BD1F590020BF0F /* AudioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141668B22BD1F590020BF0F /* AudioService.swift */; };
 		F141668E22BD28760020BF0F /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F141668D22BD28760020BF0F /* Player.storyboard */; };
@@ -330,7 +326,6 @@
 		F1C2534E22B3F9A9003156AA /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C2534D22B3F9A9003156AA /* HomePresenter.swift */; };
 		F1C2535022B3F9C5003156AA /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C2534F22B3F9C5003156AA /* HomeInteractor.swift */; };
 		F1C2535322B3F9F8003156AA /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C2535222B3F9F8003156AA /* HomeRouter.swift */; };
-		F1C2535622BA8064003156AA /* ManifestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C2535522BA8063003156AA /* ManifestViewController.swift */; };
 		F1C745F323707B61004D689F /* LevelBold.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C745F223707B61004D689F /* LevelBold.swift */; };
 		F1C745F723718AA7004D689F /* LimitsLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C745F623718AA7004D689F /* LimitsLevel.swift */; };
 		F1C745FA23757665004D689F /* LevelOfMasteryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C745F923757665004D689F /* LevelOfMasteryEntity.swift */; };
@@ -394,7 +389,6 @@
 		F1EAF59E22E8AA9A008073D7 /* ConfigurateActionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EAF59D22E8AA9A008073D7 /* ConfigurateActionRouter.swift */; };
 		F1EB8DD622A8022500E3BC4C /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EB8DD522A8022500E3BC4C /* ForgotPasswordViewController.swift */; };
 		F1EB8DD822A8026C00E3BC4C /* ForgotSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EB8DD722A8026C00E3BC4C /* ForgotSuccessViewController.swift */; };
-		F1EBC7B022CF63D200BAA82D /* Bomfunk Mcs - Freestyler.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1EBC7AF22CF63D100BAA82D /* Bomfunk Mcs - Freestyler.mp3 */; };
 		F1EBC7B222CF70A000BAA82D /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EBC7B122CF70A000BAA82D /* AudioPlayer.swift */; };
 		F1EBC7B622D3772100BAA82D /* CitationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EBC7B422D3772100BAA82D /* CitationTableViewCell.swift */; };
 		F1EBC7B722D3772100BAA82D /* CitationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1EBC7B522D3772100BAA82D /* CitationTableViewCell.xib */; };
@@ -596,10 +590,6 @@
 		F13FCBB92339FE6300BAE544 /* CalendarModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModelType.swift; sourceTree = "<group>"; };
 		F13FCBBB233A171C00BAE544 /* DataSource+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSource+Events.swift"; sourceTree = "<group>"; };
 		F13FCBBE233A18D900BAE544 /* GoalCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCollectionViewModel.swift; sourceTree = "<group>"; };
-		F141668022BCD7A10020BF0F /* ManifestConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestConfigurator.swift; sourceTree = "<group>"; };
-		F141668222BCD7D20020BF0F /* ManifestPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestPresenter.swift; sourceTree = "<group>"; };
-		F141668422BCD7E60020BF0F /* ManifestInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestInteractor.swift; sourceTree = "<group>"; };
-		F141668622BCD7FA0020BF0F /* ManifestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestRouter.swift; sourceTree = "<group>"; };
 		F141668922BD00F20020BF0F /* VideoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoService.swift; sourceTree = "<group>"; };
 		F141668B22BD1F590020BF0F /* AudioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioService.swift; sourceTree = "<group>"; };
 		F141668D22BD28760020BF0F /* Player.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
@@ -778,7 +768,6 @@
 		F1C2534D22B3F9A9003156AA /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		F1C2534F22B3F9C5003156AA /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		F1C2535222B3F9F8003156AA /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
-		F1C2535522BA8063003156AA /* ManifestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestViewController.swift; sourceTree = "<group>"; };
 		F1C745F223707B61004D689F /* LevelBold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelBold.swift; sourceTree = "<group>"; };
 		F1C745F623718AA7004D689F /* LimitsLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitsLevel.swift; sourceTree = "<group>"; };
 		F1C745F923757665004D689F /* LevelOfMasteryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfMasteryEntity.swift; sourceTree = "<group>"; };
@@ -842,7 +831,6 @@
 		F1EAF59D22E8AA9A008073D7 /* ConfigurateActionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurateActionRouter.swift; sourceTree = "<group>"; };
 		F1EB8DD522A8022500E3BC4C /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		F1EB8DD722A8026C00E3BC4C /* ForgotSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotSuccessViewController.swift; sourceTree = "<group>"; };
-		F1EBC7AF22CF63D100BAA82D /* Bomfunk Mcs - Freestyler.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Bomfunk Mcs - Freestyler.mp3"; sourceTree = SOURCE_ROOT; };
 		F1EBC7B122CF70A000BAA82D /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		F1EBC7B422D3772100BAA82D /* CitationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitationTableViewCell.swift; sourceTree = "<group>"; };
 		F1EBC7B522D3772100BAA82D /* CitationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CitationTableViewCell.xib; sourceTree = "<group>"; };
@@ -1426,7 +1414,6 @@
 		F179975922AFE5CC0039879F /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				F1C2535422BA8031003156AA /* Manifest */,
 				F179976322B10AB00039879F /* Views */,
 				F1EA1CBA22E1C6AB00BB328F /* HomeViewController */,
 			);
@@ -1745,7 +1732,6 @@
 				F186880C229E82CD0029A663 /* colors.json */,
 				F186884F229E9D970029A663 /* Assets-Constants.swift */,
 				F1868851229E9DA20029A663 /* L10n-Constants.swift */,
-				F1EBC7AF22CF63D100BAA82D /* Bomfunk Mcs - Freestyler.mp3 */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1824,18 +1810,6 @@
 				F1B2B1D522FC6C0000C327B0 /* MonthYearPickerView.swift */,
 			);
 			path = MonthYearPickerView;
-			sourceTree = "<group>";
-		};
-		F1C2535422BA8031003156AA /* Manifest */ = {
-			isa = PBXGroup;
-			children = (
-				F1C2535522BA8063003156AA /* ManifestViewController.swift */,
-				F141668022BCD7A10020BF0F /* ManifestConfigurator.swift */,
-				F141668222BCD7D20020BF0F /* ManifestPresenter.swift */,
-				F141668422BCD7E60020BF0F /* ManifestInteractor.swift */,
-				F141668622BCD7FA0020BF0F /* ManifestRouter.swift */,
-			);
-			path = Manifest;
 			sourceTree = "<group>";
 		};
 		F1C745F123707B33004D689F /* LevelOfMastery */ = {
@@ -2278,7 +2252,6 @@
 				C5DCDECF2374587C0018DEA4 /* Terms.pdf in Resources */,
 				F115629E22DF0B5C00399FA6 /* Description.storyboard in Resources */,
 				C561531D237D1714001FD9D8 /* ShareView.xib in Resources */,
-				F1EBC7B022CF63D200BAA82D /* Bomfunk Mcs - Freestyler.mp3 in Resources */,
 				F1EE4D4F229EA6620072F663 /* BackgroundVideo.MOV in Resources */,
 				C5DCDEC32372973C0018DEA4 /* Manifest.pdf in Resources */,
 				C5DCDEC42372973C0018DEA4 /* Bold Manifest .mp3 in Resources */,
@@ -2412,7 +2385,6 @@
 				F187147F2369A01D000F764C /* AlertViewService.swift in Sources */,
 				F183304D22E7151400BB7A9E /* PlayerRouter.swift in Sources */,
 				F10B69CB22EB2D9100E47315 /* IdeasTableViewCell.swift in Sources */,
-				F141668122BCD7A10020BF0F /* ManifestConfigurator.swift in Sources */,
 				F1CCC71822CE474800E7B637 /* UIButton+Extensions.swift in Sources */,
 				F179977422B1413A0039879F /* MenuAnimator.swift in Sources */,
 				C561C3F72341FB900073ABAC /* AnimationTransitionController.swift in Sources */,
@@ -2465,7 +2437,6 @@
 				F1B2B1CA22FB697100C327B0 /* DateCalendarCell.swift in Sources */,
 				F14166A322C1158C0020BF0F /* PlayerViewController.swift in Sources */,
 				F1EAF59822E8AA63008073D7 /* ConfigurateActionConfigurator.swift in Sources */,
-				F141668722BCD7FA0020BF0F /* ManifestRouter.swift in Sources */,
 				F10B69C622EB171A00E47315 /* IdeasInteractor.swift in Sources */,
 				C5A485422306B966002CC62A /* CalendarAndHistoryInteractor.swift in Sources */,
 				F1A79DCD22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.swift in Sources */,
@@ -2510,7 +2481,6 @@
 				F19A98A522D5FF4F00A0492E /* CustomDotsPageControl.swift in Sources */,
 				F15699C52383FDAB001E3D7B /* BaseStakesListRouter.swift in Sources */,
 				F1F406322306F6BA0091B774 /* LevelOfMasteryTableViewCell.swift in Sources */,
-				F141668322BCD7D20020BF0F /* ManifestPresenter.swift in Sources */,
 				F15FB323232FDEC9002F0C00 /* ConfigurateActionSectionModel.swift in Sources */,
 				F1F6ADC823210DB300F6A925 /* Content+CoreDataProperties.swift in Sources */,
 				F14166A022C106210020BF0F /* HeaderActionPlanTableViewCell.swift in Sources */,
@@ -2634,7 +2604,6 @@
 				F1F44A692368711700F977D1 /* RequestParameter.swift in Sources */,
 				F183304022E6F0E100BB7A9E /* CreateGoalPresenter.swift in Sources */,
 				F158E2BC22C3C2C300FD671A /* FeelViewController.swift in Sources */,
-				F1C2535622BA8064003156AA /* ManifestViewController.swift in Sources */,
 				F1F6ADBF23210DB300F6A925 /* Action+CoreDataClass.swift in Sources */,
 				F1E8EFD722F45D42006A9D39 /* CostButton.swift in Sources */,
 				C561C4052341FBD00073ABAC /* BlurAlertController.swift in Sources */,
@@ -2657,7 +2626,6 @@
 				C5B1E55523043865000991DF /* ViewModelConfigurable.swift in Sources */,
 				F15FB3252330E413002F0C00 /* ConfigurateActionCellModel.swift in Sources */,
 				F107538C22F09B640078C71C /* DaysOfWeekTableViewCell.swift in Sources */,
-				F141668522BCD7E60020BF0F /* ManifestInteractor.swift in Sources */,
 				F19A98A822D616FB00A0492E /* DontGiveUpAlertView.swift in Sources */,
 				F1130CD7230BFF81008FA60D /* CircularProgressBar.swift in Sources */,
 				F1EA1CC022E1EAE300BB328F /* UIViewController+Extensions.swift in Sources */,

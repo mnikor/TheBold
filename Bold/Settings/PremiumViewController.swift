@@ -14,14 +14,18 @@ enum PremiumType {
 }
 
 class PremiumViewController: UIViewController {
-
+    
     @IBOutlet weak var monthlyView: UIView!
     @IBOutlet weak var yearlyView: UIView!
     
     private var premium : PremiumType!
     
     @IBAction func closeButton(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
+        if let nc = navigationController {
+            nc.popViewController(animated: true)
+        }else {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func tapMonthlyButton(_ sender: UIButton) {
@@ -37,10 +41,10 @@ class PremiumViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     private func selectPremium(type: PremiumType) {
         premium = type
         addShadow(to: type == .monthly ? monthlyView : yearlyView)
