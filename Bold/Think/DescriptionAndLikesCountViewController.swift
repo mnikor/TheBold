@@ -42,7 +42,7 @@ class DescriptionAndLikesCountViewController: UIViewController {
     @IBAction func didTapAtDownloadButton(_ sender: UIBarButtonItem) {
         if !isDownloadedContent && !buttonsToolbar.dowload {
             buttonsToolbar.dowload = !buttonsToolbar.dowload
-            downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
+//            downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
             downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
             audioPlayerDelegate?.saveContent()
         }
@@ -126,7 +126,7 @@ class DescriptionAndLikesCountViewController: UIViewController {
     
     private func configureDowloadButton() {
         buttonsToolbar.dowload = isDownloadedContent
-        downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
+//        downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
         downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
     }
     

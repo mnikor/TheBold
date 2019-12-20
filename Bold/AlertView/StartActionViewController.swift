@@ -31,10 +31,16 @@ class StartActionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        contentView.roundCorners(corners: [.topLeft, .topRight], radius: 10)
-        overlayView.alpha = 0
+//        contentView.roundCorners(corners: [.topLeft, .topRight], radius: 10)
+//        overlayView.alpha = 0
         bottomContentViewConstraint.constant = -self.contentView.bounds.height
         addSwipe()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        contentView.roundCorners(corners: [.topLeft, .topRight], radius: 10)
+        overlayView.alpha = 0
     }
     
      class func createController(tapOk: @escaping (() -> Void)) -> StartActionViewController {

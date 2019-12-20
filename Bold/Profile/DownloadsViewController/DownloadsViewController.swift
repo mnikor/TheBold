@@ -132,7 +132,6 @@ class DownloadsViewController: UIViewController, ViewProtocol {
 }
 
 extension DownloadsViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentDownloads.count
     }
@@ -154,15 +153,14 @@ extension DownloadsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension DownloadsViewController: ZSegmentedControlSelectedProtocol {
-    
     func segmentedControlSelectedIndex(_ index: Int, animated: Bool, segmentedControl: ZSegmentedControl) {
         selectedCategory = DownloadsCategory.allCases[index]
         tableView.reloadData()
     }
+    
 }
 
 extension DownloadsViewController: DownloadTableViewCellDelegate {
-
     func tapThreeDots(item: DownloadsEntity) {
         print("tapThreeDots")
         
@@ -180,6 +178,7 @@ extension DownloadsViewController: DownloadTableViewCellDelegate {
         }
         action.presentedBy(self)
     }
+    
 }
 
 extension DownloadsViewController: ContentToolBarDelegate {

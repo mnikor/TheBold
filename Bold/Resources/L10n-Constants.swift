@@ -154,7 +154,7 @@ internal enum L10n {
       internal static let startDate = L10n.tr("Localizable", "Act.Duration.StartDate")
       /// Today
       internal static let today = L10n.tr("Localizable", "Act.Duration.Today")
-      /// Tommorow
+      /// Tomorrow
       internal static let tommorow = L10n.tr("Localizable", "Act.Duration.Tommorow")
       internal enum Day {
         /// FR

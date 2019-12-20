@@ -78,7 +78,8 @@ struct ActivityViewModel {
             return .goal(goal: goal)
         }
         items += content.compactMap { ActivityItemsViewModel.content(content: $0) }
-        
+        let actions = goals.reduce([Action](), { $0 + (Array($1.goal.actions ?? NSSet()) as? [Action] ?? []) })
+        let actionsWithStakeCount = actions.filter { $0.stake > 0 }.count
         switch type {
         case .feel:
             imageIsHidden = false
@@ -98,10 +99,10 @@ struct ActivityViewModel {
         case .activeGoals:
             imageIsHidden = false
             titleText = L10n.Act.activeGoals
-            subtitleText = L10n.Act.youHaveActionWithStakes("\(itemCount)")
+            subtitleText = L10n.Act.youHaveActionWithStakes("\(actionsWithStakeCount)")
         case .activeGoalsAct:
             titleText = L10n.Act.activeGoals
-            subtitleText = L10n.Act.youHaveActionWithStakes("\(itemCount)")
+            subtitleText = L10n.Act.youHaveActionWithStakes("\(actionsWithStakeCount)")
             imageIsHidden = true
         default:
             break
