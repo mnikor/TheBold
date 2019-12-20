@@ -203,7 +203,7 @@
 "Act.Duration" = "Duration";
 "Act.Duration.StartDate" = "Start date";
 "Act.Duration.Today" = "Today";
-"Act.Duration.Tommorow" = "Tommorow";
+"Act.Duration.Tommorow" = "Tomorrow";
 "Act.Duration.ChooseDate" = "Choose date";
 "Act.Duration.EndDate" = "End date";
 "Act.Duration.AfterOneWeek" = "After one week";

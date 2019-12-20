@@ -202,12 +202,11 @@ extension ActionsListViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         let content = actions[indexPath.row].data
-        
+        selectedContent = content
         switch content.type {
         case .lesson, .story:
             let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
             vc.viewModel = DescriptionViewModel.map(activityContent: content)
-            selectedContent = content
             vc.audioPlayerDelegate = self
             vc.isDownloadedContent = DataSource.shared.contains(content: content)
             navigationController?.present(vc, animated: true, completion: nil)

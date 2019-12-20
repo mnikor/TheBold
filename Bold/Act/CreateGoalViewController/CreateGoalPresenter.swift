@@ -42,7 +42,7 @@ class CreateGoalPresenter: PresenterProtocol, CreateGoalInputPresenterProtocol {
     var modelView: CreateGoalViewModel! {
         didSet {
             self.dataSource = updateDataSource()
-            self.viewController.tableView.reloadData()
+            self.viewController.input(.updateState)
         }
     }
     

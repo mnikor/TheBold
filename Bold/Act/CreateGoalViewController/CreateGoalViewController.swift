@@ -14,7 +14,15 @@ private struct Constants {
     static let rowHeight : CGFloat = 56
 }
 
-class CreateGoalViewController: UIViewController, ViewProtocol {
+enum CreateGoalViewInput {
+    case updateState
+}
+
+protocol CreateGoalViewInputProtocol: ViewProtocol {
+    func input(_ inputCase: CreateGoalViewInput)
+}
+
+class CreateGoalViewController: UIViewController, CreateGoalViewInputProtocol {
     
     typealias Presenter = CreateGoalPresenter
     typealias Configurator = CreateGoalConfigurator
@@ -75,6 +83,19 @@ class CreateGoalViewController: UIViewController, ViewProtocol {
         tableView.tableHeaderView = headerAndFooterView
         tableView.tableFooterView = headerAndFooterView
     }
+    
+    func input(_ inputCase: CreateGoalViewInput) {
+        switch inputCase {
+        case .updateState:
+            updateState()
+        }
+    }
+    
+    private func updateState() {
+        tableView.reloadData()
+        navBar.topItem?.rightBarButtonItem?.isEnabled = (presenter.modelView.nameGoal ?? "").count >= 3
+    }
+    
 }
 
 
