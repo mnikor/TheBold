@@ -184,7 +184,7 @@ extension DataSource: EventFunctionality {
         fetchRequest.sortDescriptors = [sort]
         let currentDate = deleteDate as NSDate
         
-        fetchRequest.predicate = NSPredicate(format: "(startDate > %@) AND SUBQUERY(action, $act, $act.id == '\(actionID)').@count > 0", currentDate)
+        fetchRequest.predicate = NSPredicate(format: "(startDate < %@) AND SUBQUERY(action, $act, $act.id == '\(actionID)').@count > 0", currentDate)
         
         do {
             results = try DataSource.shared.backgroundContext.fetch(fetchRequest)
