@@ -37,7 +37,7 @@ enum LimitType: Equatable {
 
 // MARK: Level limits
 
-struct LimitsLevel {
+struct LimitsLevel: Comparable {
     var limitPoint: SimpleLimitLevel
     var limitsGoal: [SimpleLimitLevel]
     
@@ -60,6 +60,24 @@ struct LimitsLevel {
         
         return (points, goalMid, goalLong)
     }
+    
+    static func < (lhs: LimitsLevel, rhs: LimitsLevel) -> Bool {
+        let lhsGoalsLimits = lhs.limitsGoal
+        let rhsGoalsLimits = rhs.limitsGoal
+        var isGreatest = lhs.limitPoint.compare(limit: rhs.limitPoint)
+        if lhsGoalsLimits.count == rhsGoalsLimits.count {
+            for index in (0 ..< lhsGoalsLimits.count) {
+                isGreatest = isGreatest && lhsGoalsLimits[index].compare(limit: rhsGoalsLimits[index])
+            }
+        }
+        
+        return !isGreatest
+    }
+    
+    static func == (lhs: LimitsLevel, rhs: LimitsLevel) -> Bool {
+        return (!(lhs < rhs)) && (!(rhs < lhs))
+    }
+    
 }
 
 // MARK: Simple Limit Level

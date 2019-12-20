@@ -11,6 +11,7 @@ import Foundation
 enum FeelInteractorInput {
     case prepareTracks(content: ActivityContent)
     case prepareDataSource(contentTypeArray: [ContentType], completion: (([ContentType: [ActivityContent]]) -> Void))
+    case downloadContent(ActivityContent)
 }
 
 protocol FeelInteractorInputProtocol: InteractorProtocol {
@@ -40,6 +41,8 @@ class FeelInteractor: FeelInteractorInputProtocol {
             createEmptyDataSource(contentTypes: contentTypes)
             dataSource = [:]
             prepareDataSource(contentTypeArray: contentTypes, completion: completion)
+        case .downloadContent(let content):
+            DataSource.shared.saveContent(content: content, isHidden: true)
         }
     }
     

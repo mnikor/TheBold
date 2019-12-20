@@ -39,7 +39,11 @@ class ActionsListRouter: RouterProtocol, ActionsListRouterProtocol {
             vc.audioPlayerDelegate = viewController
             viewController.navigationController?.present(vc, animated: true, completion: nil)
         case .presentedBy(let vController):
-            vController.presentedBy(viewController)
+            if let topVC = UIApplication.topViewController {
+                vController.presentedBy(topVC)
+            } else {
+                vController.presentedBy(viewController)
+            }
         }
     }
     

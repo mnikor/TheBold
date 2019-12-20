@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ActiveLabel
 
 enum TypeAuthView {
     case signUp
@@ -50,7 +51,7 @@ class SignUpView: UIView {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var checkBoxImageView: UIImageView!
     @IBOutlet weak var checkImageView: UIImageView!
-    @IBOutlet weak var privacyPolicyLabel: UILabel!
+    @IBOutlet weak var privacyPolicyLabel: ActiveLabel!
     @IBOutlet weak var forgotButton: UIButton!
     @IBOutlet weak var logInButton: RoundedButton!
     @IBOutlet weak var betweenButtonLabel: UILabel!
@@ -123,7 +124,8 @@ class SignUpView: UIView {
             logInButton.setTitle(L10n.Authorization.signUpButton, for: .normal)
             betweenButtonLabel.text = L10n.Authorization.orSignUpWith
             bottomLabel.text = L10n.Authorization.haveAnAccount
-            privacyPolicyLabel.text = L10n.Authorization.termsAndPrivacy
+            configurePrivacyPolicy()
+//            privacyPolicyLabel.text = L10n.Authorization.termsAndPrivacy
             
 //            verticalSpaceButtonConstraint.constant = 12
             forgotButton.isHidden = true
@@ -138,6 +140,25 @@ class SignUpView: UIView {
         checkImageView.isHidden = true
         setNeedsLayout()
         layoutIfNeeded()
+    }
+    
+    private func configurePrivacyPolicy() {
+        let privacyPolicyType = ActiveType.custom(pattern: "\\s\(L10n.Authorization.privacyPolicy)\\b")
+        let termsType = ActiveType.custom(pattern: "\\s\(L10n.Authorization.terms)\\s")
+        privacyPolicyLabel.enabledTypes = [privacyPolicyType, termsType]
+        privacyPolicyLabel.text = L10n.Authorization.termsAndPrivacy
+        privacyPolicyLabel.customColor[privacyPolicyType] = UIColor(red: 80/255, green: 108/255, blue: 216/255, alpha: 1)
+        privacyPolicyLabel.customColor[termsType] = UIColor(red: 80/255, green: 108/255, blue: 216/255, alpha: 1)
+        privacyPolicyLabel.customSelectedColor[privacyPolicyType] = UIColor(red: 80/255, green: 108/255, blue: 216/255, alpha: 1)
+        privacyPolicyLabel.customSelectedColor[termsType] = UIColor(red: 80/255, green: 108/255, blue: 216/255, alpha: 1)
+        
+        privacyPolicyLabel.handleCustomTap(for: privacyPolicyType) { [weak self] _ in
+            self?.delegate?.signUpViewDidTapAtPrivacyPolicy()
+        }
+        
+        privacyPolicyLabel.handleCustomTap(for: termsType) { [weak self] _ in
+            self?.delegate?.signUpViewDidTapAtTermsOfUse()
+        }
     }
     
     @IBAction func didTapAtCheckBox(_ sender: Any) {

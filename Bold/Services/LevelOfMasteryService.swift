@@ -129,24 +129,29 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
         var currentLevel = levelsArray.first!
         
         for level in levelsArray {
-            
-            if currentLimit.limitPoint.compare(limit: level.limits.limitPoint) {
-                
-                if level.limits.limitsGoal.isEmpty {
-                    currentLevel = level
-                }
-                
-                for limit in level.limits.limitsGoal {
-                    if currentLimit.limitsGoal.first!.compare(limit: limit) {
-                        currentLevel = level
-                    }
-                }
-            }
-            
-            if currentLevel.type != level.type {
+            if currentLimit < level.limits {
                 currentLevel = level
-                break
+                currentLevel.status = .active
+                return currentLevel
             }
+            
+//            if currentLimit.limitPoint.compare(limit: level.limits.limitPoint) {
+//
+//                if level.limits.limitsGoal.isEmpty {
+//                    currentLevel = level
+//                }
+//
+//                for limit in level.limits.limitsGoal {
+//                    if currentLimit.limitsGoal.first!.compare(limit: limit) {
+//                        currentLevel = level
+//                    }
+//                }
+//            }
+//
+//            if currentLevel.type != level.type {
+//                currentLevel = level
+//                break
+//            }
         }
         
         currentLevel.status = .active

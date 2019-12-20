@@ -34,6 +34,6 @@ class DownloadsInteractor: DownloadsInteractorInputProtocol {
     }
     
     private func prepareDataSource(completion: (([ActivityContent]) -> Void)?) {
-        completion?(DataSource.shared.contentList().compactMap { ActivityContent.map(content: $0) })
+        completion?(DataSource.shared.contentList().filter({ !$0.isHidden }).compactMap { ActivityContent.map(content: $0) })
     }
 }

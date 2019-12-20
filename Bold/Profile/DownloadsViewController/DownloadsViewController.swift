@@ -182,7 +182,7 @@ extension DownloadsViewController: DownloadTableViewCellDelegate {
     }
 }
 
-extension DownloadsViewController: PlayerViewControllerDelegate {
+extension DownloadsViewController: ContentToolBarDelegate {
     func saveContent() {
         guard let content = selectedContent else { return }
         DataSource.shared.saveContent(content: content)
@@ -228,6 +228,11 @@ extension DownloadsViewController: PlayerViewControllerDelegate {
     
     private func updatePoints() {
         LevelOfMasteryService.shared.input(.addPoints(points: 10))
+    }
+    
+    func addActionPlan() {
+        guard let content = selectedContent else { return }
+        presenter.input(.addActionPlan(content))
     }
     
 }

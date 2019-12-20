@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 protocol ContentFunctionality {
-    func saveContent(content: ActivityContent)
+    func saveContent(content: ActivityContent, isHidden: Bool)
     func deleteContent(content: ActivityContent)
     func contains(content: ActivityContent) -> Bool
 }
@@ -30,10 +30,19 @@ extension DataSource: ContentFunctionality {
         return (try? DataSource.shared.backgroundContext.fetch(fetchRequest))?.first
     }
     
-    func saveContent(content: ActivityContent) {
+    func saveContent(content: ActivityContent, isHidden: Bool = false) {
         persistentContainer.performBackgroundTask { [unowned self] context in
             do {
-                let contentMO = self.fetchOrCreateContent(activityContent: content)
+                let contentMO: Content
+                if let fetchedContent = self.fetchContent(activityContent: content) {
+                    contentMO = fetchedContent
+                    if contentMO.isHidden {
+                        contentMO.setHidden(isHidden)
+                    }
+                } else {
+                    contentMO = Content()
+                    contentMO.setHidden(isHidden)
+                }
                 contentMO.map(activityContent: content)
                 try self.backgroundContext.save()
                 self.loadFiles(content: content)

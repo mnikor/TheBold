@@ -237,16 +237,21 @@ class NetworkService {
         }
     }
     
-    func getContent(of type: ContentType, with id: Int) {
+    func getContent(of type: ContentType, with id: Int, completion: ((Result<ActivityContent>) -> Void)?) {
         guard downloadEnabled else { return }
         sendRequest(endpoint: String(format: Endpoint.contentObject.rawValue, type.rawValue, id),
                     method: .get,
                     parameters: [:]) { result in
                         switch result {
                         case .failure(let error):
-                            break
-                        case .success(let data):
-                            print("requestSended")
+                            completion?(.failure(error))
+                        case .success(let jsonData):
+                            guard let content = ActivityContent.mapJSON(jsonData)
+                                else {
+                                    completion?(.failure(ServerErrorFactory.unknown))
+                                    return
+                            }
+                            completion?(.success(content))
                         }
         }
     }

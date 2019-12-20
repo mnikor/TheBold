@@ -14,9 +14,9 @@ enum ActionsListPresenterInput {
     case info(FeelTypeCell)
     case unlockActionCard
     case share
-    case download
+    case download(ActivityContent)
     case like
-    case addActionPlan
+    case addActionPlan(ActivityContent)
     case start
     case unlockListenPreview
     case unlockReadPreview
@@ -59,14 +59,16 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
             print("dsf")
         case .share:
             viewController.shareContent(item: nil)
-        case .download:
-            print("dow")
+        case .download(let content):
+            interactor.input(.downloadContent(content: content, isHidden: false))
         case .like:
             print("dsf")
-        case .addActionPlan:
+        case .addActionPlan(let content):
             let vc = AddActionPlanViewController.createController {
                 print("create add action")
             }
+            vc.contentID = String(content.id)
+            interactor.input(.downloadContent(content: content, isHidden: true))
             router.input(.presentedBy(vc))
         case .start:
             print("Start")
@@ -85,6 +87,7 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
         interactor.input(.prepareDataSource(contentType: getContentType(by: type)) { content in
             let actions: [ActionEntity] = content.compactMap { activityContent in
                 if let savedContent = DataSource.shared.fetchContent(activityContent: activityContent),
+                    !savedContent.isHidden,
                     let savedActivityContent = ActivityContent.map(content: savedContent) {
                     return ActionEntity(type: .action,
                                         header: savedActivityContent.contentStatus == .locked ? .unlock : .points ,

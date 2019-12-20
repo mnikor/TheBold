@@ -23,7 +23,7 @@ class AddActionPlanViewController: UIViewController {
     var navVC : UINavigationController!
     
     @IBAction func tapAddActionButton(_ sender: UIButton) {
-        addActionVC.presenter.input(.save)
+        addActionVC.presenter.input(.saveWithContent(contentId: contentID))
         activeOkButton?()
         hideAnimateView()
     }

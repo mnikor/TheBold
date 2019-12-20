@@ -13,7 +13,7 @@ import CoreData
 public class Event: NSManagedObject {
 
     var calculatePoints: Int {
-        return (Int(self.stake) + 10)
+        return (Int(self.stake) + 5)
     }
     
     convenience init() {

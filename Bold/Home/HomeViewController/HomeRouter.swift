@@ -15,6 +15,7 @@ enum HomeInputRouter {
     case unlockBoldManifest
     case showBoldManifest
     case createGoal
+    case goalItem(Goal)
 }
 
 protocol HomeInputRouterProtocol: RouterProtocol {
@@ -51,6 +52,10 @@ class HomeRouter: RouterProtocol, HomeInputRouterProtocol {
         case .createGoal:
             let createGoalVC = StoryboardScene.Act.createGoalViewController.instantiate()
             viewController.navigationController?.pushViewController(createGoalVC, animated: true)
+        case .goalItem(let goal):
+            let calendarVC = StoryboardScene.Act.calendarActionsListViewController.instantiate()
+            calendarVC.presenter.goal = goal
+            viewController.navigationController?.pushViewController(calendarVC, animated: true)
         }
     }
     

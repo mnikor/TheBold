@@ -19,5 +19,6 @@ target 'Bold' do
     pod 'KeychainAccess', '~> 3.1.2'
     pod 'SDWebImage'
     pod 'SVProgressHUD'
+    pod 'ActiveLabel'
     
 end

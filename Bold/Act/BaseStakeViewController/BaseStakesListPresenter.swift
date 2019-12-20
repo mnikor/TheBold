@@ -66,7 +66,7 @@ enum BaseStakesListInputPresenter {
     case selectEvent(indexPath: IndexPath)
     
     case tapPlus
-//    case createGoal
+    case createGoal
 }
 
 protocol BaseStakesListInputPresenterProtocol {
@@ -159,8 +159,8 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
             
         case .tapPlus:
             router.input(.tapPlus)
-//        case .createGoal:
-//            router.input(.createGoal)
+        case .createGoal:
+            router.input(.createGoal)
         }
     }
     
@@ -329,9 +329,7 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
     private func subscribeToUpdate() {
         
         DataSource.shared.changeContext.subscribe(onNext: { (_) in
-            if let goalID = self.goal?.id {
-                self.input(.createDataSource(goalID: goalID))
-            }
+            self.input(.createDataSource(goalID: self.goal?.id))
         }).disposed(by: disposeBag)
     }
     

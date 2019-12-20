@@ -15,11 +15,12 @@ enum PlayerState {
     case paused
 }
 
-protocol PlayerViewControllerDelegate: class {
+protocol ContentToolBarDelegate: class {
     func saveContent()
     func removeFromCache()
     func likeContent(_ isLiked: Bool)
     func playerStoped(with totalDuration: TimeInterval)
+    func addActionPlan()
 }
 
 class PlayerViewController: UIViewController, ViewProtocol {
@@ -27,7 +28,7 @@ class PlayerViewController: UIViewController, ViewProtocol {
     typealias Presenter = PlayerPresenter
     typealias Configurator = PlayerConfigurator
     
-    weak var delegate: PlayerViewControllerDelegate?
+    weak var delegate: ContentToolBarDelegate?
     
     var presenter: Presenter!
     var configurator: Configurator! = PlayerConfigurator()
@@ -122,10 +123,11 @@ class PlayerViewController: UIViewController, ViewProtocol {
     
     
     @IBAction func tapShowAddAction(_ sender: UIBarButtonItem) {
-        let vc = AddActionPlanViewController.createController {
-            print("tap add action")
-        }
-        vc.presentedBy(self)
+        delegate?.addActionPlan()
+//        let vc = AddActionPlanViewController.createController {
+//            print("tap add action")
+//        }
+//        vc.presentedBy(self)
     }
     
     override func viewDidLoad() {

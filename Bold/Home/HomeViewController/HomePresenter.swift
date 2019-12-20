@@ -19,6 +19,7 @@ enum HomePresenterInput {
     case showBoldManifest
     case createGoal
     case subscribeForUpdates
+    case goalItem(Goal)
 }
 
 protocol HomePresenterInputProtocol {
@@ -63,6 +64,8 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
             router.input(.createGoal)
         case .subscribeForUpdates:
             subscribeForUpdates()
+        case .goalItem(let goal):
+            router.input(.goalItem(goal))
         }
     }
     

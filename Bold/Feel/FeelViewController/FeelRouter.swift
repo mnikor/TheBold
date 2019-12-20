@@ -40,7 +40,11 @@ class FeelRouter: RouterProtocol, FeelInputRouterProtocol {
             AudioService.shared.playerDelegate = viewController
             AudioService.shared.startPlayer(isPlaying: isPlaying, isDownloadedContent: isDownloadedContent)
         case .present(let vc):
-            viewController.navigationController?.present(vc, animated: true)
+            if let topVC = UIApplication.topViewController {
+                topVC.present(vc, animated: true)
+            } else {
+                viewController.navigationController?.present(vc, animated: true)
+            }
         }
     }
 }

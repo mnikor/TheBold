@@ -132,7 +132,10 @@ extension OnboardViewController: UICollectionViewDelegate, UICollectionViewDataS
 
 extension OnboardViewController: SignUpViewDelegate {
     func signUpViewDidTapAtTermsOfUse() {
-        // add terms of use page
+        let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
+        vc.viewModel = .termsOfUse
+        let currentVC = UIApplication.topViewController ?? self
+        currentVC.present(vc, animated: true)
     }
     
     func tapForgot() {
@@ -176,7 +179,10 @@ extension OnboardViewController: SignUpViewDelegate {
     }
     
     func signUpViewDidTapAtPrivacyPolicy() {
-        // TODO: - show privacy policy
+        let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
+        vc.viewModel = .privacyPolicy
+        let currentVC = UIApplication.topViewController ?? self
+        currentVC.present(vc, animated: true)
     }
     
     private func validateData(in signUpView: SignUpView) -> Bool {

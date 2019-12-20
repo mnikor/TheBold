@@ -1,4 +1,5 @@
 PODS:
+  - ActiveLabel (1.1.0)
   - Alamofire (4.8.2)
   - Cosmos (19.0.3)
   - JTAppleCalendar (8.0.0)
@@ -20,6 +21,7 @@ PODS:
   - VisualEffectView (3.1.1)
 
 DEPENDENCIES:
+  - ActiveLabel
   - Alamofire
   - Cosmos (~> 19.0)
   - JTAppleCalendar (~> 8.0)
@@ -49,10 +51,12 @@ SPEC REPOS:
     - SwiftyJSON
     - VisualEffectView
   trunk:
+    - ActiveLabel
     - SDWebImage
     - SVProgressHUD
 
 SPEC CHECKSUMS:
+  ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Cosmos: a6fb17284281fa12cf4c85c2efecd440a215ec44
   JTAppleCalendar: 76ccdc5a8b236166293e50b190c5f2722c30cdcd
@@ -68,6 +72,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   VisualEffectView: bde340c8268765c2d71f7f115930733ba7e4a926
 
-PODFILE CHECKSUM: 274353d68c430d1d0ae5d437c5b1e2691e5f1c27
+PODFILE CHECKSUM: dc6344994adde352266af6a314f200bd7aba9f57
 
 COCOAPODS: 1.8.4

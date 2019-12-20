@@ -10,6 +10,7 @@ import Foundation
 
 enum ActionsListInteractorInput {
     case prepareDataSource(contentType: ContentType, completion: (([ActivityContent]) -> Void))
+    case downloadContent(content: ActivityContent, isHidden: Bool)
 }
 
 protocol ActionsListInteractorInputProtocol: InteractorProtocol {
@@ -30,6 +31,8 @@ class ActionsListInteractor: ActionsListInteractorInputProtocol {
         switch inputCase {
         case .prepareDataSource(contentType: let type, completion: let completion):
             prepareDataSource(contentType: type, completion: completion)
+        case .downloadContent(content: let content, isHidden: let isHidden):
+            DataSource.shared.saveContent(content: content, isHidden: isHidden)
         }
     }
     

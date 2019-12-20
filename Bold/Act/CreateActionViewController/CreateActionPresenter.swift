@@ -44,6 +44,7 @@ enum CreateActionInputPresenter {
     case stake
     case share
     case save
+    case saveWithContent(contentId: String?)
     case cancel
     case validate(nameAction: String)
     
@@ -139,6 +140,11 @@ class CreateActionPresenter: PresenterProtocol, CreateActionInputProtocol {
             }
         case .validate(nameAction: let name):
             viewController.navBar.topItem?.rightBarButtonItem?.isEnabled = (name.count >= 3 && newAction.goal != nil)
+        case .saveWithContent(contentId: let contentId):
+            viewController.view.endEditing(true)
+            interactor.input(.saveActionWithContent(contentID: contentId, completion: { [weak self] in
+                self?.router.input(.cancel)
+            }))
         }
     }
     

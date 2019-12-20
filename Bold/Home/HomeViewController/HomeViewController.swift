@@ -76,7 +76,9 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
     private func prepareDataSource() {
         presenter.input(.prepareDataSource({ [weak self] actionItems in
             self?.actionItems = actionItems
-            self?.tableView.reloadData()
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
         }))
     }
     
@@ -177,7 +179,7 @@ extension HomeViewController: ActivityCollectionTableViewCellDelegate {
     }
     
     func tapItemCollection(goal: Goal) {
-       // presenter.input(.actionItem)
+        presenter.input(.goalItem(goal))
     }
     
     func tapShowAllActivity(type: HomeActionsTypeCell?) {

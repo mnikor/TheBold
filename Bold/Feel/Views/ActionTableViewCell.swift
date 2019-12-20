@@ -13,7 +13,7 @@ protocol ActionTableViewCellDelegate: class {
     func tapThreeDotsButton(item: ActionEntity)
     func tapDownloadButton(cell: ActionTableViewCell)
     func tapLikeButton(cell: ActionTableViewCell)
-    func tapAddActionPlanButton()
+    func tapAddActionPlanButton(cell: ActionTableViewCell)
 }
 
 enum HeaderType : UInt {
@@ -66,7 +66,7 @@ class ActionTableViewCell: BaseTableViewCell {
     }
     
     @IBAction func tapAddActionPlanButton(_ sender: UIButton) {
-        delegate?.tapAddActionPlanButton()
+        delegate?.tapAddActionPlanButton(cell: self)
     }
     
     override func awakeFromNib() {

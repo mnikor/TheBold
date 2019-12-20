@@ -12,6 +12,7 @@ enum CreateActionInputInteractor {
     case createNewAction(goalID: String?, contentID: String?, (CreateActionViewModel)->Void)
     case searchAction(actionID: String?, (CreateActionViewModel)->Void)
     case saveAction(()->Void)
+    case saveActionWithContent(contentID: String?, completion: ()->Void)
     case updateAction(()->Void)
     
     case updateName(String)
@@ -56,6 +57,8 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
             createModelView(action: presenter.newAction)
         case .updateConfiguration:
             createModelView(action: presenter.newAction)
+        case .saveActionWithContent(contentID: let contentId, completion: let completion):
+            saveAction(with: contentId, completion: completion)
         }
     }
     
@@ -63,6 +66,20 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
         createEvents(action: presenter.newAction)
         DataSource.shared.saveBackgroundContext()
         complete()
+    }
+    
+    private func saveAction(with contentId: String?, completion: @escaping ()->Void) {
+        guard let action = presenter.newAction  else { return }
+        if let contentIDTemp = contentId {
+            DataSource.shared.searchContent(contentID: contentIDTemp) { [weak self] (content) in
+                action.content = content
+                self?.createEvents(action: action)
+                DataSource.shared.saveBackgroundContext()
+                completion()
+            }
+        } else {
+            saveAction(completion)
+        }
     }
     
     private func updateAction(_ complete:()->Void) {
@@ -186,7 +203,8 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
         return selectDaysSet
     }
     
-    private func createNewAction(goalID: String?, contentID: String?) {
+    @discardableResult
+    private func createNewAction(goalID: String?, contentID: String?) -> Action {
         let newAction = Action()
         newAction.id = newAction.objectID.uriRepresentation().lastPathComponent
         newAction.startDateType = ActionDateType.today.rawValue
@@ -216,6 +234,7 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
         
         presenter.newAction = newAction
         createModelView(action: newAction)
+        return newAction
     }
     
     private func searchAction(actionID: String?) {

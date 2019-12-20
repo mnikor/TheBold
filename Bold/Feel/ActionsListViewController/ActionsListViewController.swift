@@ -137,7 +137,8 @@ extension ActionsListViewController: ManageItTableViewCellDelegate {
     func tapCleanButton(type: ListenOrReadCellType) {
         switch type {
         case .startAddToPlan:
-            presenter.input(.addActionPlan)
+            break
+//            presenter.input(.addActionPlan)
         case .unlockListenPreview:
             presenter.input(.listenPreview)
         case .unlockReadPreview:
@@ -167,14 +168,15 @@ extension ActionsListViewController: ActionTableViewCellDelegate {
     }
     
     func tapDownloadButton(cell: ActionTableViewCell) {
-        
-        presenter.input(.download)
-        
         print("download")
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let item = actions[indexPath.row]
-        item.download = !item.download
+        if !item.download {
+            item.download = !item.download
+            presenter.input(.download(item.data))
+        }
         tableView.reloadRows(at: [indexPath], with: .none)
+        
     }
     
     func tapLikeButton(cell: ActionTableViewCell) {
@@ -188,8 +190,10 @@ extension ActionsListViewController: ActionTableViewCellDelegate {
         tableView.reloadRows(at: [indexPath], with: .none)
     }
     
-    func tapAddActionPlanButton() {
-        presenter.input(.addActionPlan)
+    func tapAddActionPlanButton(cell: ActionTableViewCell) {
+        guard let index = tableView.indexPath(for: cell)?.row else { return }
+        let content = actions[index].data
+        presenter.input(.addActionPlan(content))
     }
 }
 
@@ -225,7 +229,7 @@ extension ActionsListViewController {
     
 }
 
-extension ActionsListViewController: PlayerViewControllerDelegate {
+extension ActionsListViewController: ContentToolBarDelegate {
     func saveContent() {
         guard let content = selectedContent else { return }
         DataSource.shared.saveContent(content: content)
@@ -271,6 +275,11 @@ extension ActionsListViewController: PlayerViewControllerDelegate {
     
     private func updatePoints() {
         LevelOfMasteryService.shared.input(.addPoints(points: 10))
+    }
+    
+    func addActionPlan() {
+        guard let content = selectedContent else { return }
+        presenter.input(.addActionPlan(content))
     }
     
 }

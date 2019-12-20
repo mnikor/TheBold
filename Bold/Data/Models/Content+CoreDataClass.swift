@@ -46,4 +46,8 @@ public class Content: NSManagedObject {
         }
     }
     
+    func setHidden( _ isHidden: Bool) {
+        self.isHidden = isHidden
+    }
+    
 }

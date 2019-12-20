@@ -13,6 +13,7 @@ enum FeelPresenterInput  {
     case showAll(FeelTypeCell)
     case showDetails(item: ActivityContent)
     case prepareDataSource(types: [ContentType], completion: (([FeelEntity]) -> Void)?)
+    case addActionPlan(ActivityContent)
 }
 
 protocol FeelPresenterProtocol {
@@ -47,6 +48,14 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
             showDetails(for: content)
         case .prepareDataSource(types: let types, completion: let completion):
             prepareDataSource(types: types, completion: completion)
+        case .addActionPlan(let content):
+            let vc = AddActionPlanViewController.createController {
+                print("create add action")
+            }
+            vc.contentID = String(content.id)
+            interactor.input(.downloadContent(content))
+            
+            router.input(.present(vc))
         }
     }
     

@@ -31,6 +31,7 @@ extension Content {
     @NSManaged public var type: String?
     @NSManaged public var actions: NSSet?
     @NSManaged public var files: Set<File>?
+    @NSManaged public var isHidden: Bool
 
 }
 

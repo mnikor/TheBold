@@ -49,10 +49,11 @@ class DescriptionAndLikesCountViewController: UIViewController {
     }
     
     @IBAction func didTapAtAddActionPlan(_ sender: UIBarButtonItem) {
-        let vc = AddActionPlanViewController.createController {
-            print("tap add action")
-        }
-        vc.presentedBy(self)
+        audioPlayerDelegate?.addActionPlan()
+//        let vc = AddActionPlanViewController.createController {
+//            print("tap add action")
+//        }
+//        vc.presentedBy(self)
     }
     
     @IBAction func didTapAtLikeButton(_ sender: UIBarButtonItem) {
@@ -64,7 +65,7 @@ class DescriptionAndLikesCountViewController: UIViewController {
     
     var percent : CGFloat = 0
     var viewModel: DescriptionViewModel?
-    weak var audioPlayerDelegate: PlayerViewControllerDelegate?
+    weak var audioPlayerDelegate: ContentToolBarDelegate?
     
     private var pdfView: UIView?
     private var loader = LoaderView(frame: .zero)
@@ -186,10 +187,11 @@ class DescriptionAndLikesCountViewController: UIViewController {
 
 extension DescriptionAndLikesCountViewController: OverTabbarViewDelegate {
     func tapAddAction() {
-        let addVC = AddActionPlanViewController.createController {
-            print("tap AddActionPlan")
-        }
-        addVC.presentedBy(self)
+        audioPlayerDelegate?.addActionPlan()
+//        let addVC = AddActionPlanViewController.createController {
+//            print("tap AddActionPlan")
+//        }
+//        addVC.presentedBy(self)
     }
     
     func tapShare() {

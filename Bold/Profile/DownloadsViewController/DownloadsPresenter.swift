@@ -6,12 +6,13 @@
 //  Copyright © 2019 Alexander Kovalov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum DownloadsPresenterInput {
     case close
     case prepareDataSource(completion: (([ActivityContent]) -> Void))
     case showDetails(ActivityContent)
+    case addActionPlan(ActivityContent)
 }
 
 protocol DownloadsPresenterInputProtocol: PresenterProtocol {
@@ -44,7 +45,18 @@ class DownloadsPresenter: DownloadsPresenterInputProtocol {
             interactor.input(.prepareDataSource(completion: completion))
         case .showDetails(let content):
             showDetails(content: content)
+        case .addActionPlan(let content):
+            addActionPlan(content: content)
         }
+    }
+    
+    private func addActionPlan(content: ActivityContent) {
+        let vc = AddActionPlanViewController.createController {
+            print("add action plan tap ok")
+        }
+        vc.contentID = String(content.id)
+        let currentVC = UIApplication.topViewController ?? viewController
+        currentVC?.present(vc, animated: true)
     }
     
     private func showDetails(content: ActivityContent) {

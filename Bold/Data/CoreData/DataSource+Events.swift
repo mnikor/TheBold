@@ -44,7 +44,8 @@ extension DataSource: EventFunctionality {
             DataSource.shared.saveBackgroundContext()
             NotificationService.shared.createStandardNotification( result.stake != 0 ? .actionCompleteWithStake : .actionCompleteWithoutStake)
             AlertViewService.shared.input(.congratulationsAction(points: result.calculatePoints, tapGet: {
-                LevelOfMasteryService.shared.input(.addPoints(points: PointsForAction.congratulationsAction))
+                let points = Int(result.stake) + PointsForAction.congratulationsAction
+                LevelOfMasteryService.shared.input(.addPoints(points: points))
             }))
             checkAllEventOfAction(actionID: result.action!.id!)
         }

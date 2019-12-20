@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -182,7 +182,7 @@
                         <constraint firstAttribute="height" constant="17" id="nMa-Ku-BBh"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbx-ba-Nm0">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbx-ba-Nm0" customClass="ActiveLabel" customModule="ActiveLabel">
                     <rect key="frame" x="59" y="312" width="289" height="20.5"/>
                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
                     <color key="textColor" red="0.46274509803921571" green="0.49411764705882355" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
@@ -244,7 +244,7 @@
                 <outlet property="forgotButton" destination="lAu-lp-WAp" id="Vcj-7b-ksC"/>
                 <outlet property="logInButton" destination="DyX-Gt-TdK" id="fQa-5u-IiB"/>
                 <outlet property="passwordTextField" destination="xey-vo-rTK" id="Qn2-hh-SNT"/>
-                <outlet property="privacyPolicyLabel" destination="jbx-ba-Nm0" id="TVh-NE-PNK"/>
+                <outlet property="privacyPolicyLabel" destination="jbx-ba-Nm0" id="aBM-Gd-qga"/>
                 <outlet property="titleLabel" destination="e6e-Mp-HlL" id="y2m-JI-E2O"/>
                 <outlet property="verticalSpaceButtonConstraint" destination="brX-dz-frT" id="nvV-8X-NTz"/>
                 <outlet property="yourNameTextField" destination="suC-Wv-oJJ" id="oI9-7b-XfF"/>
@@ -258,7 +258,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="check" width="13" height="10"/>
+        <image name="check" width="12" height="9.5"/>
         <image name="checkBox" width="17" height="17"/>
         <image name="facebook" width="26" height="26"/>
         <image name="passwordEye" width="21" height="15"/>

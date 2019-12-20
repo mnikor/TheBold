@@ -129,7 +129,7 @@ extension FeelViewController {
     }
 }
 
-extension FeelViewController: PlayerViewControllerDelegate {
+extension FeelViewController: ContentToolBarDelegate {
     func saveContent() {
         guard let content = selectedContent else { return }
         DataSource.shared.saveContent(content: content)
@@ -175,6 +175,11 @@ extension FeelViewController: PlayerViewControllerDelegate {
     
     private func updatePoints() {
         LevelOfMasteryService.shared.input(.addPoints(points: 10))
+    }
+    
+    func addActionPlan() {
+        guard let content = selectedContent else { return }
+        presenter.input(.addActionPlan(content))
     }
     
 }

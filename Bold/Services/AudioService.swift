@@ -47,7 +47,7 @@ class AudioService: NSObject, AudioServiceProtocol {
     
     weak var delegate: AudioServiceDelegate?
     let player = AudioPlayer()
-    weak var playerDelegate: PlayerViewControllerDelegate?
+    weak var playerDelegate: ContentToolBarDelegate?
     
     private var currentTrackIndex: Int = 0
     private(set) var isDownloadedContent: Bool = false
