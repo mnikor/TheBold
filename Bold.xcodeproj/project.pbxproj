@@ -209,6 +209,8 @@
 		F17CB26D22A6BDA60035ABAB /* SCPageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17CB26C22A6BDA60035ABAB /* SCPageControlView.swift */; };
 		F17CB27022A6CF230035ABAB /* OnboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17CB26F22A6CF230035ABAB /* OnboardCell.swift */; };
 		F17CB27422A7D0830035ABAB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17CB27322A7D0830035ABAB /* LoginViewController.swift */; };
+		F17EFABF23AD15730012F9DB /* Lessons.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F17EFABE23AD15730012F9DB /* Lessons.pdf */; };
+		F17EFAC123AD15A00012F9DB /* Stories.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F17EFAC023AD15A00012F9DB /* Stories.pdf */; };
 		F183301022E5CB2D00BB7A9E /* FeelConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183300F22E5CB2D00BB7A9E /* FeelConfigurator.swift */; };
 		F183301322E5CB5700BB7A9E /* FeelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183301222E5CB5700BB7A9E /* FeelPresenter.swift */; };
 		F183301522E5CB6A00BB7A9E /* FeelInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183301422E5CB6A00BB7A9E /* FeelInteractor.swift */; };
@@ -649,6 +651,8 @@
 		F17CB26C22A6BDA60035ABAB /* SCPageControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPageControlView.swift; sourceTree = "<group>"; };
 		F17CB26F22A6CF230035ABAB /* OnboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardCell.swift; sourceTree = "<group>"; };
 		F17CB27322A7D0830035ABAB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F17EFABE23AD15730012F9DB /* Lessons.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Lessons.pdf; sourceTree = "<group>"; };
+		F17EFAC023AD15A00012F9DB /* Stories.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Stories.pdf; sourceTree = "<group>"; };
 		F183300F22E5CB2D00BB7A9E /* FeelConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelConfigurator.swift; sourceTree = "<group>"; };
 		F183301222E5CB5700BB7A9E /* FeelPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelPresenter.swift; sourceTree = "<group>"; };
 		F183301422E5CB6A00BB7A9E /* FeelInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelInteractor.swift; sourceTree = "<group>"; };
@@ -1722,6 +1726,8 @@
 				C5DCDEC12372973C0018DEA4 /* Hypnosis.pdf */,
 				C5DCDEBE2372973B0018DEA4 /* Manifest.pdf */,
 				C5DCDEC02372973C0018DEA4 /* Meditations.pdf */,
+				F17EFABE23AD15730012F9DB /* Lessons.pdf */,
+				F17EFAC023AD15A00012F9DB /* Stories.pdf */,
 				C5DCDEC22372973C0018DEA4 /* Pep-Talks.pdf */,
 				F1EE4D4E229EA6620072F663 /* BackgroundVideo.MOV */,
 				F1F6ADCA23210DC800F6A925 /* Bold.xcdatamodeld */,
@@ -2243,6 +2249,7 @@
 				C5DCDEC62372973C0018DEA4 /* Hypnosis.pdf in Resources */,
 				F107539522F20C0B0078C71C /* EnterYourGoalTableViewCell.xib in Resources */,
 				F1C2534A22B2ACFC003156AA /* ActInactiveCollectionViewCell.xib in Resources */,
+				F17EFABF23AD15730012F9DB /* Lessons.pdf in Resources */,
 				F107538522F091C10078C71C /* HeaderConfigureTableViewCell.xib in Resources */,
 				C5DCDECD237458580018DEA4 /* Privacy.pdf in Resources */,
 				F179976222AFFA1D0039879F /* MenuBottomView.xib in Resources */,
@@ -2311,6 +2318,7 @@
 				F107538D22F09B640078C71C /* DaysOfWeekTableViewCell.xib in Resources */,
 				F1868840229E90EF0029A663 /* Montserrat-ExtraBold.ttf in Resources */,
 				F186880D229E82CD0029A663 /* colors.json in Resources */,
+				F17EFAC123AD15A00012F9DB /* Stories.pdf in Resources */,
 				F1E8EFDB22F484B2006A9D39 /* CalendarTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

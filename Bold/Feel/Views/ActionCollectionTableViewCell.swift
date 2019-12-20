@@ -33,6 +33,10 @@ enum FeelTypeCell: Int {
             return Asset.hypnosisMain.image
         case .pepTalk:
             return Asset.peptalksMain.image
+        case .lessons:
+            return Asset.lessonsMain.image
+        case .stories:
+            return Asset.storyMain.image
         default:
             break
         }
