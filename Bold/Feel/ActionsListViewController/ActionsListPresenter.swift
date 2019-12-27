@@ -90,13 +90,14 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
                     !savedContent.isHidden,
                     let savedActivityContent = ActivityContent.map(content: savedContent) {
                     return ActionEntity(type: .action,
-                                        header: savedActivityContent.contentStatus == .locked ? .unlock : .points ,
+                                        header: .duration ,
                                         download: true,
                                         like: false,
                                         data: savedActivityContent)
                 }
+                let type: HeaderType = activityContent.contentStatus == .locked ? .unlock : (activityContent.pointOfUnlock > 0 ? .points : .duration)
                 return ActionEntity(type: .action,
-                                    header: activityContent.contentStatus == .locked ? .unlock : .points ,
+                                    header: type,
                                     download: false,
                                     like: false,
                                     data: activityContent)

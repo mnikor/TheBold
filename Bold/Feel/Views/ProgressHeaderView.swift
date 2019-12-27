@@ -80,7 +80,7 @@ class ProgressHeaderView: UIView {
         let percentage = timeInterval / animationDuration
         let currentPoints = Double(pointsStartValue) + (percentage * Double(pointsEndValue - pointsStartValue))
         
-        progressView.progress = Float(currentPoints) / Float(LevelType.allCases.compactMap({ $0.limits.getAllLimits().points }).first(where: { Double($0) > currentPoints }) ?? 1)
+        progressView.progress = Float(currentPoints) / Float(LevelType.allCases.compactMap({ $0.limits.getAllLimits().points }).sorted().first(where: { Double($0) > currentPoints }) ?? 1)
         pointsLabel.text = "\(Int(currentPoints))"
     }
 

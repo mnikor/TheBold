@@ -16,6 +16,7 @@ struct DescriptionViewModel {
     var category: ContentType?
     var audioTracks: [AudioPlayerTrackInfo]
     var isLikesEnabled: Bool
+    var toolbarIsHidden: Bool = false
     
     static func map(activityContent: ActivityContent) -> DescriptionViewModel {
         let documentURL: URL?
@@ -43,7 +44,8 @@ struct DescriptionViewModel {
                                     title: nil,
                                     category: nil,
                                     audioTracks: [],
-                                    isLikesEnabled: false)
+                                    isLikesEnabled: false,
+                                    toolbarIsHidden: true)
     }
     
     static var boldManifestInfo: DescriptionViewModel {
@@ -67,7 +69,8 @@ struct DescriptionViewModel {
                                     title: "Privacy policy",
                                     category: nil,
                                     audioTracks: [],
-                                    isLikesEnabled: false)
+                                    isLikesEnabled: false,
+                                    toolbarIsHidden: true)
     }
     
     static var termsOfUse: DescriptionViewModel {
@@ -77,7 +80,8 @@ struct DescriptionViewModel {
                                     title: "Terms & Conditions",
                                     category: nil,
                                     audioTracks: [],
-                                    isLikesEnabled: false)
+                                    isLikesEnabled: false,
+                                    toolbarIsHidden: true)
     }
     
 }

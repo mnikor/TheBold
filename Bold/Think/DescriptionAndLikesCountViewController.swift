@@ -100,6 +100,7 @@ class DescriptionAndLikesCountViewController: UIViewController {
     private func config() {
         configureDowloadButton()
         categoryLabel.text = viewModel?.category?.rawValue.capitalized
+        toolbar.isHidden = viewModel?.toolbarIsHidden ?? false
         titleLabel.text = viewModel?.title
         likseCountView.configView(superView: view)
         likseCountView.likesCountButtons.setTitle(String(viewModel?.likesCount ?? 0))
@@ -121,7 +122,7 @@ class DescriptionAndLikesCountViewController: UIViewController {
         playerButton.positionImageBeforeText(padding: 8)
         playerButton.shadow()
         playerButton.isHidden = (viewModel?.audioTracks ?? []).isEmpty
-        likseCountView.isHidden = viewModel?.isLikesEnabled == false
+        likseCountView.isHidden = !(viewModel?.isLikesEnabled ?? false)
     }
     
     private func configureDowloadButton() {

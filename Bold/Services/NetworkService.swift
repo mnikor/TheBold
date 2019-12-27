@@ -57,9 +57,11 @@ class NetworkService {
                                     case .failure(let error):
                                         completion?(.failure(error))
                                     case .success(let jsonData):
-                                        guard let accessToken = jsonData["access_token"].string
+                                        guard let accessToken = jsonData["access_token"].string,
+                                        let expirationTimeInterval = jsonData["token_expiration_time"].double
                                             else { return }
-                                        SessionManager.shared.updateToken(accessToken)
+                                        let expirationDate = Date(timeIntervalSinceNow: expirationTimeInterval)
+                                        SessionManager.shared.updateToken(accessToken, expireDate: expirationDate)
                                         guard let profile = Profile.mapJSON(jsonData)
                                             else {
                                                 completion?(.failure(ServerErrorFactory.unknown))

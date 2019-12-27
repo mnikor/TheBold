@@ -265,9 +265,10 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
             dataSource += baseDataSource
         }
         
-        DispatchQueue.main.async {
-            self.viewController.tableView.reloadData()
-            self.isLoadContent = false
+        DispatchQueue.main.async { [weak self] in
+            self?.viewController.tableView.backgroundView = (self?.dataSource.isEmpty ?? false) ? EmptyActView.loadFromNib() : UIView()
+            self?.viewController.tableView.reloadData()
+            self?.isLoadContent = false
         }
     }
     

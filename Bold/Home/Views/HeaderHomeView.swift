@@ -114,7 +114,7 @@ class HeaderHomeView: UIView {
         }
         let percentage = timeInterval / animationDuration
         let pointsNewValue = Double(pointsEndValue - pointsStartValue) * percentage
-        pointsLimit = LevelType.allCases.compactMap({ $0.limits.getAllLimits().points }).first(where: { $0 > Int(pointsNewValue) }) ?? 0
+        pointsLimit = LevelType.allCases.compactMap({ $0.limits.getAllLimits().points }).sorted().first(where: { $0 > Int(pointsNewValue) }) ?? 0
         currentPointsLabel.text = "\(Int(pointsNewValue))/\(pointsLimit)"
     }
     

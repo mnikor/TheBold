@@ -14,5 +14,7 @@ class CalendarActionsListViewController: BaseStakesListViewController {
         super.init(coder: aDecoder)
         
         self.presenter.type = BaseStakesDataSourceType.forGoal
+        
     }
+    
 }

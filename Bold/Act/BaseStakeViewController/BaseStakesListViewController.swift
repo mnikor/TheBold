@@ -44,6 +44,14 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
         registerXibs()
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let textAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(red: 82/255, green: 109/255, blue: 209/255, alpha: 1)]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+    }
+    
     func configTableView() {
 //        tableView.delegate = self
 //        tableView.dataSource = self
