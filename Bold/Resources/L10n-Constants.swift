@@ -500,6 +500,28 @@ internal enum L10n {
     internal static let findYourBoldness = L10n.tr("Localizable", "Splash.FindYourBoldness")
     /// Sign Up
     internal static let signUp = L10n.tr("Localizable", "Splash.SignUp")
+    /// Explore uncharted territories
+    internal static let text1 = L10n.tr("Localizable", "Splash.text1")
+    /// Keep your fire burning
+    internal static let text10 = L10n.tr("Localizable", "Splash.text10")
+    /// Solve bigger problems
+    internal static let text11 = L10n.tr("Localizable", "Splash.text11")
+    /// Attached to nothing, open to everything
+    internal static let text2 = L10n.tr("Localizable", "Splash.text2")
+    /// Make waves, move mountains
+    internal static let text3 = L10n.tr("Localizable", "Splash.text3")
+    /// Challenge your limits
+    internal static let text4 = L10n.tr("Localizable", "Splash.text4")
+    /// You are work in progress
+    internal static let text5 = L10n.tr("Localizable", "Splash.text5")
+    /// Make progress, no excuses
+    internal static let text6 = L10n.tr("Localizable", "Splash.text6")
+    /// Don’t say, "Why me?" Say, "Try me."
+    internal static let text7 = L10n.tr("Localizable", "Splash.text7")
+    /// The art of possible
+    internal static let text8 = L10n.tr("Localizable", "Splash.text8")
+    /// Discipline your mind
+    internal static let text9 = L10n.tr("Localizable", "Splash.text9")
     /// Think
     internal static let think = L10n.tr("Localizable", "Splash.Think")
     /// Our lessons, inspiring stories and quotes will guide your thinking to a new level.

@@ -25,6 +25,16 @@ class BoldTipsViewController: UIViewController {
                                     for: .touchUpInside)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     @objc private func getIdeas() {
         let ideasVC = StoryboardScene.Act.ideasViewController.instantiate()
         ideasVC.delegate = delegate

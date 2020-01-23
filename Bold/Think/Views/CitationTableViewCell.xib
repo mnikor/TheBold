@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,11 +22,11 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="370"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="369.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="370"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="citationBackground" translatesAutoresizingMaskIntoConstraints="NO" id="oip-nG-c2x">
-                        <rect key="frame" x="20" y="0.5" width="335" height="369"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="citationBackground" translatesAutoresizingMaskIntoConstraints="NO" id="oip-nG-c2x">
+                        <rect key="frame" x="20" y="1" width="335" height="369"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="oip-nG-c2x" secondAttribute="height" multiplier="335:369" id="oyJ-8y-LG1"/>
                         </constraints>
@@ -39,7 +37,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="ZI7-NL-LqN">
-                        <rect key="frame" x="40" y="33.5" width="300" height="37"/>
+                        <rect key="frame" x="40" y="34" width="300" height="37"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leonardo" translatesAutoresizingMaskIntoConstraints="NO" id="gxJ-qc-Qdf">
                                 <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
@@ -57,13 +55,13 @@
                         </subviews>
                     </stackView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One can have no smaller or greater mastery  than of oneself" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6r-tT-4mY">
-                        <rect key="frame" x="40" y="110.5" width="300" height="137"/>
+                        <rect key="frame" x="40" y="111" width="300" height="137"/>
                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="28"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEV-rN-2I3">
-                        <rect key="frame" x="154" y="313.5" width="181" height="36"/>
+                        <rect key="frame" x="154" y="314" width="181" height="36"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="36" id="y6X-Y5-6eM"/>
                         </constraints>
@@ -103,7 +101,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="citationBackground" width="353" height="387"/>
+        <image name="citationBackground" width="335" height="369"/>
         <image name="leonardo" width="37" height="37"/>
         <image name="rightArrowWhite" width="7" height="11"/>
     </resources>

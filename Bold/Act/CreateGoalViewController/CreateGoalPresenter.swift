@@ -103,7 +103,7 @@ class CreateGoalPresenter: PresenterProtocol, CreateGoalInputPresenterProtocol {
         } else {
             UserDefaults.standard.set(true, forKey: "BoldTips")
             
-            let vc = StoryboardScene.Act.boldTipsViewController.instantiate()
+        let vc = StoryboardScene.Description.boldTipsViewController.instantiate()
             vc.delegate = viewController
             vc.selectIdea = selectIdea
             viewController.navigationController?.pushViewController(vc, animated: true)

@@ -17,8 +17,6 @@ internal enum StoryboardScene {
 
     internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: Act.self)
 
-    internal static let boldTipsViewController = SceneType<Bold.BoldTipsViewController>(storyboard: Act.self, identifier: "BoldTipsViewController")
-
     internal static let calendarActionsListViewController = SceneType<Bold.CalendarActionsListViewController>(storyboard: Act.self, identifier: "CalendarActionsListViewController")
 
     internal static let createActionViewController = SceneType<Bold.CreateActionViewController>(storyboard: Act.self, identifier: "CreateActionViewController")
@@ -53,6 +51,8 @@ internal enum StoryboardScene {
   }
   internal enum Description: StoryboardType {
     internal static let storyboardName = "Description"
+
+    internal static let boldTipsViewController = SceneType<Bold.BoldTipsViewController>(storyboard: Description.self, identifier: "BoldTipsViewController")
 
     internal static let descriptionAndLikesCountViewController = SceneType<Bold.DescriptionAndLikesCountViewController>(storyboard: Description.self, identifier: "DescriptionAndLikesCountViewController")
   }

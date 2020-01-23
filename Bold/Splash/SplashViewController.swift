@@ -26,6 +26,7 @@ class SplashViewController: UIViewController {
         transitioningDelegate = self
         videoView.delegate = self
         label.alpha = 0
+        randomText()
     }
     
     private func playLogo() {
@@ -35,6 +36,10 @@ class SplashViewController: UIViewController {
         videoView.play()
     }
 
+    private func randomText() {
+        let texts = [L10n.Splash.text1, L10n.Splash.text2, L10n.Splash.text3, L10n.Splash.text4, L10n.Splash.text5, L10n.Splash.text6, L10n.Splash.text7, L10n.Splash.text8, L10n.Splash.text9, L10n.Splash.text10, L10n.Splash.text11]
+        label.text = texts[Int(arc4random_uniform(UInt32(texts.count)))]
+    }
 }
 
 extension SplashViewController: VideoViewDelegate {
@@ -61,7 +66,8 @@ extension SplashViewController: VideoViewDelegate {
             self?.animateLabelAppearing(duration: duration) { [weak self] _ in
                 self?.animateLabelsDisapearing(duration: duration)
                 DispatchQueue.main.asyncAfter(deadline: .now() + duration - 0.15) { [weak self] in
-                    let viewController = StoryboardScene.Splash.onboardViewControllerIdentifier.instantiate()
+                    //let viewController = StoryboardScene.Splash.onboardViewControllerIdentifier.instantiate()
+                    guard let viewController = self?.getRootViewController() else {return}
                     viewController.transitioningDelegate = self
                     self?.present(viewController, animated: true)
                 }
@@ -70,6 +76,16 @@ extension SplashViewController: VideoViewDelegate {
     }
     
     func videoViewDidEndPlayingVideo() {
+    }
+    
+    private func getRootViewController() -> UIViewController {
+        let rootViewController: UIViewController
+        if let _ = SessionManager.shared.token {
+            rootViewController = StoryboardScene.Menu.storyboard.instantiateInitialViewController() ?? UIViewController()
+        } else {
+            rootViewController = StoryboardScene.Splash.onboardViewControllerIdentifier.instantiate() 
+        }
+        return rootViewController
     }
     
 }
