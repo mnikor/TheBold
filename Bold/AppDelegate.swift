@@ -73,7 +73,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     break
                 case .success(let profile):
                     SessionManager.shared.profile = profile
-                    
                 }
             }
         } else {

@@ -34,13 +34,17 @@ class FeelViewController: UIViewController, SideMenuItemContent, ViewProtocol {
 
         configurator.configure(with: self)
         
-        navigationController?.navigationBar.isHidden = true
         highNavigationBar.configItem(title: L10n.Feel.feelBold, titleImage: .none, leftButton: .showMenu, rightButton: .none)
         highNavigationBar.deleagte = self
         
         tableView.tableFooterView = UIView()
         registerXibs()
         prepareDataSource()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     func registerXibs() {

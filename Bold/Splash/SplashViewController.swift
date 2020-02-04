@@ -82,6 +82,8 @@ extension SplashViewController: VideoViewDelegate {
         let rootViewController: UIViewController
         if let _ = SessionManager.shared.token {
             rootViewController = StoryboardScene.Menu.storyboard.instantiateInitialViewController() ?? UIViewController()
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.rootViewController = rootViewController
         } else {
             rootViewController = StoryboardScene.Splash.onboardViewControllerIdentifier.instantiate() 
         }

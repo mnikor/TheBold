@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -83,7 +83,7 @@
                         <constraints>
                             <constraint firstItem="htr-Lv-vp7" firstAttribute="top" secondItem="i0P-8Z-q48" secondAttribute="top" id="JAn-Lz-x9Z"/>
                             <constraint firstItem="Ja1-Tm-5Mq" firstAttribute="leading" secondItem="i0P-8Z-q48" secondAttribute="leading" id="MKC-XD-fNS"/>
-                            <constraint firstItem="Wsn-TT-Ac7" firstAttribute="bottom" secondItem="Ja1-Tm-5Mq" secondAttribute="bottom" id="Otf-Uk-DRH"/>
+                            <constraint firstAttribute="bottom" secondItem="Ja1-Tm-5Mq" secondAttribute="bottom" id="Otf-Uk-DRH"/>
                             <constraint firstItem="htr-Lv-vp7" firstAttribute="trailing" secondItem="Wsn-TT-Ac7" secondAttribute="trailing" id="ZFR-5T-dGW"/>
                             <constraint firstItem="htr-Lv-vp7" firstAttribute="leading" secondItem="Wsn-TT-Ac7" secondAttribute="leading" id="nV1-Ph-WCB"/>
                             <constraint firstItem="htr-Lv-vp7" firstAttribute="bottom" secondItem="Wsn-TT-Ac7" secondAttribute="bottom" id="p24-JU-evL"/>
@@ -198,7 +198,7 @@
                             <constraint firstItem="rMn-dV-DDn" firstAttribute="trailing" secondItem="Hho-jY-faU" secondAttribute="trailing" id="L8O-xk-hVS"/>
                             <constraint firstItem="GeR-u3-HAV" firstAttribute="trailing" secondItem="rMn-dV-DDn" secondAttribute="trailing" id="RLZ-ea-fxo"/>
                             <constraint firstItem="GeR-u3-HAV" firstAttribute="bottom" secondItem="rMn-dV-DDn" secondAttribute="bottom" id="rYy-tY-Tsu"/>
-                            <constraint firstItem="rMn-dV-DDn" firstAttribute="bottom" secondItem="Hho-jY-faU" secondAttribute="bottom" id="y0c-cm-nQd"/>
+                            <constraint firstAttribute="bottom" secondItem="Hho-jY-faU" secondAttribute="bottom" id="y0c-cm-nQd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rMn-dV-DDn"/>
                     </view>
@@ -451,7 +451,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="5Mx-P7-tgn">
-                                                <rect key="frame" x="30" y="219" width="283" height="72"/>
+                                                <rect key="frame" x="30" y="166.5" width="283" height="124.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arnold Schvarzenegger" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tuv-ov-NWk">
                                                         <rect key="frame" x="0.0" y="0.0" width="203" height="21"/>
@@ -460,7 +460,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Morning intention" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AoE-zS-8Im" customClass="FixedPaddingTextView" customModule="Bold" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="35" width="281.5" height="37"/>
+                                                        <rect key="frame" x="0.0" y="35" width="152" height="89.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="30"/>
