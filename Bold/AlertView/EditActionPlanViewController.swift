@@ -17,6 +17,7 @@ class EditActionPlanViewController: AddActionPlanViewController {
     var actionID : String?
     var eventID : String?
     var points : Int!
+    var isEditingAction : Bool = false
     
     override class func createController(tapOk: @escaping (() -> Void)) -> EditActionPlanViewController {
         let addVC = StoryboardScene.AlertView.editActionPlanViewController.instantiate()
@@ -38,6 +39,10 @@ class EditActionPlanViewController: AddActionPlanViewController {
     override func displayContentController() {
             self.addActionVC = StoryboardScene.Act.createActionViewController.instantiate()
             addActionVC.presenter.baseConfigType = .editActionSheet(actionID: actionID)
+        addActionVC.presenter.tapEditCallback = { [weak self] in
+            self?.isEditingAction = true
+            self?.doneButton.setTitle(L10n.save, for: .normal)
+        }
         
             if let addActionVC = addActionVC {
                 // call before adding child view controller's view as subview
@@ -63,8 +68,15 @@ class EditActionPlanViewController: AddActionPlanViewController {
     
     @IBAction func tapDoneButton(_ sender: Any) {
         
-        if let eventIDTemp = eventID {
-            tapDoneEvent(eventID: eventIDTemp)
+        if isEditingAction == false {
+            if let eventIDTemp = eventID {
+                tapDoneEvent(eventID: eventIDTemp)
+            }
+        }else {
+            view.endEditing(true)
+            addActionVC.presenter.input(.updateAction(success: {
+                print("update action!")
+            }))
         }
         
         activeOkButton?()

@@ -264,13 +264,13 @@ extension CreateActionViewController: StakeViewControllerDelegate {
 extension CreateActionViewController: HeaderTitleActionPlanTableViewCellDelegate {
     
     func changeEditAction() {
-        if presenter.isEditAction == true {
-            view.endEditing(true)
-            presenter.input(.updateAction(success: {
-                print("updateAction success")
-            }))
-        }
-        presenter.isEditAction = !presenter.isEditAction
+//        if presenter.isEditAction == true {
+//            view.endEditing(true)
+//            presenter.input(.updateAction(success: {
+//                print("updateAction success")
+//            }))
+//        }
+        presenter.isEditAction = true
         presenter.input(.updateConfiguration)
     }
     

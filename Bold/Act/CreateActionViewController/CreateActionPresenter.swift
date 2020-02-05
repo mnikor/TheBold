@@ -76,7 +76,13 @@ class CreateActionPresenter: PresenterProtocol, CreateActionInputProtocol {
     var contentID: String?
     var newAction: Action!
     var updateAction: Action!
-    var isEditAction: Bool = false
+    var isEditAction: Bool = false {
+        didSet {
+            tapEditCallback?()
+        }
+    }
+    var tapEditCallback : VoidCallback?
+    
     
     var baseConfigType = CreateNewActionType.createNewActionVC
     

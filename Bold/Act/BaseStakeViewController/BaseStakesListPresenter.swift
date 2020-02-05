@@ -87,7 +87,7 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
     
     var currentDate : Date! {
         didSet(newValue) {
-            print("newValue = \(String(describing: newValue))")
+            print("newValue currentDate = \(String(describing: newValue))")
         }
     }
     
@@ -98,7 +98,7 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
     var calendarDataSource = Set<Date>()
     var dataSource = [ActDataSourceViewModel]() {
         didSet {
-            print("newValue")
+            print("newValue dataSource")
         }
     }
     var baseDataSource = [ActDataSourceViewModel]()
