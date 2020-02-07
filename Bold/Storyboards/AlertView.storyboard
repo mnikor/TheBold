@@ -364,7 +364,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1MM-0A-szP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1561" y="1024"/>
+            <point key="canvasLocation" x="2340" y="1023"/>
         </scene>
         <!--Base Alert View Controller-->
         <scene sceneID="q62-Vx-3pS">
@@ -688,7 +688,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRd-rx-3Ld" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2300" y="1023"/>
+            <point key="canvasLocation" x="2340" y="1725"/>
         </scene>
         <!--Downloads Action View Controller-->
         <scene sceneID="DXD-Sg-CYG">
@@ -758,6 +758,118 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CSH-s1-SWX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1561" y="1725"/>
+        </scene>
+        <!--Edit Goal View Controller-->
+        <scene sceneID="hvS-2d-7RF">
+            <objects>
+                <viewController storyboardIdentifier="EditGoalViewController" id="eVc-7I-dql" customClass="EditGoalViewController" customModule="Bold" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="osy-xN-cbA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.12999999523162842" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CsV-fY-UhG">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9id-2P-rp2">
+                                <rect key="frame" x="0.0" y="207" width="375" height="460"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="dMD-IK-2H3">
+                                        <rect key="frame" x="24" y="392" width="327" height="48"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jY-3s-1Tn">
+                                                <rect key="frame" x="0.0" y="0.0" width="76" height="48"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="76" id="gMm-GK-Mjk"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="7" maxY="0.0"/>
+                                                <state key="normal" title="Delete">
+                                                    <color key="titleColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tapDeleteButton:" destination="eVc-7I-dql" eventType="touchUpInside" id="ZaQ-Gw-vcl"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRW-3H-Dh1" customClass="RoundedButton" customModule="Bold" customModuleProvider="target">
+                                                <rect key="frame" x="177" y="0.0" width="150" height="48"/>
+                                                <color key="backgroundColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="gwU-kD-Zww"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="7" maxY="0.0"/>
+                                                <state key="normal" title="Done">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tapDoneButton:" destination="eVc-7I-dql" eventType="touchUpInside" id="SKu-Qs-Jbd"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="eTv-BD-sW3"/>
+                                        </constraints>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0P8-6D-QVx">
+                                        <rect key="frame" x="160" y="10" width="55" height="3"/>
+                                        <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="55" id="Ra6-HG-8ak"/>
+                                            <constraint firstAttribute="height" constant="3" id="tk0-sG-8hU"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="1.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hj4-lY-AsO">
+                                        <rect key="frame" x="0.0" y="19" width="375" height="353"/>
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="dMD-IK-2H3" secondAttribute="bottom" constant="20" id="6xF-Zf-otc"/>
+                                    <constraint firstItem="dMD-IK-2H3" firstAttribute="top" secondItem="Hj4-lY-AsO" secondAttribute="bottom" constant="20" id="9uY-hd-hNY"/>
+                                    <constraint firstItem="dMD-IK-2H3" firstAttribute="leading" secondItem="9id-2P-rp2" secondAttribute="leading" constant="24" id="Btb-dp-crb"/>
+                                    <constraint firstAttribute="trailing" secondItem="dMD-IK-2H3" secondAttribute="trailing" constant="24" id="JI8-VZ-eVF"/>
+                                    <constraint firstItem="0P8-6D-QVx" firstAttribute="top" secondItem="9id-2P-rp2" secondAttribute="top" constant="10" id="KY1-Kr-bKA"/>
+                                    <constraint firstAttribute="height" constant="460" id="NsV-pw-VLd"/>
+                                    <constraint firstItem="Hj4-lY-AsO" firstAttribute="leading" secondItem="9id-2P-rp2" secondAttribute="leading" id="Rfr-ba-s3n"/>
+                                    <constraint firstItem="Hj4-lY-AsO" firstAttribute="top" secondItem="0P8-6D-QVx" secondAttribute="bottom" constant="6" id="TFp-vr-Xaq"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hj4-lY-AsO" secondAttribute="trailing" id="TaG-ch-NWf"/>
+                                    <constraint firstItem="0P8-6D-QVx" firstAttribute="centerX" secondItem="9id-2P-rp2" secondAttribute="centerX" id="VeJ-B8-nSk"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CsV-fY-UhG" firstAttribute="trailing" secondItem="qyV-dx-K5I" secondAttribute="trailing" id="8vU-ru-33o"/>
+                            <constraint firstItem="CsV-fY-UhG" firstAttribute="leading" secondItem="qyV-dx-K5I" secondAttribute="leading" id="96Q-RG-Fpe"/>
+                            <constraint firstItem="9id-2P-rp2" firstAttribute="leading" secondItem="osy-xN-cbA" secondAttribute="leading" id="G5G-u6-eUs"/>
+                            <constraint firstItem="CsV-fY-UhG" firstAttribute="top" secondItem="osy-xN-cbA" secondAttribute="top" id="O4v-G8-lBY"/>
+                            <constraint firstItem="CsV-fY-UhG" firstAttribute="bottom" secondItem="qyV-dx-K5I" secondAttribute="bottom" id="Qnf-Ud-Bpk"/>
+                            <constraint firstItem="qyV-dx-K5I" firstAttribute="trailing" secondItem="9id-2P-rp2" secondAttribute="trailing" id="aed-WU-yBc"/>
+                            <constraint firstAttribute="bottom" secondItem="9id-2P-rp2" secondAttribute="bottom" id="qOQ-a3-BGN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qyV-dx-K5I"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="qNe-sD-o5h"/>
+                    <connections>
+                        <outlet property="bottomAddActionConstraint" destination="qOQ-a3-BGN" id="fXO-bl-PJy"/>
+                        <outlet property="contentView" destination="Hj4-lY-AsO" id="12d-xv-5ko"/>
+                        <outlet property="deleteButton" destination="0jY-3s-1Tn" id="6hK-fy-YIf"/>
+                        <outlet property="doneButton" destination="IRW-3H-Dh1" id="lws-Kx-674"/>
+                        <outlet property="editView" destination="9id-2P-rp2" id="x8X-D9-9AV"/>
+                        <outlet property="overlayView" destination="CsV-fY-UhG" id="Vld-1l-DGd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eht-iO-h68" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1561" y="1024"/>
         </scene>
     </scenes>
     <resources>

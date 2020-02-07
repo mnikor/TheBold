@@ -83,10 +83,11 @@ extension DataSource: EventFunctionality {
         let sort = NSSortDescriptor(key: "startDate", ascending: true)
         fetchRequest.sortDescriptors = [sort]
         let start = startDate as NSDate
+        let nextDay = startDate.tommorowDay() as NSDate
         let end = endDate as NSDate
         
         if let goalIDString = goalID {
-            fetchRequest.predicate = NSPredicate(format: "(startDate >= %@) AND (startDate <= %@) AND SUBQUERY(action, $act, $act.goal.id == '\(goalIDString)').@count > 0", start, end)
+            fetchRequest.predicate = NSPredicate(format: "(((startDate => %@) AND (startDate < %@)) OR ((startDate => %@) AND (startDate < %@) AND (status = %d))) AND SUBQUERY(action, $act, $act.goal.id == '\(goalIDString)').@count > 0", start, nextDay, nextDay, end, StatusType.wait.rawValue)
         }else {
             fetchRequest.predicate = NSPredicate(format: "(startDate >= %@) AND (startDate <= %@)", start, end)
         }
@@ -215,6 +216,23 @@ extension DataSource: EventFunctionality {
         }
         
         return results
+    }
+    
+    func searchEventsReminder(goalID: String, success: VoidCallback) {
+        var results = [Event]()
+        let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
+        
+        fetchRequest.predicate = NSPredicate(format: "(reminderDate != nil) AND SUBQUERY(action, $act, $act.goal.id == '\(goalID)').@count > 0")
+        
+        do {
+            results = try DataSource.shared.backgroundContext.fetch(fetchRequest)
+            for event in results {
+                // TODO: Delete notification in deleted Goal
+            }
+        } catch {
+            print(error)
+        }
+        success()
     }
     
     func countEvents() {

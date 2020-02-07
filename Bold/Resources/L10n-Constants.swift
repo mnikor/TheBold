@@ -11,6 +11,8 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name
 internal enum L10n {
+  /// Achieved
+  internal static let achieved = L10n.tr("Localizable", "Achieved")
   /// Add to plan
   internal static let addToPlan = L10n.tr("Localizable", "AddToPlan")
   /// All

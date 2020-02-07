@@ -38,6 +38,8 @@ internal enum StoryboardScene {
 
     internal static let editActionPlanViewController = SceneType<Bold.EditActionPlanViewController>(storyboard: AlertView.self, identifier: "EditActionPlanViewController")
 
+    internal static let editGoalViewController = SceneType<Bold.EditGoalViewController>(storyboard: AlertView.self, identifier: "EditGoalViewController")
+
     internal static let startActionViewController = SceneType<Bold.StartActionViewController>(storyboard: AlertView.self, identifier: "StartActionViewController")
 
     internal static let yearMonthAlertViewController = SceneType<Bold.YearMonthAlertViewController>(storyboard: AlertView.self, identifier: "YearMonthAlertViewController")

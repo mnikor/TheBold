@@ -10,13 +10,14 @@ import UIKit
 
 protocol ActivityCollectionTableViewCellDelegate: class {
     func tapShowAllActivity(type: HomeActionsTypeCell?)
-
     func tapItemCollection(goal: Goal)
-
     func activityCollectionTableViewCell(_ activityCollectionTableViewCell: ActivityCollectionTableViewCell, didTapAtItem indexPath: IndexPath)
-    
     func tapEmptyGoalsCell(type: ActivityViewModel?)
+    func longTap(goalID: String)
+}
 
+extension ActivityCollectionTableViewCellDelegate {
+    func longTap(goalID: String) {}
 }
 
 class ActivityCollectionTableViewCell: BaseTableViewCell {
@@ -48,8 +49,32 @@ class ActivityCollectionTableViewCell: BaseTableViewCell {
         
         registerXibs()
         configCollectionView()
+        addLongTapRecognizer()
     }
 
+    private func addLongTapRecognizer() {
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(activeLongPress(gesture:)))
+        longPress.minimumPressDuration = 1.0
+        longPress.delegate = self
+        collectionView.addGestureRecognizer(longPress)
+    }
+    
+    @objc private func activeLongPress(gesture : UILongPressGestureRecognizer!) {
+        if gesture.state != .began {
+            return
+        }
+        let p = gesture.location(in: self.collectionView)
+
+        if let indexPath = self.collectionView.indexPathForItem(at: p) {
+            let item = dataSource[indexPath.row]
+            if case .goal(goal: let goal) = item {
+                delegate?.longTap(goalID: goal.goal.id!)
+            }
+        } else {
+            print("couldn't find index path")
+        }
+    }
+    
     private func configCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self

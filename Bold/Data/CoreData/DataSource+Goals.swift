@@ -11,11 +11,12 @@ import CoreData
 protocol GoalsFunctionality {
     func createNewGoal()
     func updateGoal()
-    func deleteGoal()
+    func deleteGoal(goalID: String, success: @escaping VoidCallback)
     func goalsListForUpdate() -> [Goal]
 }
 
 extension DataSource: GoalsFunctionality {
+    
     func createNewGoal() {
         
     }
@@ -24,11 +25,42 @@ extension DataSource: GoalsFunctionality {
         
     }
     
-    func deleteGoal() {
-        NotificationService.shared.createStandardNotification(.goalDeleted(completion: { confirmationResult in
-            // TODO: - delete goal if true
-        }))
+    func doneGoal(goalID: String, success: ()->Void) {
+        
+        var results : Goal?
+        let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", goalID)
+        do {
+            results = try DataSource.shared.backgroundContext.fetch(fetchRequest).first
+        } catch {
+            print(error)
+        }
+        
+        if let result = results {
+            result.status = StatusType.completed.rawValue
+            DataSource.shared.saveBackgroundContext()
+            NotificationService.shared.createStandardNotification(.goalAchieved)
+            AlertViewService.shared.input(.congratulationsGoal(points: PointsForAction.congratulationsGoal, tapGet: {
+                LevelOfMasteryService.shared.input(.addPoints(points: PointsForAction.congratulationsGoal))
+            }))
+            // TODO: Что мы должны делать с Action после получения Achieved
+//            checkAllEventOfAction(actionID: result.action!.id!)
+        }
+        success()
     }
+    
+    func deleteGoal(goalID: String, success: @escaping VoidCallback) {
+        self.searchGoal(goalID: goalID) { (result) in
+            guard let goal = result else { return }
+            self.searchEventsReminder(goalID: goalID) {
+                DataSource.shared.backgroundContext.delete(goal)
+                DataSource.shared.saveBackgroundContext()
+            }
+            success()
+        }
+    }
+    
+    
     
     func goalsListForUpdate() -> [Goal] {
         

@@ -64,6 +64,8 @@ enum BaseStakesListInputPresenter {
     case longTapAction(event: Event)
     //по нажатию на экшен показываем алерт редактирования или перевода в статус сделано
     case selectEvent(indexPath: IndexPath)
+    //показываем алерт редактирования цели
+    case longTapGoal(goalID: String)
     
     case tapPlus
     case createGoal
@@ -154,6 +156,11 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
         case .longTapAction(event: let event):
             longTapAction(event: event)
             
+        case .longTapGoal(goalID: let goalID):
+            let vc = EditGoalViewController.createController(goalID: goalID) {
+                print("tap edit goal ok")
+            }
+            router.input(.longTapGoalPresentedBy(vc))
         case .selectEvent(indexPath: let indexPath):
             selectEvent(indexPath: indexPath)
             
@@ -250,7 +257,6 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
                     if case .calendar(viewModel: let viewModel) = sectionModel.section {
                         return viewModel.date.dayOfMonthOfYear() == newDate.dayOfMonthOfYear()
                     }
-                    
                     return false
                 }
                 dataSource = [calendarSection]
@@ -266,8 +272,8 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
         }
         
         DispatchQueue.main.async { [weak self] in
-            self?.viewController.tableView.backgroundView = (self?.dataSource.isEmpty ?? false) ? EmptyActView.loadFromNib() : UIView()
-            self?.viewController.tableView.reloadData()
+            self?.viewController?.tableView.backgroundView = (self?.dataSource.isEmpty ?? false) ? EmptyActView.loadFromNib() : UIView()
+            self?.viewController?.tableView.reloadData()
             self?.isLoadContent = false
         }
     }

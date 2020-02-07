@@ -30,9 +30,23 @@ class CreateGoalViewController: UIViewController, CreateGoalViewInputProtocol {
     var presenter: Presenter!
     var configurator: Configurator! = CreateGoalConfigurator()
     
+    @IBOutlet weak var navBarTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var navBar: BlueNavigationBar!
-    
     @IBOutlet weak var tableView: UITableView!
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupConfiguration()
+    }
+    
+    convenience init() {
+        self.init()
+        setupConfiguration()
+    }
+    
+    func setupConfiguration() {
+        configurator.configure(with: self)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -47,11 +61,16 @@ class CreateGoalViewController: UIViewController, CreateGoalViewInputProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configurator.configure(with: self)
         configureTableView()
         registerXibs()
         configNavigationController()
-        presenter.input(.createNewGoal)
+        
+        
+        if case .editGoalSheet(goalID: let goalID) = presenter.baseConfigType {
+            presenter.input(.editGoal(goalID: goalID))
+        }else {
+            presenter.input(.createNewGoal)
+        }
     }
     
     func registerXibs() {
@@ -60,6 +79,7 @@ class CreateGoalViewController: UIViewController, CreateGoalViewInputProtocol {
         tableView.registerNib(ColorCreateGoalTableViewCell.self)
         tableView.registerNib(ColorListCreateGoalTableViewCell.self)
         tableView.registerNib(IconListCreateGoalTableViewCell.self)
+        tableView.registerNib(HeaderTitleActionPlanTableViewCell.self)
     }
 
     func configNavigationController() {
@@ -78,10 +98,17 @@ class CreateGoalViewController: UIViewController, CreateGoalViewInputProtocol {
     func configureTableView() {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = Constants.rowHeight
-        let headerAndFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: Constants.heightHeader))
-        headerAndFooterView.backgroundColor = ColorName.tableViewBackground.color
-        tableView.tableHeaderView = headerAndFooterView
-        tableView.tableFooterView = headerAndFooterView
+        navBar.isHidden = presenter.baseConfigType != .createNewGoalVC
+        if presenter.baseConfigType == .createNewGoalVC {
+            let headerAndFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: Constants.heightHeader))
+            headerAndFooterView.backgroundColor = ColorName.tableViewBackground.color
+            tableView.tableHeaderView = headerAndFooterView
+            tableView.tableFooterView = headerAndFooterView
+        }else {
+            navBarTopConstraint.constant = -navBar.bounds.size.height
+            tableView.backgroundColor = .white
+            //tableView.isScrollEnabled = false
+        }
     }
     
     func input(_ inputCase: CreateGoalViewInput) {
@@ -95,7 +122,6 @@ class CreateGoalViewController: UIViewController, CreateGoalViewInputProtocol {
         tableView.reloadData()
         navBar.topItem?.rightBarButtonItem?.isEnabled = (presenter.modelView.nameGoal ?? "").count >= 3
     }
-    
 }
 
 
@@ -110,11 +136,11 @@ extension CreateGoalViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let viewFooter = UIView()
         viewFooter.backgroundColor = ColorName.tableViewBackground.color
-        return viewFooter
+        return presenter.baseConfigType == .createNewGoalVC ? viewFooter : nil
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return Constants.heightFooter
+        return presenter.baseConfigType == .createNewGoalVC ? Constants.heightFooter : 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -133,9 +159,17 @@ extension CreateGoalViewController: UITableViewDelegate, UITableViewDataSource {
             cell.config(modelView: item)
             cell.delegate = self
             return cell
+        case .headerEditAction:
+            let cell = tableView.dequeReusableCell(indexPath: indexPath) as HeaderTitleActionPlanTableViewCell
+            cell.config(modelView: item)
+            cell.delegate = self
+            return cell
         case .starts, .ends, .icons:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as SettingActionPlanTableViewCell
             cell.config(modelView: item)
+            if presenter.baseConfigType != .createNewGoalVC {
+                cell.isUserInteractionEnabled = presenter.isEditAction
+            }
             return cell
         case .color:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as ColorCreateGoalTableViewCell
@@ -145,17 +179,23 @@ extension CreateGoalViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as ColorListCreateGoalTableViewCell
             cell.config(modelView: item)
             cell.delegate = self
+            if presenter.baseConfigType != .createNewGoalVC {
+                cell.isUserInteractionEnabled = presenter.isEditAction
+            }
             return cell
         case .iconsList:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as IconListCreateGoalTableViewCell
             cell.config(modelView: item)
             cell.delegate = self
+            if presenter.baseConfigType != .createNewGoalVC {
+                cell.isUserInteractionEnabled = presenter.isEditAction
+            }
             return cell
         default:
             return UITableViewCell()
         }
     }
-    
+        
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         self.view.endEditing(true)
@@ -180,7 +220,6 @@ extension CreateGoalViewController: HeaderWriteActionsTableViewCellDelegate {
     func editingName(name: String) {
         navBar.topItem?.rightBarButtonItem?.isEnabled = name.count >= 3
     }
-    
     
     func tapIdeas() {
         presenter.input(.showIdeas)
@@ -218,5 +257,20 @@ extension CreateGoalViewController:  IdeasViewControllerDeleagte {
     
     func selectIdea(selectIdea: IdeasType) {
         presenter.input(.updateIdeas(selectIdea))
+    }
+}
+
+
+    // MARK: - HeaderTitleActionPlanTableViewCellDelegate
+
+extension CreateGoalViewController: HeaderTitleActionPlanTableViewCellDelegate {
+    
+    func changeEditAction() {
+        presenter.isEditAction = true
+        presenter.input(.updateDataSource)
+    }
+    
+    func updateNameAction(newName: String) {
+        presenter.input(.updateName(newName))
     }
 }

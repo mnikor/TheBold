@@ -13,6 +13,8 @@ typealias completeGoal = ()->Void
 
 enum CreateGoalInputInteractor {
     case createNewGoal(completeBackGoalModel)
+    case editGoal(Goal, completeBackGoalModel)
+    case updateGoal(completeGoal)
     case saveGoal(completeGoal)
     case deleteGoal(completeGoal)
     
@@ -53,6 +55,13 @@ class CreateGoalInteractor: CreateGoalInputInteractorProtocol {
         case .createNewGoal(let complete):
             completeUpdate = complete
             createnewGoal()
+        case .editGoal(let goal, let complete):
+            completeUpdate = complete
+            newGoal = goal
+            createModelView(goal: goal)
+        case .updateGoal(let complete):
+            DataSource.shared.saveBackgroundContext()
+            complete()
         case .saveGoal(let complete):
             saveGoal(complete: complete)
         case .deleteGoal(let complete):
@@ -64,11 +73,11 @@ class CreateGoalInteractor: CreateGoalInputInteractorProtocol {
             }
         case .updateStartDate(let date):
             newGoal.startDate = date as NSDate
-            checkValidateDate(date: date, isStartDate: true)
+            newGoal.endDate = date.checkValidateDate(date: newGoal.endDate, isStartDate: false)
             createModelView(goal: newGoal)
         case .updateEndDate(let date):
             newGoal.endDate = date as NSDate
-            checkValidateDate(date: date, isStartDate: false)
+            newGoal.startDate = date.checkValidateDate(date: newGoal.startDate, isStartDate: true)
             createModelView(goal: newGoal)
         case .updateColor(let colorType):
             newGoal.color = Int16(colorType.rawValue)
@@ -104,20 +113,6 @@ class CreateGoalInteractor: CreateGoalInputInteractorProtocol {
                                             icons: icons)
         
         completeUpdate(modelView)
-    }
-    
-    private func checkValidateDate(date:Date, isStartDate: Bool) {
-        
-        if isStartDate {
-            if date > newGoal.endDate! as Date {
-                newGoal.endDate = date as NSDate
-            }
-        }else {
-            if date < newGoal.startDate! as Date {
-                newGoal.startDate = date as NSDate
-            }
-        }
-        
     }
     
     private func dateFormatting(date: Date) -> String {

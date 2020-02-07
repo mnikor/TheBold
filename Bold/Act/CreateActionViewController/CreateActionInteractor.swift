@@ -223,6 +223,12 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
         if let goalIDTemp = goalID {
             DataSource.shared.searchGoal(goalID: goalIDTemp) { (goal) in
                 newAction.goal = goal
+                
+                let endDateAction = newAction.endDate! as Date
+                let endDate : Date? = newAction.goal?.endDate as Date?
+                if let endDateTemp = endDate, endDateTemp < endDateAction {
+                    newAction.endDate = endDateTemp as NSDate
+                }
             }
         }
         

@@ -8,15 +8,15 @@
 
 import Foundation
 
-enum CreateNewActionType {
+enum CreateActionControllerConfigType {
     case createNewActionVC
     case createNewActionSheet(contentID: String?)
     case editActionSheet(actionID: String?)
 }
 
-extension CreateNewActionType: Equatable {
+extension CreateActionControllerConfigType: Equatable {
     
-    public static func ==(lhs: CreateNewActionType, rhs: CreateNewActionType) -> Bool {
+    public static func ==(lhs: CreateActionControllerConfigType, rhs: CreateActionControllerConfigType) -> Bool {
         
         switch (lhs, rhs) {
         case (.createNewActionVC, .createNewActionVC):
@@ -82,10 +82,7 @@ class CreateActionPresenter: PresenterProtocol, CreateActionInputProtocol {
         }
     }
     var tapEditCallback : VoidCallback?
-    
-    
-    var baseConfigType = CreateNewActionType.createNewActionVC
-    
+    var baseConfigType = CreateActionControllerConfigType.createNewActionVC
     var modelView: CreateActionViewModel! {
         didSet {
             self.dataSource = updateDataSource()

@@ -26,7 +26,6 @@ class StakeActionTableViewCell: BaseTableViewCell {
     @IBOutlet weak var stakeStackView: UIStackView!
     
     weak var delegate: StakeActionTableViewCellDelegate?
-    
     private var event: Event!
     
     override func awakeFromNib() {
@@ -36,14 +35,14 @@ class StakeActionTableViewCell: BaseTableViewCell {
         addLongTapRecognizer()
     }
     
-    func addLongTapRecognizer() {
+    private func addLongTapRecognizer() {
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(activeLongPress(gesture:)))
         longPress.minimumPressDuration = 1.0
         longPress.delegate = self
         contentActionView.addGestureRecognizer(longPress)
     }
     
-    @objc func activeLongPress(gesture: UILongPressGestureRecognizer) {
+    @objc private func activeLongPress(gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
             print("Long press")
             delegate?.tapLongPress(event: event)

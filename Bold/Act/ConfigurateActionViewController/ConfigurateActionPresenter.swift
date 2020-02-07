@@ -125,16 +125,31 @@ class ConfigurateActionPresenter: PresenterProtocol, ConfigurateActionInputPrese
             action.startDate = Date().baseTime() as NSDate
             typeDataSource()
         case .tommorowStartDate:
-            let date = Date()
-            action.startDate = date.tommorowDay() as NSDate
+            let date = Date().baseTime()
+            let endDate : Date? = action.goal?.endDate as Date?
+            if let endDateTemp = endDate, endDateTemp < date.tommorowDay() {
+                action.startDate = endDateTemp as NSDate
+            }else {
+                action.startDate = date.tommorowDay() as NSDate
+            }
             typeDataSource()
         case .tommorowEndDate:
             let startDate = action.startDate! as Date
-            action.endDate = startDate.tommorowDay() as NSDate
+            let endDate : Date? = action.goal?.endDate as Date?
+            if let endDateTemp = endDate, endDateTemp < startDate.tommorowDay() {
+                action.endDate = endDateTemp as NSDate
+            }else {
+                action.endDate = startDate.tommorowDay() as NSDate
+            }
             typeDataSource()
         case .afterOneWeek:
             let startDate = action.startDate! as Date
-            action.endDate = startDate.afterOneWeek() as NSDate
+            let endDate : Date? = action.goal?.endDate as Date?
+            if let endDateTemp = endDate, endDateTemp < startDate.afterOneWeek() {
+                action.endDate = endDateTemp as NSDate
+            }else {
+                action.endDate = startDate.afterOneWeek() as NSDate
+            }
             typeDataSource()
         case .noRepeat:
             allDaysOfWeek(isOn: false, updateDataSource: true)
@@ -245,8 +260,10 @@ class ConfigurateActionPresenter: PresenterProtocol, ConfigurateActionInputPrese
             switch type {
             case .startDate:
                 self?.action.startDate = date as NSDate
+                self?.action.endDate = date.checkValidateDate(date: self?.action.endDate, isStartDate: false)
             case .endDate:
                 self?.action.endDate = date as NSDate
+                self?.action.startDate = date.checkValidateDate(date: self?.action.startDate, isStartDate: true)
             case .time:
                 self?.action.reminderMe?.isSetTime = true
                 self?.action.reminderMe?.timeInterval = Int32(date.convertDateToInt())

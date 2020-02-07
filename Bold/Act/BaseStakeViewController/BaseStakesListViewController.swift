@@ -176,7 +176,7 @@ extension BaseStakesListViewController: UITableViewDelegate, UITableViewDataSour
         
         if case .calendar(viewModel: let model) = section.section {
             switch model.type {
-            case .calendar, .goal:
+            case .goal:
                 return
             default:
                 presenter.input(.selectEvent(indexPath: indexPath))
@@ -249,4 +249,8 @@ extension BaseStakesListViewController: ActivityCollectionTableViewCellDelegate 
         presenter.input(.createGoal)
     }
     
+    func longTap(goalID: String) {
+        print("long Tap Goal = \(goalID)")
+        presenter.input(.longTapGoal(goalID: goalID))
+    }
 }

@@ -79,4 +79,19 @@ extension Date {
         let components = calendar.dateComponents([.day, .month, .year], from: self)
         return calendar.date(from: components)!
     }
+    
+    func checkValidateDate(date:NSDate?, isStartDate: Bool) -> NSDate? {
+        
+        guard let dateUnwrap = date as NSDate? else {return date}
+        if isStartDate {
+            if self < dateUnwrap as Date {
+                return self as NSDate
+            }
+        }else {
+            if self > dateUnwrap as Date {
+                return self as NSDate
+            }
+        }
+        return dateUnwrap
+    }
 }

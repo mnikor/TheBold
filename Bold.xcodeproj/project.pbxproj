@@ -118,6 +118,7 @@
 		F107539122F0A2830078C71C /* DayOfWeekCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F107538F22F0A2830078C71C /* DayOfWeekCollectionViewCell.xib */; };
 		F107539422F20C0B0078C71C /* EnterYourGoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107539222F20C0B0078C71C /* EnterYourGoalTableViewCell.swift */; };
 		F107539522F20C0B0078C71C /* EnterYourGoalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F107539322F20C0B0078C71C /* EnterYourGoalTableViewCell.xib */; };
+		F109A6DF23EAF11A006BA027 /* EditGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109A6DE23EAF11A006BA027 /* EditGoalViewController.swift */; };
 		F10B69BF22EB168B00E47315 /* IdeasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B69BE22EB168B00E47315 /* IdeasViewController.swift */; };
 		F10B69C222EB16F800E47315 /* IdeasConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B69C122EB16F800E47315 /* IdeasConfigurator.swift */; };
 		F10B69C422EB170B00E47315 /* IdeasPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B69C322EB170B00E47315 /* IdeasPresenter.swift */; };
@@ -560,6 +561,7 @@
 		F107538F22F0A2830078C71C /* DayOfWeekCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayOfWeekCollectionViewCell.xib; sourceTree = "<group>"; };
 		F107539222F20C0B0078C71C /* EnterYourGoalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterYourGoalTableViewCell.swift; sourceTree = "<group>"; };
 		F107539322F20C0B0078C71C /* EnterYourGoalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnterYourGoalTableViewCell.xib; sourceTree = "<group>"; };
+		F109A6DE23EAF11A006BA027 /* EditGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalViewController.swift; sourceTree = "<group>"; };
 		F10B69BE22EB168B00E47315 /* IdeasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasViewController.swift; sourceTree = "<group>"; };
 		F10B69C122EB16F800E47315 /* IdeasConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasConfigurator.swift; sourceTree = "<group>"; };
 		F10B69C322EB170B00E47315 /* IdeasPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasPresenter.swift; sourceTree = "<group>"; };
@@ -1774,6 +1776,7 @@
 				F1B2B1D322FC62DD00C327B0 /* YearMonthAlertViewController.swift */,
 				F1CCC71222CE228800E7B637 /* AddActionPlanViewController.swift */,
 				F1CCC71D22CE854900E7B637 /* EditActionPlanViewController.swift */,
+				F109A6DE23EAF11A006BA027 /* EditGoalViewController.swift */,
 				F19A98AD22D6551E00A0492E /* BaseAlertViewController.swift */,
 				F19A98BB22D7A06F00A0492E /* StartActionViewController.swift */,
 				F1130CEB230FF34E008FA60D /* DownloadsActionViewController.swift */,
@@ -2570,6 +2573,7 @@
 				C57C9AD723866141001F41CB /* FileLoader.swift in Sources */,
 				F162A78B22C2400D008292E8 /* ListenOrReadTableViewCell.swift in Sources */,
 				F1F406072302D0450091B774 /* BlueNavigationBar.swift in Sources */,
+				F109A6DF23EAF11A006BA027 /* EditGoalViewController.swift in Sources */,
 				F1F4060D230313960091B774 /* ProfileRequestDescriptor.swift in Sources */,
 				C50FE4D62395594A008DD7C8 /* CollectionViewCellAnimationFactory.swift in Sources */,
 				F1EAF59A22E8AA79008073D7 /* ConfigurateActionPresenter.swift in Sources */,

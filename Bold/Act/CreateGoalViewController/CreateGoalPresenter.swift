@@ -8,18 +8,49 @@
 
 import Foundation
 
+enum CreateGoalControllerConfigType {
+    case createNewGoalVC
+    case editGoalSheet(goalID: String)
+}
+
+extension CreateGoalControllerConfigType : Equatable {
+    
+    public static func ==(lhs: CreateGoalControllerConfigType, rhs: CreateGoalControllerConfigType) -> Bool {
+        
+        switch (lhs, rhs) {
+        case (.createNewGoalVC, .createNewGoalVC):
+            return true
+        case (.editGoalSheet, .editGoalSheet):
+            return true
+        case (.editGoalSheet(goalID: let a), .editGoalSheet(goalID: let b)):
+            return a == b
+        case (.editGoalSheet(_), _):
+            return false
+        case (.editGoalSheet, .createNewGoalVC):
+            return false
+        case (.createNewGoalVC, .editGoalSheet):
+            return false
+        case (_, .editGoalSheet(_)):
+            return false
+        }
+    }
+}
+
 enum CreateGoalInputPresenter {
     case save
     case cancel
-    case showDateAlert(DateAlertType)
     
     case createNewGoal
+    case editGoal(goalID: String)
+    case updateGoal(VoidCallback)
     case showIdeas
+    case updateDataSource
     
     case updateIdeas(IdeasType)
     case updateName(String)
-    case updateStartDate(Date)
-    case updateEndDate(Date)
+    case showDateAlert(DateAlertType)
+//    case updateStartDate(Date)
+//    case updateEndDate(Date)
     case updateColor(ColorGoalType)
     case updateIcon(IdeasType)
 }
@@ -38,6 +69,7 @@ class CreateGoalPresenter: PresenterProtocol, CreateGoalInputPresenterProtocol {
     var interactor: Interactor!
     var router: Router!
     
+    var baseConfigType = CreateGoalControllerConfigType.createNewGoalVC
     var selectIdea: IdeasType = .none
     var modelView: CreateGoalViewModel! {
         didSet {
@@ -45,6 +77,13 @@ class CreateGoalPresenter: PresenterProtocol, CreateGoalInputPresenterProtocol {
             self.viewController.input(.updateState)
         }
     }
+    
+    var isEditAction: Bool = false {
+        didSet {
+            tapEditCallback?()
+        }
+    }
+    var tapEditCallback : VoidCallback?
     
     lazy var dataSource: [CreateGoalSectionModel] = {
         guard let modelView = modelView else {
@@ -71,8 +110,13 @@ class CreateGoalPresenter: PresenterProtocol, CreateGoalInputPresenterProtocol {
             interactor.input(.deleteGoal({ [weak self] in
                 self?.router.input(.cancel)
             }))
+        case .updateGoal(let complete):
+            interactor.input(.updateGoal(complete))
         case .showIdeas:
             selectedIdea()
+        case .updateDataSource:
+            self.dataSource = updateDataSource()
+            self.viewController.input(.updateState)
         case .updateIdeas(let idea):
             selectIdea = idea
             self.interactor.input(.updateName(idea.titleText()))
@@ -87,10 +131,22 @@ class CreateGoalPresenter: PresenterProtocol, CreateGoalInputPresenterProtocol {
             self.interactor.input(.updateIcon(iconType))
         case .createNewGoal:
             createNewGoal()
-        case .updateStartDate(_):
-            print("case .updateStartDate(_)")
-        case .updateEndDate(_):
-            print("case .updateEndDate(_)")
+        case .editGoal(goalID: let goalID):
+            editGoalID(goalID)
+//        case .updateStartDate(_):
+//            print("case .updateStartDate(_)")
+//        case .updateEndDate(_):
+//            print("case .updateEndDate(_)")
+        }
+    }
+    
+    func editGoalID(_ goalID: String) {
+        DataSource.shared.searchGoal(goalID: goalID) {[unowned self] (findGoal) in
+            
+            guard let goal = findGoal else {return}
+            interactor.input(.editGoal(goal, {[weak self] (modelView) in
+                self?.modelView = modelView
+            }))
         }
     }
     
@@ -125,8 +181,7 @@ class CreateGoalPresenter: PresenterProtocol, CreateGoalInputPresenterProtocol {
     
     private func updateDataSource() -> [CreateGoalSectionModel] {
         
-        return [CreateGoalSectionModel(title: nil, items: [CreateGoalActionModel(type: .headerWriteActivity, modelValue: .header(.goal, modelView.nameGoal))
-                    ]),
+        return [headerGoalSectionModel(),
                 CreateGoalSectionModel(title: nil, items: [CreateGoalActionModel(type: .starts, modelValue: .date(modelView.startDateString)),
                                                            CreateGoalActionModel(type: .ends, modelValue: .date(modelView.endDateString)),
                                                            CreateGoalActionModel(type: .color, modelValue: .color(modelView.color)),
@@ -136,6 +191,18 @@ class CreateGoalPresenter: PresenterProtocol, CreateGoalInputPresenterProtocol {
                                                            CreateGoalActionModel(type: .iconsList, modelValue: .icons(modelView.icons, modelView.icon, modelView.color))
                     ])
         ]
+    }
+    
+    private func headerGoalSectionModel() -> CreateGoalSectionModel {
+        if baseConfigType == .createNewGoalVC {
+            return CreateGoalSectionModel(title: nil,
+                                          items: [CreateGoalActionModel(type: .headerWriteActivity, modelValue: .header(.goal, modelView.nameGoal))
+            ])
+        }else {
+            return CreateGoalSectionModel(title: nil,
+                                          items: [CreateGoalActionModel(type: .headerEditAction, modelValue: .headerEdit(statusEdit: isEditAction, name: modelView.nameGoal))
+            ])
+        }
     }
     
     private func createNewGoal() {
