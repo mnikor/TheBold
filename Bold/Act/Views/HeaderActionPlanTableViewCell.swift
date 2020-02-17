@@ -25,7 +25,9 @@ class HeaderActionPlanTableViewCell: BaseTableViewCell {
         
         if case .headerContent(let contentModel) = modelView.modelValue, let content = contentModel {
             
-            contentImageView.image = content.image
+            if let imagePath = content.imagePath {
+                contentImageView.setImageAnimated(path: imagePath, placeholder: Asset.addActionHeader.image)
+            }
             titleLabel.text = content.title
             subtitleLabel.text = content.subtitle
             pointsLabel.text = content.points

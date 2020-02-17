@@ -214,6 +214,7 @@ class NotificationService: NSObject {
                 return (action, actionCompletion)
             }
             self.addRequest(with: requestIdentifier, content: content, trigger: trigger)
+            completion(true)
         }
     }
     

@@ -15,26 +15,28 @@ enum PlayerState {
     case paused
 }
 
-protocol ContentToolBarDelegate: class {
-    func saveContent()
-    func removeFromCache()
-    func likeContent(_ isLiked: Bool)
-    func playerStoped(with totalDuration: TimeInterval)
-    func addActionPlan()
-}
+//protocol ContentToolBarDelegate: class {
+//    func saveContent()
+//    func removeFromCache()
+//    func likeContent(_ isLiked: Bool)
+//    func playerStoped(with totalDuration: TimeInterval)
+//    func addActionPlan()
+//}
 
 class PlayerViewController: UIViewController, ViewProtocol {
     
     typealias Presenter = PlayerPresenter
     typealias Configurator = PlayerConfigurator
     
-    weak var delegate: ContentToolBarDelegate?
+    //    weak var delegate: ContentToolBarDelegate?
     
     var presenter: Presenter!
     var configurator: Configurator! = PlayerConfigurator()
     
     var isDownloadedContent: Bool = false
-
+    var contentID: Int?
+    var selectedContent: ActivityContent?
+    
     @IBOutlet weak var playerView: UIView!
     @IBOutlet var playerListView: PlayerListView!
     
@@ -47,7 +49,6 @@ class PlayerViewController: UIViewController, ViewProtocol {
     @IBOutlet weak var currentTimeSongLabel: UILabel!
     @IBOutlet weak var durationSongLabel: UILabel!
     @IBOutlet weak var slider: UISlider!
-    //    @IBOutlet weak var progressView: UIProgressView!
     
     
     @IBOutlet weak var previousButton: UIButton!
@@ -107,32 +108,40 @@ class PlayerViewController: UIViewController, ViewProtocol {
     
     @IBAction func tapDownloadButton(_ sender: UIBarButtonItem) {
         if !isDownloadedContent && !buttonsToolbar.dowload {
-            buttonsToolbar.dowload = !buttonsToolbar.dowload
-            downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
-            downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
-            delegate?.saveContent()
+            isDownloadedContent = !isDownloadedContent
+            configureDowloadButton()
+            guard let content = selectedContent else { return }
+            DataSource.shared.saveContent(content: content)
+        }else {
+            isDownloadedContent = !isDownloadedContent
+            configureDowloadButton()
+            guard let content = selectedContent else { return }
+            DataSource.shared.deleteContent(content: content)
         }
+        
     }
     
     @IBAction func tapLikeButton(_ sender: UIBarButtonItem) {
         buttonsToolbar.like = !buttonsToolbar.like
         likeButton.image = buttonsToolbar.like == false ? Asset.playerLikeIcon.image : Asset.playerLikedIcon.image
         likeButton.tintColor = buttonsToolbar.like == false ? .gray : ColorName.primaryRed.color
-        delegate?.likeContent(buttonsToolbar.like)
+        //        delegate?.likeContent(buttonsToolbar.like)
+        selectedContent?.likeContent(buttonsToolbar.like)
     }
     
     
     @IBAction func tapShowAddAction(_ sender: UIBarButtonItem) {
-        delegate?.addActionPlan()
-//        let vc = AddActionPlanViewController.createController {
-//            print("tap add action")
-//        }
-//        vc.presentedBy(self)
+        
+        guard let selectedContent = selectedContent else {return}
+        
+        AlertViewService.shared.input(.addAction(content: selectedContent, tapAddPlan: {
+            print("tap add action")
+        }))
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configurator.configure(with: self)
         switch AudioService.shared.image {
         case .image(let image):
@@ -150,6 +159,9 @@ class PlayerViewController: UIViewController, ViewProtocol {
         addSwipe()
         configureSliderAction()
         AudioService.shared.delegate = self
+        if let content = selectedContent {
+            isDownloadedContent = DataSource.shared.contains(content: content)
+        }
         configureDowloadButton()
     }
     
@@ -194,6 +206,31 @@ class PlayerViewController: UIViewController, ViewProtocol {
         return addVC
     }
     
+    class func createController(content: ActivityContent?) {
+        
+        guard let content = content else { return }
+        
+        let playerVC = PlayerViewController.createController()
+        playerVC.selectedContent = content
+        
+        AudioService.shared.config(fullImage: content.imageURL, smallImage: content.smallImageURL, tracks: content.audioTracks)
+        AudioService.shared.delegate = playerVC
+        AudioService.shared.input(.fullView(activityType: {(activityType) in
+            
+            switch activityType {
+            case .appearing:
+                UIApplication.topViewController?.present(playerVC, animated: true) {
+                    if content.type != .meditation {
+                        playerVC.play()
+                    }
+                }
+            default:
+                break
+            }
+            
+        }))
+    }
+    
     func present(_ vc: UIViewController) {
         vc.present(self, animated: true, completion: nil)
     }
@@ -207,7 +244,9 @@ class PlayerViewController: UIViewController, ViewProtocol {
     @objc func userSwipe() {
         if AudioService.shared.isPlaying() {
             dismiss(animated: true) {
-                AudioService.shared.showSmallPlayer()
+                let smallPlayer = PlayerSmallView()
+                smallPlayer.currentContent = self.selectedContent
+                AudioService.shared.input(.showSmallPlayer)
             }
         } else {
             AudioService.shared.input(.stop)
@@ -231,6 +270,11 @@ class PlayerViewController: UIViewController, ViewProtocol {
 
 
 extension PlayerViewController: AudioServiceDelegate {
+    
+    func playerStoped(with totalDuration: TimeInterval) {
+        selectedContent?.playerStoped(with: totalDuration)
+    }
+    
     func playerPaused() {
         timer?.invalidate()
     }
@@ -245,7 +289,7 @@ extension PlayerViewController: AudioServiceDelegate {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             self?.updateTimer()
         }
-
+        
     }
     
     func playerFailed() {

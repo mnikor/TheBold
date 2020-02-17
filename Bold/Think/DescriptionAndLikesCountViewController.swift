@@ -33,10 +33,7 @@ class DescriptionAndLikesCountViewController: UIViewController {
     }
     
     @IBAction func didTapAtPlayerButton(_ sender: UIButton) {
-        AudioService.shared.tracks = viewModel?.audioTracks ?? []
-        AudioService.shared.image = viewModel?.image
-        AudioService.shared.startPlayer(isPlaying: true, isDownloadedContent: isDownloadedContent)
-        AudioService.shared.playerDelegate = audioPlayerDelegate
+        PlayerViewController.createController(content: viewModel?.content)
     }
     
     @IBAction func didTapAtDownloadButton(_ sender: UIBarButtonItem) {
@@ -44,28 +41,25 @@ class DescriptionAndLikesCountViewController: UIViewController {
             buttonsToolbar.dowload = !buttonsToolbar.dowload
 //            downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
             downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
-            audioPlayerDelegate?.saveContent()
+//            audioPlayerDelegate?.saveContent()
         }
     }
     
     @IBAction func didTapAtAddActionPlan(_ sender: UIBarButtonItem) {
-        audioPlayerDelegate?.addActionPlan()
-//        let vc = AddActionPlanViewController.createController {
-//            print("tap add action")
-//        }
-//        vc.presentedBy(self)
+        AlertViewService.shared.input(.addAction(content: viewModel?.content, tapAddPlan: {
+            print("didTapAtAddActionPlan")
+        }))
     }
     
     @IBAction func didTapAtLikeButton(_ sender: UIBarButtonItem) {
         buttonsToolbar.like = !buttonsToolbar.like
         likeButton.image = buttonsToolbar.like == false ? Asset.playerLikeIcon.image : Asset.playerLikedIcon.image
         likeButton.tintColor = buttonsToolbar.like == false ? .gray : ColorName.primaryRed.color
-        audioPlayerDelegate?.likeContent(buttonsToolbar.like)
+//        audioPlayerDelegate?.likeContent(buttonsToolbar.like)
     }
     
     var percent : CGFloat = 0
     var viewModel: DescriptionViewModel?
-    weak var audioPlayerDelegate: ContentToolBarDelegate?
     
     private var pdfView: UIView?
     private var loader = LoaderView(frame: .zero)
@@ -188,11 +182,9 @@ class DescriptionAndLikesCountViewController: UIViewController {
 
 extension DescriptionAndLikesCountViewController: OverTabbarViewDelegate {
     func tapAddAction() {
-        audioPlayerDelegate?.addActionPlan()
-//        let addVC = AddActionPlanViewController.createController {
-//            print("tap AddActionPlan")
-//        }
-//        addVC.presentedBy(self)
+        AlertViewService.shared.input(.addAction(content: viewModel?.content, tapAddPlan: {
+            print("tapAddAction")
+        }))
     }
     
     func tapShare() {

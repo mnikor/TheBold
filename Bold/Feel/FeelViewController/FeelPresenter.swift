@@ -49,13 +49,18 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
         case .prepareDataSource(types: let types, completion: let completion):
             prepareDataSource(types: types, completion: completion)
         case .addActionPlan(let content):
-            let vc = AddActionPlanViewController.createController {
-                print("create add action")
-            }
-            vc.contentID = String(content.id)
-            interactor.input(.downloadContent(content))
+//            let vc = AddActionPlanViewController.createController {
+//                print("create add action")
+//            }
+//            vc.contentID = String(content.id)
             
-            router.input(.present(vc))
+            AlertViewService.shared.input(.addAction(content: content, tapAddPlan: {
+                print("create add action")
+            }))
+            
+//            interactor.input(.downloadContent(content))
+            
+//            router.input(.present(vc))
         }
     }
     
@@ -95,12 +100,11 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
         case .lesson, .story:
             let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
             vc.viewModel = DescriptionViewModel.map(activityContent: content)
-            vc.audioPlayerDelegate = viewController
             vc.isDownloadedContent = isDownloadedContent
             router.input(.present(vc))
         default:
             interactor.input(.prepareTracks(content: content))
-            router.input(.showPlayer(isPlaying: content.type != .meditation, isDownloadedContent: isDownloadedContent))
+            router.input(.showPlayer(isPlaying: content.type != .meditation, isDownloadedContent: isDownloadedContent, content: content))
         }
         
         

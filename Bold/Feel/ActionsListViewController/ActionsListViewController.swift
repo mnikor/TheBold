@@ -216,15 +216,11 @@ extension ActionsListViewController {
         case .lesson, .story:
             let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
             vc.viewModel = DescriptionViewModel.map(activityContent: content)
-            vc.audioPlayerDelegate = self
             vc.isDownloadedContent = DataSource.shared.contains(content: content)
             navigationController?.present(vc, animated: true, completion: nil)
         default:
-            AudioService.shared.tracks = content.audioTracks
-            AudioService.shared.image = .path(content.imageURL)
-            AudioService.shared.startPlayer(isPlaying: content.type != .meditation,
-                                            isDownloadedContent: DataSource.shared.contains(content: content))
-            AudioService.shared.playerDelegate = self
+            
+            PlayerViewController.createController(content: content)
         }
         
 //        if actions[indexPath.row].type == .action {
@@ -237,57 +233,57 @@ extension ActionsListViewController {
     
 }
 
-extension ActionsListViewController: ContentToolBarDelegate {
-    func saveContent() {
-        guard let content = selectedContent else { return }
-        DataSource.shared.saveContent(content: content)
-    }
-    
-    func removeFromCache() {
-        guard let content = selectedContent else { return }
-        DataSource.shared.deleteContent(content: content)
-    }
-    
-    func likeContent(_ isLiked: Bool) {
-        guard let content = selectedContent else { return }
-    }
-    
-    func playerStoped(with totalDuration: TimeInterval) {
-        guard let type = selectedContent?.type else { return }
-        let durationInMinutes = Int(totalDuration / 60)
-        boldnessChanged(duration: durationInMinutes)
-        switch type {
-        case .meditation:
-            if durationInMinutes >= 7 {
-                updatePoints()
-            }
-        case .hypnosis:
-            if durationInMinutes >= 20 {
-                updatePoints()
-            }
-        case .preptalk:
-            if totalDuration >= 3 {
-                updatePoints()
-            }
-        case .story:
-            // TODO: - story duration
-            break
-        case .lesson, .quote:
-            break
-        }
-    }
-    
-    private func boldnessChanged(duration: Int) {
-        SettingsService.shared.boldness += duration
-    }
-    
-    private func updatePoints() {
-        LevelOfMasteryService.shared.input(.addPoints(points: 10))
-    }
-    
-    func addActionPlan() {
-        guard let content = selectedContent else { return }
-        presenter.input(.addActionPlan(content))
-    }
-    
-}
+//extension ActionsListViewController: ContentToolBarDelegate {
+//    func saveContent() {
+//        guard let content = selectedContent else { return }
+//        DataSource.shared.saveContent(content: content)
+//    }
+//
+//    func removeFromCache() {
+//        guard let content = selectedContent else { return }
+//        DataSource.shared.deleteContent(content: content)
+//    }
+//
+//    func likeContent(_ isLiked: Bool) {
+//        guard let content = selectedContent else { return }
+//    }
+//
+//    func playerStoped(with totalDuration: TimeInterval) {
+//        guard let type = selectedContent?.type else { return }
+//        let durationInMinutes = Int(totalDuration / 60)
+//        boldnessChanged(duration: durationInMinutes)
+//        switch type {
+//        case .meditation:
+//            if durationInMinutes >= 7 {
+//                updatePoints()
+//            }
+//        case .hypnosis:
+//            if durationInMinutes >= 20 {
+//                updatePoints()
+//            }
+//        case .preptalk:
+//            if totalDuration >= 3 {
+//                updatePoints()
+//            }
+//        case .story:
+//            // TODO: - story duration
+//            break
+//        case .lesson, .quote:
+//            break
+//        }
+//    }
+//
+//    private func boldnessChanged(duration: Int) {
+//        SettingsService.shared.boldness += duration
+//    }
+//
+//    private func updatePoints() {
+//        LevelOfMasteryService.shared.input(.addPoints(points: 10))
+//    }
+//
+//    func addActionPlan() {
+//        guard let content = selectedContent else { return }
+//        presenter.input(.addActionPlan(content))
+//    }
+//
+//}

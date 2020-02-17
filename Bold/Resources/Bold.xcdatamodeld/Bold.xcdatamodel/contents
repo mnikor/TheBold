@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Action" representedClassName=".Action" syncable="YES">
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="endDateType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -19,6 +19,7 @@
         <attribute name="authorName" optional="YES" attributeType="String"/>
         <attribute name="authorPhotoUrl" optional="YES" attributeType="String"/>
         <attribute name="body" optional="YES" attributeType="String"/>
+        <attribute name="durationRead" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="footer" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="imageUrl" optional="YES" attributeType="String"/>
@@ -89,7 +90,7 @@
     </entity>
     <elements>
         <element name="Action" positionX="107.0234375" positionY="-111.89453125" width="128" height="238"/>
-        <element name="Content" positionX="311.4296875" positionY="-12.078125" width="128" height="283"/>
+        <element name="Content" positionX="311.4296875" positionY="-12.078125" width="128" height="298"/>
         <element name="DaysOfWeek" positionX="-74.8515625" positionY="264.7265625" width="128" height="163"/>
         <element name="Event" positionX="-113.421875" positionY="-246.47265625" width="128" height="163"/>
         <element name="File" positionX="106.078125" positionY="219.77734375" width="128" height="163"/>

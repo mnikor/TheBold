@@ -17,6 +17,7 @@ struct DescriptionViewModel {
     var audioTracks: [AudioPlayerTrackInfo]
     var isLikesEnabled: Bool
     var toolbarIsHidden: Bool = false
+    var content: ActivityContent? = nil
     
     static func map(activityContent: ActivityContent) -> DescriptionViewModel {
         let documentURL: URL?
@@ -34,7 +35,8 @@ struct DescriptionViewModel {
                                     title: activityContent.title,
                                     category: activityContent.type,
                                     audioTracks: activityContent.audioTracks,
-                                    isLikesEnabled: true)
+                                    isLikesEnabled: true,
+                                    content: activityContent)
     }
     
     static func map(feelType: FeelTypeCell) -> DescriptionViewModel {

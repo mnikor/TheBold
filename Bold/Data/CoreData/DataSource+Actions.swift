@@ -25,19 +25,21 @@ extension DataSource: ActionsFunctionality {
         
         searchAction(actionID: actionID) { (result) in
             guard let action = result else { return }
-            let goalID = action.id
+            let goalID = action.goal?.id
             NotificationService.shared.createStandardNotification(.actionDeleted(completion: { [weak self] confirmationResult in
                 if confirmationResult {
                     DataSource.shared.backgroundContext.delete(action)
                     DataSource.shared.saveBackgroundContext()
-                    self?.checkAllActionOfGoal(goalID: goalID!)
+                    self?.checkAllActionOfGoal(goalID: goalID)
                     success()
                 }
             }))
         }
     }
     
-    func checkAllActionOfGoal(goalID: String) {
+    func checkAllActionOfGoal(goalID: String?) {
+        
+        guard let goalID = goalID else { return }
         
         var results : [Action]!
         let fetchRequest = NSFetchRequest<Action>(entityName: "Action")

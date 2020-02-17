@@ -36,7 +36,7 @@ class ActionsListRouter: RouterProtocol, ActionsListRouterProtocol {
         case .info(let type):
             let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
             vc.viewModel = DescriptionViewModel.map(feelType: type)
-            vc.audioPlayerDelegate = viewController
+//            vc.audioPlayerDelegate = viewController
             viewController.navigationController?.present(vc, animated: true, completion: nil)
         case .presentedBy(let vController):
             if let topVC = UIApplication.topViewController {

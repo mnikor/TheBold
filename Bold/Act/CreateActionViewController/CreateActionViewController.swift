@@ -52,7 +52,10 @@ class CreateActionViewController: UIViewController, ViewProtocol, AlertDisplayab
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.isHidden = false
-        //DataSource.shared.resetBackgroundContext()
+    }
+    
+    deinit {
+        DataSource.shared.resetBackgroundContext()
     }
     
     override func viewDidLoad() {
@@ -62,11 +65,21 @@ class CreateActionViewController: UIViewController, ViewProtocol, AlertDisplayab
         configNavigationController()
         configureTableView()
         
-        if case .editActionSheet(actionID: let actionID) = presenter.baseConfigType {
+        switch presenter.baseConfigType {
+        case .editActionSheet(actionID: let actionID):
             presenter.input(.searchAction(actionID: actionID))
-        }else {
+        case .createNewActionSheet(contentID: let contentID):
+            presenter.contentID = contentID
+            fallthrough
+        case .createNewActionVC:
             presenter.input(.createNewAction)
         }
+        
+//        if case .editActionSheet(actionID: let actionID) = presenter.baseConfigType {
+//            presenter.input(.searchAction(actionID: actionID))
+//        }else {
+//            presenter.input(.createNewAction)
+//        }
     }
     
     func configureTableView() {

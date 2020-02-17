@@ -445,22 +445,22 @@
                                                 </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5min" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bop-vw-iDW">
-                                                <rect key="frame" x="274" y="32" width="39" height="18.5"/>
+                                                <rect key="frame" x="280" y="32.5" width="33" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="5Mx-P7-tgn">
-                                                <rect key="frame" x="30" y="166.5" width="283" height="124.5"/>
+                                                <rect key="frame" x="30" y="205" width="283" height="86"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arnold Schvarzenegger" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tuv-ov-NWk">
-                                                        <rect key="frame" x="0.0" y="0.0" width="203" height="21"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="178" height="20"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Morning intention" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AoE-zS-8Im" customClass="FixedPaddingTextView" customModule="Bold" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="35" width="152" height="89.5"/>
+                                                        <rect key="frame" x="0.0" y="34" width="245.5" height="52"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="30"/>
@@ -527,7 +527,7 @@
                             <constraint firstItem="CfP-VE-1Z2" firstAttribute="bottom" secondItem="YjN-aI-ixg" secondAttribute="bottom" id="ScS-Jz-fGP"/>
                             <constraint firstItem="CfP-VE-1Z2" firstAttribute="leading" secondItem="YjN-aI-ixg" secondAttribute="leading" id="Yq0-SZ-XNE"/>
                             <constraint firstItem="CfP-VE-1Z2" firstAttribute="trailing" secondItem="YjN-aI-ixg" secondAttribute="trailing" id="fNq-XB-3mM"/>
-                            <constraint firstItem="YjN-aI-ixg" firstAttribute="bottom" secondItem="Wk8-Rr-oAs" secondAttribute="bottom" id="lZy-a1-E7W"/>
+                            <constraint firstAttribute="bottom" secondItem="Wk8-Rr-oAs" secondAttribute="bottom" id="lZy-a1-E7W"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YjN-aI-ixg"/>
                     </view>
@@ -539,6 +539,7 @@
                         <outlet property="durationLabel" destination="Bop-vw-iDW" id="YCa-Gd-Qbz"/>
                         <outlet property="overlayView" destination="CfP-VE-1Z2" id="si9-Rq-fNo"/>
                         <outlet property="startButton" destination="IlK-bb-MoK" id="Msv-mf-AoR"/>
+                        <outlet property="timeButton" destination="QQs-LD-uBH" id="P3X-LG-RI1"/>
                         <outlet property="titleTextView" destination="AoE-zS-8Im" id="hFL-vN-een"/>
                     </connections>
                 </viewController>

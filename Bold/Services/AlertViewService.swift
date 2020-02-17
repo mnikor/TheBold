@@ -28,10 +28,10 @@ enum AlertViewServiceInput {
     case deleteAction(points: Int, tapYes: VoidCallback)
     case deleteStake(points: Int, tapYes: VoidCallback)
     
-    case addAction(tapAddPlan: VoidCallback)
+    case addAction(content: ActivityContent?, tapAddPlan: VoidCallback)
     case editAction(actionID: String?, eventID: String?, points: Int, tapAddPlan: VoidCallback, tapDelete: VoidCallback)
     
-    case startActionForContent(tapStartNow: VoidCallback)
+    case startActionForContent(content: Content, tapStartNow: VoidCallback)
     case startActionForContentOrDelete(item: DownloadsEntity?, tapAddPlan: VoidCallback, tapDelete: VoidCallback)
     
     case dateAlert(type:DateAlertType, currentDate:Date?, startDate: Date?, endDate:Date?, tapConfirm: Callback<Date>)
@@ -66,13 +66,13 @@ class AlertViewService: NSObject, AlertViewServiceInputProtocol {
         case .deleteStake(points: let points, tapYes: let tapYes):
             createViewController(points: points, type: .dontGiveUpDeleteStake, tapOk: tapYes)
             
-        case .addAction(tapAddPlan: let tapAddPlan):
-            createAddAction(tapAdd: tapAddPlan)
+        case .addAction(content: let content, tapAddPlan: let tapAddPlan):
+            createAddAction(content: content, tapAdd: tapAddPlan)
         case .editAction(actionID: let actionID, eventID: let eventID, points: let points, tapAddPlan: let tapAddPlan, tapDelete: let tapDelete):
             editAction(actionID: actionID, eventID: eventID, points: points, tapOk: tapAddPlan, tapDelete: tapDelete)
             
-        case .startActionForContent(tapStartNow: let tapStartNow):
-            startActionForContent(tapStartNow: tapStartNow)
+        case .startActionForContent(content: let content, tapStartNow: let tapStartNow):
+            startActionForContent(content: content, tapStartNow: tapStartNow)
         case .startActionForContentOrDelete(item: let item, tapAddPlan: let tapAddPlan, tapDelete: let tapDelete):
             startActionForContentOrDelete(item: item, tapAddPlan: tapAddPlan, tapDelete: tapDelete)
             
@@ -101,8 +101,10 @@ class AlertViewService: NSObject, AlertViewServiceInputProtocol {
     private func showAlertControllerWithNavigation(_ viewcontroller: UIViewController) {
         
         let navVC = UINavigationController(rootViewController: viewcontroller)
-        UIApplication.shared.keyWindow?.rootViewController?.addChild(navVC)
-        UIApplication.shared.keyWindow?.rootViewController?.view.addSubview(navVC.view)
+        //UIApplication.shared.keyWindow?.rootViewController?.addChild(navVC)
+        //UIApplication.shared.keyWindow?.rootViewController?.view.addSubview(navVC.view)
+        UIApplication.topViewController?.addChild(navVC)
+        UIApplication.topViewController?.view.addSubview(navVC.view)
         
         viewcontroller.view.setNeedsLayout()
         viewcontroller.view.layoutIfNeeded()
@@ -116,10 +118,10 @@ class AlertViewService: NSObject, AlertViewServiceInputProtocol {
         showAlertController(alertVC)
     }
     
-    private func createAddAction(tapAdd: @escaping VoidCallback) {
+    private func createAddAction(content: ActivityContent?, tapAdd: @escaping VoidCallback) {
         
-        let addVC = AddActionPlanViewController.createController(tapOk: tapAdd)
-        showAlertController(addVC)
+        let addVC = AddActionPlanViewController.createController(content: content, tapOk: tapAdd)
+        showAlertControllerWithNavigation(addVC)
     }
     
     private func editAction(actionID: String?, eventID: String?, points: Int, tapOk: @escaping VoidCallback, tapDelete: @escaping VoidCallback) {
@@ -128,9 +130,9 @@ class AlertViewService: NSObject, AlertViewServiceInputProtocol {
         showAlertControllerWithNavigation(editVC)
     }
     
-    private func startActionForContent(tapStartNow: @escaping VoidCallback) {
+    private func startActionForContent(content: Content, tapStartNow: @escaping VoidCallback) {
         
-        let actionContentVC = StartActionViewController.createController(tapOk: tapStartNow)
+        let actionContentVC = StartActionViewController.createController(content: content, tapOk: tapStartNow)
         showAlertController(actionContentVC)
     }
     

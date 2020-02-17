@@ -64,12 +64,17 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
         case .like:
             print("dsf")
         case .addActionPlan(let content):
-            let vc = AddActionPlanViewController.createController {
-                print("create add action")
-            }
-            vc.contentID = String(content.id)
-            interactor.input(.downloadContent(content: content, isHidden: true))
-            router.input(.presentedBy(vc))
+            
+            AlertViewService.shared.input(.addAction(content: content, tapAddPlan: {
+                
+            }))
+            
+//            let vc = AddActionPlanViewController.createController {
+//                print("create add action")
+//            }
+//            vc.contentID = String(content.id)
+//            interactor.input(.downloadContent(content: content, isHidden: true))
+//            router.input(.presentedBy(vc))
         case .start:
             print("Start")
         case .unlockListenPreview:

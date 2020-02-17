@@ -17,7 +17,16 @@ class AddActionPlanViewController: UIViewController {
     @IBOutlet weak var bottomAddActionConstraint: NSLayoutConstraint!
     
     var addActionVC : CreateActionViewController!
-    var contentID : String?
+    private var contentID : String?
+    var content: ActivityContent? {
+        willSet(newValue) {
+            if let tempID = newValue?.id {
+                contentID = String(tempID)
+            }else {
+                contentID = nil
+            }
+        }
+    }
     var activeOkButton : (() -> Void)?
     
     var navVC : UINavigationController!
@@ -37,13 +46,13 @@ class AddActionPlanViewController: UIViewController {
         return addVC
     }
     
-    class func createController(contentID: String?, tapOk: @escaping (() -> Void)) -> AddActionPlanViewController {
+    class func createController(content: ActivityContent?, tapOk: @escaping (() -> Void)) -> AddActionPlanViewController {
 
         let addVC = StoryboardScene.AlertView.addActionPlanViewController.instantiate()
         addVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         addVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         addVC.activeOkButton = tapOk
-        addVC.contentID = contentID
+        addVC.content = content
         return addVC
     }
     
@@ -61,6 +70,10 @@ class AddActionPlanViewController: UIViewController {
         
         addSwipe()
         displayContentController()
+        
+        if let content = self.content {
+            DataSource.shared.saveContent(content: content, isHidden: true)
+        }
     }
     
     func displayContentController() {
@@ -130,7 +143,7 @@ class AddActionPlanViewController: UIViewController {
             self.bottomAddActionConstraint.constant = -self.addActionView.bounds.height
             self.view.layoutIfNeeded()
         }, completion: { (_) in
-            self.dismiss(animated: false, completion: nil)
+            //self.dismiss(animated: false, completion: nil)
             self.navigationController?.view.removeFromSuperview()
             self.navigationController?.removeFromParent()
         })

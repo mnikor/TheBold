@@ -96,6 +96,7 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
     var type: BaseStakesDataSourceType!
     
     var goalID : String!
+    var selectedContent: ActivityContent?
     
     var calendarDataSource = Set<Date>()
     var dataSource = [ActDataSourceViewModel]() {
@@ -180,8 +181,33 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
         }
         
         if let content = event.action?.content {
-            AlertViewService.shared.input(.startActionForContent(tapStartNow: {
-                print("Start content - \(content)")
+            AlertViewService.shared.input(.startActionForContent(content: content, tapStartNow: { [weak self] in
+//                print("Start content - \(content)")
+                
+                guard let activityContent = ActivityContent.map(content: content) else {return}
+                
+                self?.selectedContent = activityContent
+                
+                switch activityContent.type {
+                case .meditation, .hypnosis, .preptalk:
+                    PlayerViewController.createController(content: activityContent)
+                case .lesson, .story:
+                    let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
+                    vc.viewModel = DescriptionViewModel.map(activityContent: activityContent)
+                    vc.isDownloadedContent = DataSource.shared.contains(content: activityContent)
+                    self?.viewController?.navigationController?.present(vc, animated: true, completion: nil)
+                default:
+                    break
+                }
+                
+                
+//                AudioService.shared.tracks = activityContent.audioTracks
+//                AudioService.shared.image = .path(activityContent.imageURL)
+//                AudioService.shared.startPlayer(isPlaying: activityContent.type != .meditation,
+//                                                isDownloadedContent: DataSource.shared.contains(content: activityContent),
+//                                                content: activityContent)
+//                AudioService.shared.playerDelegate = self?.viewController
+                
             }))
         }
     }

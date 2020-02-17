@@ -24,18 +24,13 @@ struct StakeActionViewModel {
     static func createModelView(event: Event) -> StakeActionViewModel {
         
         var statusIcon = UIImage()
-        var statusIconColor = ColorGoalType(rawValue: event.action?.goal?.color ?? 0)?.colorGoal() ?? .red
+        var statusIconColor = ColorGoalType(rawValue: event.action?.goal?.color ?? ColorGoalType.red.rawValue)?.colorGoal() ?? ColorGoalType.red.colorGoal()
         let title  = event.name
         var contentName : String?
         var stake = L10n.Act.stakeDollar(NumberFormatter.stringForCurrency(event.stake))
         var stakeColor = ColorName.typographyBlack75.color
         var points: String?
         var contentNameIsHidden = true
-        
-        if let content = event.action?.content {
-            contentName = content.title
-            contentNameIsHidden = false
-        }
         
         if case .failed? = StatusType(rawValue: event.status) {
             statusIconColor = ColorGoalType.red.colorGoal()
@@ -48,7 +43,9 @@ struct StakeActionViewModel {
             statusIcon = Asset.stakeOval.image
         }
         
-        if event.action?.content != nil {
+        if let content = event.action?.content {
+            contentName = content.title
+            contentNameIsHidden = false
             statusIcon = Asset.stakePlay.image
         }
 

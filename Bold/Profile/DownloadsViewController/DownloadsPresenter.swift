@@ -51,12 +51,16 @@ class DownloadsPresenter: DownloadsPresenterInputProtocol {
     }
     
     private func addActionPlan(content: ActivityContent) {
-        let vc = AddActionPlanViewController.createController {
-            print("add action plan tap ok")
-        }
-        vc.contentID = String(content.id)
-        let currentVC = UIApplication.topViewController ?? viewController
-        currentVC?.present(vc, animated: true)
+//        let vc = AddActionPlanViewController.createController {
+//            print("add action plan tap ok")
+//        }
+//        vc.contentID = String(content.id)
+//        let currentVC = UIApplication.topViewController ?? viewController
+//        currentVC?.present(vc, animated: true)
+        
+        AlertViewService.shared.input(.addAction(content: content, tapAddPlan: {
+            print("sdfsdf")
+        }))
     }
     
     private func showDetails(content: ActivityContent) {
@@ -71,17 +75,15 @@ class DownloadsPresenter: DownloadsPresenterInputProtocol {
     }
     
     private func showPlayer(content: ActivityContent) {
-        AudioService.shared.tracks = content.audioTracks
-        AudioService.shared.startPlayer(isPlaying: content.type != .meditation,
-                                        isDownloadedContent: DataSource.shared.contains(content: content))
-        AudioService.shared.playerDelegate = viewController
+        
+        PlayerViewController.createController(content: content)
     }
     
     private func showDescription(content: ActivityContent) {
         let descriptionVC = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
         descriptionVC.viewModel = DescriptionViewModel.map(activityContent: content)
         descriptionVC.isDownloadedContent = DataSource.shared.contains(content: content)
-        descriptionVC.audioPlayerDelegate = viewController
+//        descriptionVC.audioPlayerDelegate = viewController
         viewController.navigationController?.present(descriptionVC, animated: true)
     }
     

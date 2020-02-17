@@ -11,7 +11,7 @@ import Foundation
 enum FeelInteractorInput {
     case prepareTracks(content: ActivityContent)
     case prepareDataSource(contentTypeArray: [ContentType], completion: (([ContentType: [ActivityContent]]) -> Void))
-    case downloadContent(ActivityContent)
+//    case downloadContent(ActivityContent)
 }
 
 protocol FeelInteractorInputProtocol: InteractorProtocol {
@@ -41,14 +41,13 @@ class FeelInteractor: FeelInteractorInputProtocol {
             createEmptyDataSource(contentTypes: contentTypes)
             dataSource = [:]
             prepareDataSource(contentTypeArray: contentTypes, completion: completion)
-        case .downloadContent(let content):
-            DataSource.shared.saveContent(content: content, isHidden: true)
+//        case .downloadContent(let content):
+//            DataSource.shared.saveContent(content: content, isHidden: true)
         }
     }
     
     private func prepareTracks(for content: ActivityContent) {
-        AudioService.shared.tracks = content.audioTracks
-        AudioService.shared.image = .path(content.imageURL)
+        AudioService.shared.config(fullImage: content.imageURL, smallImage: content.smallImageURL, tracks: content.audioTracks)
     }
     
     private func createEmptyDataSource(contentTypes: [ContentType]) {

@@ -11,6 +11,12 @@ import AVFoundation
 import MediaPlayer
 //import AVFoundation
 
+enum PlayerViewActivityType {
+    case appearing
+    case disappearing
+    case disappearingCompletion(VoidCallback?)
+}
+
 enum AudioServiceInput {
     case play(trackIndex: Int?)
     case playNext
@@ -20,6 +26,10 @@ enum AudioServiceInput {
     case resume
     case restart
     case seek(to: CMTime)
+    case fullView(activityType: Callback<PlayerViewActivityType>)
+    case smallView(activityType: Callback<PlayerViewActivityType>)
+    case destroySmallPlayer
+    case showSmallPlayer
 }
 
 enum AudioServiceOutput {
@@ -35,19 +45,21 @@ protocol AudioServiceDelegate: class {
     func playerIsPlaying()
     func playerFailed()
     func playerPaused()
+    func playerStoped(with totalDuration: TimeInterval)
 }
 
 class AudioService: NSObject, AudioServiceProtocol {
     
     static let shared = AudioService()
     
-    let smallPlayer = PlayerSmallView()
+    var callBackSmallPlayer : Callback<PlayerViewActivityType>?
+    var callBackFullPlayer : Callback<PlayerViewActivityType>?
     var tracks: [AudioPlayerTrackInfo] = []
     var image: Image?
+    var smallImage : Image?
     
     weak var delegate: AudioServiceDelegate?
     let player = AudioPlayer()
-    weak var playerDelegate: ContentToolBarDelegate?
     
     private var currentTrackIndex: Int = 0
     private(set) var isDownloadedContent: Bool = false
@@ -139,7 +151,7 @@ class AudioService: NSObject, AudioServiceProtocol {
     private func stop() {
         totalDuration += Date().timeIntervalSince(startDate)
         player.stop()
-        playerDelegate?.playerStoped(with: totalDuration)
+        delegate?.playerStoped(with: totalDuration)
     }
     
     func addSubscriber(_ subscriber: AudioServiceDelegate) {
@@ -167,6 +179,15 @@ class AudioService: NSObject, AudioServiceProtocol {
             player.seek(to: time) { [unowned self] in
                 self.setupNowPlaying()
             }
+        case .smallView(activityType: let callBackPlayer):
+            callBackSmallPlayer = callBackPlayer
+        case .fullView(activityType: let callBackPlayer):
+            callBackFullPlayer = callBackPlayer
+            showFullPlayer()
+        case .destroySmallPlayer:
+            closeSmallPlayer()
+        case .showSmallPlayer:
+            showSmallPlayer()
         }
         
     }
@@ -191,47 +212,38 @@ class AudioService: NSObject, AudioServiceProtocol {
         return tracks[currentTrackIndex].artistName
     }
     
-    func showSmallPlayer() {
-        delegate = smallPlayer
-        UIApplication.shared.keyWindow?.addSubview(smallPlayer)
-        if let _ = UIApplication.shared.keyWindow {
-            smallPlayer.snp.makeConstraints { make in
-                make.bottom.leading.trailing.equalToSuperview()
-            }
+    func getCurrentImagePath() -> String? {
+        if case .path(let imagePath) = smallImage {
+            return imagePath
         }
-        smallPlayer.setNeedsLayout()
-        smallPlayer.layoutIfNeeded()
-        smallPlayer.animateAppearing()
+        return nil
     }
     
-    func showPlayerFullScreen(isDownloadedContent: Bool) {
-        smallPlayer.animateDisappearing() { [unowned self] in
-            self.stop()
-            let playerVC = PlayerViewController.createController()
-            self.delegate = playerVC
-            self.isDownloadedContent = isDownloadedContent
-            playerVC.delegate = self.playerDelegate
-            playerVC.isDownloadedContent = isDownloadedContent
-            UIApplication.topViewController?.present(playerVC, animated: true)
-        }
+    private func showSmallPlayer() {
+        callBackFullPlayer = nil
+        callBackSmallPlayer?(PlayerViewActivityType.appearing)
     }
     
-    func startPlayer(isPlaying: Bool, isDownloadedContent: Bool) {
-        smallPlayer.animateDisappearing() { [unowned self] in
-            self.stop()
-            let playerVC = PlayerViewController.createController()
-            self.delegate = playerVC
-            self.isDownloadedContent = isDownloadedContent
-            playerVC.delegate = self.playerDelegate
-            playerVC.isDownloadedContent = isDownloadedContent
-            UIApplication.topViewController?.present(playerVC, animated: true) {
-                if isPlaying {
-                    playerVC.play()
-                }
-            }
+    private func closeSmallPlayer() {
+        callBackSmallPlayer = nil
+    }
+    
+    private func showFullPlayer() {
+        if callBackSmallPlayer != nil {
+            callBackSmallPlayer?(PlayerViewActivityType.disappearingCompletion({[weak self] in
+                self?.callBackSmallPlayer = nil
+                self?.callBackFullPlayer?(PlayerViewActivityType.appearing)
+            }))
+        }else {
+            self.callBackFullPlayer?(PlayerViewActivityType.appearing)
         }
     }
     
+    func config(fullImage: String?, smallImage: String?, tracks: [AudioPlayerTrackInfo]) {
+        self.image = .path(fullImage)
+        self.smallImage = .path(smallImage)
+        self.tracks = tracks
+    }
 }
 
 extension AudioService: AudioPlayerDelegate {

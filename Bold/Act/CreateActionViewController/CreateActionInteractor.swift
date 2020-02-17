@@ -235,6 +235,7 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
         if let contentIDTemp = contentID {
             DataSource.shared.searchContent(contentID: contentIDTemp) { (content) in
                 newAction.content = content
+                newAction.name = content?.type?.capitalized
             }
         }
         
@@ -262,7 +263,7 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
         var content : SmallContentViewModel?
         
         if case .createNewActionSheet(contentID: _) = presenter.baseConfigType {
-            content = SmallContentViewModel(image: Asset.addActionHeader.image, title: L10n.Act.addToActionPlan, subtitle: action.content?.title, points: "+10", shapeIcon: Asset.addActionShape.image)
+            content = SmallContentViewModel(imagePath: action.content?.smallImage, title: L10n.Act.addToActionPlan, subtitle: action.content?.title, points: "+10", shapeIcon: Asset.addActionShape.image)
         }
         
         let modelView = CreateActionViewModel(name: action.name,

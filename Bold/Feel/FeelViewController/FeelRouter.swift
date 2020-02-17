@@ -11,7 +11,7 @@ import UIKit
 enum FeelInputRouter {
     case menuShow
     case showAll(FeelTypeCell)
-    case showPlayer(isPlaying: Bool, isDownloadedContent: Bool)
+    case showPlayer(isPlaying: Bool, isDownloadedContent: Bool, content: ActivityContent?)
     case present(UIViewController)
 }
 
@@ -36,9 +36,8 @@ class FeelRouter: RouterProtocol, FeelInputRouterProtocol {
             viewController.showSideMenu()
         case .showAll(let typeCell):
             viewController.performSegue(withIdentifier: StoryboardSegue.Feel.showItem.rawValue, sender: typeCell)
-        case .showPlayer(isPlaying: let isPlaying, isDownloadedContent: let isDownloadedContent):
-            AudioService.shared.playerDelegate = viewController
-            AudioService.shared.startPlayer(isPlaying: isPlaying, isDownloadedContent: isDownloadedContent)
+        case .showPlayer(isPlaying: let isPlaying, isDownloadedContent: let isDownloadedContent, let content):
+            PlayerViewController.createController(content: content)
         case .present(let vc):
             if let topVC = UIApplication.topViewController {
                 topVC.present(vc, animated: true)

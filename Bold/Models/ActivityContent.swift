@@ -15,6 +15,7 @@ struct ActivityContent {
     var body: String
     var authorName: String
     var footer: String
+    var durtionRead: Int
     var pointOfUnlock: Int
     var contentStatus: ContentStatus
     var imageURL: String?
@@ -61,12 +62,15 @@ struct ActivityContent {
             documentURL = nil
         }
         
+        let durationRead = json[ResponseKeys.durationRead].int ?? 0
+        
         return ActivityContent(id: id,
                        title: title,
                        type: type,
                        body: body,
                        authorName: authorName,
                        footer: footer,
+                       durtionRead: durationRead,
                        pointOfUnlock: pointOfUnlock,
                        contentStatus: contentStatus,
                        imageURL: json[ResponseKeys.imageURL].string,
@@ -110,6 +114,7 @@ struct ActivityContent {
                                body: content.type ?? "",
                                authorName: content.authorName ?? "",
                                footer: content.footer ?? "",
+                               durtionRead: Int(content.durationRead),
                                pointOfUnlock: Int(content.pointsUnlock),
                                contentStatus: content.isLock ? .locked : .unlocked,
                                imageURL: content.imageUrl,
@@ -121,6 +126,50 @@ struct ActivityContent {
                                documentURL: documentURL)
     }
     
+    func saveContent() {
+        DataSource.shared.saveContent(content: self)
+    }
+    
+    func removeFromCache() {
+        DataSource.shared.deleteContent(content: self)
+    }
+    
+    func likeContent(_ isLiked: Bool) {
+    }
+    
+    func playerStoped(with totalDuration: TimeInterval) {
+        let type = self.type
+        let durationInMinutes = Int(totalDuration / 60)
+        boldnessChanged(duration: durationInMinutes)
+        switch type {
+        case .meditation:
+            if durationInMinutes >= 7 {
+                updatePoints()
+            }
+        case .hypnosis:
+            if durationInMinutes >= 20 {
+                updatePoints()
+            }
+        case .preptalk:
+            if totalDuration >= 3 {
+                updatePoints()
+            }
+        case .story:
+            // TODO: - story duration
+            break
+        case .lesson, .quote:
+            break
+        }
+    }
+    
+    private func boldnessChanged(duration: Int) {
+        SettingsService.shared.boldness += duration
+    }
+    
+    private func updatePoints() {
+        LevelOfMasteryService.shared.input(.addPoints(points: 10))
+    }
+
 }
 
 private struct ResponseKeys {
@@ -142,4 +191,5 @@ private struct ResponseKeys {
     static let audioName = "name"
     static let audioURL = "url"
     static let documentURL = "document_url"
+    static let durationRead = "duration_read"
 }

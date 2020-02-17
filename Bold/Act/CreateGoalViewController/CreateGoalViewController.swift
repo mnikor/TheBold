@@ -58,6 +58,10 @@ class CreateGoalViewController: UIViewController, CreateGoalViewInputProtocol {
         navigationController?.navigationBar.isHidden = false
     }
     
+    deinit {
+        DataSource.shared.resetBackgroundContext()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

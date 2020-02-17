@@ -36,6 +36,7 @@ public class Content: NSManagedObject {
         smallImage = activityContent.smallImageURL
         title = activityContent.title
         type = activityContent.type.rawValue
+        durationRead = Int16(activityContent.durtionRead)
         
         File.fill(audioTracks: activityContent.audioTracks,
                   to: self)

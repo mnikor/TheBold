@@ -19,7 +19,7 @@ struct CreateActionViewModel {
 }
 
 struct SmallContentViewModel {
-    let image: UIImage
+    let imagePath: String?
     let title: String
     let subtitle: String?
     let points: String
