@@ -286,6 +286,7 @@ internal enum Asset {
   internal static let think15 = ImageAsset(name: "Think_1.5")
   internal static let actionShape = ImageAsset(name: "actionShape")
   internal static let arrowBack = ImageAsset(name: "arrowBack")
+  internal static let arrowPopUp = ImageAsset(name: "arrowPopUp")
   internal static let calendarBlueIcon = ImageAsset(name: "calendarBlueIcon")
   internal static let camera = ImageAsset(name: "camera")
   internal static let cameraGrayscale = ImageAsset(name: "cameraGrayscale")

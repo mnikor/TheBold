@@ -369,6 +369,15 @@ internal enum L10n {
     internal static let unlockPremium = L10n.tr("Localizable", "Home.UnlockPremium")
   }
 
+  internal enum InfoService {
+    /// Long tap to edit selected goal
+    internal static let longTapToEditSelectedGoal = L10n.tr("Localizable", "InfoService.LongTapToEditSelectedGoal")
+    /// Long tap to view selected content
+    internal static let longTapToViewSelectedContent = L10n.tr("Localizable", "InfoService.LongTapToViewSelectedContent")
+    /// Tap to view task details
+    internal static let tapToViewTaskDetails = L10n.tr("Localizable", "InfoService.TapToViewTaskDetails")
+  }
+
   internal enum Menu {
     /// Act
     internal static let act = L10n.tr("Localizable", "Menu.Act")

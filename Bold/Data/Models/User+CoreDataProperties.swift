@@ -22,5 +22,8 @@ extension User {
     @NSManaged public var levelOfMasteryPoints: Int32
     @NSManaged public var token: String?
     @NSManaged public var firstOpenIdeas: Bool
+    @NSManaged public var stakeInfo: Bool
+    @NSManaged public var stakeContentInfo: Bool
+    @NSManaged public var goalInfo: Bool
 
 }
