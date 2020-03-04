@@ -249,8 +249,8 @@ extension BaseStakesListViewController: ActivityCollectionTableViewCellDelegate 
         presenter.input(.createGoal)
     }
     
-    func longTap(goalID: String) {
-        print("long Tap Goal = \(goalID)")
-        presenter.input(.longTapGoal(goalID: goalID))
+    func longTap(goal: Goal) {
+        print("long Tap Goal = \(goal.id)")
+        presenter.input(.longTapGoal(goal: goal))
     }
 }

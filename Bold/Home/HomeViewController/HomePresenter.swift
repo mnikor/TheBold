@@ -65,7 +65,13 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
         case .subscribeForUpdates:
             subscribeForUpdates()
         case .goalItem(let goal):
-            router.input(.goalItem(goal))
+            if goal.status == StatusType.locked.rawValue {
+                AlertViewService.shared.input(.missedYourActionLock(tapUnlock: {
+                    LevelOfMasteryService.shared.input(.unlockGoal(goalID: goal.id!))
+                }))
+            }else {
+                router.input(.goalItem(goal))
+            }
         }
     }
     

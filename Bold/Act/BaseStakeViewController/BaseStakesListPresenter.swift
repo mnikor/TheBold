@@ -65,7 +65,7 @@ enum BaseStakesListInputPresenter {
     //по нажатию на экшен показываем алерт редактирования или перевода в статус сделано
     case selectEvent(indexPath: IndexPath)
     //показываем алерт редактирования цели
-    case longTapGoal(goalID: String)
+    case longTapGoal(goal: Goal)
     
     case tapPlus
     case createGoal
@@ -149,18 +149,31 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
             subscribeToUpdate()
             
         case .goalItem(goal: let goal):
-            let calendarVC = StoryboardScene.Act.calendarActionsListViewController.instantiate()
-            calendarVC.presenter.goal = goal
-            router.input(.goalItem(calendarVC: calendarVC))
+            if goal.status == StatusType.locked.rawValue {
+                AlertViewService.shared.input(.missedYourActionLock(tapUnlock: {
+                    LevelOfMasteryService.shared.input(.unlockGoal(goalID: goal.id!))
+                }))
+            }else {
+                let calendarVC = StoryboardScene.Act.calendarActionsListViewController.instantiate()
+                calendarVC.presenter.goal = goal
+                router.input(.goalItem(calendarVC: calendarVC))
+            }
             
         case .longTapAction(event: let event):
             longTapAction(event: event)
             
-        case .longTapGoal(goalID: let goalID):
-            let vc = EditGoalViewController.createController(goalID: goalID) {
-                print("tap edit goal ok")
+        case .longTapGoal(goal: let goal):
+            if goal.status == StatusType.locked.rawValue {
+                AlertViewService.shared.input(.missedYourActionLock(tapUnlock: {
+                    LevelOfMasteryService.shared.input(.unlockGoal(goalID: goal.id!))
+                }))
+            }else {
+                let vc = EditGoalViewController.createController(goalID: goal.id) {
+                    print("tap edit goal ok")
+                }
+                router.input(.longTapGoalPresentedBy(vc))
             }
-            router.input(.longTapGoalPresentedBy(vc))
+            
         case .selectEvent(indexPath: let indexPath):
             selectEvent(indexPath: indexPath)
             
