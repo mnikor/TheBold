@@ -288,6 +288,8 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
             self?.viewController?.tableView.backgroundView = (self?.dataSource.isEmpty ?? false) ? EmptyActView.loadFromNib() : UIView()
             self?.viewController?.tableView.reloadData()
             self?.isLoadContent = false
+            
+            self?.viewController?.checkNeedInfo()
         }
     }
     
