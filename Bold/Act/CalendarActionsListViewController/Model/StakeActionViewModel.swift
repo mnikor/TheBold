@@ -13,7 +13,7 @@ struct StakeActionViewModel {
     
     let statusIcon: UIImage
     let statusIconColor: Color
-    let title: String?
+    let title: NSAttributedString?
     let contentName: String?
     let contentNameIsHidden: Bool
     let stake: String?
@@ -24,8 +24,11 @@ struct StakeActionViewModel {
     static func createModelView(event: Event) -> StakeActionViewModel {
         
         var statusIcon = UIImage()
-        var statusIconColor = ColorGoalType(rawValue: event.action?.goal?.color ?? ColorGoalType.red.rawValue)?.colorGoal() ?? ColorGoalType.red.colorGoal()
-        let title  = event.name
+        var statusIconColor = ColorGoalType(rawValue: event.action?.goal?.color ?? 0)?.colorGoal() ?? .red
+        var title : NSMutableAttributedString?
+        if let nameTitle = event.name {
+            title = NSMutableAttributedString(string: nameTitle)
+        }
         var contentName : String?
         var stake = L10n.Act.stakeDollar(NumberFormatter.stringForCurrency(event.stake))
         var stakeColor = ColorName.typographyBlack75.color
@@ -38,9 +41,18 @@ struct StakeActionViewModel {
             stake = L10n.Act.missed
             stakeColor = ColorGoalType.red.colorGoal()
             points = "-\(event.calculatePoints)"
-        }else if case .wait? = StatusType(rawValue: event.status) {
+            
+        }else {
             points = "+\(event.calculatePoints)"
             statusIcon = Asset.stakeOval.image
+            if case .completed? = StatusType(rawValue: event.status), let titleTemp = title{
+                
+                if event.startDate == Date().baseTime() as NSDate {
+                    title?.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, titleTemp.length))
+                }
+                
+                
+            }
         }
         
         if let content = event.action?.content {

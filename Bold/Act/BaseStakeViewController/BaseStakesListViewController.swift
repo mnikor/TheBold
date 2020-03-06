@@ -92,6 +92,117 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
     //        }
     //    }
     
+//MARK:- InfoFunctions
+    
+    func checkNeedInfo() {
+        
+        if case .archive = presenter.type {
+            return
+        }
+        
+        if let infoVC = UIApplication.shared.keyWindow?.rootViewController?.children.last, ((infoVC as? InfoService) != nil) {
+            return
+        }
+        
+        let user = DataSource.shared.readUser()
+        
+//        user.goalInfo = false
+//        user.stakeInfo = false
+//        user.stakeContentInfo = false
+//        DataSource.shared.saveBackgroundContext()
+//        return
+        
+        if user.stakeInfo && user.stakeContentInfo && user.goalInfo {
+            return
+        }
+        
+        let vesibleCells = checkVisibilityOf()
+        
+        for cell in vesibleCells {
+            
+            if !user.goalInfo, let activityCell = cell as? ActivityCollectionTableViewCell {
+                
+                let indexPaths = activityCell.collectionView.indexPathsForVisibleItems.sorted()
+                if indexPaths.isEmpty {
+                    break
+                }
+                
+                if let cell = activityCell.collectionView.cellForItem(at: indexPaths.first!), let goalCell = cell as? GoalCollectionViewCell {
+                    
+                    InfoService.showInfo(type: .goalCell, baseView: goalCell.goalView) { [unowned self] in
+                        user.goalInfo = true
+                        DataSource.shared.saveBackgroundContext()
+                        self.checkNeedInfo()
+                    }
+                }
+                break
+            }
+            
+            if let stakeCell = cell as? StakeActionTableViewCell {
+                
+                let indexPath = tableView.indexPath(for: stakeCell)!
+                let section = presenter.dataSource[indexPath.section]
+                let item = section.items[indexPath.row]
+
+                if case .event(viewModel: let cellModel) = item {
+
+                    if !user.stakeContentInfo, let _ = cellModel.event.action?.content {
+
+                        InfoService.showInfo(type: .stakeContentCell, baseView: stakeCell.contentActionView) { [unowned self] in
+                            user.stakeContentInfo = true
+                            DataSource.shared.saveBackgroundContext()
+                            self.checkNeedInfo()
+                        }
+                        break
+                    }else if !user.stakeInfo {
+
+                        InfoService.showInfo(type: .stakeCell, baseView: stakeCell.contentActionView) { [unowned self] in
+                            user.stakeInfo = true
+                            DataSource.shared.saveBackgroundContext()
+                            self.checkNeedInfo()
+                        }
+                        break
+                    }
+                }
+            }
+        }
+    }
+    
+    func checkVisibilityOf() -> [UITableViewCell] { //(in aScrollView: UIScrollView?) {
+        
+        let cells = tableView.visibleCells
+        
+        if cells.isEmpty {
+            return []
+        }
+        
+        let filterCell = cells.filter { (cell) -> Bool in
+            
+            let indexPath = tableView.indexPath(for: cell)
+            let cellRect = tableView.rectForRow(at: indexPath!)
+            
+            if tableView.bounds.contains(cellRect) {
+                return true
+            }else {
+                return false
+            }
+        }
+        return filterCell
+    }
+}
+
+
+//MARK:- UIScrollViewDelegate
+
+extension BaseStakesListViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        checkNeedInfo()
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        checkNeedInfo()
+    }
 }
 
 
@@ -249,9 +360,9 @@ extension BaseStakesListViewController: ActivityCollectionTableViewCellDelegate 
         presenter.input(.createGoal)
     }
     
-    func longTap(goalID: String) {
-        print("long Tap Goal = \(goalID)")
-        presenter.input(.longTapGoal(goalID: goalID))
+    func longTap(goal: Goal) {
+        print("long Tap Goal = \(goal.id)")
+        presenter.input(.longTapGoal(goal: goal))
     }
 }
 

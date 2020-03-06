@@ -27,17 +27,17 @@ struct ActivityContent {
     var documentURL: FilePath?
     
     static func mapJSON(_ json: JSON) -> ActivityContent? {
-        guard let id = json[ResponseKeys.id].int,
-            let title = json[ResponseKeys.title].string,
-            var typeString = json[ResponseKeys.type].string,
-            let body = json[ResponseKeys.body].string,
-            let authorName = json[ResponseKeys.authorName].string,
-            let footer = json[ResponseKeys.footer].string,
-            let pointOfUnlock = json[ResponseKeys.pointOfUnlock].int,
-            let contentStatusString = json[ResponseKeys.contentStatus].string,
-            let contentStatus = ContentStatus(rawValue: contentStatusString.lowercased()),
-            let likesCount = json[ResponseKeys.likesCount].int
-            else { return nil }
+        let id = json[ResponseKeys.id].intValue
+        let title = json[ResponseKeys.title].stringValue
+        var typeString = json[ResponseKeys.type].stringValue
+        let body = json[ResponseKeys.body].stringValue
+        let authorName = json[ResponseKeys.authorName].stringValue
+        let footer = json[ResponseKeys.footer].stringValue
+        let pointOfUnlock = json[ResponseKeys.pointOfUnlock].intValue
+        let contentStatusString = json[ResponseKeys.contentStatus].stringValue
+        let contentStatus = ContentStatus(rawValue: contentStatusString.lowercased()) ?? ContentStatus.unlocked
+        let likesCount = json[ResponseKeys.likesCount].intValue
+            
         if typeString.hasPrefix(ResponseKeys.typePrefix) {
             typeString = String(typeString.dropFirst(ResponseKeys.typePrefix.count))
         }
@@ -96,7 +96,7 @@ struct ActivityContent {
                                         artistName: "",
                                         duration: "0:00",
                                         path: filePath)
-            } ?? []
+            }
         let pdfDocument = content.files?.first(where: { !$0.isAudio })
         let documentURL: FilePath?
         

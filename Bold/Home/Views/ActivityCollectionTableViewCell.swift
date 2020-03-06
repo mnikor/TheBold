@@ -13,11 +13,11 @@ protocol ActivityCollectionTableViewCellDelegate: class {
     func tapItemCollection(goal: Goal)
     func activityCollectionTableViewCell(_ activityCollectionTableViewCell: ActivityCollectionTableViewCell, didTapAtItem indexPath: IndexPath)
     func tapEmptyGoalsCell(type: ActivityViewModel?)
-    func longTap(goalID: String)
+    func longTap(goal: Goal)
 }
 
 extension ActivityCollectionTableViewCellDelegate {
-    func longTap(goalID: String) {}
+    func longTap(goal: Goal) {}
 }
 
 class ActivityCollectionTableViewCell: BaseTableViewCell {
@@ -68,7 +68,7 @@ class ActivityCollectionTableViewCell: BaseTableViewCell {
         if let indexPath = self.collectionView.indexPathForItem(at: p) {
             let item = dataSource[indexPath.row]
             if case .goal(goal: let goal) = item {
-                delegate?.longTap(goalID: goal.goal.id!)
+                delegate?.longTap(goal: goal.goal)
             }
         } else {
             print("couldn't find index path")

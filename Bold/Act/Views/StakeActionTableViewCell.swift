@@ -55,7 +55,7 @@ class StakeActionTableViewCell: BaseTableViewCell {
             
             event = cellModel.event
             statusImageView.renderImageWithColor(image: cellModel.statusIcon, color: cellModel.statusIconColor)
-            titleLabel.text = cellModel.title
+            titleLabel.attributedText = cellModel.title
             subtitleLabel.text = cellModel.contentName
             subtitleLabel.isHidden = cellModel.contentNameIsHidden
             stakeLabel.text = cellModel.stake

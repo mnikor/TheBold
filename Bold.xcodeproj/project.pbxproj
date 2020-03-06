@@ -31,7 +31,6 @@
 		C561C3E72341F7840073ABAC /* BaseContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C3E22341F7840073ABAC /* BaseContentView.swift */; };
 		C561C3EA2341F79F0073ABAC /* AnimationTransitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C3E82341F79F0073ABAC /* AnimationTransitionView.swift */; };
 		C561C3EB2341F79F0073ABAC /* AlertDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C3E92341F79F0073ABAC /* AlertDisplayable.swift */; };
-		C561C3EE2341F7D80073ABAC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C3EC2341F7D70073ABAC /* String+Extension.swift */; };
 		C561C3EF2341F7D80073ABAC /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C3ED2341F7D80073ABAC /* UIButton+Extension.swift */; };
 		C561C3F52341FB900073ABAC /* DismissAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C3F12341FB900073ABAC /* DismissAnimationController.swift */; };
 		C561C3F62341FB900073ABAC /* CustomPresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561C3F22341FB900073ABAC /* CustomPresentViewController.swift */; };
@@ -283,6 +282,8 @@
 		F187147F2369A01D000F764C /* AlertViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F187147E2369A01D000F764C /* AlertViewService.swift */; };
 		F18714832369A0ED000F764C /* AlertView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F18714822369A0ED000F764C /* AlertView.storyboard */; };
 		F190357822D87AF8001BC996 /* FixedPaddingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F190357722D87AF8001BC996 /* FixedPaddingTextView.swift */; };
+		F19114072407D1AD00049BB8 /* InfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19114062407D1AC00049BB8 /* InfoService.swift */; };
+		F1911409240E8F6900049BB8 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1911408240E8F6900049BB8 /* Bool+Extensions.swift */; };
 		F19257FC22E7526E00FA5C6E /* CalendarActionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19257FB22E7526E00FA5C6E /* CalendarActionsListViewController.swift */; };
 		F19257FF22E7529900FA5C6E /* CalendarActionsListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19257FE22E7529900FA5C6E /* CalendarActionsListConfigurator.swift */; };
 		F192580122E752A600FA5C6E /* CalendarActionsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192580022E752A600FA5C6E /* CalendarActionsListPresenter.swift */; };
@@ -472,7 +473,6 @@
 		C561C3E22341F7840073ABAC /* BaseContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseContentView.swift; sourceTree = "<group>"; };
 		C561C3E82341F79F0073ABAC /* AnimationTransitionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTransitionView.swift; sourceTree = "<group>"; };
 		C561C3E92341F79F0073ABAC /* AlertDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertDisplayable.swift; sourceTree = "<group>"; };
-		C561C3EC2341F7D70073ABAC /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		C561C3ED2341F7D80073ABAC /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		C561C3F12341FB900073ABAC /* DismissAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAnimationController.swift; sourceTree = "<group>"; };
 		C561C3F22341FB900073ABAC /* CustomPresentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPresentViewController.swift; sourceTree = "<group>"; };
@@ -728,6 +728,8 @@
 		F187147E2369A01D000F764C /* AlertViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewService.swift; sourceTree = "<group>"; };
 		F18714822369A0ED000F764C /* AlertView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlertView.storyboard; sourceTree = "<group>"; };
 		F190357722D87AF8001BC996 /* FixedPaddingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedPaddingTextView.swift; sourceTree = "<group>"; };
+		F19114062407D1AC00049BB8 /* InfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoService.swift; sourceTree = "<group>"; };
+		F1911408240E8F6900049BB8 /* Bool+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
 		F19257FB22E7526E00FA5C6E /* CalendarActionsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActionsListViewController.swift; sourceTree = "<group>"; };
 		F19257FE22E7529900FA5C6E /* CalendarActionsListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActionsListConfigurator.swift; sourceTree = "<group>"; };
 		F192580022E752A600FA5C6E /* CalendarActionsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActionsListPresenter.swift; sourceTree = "<group>"; };
@@ -1305,6 +1307,7 @@
 			isa = PBXGroup;
 			children = (
 				F141668922BD00F20020BF0F /* VideoService.swift */,
+				F19114062407D1AC00049BB8 /* InfoService.swift */,
 				F141668B22BD1F590020BF0F /* AudioService.swift */,
 				F1EBC7B122CF70A000BAA82D /* AudioPlayer.swift */,
 				C5C6C14B2320F23800C15C2B /* NotificationService.swift */,
@@ -1653,7 +1656,6 @@
 				F1868848229E9BD80029A663 /* UIColor+Extensions.swift */,
 				F1868849229E9BD80029A663 /* UIFont+Extensions.swift */,
 				F1EE4D50229EB78C0072F663 /* String+Extensions.swift */,
-				C561C3EC2341F7D70073ABAC /* String+Extension.swift */,
 				C561C3ED2341F7D80073ABAC /* UIButton+Extension.swift */,
 				F1CCC70222CA0F2900E7B637 /* UITableView+Xib.swift */,
 				F1EA1CBD22E1EA9500BB328F /* UITableViewCell+Extensions.swift */,
@@ -1668,6 +1670,7 @@
 				F1F6ADDE232626DA00F6A925 /* Date+Extensions.swift */,
 				C5E517B72369B0CB00E8635F /* UIApplication+Extension.swift */,
 				C565091723713ED50072ADF9 /* NotificationName+Extension.swift */,
+				F1911408240E8F6900049BB8 /* Bool+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2458,6 +2461,7 @@
 				F13FCBBF233A18D900BAE544 /* GoalCollectionViewModel.swift in Sources */,
 				C56CD6E72331096B00322688 /* FadePresentAnimationController.swift in Sources */,
 				F186880A229D7E1F0029A663 /* OnboardViewController.swift in Sources */,
+				F19114072407D1AD00049BB8 /* InfoService.swift in Sources */,
 				F1C2534522B2ACAA003156AA /* GoalCollectionViewCell.swift in Sources */,
 				C59E5E34230593ED005DCD18 /* AccountDetailsPresenter.swift in Sources */,
 				F1F44A652368711700F977D1 /* ResultCustomError.swift in Sources */,
@@ -2615,6 +2619,7 @@
 				F1A79DD022D8A9560018A8EF /* ListenOrReadMaterialView.swift in Sources */,
 				F1F44A692368711700F977D1 /* RequestParameter.swift in Sources */,
 				F183304022E6F0E100BB7A9E /* CreateGoalPresenter.swift in Sources */,
+				F1911409240E8F6900049BB8 /* Bool+Extensions.swift in Sources */,
 				F158E2BC22C3C2C300FD671A /* FeelViewController.swift in Sources */,
 				F1F6ADBF23210DB300F6A925 /* Action+CoreDataClass.swift in Sources */,
 				F1E8EFD722F45D42006A9D39 /* CostButton.swift in Sources */,
@@ -2671,7 +2676,6 @@
 				F1E698C22317DF9100438E3E /* PremiumViewController.swift in Sources */,
 				F1F6ADBD23210DB300F6A925 /* ActionTemp.swift in Sources */,
 				F13DEAD322AAC0B700BC3CA6 /* SignUpView.swift in Sources */,
-				C561C3EE2341F7D80073ABAC /* String+Extension.swift in Sources */,
 				F183304922E714F600BB7A9E /* PlayerPresenter.swift in Sources */,
 				F183302922E605B500BB7A9E /* ActRouter.swift in Sources */,
 				F1868807229D7DF60029A663 /* SplashViewController.swift in Sources */,

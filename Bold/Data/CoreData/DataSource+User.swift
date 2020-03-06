@@ -55,6 +55,9 @@ extension DataSource: UserFunctionality {
         user.levelOfMasteryPoints = 0
         user.token = nil
         user.firstOpenIdeas = true
+        user.stakeInfo = false
+        user.stakeContentInfo = false
+        user.goalInfo = false
         
         DataSource.shared.saveBackgroundContext()
         return user
