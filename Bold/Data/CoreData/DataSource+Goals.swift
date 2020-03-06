@@ -9,7 +9,7 @@
 import CoreData
 
 protocol GoalsFunctionality {
-    func createNewGoal()
+    func createNewGoal() -> Goal
     func updateGoal()
     func deleteGoal(goalID: String, success: @escaping VoidCallback)
     func goalsListForUpdate() -> [Goal]
@@ -17,8 +17,15 @@ protocol GoalsFunctionality {
 
 extension DataSource: GoalsFunctionality {
     
-    func createNewGoal() {
-        
+    func createNewGoal() -> Goal {
+        let newGoal = Goal()
+        newGoal.id = newGoal.objectID.uriRepresentation().lastPathComponent
+        newGoal.startDate = Date() as NSDate
+        newGoal.endDate = Date() as NSDate
+        newGoal.color = ColorGoalType.orange.rawValue
+        newGoal.icon = IdeasType.marathon.rawValue
+        newGoal.status = StatusType.wait.rawValue
+        return newGoal
     }
     
     func updateGoal() {
@@ -39,7 +46,7 @@ extension DataSource: GoalsFunctionality {
         if let result = results {
             result.status = StatusType.completed.rawValue
             DataSource.shared.saveBackgroundContext()
-            NotificationService.shared.createStandardNotification(.goalAchieved)
+//            NotificationService.shared.createStandardNotification(.goalAchieved)
             AlertViewService.shared.input(.congratulationsGoal(points: PointsForAction.congratulationsGoal, tapGet: {
                 LevelOfMasteryService.shared.input(.addPoints(points: PointsForAction.congratulationsGoal))
             }))
@@ -49,18 +56,17 @@ extension DataSource: GoalsFunctionality {
         success()
     }
     
+    //удаляем Цель
     func deleteGoal(goalID: String, success: @escaping VoidCallback) {
         self.searchGoal(goalID: goalID) { (result) in
             guard let goal = result else { return }
-            self.searchEventsReminder(goalID: goalID) {
+            self.searchEventsReminderOfGoal(goalID: goalID) {
                 DataSource.shared.backgroundContext.delete(goal)
                 DataSource.shared.saveBackgroundContext()
             }
             success()
         }
     }
-    
-    
     
     func goalsListForUpdate() -> [Goal] {
         

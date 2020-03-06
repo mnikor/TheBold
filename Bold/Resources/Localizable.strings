@@ -302,3 +302,9 @@
 "Profile.Review.Title" = "Title";
 "Profile.Review.DescriptionOptional" = "Description (Optional)";
 
+
+// Reminder
+
+"Reminder.OneDayBeforeDueDate" = "You have an action due to be completed tomorrow %@";
+"Reminder.OnTheDueDate" = "You have an action due to be completed today %@ ";
+"Reminder.OnTheDueDateAndStake" = "\nWith a stake of %@ \nMake sure to complete it to win your stake!";

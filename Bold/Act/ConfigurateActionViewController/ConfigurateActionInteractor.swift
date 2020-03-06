@@ -64,10 +64,8 @@ class ConfigurateActionInteractor: ConfigurateActionInputInteractorProtocol {
         }
     }
     
-    func deleteAction(action: Action, success: ()->Void) {
-        DataSource.shared.backgroundContext.delete(action)
-        DataSource.shared.saveBackgroundContext()
-        success()
+    func deleteAction(action: Action, success: @escaping VoidCallback) {
+        DataSource.shared.deleteAction(actionID: action.id!, success: success)
     }
     
     func searchAction(actionID: String, success:(Action?)->Void) {

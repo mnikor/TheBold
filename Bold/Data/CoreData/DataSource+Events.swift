@@ -28,6 +28,23 @@ extension DataSource: EventFunctionality {
         
     }
     
+    func createEvent(action: Action, startDate: Date, endDate: Date, reminderDate: Date?) {
+        
+        let event = Event()
+        event.id = event.objectID.uriRepresentation().lastPathComponent
+        event.name = action.name
+        event.startDate = startDate as NSDate
+        event.endDate = endDate as NSDate
+        event.reminderDate = reminderDate as NSDate?
+        event.stake = action.stake
+        event.status = StatusType.wait.rawValue
+        event.action = action
+        
+        if let reminderDate = reminderDate, let remind = action.reminderMe, let type = RemindMeType(rawValue: remind.type) {
+            NotificationService.shared.input(.createRemider(actionTitle: event.name!, stake: Int(event.stake), date: reminderDate, reminderType: type, identifier: event.id!))
+        }
+    }
+    
     func doneEvent(eventID: String, success: ()->Void) {
         
         var results : Event?
@@ -42,7 +59,11 @@ extension DataSource: EventFunctionality {
         if let result = results {
             result.status = StatusType.completed.rawValue
             DataSource.shared.saveBackgroundContext()
-            NotificationService.shared.createStandardNotification( result.stake != 0 ? .actionCompleteWithStake : .actionCompleteWithoutStake)
+            
+            if let _ = result.reminderDate {
+                NotificationService.shared.input(.removeReimder(identifiers: [eventID]))
+            }
+            
             AlertViewService.shared.input(.congratulationsAction(points: result.calculatePoints, tapGet: {
                 let points = Int(result.stake) + PointsForAction.congratulationsAction
                 LevelOfMasteryService.shared.input(.addPoints(points: points))
@@ -177,6 +198,7 @@ extension DataSource: EventFunctionality {
         return NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataSource.shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
     }
     
+    //Ищем и удаляем ивенты в Экшинах
     func listDeleteEvent(actionID: String, deleteDate: Date, success:()->Void) {
         
         var results = [Event]()
@@ -189,6 +211,12 @@ extension DataSource: EventFunctionality {
         
         do {
             results = try DataSource.shared.backgroundContext.fetch(fetchRequest)
+            
+            let eventIDs = results.filter({ $0.reminderDate != nil }).compactMap({ $0.id })
+            if !eventIDs.isEmpty {
+                NotificationService.shared.input(.removeReimder(identifiers: eventIDs))
+            }
+            
             for event in results {
                 DataSource.shared.backgroundContext.delete(event)
             }
@@ -218,7 +246,8 @@ extension DataSource: EventFunctionality {
         return results
     }
     
-    func searchEventsReminder(goalID: String, success: VoidCallback) {
+    //Ищем ивенты онтосяциейся к цели у которых есть напоминания и удаляем нотификации
+    func searchEventsReminderOfGoal(goalID: String, success: VoidCallback) {
         var results = [Event]()
         let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
         
@@ -226,9 +255,33 @@ extension DataSource: EventFunctionality {
         
         do {
             results = try DataSource.shared.backgroundContext.fetch(fetchRequest)
-            for event in results {
-                // TODO: Delete notification in deleted Goal
+            
+            let eventIDs = results.compactMap { (event) -> String? in
+                return event.id
             }
+            NotificationService.shared.input(.removeReimder(identifiers: eventIDs))
+            
+        } catch {
+            print(error)
+        }
+        success()
+    }
+    
+    //Ищем ивенты онтосяциейся к Экшен у которых есть напоминания и удаляем нотификации
+    func searchEventsReminderOfAction(actionID: String, success: VoidCallback) {
+        var results = [Event]()
+        let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
+        
+        fetchRequest.predicate = NSPredicate(format: "(reminderDate != nil) AND SUBQUERY(action, $act, $act.id == '\(actionID)').@count > 0")
+        
+        do {
+            results = try DataSource.shared.backgroundContext.fetch(fetchRequest)
+            
+            let eventIDs = results.compactMap { (event) -> String? in
+                return event.id
+            }
+            NotificationService.shared.input(.removeReimder(identifiers: eventIDs))
+            
         } catch {
             print(error)
         }

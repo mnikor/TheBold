@@ -52,6 +52,7 @@ extension DataSource: ContentFunctionality {
         }
     }
     
+    //удаляем контент
     func deleteContent(content: ActivityContent) {
         persistentContainer.performBackgroundTask { [unowned self] context in
             do {

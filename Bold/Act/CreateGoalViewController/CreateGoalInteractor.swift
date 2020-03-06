@@ -9,14 +9,13 @@
 import Foundation
 
 typealias completeBackGoalModel = (CreateGoalViewModel)->Void
-typealias completeGoal = ()->Void
 
 enum CreateGoalInputInteractor {
     case createNewGoal(completeBackGoalModel)
     case editGoal(Goal, completeBackGoalModel)
-    case updateGoal(completeGoal)
-    case saveGoal(completeGoal)
-    case deleteGoal(completeGoal)
+    case updateGoal(VoidCallback)
+    case saveGoal(VoidCallback)
+    case deleteGoal(VoidCallback)
     
     case updateName(String?)
     case updateStartDate(Date)
@@ -89,14 +88,7 @@ class CreateGoalInteractor: CreateGoalInputInteractorProtocol {
     }
     
     private func createnewGoal() {
-        newGoal = Goal()
-        newGoal.id = newGoal.objectID.uriRepresentation().lastPathComponent
-        newGoal.startDate = Date() as NSDate
-        newGoal.endDate = Date() as NSDate
-        newGoal.color = ColorGoalType.orange.rawValue
-        newGoal.icon = IdeasType.marathon.rawValue
-        newGoal.status = StatusType.wait.rawValue
-        
+        newGoal = DataSource.shared.createNewGoal()
         createModelView(goal: newGoal)
     }
     
@@ -119,14 +111,14 @@ class CreateGoalInteractor: CreateGoalInputInteractorProtocol {
         return DateFormatter.formatting(type: .createGoalOrAction, date: date)
     }
     
-    private func saveGoal(complete: completeGoal) {
+    private func saveGoal(complete: VoidCallback) {
         DataSource.shared.saveBackgroundContext()
         complete()
     }
     
-    private func deleteGoal(goal: Goal, complete: completeGoal) {
-        DataSource.shared.backgroundContext.delete(goal)
-        DataSource.shared.saveBackgroundContext()
+    private func deleteGoal(goal: Goal, complete: @escaping VoidCallback) {
+        
+        DataSource.shared.deleteGoal(goalID: goal.id!, success: complete)
         complete()
     }
 }
