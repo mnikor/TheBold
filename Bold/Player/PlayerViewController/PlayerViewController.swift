@@ -174,7 +174,6 @@ class PlayerViewController: UIViewController, ViewProtocol {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        playerListView.configView(superView: playerView)
     }
     
     private func configureDowloadButton() {

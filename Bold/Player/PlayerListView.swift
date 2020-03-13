@@ -59,11 +59,11 @@ class PlayerListView: UIView {
         showViewAnimate()
     }
     
-    func updateData() {
+    private func updateData() {
         ListItems = AudioService.shared.tracks.compactMap { SongEntity(name: $0.trackName, duration: $0.duration)}
     }
 
-    func showViewAnimate() {
+    private func showViewAnimate() {
         UIView.animate(withDuration: 0.3) {
             self.topBottomAnchor.isActive = false
             self.topTopAnchor.isActive = true
@@ -71,7 +71,7 @@ class PlayerListView: UIView {
         }
     }
     
-    func hideViewAnimate() {
+    private func hideViewAnimate() {
         UIView.animate(withDuration: 0.3, animations: {
             self.topTopAnchor.isActive = false
             self.topBottomAnchor.isActive = true
