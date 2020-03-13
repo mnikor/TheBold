@@ -51,16 +51,15 @@ class NotificationService: NSObject {
     private let remindEventCompletion: () -> Void = {
         print("remind event")
         
-//        let rootViewController = StoryboardScene.Menu.storyboard.instantiateInitialViewController() ?? UIViewController()
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        //appDelegate.window?. rootViewController = rootViewController
-//        UIApplication.shared.keyWindow?.rootViewController = rootViewController
+    }
+    
+    private let openStakeCompletion: () -> Void = {
+        print("open event")
         
-//        if let rootViewController = UIApplication.shared.keyWindow?.rootViewController as? HostViewController,
-//           if let actVC = StoryboardScene.Act.storyboard.instantiateInitialViewController() {
-//            HostViewController.showController(newVC: actVC)
-//        }
-        
+        if let _ = UIApplication.shared.keyWindow?.rootViewController as? HostViewController,
+            let actVC = StoryboardScene.Act.storyboard.instantiateInitialViewController() {
+            HostViewController.showController(newVC: actVC)
+        }
     }
     
     //MARK:- Init
@@ -258,7 +257,8 @@ extension NotificationService: UNUserNotificationCenterDelegate {
                 actionCompletions.removeValue(forKey: requestIdentifier)
             }
         }
-//        remindEventCompletion()
+        
+        openStakeCompletion()
         delegate?.userNotificationCenter?(center, didReceive: response, withCompletionHandler: completionHandler)
     }
     

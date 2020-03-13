@@ -105,13 +105,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xF4-78-6mq">
-                                                    <rect key="frame" x="151" y="201.5" width="73.5" height="41.5"/>
+                                                    <rect key="frame" x="155.5" y="204" width="64" height="40"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="34"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIK-H6-teH">
-                                                    <rect key="frame" x="40" y="253" width="295" height="21"/>
+                                                    <rect key="frame" x="40" y="254" width="295" height="20"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -193,7 +193,7 @@
                                 </constraints>
                                 <state key="normal" title="Find your boldness"/>
                                 <connections>
-                                    <segue destination="gS9-Ma-Lj6" kind="showDetail" id="tb6-GI-5CP"/>
+                                    <action selector="tapFindYourBoldness:" destination="BMw-ec-akt" eventType="touchUpInside" id="9oi-GW-buc"/>
                                 </connections>
                             </button>
                         </subviews>

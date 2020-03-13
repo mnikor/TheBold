@@ -44,7 +44,7 @@ class DateAlertViewController: UIViewController {
     
     @IBAction func tapConfirmButton(_ sender: UIButton) {
         
-        confirmBlock?(selectDate.baseTime())
+        confirmBlock?( dateType == DateAlertType.time ? selectDate : selectDate.baseTime())
         hideAnimateView()
     }
     
