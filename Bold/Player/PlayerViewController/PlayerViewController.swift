@@ -142,6 +142,9 @@ class PlayerViewController: UIViewController, ViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        titleSongLabel.text = AudioService.shared.getCurrentTrackName()
+        subtitleSongLabel.text = AudioService.shared.getCurrentArtistName()
+        
         configurator.configure(with: self)
         switch AudioService.shared.image {
         case .image(let image):
