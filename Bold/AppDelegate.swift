@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LevelOfMasteryService.shared.input(.checkAllGoalsAndAction)
         
         NotificationService.shared.delegate = self
+        NotificationService.shared.input(.resetBadgeNumber)
         // Override point for customization after application launch.
         return true
     }

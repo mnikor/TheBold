@@ -193,14 +193,13 @@ class CreateActionPresenter: PresenterProtocol, CreateActionInputProtocol {
         }))
     }
     
-    private func deleteAction(_ complete:()->Void) {
+    private func deleteAction(_ complete: @escaping VoidCallback) {
+        
         if newAction != nil {
-            DataSource.shared.backgroundContext.delete(newAction)
+            DataSource.shared.deleteAction(actionID: newAction.id!, success: complete)
         }
         if updateAction != nil {
-            DataSource.shared.backgroundContext.delete(updateAction)
+            DataSource.shared.deleteAction(actionID: updateAction.id!, success: complete)
         }
-        DataSource.shared.saveBackgroundContext()
-        complete()
     }
 }

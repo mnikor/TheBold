@@ -289,6 +289,7 @@
 		F192580122E752A600FA5C6E /* CalendarActionsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192580022E752A600FA5C6E /* CalendarActionsListPresenter.swift */; };
 		F192580322E752B600FA5C6E /* CalendarActionsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192580222E752B600FA5C6E /* CalendarActionsListInteractor.swift */; };
 		F192580522E752C400FA5C6E /* CalendarActionsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192580422E752C400FA5C6E /* CalendarActionsListRouter.swift */; };
+		F1955411241A836300663BEC /* UIWindow+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1955410241A836300663BEC /* UIWindow+Extensions.swift */; };
 		F19A98A322D4F3C300A0492E /* CitationBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A98A222D4F3C300A0492E /* CitationBaseViewController.swift */; };
 		F19A98A522D5FF4F00A0492E /* CustomDotsPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A98A422D5FF4F00A0492E /* CustomDotsPageControl.swift */; };
 		F19A98A822D616FB00A0492E /* DontGiveUpAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A98A722D616FB00A0492E /* DontGiveUpAlertView.swift */; };
@@ -735,6 +736,7 @@
 		F192580022E752A600FA5C6E /* CalendarActionsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActionsListPresenter.swift; sourceTree = "<group>"; };
 		F192580222E752B600FA5C6E /* CalendarActionsListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActionsListInteractor.swift; sourceTree = "<group>"; };
 		F192580422E752C400FA5C6E /* CalendarActionsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActionsListRouter.swift; sourceTree = "<group>"; };
+		F1955410241A836300663BEC /* UIWindow+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extensions.swift"; sourceTree = "<group>"; };
 		F19A98A222D4F3C300A0492E /* CitationBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitationBaseViewController.swift; sourceTree = "<group>"; };
 		F19A98A422D5FF4F00A0492E /* CustomDotsPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDotsPageControl.swift; sourceTree = "<group>"; };
 		F19A98A722D616FB00A0492E /* DontGiveUpAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DontGiveUpAlertView.swift; sourceTree = "<group>"; };
@@ -1671,6 +1673,7 @@
 				C5E517B72369B0CB00E8635F /* UIApplication+Extension.swift */,
 				C565091723713ED50072ADF9 /* NotificationName+Extension.swift */,
 				F1911408240E8F6900049BB8 /* Bool+Extensions.swift */,
+				F1955410241A836300663BEC /* UIWindow+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2417,6 +2420,7 @@
 				F1D390F922D4E3F800DF8700 /* CitationViewController.swift in Sources */,
 				F17CB27022A6CF230035ABAB /* OnboardCell.swift in Sources */,
 				F1F4060923030B070091B774 /* Network.swift in Sources */,
+				F1955411241A836300663BEC /* UIWindow+Extensions.swift in Sources */,
 				C565090F236C64B40072ADF9 /* ChangePhotoView.swift in Sources */,
 				C59E5E3223058BA6005DCD18 /* ButtonedTitleCell.swift in Sources */,
 				F1CCC71622CE46F600E7B637 /* UIView+Extensions.swift in Sources */,

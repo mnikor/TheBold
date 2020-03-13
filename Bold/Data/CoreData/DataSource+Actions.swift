@@ -21,19 +21,56 @@ extension DataSource: ActionsFunctionality {
         
     }
     
+    @discardableResult
+    func createNewAction(goalID: String?, contentID: String?) -> Action {
+        let newAction = Action()
+        newAction.id = newAction.objectID.uriRepresentation().lastPathComponent
+        newAction.startDateType = ActionDateType.today.rawValue
+        newAction.endDateType = ActionDateType.tommorow.rawValue
+        newAction.startDate = Date().baseTime() as NSDate
+        newAction.endDate = Date().tommorowDay() as NSDate
+        newAction.repeatAction = DaysOfWeek()
+        let reminderMe = Reminder()
+        reminderMe.isSetTime = false
+        reminderMe.type = RemindMeType.noReminders.rawValue
+        //reminderMe.timeInterval = 12 * 3600
+        newAction.reminderMe = reminderMe
+        newAction.stake = 0
+        newAction.status = StatusType.create.rawValue
+        
+        if let goalIDTemp = goalID {
+            DataSource.shared.searchGoal(goalID: goalIDTemp) { (goal) in
+                newAction.goal = goal
+                
+                let endDateAction = newAction.endDate! as Date
+                let endDate : Date? = newAction.goal?.endDate as Date?
+                if let endDateTemp = endDate, endDateTemp < endDateAction {
+                    newAction.endDate = endDateTemp as NSDate
+                }
+            }
+        }
+        
+        if let contentIDTemp = contentID {
+            DataSource.shared.searchContent(contentID: contentIDTemp) { (content) in
+                newAction.content = content
+            }
+        }
+
+        return newAction
+    }
+    
+    //Удаляем Экшен и нотификации которые могут к нему относится, проверяем Гол
     func deleteAction(actionID: String, success: @escaping ()->Void) {
         
         searchAction(actionID: actionID) { (result) in
             guard let action = result else { return }
-            let goalID = action.goal?.id
-            NotificationService.shared.createStandardNotification(.actionDeleted(completion: { [weak self] confirmationResult in
-                if confirmationResult {
-                    DataSource.shared.backgroundContext.delete(action)
-                    DataSource.shared.saveBackgroundContext()
-                    self?.checkAllActionOfGoal(goalID: goalID)
-                    success()
-                }
-            }))
+            let goalID = action.id
+            DataSource.shared.searchEventsReminderOfAction(actionID: actionID) { [weak self] in
+                DataSource.shared.backgroundContext.delete(action)
+                DataSource.shared.saveBackgroundContext()
+                self?.checkAllActionOfGoal(goalID: goalID!)
+                success()
+            }
         }
     }
     
@@ -58,7 +95,7 @@ extension DataSource: ActionsFunctionality {
             if goal?.actions?.count == results.count {
                 goal?.status = StatusType.completed.rawValue
                 DataSource.shared.saveBackgroundContext()
-                NotificationService.shared.createStandardNotification(.goalAchieved)
+//                NotificationService.shared.createStandardNotification(.goalAchieved)
                 AlertViewService.shared.input(.congratulationsGoal(points: PointsForAction.congratulationsGoal, tapGet: {
                     LevelOfMasteryService.shared.input(.addPoints(points: PointsForAction.congratulationsGoal))
                 }))

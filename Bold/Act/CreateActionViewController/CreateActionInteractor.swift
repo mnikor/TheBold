@@ -123,29 +123,16 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
                         //                        print("\(startDate.dayOfWeek())")
                         
                         let reminderDate = calculateReminder(startDate: startDate, reminderMe: presenter.newAction.reminderMe)
-                        createSimpleEvent(action: action, startDate: startDate, endDate: endDate, reminderDate: reminderDate)
+                        DataSource.shared.createEvent(action: action, startDate: startDate, endDate: endDate, reminderDate: reminderDate)
+//                        NotificationService.shared.createReminder(title: <#T##String#>, body: <#T##String#>, date: <#T##Date#>, reminderType: <#T##ReminderType#>, identifier: <#T##String?#>)
                     }
                 }
                 startDate = calendar.date(byAdding: .day, value: 1, to: startDate)!
             }
         }else {
             let reminderDate = calculateReminder(startDate: startDate, reminderMe: presenter.newAction.reminderMe)
-            createSimpleEvent(action: action, startDate: startDate, endDate: endDate, reminderDate: reminderDate)
-            
+            DataSource.shared.createEvent(action: action, startDate: startDate, endDate: endDate, reminderDate: reminderDate)
         }
-    }
-    
-    private func createSimpleEvent(action: Action, startDate: Date, endDate: Date, reminderDate: Date?) {
-        
-        let event = Event()
-        event.id = event.objectID.uriRepresentation().lastPathComponent
-        event.name = action.name
-        event.startDate = startDate as NSDate
-        event.endDate = endDate as NSDate
-        event.reminderDate = reminderDate as NSDate?
-        event.stake = action.stake
-        event.status = StatusType.wait.rawValue
-        event.action = action
     }
     
     private func calculateReminder(startDate: Date, reminderMe: Reminder?) -> Date? {
@@ -205,40 +192,8 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
     
     @discardableResult
     private func createNewAction(goalID: String?, contentID: String?) -> Action {
-        let newAction = Action()
-        newAction.id = newAction.objectID.uriRepresentation().lastPathComponent
-        newAction.startDateType = ActionDateType.today.rawValue
-        newAction.endDateType = ActionDateType.tommorow.rawValue
-        newAction.startDate = Date().baseTime() as NSDate
-        newAction.endDate = Date().tommorowDay() as NSDate
-        newAction.repeatAction = DaysOfWeek()
-        let reminderMe = Reminder()
-        reminderMe.isSetTime = false
-        reminderMe.type = RemindMeType.noReminders.rawValue
-        //reminderMe.timeInterval = 12 * 3600
-        newAction.reminderMe = reminderMe
-        newAction.stake = 0
-        newAction.status = StatusType.create.rawValue
         
-        if let goalIDTemp = goalID {
-            DataSource.shared.searchGoal(goalID: goalIDTemp) { (goal) in
-                newAction.goal = goal
-                
-                let endDateAction = newAction.endDate! as Date
-                let endDate : Date? = newAction.goal?.endDate as Date?
-                if let endDateTemp = endDate, endDateTemp < endDateAction {
-                    newAction.endDate = endDateTemp as NSDate
-                }
-            }
-        }
-        
-        if let contentIDTemp = contentID {
-            DataSource.shared.searchContent(contentID: contentIDTemp) { (content) in
-                newAction.content = content
-                newAction.name = content?.type?.capitalized
-            }
-        }
-        
+        let newAction = DataSource.shared.createNewAction(goalID: goalID, contentID: contentID)
         presenter.newAction = newAction
         createModelView(action: newAction)
         return newAction

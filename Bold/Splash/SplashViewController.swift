@@ -40,6 +40,15 @@ class SplashViewController: UIViewController {
         let texts = [L10n.Splash.text1, L10n.Splash.text2, L10n.Splash.text3, L10n.Splash.text4, L10n.Splash.text5, L10n.Splash.text6, L10n.Splash.text7, L10n.Splash.text8, L10n.Splash.text9, L10n.Splash.text10, L10n.Splash.text11]
         label.text = texts[Int(arc4random_uniform(UInt32(texts.count)))]
     }
+    
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        dismiss(animated: false, completion: nil)
+//    }
+    
+    deinit {
+        print("SplashViewController DEINIT")
+    }
 }
 
 extension SplashViewController: VideoViewDelegate {

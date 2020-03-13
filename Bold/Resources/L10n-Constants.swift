@@ -469,6 +469,21 @@ internal enum L10n {
     }
   }
 
+  internal enum Reminder {
+    /// You have an action due to be completed tomorrow %@
+    internal static func oneDayBeforeDueDate(_ p1: String) -> String {
+      return L10n.tr("Localizable", "Reminder.OneDayBeforeDueDate", p1)
+    }
+    /// You have an action due to be completed today %@ 
+    internal static func onTheDueDate(_ p1: String) -> String {
+      return L10n.tr("Localizable", "Reminder.OnTheDueDate", p1)
+    }
+    /// \nWith a stake of %@ \nMake sure to complete it to win your stake!
+    internal static func onTheDueDateAndStake(_ p1: String) -> String {
+      return L10n.tr("Localizable", "Reminder.OnTheDueDateAndStake", p1)
+    }
+  }
+
   internal enum Settings {
     /// Google Calendar
     internal static let googleCalendar = L10n.tr("Localizable", "Settings.GoogleCalendar")

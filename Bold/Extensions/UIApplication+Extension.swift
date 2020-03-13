@@ -30,6 +30,31 @@ extension UIApplication {
             return
         }
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        if let window = appDelegate.window {
+            
+            let previousViewController = window.rootViewController
+            let subviews = window.subviews
+            
+            if #available(iOS 13.0, *) {
+                // In iOS 13 we don't want to remove the transition view as it'll create a blank screen
+            } else {
+                // The presenting view controllers view doesn't get removed from the window as its currently transistioning and presenting a view controller
+                if let transitionViewClass = NSClassFromString("UITransitionView") {
+                    for subview in subviews where subview.isKind(of: transitionViewClass) {
+                        subview.removeFromSuperview()
+                    }
+                }
+            }
+            if let previousViewController = previousViewController {
+                // Allow the view controller to be deallocated
+                previousViewController.dismiss(animated: false) {
+                    // Remove the root view in case its still showing
+                    previousViewController.view.removeFromSuperview()
+                }
+            }
+        }
+        
         UIView.transition(with: UIApplication.shared.keyWindow!, duration: duration, options: .transitionFlipFromRight, animations: {
             let oldState = UIView.areAnimationsEnabled
             UIView.setAnimationsEnabled(false)

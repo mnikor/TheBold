@@ -42,7 +42,16 @@ class OnboardViewController: UIViewController, AlertDisplayable {
     
     @IBAction func tapFindYourBoldness(_ sender: UIButton) {
         let vc = StoryboardScene.Menu.initialScene.instantiate()
-        navigationController?.pushViewController(vc, animated: true)
+        UIApplication.setRootView(vc)
+    }
+    
+//        override func viewDidDisappear(_ animated: Bool) {
+//            super.viewDidDisappear(animated)
+//            dismiss(animated: false, completion: nil)
+//        }
+    
+    deinit {
+        print("SplashViewController DEINIT")
     }
     
     override func viewDidLoad() {
