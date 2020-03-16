@@ -24,6 +24,7 @@ extension UIApplication {
     public static func setRootView(_ viewController: UIViewController,
                                    animated: Bool = true,
                                    duration: TimeInterval = 0.5,
+                                   options: UIView.AnimationOptions = .transitionFlipFromRight,
                                    completion: (() -> Void)? = nil) {
         guard animated else {
             UIApplication.shared.keyWindow?.rootViewController = viewController
@@ -55,7 +56,7 @@ extension UIApplication {
             }
         }
         
-        UIView.transition(with: UIApplication.shared.keyWindow!, duration: duration, options: .transitionFlipFromRight, animations: {
+        UIView.transition(with: UIApplication.shared.keyWindow!, duration: duration, options: options, animations: {
             let oldState = UIView.areAnimationsEnabled
             UIView.setAnimationsEnabled(false)
             UIApplication.shared.keyWindow?.rootViewController = viewController
