@@ -55,7 +55,13 @@ class AudioService: NSObject, AudioServiceProtocol {
     var callBackSmallPlayer : Callback<PlayerViewActivityType>?
     var callBackFullPlayer : Callback<PlayerViewActivityType>?
     var tracks: [AudioPlayerTrackInfo] = []
-    var image: Image?
+    var image: Image? {
+        willSet (myNewValue) {
+            if case .path(let pathImage) = image, case .path(let pathImageNew) = myNewValue, pathImage != pathImageNew {
+                player.stop()
+            }
+        }
+    }
     var smallImage : Image?
     
     weak var delegate: AudioServiceDelegate?

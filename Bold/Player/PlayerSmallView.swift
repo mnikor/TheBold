@@ -27,6 +27,7 @@ class PlayerSmallView: UIView {
         } else {
             AudioService.shared.input(.resume)
         }
+        changeImageButton()
     }
     
     @IBAction func tapCloseButton(_ sender: UIButton) {
@@ -55,6 +56,10 @@ class PlayerSmallView: UIView {
         progressView.progress = Float(currentTime / fullTime)
     }
     
+    private func changeImageButton() {
+        playButton.setImage(AudioService.shared.isPlaying() ? Asset.playerSmallPause.image : Asset.playerSmallPlay.image, for: .normal)
+    }
+    
     func commonInit() {
         Bundle.main.loadNibNamed("PlayerSmallView", owner: self)
         contentView.fixInView(self)
@@ -81,6 +86,7 @@ class PlayerSmallView: UIView {
     }
     
     private func showSmallPlayer() {
+        changeImageButton()
         AudioService.shared.delegate = self
         UIApplication.shared.keyWindow?.addSubview(self)
         if let _ = UIApplication.shared.keyWindow {

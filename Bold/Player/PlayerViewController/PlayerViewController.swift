@@ -84,6 +84,7 @@ class PlayerViewController: UIViewController, ViewProtocol {
         case .paused:
             resume()
         }
+        changeImageButton()
     }
     
     func play() {
@@ -139,9 +140,14 @@ class PlayerViewController: UIViewController, ViewProtocol {
         }))
     }
     
+    private func changeImageButton() {
+        playPauseButton.setImage(AudioService.shared.isPlaying() ? Asset.playerPause.image : Asset.playerPlay.image, for: .normal)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        changeImageButton()
         titleSongLabel.text = AudioService.shared.getCurrentTrackName()
         subtitleSongLabel.text = AudioService.shared.getCurrentArtistName()
         
