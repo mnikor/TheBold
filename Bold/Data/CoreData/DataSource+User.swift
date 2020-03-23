@@ -53,6 +53,7 @@ extension DataSource: UserFunctionality {
         user.downloadOnlyWifiOn = false
         user.iCloudOn = false
         user.levelOfMasteryPoints = 0
+        user.levelOfMasteryLevel = Int16(LevelType.apprentice.rawValue)
         user.token = nil
         user.firstOpenIdeas = true
         user.stakeInfo = false

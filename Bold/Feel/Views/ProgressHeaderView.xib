@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,6 +15,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProgressHeaderView" customModule="Bold" customModuleProvider="target">
             <connections>
+                <outlet property="changePointLabel" destination="msM-TT-Clw" id="9Hk-ih-q9j"/>
+                <outlet property="changePointView" destination="bhy-8E-Qe1" id="R3s-uR-pyh"/>
                 <outlet property="contentView" destination="25r-En-btk" id="thd-4K-Xw5"/>
                 <outlet property="pointsImageView" destination="NcZ-g9-9zp" id="9Ta-HW-tJb"/>
                 <outlet property="pointsLabel" destination="Xoi-PU-jFG" id="t12-dB-HTo"/>
@@ -32,22 +32,22 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="2"/>
                 </progressView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apprentice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4v-Er-SMI">
-                    <rect key="frame" x="20" y="10.5" width="58.5" height="14"/>
+                    <rect key="frame" x="20" y="10" width="68" height="15"/>
                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="12"/>
                     <color key="textColor" red="0.1058823529" green="0.15686274510000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cEW-6D-wtT">
-                    <rect key="frame" x="300.5" y="11" width="54.5" height="13"/>
+                    <rect key="frame" x="300" y="11" width="55" height="13"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="275" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xoi-PU-jFG">
-                            <rect key="frame" x="0.0" y="0.0" width="20.5" height="13"/>
+                            <rect key="frame" x="0.0" y="0.0" width="21" height="13"/>
                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="12"/>
                             <color key="textColor" red="0.1058823529" green="0.15686274510000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feelShape" translatesAutoresizingMaskIntoConstraints="NO" id="NcZ-g9-9zp">
-                            <rect key="frame" x="28.5" y="0.0" width="26" height="13"/>
+                            <rect key="frame" x="29" y="0.0" width="26" height="13"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="13" id="crR-vF-4hV"/>
                                 <constraint firstAttribute="width" constant="26" id="kfk-Sk-QR4"/>
@@ -55,14 +55,34 @@
                         </imageView>
                     </subviews>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bhy-8E-Qe1">
+                    <rect key="frame" x="98" y="7" width="42.5" height="21"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msM-TT-Clw">
+                            <rect key="frame" x="10" y="2" width="22.5" height="17.5"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="msM-TT-Clw" firstAttribute="centerY" secondItem="bhy-8E-Qe1" secondAttribute="centerY" id="nma-5I-DSh"/>
+                        <constraint firstAttribute="height" constant="21" id="rhW-bx-ZeC"/>
+                        <constraint firstAttribute="trailing" secondItem="msM-TT-Clw" secondAttribute="trailing" constant="10" id="uk2-we-gg7"/>
+                        <constraint firstItem="msM-TT-Clw" firstAttribute="leading" secondItem="bhy-8E-Qe1" secondAttribute="leading" constant="10" id="xRZ-1r-JPP"/>
+                    </constraints>
+                </view>
             </subviews>
             <constraints>
                 <constraint firstItem="8kY-ar-jx3" firstAttribute="leading" secondItem="25r-En-btk" secondAttribute="leading" id="6WY-4h-GKI"/>
                 <constraint firstItem="8kY-ar-jx3" firstAttribute="top" secondItem="25r-En-btk" secondAttribute="top" id="AN6-3l-iMh"/>
                 <constraint firstItem="D4v-Er-SMI" firstAttribute="centerY" secondItem="25r-En-btk" secondAttribute="centerY" id="Sqf-dU-89U"/>
                 <constraint firstAttribute="trailing" secondItem="8kY-ar-jx3" secondAttribute="trailing" id="UmG-6Q-d3M"/>
+                <constraint firstItem="bhy-8E-Qe1" firstAttribute="centerY" secondItem="D4v-Er-SMI" secondAttribute="centerY" id="aqT-EN-tvS"/>
                 <constraint firstAttribute="trailing" secondItem="cEW-6D-wtT" secondAttribute="trailing" constant="20" id="eLo-lt-sBl"/>
                 <constraint firstItem="cEW-6D-wtT" firstAttribute="centerY" secondItem="25r-En-btk" secondAttribute="centerY" id="fnC-e2-5L0"/>
+                <constraint firstItem="bhy-8E-Qe1" firstAttribute="leading" secondItem="D4v-Er-SMI" secondAttribute="trailing" constant="10" id="oAi-Gr-FOF"/>
                 <constraint firstItem="D4v-Er-SMI" firstAttribute="leading" secondItem="25r-En-btk" secondAttribute="leading" constant="20" id="qc9-gt-ygs"/>
                 <constraint firstItem="cEW-6D-wtT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="D4v-Er-SMI" secondAttribute="trailing" constant="8" id="qxw-Iy-fGB"/>
             </constraints>
@@ -70,7 +90,7 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="9DY-mr-a93"/>
-            <point key="canvasLocation" x="-348" y="51"/>
+            <point key="canvasLocation" x="-348" y="50.824587706146929"/>
         </view>
     </objects>
     <resources>

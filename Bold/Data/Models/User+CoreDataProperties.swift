@@ -20,6 +20,7 @@ extension User {
     @NSManaged public var downloadOnlyWifiOn: Bool
     @NSManaged public var iCloudOn: Bool
     @NSManaged public var levelOfMasteryPoints: Int32
+    @NSManaged public var levelOfMasteryLevel: Int16
     @NSManaged public var token: String?
     @NSManaged public var firstOpenIdeas: Bool
     @NSManaged public var stakeInfo: Bool

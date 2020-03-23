@@ -17,6 +17,7 @@ enum GoalTimeSpentType {
 struct LevelInfoObserv {
     let level: LevelBold
     let currentPoint: Int
+    let stepChangePoint: Int
 }
 
 enum LevelOfMasteryServiceInput {
@@ -39,17 +40,38 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
     private var levelsArray: [LevelBold] = []
     var currentLimit: LimitsLevel!
     
-    private let changePointsVariable : BehaviorRelay<LevelInfoObserv> = BehaviorRelay(value: LevelInfoObserv(level: LevelBold(type: .apprentice), currentPoint: 0))
+    private let changePointsVariable : BehaviorRelay<LevelInfoObserv> = BehaviorRelay(value: LevelInfoObserv(level: LevelBold(type: .apprentice), currentPoint: 0, stepChangePoint: 0))
     
     var changePoints : Observable<LevelInfoObserv> {
         return changePointsVariable.asObservable()
     }
+    var stepChangePoint: Int = 0
     
     private override init() {
+        super.init()
         for type in LevelType.types {
             let level = LevelBold(type: type)
             self.levelsArray.append(level)
         }
+//        generatePoint()
+    }
+    
+//    func generatePoint() {
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {[weak self] in
+//            let randomPoints = Int(arc4random_uniform(100))
+//            self?.addPoints(points: randomPoints)
+//            self?.generatePoint()
+//        }
+//    }
+    
+    var closedLevels: [LevelBold] {
+        
+        let user = DataSource.shared.readUser()
+        let filterLevels = levelsArray.filter { (level) -> Bool in
+            return user.levelOfMasteryLevel <= level.type.rawValue
+        }
+        return filterLevels
     }
     
     var levels: [LevelBold] {
@@ -126,13 +148,20 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
         currentLimit = LimitsLevel(limitPoint: SimpleLimitLevel(type: .points(points)),
                                    limitsGoal: [SimpleLimitLevel(type: .goals(goalMid: goalMidArray.count, goalLong: goalLongArray.count))])
         
-        var currentLevel = levelsArray.first!
+        let newArray = closedLevels
+        var currentLevel = newArray.first!
         
-        for level in levelsArray {
+        for level in newArray {
             if currentLimit < level.limits {
                 currentLevel = level
                 currentLevel.status = .active
+                
+                let user = DataSource.shared.readUser()
+                user.levelOfMasteryLevel = Int16(currentLevel.type.rawValue)
+                DataSource.shared.saveBackgroundContext()
                 return currentLevel
+            }else {
+                level.completionPercentage = 100
             }
             
 //            if currentLimit.limitPoint.compare(limit: level.limits.limitPoint) {
@@ -173,18 +202,33 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
     }
     
     private func calculateProgress() {
-        let levelInfoTest = LevelInfoObserv(level: getCurrentLevel(), currentPoint: currentPoints())
+        let levelInfoTest = LevelInfoObserv(level: getCurrentLevel(), currentPoint: currentPoints(), stepChangePoint: stepChangePoint)
         changePointsVariable.accept(levelInfoTest)
     }
     
     private func addPoints(points: Int) {
-        
+//        var multiplier = 1
         let user = DataSource.shared.readUser()
-        var newPoint = (user.levelOfMasteryPoints) + Int32(points)
+//        if user.levelOfMasteryPoints >= 300 {
+//            multiplier = -1
+//        }
+        var newPoint = (user.levelOfMasteryPoints) + Int32(points /** multiplier*/)
+        stepChangePoint = points //* multiplier
         
         if newPoint < 0 {
             newPoint = 0
         }
+        
+        user.levelOfMasteryPoints = newPoint
+        let saveLevel = user.levelOfMasteryLevel
+        let currentLevel : LevelBold = getCurrentLevel()
+        
+        
+        if saveLevel > currentLevel.type.rawValue {
+            let saveLevel : LevelType = LevelType(rawValue: Int(user.levelOfMasteryLevel))!
+            newPoint = Int32(saveLevel.limits.getAllLimits().points)
+        }
+        
         user.levelOfMasteryPoints = newPoint
         DataSource.shared.saveBackgroundContext()
         

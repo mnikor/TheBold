@@ -527,10 +527,10 @@ enum LevelType: Int, CaseIterable {
     var limits: LimitsLevel {
         switch self {
         case .apprentice:
-            return LimitsLevel(limitPoint: SimpleLimitLevel(type: .points(500) , description: L10n.Profile.LevelOfMastery.points(500)),
+            return LimitsLevel(limitPoint: SimpleLimitLevel(type: .points(300) , description: L10n.Profile.LevelOfMastery.points(300)),
                                limitsGoal: [])
         case .risingPower:
-            return LimitsLevel(limitPoint: SimpleLimitLevel(type: .points(300), description: L10n.Profile.LevelOfMastery.points(300)),
+            return LimitsLevel(limitPoint: SimpleLimitLevel(type: .points(500), description: L10n.Profile.LevelOfMastery.points(500)),
                                limitsGoal: [SimpleLimitLevel(type: .goals(goalMid: 1, goalLong: 0), description: L10n.Profile.LevelOfMastery.RisingPower.midTermGoalAchieved)])
         case .intermidiate:
             return LimitsLevel(limitPoint: SimpleLimitLevel(type: .points(600), description: L10n.Profile.LevelOfMastery.points(600)),

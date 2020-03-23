@@ -18,6 +18,9 @@ class ProgressHeaderView: UIView {
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var pointsImageView: UIImageView!
     
+    @IBOutlet weak var changePointLabel: UILabel!
+    @IBOutlet weak var changePointView: UIView!
+    
     let disposeBag = DisposeBag()
     
     private var displayLink = CADisplayLink()
@@ -48,23 +51,51 @@ class ProgressHeaderView: UIView {
     func config() {
         pointsImageView.image = Asset.feelShape.image
         
+        changePointView.cornerRadius = changePointView.bounds.height / 2
+        changePointView.isHidden = true
+        
         LevelOfMasteryService.shared.changePoints.subscribe(onNext: {[weak self] (levelInfo) in
             self?.titleLabel.text = levelInfo.level.type.titleText
-            self?.set(points: levelInfo.currentPoint)
+            self?.set(points: levelInfo.currentPoint, changePoint: levelInfo.stepChangePoint, currentLevel: levelInfo.level )
          
         }).disposed(by: disposeBag)
         
         configDisplayLink()
     }
     
-    func configDisplayLink() {
+    private func changeCountPoints(points: Int) {
+        
+        if points > 0 {
+            changePointView.backgroundColor = ColorName.secondaryTurquoise.color
+            changePointLabel.text = String(format: "+%d", points)
+        }else {
+            changePointView.backgroundColor = ColorName.primaryRed.color
+            changePointLabel.text = String(format: "%d", points)
+        }
+        
+        UIView.transition(with: changePointView, duration: animationDuration, options: [.transitionCrossDissolve, .autoreverse, .curveEaseOut], animations: { [weak self] in
+            self?.changePointView.isHidden = false
+        }) { (finish) in
+            self.changePointView.isHidden = finish
+        }
+    }
+    
+    private func configDisplayLink() {
         displayLink = CADisplayLink(target: self, selector: #selector(animateValues))
         displayLink.add(to: .main, forMode: .default)
     }
     
-    func set(points: Int) {//, progress: Float) {
-        pointsStartValue = Int(pointsLabel.text ?? "") ?? 0
+    private func set(points: Int, changePoint: Int, currentLevel: LevelBold) {
+        
+        if (self.window == nil) {
+            pointsLabel.text = "\(points)"
+            progressView.progress = Float(points) / Float(Double(currentLevel.limits.getAllLimits().points))
+            return
+        }
+        
+        pointsStartValue = points - changePoint
         pointsEndValue = points
+        self.changeCountPoints(points: changePoint)
         startDate = Date()
     }
     
@@ -74,13 +105,13 @@ class ProgressHeaderView: UIView {
         let timeInterval = Date().timeIntervalSince(startDate)
         if timeInterval > animationDuration {
             pointsLabel.text = "\(pointsEndValue)"
-            progressView.progress = Float(pointsEndValue) / Float(LevelType.allCases.compactMap({ $0.limits.getAllLimits().points }).first(where: { Int($0) > pointsEndValue }) ?? 1)
+//            progressView.progress = Float(pointsEndValue) / Float(LevelType.allCases.compactMap({ $0.limits.getAllLimits().points }).first(where: { Int($0) > pointsEndValue }) ?? 1)
             return
         }
         let percentage = timeInterval / animationDuration
         let currentPoints = Double(pointsStartValue) + (percentage * Double(pointsEndValue - pointsStartValue))
         
-        progressView.progress = Float(currentPoints) / Float(LevelType.allCases.compactMap({ $0.limits.getAllLimits().points }).sorted().first(where: { Double($0) > currentPoints }) ?? 1)
+        progressView.progress = Float(currentPoints) / Float(LevelOfMasteryService.shared.closedLevels.compactMap({ $0.limits.getAllLimits().points }).sorted().first(where: { Double($0) > currentPoints }) ?? 1)
         pointsLabel.text = "\(Int(currentPoints))"
     }
 

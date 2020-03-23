@@ -74,8 +74,15 @@ class HeaderHomeView: UIView {
         }
     }
     
-    func set(points: Int) {
-        pointsStartValue = Int(currentPointsLabel.text?.components(separatedBy: "/").first ?? "0") ?? 0
+    private func set(points: Int, changePoint: Int, currentLevel: LevelBold) {
+        
+        if (contentView.window == nil) {
+            currentPointsLabel.text = "\(points)/\(pointsLimit)"
+            timeLabel.text = "\(boldnessEndValue)min"
+            return
+        }
+        
+        pointsStartValue = points - changePoint//Int(currentPointsLabel.text?.components(separatedBy: "/").first ?? "0") ?? 0
         pointsEndValue = points
         
         let displayLink = CADisplayLink(target: self, selector: #selector(animatePoints))
@@ -98,9 +105,8 @@ class HeaderHomeView: UIView {
        LevelOfMasteryService.shared.changePoints.subscribe(onNext: {[weak self] (levelInfo) in
             
         self?.levelNameLabel.text = levelInfo.level.type.titleText
-        let currentLimits = levelInfo.level.limits.getAllLimits()
-        self?.pointsLimit = currentLimits.points
-        self?.set(points: levelInfo.currentPoint)
+        self?.pointsLimit = levelInfo.level.limits.getAllLimits().points
+        self?.set(points: levelInfo.currentPoint, changePoint: levelInfo.stepChangePoint, currentLevel: levelInfo.level)
        }).disposed(by: disposeBag)
     }
     
@@ -112,9 +118,9 @@ class HeaderHomeView: UIView {
                 timeLabel.text = "\(boldnessEndValue)min"
                 return
         }
+        
         let percentage = timeInterval / animationDuration
-        let pointsNewValue = Double(pointsEndValue - pointsStartValue) * percentage
-        pointsLimit = LevelType.allCases.compactMap({ $0.limits.getAllLimits().points }).sorted().first(where: { $0 > Int(pointsNewValue) }) ?? 0
+        let pointsNewValue = Double(pointsStartValue) + (percentage * Double(pointsEndValue - pointsStartValue))
         currentPointsLabel.text = "\(Int(pointsNewValue))/\(pointsLimit)"
     }
     

@@ -27,6 +27,11 @@ class LevelBold {
     var completionPercentage: Int {
         //for completionPercentage
         get {
+            
+            if percent == 100 {
+                return 100
+            }
+            
             let currentLimit = LevelOfMasteryService.shared.currentLimit!
             let limit = limits
             
