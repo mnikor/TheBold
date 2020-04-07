@@ -8,10 +8,10 @@
 
 import SwiftyJSON
 
-struct ActivityContent {
-    var id: Int
+class ActivityContent: ActivityBase {
+//    var id: Int
     var title: String
-    var type: ContentType
+//    var type: ContentType
     var body: String
     var authorName: String
     var footer: String
@@ -25,6 +25,24 @@ struct ActivityContent {
     var authorPhotoURL: String?
     var audioTracks: [AudioPlayerTrackInfo]
     var documentURL: FilePath?
+    
+    init(id: Int, position: Int, type:ContentType, title: String, body: String, authorName: String, footer: String, durtionRead: Int, pointOfUnlock: Int, contentStatus: ContentStatus, imageURL: String?, smallImageURL: String?, largeImageURL: String?, likesCount: Int, authorPhotoURL: String?, audioTracks: [AudioPlayerTrackInfo], documentURL: FilePath?) {
+        self.title = title
+        self.body = body
+        self.authorName = authorName
+        self.footer = footer
+        self.durtionRead = durtionRead
+        self.pointOfUnlock = pointOfUnlock
+        self.contentStatus = contentStatus
+        self.imageURL = imageURL
+        self.smallImageURL = smallImageURL
+        self.largeImageURL = largeImageURL
+        self.likesCount = likesCount
+        self.authorPhotoURL = authorPhotoURL
+        self.audioTracks = audioTracks
+        self.documentURL = documentURL
+        super.init(id: id, position: position, type: type)
+    }
     
     static func mapJSON(_ json: JSON) -> ActivityContent? {
         let id = json[ResponseKeys.id].intValue
@@ -41,7 +59,14 @@ struct ActivityContent {
         if typeString.hasPrefix(ResponseKeys.typePrefix) {
             typeString = String(typeString.dropFirst(ResponseKeys.typePrefix.count))
         }
-        guard let type = ContentType(rawValue: typeString.lowercased()) else { return nil }
+        
+        var type : ContentType = .meditation
+        
+        if let checkType = ContentType(rawValue: typeString.lowercased()) {
+            type = checkType
+        }
+        
+//        guard let type = ContentType(rawValue: typeString.lowercased()) else { return nil }
         let audioTracks: [AudioPlayerTrackInfo]
         if let audioTracksArray = json[ResponseKeys.audioTracks].array {
             audioTracks = audioTracksArray.compactMap { item in
@@ -65,8 +90,9 @@ struct ActivityContent {
         let durationRead = json[ResponseKeys.durationRead].int ?? 0
         
         return ActivityContent(id: id,
-                       title: title,
-                       type: type,
+                               position: json[ResponseKeys.position].intValue,
+                               type: type,
+                               title: title,
                        body: body,
                        authorName: authorName,
                        footer: footer,
@@ -109,8 +135,9 @@ struct ActivityContent {
         }
         
         return ActivityContent(id: Int(content.id),
-                               title: content.title ?? "",
+                               position: 0,
                                type: type,
+                               title: content.title ?? "",
                                body: content.type ?? "",
                                authorName: content.authorName ?? "",
                                footer: content.footer ?? "",
@@ -176,6 +203,7 @@ private struct ResponseKeys {
     static let id = "id"
     static let title = "title"
     static let type = "type"
+    static let position = "position"
     static let typePrefix = "Content::"
     static let body = "body"
     static let authorName = "author_name"

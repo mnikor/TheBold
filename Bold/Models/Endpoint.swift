@@ -29,4 +29,6 @@ enum Endpoint: String {
     case likeContentObject = "/content_objects/%@/%d/like"
     case unlikeContentObject = "/content_objects/%@/%d/unlike"
     
+    case contentGroupAllWithType = "/content_groups/%@"
+    case contentGroupWithID = "/content_groups/%d"
 }

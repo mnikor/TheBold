@@ -12,7 +12,7 @@ import SVProgressHUD
 enum ActionCellType {
     case action
     case songOrListen
-    case manageIt
+    case group
     
 }
 
@@ -34,7 +34,7 @@ class ActionsListViewController: UIViewController, ViewProtocol {
     private var selectedContent: ActivityContent?
     
     private let loader = LoaderView(frame: .zero)
-    private var viewDidAppearAnimated: Bool = false
+//    private var viewDidAppearAnimated: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,32 +99,39 @@ extension ActionsListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch actions[indexPath.row].type {
+        
+        let content = actions[indexPath.row]
+        
+        switch content.type {
         case .action:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActionTableViewCell
-            cell.config(item: actions[indexPath.row])
+            cell.config(item: content)
             cell.delegate = self
             return cell
         case .songOrListen:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as ListenOrReadTableViewCell
-            cell.config(type: .unlockListenPreview)
+//            cell.config(content: content, type: .unlockListenPreview)
             return cell
-        case .manageIt:
+        case .group:
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as ManageItTableViewCell
-            cell.config(type: .baseThreeCells)
+            var type = TypeManageItCell.baseStaticCells
+            if content.group!.contentObjects.count >= 3 {
+                type = .titleAndScroll
+            }
+            cell.config(type: type, group: content.group)
             cell.delegate = self
             return cell
         }
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if !viewDidAppearAnimated {
-            let animation = TableViewCellAnimationFactory.slideIn(duration: 0.15, delayFactor: 0.05)
-            let animator = TableViewCellAnimator(animation: animation)
-            animator.animate(cell: cell, at: indexPath, in: tableView)
-            viewDidAppearAnimated = tableView.frame.height <= (CGFloat(indexPath.row + 1) * cell.frame.height)
-        }
-    }
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        if !viewDidAppearAnimated {
+//            let animation = TableViewCellAnimationFactory.slideIn(duration: 0.15, delayFactor: 0.05)
+//            let animator = TableViewCellAnimator(animation: animation)
+//            animator.animate(cell: cell, at: indexPath, in: tableView)
+//            viewDidAppearAnimated = tableView.frame.height <= (CGFloat(indexPath.row + 1) * cell.frame.height)
+//        }
+//    }
     
 }
 
@@ -132,28 +139,33 @@ extension ActionsListViewController: UITableViewDelegate, UITableViewDataSource 
 //MARK:- ManageItTableViewCellDelegate
 
 extension ActionsListViewController: ManageItTableViewCellDelegate {
-    func tapBlueButton(type: ListenOrReadCellType) {
-        switch type {
-        case .startAddToPlan:
-            presenter.input(.start)
-        case .unlockListenPreview:
-            presenter.input(.unlockListenPreview)
-        case .unlockReadPreview:
-            presenter.input(.unlockReadPreview)
-        }
+    
+    func tapButton(buttonType: GroupContentButtonPressType, content: ActivityContent) {
+        presenter.input(.tappedContentInGroup(pressType: buttonType, content: content))
     }
     
-    func tapCleanButton(type: ListenOrReadCellType) {
-        switch type {
-        case .startAddToPlan:
-            break
-//            presenter.input(.addActionPlan)
-        case .unlockListenPreview:
-            presenter.input(.listenPreview)
-        case .unlockReadPreview:
-            presenter.input(.readPreview)
-        }
-    }
+//    func tapBlueButton(type: ListenOrReadCellType) {
+//        switch type {
+//        case .startAddToPlan:
+//            presenter.input(.start)
+//        case .unlockListenPreview:
+//            presenter.input(.unlockListenPreview)
+//        case .unlockReadPreview:
+//            presenter.input(.unlockReadPreview)
+//        }
+//    }
+//
+//    func tapCleanButton(type: ListenOrReadCellType) {
+//        switch type {
+//        case .startAddToPlan:
+//            break
+////            presenter.input(.addActionPlan)
+//        case .unlockListenPreview:
+//            presenter.input(.listenPreview)
+//        case .unlockReadPreview:
+//            presenter.input(.readPreview)
+//        }
+//    }
 }
 
 
@@ -182,7 +194,8 @@ extension ActionsListViewController: ActionTableViewCellDelegate {
         let item = actions[indexPath.row]
         if !item.download {
             item.download = !item.download
-            presenter.input(.download(item.data))
+            guard let data = item.data else { return }
+            presenter.input(.download(data))
         }
         tableView.reloadRows(at: [indexPath], with: .none)
         
@@ -201,7 +214,7 @@ extension ActionsListViewController: ActionTableViewCellDelegate {
     
     func tapAddActionPlanButton(cell: ActionTableViewCell) {
         guard let index = tableView.indexPath(for: cell)?.row else { return }
-        let content = actions[index].data
+        guard let content = actions[index].data else {return}
         presenter.input(.addActionPlan(content))
     }
 }
@@ -210,18 +223,21 @@ extension ActionsListViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        let content = actions[indexPath.row].data
+        
+        guard let content = actions[indexPath.row].data else { return }
+        
         selectedContent = content
-        switch content.type {
-        case .lesson, .story:
-            let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
-            vc.viewModel = DescriptionViewModel.map(activityContent: content)
-            vc.isDownloadedContent = DataSource.shared.contains(content: content)
-            navigationController?.present(vc, animated: true, completion: nil)
-        default:
-            
-            PlayerViewController.createController(content: content)
-        }
+        presenter.input(.didSelectContent(content))
+//        switch content.type {
+//        case .lesson, .story:
+//            let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
+//            vc.viewModel = DescriptionViewModel.map(activityContent: content)
+//            vc.isDownloadedContent = DataSource.shared.contains(content: content)
+//            navigationController?.present(vc, animated: true, completion: nil)
+//        default:
+//
+//            PlayerViewController.createController(content: content)
+//        }
         
 //        if actions[indexPath.row].type == .action {
 //            let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()

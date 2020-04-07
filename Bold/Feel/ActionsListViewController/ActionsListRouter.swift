@@ -13,6 +13,8 @@ enum ActionsListInputRouter {
     case back
     case info(FeelTypeCell)
     case presentedBy(AddActionPlanViewController)
+    case player(_ content: ActivityContent)
+    case read(_ content: ActivityContent)
 }
 
 protocol ActionsListRouterProtocol {
@@ -44,6 +46,13 @@ class ActionsListRouter: RouterProtocol, ActionsListRouterProtocol {
             } else {
                 vController.presentedBy(viewController)
             }
+        case .player(content: let content):
+            PlayerViewController.createController(content: content)
+        case .read(content: let content):
+            let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
+            vc.viewModel = DescriptionViewModel.map(activityContent: content)
+            vc.isDownloadedContent = DataSource.shared.contains(content: content)
+            viewController.navigationController?.present(vc, animated: true, completion: nil)
         }
     }
     

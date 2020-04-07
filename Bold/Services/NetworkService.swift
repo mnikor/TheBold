@@ -8,6 +8,7 @@
 
 import Alamofire
 import SwiftyJSON
+import SDWebImage
 
 class NetworkService {
     static let shared = NetworkService()
@@ -24,6 +25,20 @@ class NetworkService {
         //        }
         headers.updateValue("asqwjeqehqk", forKey: "X-Api-Token")
         return headers
+    }
+    
+    lazy var theBoldCache : SDImageCache = {
+        let cache = SDImageCache(namespace: "theBold")
+        cache.config.maxDiskAge = 2678400
+        cache.config.shouldCacheImagesInMemory = true
+        SDImageCachesManager.shared.caches = [cache]
+        SDWebImageManager.defaultImageCache = SDImageCachesManager.shared
+        return cache
+    }()
+    
+    func cacheImage(url: URL?) -> UIImage? {
+        let cacheKey = SDWebImageManager.shared.cacheKey(for: url)
+        return theBoldCache.imageFromCache(forKey: cacheKey)
     }
     
     private let reachabilityManager = Alamofire.NetworkReachabilityManager(host: "www.apple.com")
@@ -254,6 +269,26 @@ class NetworkService {
                                     return
                             }
                             completion?(.success(content))
+                        }
+        }
+    }
+    
+    func getAllGroup(with type: ContentType, completion: ((Result<[ActivityGroup]>) -> Void)?) {
+        guard downloadEnabled else { return }
+        sendRequest(endpoint: String(format: Endpoint.contentGroupAllWithType.rawValue, type.rawValue),
+                    method: .get,
+                    parameters: [:]) { (result) in
+                        switch result {
+                        case .failure(let error):
+                            completion?(.failure(error))
+                        case .success(let jsonData):
+                            guard let dataArray = jsonData.array
+                                else {
+                                    completion?(.failure(ServerErrorFactory.unknown))
+                                    return
+                            }
+                            let groupArray = dataArray.compactMap { ActivityGroup.mapJSON($0) }
+                            completion?(.success(groupArray))
                         }
         }
     }

@@ -14,9 +14,16 @@ enum ListenOrReadCellType {
     case startAddToPlan
 }
 
+enum GroupContentButtonPressType {
+    case unlock
+    case start
+    case addToPlan
+    case previewListen
+    case previewRead
+}
+
 protocol ListenOrReadMaterialViewDelegate: class {
-    func tapBlueButton(type: ListenOrReadCellType)
-    func tapClearButton(type: ListenOrReadCellType)
+    func tapButton(buttonType: GroupContentButtonPressType, content: ActivityContent)
 }
 
 class ListenOrReadMaterialView: UIView {
@@ -33,26 +40,26 @@ class ListenOrReadMaterialView: UIView {
     @IBOutlet weak var readPreviewButton: UIButton!
     
     weak var delegate: ListenOrReadMaterialViewDelegate?
-    var typeView: ListenOrReadCellType!
+    var content: ActivityContent!
     
     @IBAction func tapStartButton(_ sender: UIButton) {
-        delegate?.tapBlueButton(type: typeView)
+        delegate?.tapButton(buttonType: .start, content: content)
     }
     
     @IBAction func tapUnlockButton(_ sender: UIButton) {
-        delegate?.tapBlueButton(type: typeView)
+        delegate?.tapButton(buttonType: .unlock, content: content)
     }
     
     @IBAction func tapAddPlanButton(_ sender: UIButton) {
-        delegate?.tapClearButton(type: typeView)
+        delegate?.tapButton(buttonType: .addToPlan, content: content)
     }
     
     @IBAction func tapListenPreviewButton(_ sender: UIButton) {
-        delegate?.tapClearButton(type: typeView)
+        delegate?.tapButton(buttonType: .previewListen, content: content)
     }
     
     @IBAction func tapReadPreviewButton(_ sender: UIButton) {
-        delegate?.tapClearButton(type: typeView)
+        delegate?.tapButton(buttonType: .previewRead, content: content)
     }
     
     override init(frame: CGRect) {
@@ -76,9 +83,32 @@ class ListenOrReadMaterialView: UIView {
         
     }
     
-    func config(type: ListenOrReadCellType) {
-        self.typeView = type
-        switch type {
+    func config(content: ActivityContent, type: ListenOrReadCellType) {
+        
+        var durationDescription = ""
+        var typeTemp = ListenOrReadCellType.startAddToPlan
+        
+        switch content.type {
+        case .meditation, .hypnosis, .preptalk:
+            typeTemp = content.contentStatus == .locked ? .unlockListenPreview : .startAddToPlan
+            durationDescription = " listen"
+        case .lesson, .story:
+            typeTemp = content.contentStatus == .locked ? .unlockReadPreview : .startAddToPlan
+            durationDescription = " read"
+        default:
+            break
+        }
+        
+        titleLabel.text = content.title
+        if content.durtionRead != 0 {
+            durationLabel.text = ("\(content.durtionRead) min") + durationDescription
+        }
+        iconImageView.setImageAnimated(path: content.smallImageURL ?? "", placeholder: Asset.actionBackground.image)
+        
+        self.content = content
+//        self.typeView = type
+        
+        switch typeTemp {
         case .unlockListenPreview:
             durationLabel.isHidden = false
             startButton.isHidden = true

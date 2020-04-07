@@ -230,6 +230,7 @@ class PlayerViewController: UIViewController, ViewProtocol {
                 UIApplication.topViewController?.present(playerVC, animated: true) {
                     if content.type != .meditation {
                         playerVC.play()
+                        playerVC.changeImageButton()
                     }
                 }
             default:

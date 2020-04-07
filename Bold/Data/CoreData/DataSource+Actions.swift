@@ -52,6 +52,7 @@ extension DataSource: ActionsFunctionality {
         
         if let contentIDTemp = contentID {
             DataSource.shared.searchContent(contentID: contentIDTemp) { (content) in
+                newAction.name = content?.type?.capitalized
                 newAction.content = content
             }
         }

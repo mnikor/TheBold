@@ -9,8 +9,7 @@
 import UIKit
 
 protocol ListenOrReadMaterialCollectionViewCellDelegate: class {
-    func tapBlueButtonInCollectionCell(type: ListenOrReadCellType)
-    func tapClearButtonInCollectionCell(type: ListenOrReadCellType)
+    func tapButton(buttonType: GroupContentButtonPressType, content: ActivityContent)
 }
 
 class ListenOrReadMaterialCollectionViewCell: BaseCollectionViewCell {
@@ -26,25 +25,15 @@ class ListenOrReadMaterialCollectionViewCell: BaseCollectionViewCell {
         
     }
     
-    func config(type: ListenOrReadCellType) {
-        listenOrReadView.config(type: type)
+    func config(content: ActivityContent, type: ListenOrReadCellType) {
+        listenOrReadView.config(content: content, type: type)
     }
 }
 
 extension ListenOrReadMaterialCollectionViewCell: ListenOrReadMaterialViewDelegate {
-    func tapBlueButton(type: ListenOrReadCellType) {
-        delegate?.tapBlueButtonInCollectionCell(type: type)
+    
+    func tapButton(buttonType: GroupContentButtonPressType, content: ActivityContent) {
+        delegate?.tapButton(buttonType: buttonType, content: content)
     }
     
-    func tapClearButton(type: ListenOrReadCellType) {
-        delegate?.tapClearButtonInCollectionCell(type: type)
-    }
-    
-//    func tapBlueButton() {
-//        delegate?.tapUnlock()
-//    }
-//    
-//    func tapClearButton() {
-//        delegate?.tapPreview()
-//    }
 }

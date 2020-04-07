@@ -169,15 +169,15 @@ extension ActionCollectionTableViewCell: UICollectionViewDelegate, UICollectionV
         print("Select type = \(entity.type), index = \(indexPath.row)")
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let lastVisibleCell = collectionView.visibleCells.last,
-            let lastVisibleIndexPath = collectionView.indexPath(for: lastVisibleCell),
-            lastVisibleIndexPath.row > indexPath.row {
-            return
-        }
-        let animation = CollectionViewCellAnimationFactory.moveIn(cellWidth: cell.frame.width, duration: 0.15, delayFactor: 0.05)
-        let animator = CollectionViewCellAnimator(animation: animation)
-        animator.animate(cell: cell, at: indexPath, in: collectionView)
-    }
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        if let lastVisibleCell = collectionView.visibleCells.last,
+//            let lastVisibleIndexPath = collectionView.indexPath(for: lastVisibleCell),
+//            lastVisibleIndexPath.row > indexPath.row {
+//            return
+//        }
+//        let animation = CollectionViewCellAnimationFactory.moveIn(cellWidth: cell.frame.width, duration: 0.15, delayFactor: 0.05)
+//        let animator = CollectionViewCellAnimator(animation: animation)
+//        animator.animate(cell: cell, at: indexPath, in: collectionView)
+//    }
     
 }

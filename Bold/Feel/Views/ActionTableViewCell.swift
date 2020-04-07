@@ -79,9 +79,9 @@ class ActionTableViewCell: BaseTableViewCell {
         self.item = item
         configHeader(type: item.header!)
         configButton(item: item)
-        titleTextView.text = item.data.title
-        backgroundImageView.setImageAnimated(path: item.data.imageURL ?? "", placeholder: Asset.actionBackground.image)
-        authorNameLabel.text = item.data.authorName
+        titleTextView.text = item.data?.title
+        backgroundImageView.setImageAnimated(path: item.data?.imageURL ?? "", placeholder: Asset.actionBackground.image)
+        authorNameLabel.text = item.data?.authorName
         
         //guard let tempHeaderType = HeaderType(rawValue: UInt(arc4random_uniform(3))) else { return }
 //        configHeader(type: headerType)
@@ -113,7 +113,7 @@ class ActionTableViewCell: BaseTableViewCell {
             leftHeaderButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             leftHeaderButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             rightHeaderLabel.isHidden = false
-            rightHeaderLabel.text = "\(item.data.pointOfUnlock) points to unlock"
+            rightHeaderLabel.text = "\(item.data?.pointOfUnlock) points to unlock"
         case .unlock:
             leftHeaderButton.setImage(Asset.actionUnlockIcon.image, for: .normal)
             leftHeaderButton.setBackgroundImage(Asset.actionUnlockBackground.image, for: .normal)
