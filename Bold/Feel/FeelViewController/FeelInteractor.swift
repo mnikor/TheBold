@@ -27,6 +27,7 @@ class FeelInteractor: FeelInteractorInputProtocol {
     private var dataSource: [ContentType: [ActivityContent]] = [:]
     private var emptyDataSource: [ContentType: [ActivityContent]] = [:]
     private var count = 0
+    var startTime : CFAbsoluteTime!
     
     required init(presenter: Presenter) {
         self.presenter = presenter
@@ -37,6 +38,7 @@ class FeelInteractor: FeelInteractorInputProtocol {
         case .prepareTracks(content: let content):
             prepareTracks(for: content)
         case .prepareDataSource(contentTypeArray: let contentTypes, completion: let completion):
+            startTime = CFAbsoluteTimeGetCurrent()
             count = contentTypes.count
             createEmptyDataSource(contentTypes: contentTypes)
             dataSource = [:]
@@ -75,6 +77,8 @@ class FeelInteractor: FeelInteractorInputProtocol {
                 if self.dataSource.keys.isEmpty {
                     completion?(self.emptyDataSource)
                 } else {
+                    let timeElapsed = CFAbsoluteTimeGetCurrent() -  self.startTime
+                    print("timer = \(timeElapsed)")
                     completion?(self.dataSource)
                 }
             }

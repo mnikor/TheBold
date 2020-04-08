@@ -39,7 +39,9 @@ extension UIImageView {
             }
             completion?(image)
         } else {
-            image = placeholder
+            DispatchQueue.main.async {
+                self.image = placeholder
+            }
             SDWebImageManager.shared.loadImage(with: url,
                                                progress: nil) { [weak self] (image, data, error, cache, finished, url) in
                                                 guard let self = self else { return }

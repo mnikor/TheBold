@@ -12,18 +12,13 @@ enum ActionsListPresenterInput {
     case prepareDataSource(type: FeelTypeCell, completion: (([ActionEntity]) -> Void))
     case back
     case info(FeelTypeCell)
-    case unlockActionCard
+    case unlockActionCard(ActivityContent)
     case share
     case download(ActivityContent)
     case like
     case addActionPlan(ActivityContent)
     case tappedContentInGroup(pressType: GroupContentButtonPressType, content: ActivityContent)
     case didSelectContent(ActivityContent)
-//    case start
-//    case unlockListenPreview
-//    case unlockReadPreview
-//    case listenPreview
-//    case readPreview
 }
 
 protocol ActionsListPresenterProtocol {
@@ -57,8 +52,8 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
             router.input(.back)
         case .info(let type):
             router.input(.info(type))
-        case .unlockActionCard:
-            print("dsf")
+        case .unlockActionCard(let content):
+            unlockActionCard(content)
         case .share:
             viewController.shareContent(item: nil)
         case .download(let content):
@@ -90,6 +85,22 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
         }
     }
     
+    private func unlockActionCard(_ content: ActivityContent) {
+//        print("\(content)")
+//
+//        let user = DataSource.shared.readUser()
+//
+//        if user.levelOfMasteryPoints > content.pointOfUnlock {
+//            content.contentStatus = .unlocked
+//            user.levelOfMasteryPoints = user.levelOfMasteryPoints - Int32(content.pointOfUnlock)
+//            //DataSource.shared.saveBackgroundContext()
+//            interactor.input(.downloadContent(content: content, isHidden: false))
+//        }else {
+//            print("not points")
+//        }
+        print("Unlock")
+    }
+    
     private func tappedOnButtonOfContentInGroup(pressType: GroupContentButtonPressType, content: ActivityContent) {
         
         switch pressType {
@@ -100,7 +111,7 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
         case .start:
             self.input(.didSelectContent(content))
         case .unlock:
-            self.input(.unlockActionCard)
+            self.input(.unlockActionCard(content))
         case .addToPlan:
             self.input(.addActionPlan(content))
         }
@@ -169,11 +180,6 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
     }
     
 }
-
-//enum ActionEntityData {
-//    case content(ActivityContent)
-//    case group(ActivityGroup)
-//}
 
 class ActionEntity: NSObject {
     var type : ActionCellType

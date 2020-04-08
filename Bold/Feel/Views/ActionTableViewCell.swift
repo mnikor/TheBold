@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ActionTableViewCellDelegate: class {
-    func tapLeftHeaderButton()
+    func tapLeftHeaderButton(cell: ActionTableViewCell)
     func tapThreeDotsButton(item: ActionEntity)
     func tapDownloadButton(cell: ActionTableViewCell)
     func tapLikeButton(cell: ActionTableViewCell)
@@ -50,7 +50,7 @@ class ActionTableViewCell: BaseTableViewCell {
     var item : ActionEntity!
     
     @IBAction func tapLeftHeaderButton(_ sender: UIButton) {
-        delegate?.tapLeftHeaderButton()
+        delegate?.tapLeftHeaderButton(cell: self)
     }
     
     @IBAction func tapThreeDotsButton(_ sender: UIButton) {
@@ -105,7 +105,11 @@ class ActionTableViewCell: BaseTableViewCell {
             leftHeaderButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             leftHeaderButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             rightHeaderLabel.isHidden = false
-            rightHeaderLabel.text = "5min"
+            if let durationRead = item.data?.durtionRead, durationRead != 0 {
+                rightHeaderLabel.text = "\(durationRead)min"
+            }else {
+                rightHeaderLabel.text = ""
+            }
         case .points:
             leftHeaderButton.setImage(Asset.actionShape.image, for: .normal)
             leftHeaderButton.setBackgroundImage(nil, for: .normal)
@@ -113,7 +117,11 @@ class ActionTableViewCell: BaseTableViewCell {
             leftHeaderButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             leftHeaderButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             rightHeaderLabel.isHidden = false
-            rightHeaderLabel.text = "\(item.data?.pointOfUnlock) points to unlock"
+            if let pointOfUnlock = item.data?.pointOfUnlock {
+                rightHeaderLabel.text = "\(pointOfUnlock) points to unlock"
+            }else {
+                rightHeaderLabel.text = ""
+            }
         case .unlock:
             leftHeaderButton.setImage(Asset.actionUnlockIcon.image, for: .normal)
             leftHeaderButton.setBackgroundImage(Asset.actionUnlockBackground.image, for: .normal)

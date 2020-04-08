@@ -173,11 +173,19 @@ extension ActionsListViewController: ManageItTableViewCellDelegate {
 
 extension ActionsListViewController: ActionTableViewCellDelegate {
 
-    func tapLeftHeaderButton() {
-        
-        presenter.input(.unlockActionCard)
-        
+    func tapLeftHeaderButton(cell: ActionTableViewCell) {
         print("Unlock")
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let item = actions[indexPath.row]
+        guard let content = item.data else { return }
+        if content.contentStatus == ContentStatus.locked {
+            item.header = HeaderType.duration
+        }else {
+            return
+        }
+        
+//        presenter.input(.unlockActionCard(content))
+        tableView.reloadRows(at: [indexPath], with: .none)
     }
     
     func tapThreeDotsButton(item: ActionEntity) {
