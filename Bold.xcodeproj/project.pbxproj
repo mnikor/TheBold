@@ -2749,8 +2749,6 @@
 				F15699BD2383FD5E001E3D7B /* BaseStakesListViewController.swift in Sources */,
 				F1F6ADD72321297700F6A925 /* CreateGoalActionModel.swift in Sources */,
 				C5C6C14C2320F23800C15C2B /* NotificationService.swift in Sources */,
-				F107538822F093770078C71C /* BodyConfigureTableViewCell.swift in Sources */,
-				F183302C22E6178D00BB7A9E /* AllGoalsConfigurator.swift in Sources */,
 				F1130CDF230E937C008FA60D /* WMSegment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

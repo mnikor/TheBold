@@ -87,6 +87,7 @@ internal enum Asset {
   internal static let storyMain = ImageAsset(name: "storyMain")
   internal static let homeHeader2Bacground = ImageAsset(name: "homeHeader2Bacground")
   internal static let homeHeaderBackground = ImageAsset(name: "homeHeaderBackground")
+  internal static let homeHeaderBigShape = ImageAsset(name: "homeHeaderBigShape")
   internal static let homeHeaderShape = ImageAsset(name: "homeHeaderShape")
   internal static let checkDisableIcon = ImageAsset(name: "checkDisableIcon")
   internal static let checkIcon = ImageAsset(name: "checkIcon")
