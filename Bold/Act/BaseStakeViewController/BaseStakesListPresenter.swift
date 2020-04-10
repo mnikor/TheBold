@@ -235,6 +235,8 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
         
         if case .event(viewModel: let viewModelStake) = item {
             
+            if StatusType.completeUpdate.rawValue < viewModelStake.event.status { return }
+            
             let points = viewModelStake.event.calculatePoints
             
             AlertViewService.shared.input(.editAction(actionID: viewModelStake.event.action?.id, eventID: viewModelStake.event.id, points: points, tapAddPlan: {

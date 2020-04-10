@@ -63,23 +63,24 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
     }
     
     private func saveAction(_ complete:()->Void) {
+        guard let _ = presenter.newAction  else { return }
         createEvents(action: presenter.newAction)
         DataSource.shared.saveBackgroundContext()
         complete()
     }
     
     private func saveAction(with contentId: String?, completion: @escaping ()->Void) {
-        guard let action = presenter.newAction  else { return }
-        if let contentIDTemp = contentId {
-            DataSource.shared.searchContent(contentID: contentIDTemp) { [weak self] (content) in
-                action.content = content
-                self?.createEvents(action: action)
-                DataSource.shared.saveBackgroundContext()
-                completion()
-            }
-        } else {
+//        guard let action = presenter.newAction  else { return }
+//        if let contentIDTemp = contentId {
+//            DataSource.shared.searchContent(contentID: contentIDTemp) { [weak self] (content) in
+////                action.content = content
+//                self?.createEvents(action: action)
+//                DataSource.shared.saveBackgroundContext()
+//                completion()
+//            }
+//        } else {
             saveAction(completion)
-        }
+//        }
     }
     
     private func updateAction(_ complete:()->Void) {

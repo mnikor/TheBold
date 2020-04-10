@@ -45,7 +45,7 @@ enum ColorGoalType: Int16, CaseIterable {
         case .blue:
             return ColorName.primaryBlue.color
         default:
-            return .white
+            return .black
         }
     }
 }

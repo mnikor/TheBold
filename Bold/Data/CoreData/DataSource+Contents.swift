@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 protocol ContentFunctionality {
-    func saveContent(content: ActivityContent, isHidden: Bool)
+    func saveContent(content: ActivityContent, isHidden: Bool?)
     func deleteContent(content: ActivityContent)
     func contains(content: ActivityContent) -> Bool
 }
@@ -30,25 +30,21 @@ extension DataSource: ContentFunctionality {
         return (try? DataSource.shared.backgroundContext.fetch(fetchRequest))?.first
     }
     
-    func saveContent(content: ActivityContent, isHidden: Bool = false) {
+    func saveContent(content: ActivityContent, isHidden: Bool? = false) {
         persistentContainer.performBackgroundTask { [unowned self] context in
-            do {
-                let contentMO: Content
-                if let fetchedContent = self.fetchContent(activityContent: content) {
-                    contentMO = fetchedContent
-                    if contentMO.isHidden {
-                        contentMO.setHidden(isHidden)
-                    }
-                } else {
-                    contentMO = Content()
+            let contentMO: Content
+            if let fetchedContent = self.fetchContent(activityContent: content) {
+                contentMO = fetchedContent
+                if contentMO.isHidden, let isHidden = isHidden {
                     contentMO.setHidden(isHidden)
                 }
-                contentMO.map(activityContent: content)
-                try self.backgroundContext.save()
-                self.loadFiles(content: content)
-            } catch {
-                // TODO: - error handling
+            } else {
+                contentMO = Content()
+                contentMO.setHidden(isHidden ?? true)
             }
+            contentMO.map(activityContent: content)
+            DataSource.shared.saveBackgroundContext()
+            self.loadFiles(content: content)
         }
     }
     
@@ -69,7 +65,7 @@ extension DataSource: ContentFunctionality {
     func searchContent(contentID: String, success: (Content?)->Void) {
         var results : Content?
         let fetchRequest = NSFetchRequest<Content>(entityName: "Content")
-        fetchRequest.predicate = NSPredicate(format: "id == %@", contentID)
+        fetchRequest.predicate = NSPredicate(format: "id == %d", Int32(Int(contentID) ?? 0)) 
         do {
             results = try DataSource.shared.backgroundContext.fetch(fetchRequest).first
         } catch {

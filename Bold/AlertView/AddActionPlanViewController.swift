@@ -20,8 +20,9 @@ class AddActionPlanViewController: UIViewController {
     private var contentID : String?
     var content: ActivityContent? {
         willSet(newValue) {
-            if let tempID = newValue?.id {
-                contentID = String(tempID)
+            if let newValueContent = newValue {
+                contentID = String(newValueContent.id)
+                DataSource.shared.saveContent(content: newValueContent, isHidden: nil)
             }else {
                 contentID = nil
             }
@@ -71,9 +72,9 @@ class AddActionPlanViewController: UIViewController {
         addSwipe()
         displayContentController()
         
-        if let content = self.content {
-            DataSource.shared.saveContent(content: content, isHidden: true)
-        }
+//        if let content = self.content {
+//            DataSource.shared.saveContent(content: content, isHidden: true)
+//        }
     }
     
     func displayContentController() {

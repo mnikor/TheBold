@@ -24,7 +24,7 @@ struct StakeActionViewModel {
     static func createModelView(event: Event) -> StakeActionViewModel {
         
         var statusIcon = UIImage()
-        var statusIconColor = ColorGoalType(rawValue: event.action?.goal?.color ?? 0)?.colorGoal() ?? .red
+        var statusIconColor = ColorGoalType(rawValue: event.action?.goal?.color ?? ColorGoalType.none.rawValue)?.colorGoal() ?? .red
         var title : NSMutableAttributedString?
         if let nameTitle = event.name {
             title = NSMutableAttributedString(string: nameTitle)
@@ -50,7 +50,6 @@ struct StakeActionViewModel {
                 if event.startDate == Date().baseTime() as NSDate {
                     title?.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, titleTemp.length))
                 }
-                
                 
             }
         }
