@@ -15,10 +15,10 @@ public class Event: NSManagedObject {
     var calculatePoints: Int {
         
         var points: Int = 0
-        points = Int(self.stake) + 5
+        points = Int(self.stake) + PointsForAction.congratulationsAction
         
         if self.action?.content != nil {
-            points += 10
+            points += PointsForAction.congratulationsWithContentAction
         }
         return points
     }

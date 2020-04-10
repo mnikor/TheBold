@@ -65,8 +65,7 @@ extension DataSource: EventFunctionality {
             }
             
             AlertViewService.shared.input(.congratulationsAction(points: result.calculatePoints, tapGet: {
-                let points = Int(result.stake) + PointsForAction.congratulationsAction
-                LevelOfMasteryService.shared.input(.addPoints(points: points))
+                LevelOfMasteryService.shared.input(.addPoints(points: result.calculatePoints))
             }))
             checkAllEventOfAction(actionID: result.action!.id!)
         }

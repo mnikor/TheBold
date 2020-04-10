@@ -97,9 +97,9 @@ class EditActionPlanViewController: AddActionPlanViewController {
     
     private func deleteAction(actionID: String) {
         
-        AlertViewService.shared.input(.deleteAction(points: points, tapYes: {
+        AlertViewService.shared.input(.deleteAction(points: -points, tapYes: {
             
-            LevelOfMasteryService.shared.input(.addPoints(points: PointsForAction.deleteAction))
+            LevelOfMasteryService.shared.input(.addPoints(points: -self.points)) //PointsForAction.deleteAction
             DataSource.shared.deleteAction(actionID: actionID) {
                 print("--- Delete ---")
             }

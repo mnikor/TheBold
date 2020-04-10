@@ -219,7 +219,7 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
         var content : SmallContentViewModel?
         
         if case .createNewActionSheet(contentID: _) = presenter.baseConfigType {
-            content = SmallContentViewModel(imagePath: action.content?.smallImage, title: L10n.Act.addToActionPlan, subtitle: action.content?.title, points: "+10", shapeIcon: Asset.addActionShape.image)
+            content = SmallContentViewModel(imagePath: action.content?.smallImage, title: L10n.Act.addToActionPlan, subtitle: action.content?.title, points: "+\(PointsForAction.congratulationsWithContentAction)", shapeIcon: Asset.addActionShape.image)
         }
         
         let modelView = CreateActionViewModel(name: action.name,

@@ -13,6 +13,7 @@ struct PointsForAction {
     static let moveToLaterDate : Int = -2
     static let congratulationsGoal : Int = 50
     static let congratulationsAction : Int = 5
+    static let congratulationsWithContentAction : Int = 10
     static let deleteGoal : Int = -50
     static let deleteAction : Int = -10
     static let deleteStake : Int = -10
