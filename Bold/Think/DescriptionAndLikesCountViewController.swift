@@ -92,6 +92,8 @@ class DescriptionAndLikesCountViewController: UIViewController {
     }
     
     private func config() {
+        imageView.image = nil
+        imageView.backgroundColor = ColorName.typographyBlack100.color
         configureDowloadButton()
         categoryLabel.text = viewModel?.category?.rawValue.capitalized
         toolbar.isHidden = viewModel?.toolbarIsHidden ?? false
@@ -104,13 +106,13 @@ class DescriptionAndLikesCountViewController: UIViewController {
             if let image = image {
                 imageView.image = image
             } else {
-                imageView.image = Asset.serfer.image
+                imageView.image = nil//Asset.serfer.image
             }
         case .path(let path):
-            imageView.setImageAnimated(path: path ?? "",
-                                       placeholder: Asset.serfer.image)
+            imageView.setImageAnimated(path: path ?? "")
+                                       //placeholder: Asset.serfer.image)
         case nil:
-            imageView.image = Asset.serfer.image
+            imageView.image = nil//Asset.serfer.image
         }
         playerButton.cornerRadius()
         playerButton.positionImageBeforeText(padding: 8)

@@ -43,6 +43,9 @@ class ActionCollectionViewCell: BaseCollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        backgroundImageView.image = nil
+        backgroundImageView.backgroundColor = ColorName.typographyBlack100.color
     }
 
     func config(model: ActivityContent) {
@@ -51,9 +54,9 @@ class ActionCollectionViewCell: BaseCollectionViewCell {
         topLeftButton.isHidden = typeCell.hidden()
         titleLabel.text = model.title
         if let imageURL = model.imageURL {
-            backgroundImageView.setImageAnimated(path: imageURL, placeholder: Asset.actionImage.image)
+            backgroundImageView.setImageAnimated(path: imageURL)//, placeholder: Asset.actionImage.image)
         } else {
-            backgroundImageView.image = Asset.actionImage.image
+            backgroundImageView.image = nil//Asset.actionImage.image
         }
     }
     

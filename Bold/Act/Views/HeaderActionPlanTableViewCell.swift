@@ -19,6 +19,9 @@ class HeaderActionPlanTableViewCell: BaseTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        contentImageView.image = nil
+        contentImageView.backgroundColor = ColorName.typographyBlack100.color
     }
     
     func config(modelView: CreateGoalActionModel) {
@@ -26,7 +29,7 @@ class HeaderActionPlanTableViewCell: BaseTableViewCell {
         if case .headerContent(let contentModel) = modelView.modelValue, let content = contentModel {
             
             if let imagePath = content.imagePath {
-                contentImageView.setImageAnimated(path: imagePath, placeholder: Asset.addActionHeader.image)
+                contentImageView.setImageAnimated(path: imagePath)//, placeholder: Asset.addActionHeader.image)
             }
             titleLabel.text = content.title
             subtitleLabel.text = content.subtitle

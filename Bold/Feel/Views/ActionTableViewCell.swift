@@ -72,6 +72,9 @@ class ActionTableViewCell: BaseTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        backgroundImageView.image = nil
+        backgroundImageView.backgroundColor = ColorName.typographyBlack100.color
     }
 
     func config(item: ActionEntity) {
@@ -80,7 +83,7 @@ class ActionTableViewCell: BaseTableViewCell {
         configHeader(type: item.header!)
         configButton(item: item)
         titleTextView.text = item.data?.title
-        backgroundImageView.setImageAnimated(path: item.data?.imageURL ?? "", placeholder: Asset.actionBackground.image)
+        backgroundImageView.setImageAnimated(path: item.data?.imageURL ?? "")//, placeholder: Asset.actionBackground.image)
         authorNameLabel.text = item.data?.authorName
         
         //guard let tempHeaderType = HeaderType(rawValue: UInt(arc4random_uniform(3))) else { return }
