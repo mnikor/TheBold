@@ -347,6 +347,11 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
     
     private func showHeaderCalendar(_ headerType: ActHeaderType) {
         
+        if headerType == .plus {
+            input(.createAction)
+            return
+        }
+        
         if headerType == .calendar {
             isCalendarVisible = true
             let firstElem = baseDataSource.first

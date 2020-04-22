@@ -340,15 +340,15 @@ class ConfigurateActionInteractor: ConfigurateActionInputInteractorProtocol {
     func updateGoal(success: ([ConfigurateActionSectionModel])->Void) {
         
         //if presenter.goalList == nil || presenter.goalList.isEmpty {
-            presenter.goalList = DataSource.shared.goalsListForUpdate()
+        presenter.goalList = DataSource.shared.goalsListForUpdate()
         //}
         
-        var section = [
-            ConfigurateActionSectionModel(type: .orCreateNew, items:
-            [
-                createHeaderModel(type: .orCreateNew),
-                createNewGoalModel(type: .enterGoal)
-            ])]
+        var section = [ConfigurateActionSectionModel]()
+//            ConfigurateActionSectionModel(type: .orCreateNew, items:
+//            [
+//                createHeaderModel(type: .orCreateNew),
+//                createNewGoalModel(type: .enterGoal)
+//            ])]
 
         guard let goalsList = presenter.goalList else {
             success(section)

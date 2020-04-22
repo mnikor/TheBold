@@ -87,8 +87,12 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
         
         guard let actionID = presenter.updateAction.id else { return }
         
-        DataSource.shared.listDeleteEvent(actionID: actionID, deleteDate: Date()) {[weak self] in
-            self?.presenter.updateAction.status = StatusType.completeUpdate.rawValue
+        DataSource.shared.listDeleteEvent(actionID: actionID, deleteDate: Date().baseTime()) {[weak self] in
+            if let updateAction = self?.presenter.updateAction, updateAction.events?.count == 1 {
+                DataSource.shared.backgroundContext.delete(updateAction)
+            }else {
+                self?.presenter.updateAction.status = StatusType.completeUpdate.rawValue
+            }
             self?.saveAction(complete)
         }
     }
@@ -105,7 +109,7 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
             print("createNewActionSheet(contentID: _)")
         case .editActionSheet(actionID: _):
             print("editActionSheet(actionID: _)")
-            startDate = Date().baseTime()
+            //startDate = Date().baseTime()
         }
         
         let repeatDays = checkRepeatDayOfWeek(repeatDays: presenter.newAction.repeatAction)

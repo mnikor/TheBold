@@ -55,8 +55,4 @@ class ActionsListRouter: RouterProtocol, ActionsListRouterProtocol {
             viewController.navigationController?.present(vc, animated: true, completion: nil)
         }
     }
-    
-    
-    
-    
 }

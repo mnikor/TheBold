@@ -72,6 +72,9 @@ extension DataSource: GoalsFunctionality {
         
         var results = [Goal]()
         let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
+        let sort = NSSortDescriptor(key: "name", ascending: false)
+        fetchRequest.predicate = NSPredicate(format: "status < %d", StatusType.completed.rawValue)
+        fetchRequest.sortDescriptors = [sort]
         do {
             results = try DataSource.shared.backgroundContext.fetch(fetchRequest)
         } catch {

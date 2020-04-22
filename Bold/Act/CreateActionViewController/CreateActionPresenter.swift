@@ -164,14 +164,19 @@ class CreateActionPresenter: PresenterProtocol, CreateActionInputProtocol {
             headerCell = CreateGoalSectionModel(title: nil, items: [CreateGoalActionModel(type: .headerEditAction, modelValue: .headerEdit(statusEdit: isEditAction, name: modelView.name))])
         }
         
+        let goalSectionModel = CreateGoalSectionModel(title: nil, items: [CreateGoalActionModel(type: .stake, modelValue: .value(modelView.stake))])
+        
+        if case .editActionSheet = baseConfigType {
+            let share = CreateGoalActionModel(type: .share, modelValue: .none)
+            goalSectionModel.items.append(share)
+        }
+        
         return [headerCell,
                 CreateGoalSectionModel(title: nil, items: [CreateGoalActionModel(type: .when, modelValue: .date(modelView.startDate)),
                                                            CreateGoalActionModel(type: .reminder, modelValue: .value(modelView.reminder)),
                                                            CreateGoalActionModel(type: .goal, modelValue: .value(modelView.goal))
                     ]),
-                CreateGoalSectionModel(title: nil, items: [CreateGoalActionModel(type: .stake, modelValue: .value(modelView.stake)),
-                                                           CreateGoalActionModel(type: .share, modelValue: .none)
-                    ])
+                goalSectionModel
         ]
     }
     

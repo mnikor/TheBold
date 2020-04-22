@@ -3,7 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -82,38 +82,36 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ub-wy-29P">
                                         <rect key="frame" x="0.0" y="320" width="375" height="300"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zr7-su-X8u">
-                                                <rect key="frame" x="120" y="-25" width="135" height="50"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="9de-h4-jgG"/>
-                                                    <constraint firstAttribute="width" constant="135" id="Y12-bL-xCH"/>
-                                                </constraints>
-                                                <state key="normal" title="Listen" image="headphones">
-                                                    <color key="titleColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="didTapAtPlayerButton:" destination="QsE-0b-bcy" eventType="touchUpInside" id="3TH-hx-57V"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="Zr7-su-X8u" firstAttribute="top" secondItem="2Ub-wy-29P" secondAttribute="top" constant="-25" id="9hq-t1-DId"/>
-                                            <constraint firstItem="Zr7-su-X8u" firstAttribute="centerX" secondItem="2Ub-wy-29P" secondAttribute="centerX" id="Con-Bh-Yxc"/>
                                             <constraint firstAttribute="height" constant="300" id="EqD-yi-kn0"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zr7-su-X8u">
+                                        <rect key="frame" x="120" y="295" width="135" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="9de-h4-jgG"/>
+                                            <constraint firstAttribute="width" constant="135" id="Y12-bL-xCH"/>
+                                        </constraints>
+                                        <state key="normal" title="Listen" image="headphones">
+                                            <color key="titleColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapAtPlayerButton:" destination="QsE-0b-bcy" eventType="touchUpInside" id="3TH-hx-57V"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="27V-vI-3iO" firstAttribute="leading" secondItem="7kw-kA-kVM" secondAttribute="leading" id="36p-Nr-csb"/>
+                                    <constraint firstItem="Zr7-su-X8u" firstAttribute="bottom" secondItem="GPZ-yi-lAd" secondAttribute="bottom" constant="25" id="6g6-D1-ccD"/>
                                     <constraint firstItem="2Ub-wy-29P" firstAttribute="leading" secondItem="7kw-kA-kVM" secondAttribute="leading" id="M5M-6D-FYR"/>
                                     <constraint firstItem="2Ub-wy-29P" firstAttribute="top" secondItem="27V-vI-3iO" secondAttribute="bottom" id="OfP-XC-G80"/>
                                     <constraint firstAttribute="trailing" secondItem="2Ub-wy-29P" secondAttribute="trailing" id="REJ-nK-B1w"/>
                                     <constraint firstAttribute="trailing" secondItem="27V-vI-3iO" secondAttribute="trailing" id="aVT-JW-1iS"/>
                                     <constraint firstAttribute="bottom" secondItem="2Ub-wy-29P" secondAttribute="bottom" id="jlY-gS-ZxS"/>
                                     <constraint firstItem="27V-vI-3iO" firstAttribute="top" secondItem="7kw-kA-kVM" secondAttribute="top" id="qiW-3L-vkB"/>
+                                    <constraint firstItem="Zr7-su-X8u" firstAttribute="centerX" secondItem="7kw-kA-kVM" secondAttribute="centerX" id="yEl-uI-r23"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="QsE-0b-bcy" id="vG4-th-vSE"/>

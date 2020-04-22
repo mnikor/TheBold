@@ -175,15 +175,20 @@ class BaseStakesListInteractor: InteractorProtocol, BaseStakesListInputInteracto
             
             if key.dayOfMonthOfYear() == Date().dayOfMonthOfYear() {
                 
+                let stakeItems = value.filter { (itemViewModel) -> Bool in
+                    return itemViewModel.event.stake != 0
+                }.count
+                
                 switch presenter.type {
                 case .forGoal:
                     type = .calendar
                     title = L10n.Act.todaysActions
-                    subtitle = L10n.Act.youHaveActionWithStakes("\(items.count)")
+                    
+                    subtitle = L10n.Act.youHaveActionWithStakes("\(stakeItems)")
                 case .all:
                     type = .plus
                     title = L10n.Act.todaysActions
-                    subtitle = L10n.Act.youHaveActionWithStakes("\(items.count)")
+                    subtitle = L10n.Act.youHaveActionWithStakes("\(stakeItems)")
                 case .archive:
                     type = .none
                     title = key.dayOfWeek()
@@ -191,8 +196,6 @@ class BaseStakesListInteractor: InteractorProtocol, BaseStakesListInputInteracto
                 case .none:
                     type = .none
                 }
-//                title = L10n.Act.todaysActions
-//                subtitle = L10n.Act.youHaveActionWithStakes("\(items.count)")
             }else if key.dayOfMonthOfYear() == Date().tommorowDay().dayOfMonthOfYear() {
                 title = L10n.Act.Duration.tommorow
                 subtitle = DateFormatter.formatting(type: .select, date: key)
@@ -215,9 +218,13 @@ class BaseStakesListInteractor: InteractorProtocol, BaseStakesListInputInteracto
         
         DataSource.shared.searchEventsInGoal(goalID: presenter.goalID, startDate: currentDate, endDate: tommorowDate) { (events) in
             
+            let stakeEvents = events.filter { (event) -> Bool in
+                return event.stake != 0
+            }.count
+            
             let calendarType = ActHeaderType.list
             let calendarTitle = L10n.Act.actionPlan
-            let calendarSubtitle = L10n.Act.youHaveActionWithStakes("\(events.count)")
+            let calendarSubtitle = L10n.Act.youHaveActionWithStakes("\(stakeEvents)")
             let calendarSection = CalendarActionSectionViewModel(type: calendarType, date: currentDate, title: calendarTitle, subtitle: calendarSubtitle, backgroundColor: ColorName.tableViewBackground.color, imageButton: calendarType.imageInButton(), rightButtonIsHidden: calendarType.isHiddenRightButton())
             let calendarModelSet = CalendarModelType.calendar(dates: presenter.calendarDataSource)
             let type = (presenter.type == .archive) ? ActSectionModelType.goal : .calendar(viewModel: calendarSection)

@@ -28,6 +28,11 @@ class DescriptionAndLikesCountViewController: UIViewController {
     private var isDocumentLoaded: Bool = false
     var isDownloadedContent = false
     
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        modalPresentationStyle = .overCurrentContext
+    }
+    
     @IBAction func tapCloseButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -136,7 +141,7 @@ class DescriptionAndLikesCountViewController: UIViewController {
                 make.top.equalToSuperview().offset(25)
                 make.leading.trailing.bottom.equalToSuperview()
             }
-            pdfContainerView.bringSubviewToFront(playerButton)
+//            pdfContainerView.bringSubviewToFront(playerButton)
             pdfView.autoScales = true
             pdfView.backgroundColor = .clear
             if #available(iOS 12.0, *) {

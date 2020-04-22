@@ -210,7 +210,7 @@ extension CreateActionViewController: UITableViewDelegate, UITableViewDataSource
         
         
         if case .editActionSheet(actionID: _) = presenter.baseConfigType {
-            if presenter.isEditAction == false {
+            if presenter.isEditAction == false && item.type != .share {
                 return
             }
         }
