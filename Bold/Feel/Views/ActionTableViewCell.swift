@@ -9,14 +9,14 @@
 import UIKit
 
 protocol ActionTableViewCellDelegate: class {
-    func tapLeftHeaderButton(cell: ActionTableViewCell)
+//    func tapLeftHeaderButton(cell: ActionTableViewCell)
     func tapThreeDotsButton(item: ActionEntity)
     func tapDownloadButton(cell: ActionTableViewCell)
     func tapLikeButton(cell: ActionTableViewCell)
     func tapAddActionPlanButton(cell: ActionTableViewCell)
 }
 
-enum HeaderType : UInt {
+enum HeaderTypeCell : UInt {
     case duration
     case points
     case unlock
@@ -50,7 +50,7 @@ class ActionTableViewCell: BaseTableViewCell {
     var item : ActionEntity!
     
     @IBAction func tapLeftHeaderButton(_ sender: UIButton) {
-        delegate?.tapLeftHeaderButton(cell: self)
+//        delegate?.tapLeftHeaderButton(cell: self)
     }
     
     @IBAction func tapThreeDotsButton(_ sender: UIButton) {
@@ -73,6 +73,7 @@ class ActionTableViewCell: BaseTableViewCell {
         super.awakeFromNib()
         // Initialization code
         
+        leftHeaderButton.isUserInteractionEnabled = false
         backgroundImageView.image = nil
         backgroundImageView.backgroundColor = ColorName.typographyBlack100.color
     }
@@ -96,7 +97,7 @@ class ActionTableViewCell: BaseTableViewCell {
         likeButton.setImage(item.like == false ? Asset.actionLike.image : Asset.actionLiked.image, for: .normal)
     }
     
-    func configHeader(type: HeaderType) {
+    func configHeader(type: HeaderTypeCell) {
         
         topHeaderButtonConstraint.constant = type.topConstraint()
         

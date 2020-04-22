@@ -76,6 +76,7 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
         case .tappedContentInGroup(pressType: let pressType, content: let content):
             tappedOnButtonOfContentInGroup(pressType: pressType, content: content)
         case .didSelectContent(let content):
+            
             switch content.type {
             case .lesson, .story:
                 router.input(.read(content))
@@ -183,13 +184,13 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
 
 class ActionEntity: NSObject {
     var type : ActionCellType
-    var header : HeaderType?
+    var header : HeaderTypeCell?
     var download : Bool
     var like : Bool
     var data: ActivityContent?
     var group: ActivityGroup?
     
-    init(type: ActionCellType, header: HeaderType?, download: Bool, like: Bool, data: ActivityContent? = nil, group: ActivityGroup? = nil) {
+    init(type: ActionCellType, header: HeaderTypeCell?, download: Bool, like: Bool, data: ActivityContent? = nil, group: ActivityGroup? = nil) {
         self.type = type
         self.header = header
         self.download = download
@@ -227,7 +228,19 @@ class ActionEntity: NSObject {
                                             data: savedActivityContent)
                     }
                     
-                    let type: HeaderType = content.contentStatus == .locked ? .unlock : (content.pointOfUnlock > 0 ? .points : .duration)
+                    let type: HeaderTypeCell!
+                    
+                    switch content.contentStatus {
+                    case .locked:
+                        type = .unlock
+                    case .lockedPoints:
+                        type = .points
+                    default:
+                        type = .duration
+                    }
+                    
+//                    let type: HeaderType = content.contentStatus == .locked ? .unlock : (content.pointOfUnlock > 0 ? .points : .duration)
+                    
                     return ActionEntity(type: .action,
                                         header: type,
                                         download: false,

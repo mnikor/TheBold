@@ -26,5 +26,6 @@ extension User {
     @NSManaged public var stakeInfo: Bool
     @NSManaged public var stakeContentInfo: Bool
     @NSManaged public var goalInfo: Bool
+    @NSManaged public var premiumOn: Bool
 
 }

@@ -124,6 +124,32 @@ extension ActionsListViewController: UITableViewDelegate, UITableViewDataSource 
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            tableView.deselectRow(at: indexPath, animated: false)
+            
+            guard let content = actions[indexPath.row].data else { return }
+            
+            selectedContent = content
+            presenter.input(.didSelectContent(content))
+    //        switch content.type {
+    //        case .lesson, .story:
+    //            let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
+    //            vc.viewModel = DescriptionViewModel.map(activityContent: content)
+    //            vc.isDownloadedContent = DataSource.shared.contains(content: content)
+    //            navigationController?.present(vc, animated: true, completion: nil)
+    //        default:
+    //
+    //            PlayerViewController.createController(content: content)
+    //        }
+            
+    //        if actions[indexPath.row].type == .action {
+    //            let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
+    //            vc.content = actions[indexPath.row].data
+    //            navigationController?.present(vc, animated: true, completion: nil)
+    //        }
+            
+        }
+    
 //    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 //        if !viewDidAppearAnimated {
 //            let animation = TableViewCellAnimationFactory.slideIn(duration: 0.15, delayFactor: 0.05)
@@ -143,50 +169,12 @@ extension ActionsListViewController: ManageItTableViewCellDelegate {
     func tapButton(buttonType: GroupContentButtonPressType, content: ActivityContent) {
         presenter.input(.tappedContentInGroup(pressType: buttonType, content: content))
     }
-    
-//    func tapBlueButton(type: ListenOrReadCellType) {
-//        switch type {
-//        case .startAddToPlan:
-//            presenter.input(.start)
-//        case .unlockListenPreview:
-//            presenter.input(.unlockListenPreview)
-//        case .unlockReadPreview:
-//            presenter.input(.unlockReadPreview)
-//        }
-//    }
-//
-//    func tapCleanButton(type: ListenOrReadCellType) {
-//        switch type {
-//        case .startAddToPlan:
-//            break
-////            presenter.input(.addActionPlan)
-//        case .unlockListenPreview:
-//            presenter.input(.listenPreview)
-//        case .unlockReadPreview:
-//            presenter.input(.readPreview)
-//        }
-//    }
 }
 
 
 //MARK:- ActionTableViewCellDelegate
 
 extension ActionsListViewController: ActionTableViewCellDelegate {
-
-    func tapLeftHeaderButton(cell: ActionTableViewCell) {
-        print("Unlock")
-        guard let indexPath = tableView.indexPath(for: cell) else { return }
-        let item = actions[indexPath.row]
-        guard let content = item.data else { return }
-        if content.contentStatus == ContentStatus.locked {
-            item.header = HeaderType.duration
-        }else {
-            return
-        }
-        
-//        presenter.input(.unlockActionCard(content))
-        tableView.reloadRows(at: [indexPath], with: .none)
-    }
     
     func tapThreeDotsButton(item: ActionEntity) {
         
@@ -225,36 +213,6 @@ extension ActionsListViewController: ActionTableViewCellDelegate {
         guard let content = actions[index].data else {return}
         presenter.input(.addActionPlan(content))
     }
-}
-
-extension ActionsListViewController {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
-        
-        guard let content = actions[indexPath.row].data else { return }
-        
-        selectedContent = content
-        presenter.input(.didSelectContent(content))
-//        switch content.type {
-//        case .lesson, .story:
-//            let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
-//            vc.viewModel = DescriptionViewModel.map(activityContent: content)
-//            vc.isDownloadedContent = DataSource.shared.contains(content: content)
-//            navigationController?.present(vc, animated: true, completion: nil)
-//        default:
-//
-//            PlayerViewController.createController(content: content)
-//        }
-        
-//        if actions[indexPath.row].type == .action {
-//            let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
-//            vc.content = actions[indexPath.row].data
-//            navigationController?.present(vc, animated: true, completion: nil)
-//        }
-        
-    }
-    
 }
 
 //extension ActionsListViewController: ContentToolBarDelegate {

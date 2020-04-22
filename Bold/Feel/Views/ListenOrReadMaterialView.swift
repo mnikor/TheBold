@@ -90,10 +90,22 @@ class ListenOrReadMaterialView: UIView {
         
         switch content.type {
         case .meditation, .hypnosis, .preptalk:
-            typeTemp = content.contentStatus == .locked ? .unlockListenPreview : .startAddToPlan
+//            typeTemp = content.contentStatus == .locked ? .unlockListenPreview : .startAddToPlan
+            switch content.contentStatus {
+            case .locked, .lockedPoints:
+                typeTemp = .unlockListenPreview
+            default:
+                typeTemp = .startAddToPlan
+            }
             durationDescription = " listen"
         case .lesson, .story:
-            typeTemp = content.contentStatus == .locked ? .unlockReadPreview : .startAddToPlan
+//            typeTemp = content.contentStatus == .locked ? .unlockReadPreview : .startAddToPlan
+            switch content.contentStatus {
+            case .locked, .lockedPoints:
+                typeTemp = .unlockReadPreview
+            default:
+                typeTemp = .startAddToPlan
+            }
             durationDescription = " read"
         default:
             break

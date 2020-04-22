@@ -11,4 +11,7 @@ import Foundation
 enum ContentStatus: String {
     case locked
     case unlocked
+    case unlockedPoints
+    case unlockedPremium
+    case lockedPoints
 }

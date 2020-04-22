@@ -187,7 +187,7 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
         return currentLevel
     }
     
-    private func currentPoints() -> Int {
+    func currentPoints() -> Int {
         let pointsData = Int(DataSource.shared.readUser().levelOfMasteryPoints)
        return pointsData
     }

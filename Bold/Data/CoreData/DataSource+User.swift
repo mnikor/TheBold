@@ -59,6 +59,7 @@ extension DataSource: UserFunctionality {
         user.stakeInfo = false
         user.stakeContentInfo = false
         user.goalInfo = false
+        user.premiumOn = false
         
         DataSource.shared.saveBackgroundContext()
         return user

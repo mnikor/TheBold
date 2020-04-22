@@ -53,7 +53,18 @@ class ActivityContent: ActivityBase {
         let footer = json[ResponseKeys.footer].stringValue
         let pointOfUnlock = json[ResponseKeys.pointOfUnlock].intValue
         let contentStatusString = json[ResponseKeys.contentStatus].stringValue
-        let contentStatus = ContentStatus(rawValue: contentStatusString.lowercased()) ?? ContentStatus.unlocked
+        var contentStatus = ContentStatus(rawValue: contentStatusString.lowercased()) ?? ContentStatus.unlocked
+        
+        if pointOfUnlock != 0 && contentStatus == .unlocked {
+            if LevelOfMasteryService.shared.currentPoints() >= pointOfUnlock {
+                contentStatus = .unlockedPoints
+            }else {
+                contentStatus = .lockedPoints
+            }
+        }else if DataSource.shared.readUser().premiumOn == true {
+            contentStatus = .unlockedPremium
+        }
+        
         let likesCount = json[ResponseKeys.likesCount].intValue
             
         if typeString.hasPrefix(ResponseKeys.typePrefix) {
@@ -88,6 +99,8 @@ class ActivityContent: ActivityBase {
         }
         
         let durationRead = json[ResponseKeys.durationRead].int ?? 0
+        
+        
         
         return ActivityContent(id: id,
                                position: json[ResponseKeys.position].intValue,
