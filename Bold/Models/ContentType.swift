@@ -12,9 +12,8 @@ enum ContentType: String {
     case hypnosis
     case lesson
     case meditation
-    case preptalk
+    case peptalk
     case quote
     case story
-    
     
 }

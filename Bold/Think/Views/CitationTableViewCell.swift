@@ -24,14 +24,20 @@ class CitationTableViewCell: BaseTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        authorImageView.cornerRadius = authorImageView.bounds.size.height / 2
+        authorImageView.image = nil
+        authorNameLabel.text = nil
+        citationTextLabel.text = nil
+        authorImageView.backgroundColor = .white
     }
     
     @IBAction func tapMoreButton(_ sender: UIButton) {
         delegate?.tapMoreInfoButton()
     }
     
-    func config(authorName: String, body: String) {
-        authorNameLabel.text = authorName
-        citationTextLabel.text = body
+    func config(content: ActivityContent) {
+        authorImageView.setImageAnimated(path: content.authorPhotoURL ?? "")
+        authorNameLabel.text = content.authorName
+        citationTextLabel.text = content.body
     }
 }

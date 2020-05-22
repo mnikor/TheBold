@@ -22,52 +22,23 @@ class DescriptionAndLikesCountViewController: UIViewController {
     @IBOutlet weak var playerButton: UIButton!
     @IBOutlet weak var downloadButton: UIBarButtonItem!
     @IBOutlet weak var likeButton: UIBarButtonItem!
+    @IBOutlet weak var bottomToolbarConstraint: NSLayoutConstraint!
     
     var buttonsToolbar = StateStatusButtonToolbar()
     
     private var isDocumentLoaded: Bool = false
     var isDownloadedContent = false
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        modalPresentationStyle = .overCurrentContext
-    }
-    
-    @IBAction func tapCloseButton(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func didTapAtPlayerButton(_ sender: UIButton) {
-        PlayerViewController.createController(content: viewModel?.content)
-    }
-    
-    @IBAction func didTapAtDownloadButton(_ sender: UIBarButtonItem) {
-        if !isDownloadedContent && !buttonsToolbar.dowload {
-            buttonsToolbar.dowload = !buttonsToolbar.dowload
-//            downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
-            downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
-//            audioPlayerDelegate?.saveContent()
-        }
-    }
-    
-    @IBAction func didTapAtAddActionPlan(_ sender: UIBarButtonItem) {
-        AlertViewService.shared.input(.addAction(content: viewModel?.content, tapAddPlan: {
-            print("didTapAtAddActionPlan")
-        }))
-    }
-    
-    @IBAction func didTapAtLikeButton(_ sender: UIBarButtonItem) {
-        buttonsToolbar.like = !buttonsToolbar.like
-        likeButton.image = buttonsToolbar.like == false ? Asset.playerLikeIcon.image : Asset.playerLikedIcon.image
-        likeButton.tintColor = buttonsToolbar.like == false ? .gray : ColorName.primaryRed.color
-//        audioPlayerDelegate?.likeContent(buttonsToolbar.like)
-    }
-    
     var percent : CGFloat = 0
     var viewModel: DescriptionViewModel?
     
     private var pdfView: UIView?
     private var loader = LoaderView(frame: .zero)
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        modalPresentationStyle = .overCurrentContext
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,6 +72,23 @@ class DescriptionAndLikesCountViewController: UIViewController {
         imageView.backgroundColor = ColorName.typographyBlack100.color
         configureDowloadButton()
         categoryLabel.text = viewModel?.category?.rawValue.capitalized
+        
+        if viewModel?.toolbarIsHidden == true {
+            let bottomSafeArea: CGFloat
+            guard let root = UIApplication.shared.keyWindow?.rootViewController else {
+                return
+            }
+            
+            if #available(iOS 11.0, *) {
+                bottomSafeArea = root.view.safeAreaInsets.bottom
+            } else {
+                bottomSafeArea = root.bottomLayoutGuide.length
+            }
+            
+            bottomToolbarConstraint.constant = -toolbar.bounds.height - bottomSafeArea
+            view.layoutIfNeeded()
+        }
+    
         toolbar.isHidden = viewModel?.toolbarIsHidden ?? false
         titleLabel.text = viewModel?.title
         likseCountView.configView(superView: view)
@@ -184,6 +172,36 @@ class DescriptionAndLikesCountViewController: UIViewController {
         loader.stop()
         isDocumentLoaded = true
     }
+    
+    @IBAction func tapCloseButton(_ sender: UIButton) {
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        @IBAction func didTapAtPlayerButton(_ sender: UIButton) {
+            PlayerViewController.createController(content: viewModel?.content)
+        }
+        
+        @IBAction func didTapAtDownloadButton(_ sender: UIBarButtonItem) {
+            if !isDownloadedContent && !buttonsToolbar.dowload {
+                buttonsToolbar.dowload = !buttonsToolbar.dowload
+    //            downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
+                downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
+    //            audioPlayerDelegate?.saveContent()
+            }
+        }
+        
+        @IBAction func didTapAtAddActionPlan(_ sender: UIBarButtonItem) {
+            AlertViewService.shared.input(.addAction(content: viewModel?.content, tapAddPlan: {
+                print("didTapAtAddActionPlan")
+            }))
+        }
+        
+        @IBAction func didTapAtLikeButton(_ sender: UIBarButtonItem) {
+            buttonsToolbar.like = !buttonsToolbar.like
+            likeButton.image = buttonsToolbar.like == false ? Asset.playerLikeIcon.image : Asset.playerLikedIcon.image
+            likeButton.tintColor = buttonsToolbar.like == false ? .gray : ColorName.primaryRed.color
+    //        audioPlayerDelegate?.likeContent(buttonsToolbar.like)
+        }
     
 }
 

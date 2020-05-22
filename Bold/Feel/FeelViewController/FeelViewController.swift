@@ -21,7 +21,7 @@ class FeelViewController: UIViewController, SideMenuItemContent, ViewProtocol {
     var presenter : Presenter!
     var configurator : Configurator! = FeelConfigurator()
     var contentTypes: [ContentType] {
-        return [.meditation, .hypnosis, .preptalk]
+        return [.meditation, .hypnosis, .peptalk]
     }
     var items: [FeelEntity] = []
     

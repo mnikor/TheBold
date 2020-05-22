@@ -31,6 +31,7 @@ enum AlertViewServiceInput {
     
     case addAction(content: ActivityContent?, tapAddPlan: VoidCallback)
     case editAction(actionID: String?, eventID: String?, points: Int, tapAddPlan: VoidCallback, tapDelete: VoidCallback)
+    case editGoal(goalID: String?, tapOk: VoidCallback)
     
     case startActionForContent(content: Content, tapStartNow: VoidCallback)
     case startActionForContentOrDelete(item: DownloadsEntity?, tapAddPlan: VoidCallback, tapDelete: VoidCallback)
@@ -71,6 +72,8 @@ class AlertViewService: NSObject, AlertViewServiceInputProtocol {
             createAddAction(content: content, tapAdd: tapAddPlan)
         case .editAction(actionID: let actionID, eventID: let eventID, points: let points, tapAddPlan: let tapAddPlan, tapDelete: let tapDelete):
             editAction(actionID: actionID, eventID: eventID, points: points, tapOk: tapAddPlan, tapDelete: tapDelete)
+        case .editGoal(goalID: let goalID, tapOk: let tapOk):
+            editGoal(goalID: goalID, tapOk: tapOk)
             
         case .startActionForContent(content: let content, tapStartNow: let tapStartNow):
             startActionForContent(content: content, tapStartNow: tapStartNow)
@@ -131,6 +134,11 @@ class AlertViewService: NSObject, AlertViewServiceInputProtocol {
         showAlertControllerWithNavigation(editVC)
     }
     
+    private func editGoal(goalID: String?, tapOk: @escaping VoidCallback) {
+        let editGoalVC = EditGoalViewController.createController(goalID: goalID, tapOk: tapOk)
+        showAlertControllerWithNavigation(editGoalVC)
+    }
+    
     private func startActionForContent(content: Content, tapStartNow: @escaping VoidCallback) {
         
         let actionContentVC = StartActionViewController.createController(content: content, tapOk: tapStartNow)
@@ -144,7 +152,7 @@ class AlertViewService: NSObject, AlertViewServiceInputProtocol {
     }
     
     private func dateAlert(type:DateAlertType, currentDate:Date?, startDate: Date?, endDate:Date?, tapConfirm: @escaping Callback<Date>) {
-        
+
         let dateVC = DateAlertViewController.createController(type: type, currentDate: currentDate, startDate: startDate, endDate: endDate, tapConfirm: tapConfirm)
         showAlertController(dateVC)
     }

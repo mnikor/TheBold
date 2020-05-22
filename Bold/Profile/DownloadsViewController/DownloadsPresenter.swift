@@ -65,7 +65,7 @@ class DownloadsPresenter: DownloadsPresenterInputProtocol {
     
     private func showDetails(content: ActivityContent) {
         switch content.type {
-        case .hypnosis, .meditation, .preptalk:
+        case .hypnosis, .meditation, .peptalk:
             showPlayer(content: content)
         case .lesson, .story:
             showDescription(content: content)

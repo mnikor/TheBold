@@ -56,7 +56,7 @@ extension ThinkViewController {
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as CitationTableViewCell
             cell.delegate = self
             if let quote = item.items.first {
-                cell.config(authorName: quote.authorName, body: quote.body)
+                cell.config(content: quote)
             }
             cell.cellBackground(indexPath: indexPath)
             return cell

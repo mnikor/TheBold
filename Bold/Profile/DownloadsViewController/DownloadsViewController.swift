@@ -92,7 +92,7 @@ class DownloadsViewController: UIViewController, ViewProtocol {
             return .lessons
         case .meditation:
             return .meditation
-        case .preptalk:
+        case .peptalk:
             return .pepTalk
         case .quote:
             return .citate

@@ -20,6 +20,8 @@ enum HomePresenterInput {
     case createGoal
     case subscribeForUpdates
     case goalItem(Goal)
+    case editGoal(Goal)
+    case showLevelOfMastery
 }
 
 protocol HomePresenterInputProtocol {
@@ -72,6 +74,19 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
             }else {
                 router.input(.goalItem(goal))
             }
+        case .editGoal(let goal):
+            if goal.status == StatusType.locked.rawValue {
+                AlertViewService.shared.input(.missedYourActionLock(tapUnlock: {
+                    LevelOfMasteryService.shared.input(.unlockGoal(goalID: goal.id!))
+                }))
+            }else {
+                let vc = EditGoalViewController.createController(goalID: goal.id) {
+                    print("tap edit goal ok")
+                }
+                router.input(.longTapGoalPresentedBy(vc))
+            }
+        case .showLevelOfMastery:
+                router.input(.showLevelOfMastery)
         }
     }
     

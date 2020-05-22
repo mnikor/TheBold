@@ -58,6 +58,7 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
     
     func configureHeaderView() {
         headerHomeView = HeaderHomeView()
+        headerHomeView.delegate = self
         headerHomeView.contentView.frame = CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: headerHomeView.contentView.bounds.size.width)
     }
     
@@ -154,6 +155,8 @@ extension HomeViewController: UITableViewDataSource {
             cell.delegate = self
             cell.cellBackground(indexPath: indexPath)
             return cell
+        default:
+            return UITableViewCell.init()
         }
     }
 }
@@ -191,6 +194,9 @@ extension HomeViewController: ActivityCollectionTableViewCellDelegate {
         presenter.input(.createGoal)
     }
     
+    func longTap(goal: Goal) {
+        presenter.input(.editGoal(goal))
+    }
 }
 
 
@@ -207,3 +213,10 @@ extension HomeViewController: UnlockPremiumTableViewCellDelegate {
     }
 }
 
+extension HomeViewController: HeaderHomeViewDelegate {
+    
+    func tapShowLevel() {
+        presenter.input(.showLevelOfMastery)
+    }
+    
+}

@@ -251,6 +251,9 @@
 "Act.Stake.AllFundsGoesToGlobalCharityFoundation" = "All funds goes to a global charity\n foundation gcf-care.org";
 "Act.Stake.gcfCareOrg" = "gcf-care.org";
 
+"Act.Cell.CreateGoal" = "Create goal";
+"Act.Cell.AsWeProgressWeBecomeDifferent" = "As we progress we become different";
+
 // Alert
 
 "Alert.Congratulations" = "Congratulations!";

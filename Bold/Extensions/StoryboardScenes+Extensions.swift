@@ -86,6 +86,8 @@ internal enum StoryboardScene {
     internal static let storyboardName = "Profile"
 
     internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: Profile.self)
+
+    internal static let levelOfMasteryViewController = SceneType<Bold.LevelOfMasteryViewController>(storyboard: Profile.self, identifier: "LevelOfMasteryViewController")
   }
   internal enum Settings: StoryboardType {
     internal static let storyboardName = "Settings"

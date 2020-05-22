@@ -19,6 +19,7 @@
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
   internal static let goalLockIcon = ImageAsset(name: "goalLockIcon")
+  internal static let plusGoal = ImageAsset(name: "plusGoal")
   internal static let plusTodayActions = ImageAsset(name: "plusTodayActions")
   internal static let rocketEmptyIcon = ImageAsset(name: "rocketEmptyIcon")
   internal static let stakeOval = ImageAsset(name: "stakeOval")

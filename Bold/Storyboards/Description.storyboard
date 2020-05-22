@@ -160,6 +160,7 @@
                         <viewLayoutGuide key="safeArea" id="mex-pN-zp7"/>
                     </view>
                     <connections>
+                        <outlet property="bottomToolbarConstraint" destination="U46-M5-HWU" id="FhU-6L-oiO"/>
                         <outlet property="categoryLabel" destination="Sud-IR-Ach" id="qZj-v4-Uor"/>
                         <outlet property="downloadButton" destination="WL7-Wg-Zv7" id="tg7-5M-Bvg"/>
                         <outlet property="imageView" destination="GPZ-yi-lAd" id="q1x-sk-XmR"/>

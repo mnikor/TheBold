@@ -25,8 +25,9 @@ class ActivityContent: ActivityBase {
     var authorPhotoURL: String?
     var audioTracks: [AudioPlayerTrackInfo]
     var documentURL: FilePath?
+    var forCategoryPresentation: Bool
     
-    init(id: Int, position: Int, type:ContentType, title: String, body: String, authorName: String, footer: String, durtionRead: Int, pointOfUnlock: Int, contentStatus: ContentStatus, imageURL: String?, smallImageURL: String?, largeImageURL: String?, likesCount: Int, authorPhotoURL: String?, audioTracks: [AudioPlayerTrackInfo], documentURL: FilePath?) {
+    init(id: Int, position: Int, type:ContentType, title: String, body: String, authorName: String, footer: String, durtionRead: Int, pointOfUnlock: Int, contentStatus: ContentStatus, imageURL: String?, smallImageURL: String?, largeImageURL: String?, likesCount: Int, authorPhotoURL: String?, audioTracks: [AudioPlayerTrackInfo], documentURL: FilePath?, forCategoryPresentation: Bool) {
         self.title = title
         self.body = body
         self.authorName = authorName
@@ -41,6 +42,7 @@ class ActivityContent: ActivityBase {
         self.authorPhotoURL = authorPhotoURL
         self.audioTracks = audioTracks
         self.documentURL = documentURL
+        self.forCategoryPresentation = forCategoryPresentation
         super.init(id: id, position: position, type: type)
     }
     
@@ -90,17 +92,18 @@ class ActivityContent: ActivityBase {
         } else {
             audioTracks = []
         }
+        
+        let document = json[ResponseKeys.document]
         let documentURL: FilePath?
         
-        if let url = json[ResponseKeys.documentURL].string {
+        if let url = document[ResponseKeys.documentURL].string {
             documentURL = .remote(url)
         } else {
             documentURL = nil
         }
         
         let durationRead = json[ResponseKeys.durationRead].int ?? 0
-        
-        
+        let forCategoryPresentation = json[ResponseKeys.forCategoryPresentation].bool ?? false
         
         return ActivityContent(id: id,
                                position: json[ResponseKeys.position].intValue,
@@ -118,7 +121,8 @@ class ActivityContent: ActivityBase {
                        likesCount: likesCount,
                        authorPhotoURL: json[ResponseKeys.authorPhotoURL].string,
                        audioTracks: audioTracks,
-                       documentURL: documentURL)
+                       documentURL: documentURL,
+                       forCategoryPresentation: forCategoryPresentation)
     }
     
     static func map(content: Content) -> ActivityContent? {
@@ -163,7 +167,8 @@ class ActivityContent: ActivityBase {
                                likesCount: Int(content.likesCount),
                                authorPhotoURL: content.authorPhotoUrl,
                                audioTracks: tracks,
-                               documentURL: documentURL)
+                               documentURL: documentURL,
+                               forCategoryPresentation: false)
     }
     
     func saveContent() {
@@ -190,7 +195,7 @@ class ActivityContent: ActivityBase {
             if durationInMinutes >= 20 {
                 updatePoints()
             }
-        case .preptalk:
+        case .peptalk:
             if totalDuration >= 3 {
                 updatePoints()
             }
@@ -231,6 +236,8 @@ private struct ResponseKeys {
     static let audioTracks = "audios"
     static let audioName = "name"
     static let audioURL = "url"
-    static let documentURL = "document_url"
+    static let document = "document"
+    static let documentURL = "url"
     static let durationRead = "duration_read"
+    static let forCategoryPresentation = "for_category_presentation"
 }

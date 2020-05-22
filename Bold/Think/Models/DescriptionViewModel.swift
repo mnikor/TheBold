@@ -51,6 +51,18 @@ struct DescriptionViewModel {
     }
     
     static var boldManifestInfo: DescriptionViewModel {
+        let documentURL = Bundle.main.url(forResource: "Manifest", withExtension: "pdf")
+        let audio = AudioPlayerTrackInfo(trackName: "Bold Manifest",
+                                         artistName: "",
+                                         duration: "4:07",
+                                         path: .local(Bundle.main.path(forResource: "Bold Manifest ", ofType: "mp3") ?? ""))
+        let image = "boldManifestMain"//Asset.boldManifestMain.name
+        
+        let path = Bundle.main.path(forResource: image, ofType: nil)
+        let urlI = URL(fileURLWithPath: path!)
+        print("\(urlI)")
+        
+        let content = ActivityContent(id: 0, position: 0, type: ContentType.hypnosis, title: "", body: "", authorName: "", footer: "", durtionRead: 307, pointOfUnlock: 0, contentStatus: ContentStatus.unlocked, imageURL: path, smallImageURL: path, largeImageURL: path, likesCount: 0, authorPhotoURL: nil, audioTracks: [audio], documentURL: FilePath.local (documentURL?.absoluteString ?? ""), forCategoryPresentation: false)
         return DescriptionViewModel(image: .image(Asset.boldManifestMain.image),
                                     documentURL: Bundle.main.url(forResource: "Manifest", withExtension: "pdf"),
                                     likesCount: nil,
@@ -61,7 +73,9 @@ struct DescriptionViewModel {
                                                                        duration: "4:07",
                                                                        path: .local(Bundle.main.path(forResource: "Bold Manifest ",
                                                                                                      ofType: "mp3") ?? ""))],
-                                    isLikesEnabled: false)
+                                    isLikesEnabled: false,
+                                    toolbarIsHidden: true,
+        content: content)
     }
     
     static var privacyPolicy: DescriptionViewModel {

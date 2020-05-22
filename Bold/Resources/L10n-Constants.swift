@@ -119,6 +119,12 @@ internal enum L10n {
     }
     /// You have 3 tasks with stakes
     internal static let youHaveTasksWithStakes = L10n.tr("Localizable", "Act.YouHaveTasksWithStakes")
+    internal enum Cell {
+      /// As we progress we become different
+      internal static let asWeProgressWeBecomeDifferent = L10n.tr("Localizable", "Act.Cell.AsWeProgressWeBecomeDifferent")
+      /// Create goal
+      internal static let createGoal = L10n.tr("Localizable", "Act.Cell.CreateGoal")
+    }
     internal enum Create {
       /// What action will achieve your goal?
       internal static let actionHeader = L10n.tr("Localizable", "Act.Create.ActionHeader")

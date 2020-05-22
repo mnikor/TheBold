@@ -202,7 +202,7 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
                 self?.selectedContent = activityContent
                 
                 switch activityContent.type {
-                case .meditation, .hypnosis, .preptalk:
+                case .meditation, .hypnosis, .peptalk:
                     PlayerViewController.createController(content: activityContent)
                 case .lesson, .story:
                     let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()

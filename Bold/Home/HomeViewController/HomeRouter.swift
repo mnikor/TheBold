@@ -16,6 +16,8 @@ enum HomeInputRouter {
     case showBoldManifest
     case createGoal
     case goalItem(Goal)
+    case longTapGoalPresentedBy(EditGoalViewController)
+    case showLevelOfMastery
 }
 
 protocol HomeInputRouterProtocol: RouterProtocol {
@@ -56,6 +58,11 @@ class HomeRouter: RouterProtocol, HomeInputRouterProtocol {
             let calendarVC = StoryboardScene.Act.calendarActionsListViewController.instantiate()
             calendarVC.presenter.goal = goal
             viewController.navigationController?.pushViewController(calendarVC, animated: true)
+        case .longTapGoalPresentedBy(let vc):
+            vc.presentedBy(viewController.navigationController!)
+        case .showLevelOfMastery:
+            let masteryVC = StoryboardScene.Profile.levelOfMasteryViewController.instantiate()
+            viewController.navigationController?.pushViewController(masteryVC, animated: true)
         }
     }
     

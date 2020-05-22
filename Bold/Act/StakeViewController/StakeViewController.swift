@@ -25,15 +25,17 @@ class StakeViewController: UIViewController {
     @IBOutlet weak var bootomTextLabel: UITextView!
     
     weak var delegate: StakeViewControllerDelegate?
-    var currentStake: Float = 35
+    var currentStake: Float = 0
     
     @IBAction func actionCostSlider(_ sender: UISlider) {
         costStakeLabel.text = NumberFormatter.stringForCurrency(costSlider.value)
+        countKarmaLabel.text = pointsString(cost: costSlider.value)
     }
     
     @IBAction func tapCostButton(_ sender: CostButton) {
         let cost = sender.cost.costValue
         costSlider.value = cost
+        countKarmaLabel.text = pointsString(cost: costSlider.value)
         costStakeLabel.text = NumberFormatter.stringForCurrency(cost)
     }
     
@@ -48,6 +50,7 @@ class StakeViewController: UIViewController {
         
         costStakeLabel.text = NumberFormatter.stringForCurrency(currentStake)
         costSlider.value = currentStake
+        countKarmaLabel.text = pointsString(cost: costSlider.value)
         
         configSlider()
         configButtons()
@@ -55,22 +58,27 @@ class StakeViewController: UIViewController {
         localize()
     }
     
+    private func pointsString(cost: Float) -> String {
+        let alpha = costSlider.value == 0 ? 0 : 1
+        return "+\(Int(costSlider.value) + alpha * PointsForAction.congratulationsAction)"
+    }
+    
     //MARK:- Config
     
-    func localize() {
+    private func localize() {
         navigationItem.title = L10n.Act.stake
         letsMakeLabel.text = L10n.Act.Stake.letsMakeYourChallenging
         yourStakeLabel.text = L10n.Act.Stake.yourStake
         confirmButton.setTitle(L10n.Act.Stake.confirmStake, for: .normal)
     }
     
-    func configSlider() {
+    private func configSlider() {
         for state: UIControl.State in [.normal, .selected, .application, .reserved] {
             costSlider.setThumbImage(Asset.sliderShadowThumb.image, for: state)
         }
     }
     
-    func configButtons() {
+    private func configButtons() {
         costsButton.forEach { (button) in
             button.cornerRadius()
             button.borderWidth(color: Color(red: 217/255, green: 219/255, blue: 227/255, alpha: 1))
@@ -78,7 +86,7 @@ class StakeViewController: UIViewController {
         }
     }
     
-    func configTextView() {
+    private func configTextView() {
         
         let fullString = L10n.Act.Stake.allFundsGoesToGlobalCharityFoundation
         let linkString = L10n.Act.Stake.gcfCareOrg

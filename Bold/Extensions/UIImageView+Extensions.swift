@@ -20,7 +20,7 @@ extension UIImageView {
     func setImageAnimated(path: String, placeholder: UIImage? = nil, forceFade: Bool = false, completion: ((UIImage?) -> Void)? = nil) {
         
         image = nil
-        DispatchQueue.global(qos: .background).async {[weak self] in
+        DispatchQueue.global(qos: .default).async {[weak self] in
             if let url = URL(string: path) {
                 self?.setImageAnimated(url: url, placeholder: placeholder, forceFade: forceFade, completion: completion)
             } else {

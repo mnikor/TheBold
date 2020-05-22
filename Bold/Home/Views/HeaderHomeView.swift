@@ -10,6 +10,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+protocol HeaderHomeViewDelegate: class {
+    func tapShowLevel()
+}
+
 class HeaderHomeView: UIView {
 
     @IBOutlet weak var contentView: UIView!
@@ -26,6 +30,8 @@ class HeaderHomeView: UIView {
     @IBOutlet weak var boldnessLabel: UILabel!
     
     let disposeBag = DisposeBag()
+    
+    weak var delegate : HeaderHomeViewDelegate?
     
     private var pointsStartValue = 0
     private var pointsEndValue = 100
@@ -44,6 +50,10 @@ class HeaderHomeView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
+    }
+    
+    @IBAction func tapLevelButton(_ sender: UIButton) {
+        delegate?.tapShowLevel()
     }
     
     func commonInit() {

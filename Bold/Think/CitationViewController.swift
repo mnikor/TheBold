@@ -53,8 +53,12 @@ class CitationViewController: UIViewController {
     }
     
     func configure() {
+        authorImageView.cornerRadius = authorImageView.bounds.size.height / 2
+        authorImageView.image = nil
+        authorImageView.backgroundColor = .white
+        
         authorNameLabel.text = quote?.authorName
-        authorImageView.setImageAnimated(path: quote?.imageURL ?? "")
+        authorImageView.setImageAnimated(path: quote?.authorPhotoURL ?? "")
         citationTextLabel.text = quote?.body
     }
 

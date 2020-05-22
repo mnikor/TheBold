@@ -33,6 +33,19 @@ class BoldTipsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
+        guard var viewControllers = navigationController?.viewControllers else { return }
+        for vc in viewControllers {
+            if let _ = vc as? BoldTipsViewController {
+                let index = viewControllers.firstIndex(of: vc)!
+                viewControllers.remove(at: index)
+                break
+            }
+        }
+        navigationController?.setViewControllers(viewControllers, animated: false)
+    }
+    
+    deinit {
+        print("DEINIT BoldTipsViewController")
     }
     
     @objc private func getIdeas() {

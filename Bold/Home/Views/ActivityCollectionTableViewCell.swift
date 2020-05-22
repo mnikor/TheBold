@@ -14,10 +14,12 @@ protocol ActivityCollectionTableViewCellDelegate: class {
     func activityCollectionTableViewCell(_ activityCollectionTableViewCell: ActivityCollectionTableViewCell, didTapAtItem indexPath: IndexPath)
     func tapEmptyGoalsCell(type: ActivityViewModel?)
     func longTap(goal: Goal)
+    func tapCreateGoal()
 }
 
 extension ActivityCollectionTableViewCellDelegate {
     func longTap(goal: Goal) {}
+    func tapCreateGoal() {}
 }
 
 class ActivityCollectionTableViewCell: BaseTableViewCell {
@@ -34,7 +36,7 @@ class ActivityCollectionTableViewCell: BaseTableViewCell {
     //var entity : HomeEntity!
     
     var itemViewModel : ActivityViewModel?
-    var dataSource = [ActivityItemsViewModel]()
+    var dataSource = [ActivityItemsViewModel?]()
     
     @IBAction func tapAllActivityButton(_ sender: UIButton) {
         print("Tap Show All Activity")
@@ -85,6 +87,7 @@ class ActivityCollectionTableViewCell: BaseTableViewCell {
         collectionView.registerNib(ActivityCollectionViewCell.self)
         collectionView.registerNib(ActInactiveCollectionViewCell.self)
         collectionView.registerNib(GoalCollectionViewCell.self)
+        collectionView.registerNib(CreateGoalCollectionViewCell.self)
     }
     
     func configCell(viewModel: ActivityViewModel) {
@@ -104,7 +107,11 @@ class ActivityCollectionTableViewCell: BaseTableViewCell {
         
         itemViewModel = viewModel
         
-        dataSource = viewModel.items
+        if viewModel.type == .activeGoalsAct {
+            dataSource = [nil] + viewModel.items
+        }else {
+            dataSource = viewModel.items
+        }
         
         collectionView.reloadData()
     }
@@ -136,11 +143,17 @@ extension ActivityCollectionTableViewCell: UICollectionViewDelegate, UICollectio
                 let cell = collectionView.dequeReusableCell(indexPath: indexPath) as GoalCollectionViewCell
                 cell.configCell(viewModel: goal)
                 return cell
+            default:
+                let cell = collectionView.dequeReusableCell(indexPath: indexPath) as CreateGoalCollectionViewCell
+                return cell
             }
         } else {
             switch itemViewModel?.type {
-            case .actActive, .activeGoals, .activeGoalsAct, .actNotActive :
+            case .actActive, .activeGoals:
                 let cell = collectionView.dequeReusableCell(indexPath: indexPath) as ActInactiveCollectionViewCell
+                return cell
+            case .activeGoalsAct, .actNotActive:
+                let cell = collectionView.dequeReusableCell(indexPath: indexPath) as CreateGoalCollectionViewCell
                 return cell
             default:
                 return UICollectionViewCell()
@@ -153,6 +166,11 @@ extension ActivityCollectionTableViewCell: UICollectionViewDelegate, UICollectio
         delegate?.activityCollectionTableViewCell(self, didTapAtItem: indexPath)
         if !dataSource.isEmpty {
             let item = dataSource[indexPath.row]
+            
+            if item == nil {
+                delegate?.tapEmptyGoalsCell(type: itemViewModel)
+                return
+            }
             
             switch item {
             case .goal(goal: let goalViewModel):
@@ -181,7 +199,7 @@ extension ActivityCollectionTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if dataSource.isEmpty {
             switch itemViewModel?.type {
-                case .actActive, .activeGoals, .activeGoalsAct, .actNotActive :
+                case .actActive, .activeGoals: //, .activeGoalsAct, .actNotActive
                     return CGSize(width: 225, height: 102)
                 default:
                     return itemViewModel?.collectionCellSize ?? .zero

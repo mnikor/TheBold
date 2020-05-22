@@ -71,7 +71,14 @@ class FeelInteractor: FeelInteractorInputProtocol {
             case .failure(let error):
                 self.count -= 1
             case .success(let content):
-                self.dataSource[type] = content
+                if type == .quote {
+                    self.dataSource[type] = content
+                }else {
+                    let filterArray = content.filter { (content) -> Bool in
+                        return content.forCategoryPresentation == true
+                    }
+                    self.dataSource[type] = filterArray
+                }
             }
             if self.dataSource.keys.count == self.count {
                 if self.dataSource.keys.isEmpty {

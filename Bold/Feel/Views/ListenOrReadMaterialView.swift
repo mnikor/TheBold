@@ -76,6 +76,7 @@ class ListenOrReadMaterialView: UIView {
         Bundle.main.loadNibNamed("ListenOrReadMaterialView", owner: self)
         contentView.fixInView(self)
         backgroundColor = .clear
+        iconImageView.image = nil
     }
     
     override func awakeFromNib() {
@@ -89,7 +90,7 @@ class ListenOrReadMaterialView: UIView {
         var typeTemp = ListenOrReadCellType.startAddToPlan
         
         switch content.type {
-        case .meditation, .hypnosis, .preptalk:
+        case .meditation, .hypnosis, .peptalk:
 //            typeTemp = content.contentStatus == .locked ? .unlockListenPreview : .startAddToPlan
             switch content.contentStatus {
             case .locked, .lockedPoints:
@@ -115,7 +116,7 @@ class ListenOrReadMaterialView: UIView {
         if content.durtionRead != 0 {
             durationLabel.text = ("\(content.durtionRead) min") + durationDescription
         }
-        iconImageView.setImageAnimated(path: content.smallImageURL ?? "", placeholder: Asset.actionBackground.image)
+        iconImageView.setImageAnimated(path: content.smallImageURL ?? "")
         
         self.content = content
 //        self.typeView = type

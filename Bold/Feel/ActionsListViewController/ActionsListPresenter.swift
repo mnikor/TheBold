@@ -174,7 +174,7 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
         case .meditation:
             return .meditation
         case .pepTalk:
-            return .preptalk
+            return .peptalk
         case .stories:
             return .story
         }

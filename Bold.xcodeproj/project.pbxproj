@@ -145,6 +145,8 @@
 		F1160E02242A254000EC5DD6 /* ActivityGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1160E01242A254000EC5DD6 /* ActivityGroup.swift */; };
 		F1160E04242A59A500EC5DD6 /* ActivityBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1160E03242A59A500EC5DD6 /* ActivityBase.swift */; };
 		F12815E7236B298500CAE49B /* LevelOfMasteryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12815E6236B298500CAE49B /* LevelOfMasteryService.swift */; };
+		F1302705245080AA00D49730 /* CreateGoalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1302703245080AA00D49730 /* CreateGoalCollectionViewCell.swift */; };
+		F1302706245080AA00D49730 /* CreateGoalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1302704245080AA00D49730 /* CreateGoalCollectionViewCell.xib */; };
 		F13DEAD322AAC0B700BC3CA6 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13DEAD222AAC0B700BC3CA6 /* SignUpView.swift */; };
 		F13DEAD522AAC0D500BC3CA6 /* SignUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F13DEAD422AAC0D500BC3CA6 /* SignUpView.xib */; };
 		F13FCBB62339FCDB00BAE544 /* StakeActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCBB52339FCDA00BAE544 /* StakeActionViewModel.swift */; };
@@ -592,6 +594,8 @@
 		F1160E01242A254000EC5DD6 /* ActivityGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityGroup.swift; sourceTree = "<group>"; };
 		F1160E03242A59A500EC5DD6 /* ActivityBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityBase.swift; sourceTree = "<group>"; };
 		F12815E6236B298500CAE49B /* LevelOfMasteryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfMasteryService.swift; sourceTree = "<group>"; };
+		F1302703245080AA00D49730 /* CreateGoalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalCollectionViewCell.swift; sourceTree = "<group>"; };
+		F1302704245080AA00D49730 /* CreateGoalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateGoalCollectionViewCell.xib; sourceTree = "<group>"; };
 		F13DEAD222AAC0B700BC3CA6 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		F13DEAD422AAC0D500BC3CA6 /* SignUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpView.xib; sourceTree = "<group>"; };
 		F13FCBB52339FCDA00BAE544 /* StakeActionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StakeActionViewModel.swift; sourceTree = "<group>"; };
@@ -1460,6 +1464,8 @@
 				F1C2534822B2ACFC003156AA /* ActInactiveCollectionViewCell.xib */,
 				F1C2534322B2ACAA003156AA /* GoalCollectionViewCell.swift */,
 				F1C2534422B2ACAA003156AA /* GoalCollectionViewCell.xib */,
+				F1302703245080AA00D49730 /* CreateGoalCollectionViewCell.swift */,
+				F1302704245080AA00D49730 /* CreateGoalCollectionViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2302,6 +2308,7 @@
 				F10B69CC22EB2D9100E47315 /* IdeasTableViewCell.xib in Resources */,
 				C5650911236C651C0072ADF9 /* ChangePhotoView.xib in Resources */,
 				F1CECE1A22E9C75000EA95EE /* ColorListCreateGoalTableViewCell.xib in Resources */,
+				F1302706245080AA00D49730 /* CreateGoalCollectionViewCell.xib in Resources */,
 				F18687FA229D60410029A663 /* Think.storyboard in Resources */,
 				F14166A122C106210020BF0F /* HeaderActionPlanTableViewCell.xib in Resources */,
 				F1CECE2622EA0AC000EA95EE /* IconCollectionViewCell.xib in Resources */,
@@ -2692,6 +2699,7 @@
 				F183302922E605B500BB7A9E /* ActRouter.swift in Sources */,
 				F1868807229D7DF60029A663 /* SplashViewController.swift in Sources */,
 				C577363923691FFF0018063B /* Event+CoreDataProperties.swift in Sources */,
+				F1302705245080AA00D49730 /* CreateGoalCollectionViewCell.swift in Sources */,
 				F19A98A322D4F3C300A0492E /* CitationBaseViewController.swift in Sources */,
 				F1C2535322B3F9F8003156AA /* HomeRouter.swift in Sources */,
 				3EFCA3BF2306E00900129DB4 /* SettingsSectionModel.swift in Sources */,
@@ -2881,7 +2889,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 37HBR3VGFU;
 				INFOPLIST_FILE = Bold/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -2904,7 +2912,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Mikhail Nikonorov (37HBR3VGFU)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 37HBR3VGFU;
 				INFOPLIST_FILE = Bold/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
