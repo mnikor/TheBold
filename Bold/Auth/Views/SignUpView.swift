@@ -122,7 +122,7 @@ class SignUpView: UIView {
             
 //            verticalSpaceButtonConstraint.constant = 40
             forgotButton.isHidden = false
-            emailTopConstraint.constant = 25
+            emailTopConstraint.constant = 30
             yourNameTextField.isHidden = true
             checkBoxImageView.isHidden = true
             privacyPolicyLabel.isHidden = true
@@ -136,7 +136,7 @@ class SignUpView: UIView {
             
 //            verticalSpaceButtonConstraint.constant = 12
             forgotButton.isHidden = true
-            emailTopConstraint.constant = 90
+            emailTopConstraint.constant = 89
             yourNameTextField.isHidden = false
             checkBoxImageView.isHidden = false
             privacyPolicyLabel.isHidden = false
