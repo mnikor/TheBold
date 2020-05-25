@@ -302,6 +302,7 @@ internal enum Asset {
   internal static let logoSmall = ImageAsset(name: "logoSmall")
   internal static let menuBlueIcon = ImageAsset(name: "menuBlueIcon")
   internal static let passwordEye = ImageAsset(name: "passwordEye")
+  internal static let passwordEyeOn = ImageAsset(name: "passwordEye_on")
   internal static let plusIcon = ImageAsset(name: "plusIcon")
   internal static let privacyHeader = ImageAsset(name: "privacyHeader")
   internal static let rightArrowIcon = ImageAsset(name: "rightArrowIcon")

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WIf-zC-O2x">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WIf-zC-O2x">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -105,13 +105,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xF4-78-6mq">
-                                                    <rect key="frame" x="155.5" y="204" width="64" height="40"/>
+                                                    <rect key="frame" x="151" y="201.5" width="73.5" height="41.5"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="34"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIK-H6-teH">
-                                                    <rect key="frame" x="40" y="254" width="295" height="20"/>
+                                                    <rect key="frame" x="40" y="253" width="295" height="21"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -137,7 +137,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zE9-4p-6wz">
-                                <rect key="frame" x="286" y="25" width="74" height="50"/>
+                                <rect key="frame" x="286" y="19.5" width="74" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="74" id="6qs-Lk-Rwe"/>
                                     <constraint firstAttribute="height" constant="50" id="WFJ-4i-uK9"/>
@@ -208,7 +208,7 @@
                             <constraint firstItem="vuB-i4-1i8" firstAttribute="top" secondItem="heu-Ud-E3f" secondAttribute="bottom" constant="50" id="a8s-Sj-fzz"/>
                             <constraint firstItem="N0M-5R-WiM" firstAttribute="leading" secondItem="naN-Dj-9kM" secondAttribute="leading" id="baP-T1-wXe"/>
                             <constraint firstItem="N0M-5R-WiM" firstAttribute="trailing" secondItem="naN-Dj-9kM" secondAttribute="trailing" id="bgx-3l-xo6"/>
-                            <constraint firstItem="zE9-4p-6wz" firstAttribute="top" secondItem="naN-Dj-9kM" secondAttribute="top" constant="25" id="cfn-my-bRM"/>
+                            <constraint firstItem="zE9-4p-6wz" firstAttribute="centerY" secondItem="nPv-mW-Bs9" secondAttribute="centerY" id="irF-Mf-m05"/>
                             <constraint firstItem="nPv-mW-Bs9" firstAttribute="top" secondItem="naN-Dj-9kM" secondAttribute="top" constant="30" id="lmB-a9-VKI"/>
                             <constraint firstItem="vuB-i4-1i8" firstAttribute="leading" secondItem="naN-Dj-9kM" secondAttribute="leading" constant="25" id="sro-gw-JVh"/>
                             <constraint firstItem="N0M-5R-WiM" firstAttribute="top" secondItem="6WR-8P-DcS" secondAttribute="top" id="zIR-HA-NYe"/>

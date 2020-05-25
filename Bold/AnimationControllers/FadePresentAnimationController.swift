@@ -19,7 +19,8 @@ class FadePresentAnimationController: NSObject, UIViewControllerAnimatedTransiti
             else { return }
         
         let containerView = transitionContext.containerView
-        let finalFrame = transitionContext.finalFrame(for: toVC)
+//        let finalFrame = transitionContext.finalFrame(for: toVC)
+        let finalFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         let frame = containerView.bounds
         
         toVC.view.frame = finalFrame

@@ -52,6 +52,7 @@ class SignUpView: UIView {
     @IBOutlet weak var checkBoxImageView: UIImageView!
     @IBOutlet weak var checkImageView: UIImageView!
     @IBOutlet weak var privacyPolicyLabel: ActiveLabel!
+    @IBOutlet weak var makePasswordVisibleButton: UIButton!
     @IBOutlet weak var forgotButton: UIButton!
     @IBOutlet weak var logInButton: RoundedButton!
     @IBOutlet weak var betweenButtonLabel: UILabel!
@@ -68,6 +69,12 @@ class SignUpView: UIView {
     
     @IBAction func didTapMakePasswordVisible(_ sender: UIButton) {
         passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
+        
+        if passwordTextField.isSecureTextEntry {
+            makePasswordVisibleButton.setImage(UIImage(named: "passwordEye"), for: .normal)
+        } else {
+            makePasswordVisibleButton.setImage(UIImage(named: "passwordEye_on"), for: .normal)
+        }
     }
     
     @IBAction func tapFirstButton(_ sender: Any) {

@@ -37,7 +37,8 @@ DEPENDENCIES:
   - VisualEffectView (~> 3.1.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
+    - ActiveLabel
     - Alamofire
     - Cosmos
     - JTAppleCalendar
@@ -45,15 +46,13 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
+    - SDWebImage
     - SnapKit
+    - SVProgressHUD
     - SwiftGen
     - SwiftVideoBackground
     - SwiftyJSON
     - VisualEffectView
-  trunk:
-    - ActiveLabel
-    - SDWebImage
-    - SVProgressHUD
 
 SPEC CHECKSUMS:
   ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
@@ -74,4 +73,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: dc6344994adde352266af6a314f200bd7aba9f57
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1
