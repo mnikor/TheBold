@@ -160,6 +160,7 @@ extension OnboardViewController: SignUpViewDelegate {
             if !checkEmail(signUpView.emailTextField.text,
                            password: signUpView.passwordTextField.text,
                            name: nil,
+                           acceptTerms: nil,
                            isSignUp: false) { return }
             login()
             
@@ -167,6 +168,7 @@ extension OnboardViewController: SignUpViewDelegate {
             if !checkEmail(signUpView.emailTextField.text,
                            password: signUpView.passwordTextField.text,
                            name: signUpView.yourNameTextField.text,
+                           acceptTerms: signUpView.acceptTerms,
                            isSignUp: true) { return }
             signUp()
             
@@ -175,11 +177,16 @@ extension OnboardViewController: SignUpViewDelegate {
         }
     }
     
-    func checkEmail(_ email: String?, password: String?, name: String?, isSignUp: Bool) -> Bool {
+    func checkEmail(_ email: String?, password: String?, name: String?, acceptTerms: Bool?, isSignUp: Bool) -> Bool {
         
         if isSignUp {
             guard let name = name, !name.isEmpty else {
                 showAlert(title: "Warning", message: "Please enter your name")
+                return false
+            }
+            
+            guard let acceptTerms = acceptTerms, acceptTerms else {
+                showAlert(title: "Warning", message: "Please accept Terms and conditions")
                 return false
             }
         }

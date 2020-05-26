@@ -126,6 +126,7 @@ class SignUpView: UIView {
             yourNameTextField.isHidden = true
             checkBoxImageView.isHidden = true
             privacyPolicyLabel.isHidden = true
+            bottomButton.setTitle("Sign up")
         case .signUp:
             titleLabel?.text = L10n.Authorization.signUp
             logInButton.setTitle(L10n.Authorization.signUpButton, for: .normal)
@@ -140,6 +141,7 @@ class SignUpView: UIView {
             yourNameTextField.isHidden = false
             checkBoxImageView.isHidden = false
             privacyPolicyLabel.isHidden = false
+            bottomButton.setTitle("Sign in")
         }
         emailTextField.placeholder = L10n.Authorization.email
         passwordTextField.placeholder = L10n.Authorization.password
