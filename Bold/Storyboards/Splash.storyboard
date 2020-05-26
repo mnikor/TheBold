@@ -191,6 +191,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="U48-3l-wn8"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
                                 <state key="normal" title="Find your boldness"/>
                                 <connections>
                                     <action selector="tapFindYourBoldness:" destination="BMw-ec-akt" eventType="touchUpInside" id="9oi-GW-buc"/>

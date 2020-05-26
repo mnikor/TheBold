@@ -173,3 +173,11 @@ class SignUpView: UIView {
     }
     
 }
+
+extension SignUpView: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+    }
+    
+}

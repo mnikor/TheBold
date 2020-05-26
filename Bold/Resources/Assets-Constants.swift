@@ -295,6 +295,7 @@ internal enum Asset {
   internal static let cameraGrayscale = ImageAsset(name: "cameraGrayscale")
   internal static let check = ImageAsset(name: "check")
   internal static let checkBox = ImageAsset(name: "checkBox")
+  internal static let checkMark = ImageAsset(name: "check_mark")
   internal static let citationBackground = ImageAsset(name: "citationBackground")
   internal static let facebook = ImageAsset(name: "facebook")
   internal static let feelShape = ImageAsset(name: "feelShape")
