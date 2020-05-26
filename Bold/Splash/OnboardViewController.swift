@@ -153,13 +153,62 @@ extension OnboardViewController: SignUpViewDelegate {
     }
     
     func signUpViewDidTapSignUp(_ signUpView: SignUpView) {
+        
         switch signUpView {
+            
         case loginView:
+            if !checkEmail(signUpView.emailTextField.text,
+                           password: signUpView.passwordTextField.text,
+                           name: nil,
+                           isSignUp: false) { return }
             login()
+            
         case self.signUpView:
+            if !checkEmail(signUpView.emailTextField.text,
+                           password: signUpView.passwordTextField.text,
+                           name: signUpView.yourNameTextField.text,
+                           isSignUp: true) { return }
             signUp()
+            
         default:
             break
+        }
+    }
+    
+    func checkEmail(_ email: String?, password: String?, name: String?, isSignUp: Bool) -> Bool {
+        
+        if isSignUp {
+            guard let name = name, !name.isEmpty else {
+                showAlert(title: "Warning", message: "Please enter your name")
+                return false
+            }
+        }
+        
+        guard let email = email, !email.isEmpty else {
+            showAlert(title: "Warning", message: "Please enter your email")
+            return false
+        }
+        
+        if !email.isValidEmail() {
+            showAlert(title: "Warning", message: "Please enter correct email")
+            return false
+        }
+        
+        guard let pass = password, !pass.isEmpty else {
+            showAlert(title: "Warning", message: "Please enter password")
+            return false
+        }
+        
+        return true
+        
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        DispatchQueue.main.async {
+            self.alertViewController?.navigationController?.present(alert, animated: true, completion: nil)
         }
     }
     
