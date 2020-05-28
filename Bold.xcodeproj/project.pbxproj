@@ -16,6 +16,7 @@
 		3EFCA3BD2306D46C00129DB4 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFCA3BC2306D46C00129DB4 /* SettingsTableViewCell.swift */; };
 		3EFCA3BF2306E00900129DB4 /* SettingsSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFCA3BE2306E00900129DB4 /* SettingsSectionModel.swift */; };
 		3EFCA3C12306E3F000129DB4 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EFCA3C02306E3F000129DB4 /* SettingsTableViewCell.xib */; };
+		4BD74C4F247F9D8B00BD0A24 /* UIColor+HexExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD74C4E247F9D8B00BD0A24 /* UIColor+HexExtension.swift */; };
 		AB3A5076A4778FC67A39C5DE /* Pods_Bold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F633E16C16CF1D2DB8E5B5 /* Pods_Bold.framework */; };
 		C50FE4CE238BD785008DD7C8 /* DataSource+Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50FE4CD238BD785008DD7C8 /* DataSource+Files.swift */; };
 		C50FE4D0239545E3008DD7C8 /* TableViewCellAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50FE4CF239545E3008DD7C8 /* TableViewCellAnimator.swift */; };
@@ -464,6 +465,7 @@
 		3EFCA3BC2306D46C00129DB4 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3EFCA3BE2306E00900129DB4 /* SettingsSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionModel.swift; sourceTree = "<group>"; };
 		3EFCA3C02306E3F000129DB4 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
+		4BD74C4E247F9D8B00BD0A24 /* UIColor+HexExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+HexExtension.swift"; sourceTree = "<group>"; };
 		C50FE4CD238BD785008DD7C8 /* DataSource+Files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSource+Files.swift"; sourceTree = "<group>"; };
 		C50FE4CF239545E3008DD7C8 /* TableViewCellAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellAnimator.swift; sourceTree = "<group>"; };
 		C50FE4D12395497C008DD7C8 /* TableViewCellAnimationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellAnimationFactory.swift; sourceTree = "<group>"; };
@@ -1666,6 +1668,7 @@
 				F186884A229E9BD80029A663 /* StoryboardScenes+Extensions.swift */,
 				F1868847229E9BD80029A663 /* StoryboardSegues+Extensions.swift */,
 				F1868848229E9BD80029A663 /* UIColor+Extensions.swift */,
+				4BD74C4E247F9D8B00BD0A24 /* UIColor+HexExtension.swift */,
 				F1868849229E9BD80029A663 /* UIFont+Extensions.swift */,
 				F1EE4D50229EB78C0072F663 /* String+Extensions.swift */,
 				C561C3ED2341F7D80073ABAC /* UIButton+Extension.swift */,
@@ -2628,6 +2631,7 @@
 				F12815E7236B298500CAE49B /* LevelOfMasteryService.swift in Sources */,
 				F183304722E714E800BB7A9E /* PlayerConfigurator.swift in Sources */,
 				F169675C236ACD9F004BB9BA /* BoldTypealias.swift in Sources */,
+				4BD74C4F247F9D8B00BD0A24 /* UIColor+HexExtension.swift in Sources */,
 				F1F406262306F3D80091B774 /* LevelOfMasteryViewController.swift in Sources */,
 				F1C2535022B3F9C5003156AA /* HomeInteractor.swift in Sources */,
 				F1043541234B70CF0086673C /* ActSectionViewModel.swift in Sources */,

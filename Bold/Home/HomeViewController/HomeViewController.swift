@@ -24,6 +24,8 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
         presenter.input(.menuShow)
     }
     
+    let backgroundGradient = CAGradientLayer()
+    
     var headerHomeView : HeaderHomeView!
     
     typealias Presenter = HomePresenter
@@ -111,7 +113,29 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
             // This only seems to be necessary on iOS 9.
             tableView.layoutIfNeeded()
         }
-        tableView.backgroundColor = ColorName.primaryBlue.color
+//        tableView.backgroundColor = ColorName.primaryBlue.color
+        
+        setupGradient()
+    }
+    
+    private func setupGradient() {
+        
+        let gradientBackgroundColors = [ColorName.primaryBlue.color.cgColor, UIColor.white.cgColor] as [Any]
+        let gradientLocations: [NSNumber] = [0.0,1.0]
+
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = gradientBackgroundColors
+        gradientLayer.locations = gradientLocations
+
+        gradientLayer.frame = tableView.bounds
+        let backgroundView = UIView(frame: tableView.bounds)
+        backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+        let additionalBlueView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: tableView.frame.height / 2))
+        additionalBlueView.backgroundColor = ColorName.primaryBlue.color
+        backgroundView.addSubview(additionalBlueView)
+        tableView.backgroundView = backgroundView
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
