@@ -24,8 +24,6 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
         presenter.input(.menuShow)
     }
     
-    let backgroundGradient = CAGradientLayer()
-    
     var headerHomeView : HeaderHomeView!
     
     typealias Presenter = HomePresenter
@@ -119,7 +117,6 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
     }
     
     private func setupGradient() {
-        
         let gradientBackgroundColors = [ColorName.primaryBlue.color.cgColor, UIColor.white.cgColor] as [Any]
         let gradientLocations: [NSNumber] = [0.0,1.0]
 
@@ -134,8 +131,6 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
         additionalBlueView.backgroundColor = ColorName.primaryBlue.color
         backgroundView.addSubview(additionalBlueView)
         tableView.backgroundView = backgroundView
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {

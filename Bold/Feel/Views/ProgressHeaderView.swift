@@ -21,6 +21,8 @@ class ProgressHeaderView: UIView {
     @IBOutlet weak var changePointLabel: UILabel!
     @IBOutlet weak var changePointView: UIView!
     
+    @IBOutlet weak var shadowView: UIView!
+    
     let disposeBag = DisposeBag()
     
     private var displayLink = CADisplayLink()
@@ -61,6 +63,8 @@ class ProgressHeaderView: UIView {
         }).disposed(by: disposeBag)
         
         configDisplayLink()
+        
+        setupGradient()
     }
     
     private func changeCountPoints(points: Int) {
@@ -113,6 +117,21 @@ class ProgressHeaderView: UIView {
         
         progressView.progress = Float(currentPoints) / Float(LevelOfMasteryService.shared.closedLevels.compactMap({ $0.limits.getAllLimits().points }).sorted().first(where: { Double($0) > currentPoints }) ?? 1)
         pointsLabel.text = "\(Int(currentPoints))"
+    }
+    
+    private func setupGradient() {
+        let gradientBackgroundColors = [UIColor.lightGray.cgColor, UIColor.white.cgColor] as [Any]
+        let gradientLocations: [NSNumber] = [0.0,1.0]
+
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = gradientBackgroundColors
+        gradientLayer.locations = gradientLocations
+
+        gradientLayer.frame = CGRect(x: shadowView.frame.origin.x,
+                                     y: shadowView.frame.origin.y - 2,
+                                     width: UIScreen.main.bounds.width,
+                                     height: 5)
+        shadowView.layer.insertSublayer(gradientLayer, at: 0)
     }
 
 }
