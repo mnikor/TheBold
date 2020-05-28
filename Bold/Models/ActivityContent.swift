@@ -185,7 +185,7 @@ class ActivityContent: ActivityBase {
     func playerStoped(with totalDuration: TimeInterval) {
         let type = self.type
         let durationInMinutes = Int(totalDuration / 60)
-        boldnessChanged(duration: durationInMinutes)
+//        boldnessChanged(duration: durationInMinutes)
         switch type {
         case .meditation:
             if durationInMinutes >= 7 {
