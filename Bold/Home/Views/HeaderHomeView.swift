@@ -90,7 +90,8 @@ class HeaderHomeView: UIView {
         if (contentView.window == nil) {
             currentPointsLabel.text = "\(points)"
             limitPointsLabel.text = "/\(pointsLimit)"
-            timeLabel.text = "\(boldnessEndValue)min"
+//            timeLabel.text = "\(boldnessEndValue)min"
+            timeLabel.text = "\(boldnessEndValue) \(boldnessEndValue > 1 ? "sessions" : "session")"
             return
         }
         
@@ -127,7 +128,8 @@ class HeaderHomeView: UIView {
         guard timeInterval < animationDuration
             else {
                 currentPointsLabel.text = "\(pointsEndValue)/\(pointsLimit)"
-                timeLabel.text = "\(boldnessEndValue)min"
+//                timeLabel.text = "\(boldnessEndValue)min"
+                timeLabel.text = "\(boldnessEndValue) \(boldnessEndValue > 1 ? "sessions" : "session")"
                 return
         }
         
@@ -140,12 +142,14 @@ class HeaderHomeView: UIView {
         let timeInterval = Date().timeIntervalSince(boldnessStartDate)
         guard timeInterval < animationDuration
             else {
-                timeLabel.text = "\(boldnessEndValue)min"
+//                timeLabel.text = "\(boldnessEndValue)min"
+                timeLabel.text = "\(boldnessEndValue) \(boldnessEndValue > 1 ? "sessions" : "session")"
                 return
         }
         let percentage = timeInterval / animationDuration
         let boldnessNewValue = Double(boldnessEndValue - boldnessStartValue) * percentage
-        timeLabel.text = "\(Int(boldnessNewValue))min"
+//        timeLabel.text = "\(Int(boldnessNewValue))min"
+        timeLabel.text = "\(Int(boldnessNewValue)) \(boldnessEndValue > 1 ? "sessions" : "session")"
     }
     
 }

@@ -88,6 +88,7 @@ class PlayerViewController: UIViewController, ViewProtocol {
     }
     
     func play() {
+        increaseBoldnessCounter()
         state = .playing
         slider.value = 0
         service.input(.play(trackIndex: nil))
@@ -273,6 +274,10 @@ class PlayerViewController: UIViewController, ViewProtocol {
         let time = CMTime(seconds: Double(value), preferredTimescale: 1)
         currentTimeSongLabel.text = formatTimeInterval(Double(value))
         service.input(.seek(to: time))
+    }
+    
+    private func increaseBoldnessCounter() {
+        SettingsService.shared.boldness += 1
     }
     
 }

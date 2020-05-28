@@ -111,12 +111,11 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
             // This only seems to be necessary on iOS 9.
             tableView.layoutIfNeeded()
         }
-//        tableView.backgroundColor = ColorName.primaryBlue.color
         
-        setupGradient()
+        setupTableViewBackground()
     }
     
-    private func setupGradient() {
+    private func setupTableViewBackground() {
         let gradientBackgroundColors = [ColorName.primaryBlue.color.cgColor, UIColor.white.cgColor] as [Any]
         let gradientLocations: [NSNumber] = [0.0,1.0]
 

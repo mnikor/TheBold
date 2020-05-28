@@ -41,7 +41,7 @@ class ActionsListViewController: UIViewController, ViewProtocol {
 
         configurator.configure(with: self)
         
-        highNavigationBar.configItem(title: typeVC.titleText()!, titleImage: .info, leftButton: .back, rightButton: .none)
+        highNavigationBar.configItem(title: typeVC.titleText() ?? "", titleImage: .info, leftButton: .back, rightButton: .none)
         highNavigationBar.deleagte = self
         
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 60))

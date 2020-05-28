@@ -76,14 +76,18 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
         case .tappedContentInGroup(pressType: let pressType, content: let content):
             tappedOnButtonOfContentInGroup(pressType: pressType, content: content)
         case .didSelectContent(let content):
-            
             switch content.type {
             case .lesson, .story:
+                increaseBoldnessCounter()
                 router.input(.read(content))
             default:
                 router.input(.player(content))
             }
         }
+    }
+    
+    func increaseBoldnessCounter() {
+        SettingsService.shared.boldness += 1
     }
     
     private func unlockActionCard(_ content: ActivityContent) {
