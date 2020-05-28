@@ -268,10 +268,18 @@ extension ProfileViewController: AllowCameraViewDelegate {
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.originalImage] as? UIImage
-        if let imageData = image?.pngData() {
+        
+        // Convert image to smaller size
+        let resizedImage = image?.convert(toSize: CGSize(width: 100, height: 100), scale: UIScreen.main.scale)
+        
+        if let imageData = resizedImage?.pngData() {
+            
+            // reload avatar
+            SessionManager.shared.profile?.image = resizedImage
+            NotificationCenter.default.post(name: .profileChanged, object: nil, userInfo: nil)
+            
             presenter.input(.setPhoto(imageData))
         }
-//        contactImage.image = image
         dismiss(animated: true, completion: nil)
     }
     

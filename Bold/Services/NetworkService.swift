@@ -168,6 +168,7 @@ class NetworkService {
         guard downloadEnabled else { return }
         var headers = self.headers
         headers.updateValue("multipart/form-data", forKey: "Content-type")
+        
         sendMultipartRequest(endpoint: Endpoint.profile.rawValue,
                              method: .put,
                              parameters: [:],

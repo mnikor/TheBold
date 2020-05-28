@@ -15,10 +15,10 @@ import UIKit
 public struct SideMenuItemOptions {
 
     public struct Shadow {
-        public var color: UIColor? = UIColor.black
+        public var color: UIColor? = UIColor.black.withAlphaComponent(0.2)
         public var opacity: CGFloat = 0.3
-        public var offset: CGSize = CGSize(width: -5, height: 5)
-        public var radius: CGFloat = 3
+        public var offset: CGSize = CGSize(width: -0.5, height: 0.5)
+        public var radius: CGFloat = 1
 
         public init() { }
 

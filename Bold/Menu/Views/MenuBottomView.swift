@@ -59,7 +59,12 @@ class MenuBottomView: UIView {
     }
     
     func setUserImage(imagePath: String?) {
-        userImageView.setImageAnimated(path: imagePath ?? "", completion: { SessionManager.shared.profile?.image = $0 })
+        if let image = SessionManager.shared.profile?.image {
+            userImageView.image = image
+        } else if let path = imagePath {
+            userImageView.setImageAnimated(path: path, completion: {
+                SessionManager.shared.profile?.image = $0 })
+        }
     }
     
     func setLevel(_ level: String?) {

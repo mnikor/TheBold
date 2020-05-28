@@ -21,6 +21,7 @@ class LeftMenuViewController: MenuViewController {
         menuItems = [.home, .feel, .think, .act, .settings]
         menuBottomView.delegate = self
         configureBottomView()
+        view.backgroundColor = UIColor(white: 1, alpha: 0.99)
     }
     
     private func registerForNotifications() {

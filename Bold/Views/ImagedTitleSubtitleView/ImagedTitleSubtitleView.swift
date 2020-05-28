@@ -17,6 +17,7 @@ class ImagedTitleSubtitleView: ConfigurableView {
     
     private let leftImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = UIImage(named: "profile_icon")
         imageView.layer.cornerRadius = 27
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -139,7 +140,13 @@ class ImagedTitleSubtitleView: ConfigurableView {
     }
     
     func configure(with viewModel: ImagedTitleSubtitleViewModel) {
-        leftImageView.setImageAnimated(path: viewModel.leftImagePath ?? "", completion: viewModel.imageLoadingCompletion)
+        
+        if let image = SessionManager.shared.profile?.image {
+            leftImageView.image = image
+        } else if let imagePath = viewModel.leftImagePath {
+            leftImageView.setImageAnimated(path: imagePath, completion: viewModel.imageLoadingCompletion)
+        }
+        
         if let title = viewModel.attributedTitle {
             titleLabel.attributedText = title
         } else {

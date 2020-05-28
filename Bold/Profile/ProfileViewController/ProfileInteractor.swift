@@ -45,7 +45,9 @@ class ProfileInteractor: ProfileInteractorInputProtocol {
                 // TODO: - error handling
                 break
             case .success(let profile):
-                SessionManager.shared.profile = profile
+                SessionManager.shared.profile?.imageURL = profile.imageURL
+                print("Profile: \(profile.id)")
+                break
             }
         }
     }

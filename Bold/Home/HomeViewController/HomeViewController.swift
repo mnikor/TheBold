@@ -111,6 +111,7 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
             // This only seems to be necessary on iOS 9.
             tableView.layoutIfNeeded()
         }
+        tableView.backgroundColor = ColorName.primaryBlue.color
     }
     
     override func viewDidAppear(_ animated: Bool) {

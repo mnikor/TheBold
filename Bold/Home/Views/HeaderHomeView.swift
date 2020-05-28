@@ -24,6 +24,7 @@ class HeaderHomeView: UIView {
     @IBOutlet weak var levelNameLabel: UILabel!
     @IBOutlet weak var masteryLabel: UILabel!
     @IBOutlet weak var currentPointsLabel: UILabel!
+    @IBOutlet weak var limitPointsLabel: UILabel!
     @IBOutlet weak var iconPointImageView: UIImageView!
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -87,7 +88,8 @@ class HeaderHomeView: UIView {
     private func set(points: Int, changePoint: Int, currentLevel: LevelBold) {
         
         if (contentView.window == nil) {
-            currentPointsLabel.text = "\(points)/\(pointsLimit)"
+            currentPointsLabel.text = "\(points)"
+            limitPointsLabel.text = "/\(pointsLimit)"
             timeLabel.text = "\(boldnessEndValue)min"
             return
         }

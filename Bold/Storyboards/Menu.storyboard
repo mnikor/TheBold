@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lgx-iL-T8P">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lgx-iL-T8P">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,11 +21,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashBackground" translatesAutoresizingMaskIntoConstraints="NO" id="FBF-d2-QiE">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashBackground" translatesAutoresizingMaskIntoConstraints="NO" id="FBF-d2-QiE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="707"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JHf-6n-Rer">
-                                <rect key="frame" x="0.0" y="136" width="305" height="300"/>
+                                <rect key="frame" x="0.0" y="116" width="305" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="oOs-ig-2Re"/>
@@ -93,14 +91,14 @@
                                 </connections>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoSmall" translatesAutoresizingMaskIntoConstraints="NO" id="qaM-eg-2vH">
-                                <rect key="frame" x="54" y="67" width="61" height="29"/>
+                                <rect key="frame" x="54" y="47" width="61" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="61" id="gQd-ab-qrg"/>
                                     <constraint firstAttribute="height" constant="29" id="znT-wL-fGw"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8TJ-Sw-mON" customClass="MenuBottomView" customModule="Bold" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="436" width="305" height="231"/>
+                                <rect key="frame" x="0.0" y="416" width="305" height="251"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -117,7 +115,7 @@
                             <constraint firstItem="8TJ-Sw-mON" firstAttribute="leading" secondItem="Iy2-lD-JzH" secondAttribute="leading" id="PVv-bR-Tpz"/>
                             <constraint firstItem="8TJ-Sw-mON" firstAttribute="top" secondItem="JHf-6n-Rer" secondAttribute="bottom" id="W3C-9U-J0X"/>
                             <constraint firstItem="JHf-6n-Rer" firstAttribute="top" secondItem="qaM-eg-2vH" secondAttribute="bottom" constant="40" id="ZWP-OX-Y2K"/>
-                            <constraint firstItem="FBF-d2-QiE" firstAttribute="bottom" secondItem="Iy2-lD-JzH" secondAttribute="bottom" id="oaV-oR-5rq"/>
+                            <constraint firstItem="FBF-d2-QiE" firstAttribute="bottom" secondItem="Iy2-lD-JzH" secondAttribute="bottom" constant="40" id="oaV-oR-5rq"/>
                             <constraint firstItem="FBF-d2-QiE" firstAttribute="top" secondItem="u2G-9Z-Bl1" secondAttribute="top" id="t0M-c8-MVj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Iy2-lD-JzH"/>
