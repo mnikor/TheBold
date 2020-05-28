@@ -139,7 +139,7 @@ class ListenOrReadMaterialView: UIView {
             readPreviewButton.isHidden = false
             unlockButton.positionImageBeforeText(padding: 8)
         case .startAddToPlan:
-            durationLabel.isHidden = true
+            durationLabel.isHidden = false
             startButton.isHidden = false
             unlockButton.isHidden = true
             addPlanButton.isHidden = false
