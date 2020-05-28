@@ -59,8 +59,6 @@ struct DescriptionViewModel {
         let image = "boldManifestMain"//Asset.boldManifestMain.name
         
         let path = Bundle.main.path(forResource: image, ofType: nil)
-        let urlI = URL(fileURLWithPath: path!)
-        print("\(urlI)")
         
         let content = ActivityContent(id: 0, position: 0, type: ContentType.hypnosis, title: "", body: "", authorName: "", footer: "", durtionRead: 307, pointOfUnlock: 0, contentStatus: ContentStatus.unlocked, imageURL: path, smallImageURL: path, largeImageURL: path, likesCount: 0, authorPhotoURL: nil, audioTracks: [audio], documentURL: FilePath.local (documentURL?.absoluteString ?? ""), forCategoryPresentation: false)
         return DescriptionViewModel(image: .image(Asset.boldManifestMain.image),
