@@ -41,7 +41,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PHB-0j-How">
-                                <rect key="frame" x="0.0" y="151" width="375" height="516"/>
+                                <rect key="frame" x="0.0" y="40" width="375" height="627"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="4Cg-ko-Obu" id="p75-Yk-TDC"/>
@@ -56,10 +56,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QBc-pY-VFl" customClass="NavigationView" customModule="Bold" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="116"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.66666666669999997" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="116" id="4u3-cM-GWx"/>
+                                    <constraint firstAttribute="height" constant="40" id="4u3-cM-GWx"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -75,8 +75,14 @@
                             <constraint firstItem="i4T-Bo-I09" firstAttribute="trailing" secondItem="PHB-0j-How" secondAttribute="trailing" id="W3Z-sl-2Ap"/>
                             <constraint firstItem="QBc-pY-VFl" firstAttribute="trailing" secondItem="i4T-Bo-I09" secondAttribute="trailing" id="gBJ-OR-xMc"/>
                             <constraint firstItem="QBc-pY-VFl" firstAttribute="top" secondItem="i4T-Bo-I09" secondAttribute="top" id="ia6-6H-u0H"/>
+                            <constraint firstItem="PHB-0j-How" firstAttribute="top" secondItem="QBc-pY-VFl" secondAttribute="bottom" id="tWI-ET-A4j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="i4T-Bo-I09"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="lr8-mb-wzW"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="S0n-o8-H8D">
                         <nil key="title"/>

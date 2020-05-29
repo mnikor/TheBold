@@ -28,11 +28,19 @@ class ThinkViewController: FeelViewController {
         
         tableView.tableFooterView = UIView()
         registerXibs()
+        
+        hideTitleInHighNavigationBar()
+    }
+    
+    private func hideTitleInHighNavigationBar() {
+        highNavigationBar.titleLabel.isHidden = true
+        highNavigationBar.infoButton.isHidden = true
     }
     
     override func registerXibs() {
         super.registerXibs()
         tableView.registerNib(CitationTableViewCell.self)
+        tableView.registerNib(NavigationTitleAndProgressTableViewCell.self)
     }
     
 //    override func showAll(typeCells: FeelTypeCell) {
@@ -44,24 +52,31 @@ class ThinkViewController: FeelViewController {
 extension ThinkViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = items[indexPath.row]
-        switch item.type {
-        case .stories, .lessons:
-            let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActionCollectionTableViewCell
-            cell.delegate = self
-            cell.config(entity: item)
-            cell.cellBackground(indexPath: indexPath)
-            return cell
-        case .citate:
-            let cell = tableView.dequeReusableCell(indexPath: indexPath) as CitationTableViewCell
-            cell.delegate = self
-            if let quote = item.items.first {
-                cell.config(content: quote)
+        
+        if indexPath.row == 0 {
+            let headerCell = tableView.dequeReusableCell(indexPath: indexPath) as NavigationTitleAndProgressTableViewCell
+            headerCell.titleLabel.text = L10n.Think.thinkBold
+            return headerCell
+        } else {
+            let item = items[indexPath.row - 1]
+            switch item.type {
+            case .stories, .lessons:
+                let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActionCollectionTableViewCell
+                cell.delegate = self
+                cell.config(entity: item)
+                cell.cellBackground(indexPath: indexPath)
+                return cell
+            case .citate:
+                let cell = tableView.dequeReusableCell(indexPath: indexPath) as CitationTableViewCell
+                cell.delegate = self
+                if let quote = item.items.first {
+                    cell.config(content: quote)
+                }
+                cell.cellBackground(indexPath: indexPath)
+                return cell
+            default:
+                return UITableViewCell()
             }
-            cell.cellBackground(indexPath: indexPath)
-            return cell
-        default:
-            return UITableViewCell()
         }
     }
 }

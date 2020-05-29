@@ -40,6 +40,14 @@ class FeelViewController: UIViewController, SideMenuItemContent, ViewProtocol {
         tableView.tableFooterView = UIView()
         registerXibs()
         prepareDataSource()
+        
+        hideProgressViewAndTitleInHighNavigationBar()
+    }
+    
+    private func hideProgressViewAndTitleInHighNavigationBar() {
+        highNavigationBar.titleLabel.isHidden = true
+        highNavigationBar.infoButton.isHidden = true
+        progressView.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +57,7 @@ class FeelViewController: UIViewController, SideMenuItemContent, ViewProtocol {
     
     func registerXibs() {
         tableView.registerNib(ActionCollectionTableViewCell.self)
+        tableView.registerNib(NavigationTitleAndProgressTableViewCell.self)
     }
     
     private func prepareDataSource() {
@@ -81,15 +90,21 @@ extension FeelViewController: NavigationViewDelegate {
 
 extension FeelViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return items.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActionCollectionTableViewCell
-        cell.delegate = self
-        cell.config(entity: items[indexPath.row])
-        cell.cellBackground(indexPath: indexPath)
-        return cell
+        if indexPath.row == 0 {
+            let headerCell = tableView.dequeReusableCell(indexPath: indexPath) as NavigationTitleAndProgressTableViewCell
+            headerCell.titleLabel.text = L10n.Feel.feelBold
+            return headerCell
+        } else {
+            let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActionCollectionTableViewCell
+            cell.delegate = self
+            cell.config(entity: items[indexPath.row - 1])
+            cell.cellBackground(indexPath: indexPath)
+            return cell
+        }
     }
 }
 
