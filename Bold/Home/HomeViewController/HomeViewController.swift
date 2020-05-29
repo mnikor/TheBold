@@ -116,19 +116,22 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
     }
     
     private func setupTableViewBackground() {
-        let gradientBackgroundColors = [ColorName.primaryBlue.color.cgColor, UIColor.white.cgColor] as [Any]
-        let gradientLocations: [NSNumber] = [0.0,1.0]
-
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = gradientBackgroundColors
-        gradientLayer.locations = gradientLocations
-
-        gradientLayer.frame = tableView.bounds
         let backgroundView = UIView(frame: tableView.bounds)
-        backgroundView.layer.insertSublayer(gradientLayer, at: 0)
-        let additionalBlueView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: tableView.frame.height / 2))
+        
+        let additionalBlueView = UIView(frame: CGRect(x: 0,
+                                                      y: 0,
+                                                      width: tableView.frame.width,
+                                                      height: tableView.frame.height / 2))
         additionalBlueView.backgroundColor = ColorName.primaryBlue.color
+        
+        let bottomWhiteView = UIView(frame: CGRect(x: 0,
+                                                   y: backgroundView.frame.height / 2,
+                                                   width: tableView.frame.width,
+                                                   height: tableView.frame.height / 2))
+        
         backgroundView.addSubview(additionalBlueView)
+        backgroundView.addSubview(bottomWhiteView)
+        
         tableView.backgroundView = backgroundView
     }
     
