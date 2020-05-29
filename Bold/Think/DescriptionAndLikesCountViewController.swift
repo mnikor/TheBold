@@ -254,8 +254,8 @@ extension DescriptionAndLikesCountViewController: UIScrollViewDelegate {
             if percent > 1 {
                 percent = 1
             }
-            toolbar.alpha = 1 - percent
-            likseCountView.moveConstraintView(percent: percent)
+//            toolbar.alpha = 1 - percent
+//            likseCountView.moveConstraintView(percent: percent)
         }
     }
     
