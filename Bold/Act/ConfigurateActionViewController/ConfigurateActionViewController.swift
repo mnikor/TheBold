@@ -61,15 +61,22 @@ class ConfigurateActionViewController: UIViewController, ViewProtocol {
     }
     
     func configNavigationController() {
-        navigationController?.navigationBar.tintColor = .blue
+        navigationController?.navigationBar.tintColor = ColorName.primaryBlue.color
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
         navigationItem.title = settingsActionType.textType()
+        
+        let backItem = UIBarButtonItem(image: UIImage(named: "arrowBack"), style: .plain, target: self, action: #selector(tapBackButton))
+       navigationItem.leftBarButtonItem = backItem
     }
     
     func configureDataSource() {
         guard let settingsActionType = settingsActionType else { return }
         presenter.input(.searchAction(settingsActionType, actionID))
+    }
+    
+    @objc private func tapBackButton() {
+        navigationController?.popViewController(animated: true)
     }
 }
 

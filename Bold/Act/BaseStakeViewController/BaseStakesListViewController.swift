@@ -66,6 +66,13 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
         navigationController?.navigationBar.isHidden = false
         navigationItem.title = presenter.goal?.name ?? L10n.viewAll
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: Asset.plusTodayActions.image, style: .plain, target: self, action: #selector(tapCreateAction))
+        
+        let backItem = UIBarButtonItem(image: UIImage(named: "arrowBack"), style: .plain, target: self, action: #selector(tapBackButton))
+        navigationItem.leftBarButtonItem = backItem
+    }
+    
+    @objc private func tapBackButton() {
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func tapCreateAction() {
