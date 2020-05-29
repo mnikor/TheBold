@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uIa-My-1aK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uIa-My-1aK">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -41,7 +41,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PHB-0j-How">
-                                <rect key="frame" x="0.0" y="161" width="375" height="506"/>
+                                <rect key="frame" x="0.0" y="151" width="375" height="516"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="4Cg-ko-Obu" id="p75-Yk-TDC"/>
@@ -49,17 +49,17 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lr8-mb-wzW" customClass="ProgressHeaderView" customModule="Bold" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="126" width="375" height="35"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="35"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Sgz-8S-AgS"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QBc-pY-VFl" customClass="NavigationView" customModule="Bold" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="126"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="116"/>
                                 <color key="backgroundColor" red="1" green="0.66666666669999997" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="126" id="4u3-cM-GWx"/>
+                                    <constraint firstAttribute="height" constant="116" id="4u3-cM-GWx"/>
                                 </constraints>
                             </view>
                         </subviews>
