@@ -61,6 +61,7 @@
             <connections>
                 <outlet property="infoButton" destination="811-aa-4Do" id="eRZ-d9-6P3"/>
                 <outlet property="progressView" destination="TdN-ac-xh7" id="iR4-DG-6Nr"/>
+                <outlet property="progressViewHeight" destination="d6m-N7-0Xl" id="rYO-6u-wQu"/>
                 <outlet property="titleLabel" destination="uW9-db-MhC" id="phI-74-J9G"/>
             </connections>
             <point key="canvasLocation" x="-92.753623188405811" y="37.165178571428569"/>

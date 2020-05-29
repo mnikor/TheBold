@@ -16,6 +16,7 @@ class NavigationTitleAndProgressTableViewCell: BaseTableViewCell {
     @IBOutlet weak var infoButton: UIButton!
     
     @IBOutlet weak var progressView: ProgressHeaderView!
+    @IBOutlet weak var progressViewHeight: NSLayoutConstraint!
     
     // MARK: - INIT -
     
@@ -29,9 +30,6 @@ class NavigationTitleAndProgressTableViewCell: BaseTableViewCell {
     // MARK: - SETUP VIEW -
     
     private func setupView() {
-        
         infoButton.isHidden = true
-        
     }
-    
 }

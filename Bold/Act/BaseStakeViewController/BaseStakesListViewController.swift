@@ -80,6 +80,7 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
     }
     
     private func registerXibs() {
+        tableView.registerNib(NavigationTitleAndProgressTableViewCell.self)
         tableView.registerNib(ActivityCollectionTableViewCell.self)
         tableView.registerNib(StakeActionTableViewCell.self)
         tableView.registerNib(CalendarTableViewCell.self)
@@ -226,6 +227,9 @@ extension BaseStakesListViewController: UITableViewDelegate, UITableViewDataSour
         
         let sectionItem = presenter.dataSource[section]
         print("Section = \(section), items = \(sectionItem.items.count)")
+        if section == 0 {
+            return sectionItem.items.count + 1
+        }
         return sectionItem.items.count
     }
     
@@ -261,29 +265,44 @@ extension BaseStakesListViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let section = presenter.dataSource[indexPath.section]
-        let item = section.items[indexPath.row]
-        switch item {
-        case .calendar(dates: _):
-            let cell = tableView.dequeReusableCell(indexPath: indexPath) as CalendarTableViewCell
-            cell.config(date: presenter.currentDate, startDate:presenter.goal?.startDate as Date?, endDate:presenter.goal?.endDate as Date?, modelView: item)
-            cell.delegate = self
-            return cell
-        case .event(viewModel: _):
-            let cell = tableView.dequeReusableCell(indexPath: indexPath) as StakeActionTableViewCell
-            cell.config(viewModel: item)
-            cell.delegate = self
-            return cell
-        case .goals(viewModel: _):
-            let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActivityCollectionTableViewCell
+        
+        if indexPath == IndexPath(row: 0, section: 0) {
             
-            if case .goals(viewModel: let activityViewModel) = item {
-                cell.configCell(viewModel: activityViewModel)
+            let headerCell = tableView.dequeReusableCell(indexPath: indexPath) as NavigationTitleAndProgressTableViewCell
+            headerCell.progressView.titleLabel.isHidden = true
+            headerCell.progressView.pointsLabel.isHidden = true
+            headerCell.progressView.pointsImageView.isHidden = true
+            headerCell.progressView.changePointView.isHidden = true
+            headerCell.progressView.changePointLabel.isHidden = true
+            headerCell.progressViewHeight.constant = 5
+            return headerCell
+            
+        } else {
+            
+            let section = presenter.dataSource[indexPath.section]
+            let item = section.items[indexPath.row - 1]
+            switch item {
+            case .calendar(dates: _):
+                let cell = tableView.dequeReusableCell(indexPath: indexPath) as CalendarTableViewCell
+                cell.config(date: presenter.currentDate, startDate:presenter.goal?.startDate as Date?, endDate:presenter.goal?.endDate as Date?, modelView: item)
+                cell.delegate = self
+                return cell
+            case .event(viewModel: _):
+                let cell = tableView.dequeReusableCell(indexPath: indexPath) as StakeActionTableViewCell
+                cell.config(viewModel: item)
+                cell.delegate = self
+                return cell
+            case .goals(viewModel: _):
+                let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActivityCollectionTableViewCell
+                
+                if case .goals(viewModel: let activityViewModel) = item {
+                    cell.configCell(viewModel: activityViewModel)
+                }
+                
+                cell.delegate = self
+                cell.backgroundColor = UIColor(red: 244/255, green: 245/255, blue: 249/255, alpha: 1)
+                return cell
             }
-            
-            cell.delegate = self
-            cell.backgroundColor = UIColor(red: 244/255, green: 245/255, blue: 249/255, alpha: 1)
-            return cell
         }
     }
     
