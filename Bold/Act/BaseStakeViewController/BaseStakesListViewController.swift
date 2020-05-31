@@ -53,8 +53,6 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
     }
     
     func configTableView() {
-//        tableView.delegate = self
-//        tableView.dataSource = self
         tableView.backgroundView = presenter.dataSource.isEmpty ? EmptyActView.loadFromNib() : UIView()
         tableView.tableFooterView = UIView()
         tableView.estimatedSectionHeaderHeight = UITableView.automaticDimension
@@ -150,6 +148,7 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
                 
                 let indexPath = tableView.indexPath(for: stakeCell)!
                 let section = presenter.dataSource[indexPath.section]
+                
                 let item = section.items[indexPath.row]
 
                 if case .event(viewModel: let cellModel) = item {
@@ -219,18 +218,18 @@ extension BaseStakesListViewController: UIScrollViewDelegate {
 extension BaseStakesListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("dataSource.count \(presenter.dataSource.count)")
         return presenter.dataSource.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         let sectionItem = presenter.dataSource[section]
-        print("Section = \(section), items = \(sectionItem.items.count)")
-        if section == 0 {
+        
+        switch sectionItem.section {
+        case .calendar:
+            return sectionItem.items.count
+        default:
             return sectionItem.items.count + 1
         }
-        return sectionItem.items.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -266,8 +265,19 @@ extension BaseStakesListViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath == IndexPath(row: 0, section: 0) {
-            
+        var isCalendar = false
+        
+        let sectionItem = presenter.dataSource[indexPath.section]
+        
+        switch sectionItem.section {
+        case .calendar:
+            isCalendar = true
+        default:
+            isCalendar = false
+        }
+        
+        if indexPath == IndexPath(row: 0, section: 0) && !isCalendar {
+
             let headerCell = tableView.dequeReusableCell(indexPath: indexPath) as NavigationTitleAndProgressTableViewCell
             headerCell.progressView.titleLabel.isHidden = true
             headerCell.progressView.pointsLabel.isHidden = true
@@ -276,11 +286,16 @@ extension BaseStakesListViewController: UITableViewDelegate, UITableViewDataSour
             headerCell.progressView.changePointLabel.isHidden = true
             headerCell.progressViewHeight.constant = 5
             return headerCell
-            
+
         } else {
             
             let section = presenter.dataSource[indexPath.section]
-            let item = section.items[indexPath.row - 1]
+            
+            var item: CalendarModelType
+            
+            if indexPath.section == 0 && !isCalendar { item = section.items[indexPath.row - 1]}
+            else { item = section.items[indexPath.row] }
+            
             switch item {
             case .calendar(dates: _):
                 let cell = tableView.dequeReusableCell(indexPath: indexPath) as CalendarTableViewCell

@@ -317,7 +317,7 @@
                     <navigationItem key="navigationItem" id="Bu4-AJ-7ns"/>
                     <connections>
                         <outlet property="highNavigationBar" destination="YFr-R8-D4q" id="6Jl-b2-FCA"/>
-                        <outlet property="tableView" destination="syX-rx-rHl" id="ck0-DO-Vxa"/>
+                        <outlet property="tableView" destination="syX-rx-rHl" id="j55-Ps-TO7"/>
                         <segue destination="HaI-PA-Uns" kind="show" identifier="allGoallIdentifier" id="5pJ-b5-Pdf"/>
                         <segue destination="3X2-c3-yKl" kind="show" identifier="createActionFromActViewIdentifier" id="pAq-T2-3zm"/>
                     </connections>

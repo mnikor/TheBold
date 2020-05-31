@@ -91,7 +91,7 @@ class HeaderHomeView: UIView {
             currentPointsLabel.text = "\(points)"
             limitPointsLabel.text = "/\(pointsLimit)"
 //            timeLabel.text = "\(boldnessEndValue)min"
-            timeLabel.text = "\(boldnessEndValue) \(boldnessEndValue > 1 ? "sessions" : "session")"
+            timeLabel.text = "\(boldnessEndValue) \(boldnessEndValue == 1 ? "session" : "sessions")"
             return
         }
         
@@ -129,7 +129,7 @@ class HeaderHomeView: UIView {
             else {
                 currentPointsLabel.text = "\(pointsEndValue)/\(pointsLimit)"
 //                timeLabel.text = "\(boldnessEndValue)min"
-                timeLabel.text = "\(boldnessEndValue) \(boldnessEndValue > 1 ? "sessions" : "session")"
+                timeLabel.text = "\(boldnessEndValue) \(boldnessEndValue == 1 ? "session" : "sessions")"
                 return
         }
         
@@ -143,13 +143,13 @@ class HeaderHomeView: UIView {
         guard timeInterval < animationDuration
             else {
 //                timeLabel.text = "\(boldnessEndValue)min"
-                timeLabel.text = "\(boldnessEndValue) \(boldnessEndValue > 1 ? "sessions" : "session")"
+                timeLabel.text = "\(boldnessEndValue) \(boldnessEndValue == 1 ? "session" : "sessions")"
                 return
         }
         let percentage = timeInterval / animationDuration
         let boldnessNewValue = Double(boldnessEndValue - boldnessStartValue) * percentage
 //        timeLabel.text = "\(Int(boldnessNewValue))min"
-        timeLabel.text = "\(Int(boldnessNewValue)) \(boldnessEndValue > 1 ? "sessions" : "session")"
+        timeLabel.text = "\(Int(boldnessNewValue)) \(boldnessEndValue == 1 ? "session" : "sessiona")"
     }
     
 }
