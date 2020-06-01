@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +30,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationService.shared.input(.resetBadgeNumber)
         // Override point for customization after application launch.
         return true
+    }
+    
+    func clearCoreData() {
+        deleteAllData("Action")
+        deleteAllData("Content")
+        deleteAllData("Goal")
+        deleteAllData("User")
+        deleteAllData("Event")
+        deleteAllData("File")
+        deleteAllData("DaysOfWeek")
+        deleteAllData("Reminder")
+    }
+    
+    func deleteAllData(_ entity:String) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        fetchRequest.returnsObjectsAsFaults = false
+        do {
+            let results = try DataSource.shared.viewContext.fetch(fetchRequest)
+            for object in results {
+                guard let objectData = object as? NSManagedObject else {continue}
+                DataSource.shared.viewContext.delete(objectData)
+            }
+        } catch let error {
+            print("Detele all data in \(entity) error :", error)
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

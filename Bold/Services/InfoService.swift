@@ -59,13 +59,11 @@ class InfoService: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
-        clicked()
     }
     
     func setup() {
         let tempcolor = baseView.backgroundColor
-        baseView.backgroundColor = .white
+//        baseView.backgroundColor = .white
         infoView = UIImageView(image: baseView.asImage())
         infoView.backgroundColor = .clear
         baseView.backgroundColor = tempcolor
@@ -75,17 +73,27 @@ class InfoService: UIViewController {
         
         infoView.alpha = 0
         overlayView.alpha = 0
+        
+        infoView.translatesAutoresizingMaskIntoConstraints = false
+        
     }
     
     override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+    }
+    
+    private func setupConstraints() {
         infoView.topAnchor.constraint(equalTo: view.topAnchor, constant: infoView.frame.origin.y).isActive = true
-        infoView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: infoView.frame.origin.x).isActive = true
+        infoView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: infoView.frame.origin.x).isActive = true
         infoView.widthAnchor.constraint(equalToConstant: infoView.bounds.size.width).isActive = true
         infoView.heightAnchor.constraint(equalToConstant: infoView.bounds.size.height).isActive = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        setup()
+        clicked()
+        setupConstraints()
         showAnimateView()
     }
     
@@ -212,7 +220,7 @@ class CustomPopoverBackgroundView: UIPopoverBackgroundView {
         var bgRect = bounds
         let cutWidth = arrowDirection == .left || arrowDirection == .right
         bgRect.size.width = bgRect.size.width - cutWidth.floatValue * CustomPopoverBackgroundView.arrowHeight() - 16
-        bgRect.origin.x = 16
+        bgRect.origin.x = 8
         
         let cutHeight = arrowDirection == .up || arrowDirection == .down
         bgRect.size.height = bgRect.size.height - cutHeight.floatValue * CustomPopoverBackgroundView.arrowHeight()

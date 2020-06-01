@@ -10,7 +10,6 @@ import UIKit
 
 class BaseStakesListViewController: UIViewController, ViewProtocol {
     
-    
     @IBOutlet weak var tableView: UITableView!
     
     typealias Presenter = BaseStakesListPresenter
@@ -18,6 +17,14 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
     
     var presenter: Presenter!
     var configurator: Configurator! = BaseStakesListConfigurator()
+    
+    var user = DataSource.shared.readUser()
+    
+    var infoView: UIView!
+    
+    var isShown = false
+    var topCellIndexPath: IndexPath?
+    var cellContentView: UIView?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -44,6 +51,13 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
         registerXibs()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if let indxPath = topCellIndexPath {
+            setupInfoView(indxPath)
+            topCellIndexPath = nil
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -67,6 +81,55 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
         
         let backItem = UIBarButtonItem(image: UIImage(named: "arrowBack"), style: .plain, target: self, action: #selector(tapBackButton))
         navigationItem.leftBarButtonItem = backItem
+    }
+    
+    private func setupInfoView(_ indexPath: IndexPath) {
+        
+        if user.stakeInfo { return }
+        
+        let rectOfCell = tableView.rectForRow(at: indexPath)
+        let rectOfCellInSuperview = tableView.convert(rectOfCell, to: tableView.superview)
+        
+        let frame = CGRect(x: rectOfCellInSuperview.origin.x,
+                           y: rectOfCellInSuperview.origin.y,
+                           width: rectOfCellInSuperview.size.width,
+                           height: rectOfCellInSuperview.size.height)
+        
+        infoView = UIView(frame: frame)
+        
+        setupCellContentView(with: frame, to: infoView)
+        
+        view.addSubview(infoView)
+        
+        
+        InfoService.showInfo(type: .stakeCell, baseView: infoView) {
+            self.infoView.isHidden = true
+            self.user.stakeInfo = true
+            DataSource.shared.saveBackgroundContext()
+        }
+        
+    }
+    
+    private func setupCellContentView(with frame: CGRect, to infoView: UIView) {
+        
+        cellContentView?.frame = CGRect(x: frame.origin.x,
+                                        y: frame.origin.y,
+                                        width: frame.size.width,
+                                        height: frame.size.height)
+        cellContentView?.backgroundColor = .white
+        cellContentView?.translatesAutoresizingMaskIntoConstraints = false
+        cellContentView?.layer.cornerRadius = 10
+        
+        infoView.addSubview(cellContentView!)
+        
+        NSLayoutConstraint.activate([
+        
+            cellContentView!.topAnchor.constraint(equalTo: infoView.topAnchor),
+            cellContentView!.leadingAnchor.constraint(equalTo: infoView.leadingAnchor, constant: 20),
+            cellContentView!.trailingAnchor.constraint(equalTo: infoView.trailingAnchor, constant: -20),
+            cellContentView!.bottomAnchor.constraint(equalTo: infoView.bottomAnchor)
+        
+        ])
     }
     
     @objc private func tapBackButton() {
@@ -101,6 +164,7 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
 //MARK:- InfoFunctions
     
     func checkNeedInfo() {
+        self.tableView.layoutIfNeeded() // Stops cutting the infoView but it still on top
         
         if case .archive = presenter.type {
             return
@@ -164,13 +228,12 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
                             self.checkNeedInfo()
                         }
                         break
-                    }else if !user.stakeInfo {
-
-                        InfoService.showInfo(type: .stakeCell, baseView: stakeCell.contentActionView) { [unowned self] in
-                            user.stakeInfo = true
-                            DataSource.shared.saveBackgroundContext()
-                            self.checkNeedInfo()
-                        }
+                    } else if !user.stakeInfo {
+//                        InfoService.showInfo(type: .stakeCell, baseView: stakeCell.contentActionView) { [unowned self] in
+//                            user.stakeInfo = true
+//                            DataSource.shared.saveBackgroundContext()
+//                            self.checkNeedInfo()
+//                        }
                         break
                     }
                 }
@@ -309,6 +372,15 @@ extension BaseStakesListViewController: UITableViewDelegate, UITableViewDataSour
                 let cell = tableView.dequeReusableCell(indexPath: indexPath) as StakeActionTableViewCell
                 cell.config(viewModel: item)
                 cell.delegate = self
+                
+                // Check if we need to show orange info view
+                
+                if !isShown && !user.stakeInfo {
+                    topCellIndexPath = indexPath
+                    cellContentView = cell.contentActionView.copyView()
+                    isShown = true
+                }
+                
                 return cell
             case .goals(viewModel: _):
                 let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActivityCollectionTableViewCell
