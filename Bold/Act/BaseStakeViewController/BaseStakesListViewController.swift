@@ -133,12 +133,15 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
                     break
                 }
                 
-                if let cell = activityCell.collectionView.cellForItem(at: indexPaths.first!), let goalCell = cell as? GoalCollectionViewCell {
+                if indexPaths.count > 1 {
                     
-                    InfoService.showInfo(type: .goalCell, baseView: goalCell.goalView) { [unowned self] in
-                        user.goalInfo = true
-                        DataSource.shared.saveBackgroundContext()
-                        self.checkNeedInfo()
+                    if let goalCell = activityCell.collectionView.cellForItem(at: indexPaths[1]) as? GoalCollectionViewCell {
+                        
+                        InfoService.showInfo(type: .goalCell, baseView: goalCell.goalView) { [unowned self] in
+                            user.goalInfo = true
+                            DataSource.shared.saveBackgroundContext()
+                            self.checkNeedInfo()
+                        }
                     }
                 }
                 break
