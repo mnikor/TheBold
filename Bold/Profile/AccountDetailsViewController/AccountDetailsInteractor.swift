@@ -43,7 +43,7 @@ class AccountDetailsInteractor: AccountDetailsInteractorInputProtocol {
                                                         buttonTitle: "Edit")
         dataSource[.lastName] = ButtonedTitleViewModel(title: profile?.lastName ?? AccountDetailsItem.lastName.rawValue,
                                                        buttonTitle: "Edit")
-        dataSource[.email] = ButtonedTitleViewModel(title: profile?.email,
+        dataSource[.email] = ButtonedTitleViewModel(title: profile?.email ?? AccountDetailsItem.email.rawValue,
                                                     buttonTitle: "Edit")
         dataSource[.password] = ButtonedTitleViewModel(title: "Connected with Facebook",
                                                        buttonTitle: "Edit")

@@ -9,6 +9,13 @@
 import UIKit
 
 enum AccountDetailsItem: String, CaseIterable {
+    case firstName = "Add your first name"
+    case lastName = "Add your second name"
+    case email = "Enter your email"
+    case password = "Enter your password"
+}
+
+enum AccountDetailsHeaderItem: String, CaseIterable {
     case firstName = "First name"
     case lastName = "Last name"
     case email = "Email"
@@ -145,7 +152,7 @@ extension AccountDetailsViewController: UITableViewDelegate {
         if let headerView = view as? UITableViewHeaderFooterView {
             headerView.textLabel?.font = FontFamily.MontserratMedium.regular.font(size: 14.5)
             headerView.textLabel?.textColor = #colorLiteral(red: 0.4196078431, green: 0.4509803922, blue: 0.5450980392, alpha: 1)
-            headerView.textLabel?.text = AccountDetailsItem.allCases[section].rawValue
+            headerView.textLabel?.text = AccountDetailsHeaderItem.allCases[section].rawValue
         }
     }
     
