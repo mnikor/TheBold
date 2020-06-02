@@ -117,7 +117,7 @@ class InfoService: UIViewController {
         vc.view.backgroundColor = .clear
         vc.modalPresentationStyle = .popover
         let width = infoType.width + 35
-        vc.preferredContentSize = CGSize(width: width, height: 34)
+        vc.preferredContentSize = CGSize(width: width, height: 40)
 
         let ppc = vc.popoverPresentationController
         ppc?.permittedArrowDirections = .down
@@ -178,7 +178,7 @@ class CustomPopoverBackgroundView: UIPopoverBackgroundView {
     }
     
     override class func contentViewInsets() -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     override var arrowDirection : UIPopoverArrowDirection
@@ -219,12 +219,12 @@ class CustomPopoverBackgroundView: UIPopoverBackgroundView {
     override func layoutSubviews() {
         var bgRect = bounds
         let cutWidth = arrowDirection == .left || arrowDirection == .right
-        bgRect.size.width = bgRect.size.width - cutWidth.floatValue * CustomPopoverBackgroundView.arrowHeight() - 16
-        bgRect.origin.x = 8
+        bgRect.size.width = bgRect.size.width - cutWidth.floatValue * CustomPopoverBackgroundView.arrowHeight() //- 16
+//        bgRect.origin.x = 8
         
         let cutHeight = arrowDirection == .up || arrowDirection == .down
         bgRect.size.height = bgRect.size.height - cutHeight.floatValue * CustomPopoverBackgroundView.arrowHeight()
-
+        
         if arrowDirection == .up {
             bgRect.origin.y += CustomPopoverBackgroundView.arrowHeight()
         } else if arrowDirection == .left {
