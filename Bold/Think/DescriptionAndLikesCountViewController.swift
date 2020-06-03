@@ -124,7 +124,6 @@ class DescriptionAndLikesCountViewController: UIViewController {
         if #available(iOS 11.0, *) {
             pdfView = PDFView()
             guard let pdfView = pdfView as? PDFView else { return }
-            pdfView.bounds = pdfView.frame.offsetBy(dx: 0, dy: 20)
             pdfContainerView.addSubview(pdfView)
 //            pdfView.snp.makeConstraints { make in
 //                make.top.equalToSuperview().offset(25)
@@ -168,6 +167,11 @@ class DescriptionAndLikesCountViewController: UIViewController {
                 else { return }
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
+                if documentURL.lastPathComponent == "Terms.pdf" {
+                     pdfView.bounds = pdfView.frame.offsetBy(dx: 0, dy: 20)
+                } else if documentURL.lastPathComponent == "Privacy.pdf" {
+                    pdfView.bounds = pdfView.frame.offsetBy(dx: 0, dy: 30)
+                }
                 pdfView.document = document
                 if let documentView = pdfView.documentView {
                     self.pdfContainerHeightConstraint.constant = documentView.frame.size.height + 25

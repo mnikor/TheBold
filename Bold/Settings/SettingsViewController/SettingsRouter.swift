@@ -53,7 +53,7 @@ class SettingsRouter: SettingsInputRouterProtocol {
                 //viewController = storyboard.instantiateViewController(withIdentifier: StoryboardSegue.Settings.termsPrivacy.rawValue)
             } else if cellType == .privacy {
                 let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
-                vc.viewModel = DescriptionViewModel.termsOfUse
+                vc.viewModel = DescriptionViewModel.privacyPolicy
                 viewController.navigationController?.present(vc, animated: true, completion: nil)
             }
             //viewController.present(viewController, animated: true, completion: nil)
