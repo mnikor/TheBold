@@ -15,6 +15,8 @@ class ActViewController: BaseStakesListViewController, SideMenuItemContent {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+
+        LevelOfMasteryService.shared.input(.checkAllGoalsAndAction)
     }
     
     required init?(coder aDecoder: NSCoder) {

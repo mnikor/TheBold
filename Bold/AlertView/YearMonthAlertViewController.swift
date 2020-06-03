@@ -26,11 +26,13 @@ class YearMonthAlertViewController: UIViewController {
     @IBAction func tapConfirmButton(_ sender: UIButton) {
         
         confirmBlock?(currentDate)
-        hideAnimateView()
+//        hideAnimateView()
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func tapCancelButton(_ sender: UIButton) {
-        hideAnimateView()
+//        hideAnimateView()
+        dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {

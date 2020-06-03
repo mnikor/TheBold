@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         LevelOfMasteryService.shared.input(.calculateProgress)
-        LevelOfMasteryService.shared.input(.checkAllGoalsAndAction)
+//        LevelOfMasteryService.shared.input(.checkAllGoalsAndAction)
         
         NotificationService.shared.delegate = self
         NotificationService.shared.input(.resetBadgeNumber)
