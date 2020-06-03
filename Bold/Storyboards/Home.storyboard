@@ -54,7 +54,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="lwQ-Ws-PU6">
                         <barButtonItem key="leftBarButtonItem" image="menuIcon" id="aFS-fv-oGy">
-                            <inset key="imageInsets" minX="2" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="largeContentSizeImageInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <connections>
                                 <action selector="tapMenuButton:" destination="sjy-kK-TxU" id="AOe-0Z-T7I"/>
                             </connections>

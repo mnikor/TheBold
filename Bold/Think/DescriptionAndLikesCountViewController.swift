@@ -124,13 +124,23 @@ class DescriptionAndLikesCountViewController: UIViewController {
         if #available(iOS 11.0, *) {
             pdfView = PDFView()
             guard let pdfView = pdfView as? PDFView else { return }
+            pdfView.bounds = pdfView.frame.offsetBy(dx: 0, dy: 20)
             pdfContainerView.addSubview(pdfView)
-            pdfView.snp.makeConstraints { make in
-                make.top.equalToSuperview().offset(25)
-                make.leading.trailing.bottom.equalToSuperview()
-            }
-//            pdfContainerView.bringSubviewToFront(playerButton)
-            pdfView.autoScales = true
+//            pdfView.snp.makeConstraints { make in
+//                make.top.equalToSuperview().offset(25)
+//                make.leading.trailing.bottom.equalToSuperview()
+//            }
+////            pdfContainerView.bringSubviewToFront(playerButton)
+//            pdfView.autoScales = true
+            pdfView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+            
+                pdfView.topAnchor.constraint(equalTo: pdfContainerView.topAnchor),
+                pdfView.leadingAnchor.constraint(equalTo: pdfContainerView.leadingAnchor),
+                pdfView.trailingAnchor.constraint(equalTo: pdfContainerView.trailingAnchor),
+                pdfView.bottomAnchor.constraint(equalTo: pdfContainerView.bottomAnchor)
+            
+            ])
             pdfView.backgroundColor = .clear
             if #available(iOS 12.0, *) {
                 pdfView.pageShadowsEnabled = false
