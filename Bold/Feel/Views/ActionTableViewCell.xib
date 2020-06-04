@@ -46,43 +46,48 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TRz-dg-tdZ">
-                                <rect key="frame" x="16" y="309" width="304" height="40"/>
+                                <rect key="frame" x="20" y="319" width="295" height="20"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NA7-wL-DsZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="27" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="FBW-Vk-vOQ"/>
-                                            <constraint firstAttribute="width" constant="40" id="V3K-Z7-LiL"/>
+                                            <constraint firstAttribute="width" constant="27" id="V3K-Z7-LiL"/>
                                         </constraints>
                                         <state key="normal" image="actionInfo"/>
                                         <connections>
                                             <action selector="tapThreeDotsButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="WXS-bt-7qQ"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="mnW-VB-Ohg">
-                                        <rect key="frame" x="162" y="0.0" width="142" height="40"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="mnW-VB-Ohg">
+                                        <rect key="frame" x="173" y="0.0" width="122" height="20"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOX-gF-3LR">
-                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="22" height="20"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="KNf-wX-W54"/>
-                                                    <constraint firstAttribute="width" constant="40" id="rZi-Qm-Dvq"/>
+                                                    <constraint firstAttribute="height" constant="20" id="KNf-wX-W54"/>
+                                                    <constraint firstAttribute="width" constant="22" id="rZi-Qm-Dvq"/>
                                                 </constraints>
-                                                <state key="normal" image="actionDownload"/>
+                                                <state key="normal" backgroundImage="actionDownload"/>
                                                 <connections>
                                                     <action selector="tapDownloadButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="44S-xf-x8I"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ox-Qt-XTv">
-                                                <rect key="frame" x="51" y="0.0" width="40" height="40"/>
-                                                <state key="normal" image="actionLike"/>
+                                                <rect key="frame" x="51" y="0.0" width="22" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="22" id="6Af-JO-OQ8"/>
+                                                </constraints>
+                                                <state key="normal" backgroundImage="actionLike"/>
                                                 <connections>
                                                     <action selector="tapLikeButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="aUp-GY-VRz"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqi-IF-vhk">
-                                                <rect key="frame" x="102" y="0.0" width="40" height="40"/>
-                                                <state key="normal" image="actionAdd"/>
+                                                <rect key="frame" x="102" y="0.0" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="fRS-EF-vf6"/>
+                                                </constraints>
+                                                <state key="normal" backgroundImage="actionAdd"/>
                                                 <connections>
                                                     <action selector="tapAddActionPlanButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="FwO-ia-6nm"/>
                                                 </connections>
@@ -90,15 +95,18 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="pdr-bp-tFu"/>
+                                </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5min" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7m-kU-n8X">
-                                <rect key="frame" x="272" y="29" width="39" height="18.5"/>
+                                <rect key="frame" x="276" y="29" width="39" height="18.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="gm2-WM-86w">
-                                <rect key="frame" x="20" y="237.5" width="295" height="64.5"/>
+                                <rect key="frame" x="20" y="238.5" width="295" height="64.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arnold Schvarzenegger" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2l-al-4WT">
                                         <rect key="frame" x="0.0" y="0.0" width="179" height="18.5"/>
@@ -119,19 +127,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="VD0-Mi-Pnv" secondAttribute="bottom" id="1Bt-KH-yZz"/>
-                            <constraint firstAttribute="bottom" secondItem="TRz-dg-tdZ" secondAttribute="bottom" constant="10" id="56c-zt-bty"/>
+                            <constraint firstAttribute="bottom" secondItem="TRz-dg-tdZ" secondAttribute="bottom" constant="20" id="56c-zt-bty"/>
                             <constraint firstItem="33x-g5-PpA" firstAttribute="top" secondItem="Qds-fB-jj3" secondAttribute="top" constant="20" id="5KB-WA-GB4"/>
                             <constraint firstAttribute="width" secondItem="Qds-fB-jj3" secondAttribute="height" multiplier="335:359" id="Bu9-fQ-fkH"/>
-                            <constraint firstAttribute="trailing" secondItem="TRz-dg-tdZ" secondAttribute="trailing" constant="15" id="I8y-9h-g6e"/>
-                            <constraint firstItem="TRz-dg-tdZ" firstAttribute="leading" secondItem="Qds-fB-jj3" secondAttribute="leading" constant="16" id="K6t-1m-upc"/>
-                            <constraint firstAttribute="trailing" secondItem="n7m-kU-n8X" secondAttribute="trailing" constant="24" id="Oqh-kg-FHZ"/>
+                            <constraint firstAttribute="trailing" secondItem="TRz-dg-tdZ" secondAttribute="trailing" constant="20" id="I8y-9h-g6e"/>
+                            <constraint firstItem="TRz-dg-tdZ" firstAttribute="leading" secondItem="Qds-fB-jj3" secondAttribute="leading" constant="20" id="K6t-1m-upc"/>
+                            <constraint firstAttribute="trailing" secondItem="n7m-kU-n8X" secondAttribute="trailing" constant="20" id="Oqh-kg-FHZ"/>
                             <constraint firstAttribute="trailing" secondItem="VD0-Mi-Pnv" secondAttribute="trailing" id="QfA-3g-ta8"/>
                             <constraint firstItem="VD0-Mi-Pnv" firstAttribute="leading" secondItem="Qds-fB-jj3" secondAttribute="leading" id="bPT-f8-R8U"/>
                             <constraint firstItem="VD0-Mi-Pnv" firstAttribute="top" secondItem="Qds-fB-jj3" secondAttribute="top" id="dfO-FK-rm1"/>
                             <constraint firstItem="n7m-kU-n8X" firstAttribute="centerY" secondItem="33x-g5-PpA" secondAttribute="centerY" id="e1j-sI-NFu"/>
                             <constraint firstItem="gm2-WM-86w" firstAttribute="leading" secondItem="Qds-fB-jj3" secondAttribute="leading" constant="20" id="kbY-XZ-hLa"/>
                             <constraint firstItem="33x-g5-PpA" firstAttribute="leading" secondItem="Qds-fB-jj3" secondAttribute="leading" constant="20" id="mRP-AE-Jts"/>
-                            <constraint firstItem="TRz-dg-tdZ" firstAttribute="top" secondItem="gm2-WM-86w" secondAttribute="bottom" constant="7" id="zAa-LZ-fFO"/>
+                            <constraint firstItem="TRz-dg-tdZ" firstAttribute="top" secondItem="gm2-WM-86w" secondAttribute="bottom" constant="16" id="zAa-LZ-fFO"/>
                             <constraint firstAttribute="trailing" secondItem="gm2-WM-86w" secondAttribute="trailing" constant="20" id="zpc-tJ-dhg"/>
                         </constraints>
                     </view>
