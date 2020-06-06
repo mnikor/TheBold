@@ -66,7 +66,14 @@ class NotificationService: NSObject {
     
     private override init() {
         super.init()
+        
         notificationCenter.delegate = self
+        configureCategories()
+    }
+    
+    // MARK: - AUTHORIZATION REQUEST -
+    
+    func requestAuthorizaton() {
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
         notificationCenter.requestAuthorization(options: options) {
             (didAllow, error) in
@@ -74,8 +81,9 @@ class NotificationService: NSObject {
                 print("User has declined notifications")
             }
         }
-        configureCategories()
     }
+    
+    // MARK: - INPUT -
     
     func input(_ notification: StandardNotification) {
         switch notification {

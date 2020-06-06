@@ -114,7 +114,7 @@ extension FeelViewController: UITableViewDelegate, UITableViewDataSource {
 extension FeelViewController: ActionCollectionTableViewCellDelegate {
     func actionCollectionTableViewCell(_ actionCollectionTableViewCell: ActionCollectionTableViewCell, didTapAtItem indexPath: IndexPath) {
         guard let cellIndexPath = tableView.indexPath(for: actionCollectionTableViewCell) else { return }
-        let item = items[cellIndexPath.row].items[indexPath.row]
+        let item = items[cellIndexPath.row - 1].items[indexPath.row]
         selectedContent = item
         presenter.input(.showDetails(item: item))
     }

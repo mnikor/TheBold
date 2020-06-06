@@ -106,6 +106,7 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
             self.infoView.isHidden = true
             self.user.stakeInfo = true
             DataSource.shared.saveBackgroundContext()
+            NotificationService.shared.requestAuthorizaton()
         }
         
     }
