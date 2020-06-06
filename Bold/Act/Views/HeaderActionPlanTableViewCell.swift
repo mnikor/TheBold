@@ -10,7 +10,7 @@ import UIKit
 
 class HeaderActionPlanTableViewCell: BaseTableViewCell {
 
-    @IBOutlet weak var contentImageView: UIImageView!
+    @IBOutlet weak var contentImageView: CustomImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var pointsLabel: UILabel!
@@ -29,7 +29,8 @@ class HeaderActionPlanTableViewCell: BaseTableViewCell {
         if case .headerContent(let contentModel) = modelView.modelValue, let content = contentModel {
             
             if let imagePath = content.imagePath {
-                contentImageView.setImageAnimated(path: imagePath)//, placeholder: Asset.addActionHeader.image)
+                contentImageView.downloadImageAnimated(path: imagePath)
+                //contentImageView.setImageAnimated(path: imagePath)//, placeholder: Asset.addActionHeader.image)
             }
             titleLabel.text = content.title
             subtitleLabel.text = content.subtitle

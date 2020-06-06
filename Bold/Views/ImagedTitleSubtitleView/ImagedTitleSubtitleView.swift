@@ -15,8 +15,8 @@ protocol ImagedTitleSubtitleViewDelegate: class {
 class ImagedTitleSubtitleView: ConfigurableView {
     weak var delegate: ImagedTitleSubtitleViewDelegate?
     
-    private let leftImageView: UIImageView = {
-        let imageView = UIImageView()
+    private let leftImageView: CustomImageView = {
+        let imageView = CustomImageView()
         imageView.image = UIImage(named: "profile_icon")
         imageView.layer.cornerRadius = 27
         imageView.contentMode = .scaleAspectFill
@@ -144,7 +144,7 @@ class ImagedTitleSubtitleView: ConfigurableView {
         if let image = SessionManager.shared.profile?.image {
             leftImageView.image = image
         } else if let imagePath = viewModel.leftImagePath {
-            leftImageView.setImageAnimated(path: imagePath, completion: viewModel.imageLoadingCompletion)
+            leftImageView.downloadImageAnimated(path: imagePath, completion: viewModel.imageLoadingCompletion)
         }
         
         if let title = viewModel.attributedTitle {

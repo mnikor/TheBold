@@ -23,7 +23,7 @@ protocol MenuBottomViewDelegate: class {
 class MenuBottomView: UIView {
     
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userImageView: CustomImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
 
@@ -62,8 +62,11 @@ class MenuBottomView: UIView {
         if let image = SessionManager.shared.profile?.image {
             userImageView.image = image
         } else if let path = imagePath {
-            userImageView.setImageAnimated(path: path, completion: {
-                SessionManager.shared.profile?.image = $0 })
+            userImageView.downloadImageAnimated(path: path) {
+                SessionManager.shared.profile?.image = $0
+            }
+//            userImageView.setImageAnimated(path: path, completion: {
+//                SessionManager.shared.profile?.image = $0 })
         }
     }
     

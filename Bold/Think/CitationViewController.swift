@@ -33,7 +33,7 @@ enum CitationType: Int {
 
 class CitationViewController: UIViewController {
 
-    @IBOutlet weak var authorImageView: UIImageView!
+    @IBOutlet weak var authorImageView: CustomImageView!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var citationTextLabel: UILabel!
     
@@ -58,7 +58,8 @@ class CitationViewController: UIViewController {
         authorImageView.backgroundColor = .white
         
         authorNameLabel.text = quote?.authorName
-        authorImageView.setImageAnimated(path: quote?.authorPhotoURL ?? "")
+        authorImageView.downloadImageAnimated(path: quote?.authorPhotoURL ?? "")
+        //authorImageView.setImageAnimated(path: quote?.authorPhotoURL ?? "")
         citationTextLabel.text = quote?.body
     }
 

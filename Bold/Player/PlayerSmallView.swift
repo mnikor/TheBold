@@ -12,7 +12,7 @@ class PlayerSmallView: UIView {
     private var timer: Timer?
     
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var actionImageView: UIImageView!
+    @IBOutlet weak var actionImageView: CustomImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
@@ -145,7 +145,8 @@ extension PlayerSmallView: AudioServiceDelegate {
         titleLabel.text = AudioService.shared.getCurrentTrackName()
         subtitleLabel.text = AudioService.shared.getCurrentArtistName()
         if let imagePath = AudioService.shared.getCurrentImagePath() {
-            actionImageView.setImageAnimated(path: imagePath, placeholder: Asset.playerSmallImage.image)
+            actionImageView.downloadImageAnimated(path: imagePath, placeholder: Asset.playerSmallImage.image)
+//            actionImageView.setImageAnimated(path: imagePath, placeholder: Asset.playerSmallImage.image)
         }
         
         updateProgress()

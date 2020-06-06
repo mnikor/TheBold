@@ -14,7 +14,7 @@ protocol CitationTableViewCellDelegate : class {
 
 class CitationTableViewCell: BaseTableViewCell {
 
-    @IBOutlet weak var authorImageView: UIImageView!
+    @IBOutlet weak var authorImageView: CustomImageView!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var citationTextLabel: UILabel!
     @IBOutlet weak var moreButton: UIButton!
@@ -36,7 +36,8 @@ class CitationTableViewCell: BaseTableViewCell {
     }
     
     func config(content: ActivityContent) {
-        authorImageView.setImageAnimated(path: content.authorPhotoURL ?? "")
+        authorImageView.downloadImageAnimated(path: content.authorPhotoURL ?? "")
+//        authorImageView.setImageAnimated(path: content.authorPhotoURL ?? "")
         authorNameLabel.text = content.authorName
         citationTextLabel.text = content.body
     }

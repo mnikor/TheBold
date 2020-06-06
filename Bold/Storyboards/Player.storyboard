@@ -27,7 +27,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgn-V6-qxP">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="427"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playerBackground" translatesAutoresizingMaskIntoConstraints="NO" id="0bv-WW-br8">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playerBackground" translatesAutoresizingMaskIntoConstraints="NO" id="0bv-WW-br8" customClass="CustomImageView" customModule="Bold" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="427"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowSwipe" translatesAutoresizingMaskIntoConstraints="NO" id="gcH-VN-2cR">

@@ -30,7 +30,7 @@ class ListenOrReadMaterialView: UIView {
 
     @IBOutlet weak var contentView: UIView!
     
-    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var iconImageView: CustomImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
@@ -116,7 +116,8 @@ class ListenOrReadMaterialView: UIView {
         if content.durtionRead != 0 {
             durationLabel.text = ("\(content.durtionRead) min") + durationDescription
         }
-        iconImageView.setImageAnimated(path: content.smallImageURL ?? "")
+        iconImageView.downloadImageAnimated(path: content.smallImageURL ?? "")
+//        iconImageView.setImageAnimated(path: content.smallImageURL ?? "")
         
         self.content = content
 //        self.typeView = type

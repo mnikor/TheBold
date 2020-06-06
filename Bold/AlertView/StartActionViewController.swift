@@ -14,7 +14,7 @@ class StartActionViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var startButton: UIButton!
     
-    @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet weak var coverImageView: CustomImageView!
     @IBOutlet weak var timeButton: UIButton!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
@@ -65,7 +65,8 @@ class StartActionViewController: UIViewController {
     
     private func configureContent(_ content: Content) {
         if let smallImage = content.imageUrl {
-            coverImageView.setImageAnimated(path: smallImage, placeholder: Asset.actionBackground.image)
+            coverImageView.downloadImageAnimated(path: smallImage, placeholder: Asset.actionBackground.image)
+//            coverImageView.setImageAnimated(path: smallImage, placeholder: Asset.actionBackground.image)
         }
         timeButton.isUserInteractionEnabled = false
         timeButton.isHidden = content.durationRead == 0

@@ -13,7 +13,7 @@ class DescriptionAndLikesCountViewController: UIViewController {
     
     @IBOutlet var likseCountView: OverTabbarView!
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: CustomImageView!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var toolbar: UIToolbar!
@@ -102,7 +102,8 @@ class DescriptionAndLikesCountViewController: UIViewController {
                 imageView.image = nil//Asset.serfer.image
             }
         case .path(let path):
-            imageView.setImageAnimated(path: path ?? "")
+            imageView.downloadImageAnimated(path: path ?? "")
+//            imageView.setImageAnimated(path: path ?? "")
                                        //placeholder: Asset.serfer.image)
         case nil:
             imageView.image = nil//Asset.serfer.image

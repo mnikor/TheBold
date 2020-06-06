@@ -40,7 +40,7 @@ class PlayerViewController: UIViewController, ViewProtocol {
     @IBOutlet weak var playerView: UIView!
     @IBOutlet var playerListView: PlayerListView!
     
-    @IBOutlet weak var titleImageView: UIImageView!
+    @IBOutlet weak var titleImageView: CustomImageView!
     @IBOutlet weak var recommendationLabel: UILabel!
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var titleSongLabel: UILabel!
@@ -193,7 +193,8 @@ class PlayerViewController: UIViewController, ViewProtocol {
     }
     
     func setImage(imagePath: String?) {
-        titleImageView.setImageAnimated(path: imagePath ?? "", placeholder: Asset.playerBackground.image)
+        titleImageView.downloadImageAnimated(path: imagePath ?? "", placeholder: Asset.playerBackground.image)
+//        titleImageView.setImageAnimated(path: imagePath ?? "", placeholder: Asset.playerBackground.image)
     }
     
     private func configureSliderAction() {

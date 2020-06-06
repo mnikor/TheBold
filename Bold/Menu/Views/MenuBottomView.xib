@@ -32,7 +32,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vjB-KX-kOW">
                     <rect key="frame" x="54" y="100.5" width="321" height="53"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_icon" translatesAutoresizingMaskIntoConstraints="NO" id="ZON-r7-XU1">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_icon" translatesAutoresizingMaskIntoConstraints="NO" id="ZON-r7-XU1" customClass="CustomImageView" customModule="Bold" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="53" height="53"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="53" id="aMO-sB-sLX"/>
@@ -83,6 +83,6 @@
         </view>
     </objects>
     <resources>
-        <image name="profile_icon" width="128" height="128"/>
+        <image name="profile_icon" width="53" height="53"/>
     </resources>
 </document>

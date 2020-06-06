@@ -14,7 +14,7 @@ protocol DownloadTableViewCellDelegate: class {
 
 class DownloadTableViewCell: BaseTableViewCell {
 
-    @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet weak var coverImageView: CustomImageView!
     @IBOutlet weak var tiltleLabel: UILabel!
     @IBOutlet weak var groupLabel: UILabel!
     @IBOutlet weak var treeDotsButton: UIButton!
@@ -39,7 +39,8 @@ class DownloadTableViewCell: BaseTableViewCell {
 
     func config(downloads: DownloadsEntity, action:Bool) {
         item = downloads
-        coverImageView.setImageAnimated(path: downloads.imagePath ?? "", placeholder: Asset.serfer.image)
+        coverImageView.downloadImageAnimated(path: downloads.imagePath ?? "", placeholder: Asset.serfer.image)
+//        coverImageView.setImageAnimated(path: downloads.imagePath ?? "", placeholder: Asset.serfer.image)
         tiltleLabel.text = downloads.title
         groupLabel.text = downloads.group
         treeDotsButton.isHidden = action
