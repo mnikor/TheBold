@@ -36,7 +36,7 @@ enum actionSmallCellType: Int {
 
 class ActionCollectionViewCell: BaseCollectionViewCell {
 
-    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var backgroundImageView: CustomImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var topLeftButton: UIButton!
     
@@ -54,7 +54,8 @@ class ActionCollectionViewCell: BaseCollectionViewCell {
         topLeftButton.isHidden = typeCell.hidden()
         titleLabel.text = model.title
         if let imageURL = model.imageURL {
-            backgroundImageView.setImageAnimated(path: imageURL)//, placeholder: Asset.actionImage.image)
+            backgroundImageView.downloadImageAnimated(path: imageURL)
+//            backgroundImageView.setImageAnimated(path: imageURL)//, placeholder: Asset.actionImage.image)
         } else {
             backgroundImageView.image = nil//Asset.actionImage.image
         }
