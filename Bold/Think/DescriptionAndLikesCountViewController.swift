@@ -126,21 +126,13 @@ class DescriptionAndLikesCountViewController: UIViewController {
             pdfView = PDFView()
             guard let pdfView = pdfView as? PDFView else { return }
             pdfContainerView.addSubview(pdfView)
-//            pdfView.snp.makeConstraints { make in
-//                make.top.equalToSuperview().offset(25)
-//                make.leading.trailing.bottom.equalToSuperview()
-//            }
-////            pdfContainerView.bringSubviewToFront(playerButton)
-//            pdfView.autoScales = true
+            pdfView.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(playerButton.isHidden ? 10 : 40)
+                make.leading.trailing.bottom.equalToSuperview()
+            }
+//            pdfContainerView.bringSubviewToFront(playerButton)
+            pdfView.autoScales = true
             pdfView.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-            
-                pdfView.topAnchor.constraint(equalTo: pdfContainerView.topAnchor),
-                pdfView.leadingAnchor.constraint(equalTo: pdfContainerView.leadingAnchor),
-                pdfView.trailingAnchor.constraint(equalTo: pdfContainerView.trailingAnchor),
-                pdfView.bottomAnchor.constraint(equalTo: pdfContainerView.bottomAnchor)
-            
-            ])
             pdfView.backgroundColor = .clear
             if #available(iOS 12.0, *) {
                 pdfView.pageShadowsEnabled = false
@@ -168,11 +160,7 @@ class DescriptionAndLikesCountViewController: UIViewController {
                 else { return }
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                if documentURL.lastPathComponent == "Terms.pdf" {
-                     pdfView.bounds = pdfView.frame.offsetBy(dx: 0, dy: 20)
-                } else if documentURL.lastPathComponent == "Privacy.pdf" {
-                    pdfView.bounds = pdfView.frame.offsetBy(dx: 0, dy: 30)
-                }
+
                 pdfView.document = document
                 if let documentView = pdfView.documentView {
                     self.pdfContainerHeightConstraint.constant = documentView.frame.size.height + 25

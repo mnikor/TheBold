@@ -31,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ub-wy-29P">
-                                        <rect key="frame" x="0.0" y="320" width="375" height="300"/>
+                                        <rect key="frame" x="0.0" y="300" width="375" height="300"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="300" id="EqD-yi-kn0"/>
@@ -106,7 +106,7 @@
                                     <constraint firstItem="27V-vI-3iO" firstAttribute="leading" secondItem="7kw-kA-kVM" secondAttribute="leading" id="36p-Nr-csb"/>
                                     <constraint firstItem="Zr7-su-X8u" firstAttribute="bottom" secondItem="GPZ-yi-lAd" secondAttribute="bottom" constant="25" id="6g6-D1-ccD"/>
                                     <constraint firstItem="2Ub-wy-29P" firstAttribute="leading" secondItem="7kw-kA-kVM" secondAttribute="leading" id="M5M-6D-FYR"/>
-                                    <constraint firstItem="2Ub-wy-29P" firstAttribute="top" secondItem="27V-vI-3iO" secondAttribute="bottom" id="OfP-XC-G80"/>
+                                    <constraint firstItem="2Ub-wy-29P" firstAttribute="top" secondItem="27V-vI-3iO" secondAttribute="bottom" constant="-20" id="OfP-XC-G80"/>
                                     <constraint firstAttribute="trailing" secondItem="2Ub-wy-29P" secondAttribute="trailing" id="REJ-nK-B1w"/>
                                     <constraint firstAttribute="trailing" secondItem="27V-vI-3iO" secondAttribute="trailing" id="aVT-JW-1iS"/>
                                     <constraint firstAttribute="bottom" secondItem="2Ub-wy-29P" secondAttribute="bottom" id="jlY-gS-ZxS"/>
