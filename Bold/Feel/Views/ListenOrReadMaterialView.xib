@@ -32,17 +32,17 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SkZ-R1-miC">
-                    <rect key="frame" x="106" y="119" width="565" height="1"/>
+                    <rect key="frame" x="116" y="119" width="555" height="1"/>
                     <color key="backgroundColor" red="0.92549019610000005" green="0.92941176469999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="GOv-Xr-ttS"/>
                     </constraints>
                 </view>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="musicBackground" translatesAutoresizingMaskIntoConstraints="NO" id="7HY-WG-8y0" customClass="CustomImageView" customModule="Bold" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="15" width="90" height="90"/>
+                    <rect key="frame" x="0.0" y="10" width="100" height="100"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="90" id="CpT-kh-pzy"/>
-                        <constraint firstAttribute="height" constant="90" id="kae-je-3Xh"/>
+                        <constraint firstAttribute="width" constant="100" id="CpT-kh-pzy"/>
+                        <constraint firstAttribute="height" constant="100" id="kae-je-3Xh"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -51,7 +51,7 @@
                     </userDefinedRuntimeAttributes>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g6z-9a-sTt">
-                    <rect key="frame" x="106" y="71" width="559" height="34"/>
+                    <rect key="frame" x="116" y="76" width="549" height="34"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aja-J2-96w" customClass="RoundedButton" customModule="Bold" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="95" height="34"/>
@@ -84,7 +84,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZg-h4-KPc">
-                            <rect key="frame" x="202" y="0.0" width="171" height="34"/>
+                            <rect key="frame" x="202" y="0.0" width="161" height="34"/>
                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="13"/>
                             <state key="normal" title="Add to plan" image="plusBlueIcon">
                                 <color key="titleColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -94,7 +94,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rra-Cq-Q2C">
-                            <rect key="frame" x="373" y="0.0" width="96" height="34"/>
+                            <rect key="frame" x="363" y="0.0" width="96" height="34"/>
                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="13"/>
                             <state key="normal" title="Listen preview">
                                 <color key="titleColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -104,7 +104,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4D-SO-lnL">
-                            <rect key="frame" x="469" y="0.0" width="90" height="34"/>
+                            <rect key="frame" x="459" y="0.0" width="90" height="34"/>
                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="13"/>
                             <state key="normal" title="Read preview">
                                 <color key="titleColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -119,16 +119,16 @@
                     </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="V0y-nI-eoj">
-                    <rect key="frame" x="106" y="15" width="559" height="41"/>
+                    <rect key="frame" x="116" y="10" width="549" height="41"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listen to tune your mind" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="11X-tF-iVX">
-                            <rect key="frame" x="0.0" y="0.0" width="559" height="21"/>
+                            <rect key="frame" x="0.0" y="0.0" width="549" height="21"/>
                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
                             <color key="textColor" red="0.1058823529" green="0.15686274510000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7min listen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylH-eX-Rsq">
-                            <rect key="frame" x="0.0" y="25" width="559" height="16"/>
+                            <rect key="frame" x="0.0" y="25" width="549" height="16"/>
                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="13"/>
                             <color key="textColor" red="0.46274509800000002" green="0.4941176471" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
