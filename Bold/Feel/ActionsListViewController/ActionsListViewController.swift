@@ -173,6 +173,16 @@ extension ActionsListViewController: UITableViewDelegate, UITableViewDataSource 
 //        }
 //    }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if !(tableView.indexPathsForVisibleRows?.contains(IndexPath(row: 0, section: 0)) ?? true) {
+            highNavigationBar.navigationBar.titleTextAttributes = [NSAttributedString.Key.font:
+                FontFamily.MontserratSemiBold.regular.font(size: 20) ?? UIFont.boldSystemFont(ofSize: 20)]
+            highNavigationBar.navigationBar.topItem?.title = typeVC.titleText() ?? ""
+        } else {
+            highNavigationBar.navigationBar.topItem?.title = ""
+        }
+    }
+    
 }
 
 
