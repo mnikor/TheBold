@@ -53,6 +53,7 @@ class ActionsListViewController: UIViewController, ViewProtocol {
         tableView.registerNib(ActionTableViewCell.self)
         tableView.registerNib(ListenOrReadTableViewCell.self)
         tableView.registerNib(ManageItTableViewCell.self)
+        tableView.registerNib(NavigationTitleAndProgressTableViewCell.self)
     }
     
     private func prepareDataSource() {
@@ -67,8 +68,8 @@ class ActionsListViewController: UIViewController, ViewProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        highNavigationBar.titleLabel.isHidden = false
-        highNavigationBar.infoButton.isHidden = false
+        highNavigationBar.titleLabel.isHidden = true
+        highNavigationBar.infoButton.isHidden = true
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -86,7 +87,7 @@ extension ActionsListViewController: NavigationViewDelegate {
         presenter.input(.back)
     }
     
-    func tapInfoAction() {
+    @objc func tapInfoAction() {
         presenter.input(.info(typeVC))
     }
 }
@@ -97,39 +98,50 @@ extension ActionsListViewController: NavigationViewDelegate {
 extension ActionsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return actions.count
+        return actions.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let content = actions[indexPath.row]
-        
-        switch content.type {
-        case .action:
-            let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActionTableViewCell
-            cell.config(item: content)
-            cell.delegate = self
-            return cell
-        case .songOrListen:
-            let cell = tableView.dequeReusableCell(indexPath: indexPath) as ListenOrReadTableViewCell
-//            cell.config(content: content, type: .unlockListenPreview)
-            return cell
-        case .group:
-            let cell = tableView.dequeReusableCell(indexPath: indexPath) as ManageItTableViewCell
-            var type = TypeManageItCell.baseStaticCells
-            if content.group!.contentObjects.count >= 3 {
-                type = .titleAndScroll
+        if indexPath.row == 0 {
+            let headerCell = tableView.dequeReusableCell(indexPath: indexPath) as NavigationTitleAndProgressTableViewCell
+            headerCell.titleLabel.text = typeVC.titleText() ?? ""
+            headerCell.infoButton.isHidden = false
+            headerCell.infoButton.addAction(self, action: #selector(tapInfoAction))
+            headerCell.progressView.isHidden = true
+            headerCell.progressViewHeight.constant = 0
+            return headerCell
+        } else {
+            
+            let content = actions[indexPath.row - 1]
+            
+            switch content.type {
+            case .action:
+                let cell = tableView.dequeReusableCell(indexPath: indexPath) as ActionTableViewCell
+                cell.config(item: content)
+                cell.delegate = self
+                return cell
+            case .songOrListen:
+                let cell = tableView.dequeReusableCell(indexPath: indexPath) as ListenOrReadTableViewCell
+                //            cell.config(content: content, type: .unlockListenPreview)
+                return cell
+            case .group:
+                let cell = tableView.dequeReusableCell(indexPath: indexPath) as ManageItTableViewCell
+                var type = TypeManageItCell.baseStaticCells
+                if content.group!.contentObjects.count >= 3 {
+                    type = .titleAndScroll
+                }
+                cell.config(type: type, group: content.group)
+                cell.delegate = self
+                return cell
             }
-            cell.config(type: type, group: content.group)
-            cell.delegate = self
-            return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             tableView.deselectRow(at: indexPath, animated: false)
             
-            guard let content = actions[indexPath.row].data else { return }
+            guard let content = actions[indexPath.row - 1].data else { return }
             
             selectedContent = content
             presenter.input(.didSelectContent(content))
