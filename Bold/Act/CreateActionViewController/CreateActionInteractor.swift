@@ -226,8 +226,11 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
             content = SmallContentViewModel(imagePath: action.content?.smallImage, title: L10n.Act.addToActionPlan, subtitle: action.content?.title, points: "+\(PointsForAction.congratulationsWithContentAction)", shapeIcon: Asset.addActionShape.image)
         }
         
+        var startDate = dateFormatting(date: Date())
+        if let date = action.startDate { startDate = dateFormatting(date: date as Date) }
+        
         let modelView = CreateActionViewModel(name: action.name,
-                                              startDate: dateFormatting(date: action.startDate! as Date),
+                                              startDate: startDate,
                                               reminder: statusReminder(action: action),
                                               goal: currentGoal(goal: action.goal),
                                               stake: stakeStatus(action: action),

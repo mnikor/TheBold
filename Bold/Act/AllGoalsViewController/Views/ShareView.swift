@@ -17,6 +17,7 @@ protocol ShareViewDelegate: class {
 class ShareView: UIView {
     weak var delegate: ShareViewDelegate?
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var facebookView: UIView!
     @IBOutlet weak var emailView: UIView!
@@ -26,6 +27,9 @@ class ShareView: UIView {
     private var action: Action?
     
     private func configureSubviews() {
+        
+        backgroundImageView.layer.cornerRadius = 30
+        
         facebookView.layer.borderWidth = 0.3
         emailView.layer.borderWidth = 0.3
         downloadView.layer.borderWidth = 0.3
@@ -50,6 +54,7 @@ class ShareView: UIView {
     func configure(with action: Action) {
         self.action = action
         titleLabel.text = action.name
+        backgroundImageView.backgroundColor = ColorGoalType(rawValue: action.goal!.color)?.colorGoal()
     }
  
     @IBAction private func shareWithFacebook() {
