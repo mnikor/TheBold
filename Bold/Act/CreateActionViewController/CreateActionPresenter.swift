@@ -56,6 +56,8 @@ enum CreateActionInputPresenter {
     case updateName(String)
     case updateConfiguration
     case updateStake(Float)
+    
+    case systemShareAction(ShareView)
 }
 
 protocol CreateActionInputProtocol {
@@ -148,6 +150,9 @@ class CreateActionPresenter: PresenterProtocol, CreateActionInputProtocol {
             interactor.input(.saveActionWithContent(contentID: contentId, completion: { [weak self] in
                 self?.router.input(.cancel)
             }))
+        case .systemShareAction(let view):
+            let image = view.asImage()
+            router.input(.systemShareAction(image, ""))
         }
     }
     

@@ -28,6 +28,7 @@ class CreateActionViewController: UIViewController, ViewProtocol, AlertDisplayab
     @IBOutlet weak var navBar: BlueNavigationBar!
     
     private var shareView = ShareView.loadFromNib()
+    var alertController: BlurAlertController?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -139,6 +140,7 @@ class CreateActionViewController: UIViewController, ViewProtocol, AlertDisplayab
             vc.currentStake = Float(presenter.newAction.stake)
         }
     }
+    
 }
 
 
@@ -232,7 +234,7 @@ extension CreateActionViewController: UITableViewDelegate, UITableViewDataSource
             case .stake:
                 presenter.input(.stake)
             case .share:
-                showAlert(with: shareView)
+                self.alertController = showAlert(with: shareView)
 //                presenter.input(.share)
             default:
                 return
@@ -292,19 +294,20 @@ extension CreateActionViewController: HeaderTitleActionPlanTableViewCellDelegate
     func updateNameAction(newName: String) {
         presenter.input(.updateName(newName))
     }
+    
 }
 
 extension CreateActionViewController: ShareViewDelegate {
-    func shareWithFacebook(goal: Goal) {
+    func shareWithFacebook(goal: Action) {
         print("facebook")
     }
     
-    func shareWithEmail(goal: Goal) {
-        print("facebook")
+    func shareWithEmail(goal: Action) {
+        print("Email")
     }
     
-    func download(goal: Goal) {
-        print("facebook")
+    func download(goal: Action) {
+        presenter.input(.systemShareAction(shareView))
     }
     
 }

@@ -119,26 +119,55 @@
                         <constraint firstAttribute="width" secondItem="3Mu-r8-YAH" secondAttribute="height" multiplier="1:1" id="WnR-k9-Jcp"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cza-O7-sRL">
+                    <rect key="frame" x="184" y="545" width="46" height="30"/>
+                    <connections>
+                        <action selector="shareWithEmail" destination="iN0-l3-epB" eventType="touchUpInside" id="uvi-Zd-9ul"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wN5-3r-tZc">
+                    <rect key="frame" x="99" y="545" width="46" height="30"/>
+                    <connections>
+                        <action selector="shareWithFacebook" destination="iN0-l3-epB" eventType="touchUpInside" id="W6O-2q-je0"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeE-l7-S2o">
+                    <rect key="frame" x="269" y="545" width="46" height="30"/>
+                    <connections>
+                        <action selector="download" destination="iN0-l3-epB" eventType="touchUpInside" id="c2u-3e-LCP"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Cza-O7-sRL" firstAttribute="centerY" secondItem="eX4-pp-2r4" secondAttribute="centerY" id="0fg-8W-CIT"/>
+                <constraint firstItem="wN5-3r-tZc" firstAttribute="centerY" secondItem="4rX-nf-Mtg" secondAttribute="centerY" id="3nF-4k-GiM"/>
                 <constraint firstItem="9Ql-ts-IS7" firstAttribute="centerX" secondItem="eiN-TV-Z1L" secondAttribute="centerX" id="4FF-kA-4pU"/>
                 <constraint firstItem="5aT-cT-D4C" firstAttribute="leading" secondItem="9Ql-ts-IS7" secondAttribute="leading" id="4in-FB-ezu"/>
+                <constraint firstItem="Cza-O7-sRL" firstAttribute="height" secondItem="eX4-pp-2r4" secondAttribute="height" multiplier="0.5" id="6Ab-Lm-hpG"/>
+                <constraint firstItem="AeE-l7-S2o" firstAttribute="height" secondItem="4ej-wc-ZMM" secondAttribute="height" multiplier="0.5" id="9Is-Jt-DF0"/>
                 <constraint firstItem="4ej-wc-ZMM" firstAttribute="top" secondItem="eX4-pp-2r4" secondAttribute="top" id="A2V-tK-ZWG"/>
                 <constraint firstItem="4rX-nf-Mtg" firstAttribute="top" secondItem="eX4-pp-2r4" secondAttribute="top" id="A2W-QJ-lfa"/>
                 <constraint firstItem="3Mu-r8-YAH" firstAttribute="centerY" secondItem="eX4-pp-2r4" secondAttribute="centerY" id="ClG-mY-B0O"/>
+                <constraint firstItem="wN5-3r-tZc" firstAttribute="height" secondItem="4rX-nf-Mtg" secondAttribute="height" multiplier="0.5" id="FM1-T2-jNg"/>
                 <constraint firstItem="ZQO-XB-Q0K" firstAttribute="top" secondItem="fha-qL-ug6" secondAttribute="bottom" constant="30" id="HF7-ZE-YAt"/>
                 <constraint firstItem="4ej-wc-ZMM" firstAttribute="leading" secondItem="eX4-pp-2r4" secondAttribute="trailing" constant="25" id="IM9-4V-YW1"/>
+                <constraint firstItem="AeE-l7-S2o" firstAttribute="centerX" secondItem="4ej-wc-ZMM" secondAttribute="centerX" id="J84-Dq-uIn"/>
                 <constraint firstItem="d1n-qT-WSx" firstAttribute="centerY" secondItem="4ej-wc-ZMM" secondAttribute="centerY" id="MD5-sr-q7t"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="eiN-TV-Z1L" secondAttribute="trailing" constant="20" id="Mx5-0B-peK"/>
                 <constraint firstItem="fha-qL-ug6" firstAttribute="top" secondItem="eiN-TV-Z1L" secondAttribute="bottom" constant="50" id="Nso-9g-EVu"/>
+                <constraint firstItem="AeE-l7-S2o" firstAttribute="centerY" secondItem="4ej-wc-ZMM" secondAttribute="centerY" id="R1t-xO-Qfc"/>
                 <constraint firstItem="4rX-nf-Mtg" firstAttribute="width" secondItem="eX4-pp-2r4" secondAttribute="width" id="TWV-Mp-QgJ"/>
                 <constraint firstItem="d1n-qT-WSx" firstAttribute="centerX" secondItem="4ej-wc-ZMM" secondAttribute="centerX" id="UNO-Wn-QxX"/>
                 <constraint firstItem="QxN-Rp-P0a" firstAttribute="leading" secondItem="5aT-cT-D4C" secondAttribute="leading" id="WUM-qi-HM6"/>
                 <constraint firstItem="eiN-TV-Z1L" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="YEo-ZV-rsW"/>
+                <constraint firstItem="Cza-O7-sRL" firstAttribute="centerX" secondItem="eX4-pp-2r4" secondAttribute="centerX" id="Yig-NL-kff"/>
                 <constraint firstItem="4ej-wc-ZMM" firstAttribute="width" secondItem="eX4-pp-2r4" secondAttribute="width" id="ZSe-gb-oCy"/>
+                <constraint firstItem="wN5-3r-tZc" firstAttribute="centerX" secondItem="4rX-nf-Mtg" secondAttribute="centerX" id="ZVF-yZ-8Jc"/>
                 <constraint firstItem="eiN-TV-Z1L" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="a7K-It-NLO"/>
+                <constraint firstItem="Cza-O7-sRL" firstAttribute="width" secondItem="eX4-pp-2r4" secondAttribute="width" multiplier="0.766667" id="auM-bD-Sly"/>
                 <constraint firstItem="eX4-pp-2r4" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="c76-xJ-607"/>
+                <constraint firstItem="AeE-l7-S2o" firstAttribute="width" secondItem="4ej-wc-ZMM" secondAttribute="width" multiplier="0.766667" id="ee2-Pn-mBm"/>
                 <constraint firstItem="eX4-pp-2r4" firstAttribute="top" secondItem="ZQO-XB-Q0K" secondAttribute="bottom" constant="40" id="emM-H4-brE"/>
                 <constraint firstItem="5aT-cT-D4C" firstAttribute="centerX" secondItem="9Ql-ts-IS7" secondAttribute="centerX" id="f9c-fP-T4c"/>
                 <constraint firstItem="QxN-Rp-P0a" firstAttribute="top" secondItem="eiN-TV-Z1L" secondAttribute="top" constant="20" id="i1x-EN-USC"/>
@@ -149,6 +178,7 @@
                 <constraint firstItem="ZQO-XB-Q0K" firstAttribute="centerX" secondItem="fha-qL-ug6" secondAttribute="centerX" id="nDi-8v-O9a"/>
                 <constraint firstItem="fha-qL-ug6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="o8r-0B-ykv"/>
                 <constraint firstItem="ZQO-XB-Q0K" firstAttribute="leading" secondItem="fha-qL-ug6" secondAttribute="leading" id="p4d-5x-Gpl"/>
+                <constraint firstItem="wN5-3r-tZc" firstAttribute="width" secondItem="4rX-nf-Mtg" secondAttribute="width" multiplier="0.766667" id="rgG-sM-142"/>
                 <constraint firstItem="3Mu-r8-YAH" firstAttribute="width" secondItem="eX4-pp-2r4" secondAttribute="width" multiplier="1:2" id="uCA-2G-CXa"/>
                 <constraint firstItem="3Mu-r8-YAH" firstAttribute="centerX" secondItem="eX4-pp-2r4" secondAttribute="centerX" id="uPx-2J-cZf"/>
                 <constraint firstItem="9Ql-ts-IS7" firstAttribute="bottom" secondItem="eiN-TV-Z1L" secondAttribute="bottom" constant="-40" id="w4T-dH-6sN"/>

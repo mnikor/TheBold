@@ -9,9 +9,9 @@
 import UIKit
 
 protocol ShareViewDelegate: class {
-    func shareWithFacebook(goal: Goal)
-    func shareWithEmail(goal: Goal)
-    func download(goal: Goal)
+    func shareWithFacebook(goal: Action)
+    func shareWithEmail(goal: Action)
+    func download(goal: Action)
 }
 
 class ShareView: UIView {
@@ -33,20 +33,7 @@ class ShareView: UIView {
         facebookView.layer.borderColor = UIColor.lightGray.cgColor
         emailView.layer.borderColor = UIColor.lightGray.cgColor
         downloadView.layer.borderColor = UIColor.lightGray.cgColor
-        
-        let facebookTapRecognizer = UITapGestureRecognizer(target: self,
-                                                           action: #selector(shareWithFacebook))
-        let emailTapRecognizer = UITapGestureRecognizer(target: self,
-                                                        action: #selector(shareWithEmail))
-        let downloadTapRecognizer = UITapGestureRecognizer(target: self,
-                                                           action: #selector(download))
-        
-        facebookView.addGestureRecognizer(facebookTapRecognizer)
-        emailView.addGestureRecognizer(emailTapRecognizer)
-        downloadView.addGestureRecognizer(downloadTapRecognizer)
     }
-    
-    
     
     static func loadFromNib() -> ShareView {
         let nib = UINib(nibName: String(describing: self), bundle: nil)
@@ -65,19 +52,19 @@ class ShareView: UIView {
         titleLabel.text = action.name
     }
  
-    @objc private func shareWithFacebook() {
-        guard let entity = entity else { return }
-        delegate?.shareWithFacebook(goal: entity)
+    @IBAction private func shareWithFacebook() {
+        guard let action = action else { return }
+        delegate?.shareWithFacebook(goal: action)
     }
     
-    @objc private func shareWithEmail() {
-        guard let entity = entity else { return }
-        delegate?.shareWithEmail(goal: entity)
+    @IBAction private func shareWithEmail() {
+        guard let action = action else { return }
+        delegate?.shareWithEmail(goal: action)
     }
     
-    @objc private func download() {
-        guard let entity = entity else { return }
-        delegate?.download(goal: entity)
+    @IBAction private func download() {
+        guard let action = action else { return }
+        delegate?.download(goal: action)
     }
     
 }
