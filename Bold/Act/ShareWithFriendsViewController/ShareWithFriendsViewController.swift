@@ -82,7 +82,7 @@ extension ShareWithFriendsViewController: UITableViewDelegate, UITableViewDataSo
         switch items[indexPath.row] {
         case .card:
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Identifier.cardCell, for: indexPath) as! ShareCardTableViewCell
-            cell.config(actionText: "Run 5km every morning", color: .orange)
+            cell.config(actionText: "Run 50km every morning", color: .orange)
             return cell
         case .email, .facebook, .share:
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Identifier.buttonCell, for: indexPath) as! ShareButtonTableViewCell

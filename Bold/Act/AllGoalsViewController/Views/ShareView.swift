@@ -23,6 +23,7 @@ class ShareView: UIView {
     @IBOutlet weak var downloadView: UIView!
     
     private var entity: Goal?
+    private var action: Action?
     
     private func configureSubviews() {
         facebookView.layer.borderWidth = 0.3
@@ -57,6 +58,11 @@ class ShareView: UIView {
     func configure(with entity: Goal) {
         self.entity = entity
         titleLabel.text = entity.name
+    }
+    
+    func configure(with action: Action) {
+        self.action = action
+        titleLabel.text = action.name
     }
  
     @objc private func shareWithFacebook() {

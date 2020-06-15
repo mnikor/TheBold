@@ -75,6 +75,8 @@ class CreateActionViewController: UIViewController, ViewProtocol, AlertDisplayab
             presenter.input(.createNewAction)
         }
         
+        shareView.configure(with: presenter.newAction)
+        
 //        if case .editActionSheet(actionID: let actionID) = presenter.baseConfigType {
 //            presenter.input(.searchAction(actionID: actionID))
 //        }else {
