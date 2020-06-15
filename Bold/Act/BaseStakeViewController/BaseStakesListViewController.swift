@@ -76,6 +76,8 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
     private func configNavigationController() {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.tintColor = ColorName.primaryBlue.color
+        navigationController?.navigationBar.barTintColor = .white
         navigationItem.title = presenter.goal?.name ?? L10n.viewAll
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: Asset.plusTodayActions.image, style: .plain, target: self, action: #selector(tapCreateAction))
         
