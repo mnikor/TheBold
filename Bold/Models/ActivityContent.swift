@@ -26,7 +26,7 @@ class ActivityContent: ActivityBase {
     var audioTracks: [AudioPlayerTrackInfo]
     var audioPreviews: [AudioPlayerTrackInfo]
     var documentURL: FilePath?
-    var doucumentPreviewURL: String?
+    var documentPreviewURL: String?
     var forCategoryPresentation: Bool
     
     init(id: Int, position: Int, type:ContentType, title: String, body: String, authorName: String, footer: String, durtionRead: Int, pointOfUnlock: Int, contentStatus: ContentStatus, imageURL: String?, smallImageURL: String?, largeImageURL: String?, likesCount: Int, authorPhotoURL: String?, audioTracks: [AudioPlayerTrackInfo], audioPreviews: [AudioPlayerTrackInfo], documentURL: FilePath?, documentPreviewURL: String?, forCategoryPresentation: Bool) {
@@ -47,7 +47,7 @@ class ActivityContent: ActivityBase {
         self.documentURL = documentURL
         self.forCategoryPresentation = forCategoryPresentation
         self.audioPreviews = audioPreviews
-        self.doucumentPreviewURL = documentPreviewURL
+        self.documentPreviewURL = documentPreviewURL
         super.init(id: id, position: position, type: type)
     }
     
@@ -110,8 +110,6 @@ class ActivityContent: ActivityBase {
         } else {
             audioPreviews = []
         }
-        
-        print("\n\nAudio previews: - \(audioPreviews)")
         
         let document = json[ResponseKeys.document]
         let documentURL: FilePath?

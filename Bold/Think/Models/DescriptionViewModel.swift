@@ -11,6 +11,7 @@ import UIKit
 struct DescriptionViewModel {
     var image: Image
     var documentURL: URL?
+    var documentPreviewURL: URL?
     var likesCount: Int?
     var title: String?
     var category: ContentType?

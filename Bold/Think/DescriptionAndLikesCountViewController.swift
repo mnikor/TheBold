@@ -154,7 +154,18 @@ class DescriptionAndLikesCountViewController: UIViewController {
     
     private func configurePDFDocument() {
         if #available(iOS 11.0, *) {
-            guard let documentURL = viewModel?.documentURL,
+            
+            var docURL = viewModel?.documentURL
+            
+            // CHECK FOR PREVIEW IN LOCKED CONTENT
+            
+            if let content = viewModel?.content, let previewURL = URL(string: content.documentPreviewURL ?? "") {
+                if content.contentStatus == .locked || content.contentStatus == .lockedPoints {
+                    docURL = previewURL
+                }
+            }
+            
+            guard let documentURL = docURL,
                 let document = PDFDocument(url: documentURL),
                 let pdfView = pdfView as? PDFView
                 else { return }
