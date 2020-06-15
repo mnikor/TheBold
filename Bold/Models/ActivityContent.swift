@@ -24,10 +24,12 @@ class ActivityContent: ActivityBase {
     var likesCount: Int
     var authorPhotoURL: String?
     var audioTracks: [AudioPlayerTrackInfo]
+    var audioPreviews: [AudioPlayerTrackInfo]
     var documentURL: FilePath?
+    var doucumentPreviewURL: String?
     var forCategoryPresentation: Bool
     
-    init(id: Int, position: Int, type:ContentType, title: String, body: String, authorName: String, footer: String, durtionRead: Int, pointOfUnlock: Int, contentStatus: ContentStatus, imageURL: String?, smallImageURL: String?, largeImageURL: String?, likesCount: Int, authorPhotoURL: String?, audioTracks: [AudioPlayerTrackInfo], documentURL: FilePath?, forCategoryPresentation: Bool) {
+    init(id: Int, position: Int, type:ContentType, title: String, body: String, authorName: String, footer: String, durtionRead: Int, pointOfUnlock: Int, contentStatus: ContentStatus, imageURL: String?, smallImageURL: String?, largeImageURL: String?, likesCount: Int, authorPhotoURL: String?, audioTracks: [AudioPlayerTrackInfo], audioPreviews: [AudioPlayerTrackInfo], documentURL: FilePath?, documentPreviewURL: String?, forCategoryPresentation: Bool) {
         self.title = title
         self.body = body
         self.authorName = authorName
@@ -41,8 +43,11 @@ class ActivityContent: ActivityBase {
         self.likesCount = likesCount
         self.authorPhotoURL = authorPhotoURL
         self.audioTracks = audioTracks
+        self.audioPreviews = audioPreviews
         self.documentURL = documentURL
         self.forCategoryPresentation = forCategoryPresentation
+        self.audioPreviews = audioPreviews
+        self.doucumentPreviewURL = documentPreviewURL
         super.init(id: id, position: position, type: type)
     }
     
@@ -93,6 +98,21 @@ class ActivityContent: ActivityBase {
             audioTracks = []
         }
         
+        let audioPreviews: [AudioPlayerTrackInfo]
+        if let audioTracksArray = json[ResponseKeys.audioPreviews].array {
+            audioPreviews = audioTracksArray.compactMap { item in
+                var trackName = item[ResponseKeys.audioName].stringValue
+                if let extRange = trackName.range(of: ".mp3") {
+                    trackName.removeSubrange(extRange)
+                }
+                
+                return AudioPlayerTrackInfo(trackName: trackName, artistName: "", duration: "0:00", path: .remote(item[ResponseKeys.audioURL].stringValue)) }
+        } else {
+            audioPreviews = []
+        }
+        
+        print("\n\nAudio previews: - \(audioPreviews)")
+        
         let document = json[ResponseKeys.document]
         let documentURL: FilePath?
         
@@ -101,6 +121,13 @@ class ActivityContent: ActivityBase {
         } else {
             documentURL = nil
         }
+        
+        let documentPreview = json[ResponseKeys.documentPreview]
+        var documetnPreviewURL: String?
+        if let url = documentPreview[ResponseKeys.documentURL].string {
+            documetnPreviewURL = url
+        }
+        
         
         let durationRead = json[ResponseKeys.durationRead].int ?? 0
         let forCategoryPresentation = json[ResponseKeys.forCategoryPresentation].bool ?? false
@@ -121,7 +148,9 @@ class ActivityContent: ActivityBase {
                        likesCount: likesCount,
                        authorPhotoURL: json[ResponseKeys.authorPhotoURL].string,
                        audioTracks: audioTracks,
+                       audioPreviews: audioPreviews,
                        documentURL: documentURL,
+                       documentPreviewURL: documetnPreviewURL,
                        forCategoryPresentation: forCategoryPresentation)
     }
     
@@ -167,7 +196,9 @@ class ActivityContent: ActivityBase {
                                likesCount: Int(content.likesCount),
                                authorPhotoURL: content.authorPhotoUrl,
                                audioTracks: tracks,
+                               audioPreviews: [],
                                documentURL: documentURL,
+                               documentPreviewURL: nil,
                                forCategoryPresentation: false)
     }
     
@@ -240,4 +271,6 @@ private struct ResponseKeys {
     static let documentURL = "url"
     static let durationRead = "duration_read"
     static let forCategoryPresentation = "for_category_presentation"
+    static let audioPreviews = "audio_previews"
+    static let documentPreview = "document_preview"
 }

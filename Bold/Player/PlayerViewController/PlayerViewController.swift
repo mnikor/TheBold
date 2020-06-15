@@ -223,7 +223,12 @@ class PlayerViewController: UIViewController, ViewProtocol {
         let playerVC = PlayerViewController.createController()
         playerVC.selectedContent = content
         
-        AudioService.shared.config(fullImage: content.imageURL, smallImage: content.smallImageURL, tracks: content.audioTracks)
+        if content.contentStatus == .locked && content.audioPreviews.count > 0
+            || content.contentStatus == .lockedPoints && content.audioPreviews.count > 0 {
+            AudioService.shared.config(fullImage: content.imageURL, smallImage: content.smallImageURL, tracks: content.audioPreviews)
+        } else {
+            AudioService.shared.config(fullImage: content.imageURL, smallImage: content.smallImageURL, tracks: content.audioTracks)
+        }
         AudioService.shared.delegate = playerVC
         AudioService.shared.input(.fullView(activityType: {(activityType) in
             

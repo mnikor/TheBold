@@ -60,7 +60,7 @@ struct DescriptionViewModel {
         
         let path = Bundle.main.path(forResource: image, ofType: nil)
         
-        let content = ActivityContent(id: 0, position: 0, type: ContentType.hypnosis, title: "", body: "", authorName: "", footer: "", durtionRead: 307, pointOfUnlock: 0, contentStatus: ContentStatus.unlocked, imageURL: path, smallImageURL: path, largeImageURL: path, likesCount: 0, authorPhotoURL: nil, audioTracks: [audio], documentURL: FilePath.local (documentURL?.absoluteString ?? ""), forCategoryPresentation: false)
+        let content = ActivityContent(id: 0, position: 0, type: ContentType.hypnosis, title: "", body: "", authorName: "", footer: "", durtionRead: 307, pointOfUnlock: 0, contentStatus: ContentStatus.unlocked, imageURL: path, smallImageURL: path, largeImageURL: path, likesCount: 0, authorPhotoURL: nil, audioTracks: [audio], audioPreviews: [], documentURL: FilePath.local (documentURL?.absoluteString ?? ""), documentPreviewURL: nil, forCategoryPresentation: false)
         return DescriptionViewModel(image: .image(Asset.boldManifestMain.image),
                                     documentURL: Bundle.main.url(forResource: "Manifest", withExtension: "pdf"),
                                     likesCount: nil,
