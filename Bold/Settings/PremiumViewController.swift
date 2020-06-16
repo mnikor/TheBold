@@ -39,6 +39,10 @@ class PremiumViewController: UIViewController {
     @IBAction func tapUnlockPremiumButton(_ sender: UIButton) {
     }
     
+    @IBAction func termsAndConditionAction() {
+        print("Terms and Condition actions")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
