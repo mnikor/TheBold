@@ -40,7 +40,9 @@ class PremiumViewController: UIViewController {
     }
     
     @IBAction func termsAndConditionAction() {
-        print("Terms and Condition actions")
+        let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
+        vc.viewModel = .termsOfUse
+        present(vc, animated: true)
     }
     
     override func viewDidLoad() {
