@@ -58,6 +58,7 @@ enum CreateActionInputPresenter {
     case updateStake(Float)
     
     case systemShareAction(ShareView)
+    case shareByEmail(ShareView)
 }
 
 protocol CreateActionInputProtocol {
@@ -152,7 +153,10 @@ class CreateActionPresenter: PresenterProtocol, CreateActionInputProtocol {
             }))
         case .systemShareAction(let view):
             let image = view.asImage()
-            router.input(.systemShareAction(image, ""))
+            router.input(.systemShareAction(image, "", newAction.name ?? ""))
+        case .shareByEmail(let view):
+            let image = view.asImage()
+            router.input(.shareByEmail(image, "", newAction.name ?? ""))
         }
     }
     

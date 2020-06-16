@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 private struct Constants {
     static let rowHeight : CGFloat = 56
@@ -303,11 +304,17 @@ extension CreateActionViewController: ShareViewDelegate {
     }
     
     func shareWithEmail(goal: Action) {
-        print("Email")
+        presenter.input(.shareByEmail(shareView))
     }
     
     func download(goal: Action) {
         presenter.input(.systemShareAction(shareView))
     }
     
+}
+
+extension CreateActionViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
 }
