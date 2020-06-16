@@ -200,6 +200,11 @@ extension ActionsListViewController: ManageItTableViewCellDelegate {
 
 extension ActionsListViewController: ActionTableViewCellDelegate {
     
+    func tapLeftHeaderButton(cell: ActionTableViewCell) {
+        guard let content = cell.item.data else { return}
+        presenter.input(.unlockActionCard(content))
+    }
+    
     func tapThreeDotsButton(action: ActionEntity) {
         presenter.input(.share(action))
     }

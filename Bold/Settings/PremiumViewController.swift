@@ -48,7 +48,14 @@ class PremiumViewController: UIViewController {
     }
     
     @IBAction func congratsDoneButton() {
-        dismiss(animated: true, completion: nil)
+        
+        if let navController = navigationController {
+            navController.popViewController(animated: true)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
+
+        
     }
     
     override func viewDidLoad() {

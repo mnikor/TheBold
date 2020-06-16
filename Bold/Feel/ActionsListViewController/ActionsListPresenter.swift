@@ -97,6 +97,9 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
     }
     
     private func unlockActionCard(_ content: ActivityContent) {
+    
+        router.input(.showPremium)
+        
 //        print("\(content)")
 //
 //        let user = DataSource.shared.readUser()

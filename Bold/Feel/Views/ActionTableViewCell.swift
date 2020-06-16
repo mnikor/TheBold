@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ActionTableViewCellDelegate: class {
-//    func tapLeftHeaderButton(cell: ActionTableViewCell)
+    func tapLeftHeaderButton(cell: ActionTableViewCell)
     func tapThreeDotsButton(action: ActionEntity)
     func tapDownloadButton(cell: ActionTableViewCell)
     func tapLikeButton(cell: ActionTableViewCell)
@@ -50,7 +50,7 @@ class ActionTableViewCell: BaseTableViewCell {
     var item : ActionEntity!
     
     @IBAction func tapLeftHeaderButton(_ sender: UIButton) {
-//        delegate?.tapLeftHeaderButton(cell: self)
+        delegate?.tapLeftHeaderButton(cell: self)
     }
     
     @IBAction func tapThreeDotsButton(_ sender: UIButton) {
@@ -135,6 +135,7 @@ class ActionTableViewCell: BaseTableViewCell {
             leftHeaderButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
             rightHeaderLabel.isHidden = true
             rightHeaderLabel.text = ""
+            leftHeaderButton.isUserInteractionEnabled = true
         }
     }
     

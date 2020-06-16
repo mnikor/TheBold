@@ -17,6 +17,7 @@ enum ActionsListInputRouter {
     case read(_ content: ActivityContent)
     case share(ActionEntity)
     case systemShare([Any])
+    case showPremium
 }
 
 protocol ActionsListRouterProtocol {
@@ -61,6 +62,8 @@ class ActionsListRouter: RouterProtocol, ActionsListRouterProtocol {
             configureShareActivity(with: action)
         case .systemShare(let items):
             alertController?.shareContent(with: items)
+        case .showPremium:
+            showPremiumController()
         }
     }
     
@@ -72,5 +75,10 @@ class ActionsListRouter: RouterProtocol, ActionsListRouterProtocol {
         
         alertController = viewController.showAlert(with: shareView)
         
+    }
+    
+    func showPremiumController() {
+        let vc = StoryboardScene.Settings.premiumViewController.instantiate()
+        viewController.present(vc, animated: true, completion: nil)
     }
 }

@@ -582,25 +582,25 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1667"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoSmall" translatesAutoresizingMaskIntoConstraints="NO" id="9r9-hi-alV">
-                                        <rect key="frame" x="157.66666666666666" y="29" width="60" height="28"/>
+                                        <rect key="frame" x="157.66666666666666" y="50" width="60" height="28"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="premium_congrats" translatesAutoresizingMaskIntoConstraints="NO" id="zJx-2l-avd">
-                                        <rect key="frame" x="20" y="134" width="335" height="246"/>
+                                        <rect key="frame" x="20" y="155" width="335" height="246"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VM1-z4-8gV">
-                                        <rect key="frame" x="88.666666666666671" y="432" width="197.66666666666663" height="28.333333333333314"/>
+                                        <rect key="frame" x="88.666666666666671" y="453" width="197.66666666666663" height="28.333333333333314"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="23"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are now a member of Bold premium. Enjoy unlimited access!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fd8-pz-w73">
-                                        <rect key="frame" x="20" y="476.33333333333331" width="335" height="36.666666666666686"/>
+                                        <rect key="frame" x="20" y="497.33333333333331" width="335" height="36.666666666666686"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7f-jA-xFZ">
-                                        <rect key="frame" x="20" y="558" width="335" height="56"/>
+                                        <rect key="frame" x="20" y="579" width="335" height="56"/>
                                         <color key="backgroundColor" red="1" green="0.66666666666666663" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="f9x-7F-JUP"/>
@@ -633,7 +633,7 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                                     <constraint firstAttribute="trailing" secondItem="zJx-2l-avd" secondAttribute="trailing" constant="20" id="qaf-cJ-JyF"/>
                                     <constraint firstItem="Fd8-pz-w73" firstAttribute="leading" secondItem="dYa-fl-1N3" secondAttribute="leading" constant="20" id="sP1-1o-57C"/>
                                     <constraint firstItem="zJx-2l-avd" firstAttribute="leading" secondItem="dYa-fl-1N3" secondAttribute="leading" constant="20" id="vHz-l2-sKf"/>
-                                    <constraint firstItem="9r9-hi-alV" firstAttribute="top" secondItem="dYa-fl-1N3" secondAttribute="top" constant="29" id="y8M-R1-unW"/>
+                                    <constraint firstItem="9r9-hi-alV" firstAttribute="top" secondItem="dYa-fl-1N3" secondAttribute="top" constant="50" id="y8M-R1-unW"/>
                                 </constraints>
                             </view>
                         </subviews>
