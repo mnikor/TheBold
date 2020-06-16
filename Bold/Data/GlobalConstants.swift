@@ -14,4 +14,6 @@ struct GlobalConstants {
         static let minDate = DateFormatter.formatting(type: .compareDateEvent, dateString: "01/01/2019")
         static let maxDate = DateFormatter.formatting(type: .compareDateEvent, dateString: "01/01/2031")
     }
+    
+    static let appURL = "www.bold.com"
 }

@@ -15,7 +15,7 @@ enum CreateActionInputRouter {
     case stake
     case share
     case cancel
-    case systemShareAction(UIImage, String, String)
+    case systemShareAction(UIImage, String)
     case shareByEmail(UIImage, String, String)
 }
 
@@ -43,18 +43,18 @@ class CreateActionRouter: RouterProtocol, CreateActionInputRouterProtocol {
             viewController.performSegue(withIdentifier: StoryboardSegue.Act.shareWithFriendsIdentifier.rawValue, sender: nil)
         case .cancel:
             viewController.navigationController?.popViewController(animated: true)
-        case .systemShareAction(let image, let link, let title):
-            configureShareActivity(with: image, and: link, title: title)
+        case .systemShareAction(let image, let title):
+            configureShareActivity(with: image, and: title)
         case .shareByEmail(let image, let link, let title):
             configureShareEmail(with: image, and: link, title: title)
         }
     }
     
-    func configureShareActivity(with image: UIImage, and link: String, title: String) {
+    func configureShareActivity(with image: UIImage, and title: String) {
         
-        var items: [Any] = [title, image]
+        let titleItem = "\(title) \n\(GlobalConstants.appURL)"
         
-        if let url = URL(string: link) { items.append(url) }
+        let items: [Any] = [titleItem, image]
         
         let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
         

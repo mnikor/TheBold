@@ -88,7 +88,7 @@ class DescriptionAndLikesCountViewController: UIViewController {
             bottomToolbarConstraint.constant = -toolbar.bounds.height - bottomSafeArea
             view.layoutIfNeeded()
         }
-    
+        
         toolbar.isHidden = viewModel?.toolbarIsHidden ?? false
         titleLabel.text = viewModel?.title
         likseCountView.configView(superView: view)
@@ -103,8 +103,8 @@ class DescriptionAndLikesCountViewController: UIViewController {
             }
         case .path(let path):
             imageView.downloadImageAnimated(path: path ?? "")
-//            imageView.setImageAnimated(path: path ?? "")
-                                       //placeholder: Asset.serfer.image)
+            //            imageView.setImageAnimated(path: path ?? "")
+        //placeholder: Asset.serfer.image)
         case nil:
             imageView.image = nil//Asset.serfer.image
         }
@@ -116,9 +116,9 @@ class DescriptionAndLikesCountViewController: UIViewController {
     }
     
     private func configureDowloadButton() {
-        buttonsToolbar.dowload = isDownloadedContent
-//        downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
-        downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
+//        buttonsToolbar.dowload = isDownloadedContent
+        //        downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
+//        downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
     }
     
     private func configurePDFView() {
@@ -130,7 +130,7 @@ class DescriptionAndLikesCountViewController: UIViewController {
                 make.top.equalToSuperview().offset(playerButton.isHidden ? 10 : 40)
                 make.leading.trailing.bottom.equalToSuperview()
             }
-//            pdfContainerView.bringSubviewToFront(playerButton)
+            //            pdfContainerView.bringSubviewToFront(playerButton)
             pdfView.autoScales = true
             pdfView.translatesAutoresizingMaskIntoConstraints = false
             pdfView.backgroundColor = .clear
@@ -171,7 +171,7 @@ class DescriptionAndLikesCountViewController: UIViewController {
                 else { return }
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-
+                
                 pdfView.document = document
                 if let documentView = pdfView.documentView {
                     self.pdfContainerHeightConstraint.constant = documentView.frame.size.height + 25
@@ -188,34 +188,50 @@ class DescriptionAndLikesCountViewController: UIViewController {
     }
     
     @IBAction func tapCloseButton(_ sender: UIButton) {
-            self.dismiss(animated: true, completion: nil)
-        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func didTapAtPlayerButton(_ sender: UIButton) {
+        PlayerViewController.createController(content: viewModel?.content)
+    }
+    
+    @IBAction func didTapAtDownloadButton(_ sender: UIBarButtonItem) {
         
-        @IBAction func didTapAtPlayerButton(_ sender: UIButton) {
-            PlayerViewController.createController(content: viewModel?.content)
-        }
+        guard let image = imageView.image, let title = titleLabel.text else { return }
         
-        @IBAction func didTapAtDownloadButton(_ sender: UIBarButtonItem) {
-            if !isDownloadedContent && !buttonsToolbar.dowload {
-                buttonsToolbar.dowload = !buttonsToolbar.dowload
-    //            downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
-                downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
-    //            audioPlayerDelegate?.saveContent()
-            }
-        }
+        let titleItem = "Hey, I recomend to read this Lesson: \n\(title) \n\(GlobalConstants.appURL)"
         
-        @IBAction func didTapAtAddActionPlan(_ sender: UIBarButtonItem) {
-            AlertViewService.shared.input(.addAction(content: viewModel?.content, tapAddPlan: {
-                print("didTapAtAddActionPlan")
-            }))
-        }
+        configureShareActivity(with: image, and: titleItem)
         
-        @IBAction func didTapAtLikeButton(_ sender: UIBarButtonItem) {
-            buttonsToolbar.like = !buttonsToolbar.like
-            likeButton.image = buttonsToolbar.like == false ? Asset.playerLikeIcon.image : Asset.playerLikedIcon.image
-            likeButton.tintColor = buttonsToolbar.like == false ? .gray : ColorName.primaryRed.color
-    //        audioPlayerDelegate?.likeContent(buttonsToolbar.like)
-        }
+//        if !isDownloadedContent && !buttonsToolbar.dowload {
+//            buttonsToolbar.dowload = !buttonsToolbar.dowload
+//            //            downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
+//            downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
+//            //            audioPlayerDelegate?.saveContent()
+//        }
+    }
+    
+    func configureShareActivity(with image: UIImage, and title: String) {
+        
+        let items: [Any] = [title, image]
+        
+        let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        
+        present(activityViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func didTapAtAddActionPlan(_ sender: UIBarButtonItem) {
+        AlertViewService.shared.input(.addAction(content: viewModel?.content, tapAddPlan: {
+            print("didTapAtAddActionPlan")
+        }))
+    }
+    
+    @IBAction func didTapAtLikeButton(_ sender: UIBarButtonItem) {
+        buttonsToolbar.like = !buttonsToolbar.like
+        likeButton.image = buttonsToolbar.like == false ? Asset.playerLikeIcon.image : Asset.playerLikedIcon.image
+        likeButton.tintColor = buttonsToolbar.like == false ? .gray : ColorName.primaryRed.color
+        //        audioPlayerDelegate?.likeContent(buttonsToolbar.like)
+    }
     
 }
 
@@ -247,12 +263,12 @@ extension DescriptionAndLikesCountViewController: UIScrollViewDelegate {
     }
     
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-
+        
         calculatePosition(scrollView: scrollView)
     }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-
+        
         calculatePosition(scrollView: scrollView)
     }
     
@@ -268,8 +284,8 @@ extension DescriptionAndLikesCountViewController: UIScrollViewDelegate {
             if percent > 1 {
                 percent = 1
             }
-//            toolbar.alpha = 1 - percent
-//            likseCountView.moveConstraintView(percent: percent)
+            //            toolbar.alpha = 1 - percent
+            //            likseCountView.moveConstraintView(percent: percent)
         }
     }
     
