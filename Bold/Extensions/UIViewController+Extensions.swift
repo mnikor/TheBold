@@ -18,4 +18,9 @@ extension UIViewController {
         present(activityVC, animated: true, completion: nil)
     }
     
+    func shareContent(with items: [Any]) {
+        let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(activityViewController, animated: true, completion: nil)
+    }
+    
 }

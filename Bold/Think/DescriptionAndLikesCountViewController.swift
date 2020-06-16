@@ -200,8 +200,11 @@ class DescriptionAndLikesCountViewController: UIViewController {
         guard let image = imageView.image, let title = titleLabel.text else { return }
         
         let titleItem = "Hey, I recomend to read this Lesson: \n\(title) \n\(GlobalConstants.appURL)"
+        let resizedImage = image.convert(toSize: CGSize(width: 200, height: 200), scale: UIScreen.main.scale)
         
-        configureShareActivity(with: image, and: titleItem)
+        let items: [Any] = [titleItem, resizedImage]
+        
+        shareContent(with: items)
         
 //        if !isDownloadedContent && !buttonsToolbar.dowload {
 //            buttonsToolbar.dowload = !buttonsToolbar.dowload
@@ -209,15 +212,6 @@ class DescriptionAndLikesCountViewController: UIViewController {
 //            downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
 //            //            audioPlayerDelegate?.saveContent()
 //        }
-    }
-    
-    func configureShareActivity(with image: UIImage, and title: String) {
-        
-        let items: [Any] = [title, image]
-        
-        let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
-        
-        present(activityViewController, animated: true, completion: nil)
     }
     
     @IBAction func didTapAtAddActionPlan(_ sender: UIBarButtonItem) {

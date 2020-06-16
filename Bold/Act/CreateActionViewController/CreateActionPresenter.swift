@@ -153,7 +153,11 @@ class CreateActionPresenter: PresenterProtocol, CreateActionInputProtocol {
             }))
         case .systemShareAction(let view):
             let image = view.asImage()
-            router.input(.systemShareAction(image, newAction.name ?? ""))
+            let titleItem = "\(newAction.name ?? "") \n\(GlobalConstants.appURL)"
+            
+            let items: [Any] = [titleItem, image]
+            
+            router.input(.systemShareAction(items))
         case .shareByEmail(let view):
             let image = view.asImage()
             router.input(.shareByEmail(image, "", newAction.name ?? ""))
