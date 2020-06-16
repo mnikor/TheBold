@@ -36,6 +36,7 @@ class PlayerViewController: UIViewController, ViewProtocol {
     var isDownloadedContent: Bool = false
     var contentID: Int?
     var selectedContent: ActivityContent?
+    var premiumWasShown = false
     
     @IBOutlet weak var playerView: UIView!
     @IBOutlet var playerListView: PlayerListView!
@@ -297,6 +298,25 @@ extension PlayerViewController: AudioServiceDelegate {
     
     func playerPaused() {
         timer?.invalidate()
+        if premiumWasShown { return }
+        if selectedContent?.contentStatus == .locked || selectedContent?.contentStatus == .lockedPoints {
+            checkForTheEndTrack()
+        }
+    }
+    
+    func checkForTheEndTrack() {
+        let currentDuration = service.getCurrentTime().seconds + 1
+        guard let trackDuration = service.getDuration()?.seconds else { return }
+        
+        if currentDuration > trackDuration {
+            premiumWasShown = true
+            showPremiumController()
+        }
+    }
+    
+    func showPremiumController() {
+        let vc = StoryboardScene.Settings.premiumViewController.instantiate()
+        present(vc, animated: true, completion: nil)
     }
     
     func playerIsPlaying() {
