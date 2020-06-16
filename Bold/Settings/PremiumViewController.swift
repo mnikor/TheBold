@@ -17,6 +17,7 @@ class PremiumViewController: UIViewController {
     
     @IBOutlet weak var monthlyView: UIView!
     @IBOutlet weak var yearlyView: UIView!
+    @IBOutlet weak var congratsView: UIView!
     
     private var premium : PremiumType!
     
@@ -37,12 +38,17 @@ class PremiumViewController: UIViewController {
     }
     
     @IBAction func tapUnlockPremiumButton(_ sender: UIButton) {
+        congratsView.isHidden = false
     }
     
     @IBAction func termsAndConditionAction() {
         let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
         vc.viewModel = .termsOfUse
         present(vc, animated: true)
+    }
+    
+    @IBAction func congratsDoneButton() {
+        dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {

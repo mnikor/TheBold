@@ -578,12 +578,74 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                                     <constraint firstAttribute="trailing" secondItem="y73-4b-9Ug" secondAttribute="trailing" id="yze-rQ-en9"/>
                                 </constraints>
                             </scrollView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYa-fl-1N3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1667"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoSmall" translatesAutoresizingMaskIntoConstraints="NO" id="9r9-hi-alV">
+                                        <rect key="frame" x="157.66666666666666" y="29" width="60" height="28"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="premium_congrats" translatesAutoresizingMaskIntoConstraints="NO" id="zJx-2l-avd">
+                                        <rect key="frame" x="20" y="134" width="335" height="246"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VM1-z4-8gV">
+                                        <rect key="frame" x="88.666666666666671" y="432" width="197.66666666666663" height="28.333333333333314"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="23"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are now a member of Bold premium. Enjoy unlimited access!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fd8-pz-w73">
+                                        <rect key="frame" x="20" y="476.33333333333331" width="335" height="36.666666666666686"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7f-jA-xFZ">
+                                        <rect key="frame" x="20" y="558" width="335" height="56"/>
+                                        <color key="backgroundColor" red="1" green="0.66666666666666663" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="f9x-7F-JUP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
+                                        <state key="normal" title="Done!">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="28"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="congratsDoneButton" destination="NVH-Yv-Lx6" eventType="touchUpInside" id="Ixd-hy-HH5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="M7f-jA-xFZ" firstAttribute="top" secondItem="Fd8-pz-w73" secondAttribute="bottom" constant="45" id="524-qR-dCN"/>
+                                    <constraint firstItem="VM1-z4-8gV" firstAttribute="centerX" secondItem="dYa-fl-1N3" secondAttribute="centerX" id="6Iq-v3-fd0"/>
+                                    <constraint firstItem="VM1-z4-8gV" firstAttribute="top" secondItem="zJx-2l-avd" secondAttribute="bottom" constant="52" id="IfL-gG-nZQ"/>
+                                    <constraint firstItem="9r9-hi-alV" firstAttribute="centerX" secondItem="dYa-fl-1N3" secondAttribute="centerX" id="J84-cN-sOZ"/>
+                                    <constraint firstItem="M7f-jA-xFZ" firstAttribute="leading" secondItem="Fd8-pz-w73" secondAttribute="leading" id="Ua1-H5-Xhc"/>
+                                    <constraint firstItem="M7f-jA-xFZ" firstAttribute="trailing" secondItem="Fd8-pz-w73" secondAttribute="trailing" id="VXo-vP-Be8"/>
+                                    <constraint firstItem="Fd8-pz-w73" firstAttribute="top" secondItem="VM1-z4-8gV" secondAttribute="bottom" constant="16" id="VYC-Zf-XJE"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fd8-pz-w73" secondAttribute="trailing" constant="20" id="ZwF-3M-H4Z"/>
+                                    <constraint firstItem="zJx-2l-avd" firstAttribute="top" secondItem="9r9-hi-alV" secondAttribute="bottom" constant="77" id="pic-Ij-Sgq"/>
+                                    <constraint firstAttribute="trailing" secondItem="zJx-2l-avd" secondAttribute="trailing" constant="20" id="qaf-cJ-JyF"/>
+                                    <constraint firstItem="Fd8-pz-w73" firstAttribute="leading" secondItem="dYa-fl-1N3" secondAttribute="leading" constant="20" id="sP1-1o-57C"/>
+                                    <constraint firstItem="zJx-2l-avd" firstAttribute="leading" secondItem="dYa-fl-1N3" secondAttribute="leading" constant="20" id="vHz-l2-sKf"/>
+                                    <constraint firstItem="9r9-hi-alV" firstAttribute="top" secondItem="dYa-fl-1N3" secondAttribute="top" constant="29" id="y8M-R1-unW"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="dYa-fl-1N3" firstAttribute="top" secondItem="rQt-hd-jNo" secondAttribute="top" id="0Hh-JF-rSr"/>
                             <constraint firstItem="rQt-hd-jNo" firstAttribute="top" secondItem="cVy-Pq-4kP" secondAttribute="top" id="76G-qb-0fj"/>
                             <constraint firstItem="bbk-DP-VOj" firstAttribute="trailing" secondItem="rQt-hd-jNo" secondAttribute="trailing" id="CH3-Yh-j84"/>
+                            <constraint firstItem="bbk-DP-VOj" firstAttribute="trailing" secondItem="dYa-fl-1N3" secondAttribute="trailing" id="M5Y-cM-TnL"/>
                             <constraint firstAttribute="bottom" secondItem="rQt-hd-jNo" secondAttribute="bottom" id="MB1-bJ-oNa"/>
+                            <constraint firstItem="dYa-fl-1N3" firstAttribute="leading" secondItem="bbk-DP-VOj" secondAttribute="leading" id="bAr-2D-RvP"/>
+                            <constraint firstItem="dYa-fl-1N3" firstAttribute="bottom" secondItem="rQt-hd-jNo" secondAttribute="bottom" id="nNh-v8-w5n"/>
                             <constraint firstItem="rQt-hd-jNo" firstAttribute="leading" secondItem="bbk-DP-VOj" secondAttribute="leading" id="zPw-dI-uKh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bbk-DP-VOj"/>
@@ -591,19 +653,22 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1667"/>
                     <connections>
+                        <outlet property="congratsView" destination="dYa-fl-1N3" id="Kjb-AH-bZl"/>
                         <outlet property="monthlyView" destination="Ooa-f7-4RQ" id="GHJ-zf-BWP"/>
                         <outlet property="yearlyView" destination="6E0-2u-X9Z" id="5u8-WB-aa3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Am-8e-c1H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2512.8000000000002" y="1132.9835082458771"/>
+            <point key="canvasLocation" x="2512.3188405797105" y="1132.7008928571429"/>
         </scene>
     </scenes>
     <resources>
         <image name="checkPremiumParams" width="18" height="14"/>
         <image name="checkPremiumSave" width="16" height="13"/>
         <image name="closeWhite" width="16" height="16"/>
+        <image name="logoSmall" width="60" height="28"/>
         <image name="premiumImage" width="375" height="355"/>
+        <image name="premium_congrats" width="335" height="246"/>
     </resources>
 </document>
