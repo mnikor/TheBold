@@ -53,20 +53,12 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help me to stay accountable for my goal" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIs-SS-hKp">
-                            <rect key="frame" x="30" y="282" width="314" height="18.5"/>
-                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="t1H-Xe-2ul" secondAttribute="trailing" id="1ZM-ga-1rO"/>
                         <constraint firstItem="gMi-2G-VWf" firstAttribute="leading" secondItem="oew-xl-O5q" secondAttribute="leading" constant="30" id="8Yg-vY-ye0"/>
-                        <constraint firstAttribute="bottom" secondItem="bIs-SS-hKp" secondAttribute="bottom" constant="20" id="9OZ-xj-6ut"/>
                         <constraint firstItem="H3d-BL-Ixt" firstAttribute="top" secondItem="gMi-2G-VWf" secondAttribute="bottom" constant="25" id="CdG-bA-FPz"/>
-                        <constraint firstAttribute="trailing" secondItem="bIs-SS-hKp" secondAttribute="trailing" constant="30" id="DyP-7c-kGH"/>
                         <constraint firstItem="gMi-2G-VWf" firstAttribute="top" secondItem="oew-xl-O5q" secondAttribute="top" constant="20" id="FG9-fU-HSQ"/>
                         <constraint firstItem="swg-7e-XZi" firstAttribute="top" secondItem="H3d-BL-Ixt" secondAttribute="bottom" constant="15" id="GLW-id-Jx0"/>
                         <constraint firstItem="swg-7e-XZi" firstAttribute="leading" secondItem="gMi-2G-VWf" secondAttribute="leading" id="VAs-gw-NUh"/>
@@ -76,7 +68,6 @@
                         <constraint firstItem="t1H-Xe-2ul" firstAttribute="top" secondItem="oew-xl-O5q" secondAttribute="top" id="ksW-hD-8fS"/>
                         <constraint firstAttribute="bottom" secondItem="t1H-Xe-2ul" secondAttribute="bottom" id="ntG-Hq-mxa"/>
                         <constraint firstItem="t1H-Xe-2ul" firstAttribute="leading" secondItem="oew-xl-O5q" secondAttribute="leading" id="r40-x9-vjI"/>
-                        <constraint firstItem="bIs-SS-hKp" firstAttribute="leading" secondItem="swg-7e-XZi" secondAttribute="leading" id="wWS-zo-K3P"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5M-3A-FCK">
