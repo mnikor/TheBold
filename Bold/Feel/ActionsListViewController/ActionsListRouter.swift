@@ -15,6 +15,8 @@ enum ActionsListInputRouter {
     case presentedBy(AddActionPlanViewController)
     case player(_ content: ActivityContent)
     case read(_ content: ActivityContent)
+    case share(ActionEntity)
+    case systemShare([Any])
 }
 
 protocol ActionsListRouterProtocol {
@@ -26,6 +28,8 @@ class ActionsListRouter: RouterProtocol, ActionsListRouterProtocol {
     typealias View = ActionsListViewController
     
     weak var viewController: ActionsListViewController!
+    
+    var alertController: BlurAlertController?
     
     required init(viewController: View) {
         self.viewController = viewController
@@ -53,6 +57,20 @@ class ActionsListRouter: RouterProtocol, ActionsListRouterProtocol {
             vc.viewModel = DescriptionViewModel.map(activityContent: content)
             vc.isDownloadedContent = DataSource.shared.contains(content: content)
             viewController.navigationController?.present(vc, animated: true, completion: nil)
+        case .share(let action):
+            configureShareActivity(with: action)
+        case .systemShare(let items):
+            alertController?.shareContent(with: items)
         }
+    }
+    
+    func configureShareActivity(with action: ActionEntity) {
+        
+        let shareView = RateAndShareView.loadFromNib()
+        shareView.delegate = viewController
+        shareView.configure(with: action)
+        
+        alertController = viewController.showAlert(with: shareView)
+        
     }
 }

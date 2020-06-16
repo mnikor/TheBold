@@ -313,6 +313,7 @@ internal enum Asset {
   internal static let screen = ImageAsset(name: "screen")
   internal static let sliderThumb = ImageAsset(name: "sliderThumb")
   internal static let splashBackground = ImageAsset(name: "splashBackground")
+  internal static let starBlue = ImageAsset(name: "star_blue")
   internal static let successKey = ImageAsset(name: "successKey")
   internal static let triangleIcon = ImageAsset(name: "triangleIcon")
   internal static let ulist = ImageAsset(name: "ulist")

@@ -10,7 +10,7 @@ import UIKit
 
 protocol ActionTableViewCellDelegate: class {
 //    func tapLeftHeaderButton(cell: ActionTableViewCell)
-    func tapThreeDotsButton(item: ActionEntity)
+    func tapThreeDotsButton(action: ActionEntity)
     func tapDownloadButton(cell: ActionTableViewCell)
     func tapLikeButton(cell: ActionTableViewCell)
     func tapAddActionPlanButton(cell: ActionTableViewCell)
@@ -54,7 +54,7 @@ class ActionTableViewCell: BaseTableViewCell {
     }
     
     @IBAction func tapThreeDotsButton(_ sender: UIButton) {
-        delegate?.tapThreeDotsButton(item: item)
+        delegate?.tapThreeDotsButton(action: item)
     }
     
     @IBAction func tapDownloadButton(_ sender: UIButton) {

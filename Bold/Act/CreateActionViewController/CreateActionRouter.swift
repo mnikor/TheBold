@@ -62,6 +62,10 @@ class CreateActionRouter: RouterProtocol, CreateActionInputRouterProtocol {
             composeVC.addAttachmentData(imageData, mimeType: "image/jpeg", fileName: "\(title).jpeg")
         }
         
+        let appLink = GlobalConstants.appURL
+        
+        composeVC.setMessageBody("<html><body><p>\(appLink)</p></body></html>", isHTML: true)
+        
         viewController.alertController?.present(composeVC, animated: true, completion: nil)
         
     }

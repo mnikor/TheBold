@@ -17,6 +17,8 @@
 		3EFCA3BF2306E00900129DB4 /* SettingsSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFCA3BE2306E00900129DB4 /* SettingsSectionModel.swift */; };
 		3EFCA3C12306E3F000129DB4 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EFCA3C02306E3F000129DB4 /* SettingsTableViewCell.xib */; };
 		4B1DFC7E2481425300921A91 /* NavigationTitleAndProgressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B1DFC7D2481425300921A91 /* NavigationTitleAndProgressTableViewCell.xib */; };
+		4B61C5F92498F65F00493E1B /* RateAndShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B61C5F82498F65E00493E1B /* RateAndShareView.xib */; };
+		4B61C5FB2498F67600493E1B /* RateAndShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B61C5FA2498F67600493E1B /* RateAndShareView.swift */; };
 		4BD74C4F247F9D8B00BD0A24 /* UIColor+HexExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD74C4E247F9D8B00BD0A24 /* UIColor+HexExtension.swift */; };
 		4BD74C51248123CB00BD0A24 /* NavigationTitleAndProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD74C50248123CB00BD0A24 /* NavigationTitleAndProgressTableViewCell.swift */; };
 		AB3A5076A4778FC67A39C5DE /* Pods_Bold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F633E16C16CF1D2DB8E5B5 /* Pods_Bold.framework */; };
@@ -468,6 +470,8 @@
 		3EFCA3BE2306E00900129DB4 /* SettingsSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionModel.swift; sourceTree = "<group>"; };
 		3EFCA3C02306E3F000129DB4 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
 		4B1DFC7D2481425300921A91 /* NavigationTitleAndProgressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationTitleAndProgressTableViewCell.xib; sourceTree = "<group>"; };
+		4B61C5F82498F65E00493E1B /* RateAndShareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RateAndShareView.xib; sourceTree = "<group>"; };
+		4B61C5FA2498F67600493E1B /* RateAndShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateAndShareView.swift; sourceTree = "<group>"; };
 		4BD74C4E247F9D8B00BD0A24 /* UIColor+HexExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+HexExtension.swift"; sourceTree = "<group>"; };
 		4BD74C50248123CB00BD0A24 /* NavigationTitleAndProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitleAndProgressTableViewCell.swift; sourceTree = "<group>"; };
 		C50FE4CD238BD785008DD7C8 /* DataSource+Files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSource+Files.swift"; sourceTree = "<group>"; };
@@ -1389,6 +1393,8 @@
 				F1A79DCC22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.xib */,
 				F1A79DCF22D8A9560018A8EF /* ListenOrReadMaterialView.swift */,
 				F1A79DC522D89C0C0018A8EF /* ListenOrReadMaterialView.xib */,
+				4B61C5FA2498F67600493E1B /* RateAndShareView.swift */,
+				4B61C5F82498F65E00493E1B /* RateAndShareView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2255,6 +2261,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B61C5F92498F65F00493E1B /* RateAndShareView.xib in Resources */,
 				F18687F6229D60150029A663 /* Home.storyboard in Resources */,
 				F1C2534622B2ACAA003156AA /* GoalCollectionViewCell.xib in Resources */,
 				F107538922F093770078C71C /* BodyConfigureTableViewCell.xib in Resources */,
@@ -2537,6 +2544,7 @@
 				F183302722E605A600BB7A9E /* ActInteractor.swift in Sources */,
 				F183304222E6F0F000BB7A9E /* CreateGoalInteractor.swift in Sources */,
 				F1CCC70322CA0F2900E7B637 /* UITableView+Xib.swift in Sources */,
+				4B61C5FB2498F67600493E1B /* RateAndShareView.swift in Sources */,
 				F158E2C322C4E11600FD671A /* NavigationView.swift in Sources */,
 				F1F6ADC123210DB300F6A925 /* ProfileTemp.swift in Sources */,
 				F183301A22E5CBCC00BB7A9E /* ActionsListConfigurator.swift in Sources */,

@@ -17,6 +17,7 @@ protocol ShareViewDelegate: class {
 class ShareView: UIView {
     weak var delegate: ShareViewDelegate?
     
+    @IBOutlet weak var sharableView: UIView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var facebookView: UIView!
@@ -28,7 +29,7 @@ class ShareView: UIView {
     
     private func configureSubviews() {
         
-        backgroundImageView.layer.cornerRadius = 30
+        backgroundImageView.layer.cornerRadius = 10
         
         facebookView.layer.borderWidth = 0.3
         emailView.layer.borderWidth = 0.3

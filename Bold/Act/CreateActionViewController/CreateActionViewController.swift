@@ -304,11 +304,11 @@ extension CreateActionViewController: ShareViewDelegate {
     }
     
     func shareWithEmail(goal: Action) {
-        presenter.input(.shareByEmail(shareView))
+        presenter.input(.shareByEmail(shareView.sharableView))
     }
     
     func download(goal: Action) {
-        presenter.input(.systemShareAction(shareView))
+        presenter.input(.systemShareAction(shareView.sharableView))
     }
     
 }

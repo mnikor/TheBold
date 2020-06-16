@@ -7,13 +7,15 @@
 //
 
 import Foundation
+import UIKit
 
 enum ActionsListPresenterInput {
     case prepareDataSource(type: FeelTypeCell, completion: (([ActionEntity]) -> Void))
     case back
     case info(FeelTypeCell)
     case unlockActionCard(ActivityContent)
-    case share
+    case share(ActionEntity)
+    case systemShare(UIImage, String)
     case download(ActivityContent)
     case like
     case addActionPlan(ActivityContent)
@@ -54,8 +56,12 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
             router.input(.info(type))
         case .unlockActionCard(let content):
             unlockActionCard(content)
-        case .share:
-            viewController.shareContent(item: nil)
+        case .share(let action):
+            router.input(.share(action))
+        case .systemShare(let image, let type):
+            let title = "Hey, I recommend to listen this \(type)"
+            let link = URL(string: GlobalConstants.appURL)!
+            router.input(.systemShare([title, image, link]))
         case .download(let content):
             interactor.input(.downloadContent(content: content, isHidden: false))
         case .like:

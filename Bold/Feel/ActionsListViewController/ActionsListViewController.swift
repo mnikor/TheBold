@@ -16,7 +16,7 @@ enum ActionCellType {
     
 }
 
-class ActionsListViewController: UIViewController, ViewProtocol {
+class ActionsListViewController: UIViewController, ViewProtocol, AlertDisplayable {
     
     typealias Presenter = ActionsListPresenter
     typealias Configurator = ActionsListConfigurator
@@ -200,12 +200,8 @@ extension ActionsListViewController: ManageItTableViewCellDelegate {
 
 extension ActionsListViewController: ActionTableViewCellDelegate {
     
-    func tapThreeDotsButton(item: ActionEntity) {
-        
-        presenter.input(.share)
-        
-        print("Share")
-//        self.shareContent(item: nil)
+    func tapThreeDotsButton(action: ActionEntity) {
+        presenter.input(.share(action))
     }
     
     func tapDownloadButton(cell: ActionTableViewCell) {
@@ -236,6 +232,17 @@ extension ActionsListViewController: ActionTableViewCellDelegate {
         guard let index = tableView.indexPath(for: cell)?.row else { return }
         guard let content = actions[index].data else {return}
         presenter.input(.addActionPlan(content))
+    }
+}
+
+extension ActionsListViewController: RateAndShareViewDelegate {
+    
+    func rateUs() {
+        print("Rate us action")
+    }
+    
+    func share(with image: UIImage, actionType: String) {
+        presenter.input(.systemShare(image, actionType))
     }
 }
 

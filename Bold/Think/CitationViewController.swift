@@ -38,8 +38,14 @@ class CitationViewController: UIViewController {
     @IBOutlet weak var citationTextLabel: UILabel!
     
     @IBAction func tapShareButton(_ sender: UIButton) {
-        print("Share Citate")
-        self.shareContent(item: nil)
+        
+        let title = GlobalConstants.appURL
+        let image = self.view.asImage()
+        let appLink = URL(string: GlobalConstants.appURL)!
+        
+        let items: [Any] = [title, image, appLink]
+        
+        shareContent(with: items)
     }
     
     var quote: ActivityContent?

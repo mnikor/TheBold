@@ -9,7 +9,7 @@
 import UIKit
 import PDFKit
 
-class DescriptionAndLikesCountViewController: UIViewController {
+class DescriptionAndLikesCountViewController: UIViewController, AlertDisplayable {
     
     @IBOutlet var likseCountView: OverTabbarView!
     
@@ -34,6 +34,8 @@ class DescriptionAndLikesCountViewController: UIViewController {
     
     private var pdfView: UIView?
     private var loader = LoaderView(frame: .zero)
+    
+    private var alertController: BlurAlertController?
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -197,14 +199,9 @@ class DescriptionAndLikesCountViewController: UIViewController {
     
     @IBAction func didTapAtDownloadButton(_ sender: UIBarButtonItem) {
         
-        guard let image = imageView.image, let title = titleLabel.text else { return }
-        
-        let titleItem = "Hey, I recomend to read this Lesson: \n\(title) \n\(GlobalConstants.appURL)"
-        let resizedImage = image.convert(toSize: CGSize(width: 200, height: 200), scale: UIScreen.main.scale)
-        
-        let items: [Any] = [titleItem, resizedImage]
-        
-        shareContent(with: items)
+        if let action = viewModel {
+            configureShareActivity(with: action)
+        }
         
 //        if !isDownloadedContent && !buttonsToolbar.dowload {
 //            buttonsToolbar.dowload = !buttonsToolbar.dowload
@@ -212,6 +209,16 @@ class DescriptionAndLikesCountViewController: UIViewController {
 //            downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
 //            //            audioPlayerDelegate?.saveContent()
 //        }
+    }
+    
+    func configureShareActivity(with action: DescriptionViewModel) {
+        
+        let shareView = RateAndShareView.loadFromNib()
+        shareView.delegate = self
+        shareView.configure(with: action)
+        
+        alertController = showAlert(with: shareView)
+        
     }
     
     @IBAction func didTapAtAddActionPlan(_ sender: UIBarButtonItem) {
@@ -283,4 +290,28 @@ extension DescriptionAndLikesCountViewController: UIScrollViewDelegate {
         }
     }
     
+}
+
+extension DescriptionAndLikesCountViewController: RateAndShareViewDelegate {
+    func rateUs() {
+        
+    }
+    
+    func share(with image: UIImage, actionType: String) {
+        
+        var title = "Hey, I recommend to listen this \(actionType)"
+        
+        switch viewModel?.category {
+        case .lesson:
+            title = "Hey, I recommend to read this \(actionType)"
+        default:
+            break
+        }
+        
+        let link = URL(string: GlobalConstants.appURL)!
+        
+        let items: [Any] = [title, image, link]
+        
+        alertController?.shareContent(with: items)
+    }
 }

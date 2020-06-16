@@ -15,5 +15,5 @@ struct GlobalConstants {
         static let maxDate = DateFormatter.formatting(type: .compareDateEvent, dateString: "01/01/2031")
     }
     
-    static let appURL = "www.bold.com"
+    static let appURL = "https://www.apple.com"
 }

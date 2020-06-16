@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum CreateActionControllerConfigType {
     case createNewActionVC
@@ -57,8 +58,8 @@ enum CreateActionInputPresenter {
     case updateConfiguration
     case updateStake(Float)
     
-    case systemShareAction(ShareView)
-    case shareByEmail(ShareView)
+    case systemShareAction(UIView)
+    case shareByEmail(UIView)
 }
 
 protocol CreateActionInputProtocol {
@@ -153,9 +154,10 @@ class CreateActionPresenter: PresenterProtocol, CreateActionInputProtocol {
             }))
         case .systemShareAction(let view):
             let image = view.asImage()
-            let titleItem = "\(newAction.name ?? "") \n\(GlobalConstants.appURL)"
+            let titleItem = "\(newAction.name ?? "")"
+            let appLink = URL(string: GlobalConstants.appURL)!
             
-            let items: [Any] = [titleItem, image]
+            let items: [Any] = [titleItem, image, appLink]
             
             router.input(.systemShareAction(items))
         case .shareByEmail(let view):
