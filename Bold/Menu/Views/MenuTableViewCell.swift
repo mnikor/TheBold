@@ -36,7 +36,7 @@ enum MenuItemType {
         case .settings:
             imageView.image = Asset.menuSettings.image
             label.text = L10n.Menu.settings
-            counter.isHidden = false
+            counter.isHidden = true
         }
     }
 }
