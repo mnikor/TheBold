@@ -23,7 +23,7 @@ enum PlayerState {
 //    func addActionPlan()
 //}
 
-class PlayerViewController: UIViewController, ViewProtocol {
+class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
     
     typealias Presenter = PlayerPresenter
     typealias Configurator = PlayerConfigurator
@@ -65,6 +65,8 @@ class PlayerViewController: UIViewController, ViewProtocol {
     
     private var timer: Timer?
     private var state: PlayerState = .stoped
+    
+    private var alertController: BlurAlertController?
     
     @IBAction func tapPreviousSong(_ sender: UIButton) {
         AudioService.shared.input(.playPrevious)
@@ -297,10 +299,11 @@ extension PlayerViewController: AudioServiceDelegate {
     }
     
     func playerPaused() {
-        timer?.invalidate()
-        if premiumWasShown { return }
-        if selectedContent?.contentStatus == .locked || selectedContent?.contentStatus == .lockedPoints {
+        print("State: \(state)")
+        if state == .playing {
+            timer?.invalidate()
             checkForTheEndTrack()
+            state = .paused
         }
     }
     
@@ -309,9 +312,25 @@ extension PlayerViewController: AudioServiceDelegate {
         guard let trackDuration = service.getDuration()?.seconds else { return }
         
         if currentDuration > trackDuration {
-            premiumWasShown = true
-            showPremiumController()
+            if selectedContent?.contentStatus == .locked || selectedContent?.contentStatus == .lockedPoints {
+                if !premiumWasShown { return }
+                premiumWasShown = true
+                showPremiumController()
+            } else {
+                guard let activityContent = selectedContent else { return }
+                configureShareActivity(with: activityContent)
+            }
         }
+    }
+    
+    func configureShareActivity(with action: ActivityContent) {
+        
+        let shareView = RateAndShareView.loadFromNib()
+        shareView.delegate = self
+        shareView.configure(with: action)
+        
+        alertController = showAlert(with: shareView)
+        
     }
     
     func showPremiumController() {
@@ -352,5 +371,23 @@ extension PlayerViewController: AudioServiceDelegate {
         formatter.zeroFormattingBehavior = [ .pad ]
         return formatter.string(from: timeInterval) ?? "0:00"
     }
+    
+}
+
+extension PlayerViewController: RateAndShareViewDelegate {
+    func rateUs() {
+        print("Rate us tapped")
+    }
+    
+    func share(with image: UIImage, actionType: String) {
+        
+        let title = "Hey, I recomended to listen this \(actionType)"
+        let appLink = URL(string: GlobalConstants.appURL)!
+        
+        let items: [Any] = [title, image, appLink]
+        
+        alertController?.shareContent(with: items)
+    }
+    
     
 }

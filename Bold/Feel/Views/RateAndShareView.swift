@@ -24,6 +24,7 @@ class RateAndShareView: UIView {
     @IBOutlet weak var shareButton: UIButton!
 
     private var action: ActionEntity?
+    private var activityContent: ActivityContent?
     private var descriptionViewModel: DescriptionViewModel?
     private var actionType: String?
     
@@ -47,6 +48,17 @@ class RateAndShareView: UIView {
         titleLabel.text = action.data?.title
         
         if let activityContent = action.data, let imageURL = activityContent.imageURL {
+            actionType = activityContent.type.rawValue.capitalizingFirstLetter()
+            myActionIsLabel.text = actionType
+            actionImageView.downloadImageAnimated(path: imageURL)
+        }
+    }
+    
+    func configure(with action: ActivityContent) {
+        self.activityContent = action
+        titleLabel.text = action.title
+        
+        if let activityContent = activityContent, let imageURL = activityContent.imageURL {
             actionType = activityContent.type.rawValue.capitalizingFirstLetter()
             myActionIsLabel.text = actionType
             actionImageView.downloadImageAnimated(path: imageURL)

@@ -8,10 +8,16 @@
 
 import UIKit
 
-class LeftMenuViewController: MenuViewController {
+class LeftMenuViewController: MenuViewController, AlertDisplayable {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var menuBottomView: MenuBottomView!
+    
+    private var loginView: SignUpView = {
+        let view = SignUpView.loadViewFromNib()
+        view.authType = .logIn
+        return view
+    }()
     
     var menuItems = [MenuItemType]()
     
@@ -77,6 +83,22 @@ extension LeftMenuViewController: MenuBottomViewDelegate {
     
     func tapShowLogIn() {
         // TODO
+        SessionManager.shared.killSession()
+        guard let viewController = StoryboardScene.Splash.storyboard.instantiateInitialViewController()
+            else { return }
+        UIApplication.setRootView(viewController,
+                                  animated: true)
+    }
+    
+}
+
+extension LeftMenuViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return FadePresentAnimationController()
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return nil
     }
     
 }

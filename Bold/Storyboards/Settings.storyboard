@@ -584,23 +584,40 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoSmall" translatesAutoresizingMaskIntoConstraints="NO" id="9r9-hi-alV">
                                         <rect key="frame" x="157.66666666666666" y="50" width="60" height="28"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="premium_congrats" translatesAutoresizingMaskIntoConstraints="NO" id="zJx-2l-avd">
-                                        <rect key="frame" x="20" y="155" width="335" height="246"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VM1-z4-8gV">
-                                        <rect key="frame" x="88.666666666666671" y="453" width="197.66666666666663" height="28.333333333333314"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="23"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are now a member of Bold premium. Enjoy unlimited access!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fd8-pz-w73">
-                                        <rect key="frame" x="20" y="497.33333333333331" width="335" height="36.666666666666686"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubC-60-AQ9">
+                                        <rect key="frame" x="20" y="638.66666666666663" width="335" height="399.99999999999989"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="premium_congrats" translatesAutoresizingMaskIntoConstraints="NO" id="zJx-2l-avd">
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="246"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are now a member of Bold premium. Enjoy unlimited access!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fd8-pz-w73">
+                                                <rect key="frame" x="0.0" y="342.33333333333337" width="335" height="36.666666666666686"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VM1-z4-8gV">
+                                                <rect key="frame" x="68.666666666666671" y="298" width="197.66666666666663" height="28.333333333333314"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="23"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="VM1-z4-8gV" firstAttribute="centerX" secondItem="ubC-60-AQ9" secondAttribute="centerX" id="4fY-bh-hhO"/>
+                                            <constraint firstItem="zJx-2l-avd" firstAttribute="leading" secondItem="ubC-60-AQ9" secondAttribute="leading" id="MUe-jF-aV0"/>
+                                            <constraint firstItem="Fd8-pz-w73" firstAttribute="top" secondItem="VM1-z4-8gV" secondAttribute="bottom" constant="16" id="N5C-uV-I33"/>
+                                            <constraint firstAttribute="trailing" secondItem="Fd8-pz-w73" secondAttribute="trailing" id="ZB0-LL-C7h"/>
+                                            <constraint firstItem="Fd8-pz-w73" firstAttribute="leading" secondItem="ubC-60-AQ9" secondAttribute="leading" id="iYm-WQ-1Hn"/>
+                                            <constraint firstItem="zJx-2l-avd" firstAttribute="top" secondItem="ubC-60-AQ9" secondAttribute="top" id="kT4-ng-6Yn"/>
+                                            <constraint firstAttribute="trailing" secondItem="zJx-2l-avd" secondAttribute="trailing" id="ltd-xd-Vhr"/>
+                                            <constraint firstItem="VM1-z4-8gV" firstAttribute="top" secondItem="zJx-2l-avd" secondAttribute="bottom" constant="52" id="qOo-YA-Qt7"/>
+                                            <constraint firstAttribute="height" constant="400" id="yLZ-wt-ozS"/>
+                                        </constraints>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7f-jA-xFZ">
-                                        <rect key="frame" x="20" y="579" width="335" height="56"/>
+                                        <rect key="frame" x="20" y="1561" width="335" height="56"/>
                                         <color key="backgroundColor" red="1" green="0.66666666666666663" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="f9x-7F-JUP"/>
@@ -621,18 +638,12 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="M7f-jA-xFZ" firstAttribute="top" secondItem="Fd8-pz-w73" secondAttribute="bottom" constant="45" id="524-qR-dCN"/>
-                                    <constraint firstItem="VM1-z4-8gV" firstAttribute="centerX" secondItem="dYa-fl-1N3" secondAttribute="centerX" id="6Iq-v3-fd0"/>
-                                    <constraint firstItem="VM1-z4-8gV" firstAttribute="top" secondItem="zJx-2l-avd" secondAttribute="bottom" constant="52" id="IfL-gG-nZQ"/>
+                                    <constraint firstItem="ubC-60-AQ9" firstAttribute="leading" secondItem="dYa-fl-1N3" secondAttribute="leading" constant="20" id="8VX-QI-JY8"/>
+                                    <constraint firstAttribute="bottom" secondItem="M7f-jA-xFZ" secondAttribute="bottom" constant="50" id="Fk1-oD-JkM"/>
                                     <constraint firstItem="9r9-hi-alV" firstAttribute="centerX" secondItem="dYa-fl-1N3" secondAttribute="centerX" id="J84-cN-sOZ"/>
-                                    <constraint firstItem="M7f-jA-xFZ" firstAttribute="leading" secondItem="Fd8-pz-w73" secondAttribute="leading" id="Ua1-H5-Xhc"/>
-                                    <constraint firstItem="M7f-jA-xFZ" firstAttribute="trailing" secondItem="Fd8-pz-w73" secondAttribute="trailing" id="VXo-vP-Be8"/>
-                                    <constraint firstItem="Fd8-pz-w73" firstAttribute="top" secondItem="VM1-z4-8gV" secondAttribute="bottom" constant="16" id="VYC-Zf-XJE"/>
-                                    <constraint firstAttribute="trailing" secondItem="Fd8-pz-w73" secondAttribute="trailing" constant="20" id="ZwF-3M-H4Z"/>
-                                    <constraint firstItem="zJx-2l-avd" firstAttribute="top" secondItem="9r9-hi-alV" secondAttribute="bottom" constant="77" id="pic-Ij-Sgq"/>
-                                    <constraint firstAttribute="trailing" secondItem="zJx-2l-avd" secondAttribute="trailing" constant="20" id="qaf-cJ-JyF"/>
-                                    <constraint firstItem="Fd8-pz-w73" firstAttribute="leading" secondItem="dYa-fl-1N3" secondAttribute="leading" constant="20" id="sP1-1o-57C"/>
-                                    <constraint firstItem="zJx-2l-avd" firstAttribute="leading" secondItem="dYa-fl-1N3" secondAttribute="leading" constant="20" id="vHz-l2-sKf"/>
+                                    <constraint firstItem="M7f-jA-xFZ" firstAttribute="leading" secondItem="dYa-fl-1N3" secondAttribute="leading" constant="20" id="KtH-Wt-Dfl"/>
+                                    <constraint firstAttribute="trailing" secondItem="M7f-jA-xFZ" secondAttribute="trailing" constant="20" id="Nbo-2S-JrC"/>
+                                    <constraint firstAttribute="trailing" secondItem="ubC-60-AQ9" secondAttribute="trailing" constant="20" id="UrH-Og-DiP"/>
                                     <constraint firstItem="9r9-hi-alV" firstAttribute="top" secondItem="dYa-fl-1N3" secondAttribute="top" constant="50" id="y8M-R1-unW"/>
                                 </constraints>
                             </view>
@@ -642,9 +653,11 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                             <constraint firstItem="dYa-fl-1N3" firstAttribute="top" secondItem="rQt-hd-jNo" secondAttribute="top" id="0Hh-JF-rSr"/>
                             <constraint firstItem="rQt-hd-jNo" firstAttribute="top" secondItem="cVy-Pq-4kP" secondAttribute="top" id="76G-qb-0fj"/>
                             <constraint firstItem="bbk-DP-VOj" firstAttribute="trailing" secondItem="rQt-hd-jNo" secondAttribute="trailing" id="CH3-Yh-j84"/>
+                            <constraint firstItem="M7f-jA-xFZ" firstAttribute="centerX" secondItem="bbk-DP-VOj" secondAttribute="centerX" id="Lh6-9R-djn"/>
                             <constraint firstItem="bbk-DP-VOj" firstAttribute="trailing" secondItem="dYa-fl-1N3" secondAttribute="trailing" id="M5Y-cM-TnL"/>
                             <constraint firstAttribute="bottom" secondItem="rQt-hd-jNo" secondAttribute="bottom" id="MB1-bJ-oNa"/>
                             <constraint firstItem="dYa-fl-1N3" firstAttribute="leading" secondItem="bbk-DP-VOj" secondAttribute="leading" id="bAr-2D-RvP"/>
+                            <constraint firstItem="ubC-60-AQ9" firstAttribute="centerY" secondItem="bbk-DP-VOj" secondAttribute="centerY" id="k6o-IF-mXK"/>
                             <constraint firstItem="dYa-fl-1N3" firstAttribute="bottom" secondItem="rQt-hd-jNo" secondAttribute="bottom" id="nNh-v8-w5n"/>
                             <constraint firstItem="rQt-hd-jNo" firstAttribute="leading" secondItem="bbk-DP-VOj" secondAttribute="leading" id="zPw-dI-uKh"/>
                         </constraints>

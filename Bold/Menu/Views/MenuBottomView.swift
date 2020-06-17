@@ -28,7 +28,7 @@ class MenuBottomView: UIView {
     @IBOutlet weak var subtitleLabel: UILabel!
 
     weak var delegate: MenuBottomViewDelegate?
-    var typeView: MenuBottomViewType? = .user
+    var typeView: MenuBottomViewType? = .logIn
     
     let disposeBag = DisposeBag()
     
@@ -55,7 +55,7 @@ class MenuBottomView: UIView {
     }
     
     func setName(_ name: String?) {
-        titleLabel.text = name
+        titleLabel.text = name ?? "Log in"
     }
     
     func setUserImage(imagePath: String?) {
@@ -65,8 +65,6 @@ class MenuBottomView: UIView {
             userImageView.downloadImageAnimated(path: path) {
                 SessionManager.shared.profile?.image = $0
             }
-//            userImageView.setImageAnimated(path: path, completion: {
-//                SessionManager.shared.profile?.image = $0 })
         }
     }
     
@@ -75,20 +73,44 @@ class MenuBottomView: UIView {
     }
     
     private func subscribeUpdateLevel() {
+        
+        checkUserAuth()
+        
         LevelOfMasteryService.shared.changePoints.subscribe(onNext: {[weak self] (levelInfo) in
-            self?.subtitleLabel.text = levelInfo.level.type.titleText
+            guard let ss = self else { return }
+            if ss.typeView == .user {
+                ss.userImageView.isHidden = false
+                ss.subtitleLabel.text = levelInfo.level.type.titleText
+            } else {
+                ss.userImageView.isHidden = true
+                ss.subtitleLabel.text = "And start tracking your boldness"
+            }
         }).disposed(by: disposeBag)
     }
     
     @IBAction func tapBottomView(_ sender: UIButton) {
+        
+        // Detect if user is logged in
+        
+        checkUserAuth()
+        
         guard let typeView = typeView else {
             return
         }
+        
         switch typeView {
         case .logIn:
             delegate?.tapShowLogIn()
         case .user:
             delegate?.tapShowUsetProfile()
+        }
+    }
+    
+    func checkUserAuth() {
+        if let _ = SessionManager.shared.profile {
+            typeView = .user
+        } else {
+            typeView = .logIn
         }
     }
 }
