@@ -64,7 +64,13 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
     var buttonsToolbar = StateStatusButtonToolbar()
     
     private var timer: Timer?
-    private var state: PlayerState = .stoped
+    private var state: PlayerState = .stoped {
+        didSet {
+            print("state did change: \(state)")
+        }
+    }
+    
+    private var isDismissGesture = false
     
     private var alertController: BlurAlertController?
     
@@ -239,7 +245,7 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
             case .appearing:
                 UIApplication.topViewController?.present(playerVC, animated: true) {
                     if content.type != .meditation {
-                        playerVC.play()
+//                        playerVC.play()
                         playerVC.changeImageButton()
                     }
                 }
@@ -268,6 +274,7 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
                 AudioService.shared.input(.showSmallPlayer)
             }
         } else {
+            isDismissGesture = true
             AudioService.shared.input(.stop)
             dismiss(animated: true)
         }
@@ -299,11 +306,9 @@ extension PlayerViewController: AudioServiceDelegate {
     }
     
     func playerPaused() {
-        print("State: \(state)")
-        if state == .playing {
-            timer?.invalidate()
+        timer?.invalidate()
+        if !isDismissGesture {
             checkForTheEndTrack()
-            state = .paused
         }
     }
     
@@ -321,21 +326,6 @@ extension PlayerViewController: AudioServiceDelegate {
                 configureShareActivity(with: activityContent)
             }
         }
-    }
-    
-    func configureShareActivity(with action: ActivityContent) {
-        
-        let shareView = RateAndShareView.loadFromNib()
-        shareView.delegate = self
-        shareView.configure(with: action)
-        
-        alertController = showAlert(with: shareView)
-        
-    }
-    
-    func showPremiumController() {
-        let vc = StoryboardScene.Settings.premiumViewController.instantiate()
-        present(vc, animated: true, completion: nil)
     }
     
     func playerIsPlaying() {
@@ -389,5 +379,19 @@ extension PlayerViewController: RateAndShareViewDelegate {
         alertController?.shareContent(with: items)
     }
     
+    func configureShareActivity(with action: ActivityContent) {
+        
+        let shareView = RateAndShareView.loadFromNib()
+        shareView.delegate = self
+        shareView.configure(with: action)
+        
+        alertController = showAlert(with: shareView)
+        
+    }
+    
+    func showPremiumController() {
+        let vc = StoryboardScene.Settings.premiumViewController.instantiate()
+        present(vc, animated: true, completion: nil)
+    }
     
 }
