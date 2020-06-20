@@ -55,7 +55,10 @@ class ShareView: UIView {
     func configure(with action: Action) {
         self.action = action
         titleLabel.text = action.name
-        backgroundImageView.backgroundColor = ColorGoalType(rawValue: action.goal!.color)?.colorGoal()
+        
+        guard let goal = action.goal else { return }
+        
+        backgroundImageView.backgroundColor = ColorGoalType(rawValue: goal.color)?.colorGoal()
     }
  
     @IBAction private func shareWithFacebook() {

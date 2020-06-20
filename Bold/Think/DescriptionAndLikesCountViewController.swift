@@ -171,9 +171,10 @@ class DescriptionAndLikesCountViewController: UIViewController, AlertDisplayable
                 let document = PDFDocument(url: documentURL),
                 let pdfView = pdfView as? PDFView
                 else { return }
+            
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                
+                pdfView.isUserInteractionEnabled = false
                 pdfView.document = document
                 if let documentView = pdfView.documentView {
                     self.pdfContainerHeightConstraint.constant = documentView.frame.size.height + 25
@@ -252,24 +253,20 @@ extension DescriptionAndLikesCountViewController: OverTabbarViewDelegate {
 extension DescriptionAndLikesCountViewController: UIScrollViewDelegate {
     
     func calculatePosition(scrollView: UIScrollView) {
-        
         if percent != 0 {
             scrollView.setContentOffset(CGPoint(x: scrollView.contentOffset.x, y: scrollView.contentSize.height - scrollView.frame.size.height), animated: true)
         }
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
         calculatePosition(scrollView: scrollView)
     }
     
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        
         calculatePosition(scrollView: scrollView)
     }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        
         calculatePosition(scrollView: scrollView)
     }
     

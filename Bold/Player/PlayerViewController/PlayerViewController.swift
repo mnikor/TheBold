@@ -318,7 +318,7 @@ extension PlayerViewController: AudioServiceDelegate {
         
         if currentDuration > trackDuration {
             if selectedContent?.contentStatus == .locked || selectedContent?.contentStatus == .lockedPoints {
-                if !premiumWasShown { return }
+                if premiumWasShown { return }
                 premiumWasShown = true
                 showPremiumController()
             } else {
