@@ -57,9 +57,13 @@ struct DescriptionViewModel {
                                          artistName: "",
                                          duration: "4:07",
                                          path: .local(Bundle.main.path(forResource: "Bold Manifest ", ofType: "mp3") ?? ""))
-        let image = "boldManifestMain"//Asset.boldManifestMain.name
+
+        var path = ""
         
-        let path = Bundle.main.path(forResource: image, ofType: nil)
+        if let resourcePath = Bundle.main.resourcePath {
+            let imageName = "boldManifestMain.png"
+            path = resourcePath + "/" + imageName
+        }
         
         let content = ActivityContent(id: 0, position: 0, type: ContentType.hypnosis, title: "", body: "", authorName: "", footer: "", durtionRead: 307, pointOfUnlock: 0, contentStatus: ContentStatus.unlocked, imageURL: path, smallImageURL: path, largeImageURL: path, likesCount: 0, authorPhotoURL: nil, audioTracks: [audio], audioPreviews: [], documentURL: FilePath.local (documentURL?.absoluteString ?? ""), documentPreviewURL: nil, forCategoryPresentation: false)
         return DescriptionViewModel(image: .image(Asset.boldManifestMain.image),

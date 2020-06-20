@@ -202,6 +202,16 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
     }
     
     func setImage(imagePath: String?) {
+
+        if let path = imagePath {
+            let boldManifest = "boldManifestMain.png"
+            if path.hasSuffix(boldManifest) {
+                let image = UIImage(named: boldManifest)
+                titleImageView.image = image
+                return
+            }
+        }
+        
         titleImageView.downloadImageAnimated(path: imagePath ?? "", placeholder: Asset.playerBackground.image)
 //        titleImageView.setImageAnimated(path: imagePath ?? "", placeholder: Asset.playerBackground.image)
     }
