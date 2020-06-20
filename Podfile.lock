@@ -26,8 +26,8 @@ DEPENDENCIES:
   - Cosmos (~> 19.0)
   - JTAppleCalendar (~> 8.0)
   - KeychainAccess (~> 3.1.2)
-  - RxCocoa
-  - RxSwift
+  - RxCocoa (~> 5)
+  - RxSwift (~> 5)
   - SDWebImage
   - SnapKit
   - SVProgressHUD
@@ -71,6 +71,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   VisualEffectView: bde340c8268765c2d71f7f115930733ba7e4a926
 
-PODFILE CHECKSUM: dc6344994adde352266af6a314f200bd7aba9f57
+PODFILE CHECKSUM: 4b17f64c366c6ee965ff27351b5cc906b5066667
 
 COCOAPODS: 1.9.1

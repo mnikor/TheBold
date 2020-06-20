@@ -116,10 +116,11 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="premiumImage" translatesAutoresizingMaskIntoConstraints="NO" id="6HL-NN-5mG">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="355"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWa-aF-fhi">
-                                                <rect key="frame" x="40" y="251.66666666666666" width="295" height="73.333333333333343"/>
-                                                <string key="text">Let your dollar go further for you.
-Together we can  plant more «seeds» and continue exciting journey of growth.</string>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There is so much to explore, to learn, to train your mind and ultimately to GROW." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWa-aF-fhi">
+                                                <rect key="frame" x="37.666666666666657" y="270" width="300" height="55"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="300" id="Lpy-Bd-wRE"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -131,7 +132,7 @@ Together we can  plant more «seeds» and continue exciting journey of growth.</
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go.All.In." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0I-gN-4zb">
-                                                <rect key="frame" x="124.33333333333334" y="211.33333333333334" width="126.33333333333334" height="34.333333333333343"/>
+                                                <rect key="frame" x="124.33333333333334" y="229.66666666666666" width="126.33333333333334" height="34.333333333333343"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="28"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -153,6 +154,7 @@ Together we can  plant more «seeds» and continue exciting journey of growth.</
                                             <constraint firstItem="6HL-NN-5mG" firstAttribute="top" secondItem="cPc-tv-0N6" secondAttribute="top" id="4K9-qT-tNg"/>
                                             <constraint firstAttribute="width" secondItem="cPc-tv-0N6" secondAttribute="height" multiplier="75:71" id="83a-jl-g40"/>
                                             <constraint firstItem="lWa-aF-fhi" firstAttribute="top" secondItem="R0I-gN-4zb" secondAttribute="bottom" constant="6" id="BZV-QT-wX5"/>
+                                            <constraint firstItem="lWa-aF-fhi" firstAttribute="centerX" secondItem="cPc-tv-0N6" secondAttribute="centerX" id="EOQ-Ab-Bow"/>
                                             <constraint firstItem="6HL-NN-5mG" firstAttribute="leading" secondItem="cPc-tv-0N6" secondAttribute="leading" id="FXN-WW-Tpg"/>
                                             <constraint firstAttribute="bottom" secondItem="6HL-NN-5mG" secondAttribute="bottom" id="I8o-BF-Hm4"/>
                                             <constraint firstAttribute="trailing" secondItem="ln6-Ie-ho0" secondAttribute="trailing" id="TJA-fE-v0i"/>
@@ -160,8 +162,6 @@ Together we can  plant more «seeds» and continue exciting journey of growth.</
                                             <constraint firstItem="9K7-8F-7PE" firstAttribute="top" secondItem="cPc-tv-0N6" secondAttribute="topMargin" constant="22" id="brI-pP-wlO"/>
                                             <constraint firstItem="ln6-Ie-ho0" firstAttribute="centerY" secondItem="9K7-8F-7PE" secondAttribute="centerY" id="by5-2C-uf6"/>
                                             <constraint firstAttribute="trailing" secondItem="6HL-NN-5mG" secondAttribute="trailing" id="cTl-RS-1jJ"/>
-                                            <constraint firstItem="lWa-aF-fhi" firstAttribute="leading" secondItem="cPc-tv-0N6" secondAttribute="leading" constant="40" id="cZ2-Y5-oLo"/>
-                                            <constraint firstAttribute="trailing" secondItem="lWa-aF-fhi" secondAttribute="trailing" constant="40" id="dFE-d8-Dok"/>
                                             <constraint firstAttribute="bottom" secondItem="lWa-aF-fhi" secondAttribute="bottom" constant="30" id="hbN-0y-Nbk"/>
                                             <constraint firstItem="9K7-8F-7PE" firstAttribute="centerX" secondItem="cPc-tv-0N6" secondAttribute="centerX" id="jG0-pw-saa"/>
                                         </constraints>
@@ -588,16 +588,19 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                                         <rect key="frame" x="20" y="638.66666666666663" width="335" height="399.99999999999989"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="premium_congrats" translatesAutoresizingMaskIntoConstraints="NO" id="zJx-2l-avd">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="246"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="250"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="250" id="B09-4H-UGa"/>
+                                                </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are now a member of Bold premium. Enjoy unlimited access!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fd8-pz-w73">
-                                                <rect key="frame" x="0.0" y="342.33333333333337" width="335" height="36.666666666666686"/>
+                                                <rect key="frame" x="0.0" y="346.33333333333337" width="335" height="36.666666666666686"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VM1-z4-8gV">
-                                                <rect key="frame" x="68.666666666666671" y="298" width="197.66666666666663" height="28.333333333333314"/>
+                                                <rect key="frame" x="68.666666666666671" y="302" width="197.66666666666663" height="28.333333333333314"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="23"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>

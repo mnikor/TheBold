@@ -8,8 +8,8 @@ target 'Bold' do
 
     pod 'SwiftGen', '~> 6.0'
     pod 'Alamofire'
-    pod 'RxSwift'
-    pod 'RxCocoa'
+    pod 'RxSwift', '~> 5'
+    pod 'RxCocoa', '~> 5'
     pod 'SwiftVideoBackground'
     pod 'JTAppleCalendar', '~> 8.0'
     pod 'SnapKit'

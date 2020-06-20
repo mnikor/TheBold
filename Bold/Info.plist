@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -29,6 +27,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>So you can make a photo for your account</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>So you can save and share your activities with friends</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>So you can choose a photo for your account</string>
 	<key>UIAppFonts</key>
@@ -75,7 +75,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>So you can save and share your activities with friends</string>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>
