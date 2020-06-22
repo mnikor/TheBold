@@ -15,6 +15,7 @@ enum ActionsListInputRouter {
     case presentedBy(AddActionPlanViewController)
     case player(_ content: ActivityContent)
     case read(_ content: ActivityContent)
+    case readPreview(_ content: ActivityContent)
     case share(ActionEntity)
     case systemShare([Any])
     case showPremium
@@ -54,10 +55,9 @@ class ActionsListRouter: RouterProtocol, ActionsListRouterProtocol {
         case .player(content: let content):
             PlayerViewController.createController(content: content)
         case .read(content: let content):
-            let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
-            vc.viewModel = DescriptionViewModel.map(activityContent: content)
-            vc.isDownloadedContent = DataSource.shared.contains(content: content)
-            viewController.navigationController?.present(vc, animated: true, completion: nil)
+            checkContentStatus(content: content)
+        case .readPreview(let content):
+            showReadableContent(content)
         case .share(let action):
             configureShareActivity(with: action)
         case .systemShare(let items):
@@ -68,13 +68,26 @@ class ActionsListRouter: RouterProtocol, ActionsListRouterProtocol {
     }
     
     func configureShareActivity(with action: ActionEntity) {
-        
         let shareView = RateAndShareView.loadFromNib()
         shareView.delegate = viewController
         shareView.configure(with: action)
         
         alertController = viewController.showAlert(with: shareView)
-        
+    }
+    
+    func checkContentStatus(content: ActivityContent) {
+        if content.contentStatus == .locked || content.contentStatus == .lockedPoints {
+            showPremiumController()
+        } else {
+            showReadableContent(content)
+        }
+    }
+    
+    func showReadableContent(_ content: ActivityContent) {
+        let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
+        vc.viewModel = DescriptionViewModel.map(activityContent: content)
+        vc.isDownloadedContent = DataSource.shared.contains(content: content)
+        viewController.navigationController?.present(vc, animated: true, completion: nil)
     }
     
     func showPremiumController() {

@@ -121,7 +121,7 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
         case .previewListen:
             router.input(.player(content))
         case .previewRead:
-            router.input(.read(content))
+            router.input(.readPreview(content))
         case .start:
             self.input(.didSelectContent(content))
         case .unlock:
