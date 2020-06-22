@@ -22,11 +22,20 @@ class RateAndShareView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var rateUsButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
+    
+    // CITATION
+    
+    @IBOutlet weak var citationView: UIView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var authorImageView: UIImageView!
+    @IBOutlet weak var authorNameLabel: UILabel!
+    @IBOutlet weak var citationLabel: UILabel!
 
     private var action: ActionEntity?
     private var activityContent: ActivityContent?
     private var descriptionViewModel: DescriptionViewModel?
     private var actionType: String?
+    private var isFoodForThoughts = false
     
     private func configureSubviews() {
         rateUsButton.layer.borderWidth = 1
@@ -77,7 +86,15 @@ class RateAndShareView: UIView {
         case .path(let path):
             actionImageView.downloadImageAnimated(path: path!)
         }
-        
+    }
+    
+    func configureCitation(authorImage: UIImage, authorName: String, citation: String, color: UIColor) {
+        isFoodForThoughts = true
+        backgroundImageView.backgroundColor = color
+        authorImageView.image = authorImage
+        authorNameLabel.text = authorName
+        citationLabel.text = citation
+        citationView.isHidden = false
     }
     
     @IBAction private func rateUsAction() {
@@ -85,7 +102,7 @@ class RateAndShareView: UIView {
     }
     
     @IBAction private func shareAction() {
-        let image = sharableView.asImage()
+        let image = isFoodForThoughts ? citationView.asImage() : sharableView.asImage()
         delegate?.share(with: image, actionType: actionType ?? "")
     }
     

@@ -31,22 +31,17 @@ enum CitationType: Int {
     
 }
 
-class CitationViewController: UIViewController {
+class CitationViewController: UIViewController, AlertDisplayable {
 
     @IBOutlet weak var authorImageView: CustomImageView!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var citationTextLabel: UILabel!
     
     @IBAction func tapShareButton(_ sender: UIButton) {
-        
-        let title = GlobalConstants.appURL
-        let image = self.view.asImage()
-        let appLink = URL(string: GlobalConstants.appURL)!
-        
-        let items: [Any] = [title, image, appLink]
-        
-        shareContent(with: items)
+        configureShareActivity()
     }
+    
+    var alertController: BlurAlertController?
     
     var quote: ActivityContent?
     var color: ColorGoalType = .none
@@ -68,5 +63,35 @@ class CitationViewController: UIViewController {
         //authorImageView.setImageAnimated(path: quote?.authorPhotoURL ?? "")
         citationTextLabel.text = quote?.body
     }
+    
+    func configureShareActivity() {
+        let shareView = RateAndShareView.loadFromNib()
+        shareView.delegate = self
+        
+        guard let image = authorImageView.image, let authorName = quote?.authorName, let citation = quote?.body else { return }
+        
+        shareView.configureCitation(authorImage: image,
+                                    authorName: authorName,
+                                    citation: citation,
+                                    color: color.colorGoal())
+        
+        alertController = showAlert(with: shareView)
+    }
 
+}
+
+extension CitationViewController: RateAndShareViewDelegate {
+    func rateUs() {
+        
+    }
+    
+    func share(with image: UIImage, actionType: String) {
+        let title = GlobalConstants.appURL
+        let image = image
+        let appLink = URL(string: GlobalConstants.appURL)!
+        
+        let items: [Any] = [title, image, appLink]
+        
+        alertController?.shareContent(with: items)
+    }
 }
