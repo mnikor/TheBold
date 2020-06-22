@@ -74,6 +74,8 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
     
     private var alertController: BlurAlertController?
     
+    private var loader = LoaderView(frame: .zero)
+    
     @IBAction func tapPreviousSong(_ sender: UIButton) {
         AudioService.shared.input(.playPrevious)
     }
@@ -189,6 +191,10 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
         if AudioService.shared.isPlaying() {
             playerIsPlaying()
         }
+        
+        loader.start(in: view, yOffset: 0)
+        view.bringSubviewToFront(loader)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -212,8 +218,10 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
             }
         }
         
-        titleImageView.downloadImageAnimated(path: imagePath ?? "", placeholder: Asset.playerBackground.image)
-//        titleImageView.setImageAnimated(path: imagePath ?? "", placeholder: Asset.playerBackground.image)
+        titleImageView.downloadImageAnimated(path: imagePath ?? "") { [weak self] _ in
+            guard let ss = self else { return }
+            ss.loader.stop()
+        }
     }
     
     private func configureSliderAction() {
