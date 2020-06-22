@@ -33,9 +33,12 @@ class LevelOfMasteryRouter: LevelOfMasteryProtocol {
         case .close:
             viewController.navigationController?.popViewController(animated: true)
         case .unlockPremium:
-            let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
-            vc.viewModel = DescriptionViewModel.boldManifestInfo
-            viewController.navigationController?.present(vc, animated: true, completion: nil)
+            showPremiumController()
         }
+    }
+    
+    func showPremiumController() {
+        let vc = StoryboardScene.Settings.premiumViewController.instantiate()
+        viewController.present(vc, animated: true, completion: nil)
     }
 }
