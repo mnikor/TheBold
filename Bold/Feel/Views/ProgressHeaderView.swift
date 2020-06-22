@@ -69,10 +69,12 @@ class ProgressHeaderView: UIView {
     
     private func changeCountPoints(points: Int) {
         
+        if titleLabel.isHidden { return }
+        
         if points > 0 {
             changePointView.backgroundColor = ColorName.secondaryTurquoise.color
             changePointLabel.text = String(format: "+%d", points)
-        }else {
+        } else {
             changePointView.backgroundColor = ColorName.primaryRed.color
             changePointLabel.text = String(format: "%d", points)
         }

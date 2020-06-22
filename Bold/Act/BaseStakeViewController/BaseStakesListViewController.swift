@@ -348,12 +348,12 @@ extension BaseStakesListViewController: UITableViewDelegate, UITableViewDataSour
         if indexPath == IndexPath(row: 0, section: 0) && !isCalendar {
 
             let headerCell = tableView.dequeReusableCell(indexPath: indexPath) as NavigationTitleAndProgressTableViewCell
-            headerCell.progressView.titleLabel.isHidden = true
-            headerCell.progressView.pointsLabel.isHidden = true
-            headerCell.progressView.pointsImageView.isHidden = true
-            headerCell.progressView.changePointView.isHidden = true
-            headerCell.progressView.changePointLabel.isHidden = true
-            headerCell.progressViewHeight.constant = 5
+//            headerCell.progressView.titleLabel.isHidden = true
+//            headerCell.progressView.pointsLabel.isHidden = true
+//            headerCell.progressView.pointsImageView.isHidden = true
+//            headerCell.progressView.changePointView.isHidden = true
+//            headerCell.progressView.changePointLabel.isHidden = true
+//            headerCell.progressViewHeight.constant = 5
             return headerCell
 
         } else {
