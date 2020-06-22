@@ -84,10 +84,10 @@ extension LeftMenuViewController: MenuBottomViewDelegate {
     func tapShowLogIn() {
         // TODO
         SessionManager.shared.killSession()
-        guard let viewController = StoryboardScene.Splash.storyboard.instantiateInitialViewController()
-            else { return }
-        UIApplication.setRootView(viewController,
-                                  animated: true)
+        let viewController = StoryboardScene.Splash.onboardViewControllerIdentifier.instantiate()
+        viewController.transitioningDelegate = self
+        viewController.transitedFromMenu = true
+        present(viewController, animated: true, completion: nil)
     }
     
 }
@@ -102,3 +102,4 @@ extension LeftMenuViewController: UIViewControllerTransitioningDelegate {
     }
     
 }
+

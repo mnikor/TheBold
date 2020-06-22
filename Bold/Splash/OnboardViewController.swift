@@ -31,6 +31,8 @@ class OnboardViewController: UIViewController, AlertDisplayable {
         return view
     }()
     
+    var transitedFromMenu = false
+    
     private var alertViewController: UIViewController?
     
     let player = VideoBackground()
@@ -103,6 +105,13 @@ class OnboardViewController: UIViewController, AlertDisplayable {
             willLoopVideo: true,
             setAudioSessionAmbient: false
         )
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if transitedFromMenu { tapSignUp(UIButton()) }
         
     }
     
