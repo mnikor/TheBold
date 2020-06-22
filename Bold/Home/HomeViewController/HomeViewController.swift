@@ -39,7 +39,6 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
         registerForNotifications()
         configurator.configure(with: self)
         
-        self.navigationController?.navigationBar.shadowImage = UIImage()
         presenter.input(.subscribeForUpdates)
         prepareDataSource()
         configureHeaderView()
@@ -54,6 +53,19 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        configureNavigationBar()
+    }
+    
+    private func configureNavigationBar() {
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.barTintColor = ColorName.primaryBlue.color
+        navigationController?.navigationBar.tintColor = .white
     }
     
     func configureHeaderView() {

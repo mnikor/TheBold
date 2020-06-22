@@ -39,6 +39,7 @@ class LevelOfMasteryViewController: UIViewController, ViewProtocol {
                                                 style: .plain, target: self, action: #selector(didTapAtBackBarButtonItem(_:)))
         navigationItem.setLeftBarButton(leftBarButtonItem, animated: true)
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.4745098039, green: 0.5568627451, blue: 0.8509803922, alpha: 1)
+        navigationController?.navigationBar.barTintColor = .white
     }
     
     private func prepareTitleView() -> UILabel {
