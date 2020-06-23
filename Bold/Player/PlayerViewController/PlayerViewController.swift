@@ -76,6 +76,8 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
     
     private var loader = LoaderView(frame: .zero)
     
+    private var isBoldManifest = false
+    
     @IBAction func tapPreviousSong(_ sender: UIButton) {
         AudioService.shared.input(.playPrevious)
     }
@@ -192,8 +194,10 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
             playerIsPlaying()
         }
         
-        loader.start(in: view, yOffset: 0)
-        view.bringSubviewToFront(loader)
+        if !isBoldManifest {
+            loader.start(in: view, yOffset: 0)
+            view.bringSubviewToFront(loader)
+        }
         
     }
     
@@ -214,6 +218,7 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
             if path.hasSuffix(boldManifest) {
                 let image = UIImage(named: boldManifest)
                 titleImageView.image = image
+                isBoldManifest = true
                 return
             }
         }
@@ -333,8 +338,9 @@ extension PlayerViewController: AudioServiceDelegate {
     func checkForTheEndTrack() {
         let currentDuration = service.getCurrentTime().seconds + 1
         guard let trackDuration = service.getDuration()?.seconds else { return }
-        
+
         if currentDuration > trackDuration {
+            checkBoldManifest()
             if selectedContent?.contentStatus == .locked || selectedContent?.contentStatus == .lockedPoints {
                 if premiumWasShown { return }
                 premiumWasShown = true
@@ -343,6 +349,13 @@ extension PlayerViewController: AudioServiceDelegate {
                 guard let activityContent = selectedContent else { return }
                 configureShareActivity(with: activityContent)
             }
+        }
+    }
+    
+    private func checkBoldManifest() {
+        if isBoldManifest {
+            if let _ = UserDefaults.standard.value(forKey: "isBoldManifestPlayed") as? Bool { }
+            else { UserDefaults.standard.set(true, forKey: "isBoldManifestPlayed")}
         }
     }
     

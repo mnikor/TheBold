@@ -37,6 +37,8 @@ class DescriptionAndLikesCountViewController: UIViewController, AlertDisplayable
     
     private var alertController: BlurAlertController?
     
+    private var isBoldManifest = false
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         modalPresentationStyle = .overCurrentContext
@@ -159,6 +161,10 @@ class DescriptionAndLikesCountViewController: UIViewController, AlertDisplayable
             
             var docURL = viewModel?.documentURL
             
+            if docURL?.lastPathComponent == "Manifest.pdf" {
+                isBoldManifest = true
+            }
+            
             // CHECK FOR PREVIEW IN LOCKED CONTENT
             
             if let content = viewModel?.content, let previewURL = URL(string: content.documentPreviewURL ?? "") {
@@ -235,6 +241,13 @@ class DescriptionAndLikesCountViewController: UIViewController, AlertDisplayable
         //        audioPlayerDelegate?.likeContent(buttonsToolbar.like)
     }
     
+    private func checkBoldManifest() {
+        if isBoldManifest {
+            if let _ = UserDefaults.standard.value(forKey: "isBoldManifestPlayed") as? Bool { }
+            else { UserDefaults.standard.set(true, forKey: "isBoldManifestPlayed")}
+        }
+    }
+    
 }
 
 extension DescriptionAndLikesCountViewController: OverTabbarViewDelegate {
@@ -260,6 +273,11 @@ extension DescriptionAndLikesCountViewController: UIScrollViewDelegate {
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         calculatePosition(scrollView: scrollView)
+        
+        let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
+        if bottomEdge >= scrollView.contentSize.height {
+            checkBoldManifest()
+        }
     }
     
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {

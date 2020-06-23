@@ -58,7 +58,7 @@ class HomeInteractor: HomeInteractorInputProtocol {
                                                        content: feelContent.compactMap { ContentViewModel(backgroundImage: $0.categoryImage(),
                                                                                                           title: $0.categoryName()) },
                                                        itemCount: feelContent.count)
-          let boldManifest = ActivityViewModel.createViewModel(type: randomVisibleButton(),
+          let boldManifest = ActivityViewModel.createViewModel(type: checkUnlockButton(),
                                                                goals: [],
                                                                content: [],
                                                                itemCount: 0)
@@ -79,5 +79,15 @@ class HomeInteractor: HomeInteractorInputProtocol {
     
     private func randomVisibleButton() -> HomeActionsTypeCell {
         return Int(arc4random_uniform(UInt32(10)))%2 == 0 ? HomeActionsTypeCell.boldManifest : HomeActionsTypeCell.unlockPremium
+    }
+    
+    private func checkUnlockButton() -> HomeActionsTypeCell {
+        if let isBoldManifestPlayed = UserDefaults.standard.value(forKey: "isBoldManifestPlayed") as? Bool {
+            if isBoldManifestPlayed {
+                return HomeActionsTypeCell.unlockPremium
+            } else {
+                return HomeActionsTypeCell.boldManifest
+            }
+        } else { return HomeActionsTypeCell.boldManifest }
     }
 }

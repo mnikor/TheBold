@@ -18,12 +18,11 @@ class AuthViewConfigurator: ConfiguratorProtocol {
         let interactor = AuthViewInteractor(presenter: presenter)
         let router = AuthViewRouter(viewController: viewController)
         
-        presenter.viewController = viewController
+        viewController.presenter = presenter
+        
         presenter.interactor = interactor
         presenter.router = router
-        
-        viewController.presenter = presenter
-
+ 
     }
     
 }
