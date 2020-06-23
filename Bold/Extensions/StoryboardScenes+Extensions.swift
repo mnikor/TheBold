@@ -47,6 +47,8 @@ internal enum StoryboardScene {
   internal enum Auth: StoryboardType {
     internal static let storyboardName = "Auth"
 
+    internal static let authViewController = SceneType<Bold.AuthViewController>(storyboard: Auth.self, identifier: "AuthViewController")
+
     internal static let forgotPasswordViewControllerIdentifier = SceneType<Bold.ForgotPasswordViewController>(storyboard: Auth.self, identifier: "ForgotPasswordViewControllerIdentifier")
 
     internal static let forgotSuccessViewControllerIdentifier = SceneType<Bold.ForgotSuccessViewController>(storyboard: Auth.self, identifier: "ForgotSuccessViewControllerIdentifier")

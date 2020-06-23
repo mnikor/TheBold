@@ -19,6 +19,11 @@
 		4B1DFC7E2481425300921A91 /* NavigationTitleAndProgressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B1DFC7D2481425300921A91 /* NavigationTitleAndProgressTableViewCell.xib */; };
 		4B61C5F92498F65F00493E1B /* RateAndShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B61C5F82498F65E00493E1B /* RateAndShareView.xib */; };
 		4B61C5FB2498F67600493E1B /* RateAndShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B61C5FA2498F67600493E1B /* RateAndShareView.swift */; };
+		4B813B7D24A1FF5E00E574E8 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B813B7C24A1FF5E00E574E8 /* AuthViewController.swift */; };
+		4B813B8024A2116800E574E8 /* AuthViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B813B7F24A2116800E574E8 /* AuthViewConfigurator.swift */; };
+		4B813B8224A211B100E574E8 /* AuthViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B813B8124A211B100E574E8 /* AuthViewPresenter.swift */; };
+		4B813B8424A211BE00E574E8 /* AuthViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B813B8324A211BE00E574E8 /* AuthViewInteractor.swift */; };
+		4B813B8624A211C600E574E8 /* AuthViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B813B8524A211C600E574E8 /* AuthViewRouter.swift */; };
 		4BD74C4F247F9D8B00BD0A24 /* UIColor+HexExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD74C4E247F9D8B00BD0A24 /* UIColor+HexExtension.swift */; };
 		4BD74C51248123CB00BD0A24 /* NavigationTitleAndProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD74C50248123CB00BD0A24 /* NavigationTitleAndProgressTableViewCell.swift */; };
 		AB3A5076A4778FC67A39C5DE /* Pods_Bold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F633E16C16CF1D2DB8E5B5 /* Pods_Bold.framework */; };
@@ -217,7 +222,6 @@
 		F17CB26922A682130035ABAB /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17CB26822A682130035ABAB /* RoundedButton.swift */; };
 		F17CB26D22A6BDA60035ABAB /* SCPageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17CB26C22A6BDA60035ABAB /* SCPageControlView.swift */; };
 		F17CB27022A6CF230035ABAB /* OnboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17CB26F22A6CF230035ABAB /* OnboardCell.swift */; };
-		F17CB27422A7D0830035ABAB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17CB27322A7D0830035ABAB /* LoginViewController.swift */; };
 		F17EFABF23AD15730012F9DB /* Lessons.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F17EFABE23AD15730012F9DB /* Lessons.pdf */; };
 		F17EFAC123AD15A00012F9DB /* Stories.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F17EFAC023AD15A00012F9DB /* Stories.pdf */; };
 		F183301022E5CB2D00BB7A9E /* FeelConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183300F22E5CB2D00BB7A9E /* FeelConfigurator.swift */; };
@@ -472,6 +476,11 @@
 		4B1DFC7D2481425300921A91 /* NavigationTitleAndProgressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationTitleAndProgressTableViewCell.xib; sourceTree = "<group>"; };
 		4B61C5F82498F65E00493E1B /* RateAndShareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RateAndShareView.xib; sourceTree = "<group>"; };
 		4B61C5FA2498F67600493E1B /* RateAndShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateAndShareView.swift; sourceTree = "<group>"; };
+		4B813B7C24A1FF5E00E574E8 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		4B813B7F24A2116800E574E8 /* AuthViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewConfigurator.swift; sourceTree = "<group>"; };
+		4B813B8124A211B100E574E8 /* AuthViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewPresenter.swift; sourceTree = "<group>"; };
+		4B813B8324A211BE00E574E8 /* AuthViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewInteractor.swift; sourceTree = "<group>"; };
+		4B813B8524A211C600E574E8 /* AuthViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewRouter.swift; sourceTree = "<group>"; };
 		4BD74C4E247F9D8B00BD0A24 /* UIColor+HexExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+HexExtension.swift"; sourceTree = "<group>"; };
 		4BD74C50248123CB00BD0A24 /* NavigationTitleAndProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitleAndProgressTableViewCell.swift; sourceTree = "<group>"; };
 		C50FE4CD238BD785008DD7C8 /* DataSource+Files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSource+Files.swift"; sourceTree = "<group>"; };
@@ -671,7 +680,6 @@
 		F17CB26822A682130035ABAB /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		F17CB26C22A6BDA60035ABAB /* SCPageControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPageControlView.swift; sourceTree = "<group>"; };
 		F17CB26F22A6CF230035ABAB /* OnboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardCell.swift; sourceTree = "<group>"; };
-		F17CB27322A7D0830035ABAB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F17EFABE23AD15730012F9DB /* Lessons.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Lessons.pdf; sourceTree = "<group>"; };
 		F17EFAC023AD15A00012F9DB /* Stories.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Stories.pdf; sourceTree = "<group>"; };
 		F183300F22E5CB2D00BB7A9E /* FeelConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelConfigurator.swift; sourceTree = "<group>"; };
@@ -961,6 +969,18 @@
 				3EFCA3C02306E3F000129DB4 /* SettingsTableViewCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4B813B7E24A210FB00E574E8 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				4B813B7F24A2116800E574E8 /* AuthViewConfigurator.swift */,
+				4B813B7C24A1FF5E00E574E8 /* AuthViewController.swift */,
+				4B813B8124A211B100E574E8 /* AuthViewPresenter.swift */,
+				4B813B8324A211BE00E574E8 /* AuthViewInteractor.swift */,
+				4B813B8524A211C600E574E8 /* AuthViewRouter.swift */,
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 		BCAD1843C0CEEBE4BAFA0642 /* Pods */ = {
@@ -1517,8 +1537,8 @@
 		F17CB27222A7D03F0035ABAB /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				4B813B7E24A210FB00E574E8 /* SignUp */,
 				F179974822AE56EE0039879F /* Views */,
-				F17CB27322A7D0830035ABAB /* LoginViewController.swift */,
 				F1EB8DD522A8022500E3BC4C /* ForgotPasswordViewController.swift */,
 				F1EB8DD722A8026C00E3BC4C /* ForgotSuccessViewController.swift */,
 			);
@@ -2464,7 +2484,6 @@
 				F10B69C422EB170B00E47315 /* IdeasPresenter.swift in Sources */,
 				F183301722E5CB7800BB7A9E /* FeelRouter.swift in Sources */,
 				F183303622E6F02800BB7A9E /* CreateActionConfigurator.swift in Sources */,
-				F17CB27422A7D0830035ABAB /* LoginViewController.swift in Sources */,
 				F1F6ADBE23210DB300F6A925 /* DaysOfWeek+CoreDataClass.swift in Sources */,
 				C561C41723447B5F0073ABAC /* ServerErrorFactory.swift in Sources */,
 				F16F21D622F304A4004DC5F3 /* StakeViewController.swift in Sources */,
@@ -2484,6 +2503,7 @@
 				F1E698BD23157E6A00438E3E /* ArchivedGoalsRouter.swift in Sources */,
 				F1B2B1CA22FB697100C327B0 /* DateCalendarCell.swift in Sources */,
 				F14166A322C1158C0020BF0F /* PlayerViewController.swift in Sources */,
+				4B813B8224A211B100E574E8 /* AuthViewPresenter.swift in Sources */,
 				F1EAF59822E8AA63008073D7 /* ConfigurateActionConfigurator.swift in Sources */,
 				F10B69C622EB171A00E47315 /* IdeasInteractor.swift in Sources */,
 				C5A485422306B966002CC62A /* CalendarAndHistoryInteractor.swift in Sources */,
@@ -2510,6 +2530,7 @@
 				F179977222B1413A0039879F /* MenuTransitioningDelegate.swift in Sources */,
 				F1E698B42315723900438E3E /* DownloadsRouter.swift in Sources */,
 				F162A78722C23352008292E8 /* ActionTableViewCell.swift in Sources */,
+				4B813B8024A2116800E574E8 /* AuthViewConfigurator.swift in Sources */,
 				3EFCA3B32306BF9100129DB4 /* SettingsInteractor.swift in Sources */,
 				F186884B229E9BD80029A663 /* StoryboardSegues+Extensions.swift in Sources */,
 				F1CECE2122E9E5D600EA95EE /* ColorCollectionViewCell.swift in Sources */,
@@ -2555,6 +2576,7 @@
 				F1E698B723157E3D00438E3E /* ArchivedGoalsConfigurator.swift in Sources */,
 				C59E5E1E23055BDD005DCD18 /* ConfigurableLabel.swift in Sources */,
 				F1A79DD622DCAFA80018A8EF /* OverTabbarView.swift in Sources */,
+				4B813B8424A211BE00E574E8 /* AuthViewInteractor.swift in Sources */,
 				F1EA1CA722E0776600BB328F /* UIImageView+Extensions.swift in Sources */,
 				C561C3E32341F7840073ABAC /* AlertContentView.swift in Sources */,
 				F179974F22AE619C0039879F /* EmptyView.swift in Sources */,
@@ -2621,6 +2643,7 @@
 				F1E698B923157E4C00438E3E /* ArchivedGoalsPresenter.swift in Sources */,
 				F1EA1CB122E0BE6200BB328F /* EmptyActView.swift in Sources */,
 				F141669322C0DFC30020BF0F /* PlayerSmallView.swift in Sources */,
+				4B813B7D24A1FF5E00E574E8 /* AuthViewController.swift in Sources */,
 				F1F44A672368711700F977D1 /* ContentType.swift in Sources */,
 				F1CCC71E22CE854900E7B637 /* EditActionPlanViewController.swift in Sources */,
 				F18687E0229D56B00029A663 /* BaseProtocols.swift in Sources */,
@@ -2768,6 +2791,7 @@
 				F179975B22AFE6100039879F /* LeftMenuViewController.swift in Sources */,
 				F1F6ADBB23210DB300F6A925 /* Action+CoreDataProperties.swift in Sources */,
 				F115629C22DDB15900399FA6 /* DescriptionAndLikesCountViewController.swift in Sources */,
+				4B813B8624A211C600E574E8 /* AuthViewRouter.swift in Sources */,
 				F1F44A6A2368711700F977D1 /* CalendarCustomError.swift in Sources */,
 				F104353E2348C80D0086673C /* ActivityViewModel.swift in Sources */,
 				F107538822F093770078C71C /* BodyConfigureTableViewCell.swift in Sources */,

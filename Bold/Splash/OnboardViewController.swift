@@ -19,18 +19,6 @@ class OnboardViewController: UIViewController, AlertDisplayable {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var findYourBoldnessButton: RoundedButton!
     
-    private var signUpView: SignUpView = {
-        let view = SignUpView.loadViewFromNib()
-        view.authType = .signUp
-        return view
-    }()
-    
-    private var loginView: SignUpView = {
-        let view = SignUpView.loadViewFromNib()
-        view.authType = .logIn
-        return view
-    }()
-    
     var transitedFromMenu = false
     
     private var alertViewController: UIViewController?
@@ -39,18 +27,16 @@ class OnboardViewController: UIViewController, AlertDisplayable {
     let texts = [OnboardTypeText.feel, OnboardTypeText.think, OnboardTypeText.act]
     
     @IBAction func tapSignUp(_ sender: UIButton) {
-        alertViewController = showAlert(with: signUpView, completion: nil)
+        let authVC = StoryboardScene.Auth.authViewController.instantiate()
+        let navigationController = UINavigationController(rootViewController: authVC)
+        
+        present(navigationController, animated: true, completion: nil)
     }
     
     @IBAction func tapFindYourBoldness(_ sender: UIButton) {
         let vc = StoryboardScene.Menu.initialScene.instantiate()
         UIApplication.setRootView(vc)
     }
-    
-//        override func viewDidDisappear(_ animated: Bool) {
-//            super.viewDidDisappear(animated)
-//            dismiss(animated: false, completion: nil)
-//        }
     
     deinit {
         print("SplashViewController DEINIT")
@@ -68,10 +54,6 @@ class OnboardViewController: UIViewController, AlertDisplayable {
         signUpButton.alpha = 0
         findYourBoldnessButton.alpha = 0
         collectionView.alpha = 0
-        signUpView.delegate = self
-        signUpView.config(typeView: signUpView.authType)
-        loginView.delegate = self
-        loginView.config(typeView: loginView.authType)
     }
     
     func animateContent() {
@@ -112,7 +94,6 @@ class OnboardViewController: UIViewController, AlertDisplayable {
         super.viewDidAppear(animated)
         
         if transitedFromMenu { tapSignUp(UIButton()) }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -144,173 +125,6 @@ extension OnboardViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.pageControl.scroll_did(scrollView)
-    }
-    
-}
-
-extension OnboardViewController: SignUpViewDelegate {
-    func signUpViewDidTapAtTermsOfUse() {
-        let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
-        vc.viewModel = .termsOfUse
-        let currentVC = UIApplication.topViewController ?? self
-        currentVC.present(vc, animated: true)
-    }
-    
-    func tapForgot() {
-        let forgotPasswordVC = StoryboardScene.Auth.forgotPasswordViewControllerIdentifier.instantiate()
-        alertViewController?.navigationController?.pushViewController(forgotPasswordVC, animated: true)
-    }
-    
-    func signUpViewDidTapSignUp(_ signUpView: SignUpView) {
-        
-        switch signUpView {
-            
-        case loginView:
-            if !checkEmail(signUpView.emailTextField.text,
-                           password: signUpView.passwordTextField.text,
-                           name: nil,
-                           acceptTerms: nil,
-                           isSignUp: false) { return }
-            login()
-            
-        case self.signUpView:
-            if !checkEmail(signUpView.emailTextField.text,
-                           password: signUpView.passwordTextField.text,
-                           name: signUpView.yourNameTextField.text,
-                           acceptTerms: signUpView.acceptTerms,
-                           isSignUp: true) { return }
-            signUp()
-            
-        default:
-            break
-        }
-    }
-    
-    func checkEmail(_ email: String?, password: String?, name: String?, acceptTerms: Bool?, isSignUp: Bool) -> Bool {
-        
-        if isSignUp {
-            guard let name = name, !name.isEmpty else {
-                showAlert(title: "Warning", message: "Please enter your name")
-                return false
-            }
-            
-            guard let acceptTerms = acceptTerms, acceptTerms else {
-                showAlert(title: "Warning", message: "Please accept Terms and conditions")
-                return false
-            }
-        }
-        
-        guard let email = email, !email.isEmpty else {
-            showAlert(title: "Warning", message: "Please enter your email")
-            return false
-        }
-        
-        if !email.isValidEmail() {
-            showAlert(title: "Warning", message: "Please enter correct email")
-            return false
-        }
-        
-        guard let pass = password, !pass.isEmpty else {
-            showAlert(title: "Warning", message: "Please enter password")
-            return false
-        }
-        
-        return true
-        
-    }
-    
-    func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        
-        DispatchQueue.main.async {
-            self.alertViewController?.navigationController?.present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    func tapFacebook() {
-        print("Facebook")
-    }
-    
-    func tapShowSignUp() {
-        if let alertViewController = alertViewController {
-        alertViewController.dismiss(animated: true) { [weak self] in
-            self?.alertViewController = self?.showAlert(with: self?.signUpView ?? UIView(), completion: nil)
-        }
-        } else {
-            alertViewController = showAlert(with: signUpView, completion: nil)
-        }
-    }
-    
-    func tapShowLogIn() {
-        if let alertViewController = alertViewController {
-        alertViewController.dismiss(animated: true) { [weak self] in
-            self?.alertViewController = self?.showAlert(with: self?.loginView ?? UIView(), completion: nil)
-        }
-        } else {
-            alertViewController = showAlert(with: loginView, completion: nil)
-        }
-    }
-    
-    func signUpViewDidTapAtPrivacyPolicy() {
-        let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
-        vc.viewModel = .privacyPolicy
-        let currentVC = UIApplication.topViewController ?? self
-        currentVC.present(vc, animated: true)
-    }
-    
-    private func validateData(in signUpView: SignUpView) -> Bool {
-        let email = signUpView.email
-        let password = signUpView.password
-        return !((Validator.shared.validate(text: email ?? "", type: .email) == .invalid) || (Validator.shared.validate(text: password ?? "", type: .password) == .invalid))
-    }
-    
-    private func login() {
-        guard validateData(in: loginView) else { return }
-        let email = loginView.email
-        let password = loginView.password
-        NetworkService.shared.login(email: email ?? "",
-                                    password: password ?? "") { [weak self] result in
-                                        switch result {
-                                        case .failure(let error):
-                                            // add error handling
-                                            break
-                                        case .success(let profile):
-                                            SessionManager.shared.profile = profile
-                                            let vc = StoryboardScene.Menu.initialScene.instantiate()
-                                            UIApplication.setRootView(vc,
-                                                                      animated: true)
-//                                            self?.alertViewController?.navigationController?.pushViewController(vc, animated: true)
-                                        }
-        }
-    }
-    
-    private func signUp() {
-        let acceptTerms = signUpView.acceptTerms
-        guard acceptTerms,
-            validateData(in: signUpView)
-            else { return }
-        let name = signUpView.name
-        let email = signUpView.email
-        let password = signUpView.password
-        NetworkService.shared.signUp(firstName: name,
-                                     lastName: nil,
-                                     email: email ?? "",
-                                     password: password ?? "",
-                                     acceptTerms: acceptTerms) { [weak self] result in
-                                        switch result {
-                                        case .failure(let error):
-                                            // add error handling
-                                            break
-                                        case .success(let profile):
-                                            SettingsService.shared.firstEntrance = true
-                                            SessionManager.shared.profile = profile
-                                            let vc = StoryboardScene.Menu.initialScene.instantiate()
-                                            UIApplication.setRootView(vc,
-                                            animated: true)
-//                                            self?.alertViewController?.navigationController?.pushViewController(vc, animated: true)
-                                        }
-        }
     }
     
 }
