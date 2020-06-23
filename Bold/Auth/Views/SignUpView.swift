@@ -60,6 +60,7 @@ class SignUpView: UIView {
     @IBOutlet weak var bottomLabel: UILabel!
     @IBOutlet weak var bottomButton: RoundedButton!
     @IBOutlet weak var verticalSpaceButtonConstraint: NSLayoutConstraint!
+    @IBOutlet weak var contentViewHeightConstraint: NSLayoutConstraint!
     
     var authType : TypeAuthView = .signUp
     
