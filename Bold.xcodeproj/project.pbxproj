@@ -971,7 +971,7 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		4B813B7E24A210FB00E574E8 /* SignUp */ = {
+		4B813B7E24A210FB00E574E8 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				4B813B7F24A2116800E574E8 /* AuthViewConfigurator.swift */,
@@ -980,7 +980,7 @@
 				4B813B8324A211BE00E574E8 /* AuthViewInteractor.swift */,
 				4B813B8524A211C600E574E8 /* AuthViewRouter.swift */,
 			);
-			path = SignUp;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		BCAD1843C0CEEBE4BAFA0642 /* Pods */ = {
@@ -1537,7 +1537,7 @@
 		F17CB27222A7D03F0035ABAB /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				4B813B7E24A210FB00E574E8 /* SignUp */,
+				4B813B7E24A210FB00E574E8 /* Main */,
 				F179974822AE56EE0039879F /* Views */,
 				F1EB8DD522A8022500E3BC4C /* ForgotPasswordViewController.swift */,
 				F1EB8DD722A8026C00E3BC4C /* ForgotSuccessViewController.swift */,

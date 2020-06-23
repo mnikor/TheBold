@@ -53,11 +53,24 @@ class CitationPageViewController: UIPageViewController {
     private func configureOrderedViewControllers() {
         orderedViewControllers = []
         
-        for index in (0 ..< quotes.count) {
+        let isPremium = false // Detect is it Premium
+        
+        let number = isPremium ? quotes.count : 3
+        
+        for index in (0 ..< number) {
             orderedViewControllers.append(createArrayViewController(quote: quotes[index], color: ColorGoalType(rawValue: Int16((index % 6) + 1))!))
         }
+        
+        if !isPremium { appendPremiumController() }
+        
     }
-
+    
+    func appendPremiumController() {
+        let vc = StoryboardScene.Settings.premiumViewController.instantiate()
+        vc.fromThoughts = true
+        orderedViewControllers.append(vc)
+    }
+    
 }
 
 extension CitationPageViewController: UIPageViewControllerDelegate {
@@ -96,6 +109,8 @@ extension CitationPageViewController: UIPageViewControllerDataSource {
         guard let viewControllerIndex = orderedViewControllers.firstIndex(of: viewController) else {
             return nil
         }
+        
+        if viewControllerIndex > 3 { return nil }
         
         let nextIndex = viewControllerIndex + 1
         let orderedViewControllersCount = orderedViewControllers.count

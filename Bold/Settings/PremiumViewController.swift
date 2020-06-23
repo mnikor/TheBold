@@ -18,8 +18,11 @@ class PremiumViewController: UIViewController {
     @IBOutlet weak var monthlyView: UIView!
     @IBOutlet weak var yearlyView: UIView!
     @IBOutlet weak var congratsView: UIView!
+    @IBOutlet weak var crossButton: UIButton!
     
     private var premium : PremiumType!
+    
+    var fromThoughts = false
     
     @IBAction func closeButton(_ sender: UIButton) {
         if let nc = navigationController {
@@ -61,7 +64,9 @@ class PremiumViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        if fromThoughts {
+            crossButton.isHidden = true
+        }
     }
     
     private func selectPremium(type: PremiumType) {

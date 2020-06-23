@@ -30,11 +30,6 @@ class CitationBaseViewController: UIViewController {
             tutorialPageViewController.pageDelegate = self
         }
     }
-    
-    func showPremiumController() {
-        let vc = StoryboardScene.Settings.premiumViewController.instantiate()
-        present(vc, animated: true, completion: nil)
-    }
 
 }
 
@@ -45,10 +40,5 @@ extension CitationBaseViewController: CitationPageViewControllerDelegate {
     
     func citationPageViewController(_ citationPageViewController: CitationPageViewController, currentPage index: Int) {
         pageControl.currentPage = index
-        
-        if index == 4 && !isShownPremium {
-            isShownPremium = true
-            showPremiumController()
-        }
     }
 }

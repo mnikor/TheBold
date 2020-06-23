@@ -670,6 +670,7 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                     <size key="freeformSize" width="375" height="1667"/>
                     <connections>
                         <outlet property="congratsView" destination="dYa-fl-1N3" id="Kjb-AH-bZl"/>
+                        <outlet property="crossButton" destination="ln6-Ie-ho0" id="XQo-6f-tpT"/>
                         <outlet property="monthlyView" destination="Ooa-f7-4RQ" id="GHJ-zf-BWP"/>
                         <outlet property="yearlyView" destination="6E0-2u-X9Z" id="5u8-WB-aa3"/>
                     </connections>
