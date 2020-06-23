@@ -127,7 +127,8 @@ class HeaderHomeView: UIView {
         let timeInterval = Date().timeIntervalSince(pointsStartDate)
         guard timeInterval < animationDuration
             else {
-                currentPointsLabel.text = "\(pointsEndValue)/\(pointsLimit)"
+                currentPointsLabel.text = "\(pointsEndValue)"
+                limitPointsLabel.text = "/\(pointsLimit)"
 //                timeLabel.text = "\(boldnessEndValue)min"
                 timeLabel.text = "\(boldnessEndValue) \(boldnessEndValue == 1 ? "session" : "sessions")"
                 return
@@ -135,7 +136,8 @@ class HeaderHomeView: UIView {
         
         let percentage = timeInterval / animationDuration
         let pointsNewValue = Double(pointsStartValue) + (percentage * Double(pointsEndValue - pointsStartValue))
-        currentPointsLabel.text = "\(Int(pointsNewValue))/\(pointsLimit)"
+        currentPointsLabel.text = "\(Int(pointsNewValue))"
+        limitPointsLabel.text = "/\(pointsLimit)"
     }
     
     @objc private func animateBoldness() {
