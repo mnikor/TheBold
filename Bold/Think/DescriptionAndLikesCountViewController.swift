@@ -243,8 +243,8 @@ class DescriptionAndLikesCountViewController: UIViewController, AlertDisplayable
     
     private func checkBoldManifest() {
         if isBoldManifest {
-            if let _ = UserDefaults.standard.value(forKey: "isBoldManifestPlayed") as? Bool { }
-            else { UserDefaults.standard.set(true, forKey: "isBoldManifestPlayed")}
+            if let _ = UserDefaults.standard.value(forKey: GlobalConstants.isBoldManifest) as? Bool { }
+            else { UserDefaults.standard.set(true, forKey: GlobalConstants.isBoldManifest)}
         }
     }
     

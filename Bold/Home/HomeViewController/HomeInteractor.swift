@@ -82,7 +82,7 @@ class HomeInteractor: HomeInteractorInputProtocol {
     }
     
     private func checkUnlockButton() -> HomeActionsTypeCell {
-        if let isBoldManifestPlayed = UserDefaults.standard.value(forKey: "isBoldManifestPlayed") as? Bool {
+        if let isBoldManifestPlayed = UserDefaults.standard.value(forKey: GlobalConstants.isBoldManifest) as? Bool {
             if isBoldManifestPlayed {
                 return HomeActionsTypeCell.unlockPremium
             } else {

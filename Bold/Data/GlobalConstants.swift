@@ -16,4 +16,6 @@ struct GlobalConstants {
     }
     
     static let appURL = "https://www.apple.com"
+    static let isBoldManifest = "isBoldManifestPlayed"
+    
 }
