@@ -27,10 +27,7 @@ class OnboardViewController: UIViewController, AlertDisplayable {
     let texts = [OnboardTypeText.feel, OnboardTypeText.think, OnboardTypeText.act]
     
     @IBAction func tapSignUp(_ sender: UIButton) {
-        let authVC = StoryboardScene.Auth.authViewController.instantiate()
-        let navigationController = UINavigationController(rootViewController: authVC)
-        
-        present(navigationController, animated: true, completion: nil)
+        showSignUpController()
     }
     
     @IBAction func tapFindYourBoldness(_ sender: UIButton) {
@@ -100,8 +97,20 @@ class OnboardViewController: UIViewController, AlertDisplayable {
         super.viewWillDisappear(animated)
         player.pause()
     }
+    
+    func showSignUpController() {
+        
+        let authVC = StoryboardScene.Auth.authViewController.instantiate()
+        let navigationController = UINavigationController(rootViewController: authVC)
+        
+        navigationController.modalPresentationStyle = UIModalPresentationStyle.custom
+        navigationController.transitioningDelegate = self
+        
+                
+        self.present(navigationController, animated: true, completion: nil)
+    }
+    
 }
-
 
 extension OnboardViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -127,4 +136,28 @@ extension OnboardViewController: UICollectionViewDelegate, UICollectionViewDataS
         self.pageControl.scroll_did(scrollView)
     }
     
+}
+
+extension OnboardViewController: UIViewControllerTransitioningDelegate {
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        
+        return SignUpPresentationController(presentedViewController: presented, presenting: presenting)
+    }
+    
+}
+
+class SignUpPresentationController : UIPresentationController {
+    
+    var signUpViewHeight: CGFloat = 620
+    
+    override var frameOfPresentedViewInContainerView: CGRect {
+        get {
+            guard let theView = containerView else {
+                return CGRect.zero
+            }
+
+            return CGRect(x: 0, y: theView.bounds.height - signUpViewHeight, width: theView.bounds.width, height: signUpViewHeight)
+        }
+    }
 }

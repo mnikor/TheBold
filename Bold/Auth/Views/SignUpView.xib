@@ -153,7 +153,7 @@
                     </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Zig-o6-20n">
-                    <rect key="frame" x="85.5" y="558" width="204" height="31"/>
+                    <rect key="frame" x="85.5" y="538" width="204" height="31"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have an Account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuc-gj-f8H">
                             <rect key="frame" x="0.0" y="0.0" width="138" height="31"/>
@@ -201,12 +201,43 @@
                         <constraint firstAttribute="height" constant="10" id="nMa-Ku-BBh"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbx-ba-Nm0" customClass="ActiveLabel" customModule="ActiveLabel">
-                    <rect key="frame" x="59" y="276.5" width="289" height="19"/>
-                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
-                    <color key="textColor" red="0.46274509803921571" green="0.49411764705882355" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="dtj-Az-d6u">
+                    <rect key="frame" x="59" y="267.5" width="242.5" height="28"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I agree with" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6f-6z-sog">
+                            <rect key="frame" x="0.0" y="0.0" width="78.5" height="28"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="13"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4m-yU-ows">
+                            <rect key="frame" x="80.5" y="0.0" width="41" height="28"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="13"/>
+                            <state key="normal" title="Terms">
+                                <color key="titleColor" red="0.27121284600000001" green="0.38390123840000001" blue="0.80375331640000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="termsButtonAction" destination="577-zy-ts2" eventType="touchUpInside" id="iu6-1q-0mL"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="and" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oU9-Eb-oBm">
+                            <rect key="frame" x="123.5" y="0.0" width="26" height="28"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="13"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fu6-Wp-boz">
+                            <rect key="frame" x="151.5" y="0.0" width="91" height="28"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="13"/>
+                            <state key="normal" title="Privacy Policy">
+                                <color key="titleColor" red="0.27121284600000001" green="0.38390123840000001" blue="0.80375331640000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="privacyPolicyAction" destination="577-zy-ts2" eventType="touchUpInside" id="ig9-EF-1cy"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
@@ -220,32 +251,30 @@
                 <constraint firstItem="suC-Wv-oJJ" firstAttribute="trailing" secondItem="e6e-Mp-HlL" secondAttribute="trailing" id="4L3-sb-2A3"/>
                 <constraint firstItem="4pd-ft-EvX" firstAttribute="top" secondItem="e6e-Mp-HlL" secondAttribute="bottom" constant="89" id="5P0-sg-Cu0"/>
                 <constraint firstItem="8La-hy-D2M" firstAttribute="centerY" secondItem="xey-vo-rTK" secondAttribute="centerY" id="5pl-fK-LMq"/>
-                <constraint firstItem="Zig-o6-20n" firstAttribute="top" secondItem="kHW-9D-tb8" secondAttribute="bottom" constant="50" id="9S6-zV-wLg"/>
+                <constraint firstItem="Zig-o6-20n" firstAttribute="top" secondItem="kHW-9D-tb8" secondAttribute="bottom" constant="30" id="9S6-zV-wLg"/>
                 <constraint firstItem="e6e-Mp-HlL" firstAttribute="top" secondItem="577-zy-ts2" secondAttribute="top" constant="50" id="A3F-VL-PGX"/>
                 <constraint firstItem="suC-Wv-oJJ" firstAttribute="top" secondItem="e6e-Mp-HlL" secondAttribute="bottom" constant="30" id="A5g-87-2dN"/>
                 <constraint firstAttribute="trailing" secondItem="e6e-Mp-HlL" secondAttribute="trailing" constant="27" id="BYW-lu-OtD"/>
                 <constraint firstItem="e6e-Mp-HlL" firstAttribute="leading" secondItem="577-zy-ts2" secondAttribute="leading" constant="27" id="Bnm-ui-V5E"/>
-                <constraint firstItem="jbx-ba-Nm0" firstAttribute="leading" secondItem="lqK-JS-CW6" secondAttribute="trailing" constant="12" id="FrX-VC-0rA"/>
                 <constraint firstItem="lqK-JS-CW6" firstAttribute="leading" secondItem="c7X-Wu-FQS" secondAttribute="leading" id="HrQ-x6-x8c"/>
                 <constraint firstItem="4pd-ft-EvX" firstAttribute="leading" secondItem="577-zy-ts2" secondAttribute="leading" constant="27" id="I4t-xS-gyN"/>
                 <constraint firstItem="c7X-Wu-FQS" firstAttribute="trailing" secondItem="xey-vo-rTK" secondAttribute="trailing" id="IFo-mn-iGJ"/>
                 <constraint firstItem="lAu-lp-WAp" firstAttribute="trailing" secondItem="xey-vo-rTK" secondAttribute="trailing" id="J9O-QN-Leq"/>
                 <constraint firstAttribute="trailing" secondItem="4pd-ft-EvX" secondAttribute="trailing" constant="27" id="KuM-Lm-wYJ"/>
                 <constraint firstItem="pf0-Bg-3pQ" firstAttribute="trailing" secondItem="suC-Wv-oJJ" secondAttribute="trailing" id="Nf3-WJ-8c0"/>
-                <constraint firstItem="DyX-Gt-TdK" firstAttribute="top" relation="lessThanOrEqual" secondItem="jbx-ba-Nm0" secondAttribute="bottom" constant="36" id="Njv-vK-a04"/>
                 <constraint firstItem="suC-Wv-oJJ" firstAttribute="leading" secondItem="e6e-Mp-HlL" secondAttribute="leading" id="RMB-2l-srK"/>
-                <constraint firstItem="jbx-ba-Nm0" firstAttribute="top" secondItem="vry-Wj-zFF" secondAttribute="top" id="Sr0-9d-PBD"/>
                 <constraint firstItem="c7X-Wu-FQS" firstAttribute="leading" secondItem="xey-vo-rTK" secondAttribute="leading" id="VhN-Qf-f7p"/>
-                <constraint firstItem="jbx-ba-Nm0" firstAttribute="trailing" secondItem="c7X-Wu-FQS" secondAttribute="trailing" id="Vkc-JI-X0H"/>
                 <constraint firstItem="Zig-o6-20n" firstAttribute="centerX" secondItem="577-zy-ts2" secondAttribute="centerX" id="XzF-An-prB"/>
                 <constraint firstItem="8La-hy-D2M" firstAttribute="trailing" secondItem="c7X-Wu-FQS" secondAttribute="trailing" id="YWg-7e-rLM"/>
                 <constraint firstItem="xey-vo-rTK" firstAttribute="top" secondItem="h1C-gb-ldE" secondAttribute="bottom" constant="30" id="Yzz-Bd-6vW"/>
                 <constraint firstItem="kHW-9D-tb8" firstAttribute="top" secondItem="lAu-lp-WAp" secondAttribute="bottom" constant="40" id="brX-dz-frT"/>
                 <constraint firstItem="h1C-gb-ldE" firstAttribute="leading" secondItem="4pd-ft-EvX" secondAttribute="leading" id="cUG-ha-95Z"/>
                 <constraint firstItem="M9S-qZ-ww2" firstAttribute="top" secondItem="577-zy-ts2" secondAttribute="top" constant="10" id="dbu-JX-yjd"/>
+                <constraint firstItem="dtj-Az-d6u" firstAttribute="centerY" secondItem="vry-Wj-zFF" secondAttribute="centerY" id="eow-tQ-c1c"/>
                 <constraint firstItem="lAu-lp-WAp" firstAttribute="top" secondItem="c7X-Wu-FQS" secondAttribute="bottom" constant="8" id="eyH-4o-OAH"/>
                 <constraint firstItem="xey-vo-rTK" firstAttribute="trailing" secondItem="4pd-ft-EvX" secondAttribute="trailing" id="fXA-PS-L8B"/>
                 <constraint firstItem="pf0-Bg-3pQ" firstAttribute="leading" secondItem="suC-Wv-oJJ" secondAttribute="leading" id="hGx-kY-j2X"/>
+                <constraint firstItem="dtj-Az-d6u" firstAttribute="leading" secondItem="lqK-JS-CW6" secondAttribute="trailing" constant="12" id="kh8-OF-dch"/>
                 <constraint firstItem="vry-Wj-zFF" firstAttribute="centerX" secondItem="lqK-JS-CW6" secondAttribute="centerX" id="nRf-yc-tdm"/>
                 <constraint firstItem="xey-vo-rTK" firstAttribute="leading" secondItem="4pd-ft-EvX" secondAttribute="leading" id="opb-uu-1hG"/>
                 <constraint firstItem="vry-Wj-zFF" firstAttribute="centerY" secondItem="lqK-JS-CW6" secondAttribute="centerY" id="p1e-ou-FBx"/>
@@ -262,10 +291,11 @@
                 <outlet property="emailTopConstraint" destination="5P0-sg-Cu0" id="rdg-le-EFX"/>
                 <outlet property="facebookButton" destination="rnb-RN-9la" id="3Kb-Yb-I0p"/>
                 <outlet property="forgotButton" destination="lAu-lp-WAp" id="Vcj-7b-ksC"/>
+                <outlet property="haveAccountTopConstraint" destination="9S6-zV-wLg" id="drA-kZ-EEv"/>
                 <outlet property="logInButton" destination="DyX-Gt-TdK" id="fQa-5u-IiB"/>
                 <outlet property="makePasswordVisibleButton" destination="8La-hy-D2M" id="bgB-qA-d7d"/>
                 <outlet property="passwordTextField" destination="xey-vo-rTK" id="Qn2-hh-SNT"/>
-                <outlet property="privacyPolicyLabel" destination="jbx-ba-Nm0" id="aBM-Gd-qga"/>
+                <outlet property="privacyPolicyStack" destination="dtj-Az-d6u" id="rbq-Xy-KYL"/>
                 <outlet property="titleLabel" destination="e6e-Mp-HlL" id="y2m-JI-E2O"/>
                 <outlet property="verticalSpaceButtonConstraint" destination="brX-dz-frT" id="nvV-8X-NTz"/>
                 <outlet property="yourNameTextField" destination="suC-Wv-oJJ" id="oI9-7b-XfF"/>

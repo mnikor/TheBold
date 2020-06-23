@@ -51,7 +51,6 @@ class SignUpView: UIView {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var checkBoxImageView: UIImageView!
     @IBOutlet weak var checkImageView: UIImageView!
-    @IBOutlet weak var privacyPolicyLabel: ActiveLabel!
     @IBOutlet weak var makePasswordVisibleButton: UIButton!
     @IBOutlet weak var forgotButton: UIButton!
     @IBOutlet weak var logInButton: RoundedButton!
@@ -59,7 +58,9 @@ class SignUpView: UIView {
     @IBOutlet weak var facebookButton: RoundedButton!
     @IBOutlet weak var bottomLabel: UILabel!
     @IBOutlet weak var bottomButton: RoundedButton!
+    @IBOutlet weak var privacyPolicyStack: UIStackView!
     @IBOutlet weak var verticalSpaceButtonConstraint: NSLayoutConstraint!
+    @IBOutlet weak var haveAccountTopConstraint: NSLayoutConstraint!
     
     var authType : TypeAuthView = .signUp
     
@@ -119,28 +120,25 @@ class SignUpView: UIView {
             logInButton.setTitle(L10n.Authorization.logInButton, for: .normal)
             betweenButtonLabel.text = L10n.Authorization.orLoginWith
             bottomLabel.text = L10n.Authorization.haventAnAccount
-            
-//            verticalSpaceButtonConstraint.constant = 40
             forgotButton.isHidden = false
             emailTopConstraint.constant = 30
+            haveAccountTopConstraint.constant = 89
             yourNameTextField.isHidden = true
             checkBoxImageView.isHidden = true
-            privacyPolicyLabel.isHidden = true
+            privacyPolicyStack.isHidden = true
             bottomButton.setTitle("Sign up")
         case .signUp:
             titleLabel?.text = L10n.Authorization.signUp
             logInButton.setTitle(L10n.Authorization.signUpButton, for: .normal)
             betweenButtonLabel.text = L10n.Authorization.orSignUpWith
             bottomLabel.text = L10n.Authorization.haveAnAccount
-            configurePrivacyPolicy()
-//            privacyPolicyLabel.text = L10n.Authorization.termsAndPrivacy
             
-//            verticalSpaceButtonConstraint.constant = 12
             forgotButton.isHidden = true
             emailTopConstraint.constant = 89
+            haveAccountTopConstraint.constant = 30
             yourNameTextField.isHidden = false
             checkBoxImageView.isHidden = false
-            privacyPolicyLabel.isHidden = false
+            privacyPolicyStack.isHidden = false
             bottomButton.setTitle("Sign in")
         }
         emailTextField.placeholder = L10n.Authorization.email
@@ -151,23 +149,12 @@ class SignUpView: UIView {
         layoutIfNeeded()
     }
     
-    private func configurePrivacyPolicy() {
-        let privacyPolicyType = ActiveType.custom(pattern: "\\s\(L10n.Authorization.privacyPolicy)\\b")
-        let termsType = ActiveType.custom(pattern: "\\s\(L10n.Authorization.terms)\\s")
-        privacyPolicyLabel.enabledTypes = [privacyPolicyType, termsType]
-        privacyPolicyLabel.text = L10n.Authorization.termsAndPrivacy
-        privacyPolicyLabel.customColor[privacyPolicyType] = UIColor(red: 80/255, green: 108/255, blue: 216/255, alpha: 1)
-        privacyPolicyLabel.customColor[termsType] = UIColor(red: 80/255, green: 108/255, blue: 216/255, alpha: 1)
-        privacyPolicyLabel.customSelectedColor[privacyPolicyType] = UIColor(red: 80/255, green: 108/255, blue: 216/255, alpha: 1)
-        privacyPolicyLabel.customSelectedColor[termsType] = UIColor(red: 80/255, green: 108/255, blue: 216/255, alpha: 1)
-        
-        privacyPolicyLabel.handleCustomTap(for: privacyPolicyType) { [weak self] _ in
-            self?.delegate?.signUpViewDidTapAtPrivacyPolicy()
-        }
-        
-        privacyPolicyLabel.handleCustomTap(for: termsType) { [weak self] _ in
-            self?.delegate?.signUpViewDidTapAtTermsOfUse()
-        }
+    @IBAction func termsButtonAction() {
+        delegate?.signUpViewDidTapAtTermsOfUse()
+    }
+    
+    @IBAction func privacyPolicyAction() {
+        delegate?.signUpViewDidTapAtPrivacyPolicy()
     }
     
     @IBAction func didTapAtCheckBox(_ sender: Any) {

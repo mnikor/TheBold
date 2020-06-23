@@ -40,9 +40,14 @@ class AuthViewController: UIViewController, ViewProtocol, AuthViewControllerInpu
         super.viewDidLoad()
         
         setupView()
+        setupSwipeDownGesture()
         
         configurator = AuthViewConfigurator()
         configurator.configure(with: self)
+        
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 14
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,6 +80,26 @@ class AuthViewController: UIViewController, ViewProtocol, AuthViewControllerInpu
             
         ])
         
+    }
+    
+    private func setupSwipeDownGesture() {
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(dismissView))
+        swipeDown.direction = .down
+        
+        view.addGestureRecognizer(swipeDown)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc private func dismissView() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func hideKeyboard() {
+        signUpView.emailTextField.resignFirstResponder()
+        signUpView.yourNameTextField.resignFirstResponder()
+        signUpView.passwordTextField.resignFirstResponder()
     }
     
 }
