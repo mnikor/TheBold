@@ -21,6 +21,8 @@ class CitationBaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = ColorName.primaryOrange.color
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

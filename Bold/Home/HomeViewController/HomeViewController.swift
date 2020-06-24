@@ -62,7 +62,7 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
     }
     
     private func configureNavigationBar() {
-        navigationController?.navigationBar.isHidden = false
+        navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.barTintColor = ColorName.primaryBlue.color
         navigationController?.navigationBar.tintColor = .white

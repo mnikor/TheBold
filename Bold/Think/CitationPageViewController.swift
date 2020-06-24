@@ -37,16 +37,38 @@ class CitationPageViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.setNavigationBarHidden(true, animated: true)
 
         dataSource = self
         delegate = self
         
+        if quotes.count > 0 { configurePages() }
+        else { prepareData() }
+        
+    }
+    
+    private func configurePages() {
         configureOrderedViewControllers()
         
         pageDelegate?.citationPageViewController(self, numberOfPages: orderedViewControllers.count)
         
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
+        }
+    }
+    
+    func prepareData() {
+        
+        NetworkService.shared.getContent(with: .quote) { result in
+            switch result {
+            case .failure(_):
+                break
+            case .success(let content):
+                //completion?(content)
+                self.quotes = content
+                self.configurePages()
+            }
         }
     }
     

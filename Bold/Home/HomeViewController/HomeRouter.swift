@@ -41,9 +41,7 @@ class HomeRouter: RouterProtocol, HomeInputRouterProtocol {
         case .actionAll(let type):
             actionAll(type: type)
         case .actionItem(let type):
-            let actionListVC = StoryboardScene.Feel.actionsListViewController.instantiate()
-            actionListVC.typeVC = type
-            viewController.navigationController?.pushViewController(actionListVC, animated: true)
+            showActionsList(type: type)
         case .unlockBoldManifest:
             let vc = StoryboardScene.Settings.premiumViewController.instantiate()
             viewController.navigationController?.present(vc, animated: true, completion: nil)
@@ -80,6 +78,19 @@ class HomeRouter: RouterProtocol, HomeInputRouterProtocol {
         case .boldManifest, .unlockPremium:
             break
         }
+    }
+    
+    private func showActionsList(type: FeelTypeCell) {
+        
+        if type == .citate {
+            let citationVC = StoryboardScene.Think.citationBaseViewController.instantiate()
+            viewController.navigationController?.pushViewController(citationVC, animated: true)
+        } else {
+            let actionListVC = StoryboardScene.Feel.actionsListViewController.instantiate()
+            actionListVC.typeVC = type
+            viewController.navigationController?.pushViewController(actionListVC, animated: true)
+        }
+        
     }
     
 }

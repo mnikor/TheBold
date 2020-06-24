@@ -80,6 +80,10 @@ class ActionTableViewCell: BaseTableViewCell {
 
     func config(item: ActionEntity) {
         
+        print("Item: \(item.data?.type)\n \(item.data?.imageURL)\n\(item.data?.authorPhotoURL)\n\(item.data?.body)")
+        
+        //quote
+        
         self.item = item
         configHeader(type: item.header!)
         configButton(item: item)

@@ -49,6 +49,7 @@ class CitationViewController: UIViewController, AlertDisplayable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.setNavigationBarHidden(true, animated: true)
         self.view.backgroundColor = color.colorGoal()
         configure()
     }

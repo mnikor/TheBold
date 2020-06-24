@@ -41,7 +41,6 @@ class ActionsListViewController: UIViewController, ViewProtocol, AlertDisplayabl
 
         configurator.configure(with: self)
         
-        print(typeVC.titleText())
         highNavigationBar.configItem(title: typeVC.titleText() ?? "", titleImage: .info, leftButton: .back, rightButton: .none)
         highNavigationBar.deleagte = self
         

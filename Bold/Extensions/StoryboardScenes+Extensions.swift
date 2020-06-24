@@ -112,6 +112,8 @@ internal enum StoryboardScene {
 
     internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: Think.self)
 
+    internal static let citationBaseViewController = SceneType<Bold.CitationBaseViewController>(storyboard: Think.self, identifier: "CitationBaseViewController")
+
     internal static let citationViewController = SceneType<Bold.CitationViewController>(storyboard: Think.self, identifier: "CitationViewController")
   }
 }
