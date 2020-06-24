@@ -571,6 +571,8 @@ internal enum L10n {
     internal static let storiesSubtitle = L10n.tr("Localizable", "Think.StoriesSubtitle")
     /// Think Bold
     internal static let thinkBold = L10n.tr("Localizable", "Think.ThinkBold")
+    /// Thoughts
+    internal static let thoughts = L10n.tr("Localizable", "Think.Thoughts")
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

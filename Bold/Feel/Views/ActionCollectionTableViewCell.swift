@@ -90,7 +90,7 @@ enum FeelTypeCell: Int {
         case .lessons:
             return L10n.Think.lessons
         case .citate:
-            return nil
+            return L10n.Think.thoughts
         }
     }
     
