@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForgotPasswordViewController: LocalizableViewController {
+class ForgotPasswordViewController: LocalizableViewController, AlertDisplayable {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
@@ -39,7 +39,21 @@ class ForgotPasswordViewController: LocalizableViewController {
     }
     
     @IBAction func didTapAtSendMeButton(_ sender: RoundedButton) {
-        NetworkService.shared.resetPassword(email: emailTextField.text ?? "")
+        NetworkService.shared.resetPassword(email: emailTextField.text ?? "") {[weak self] (json, error) in
+            guard let ss = self else { return }
+            
+            if let err = error {
+                let alert = UIAlertController(title: "Error", message: err.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                ss.present(alert, animated: true, completion: nil)
+                return
+            }
+            
+            /// show success
+            let vc = StoryboardScene.Auth.forgotSuccessViewControllerIdentifier.instantiate()
+            ss.navigationController?.pushViewController(vc, animated: true)
+            
+        }
     }
     
 }

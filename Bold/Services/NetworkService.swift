@@ -311,16 +311,16 @@ class NetworkService {
         }
     }
     
-    func resetPassword(email: String) {
+    func resetPassword(email: String, completion: @escaping (JSON?, Error?) -> Void) {
         let params: [String: Any] = [RequestParameter.email: email]
         sendRequest(endpoint: Endpoint.resetPassword.rawValue,
                     method: .put,
                     parameters: params) { result in
                         switch result {
                         case .failure(let error):
-                            break
+                            completion(nil, error)
                         case .success(let jsonData):
-                            print("successful request")
+                            completion(jsonData, nil)
                         }
         }
     }
