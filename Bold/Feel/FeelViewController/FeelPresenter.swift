@@ -96,18 +96,29 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
     
     private func showDetails(for content: ActivityContent) {
         let isDownloadedContent = DataSource.shared.contains(content: content)
-        switch content.type {
-        case .lesson, .story:
-            let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
-            vc.viewModel = DescriptionViewModel.map(activityContent: content)
-            vc.isDownloadedContent = isDownloadedContent
-            router.input(.present(vc))
-        default:
-            interactor.input(.prepareTracks(content: content))
-            router.input(.showPlayer(isPlaying: content.type != .meditation, isDownloadedContent: isDownloadedContent, content: content))
+        if isContentStatusLocked(content: content) {
+            /// show premium content
+            router.showPremiumController()
+        } else {
+            switch content.type {
+            case .lesson, .story:
+                let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
+                vc.viewModel = DescriptionViewModel.map(activityContent: content)
+                vc.isDownloadedContent = isDownloadedContent
+                router.input(.present(vc))
+            default:
+                interactor.input(.prepareTracks(content: content))
+                router.input(.showPlayer(isPlaying: content.type != .meditation, isDownloadedContent: isDownloadedContent, content: content))
+            }
         }
-        
-        
+    }
+    
+    private func isContentStatusLocked(content: ActivityContent) -> Bool {
+        if content.contentStatus == .locked || content.contentStatus == .lockedPoints {
+            return true
+        } else {
+            return false
+        }
     }
 }
 

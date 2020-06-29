@@ -13,6 +13,7 @@ enum ActionsListInputRouter {
     case back
     case info(FeelTypeCell)
     case presentedBy(AddActionPlanViewController)
+    case listenPreview(_ content: ActivityContent)
     case player(_ content: ActivityContent)
     case read(_ content: ActivityContent)
     case readPreview(_ content: ActivityContent)
@@ -53,9 +54,11 @@ class ActionsListRouter: RouterProtocol, ActionsListRouterProtocol {
                 vController.presentedBy(viewController)
             }
         case .player(content: let content):
+            showPlayer(content: content)
+        case .listenPreview(let content):
             PlayerViewController.createController(content: content)
         case .read(content: let content):
-            checkContentStatus(content: content)
+            showReadable(content: content)
         case .readPreview(let content):
             showReadableContent(content)
         case .share(let action):
@@ -75,8 +78,24 @@ class ActionsListRouter: RouterProtocol, ActionsListRouterProtocol {
         alertController = viewController.showAlert(with: shareView)
     }
     
-    func checkContentStatus(content: ActivityContent) {
-        if content.contentStatus == .locked || content.contentStatus == .lockedPoints {
+     private func isContentStatusLocked(content: ActivityContent) -> Bool {
+           if content.contentStatus == .locked || content.contentStatus == .lockedPoints {
+               return true
+           } else {
+               return false
+           }
+       }
+    
+    private func showPlayer(content: ActivityContent) {
+        if isContentStatusLocked(content: content) {
+            showPremiumController()
+        } else {
+            PlayerViewController.createController(content: content)
+        }
+    }
+    
+    private func showReadable(content: ActivityContent) {
+        if isContentStatusLocked(content: content) {
             showPremiumController()
         } else {
             showReadableContent(content)

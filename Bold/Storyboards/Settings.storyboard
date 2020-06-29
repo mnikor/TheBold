@@ -594,7 +594,10 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are now a member of Bold premium. Enjoy unlimited access!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fd8-pz-w73">
-                                                <rect key="frame" x="0.0" y="346.33333333333337" width="335" height="36.666666666666686"/>
+                                                <rect key="frame" x="21" y="346.33333333333337" width="293" height="36.666666666666686"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="293" id="ZRU-68-7yy"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -611,8 +614,7 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                                             <constraint firstItem="VM1-z4-8gV" firstAttribute="centerX" secondItem="ubC-60-AQ9" secondAttribute="centerX" id="4fY-bh-hhO"/>
                                             <constraint firstItem="zJx-2l-avd" firstAttribute="leading" secondItem="ubC-60-AQ9" secondAttribute="leading" id="MUe-jF-aV0"/>
                                             <constraint firstItem="Fd8-pz-w73" firstAttribute="top" secondItem="VM1-z4-8gV" secondAttribute="bottom" constant="16" id="N5C-uV-I33"/>
-                                            <constraint firstAttribute="trailing" secondItem="Fd8-pz-w73" secondAttribute="trailing" id="ZB0-LL-C7h"/>
-                                            <constraint firstItem="Fd8-pz-w73" firstAttribute="leading" secondItem="ubC-60-AQ9" secondAttribute="leading" id="iYm-WQ-1Hn"/>
+                                            <constraint firstItem="Fd8-pz-w73" firstAttribute="centerX" secondItem="ubC-60-AQ9" secondAttribute="centerX" id="QAV-6U-WnE"/>
                                             <constraint firstItem="zJx-2l-avd" firstAttribute="top" secondItem="ubC-60-AQ9" secondAttribute="top" id="kT4-ng-6Yn"/>
                                             <constraint firstAttribute="trailing" secondItem="zJx-2l-avd" secondAttribute="trailing" id="ltd-xd-Vhr"/>
                                             <constraint firstItem="VM1-z4-8gV" firstAttribute="top" secondItem="zJx-2l-avd" secondAttribute="bottom" constant="52" id="qOo-YA-Qt7"/>

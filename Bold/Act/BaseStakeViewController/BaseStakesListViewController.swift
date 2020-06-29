@@ -329,7 +329,21 @@ extension BaseStakesListViewController: UITableViewDelegate, UITableViewDataSour
         }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let headerCell = cell as? NavigationTitleAndProgressTableViewCell {
+            if !headerCell.progressView.changePointView.isHidden {
+                animateChangePoint(cell: headerCell)
+            }
+        }
         presenter.input(.uploadNewEventsInDataSourceWhenScroll(indexPath.section))
+    }
+    
+    @objc func animateChangePoint(cell: NavigationTitleAndProgressTableViewCell) {
+        UIView.animate(withDuration: 2, animations: {
+            cell.progressView.changePointView.alpha = 0
+        }) { (_) in
+            cell.progressView.changePointView.isHidden = true
+            cell.progressView.changePointView.alpha = 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -348,12 +362,6 @@ extension BaseStakesListViewController: UITableViewDelegate, UITableViewDataSour
         if indexPath == IndexPath(row: 0, section: 0) && !isCalendar {
 
             let headerCell = tableView.dequeReusableCell(indexPath: indexPath) as NavigationTitleAndProgressTableViewCell
-//            headerCell.progressView.titleLabel.isHidden = true
-//            headerCell.progressView.pointsLabel.isHidden = true
-//            headerCell.progressView.pointsImageView.isHidden = true
-//            headerCell.progressView.changePointView.isHidden = true
-//            headerCell.progressView.changePointLabel.isHidden = true
-//            headerCell.progressViewHeight.constant = 5
             return headerCell
 
         } else {

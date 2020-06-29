@@ -91,7 +91,7 @@ extension DataSource: GoalsFunctionality {
         
         let filterDate = Date().dayOfMonthOfYear() as NSDate
         
-        fetchRequest.predicate = NSPredicate(format: "(endDate >= %@) AND ((status = %d) OR (status = %d))", filterDate, StatusType.wait.rawValue, StatusType.locked.rawValue)
+//        fetchRequest.predicate = NSPredicate(format: "(endDate >= %@) AND ((status = %d) OR (status = %d))", filterDate, StatusType.wait.rawValue, StatusType.locked.rawValue)
         
         do {
             results = try DataSource.shared.viewContext.fetch(fetchRequest)

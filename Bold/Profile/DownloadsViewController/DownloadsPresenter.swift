@@ -75,7 +75,6 @@ class DownloadsPresenter: DownloadsPresenterInputProtocol {
     }
     
     private func showPlayer(content: ActivityContent) {
-        
         PlayerViewController.createController(content: content)
     }
     

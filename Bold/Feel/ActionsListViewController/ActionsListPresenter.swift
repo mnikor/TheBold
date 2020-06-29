@@ -119,7 +119,7 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
         
         switch pressType {
         case .previewListen:
-            router.input(.player(content))
+            router.input(.listenPreview(content))
         case .previewRead:
             router.input(.readPreview(content))
         case .start:

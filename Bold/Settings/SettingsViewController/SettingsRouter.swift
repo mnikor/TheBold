@@ -12,6 +12,7 @@ import UIKit
 enum SettingsInputRouter {
     case showMenu
     case present(SettingsCellType)
+    case logout
 }
 
 protocol SettingsInputRouterProtocol: RouterProtocol {
@@ -59,6 +60,11 @@ class SettingsRouter: SettingsInputRouterProtocol {
             //viewController.present(viewController, animated: true, completion: nil)
         case .showMenu:
             viewController.showSideMenu()
+        case .logout:
+            guard let viewController = StoryboardScene.Splash.storyboard.instantiateInitialViewController()
+                else { return }
+            UIApplication.setRootView(viewController,
+                                      animated: true)
         }
     }
 }

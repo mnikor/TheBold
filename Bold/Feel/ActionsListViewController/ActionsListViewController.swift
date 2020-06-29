@@ -235,7 +235,7 @@ extension ActionsListViewController: ActionTableViewCellDelegate {
     
     func tapAddActionPlanButton(cell: ActionTableViewCell) {
         guard let index = tableView.indexPath(for: cell)?.row else { return }
-        guard let content = actions[index].data else {return}
+        guard let content = actions[index-1].data else {return}
         presenter.input(.addActionPlan(content))
     }
 }

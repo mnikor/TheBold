@@ -37,6 +37,7 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
     var contentID: Int?
     var selectedContent: ActivityContent?
     var premiumWasShown = false
+    var imageWasLoaded = false
     
     @IBOutlet weak var playerView: UIView!
     @IBOutlet var playerListView: PlayerListView!
@@ -194,7 +195,7 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
             playerIsPlaying()
         }
         
-        if !isBoldManifest {
+        if !imageWasLoaded {
             loader.start(in: view, yOffset: 0)
             view.bringSubviewToFront(loader)
         }
@@ -218,6 +219,7 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
             if path.hasSuffix(boldManifest) {
                 let image = UIImage(named: boldManifest)
                 titleImageView.image = image
+                imageWasLoaded = true
                 isBoldManifest = true
                 return
             }
@@ -225,6 +227,7 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
         
         titleImageView.downloadImageAnimated(path: imagePath ?? "") { [weak self] _ in
             guard let ss = self else { return }
+            ss.imageWasLoaded = true
             ss.loader.stop()
         }
     }
@@ -346,8 +349,10 @@ extension PlayerViewController: AudioServiceDelegate {
                 premiumWasShown = true
                 showPremiumController()
             } else {
-                guard let activityContent = selectedContent else { return }
-                configureShareActivity(with: activityContent)
+                if !isBoldManifest {
+                    guard let activityContent = selectedContent else { return }
+                    configureShareActivity(with: activityContent)
+                }
             }
         }
     }

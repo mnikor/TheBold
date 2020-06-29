@@ -17,6 +17,7 @@ enum FeelInputRouter {
 
 protocol FeelInputRouterProtocol {
     func input(_ inputCase: FeelInputRouter)
+    func showPremiumController()
 }
 
 class FeelRouter: RouterProtocol, FeelInputRouterProtocol {
@@ -45,5 +46,10 @@ class FeelRouter: RouterProtocol, FeelInputRouterProtocol {
                 viewController.navigationController?.present(vc, animated: true)
             }
         }
+    }
+    
+    func showPremiumController() {
+        let vc = StoryboardScene.Settings.premiumViewController.instantiate()
+        viewController.present(vc, animated: true, completion: nil)
     }
 }

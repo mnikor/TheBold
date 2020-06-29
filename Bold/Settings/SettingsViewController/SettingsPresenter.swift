@@ -59,8 +59,8 @@ class SettingsPresenter: SettingsPresenterInputProtocol {
     func input(_ inputCase: SettingsPresenterInput) {
         switch inputCase {
         case .signOut:
-            //TODO:
-            break
+            SessionManager.shared.killSession()
+            router.input(.logout)
         case .present(let cellType):
             router.input(.present(cellType))
         case .showMenu:
