@@ -16,6 +16,8 @@ class ForgotPasswordViewController: LocalizableViewController, AlertDisplayable 
     @IBOutlet weak var sendMeButton: UIButton!
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var forgotPassTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var emailTextFieldTopConstraints: NSLayoutConstraint!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -74,7 +76,9 @@ extension ForgotPasswordViewController {
         let keyboardSize            = (userInfo[UIResponder.keyboardFrameEndUserInfoKey]            as? NSValue)?.cgRectValue,
         let duration: TimeInterval  = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey]   as? NSNumber)?.doubleValue else { return }
         
-        bottomConstraint.constant += keyboardSize.height
+        bottomConstraint.constant = keyboardSize.height
+        forgotPassTopConstraint.constant = 0
+        emailTextFieldTopConstraints.constant = 10
         
         UIView.animate(withDuration: duration) {
             self.view.layoutIfNeeded()
@@ -88,6 +92,8 @@ extension ForgotPasswordViewController {
         let duration: TimeInterval  = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue else { return }
         
         bottomConstraint.constant = 20
+        forgotPassTopConstraint.constant = 40
+        emailTextFieldTopConstraints.constant = 50
         
         UIView.animate(withDuration: duration) {
             self.view.layoutIfNeeded()
