@@ -42,7 +42,7 @@ struct StakeActionViewModel {
             stakeColor = ColorGoalType.red.colorGoal()
             points = "-\(event.calculatePoints)"
             
-        }else {
+        } else {
             points = "+\(event.calculatePoints)"
             statusIcon = Asset.stakeOval.image
             if case .completed? = StatusType(rawValue: event.status), let titleTemp = title{

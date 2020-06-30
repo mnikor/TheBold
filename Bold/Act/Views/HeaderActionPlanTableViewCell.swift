@@ -36,7 +36,7 @@ class HeaderActionPlanTableViewCell: BaseTableViewCell {
             subtitleLabel.text = content.subtitle
             pointsLabel.text = content.points
             infinityImageView.image = content.shapeIcon
-            }
+        }
         
     }
     

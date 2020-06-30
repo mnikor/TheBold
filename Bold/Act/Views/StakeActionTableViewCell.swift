@@ -53,6 +53,8 @@ class StakeActionTableViewCell: BaseTableViewCell {
         
         if case .event(viewModel: let cellModel) = viewModel {
             
+            print(cellModel.points)
+            
             event = cellModel.event
             statusImageView.renderImageWithColor(image: cellModel.statusIcon, color: cellModel.statusIconColor)
             titleLabel.attributedText = cellModel.title

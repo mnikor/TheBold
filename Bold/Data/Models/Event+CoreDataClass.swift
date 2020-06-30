@@ -18,8 +18,12 @@ public class Event: NSManagedObject {
         points = Int(self.stake) + PointsForAction.congratulationsAction
         
         if self.action?.content != nil {
-            points += PointsForAction.congratulationsWithContentAction
+            points = Int(self.stake) + PointsForAction.congratulationsWithContentAction
         }
+        
+        print("self.stake: \(self.stake)")
+        print(points)
+        
         return points
     }
     
