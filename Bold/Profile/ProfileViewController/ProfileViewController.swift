@@ -25,7 +25,7 @@ enum UserProfileListItem {
 enum ProfileAdditionalInfoCell: CaseIterable {
     case accountDetails
     case archivedGoals
-    case downloads
+//    case downloads
     case calendar
     
     var title : String {
@@ -34,8 +34,8 @@ enum ProfileAdditionalInfoCell: CaseIterable {
             return L10n.Profile.accountDetails
         case .archivedGoals:
             return L10n.Profile.archivedGoals
-        case .downloads:
-            return L10n.Profile.downloads
+//        case .downloads:
+//            return L10n.Profile.downloads
         case .calendar:
             return L10n.Profile.calendarAndHistory
         }
@@ -221,8 +221,8 @@ extension ProfileViewController: UITableViewDelegate {
             presenter.input(.accountDetails)
         case .archivedGoals:
             presenter.input(.archivedGoals)
-        case .downloads:
-            presenter.input(.downloads)
+//        case .downloads:
+//            presenter.input(.downloads)
         case .calendar:
             presenter.input(.calendar)
         }

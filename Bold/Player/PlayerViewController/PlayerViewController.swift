@@ -57,7 +57,7 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var playPauseButton: UIButton!
     
-    @IBOutlet weak var downloadButton: UIBarButtonItem!
+//    @IBOutlet weak var downloadButton: UIBarButtonItem!
     @IBOutlet weak var likeButton: UIBarButtonItem!
     
     let service = AudioService.shared
@@ -208,8 +208,8 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
     
     private func configureDowloadButton() {
         buttonsToolbar.dowload = isDownloadedContent
-        downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
-        downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
+//        downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
+//        downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
     }
     
     func setImage(imagePath: String?) {
