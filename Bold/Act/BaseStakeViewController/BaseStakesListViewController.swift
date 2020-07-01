@@ -333,6 +333,20 @@ extension BaseStakesListViewController: UITableViewDelegate, UITableViewDataSour
             if !headerCell.progressView.changePointView.isHidden {
                 animateChangePoint(cell: headerCell)
             }
+            
+            LevelOfMasteryService.shared.input(.currentLevel(level: {(level) in
+                
+                let currentPoints = Double(LevelOfMasteryService.shared.currentPoints())
+                
+                let currentLevelLimit = Double(level.limits.getAllLimits().points)
+                
+                if currentPoints <= currentLevelLimit {
+                    headerCell.progressView.progressView.progress = Float(currentPoints) / Float(LevelOfMasteryService.shared.closedLevels.compactMap({ $0.limits.getAllLimits().points }).sorted().first(where: { Double($0) > currentPoints }) ?? 1)
+                } else {
+                    headerCell.progressView.progressView.progress = 1
+                }
+                
+            }))
         }
         presenter.input(.uploadNewEventsInDataSourceWhenScroll(indexPath.section))
     }

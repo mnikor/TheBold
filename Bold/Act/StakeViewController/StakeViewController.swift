@@ -89,25 +89,25 @@ class StakeViewController: UIViewController {
     private func configTextView() {
         
         let fullString = L10n.Act.Stake.allFundsGoesToGlobalCharityFoundation
-        let linkString = L10n.Act.Stake.gcfCareOrg
+//        let linkString = L10n.Act.Stake.gcfCareOrg
         
-        let range = fullString.range(of: linkString)!
+//        let range = fullString.range(of: linkString)!
         let newString = NSMutableAttributedString(string: fullString)
         
         let fullRange = NSRange(location: 0, length: fullString.count)
-        let linkRange = NSRange(range, in: fullString)
+//        let linkRange = NSRange(range, in: fullString)
         
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .center
         
         guard let font = FontFamily.MontserratMedium.regular.font(size: 15) else { return }
-        guard let url = NSURL(string: linkString) else { return }
+//        guard let url = NSURL(string: linkString) else { return }
         
         newString.addAttribute(NSAttributedString.Key.font, value: font, range: fullRange)
         newString.addAttribute(NSAttributedString.Key.foregroundColor, value: ColorName.typographyBlack50.color, range: fullRange)
         newString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraph, range: fullRange)
-        newString.addAttribute(NSAttributedString.Key.link, value: url, range: linkRange)
-        newString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: linkRange)
+//        newString.addAttribute(NSAttributedString.Key.link, value: url, range: linkRange)
+//        newString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: linkRange)
         
         bootomTextLabel.attributedText = newString
         bootomTextLabel.delegate = self

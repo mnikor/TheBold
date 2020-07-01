@@ -256,7 +256,7 @@ internal enum L10n {
       internal static let confirmStake = L10n.tr("Localizable", "Act.Stake.ConfirmStake")
       /// gcf-care.org
       internal static let gcfCareOrg = L10n.tr("Localizable", "Act.Stake.gcfCareOrg")
-      /// Let's make your challenging task higher-octane...
+      /// Have a skin in the game…
       internal static let letsMakeYourChallenging = L10n.tr("Localizable", "Act.Stake.LetsMakeYourChallenging")
       /// Your stake
       internal static let yourStake = L10n.tr("Localizable", "Act.Stake.YourStake")

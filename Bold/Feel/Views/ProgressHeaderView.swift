@@ -105,7 +105,7 @@ class ProgressHeaderView: UIView {
         startDate = Date()
     }
     
-    @objc private func animateValues() {
+    @objc func animateValues() {
         guard pointsStartValue != pointsEndValue else { return }
         
         let timeInterval = Date().timeIntervalSince(startDate)
@@ -117,7 +117,19 @@ class ProgressHeaderView: UIView {
         let percentage = timeInterval / animationDuration
         let currentPoints = Double(pointsStartValue) + (percentage * Double(pointsEndValue - pointsStartValue))
         
-        progressView.progress = Float(currentPoints) / Float(LevelOfMasteryService.shared.closedLevels.compactMap({ $0.limits.getAllLimits().points }).sorted().first(where: { Double($0) > currentPoints }) ?? 1)
+        LevelOfMasteryService.shared.input(.currentLevel(level: {[weak self] (level) in
+            guard let ss = self else { return }
+            
+            let currentLevelLimit = level.limits.getAllLimits().points
+            
+            if currentPoints <= Double(currentLevelLimit) {
+                ss.progressView.progress = Float(currentPoints) / Float(LevelOfMasteryService.shared.closedLevels.compactMap({ $0.limits.getAllLimits().points }).sorted().first(where: { Double($0) > currentPoints }) ?? 1)
+            } else {
+                ss.progressView.progress = 1
+            }
+            
+        }))
+        
         pointsLabel.text = "\(Int(currentPoints))"
     }
     
