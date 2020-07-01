@@ -102,7 +102,7 @@
 		C5DCDEBD237293540018DEA4 /* DescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCDEBC237293540018DEA4 /* DescriptionViewModel.swift */; };
 		C5DCDEC32372973C0018DEA4 /* Manifest.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDEBE2372973B0018DEA4 /* Manifest.pdf */; };
 		C5DCDEC42372973C0018DEA4 /* Bold Manifest .mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDEBF2372973B0018DEA4 /* Bold Manifest .mp3 */; };
-		C5DCDEC52372973C0018DEA4 /* Meditations.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDEC02372973C0018DEA4 /* Meditations.pdf */; };
+		C5DCDEC52372973C0018DEA4 /* Meditation.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDEC02372973C0018DEA4 /* Meditation.pdf */; };
 		C5DCDEC62372973C0018DEA4 /* Hypnosis.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDEC12372973C0018DEA4 /* Hypnosis.pdf */; };
 		C5DCDEC72372973C0018DEA4 /* Pep-Talks.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDEC22372973C0018DEA4 /* Pep-Talks.pdf */; };
 		C5DCDECB2373D78A0018DEA4 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCDECA2373D78A0018DEA4 /* SettingsService.swift */; };
@@ -559,7 +559,7 @@
 		C5DCDEBC237293540018DEA4 /* DescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewModel.swift; sourceTree = "<group>"; };
 		C5DCDEBE2372973B0018DEA4 /* Manifest.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Manifest.pdf; sourceTree = "<group>"; };
 		C5DCDEBF2372973B0018DEA4 /* Bold Manifest .mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Bold Manifest .mp3"; sourceTree = "<group>"; };
-		C5DCDEC02372973C0018DEA4 /* Meditations.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Meditations.pdf; sourceTree = "<group>"; };
+		C5DCDEC02372973C0018DEA4 /* Meditation.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Meditation.pdf; sourceTree = "<group>"; };
 		C5DCDEC12372973C0018DEA4 /* Hypnosis.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Hypnosis.pdf; sourceTree = "<group>"; };
 		C5DCDEC22372973C0018DEA4 /* Pep-Talks.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Pep-Talks.pdf"; sourceTree = "<group>"; };
 		C5DCDECA2373D78A0018DEA4 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
@@ -1778,7 +1778,7 @@
 				C5DCDEBF2372973B0018DEA4 /* Bold Manifest .mp3 */,
 				C5DCDEC12372973C0018DEA4 /* Hypnosis.pdf */,
 				C5DCDEBE2372973B0018DEA4 /* Manifest.pdf */,
-				C5DCDEC02372973C0018DEA4 /* Meditations.pdf */,
+				C5DCDEC02372973C0018DEA4 /* Meditation.pdf */,
 				F17EFABE23AD15730012F9DB /* Lessons.pdf */,
 				F17EFAC023AD15A00012F9DB /* Stories.pdf */,
 				C5DCDEC22372973C0018DEA4 /* Pep-Talks.pdf */,
@@ -2325,7 +2325,7 @@
 				F1868832229E90EF0029A663 /* Montserrat-Bold.ttf in Resources */,
 				F1EA1CB322E0BFCE00BB328F /* EmptyActView.xib in Resources */,
 				F1EA1CAD22E0834D00BB328F /* StakeHeaderView.xib in Resources */,
-				C5DCDEC52372973C0018DEA4 /* Meditations.pdf in Resources */,
+				C5DCDEC52372973C0018DEA4 /* Meditation.pdf in Resources */,
 				F1EAF59322E89925008073D7 /* HeaderWriteActionsTableViewCell.xib in Resources */,
 				F1868838229E90EF0029A663 /* Montserrat-Medium.ttf in Resources */,
 				F1A79DCA22D8A5620018A8EF /* ManageItTableViewCell.xib in Resources */,

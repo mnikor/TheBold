@@ -46,7 +46,7 @@ enum FeelTypeCell: Int {
     func categoryName() -> String {
         switch self {
         case .meditation:
-            return "Meditations"
+            return "Meditation"
         case .hypnosis:
             return "Hypnosis"
         case .pepTalk:

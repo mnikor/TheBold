@@ -524,14 +524,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's make your challenging task higher-octane..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Oc-Fz-OzO">
-                                <rect key="frame" x="20" y="35" width="335" height="41.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have a skin in the game…" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Oc-Fz-OzO">
+                                <rect key="frame" x="20" y="35" width="335" height="21"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
                                 <color key="textColor" red="0.1058823529" green="0.15686274510000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qgr-BF-Ocv" customClass="RoundedButton" customModule="Bold" customModuleProvider="target">
-                                <rect key="frame" x="20" y="485" width="335" height="56"/>
+                                <rect key="frame" x="20" y="472" width="335" height="56"/>
                                 <color key="backgroundColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="YWt-Pu-PPz"/>
@@ -545,7 +545,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="2oS-P4-2FO">
-                                <rect key="frame" x="20" y="121.5" width="90.5" height="74"/>
+                                <rect key="frame" x="20" y="101" width="90.5" height="74"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your stake" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CpD-te-7bM">
                                         <rect key="frame" x="0.0" y="0.0" width="90.5" height="21"/>
@@ -561,20 +561,18 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ygP-VZ-ylb" customClass="FixedPaddingTextView" customModule="Bold" customModuleProvider="target">
-                                <rect key="frame" x="50" y="561" width="275" height="42"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="If you miss to complete the actions the amount of stake will go to global charities" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ygP-VZ-ylb" customClass="FixedPaddingTextView" customModule="Bold" customModuleProvider="target">
+                                <rect key="frame" x="50" y="548" width="275" height="55"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="TfU-YX-Tll"/>
+                                    <constraint firstAttribute="height" constant="55" id="TfU-YX-Tll"/>
                                 </constraints>
-                                <string key="text">All funds goes to a global charity 
-foundation gcf-care.org</string>
                                 <color key="textColor" red="0.46274509800000002" green="0.4941176471" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrQ-Pc-LvT">
-                                <rect key="frame" x="15" y="240.5" width="345" height="152"/>
+                                <rect key="frame" x="15" y="220" width="345" height="152"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zZu-Ej-hhj">
                                         <rect key="frame" x="0.0" y="118" width="345" height="34"/>

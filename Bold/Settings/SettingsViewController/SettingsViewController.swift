@@ -84,12 +84,36 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         
         //setup header label
         let headerLabel = UILabel(frame: .zero)
-        headerLabel.font = UIFont(font: FontFamily.MontserratMedium.regular, size: 13)
+        
+        headerLabel.font = UIFont(font: FontFamily.MontserratMedium.regular, size: 15)
+        headerLabel.textColor = UIColor.hexStringToUIColor(hex: "767E96")
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
         headerView.addSubview(headerLabel)
+        
         headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 20).isActive = true
         headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -10).isActive = true
+        
         headerLabel.text = headerTitle
+        
+        if headerTitle == "Synchronize" {
+            /// Add additional label
+            let inDevLabel = UILabel()
+            inDevLabel.translatesAutoresizingMaskIntoConstraints = false
+            inDevLabel.font = UIFont(font: FontFamily.MontserratMedium.regular, size: 15)
+            inDevLabel.text = "In development and will be available in next versions"
+            inDevLabel.numberOfLines = 0
+            inDevLabel.textColor = UIColor.hexStringToUIColor(hex: "767E96")
+            
+            headerView.addSubview(inDevLabel)
+            
+            NSLayoutConstraint.activate([
+                inDevLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -10),
+                inDevLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -10),
+                inDevLabel.widthAnchor.constraint(equalToConstant: 220)
+            ])
+            
+        }
+        
         return headerView
     }
     

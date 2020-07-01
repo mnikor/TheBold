@@ -35,13 +35,16 @@ class SettingsTableViewCell: BaseTableViewCell {
         case .toggle:
             arrowImage.isHidden = true
             toggleSwitch.isOn = model.toggleInitialValue
+            if model.title == "iOS Calendar" || model.title == "Goals and progress in iCloud" {
+                toggleSwitch.isEnabled = false
+            }
         case .none:
             toggleSwitch.isHidden = true
             arrowImage.isHidden = true
         }
         titleLabel.textAlignment = .left
         titleLabel.text = model.title
-        titleLabel.font = UIFont(font: FontFamily.MontserratMedium.regular, size: 12)
+        titleLabel.font = UIFont(font: FontFamily.MontserratMedium.regular, size: 15)
         
         if model.cellType == .signOut {
             titleLabel.textColor = .red

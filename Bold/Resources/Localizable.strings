@@ -34,7 +34,7 @@
 "Splash.Feel" = "Feel";
 "Splash.Think" = "Think";
 "Splash.Act" = "Act";
-"Splash.FeelDescription" = "Conquer fear: boost confidence, resilience and more, by rewiring your subconscious mind.";
+"Splash.FeelDescription" = "Conquer fear, boost confidence, resilience and more, by rewiring your subconscious mind.";
 "Splash.ThinkDescription" = "Our lessons, inspiring stories and quotes will guide your thinking to a new level.";
 "Splash.ActDescription" = "Put your sweat where your mouth is: set and conquer your Boldest goals.";
 "Splash.FindYourBoldness" = "Find your boldness";
@@ -89,7 +89,7 @@
 
 // Player
 
-"Player.NextPractices" = "Next practices";
+"Player.NextPractices" = "Sessions";
 
 
 // Home
@@ -118,7 +118,7 @@
 
 "Settings.Settings" = "Settings";
 "Settings.PremiumAccount" = "Premium Account";
-"Settings.Synchronise" = "Synchronis";
+"Settings.Synchronise" = "Synchronize";
 "Settings.iOSCalendar" = "iOS Calendar";
 "Settings.GoogleCalendar" = "Google Calendar";
 "Settings.InCloud" = "Goals and progress in iCloud";
@@ -155,7 +155,7 @@
 
 "Act.GoalIsLocked" = "Goal is locked";
 "Act.DueOn" = "Due on";
-"Act.toCompleted" = "%@ to %@ completed";
+"Act.toCompleted" = "%@ of %@ completed";
 
 "Act.Missed" = "Missed!";
 "Act.StakeDollar" = "Stake — %@";
@@ -218,7 +218,7 @@
 "Act.Duration.Today" = "Today";
 "Act.Duration.Tommorow" = "Tomorrow";
 "Act.Duration.ChooseDate" = "Choose date";
-"Act.Duration.EndDate" = "End date";
+"Act.Duration.EndDate" = "Target date";
 "Act.Duration.AfterOneWeek" = "After one week";
 "Act.Duration.Repeat" = "Repeat";
 "Act.Duration.NoRepeat" = "No repeat";
@@ -246,10 +246,10 @@
 "Act.Goals.EnterYourGoal" = "Enter your goal";
 
 "Act.Stake" = "Stake";
-"Act.Stake.LetsMakeYourChallenging" = "Let's make your challenging task higher-octane...";
+"Act.Stake.LetsMakeYourChallenging" = "Have a skin in the game…";
 "Act.Stake.YourStake" = "Your stake";
 "Act.Stake.ConfirmStake" = "Confirm stake";
-"Act.Stake.AllFundsGoesToGlobalCharityFoundation" = "All funds goes to a global charity\n foundation gcf-care.org";
+"Act.Stake.AllFundsGoesToGlobalCharityFoundation" = "If you miss to complete the actions the amount of stake will go to global charities";
 "Act.Stake.gcfCareOrg" = "gcf-care.org";
 
 "Act.Cell.CreateGoal" = "Create goal";

@@ -105,7 +105,7 @@ internal enum L10n {
     }
     /// Starts
     internal static let starts = L10n.tr("Localizable", "Act.Starts")
-    /// %@ to %@ completed
+    /// %@ of %@ completed
     internal static func toCompleted(_ p1: String, _ p2: String) -> String {
       return L10n.tr("Localizable", "Act.toCompleted", p1, p2)
     }
@@ -150,7 +150,7 @@ internal enum L10n {
       internal static let chooseDate = L10n.tr("Localizable", "Act.Duration.ChooseDate")
       /// Days of week
       internal static let daysOfWeek = L10n.tr("Localizable", "Act.Duration.DaysOfWeek")
-      /// End date
+      /// Target date
       internal static let endDate = L10n.tr("Localizable", "Act.Duration.EndDate")
       /// Every day
       internal static let everyDay = L10n.tr("Localizable", "Act.Duration.EveryDay")
@@ -250,7 +250,7 @@ internal enum L10n {
       internal static let shareWithFriends = L10n.tr("Localizable", "Act.Share.ShareWithFriends")
     }
     internal enum Stake {
-      /// All funds goes to a global charity\n foundation gcf-care.org
+      /// If you miss to complete the actions the amount of stake will go to global charities
       internal static let allFundsGoesToGlobalCharityFoundation = L10n.tr("Localizable", "Act.Stake.AllFundsGoesToGlobalCharityFoundation")
       /// Confirm stake
       internal static let confirmStake = L10n.tr("Localizable", "Act.Stake.ConfirmStake")
@@ -398,7 +398,7 @@ internal enum L10n {
   }
 
   internal enum Player {
-    /// Next practices
+    /// Sessions
     internal static let nextPractices = L10n.tr("Localizable", "Player.NextPractices")
   }
 
@@ -511,7 +511,7 @@ internal enum L10n {
     internal static let signOut = L10n.tr("Localizable", "Settings.SignOut")
     /// Support
     internal static let support = L10n.tr("Localizable", "Settings.Support")
-    /// Synchronis
+    /// Synchronize
     internal static let synchronise = L10n.tr("Localizable", "Settings.Synchronise")
     /// Terms & Conditions
     internal static let terms = L10n.tr("Localizable", "Settings.Terms")
@@ -526,7 +526,7 @@ internal enum L10n {
     internal static let actDescription = L10n.tr("Localizable", "Splash.ActDescription")
     /// Feel
     internal static let feel = L10n.tr("Localizable", "Splash.Feel")
-    /// Conquer fear: boost confidence, resilience and more, by rewiring your subconscious mind.
+    /// Conquer fear, boost confidence, resilience and more, by rewiring your subconscious mind.
     internal static let feelDescription = L10n.tr("Localizable", "Splash.FeelDescription")
     /// Find your boldness
     internal static let findYourBoldness = L10n.tr("Localizable", "Splash.FindYourBoldness")
