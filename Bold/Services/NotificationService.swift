@@ -16,7 +16,7 @@ enum NotificationAuthorizationStatus {
 }
 
 enum StandardNotification {
-    case createRemider(actionTitle: String, stake: Int, date: Date, reminderType: RemindMeType, identifier: String)
+    case createRemider(actionTitle: String, stake: Int, date: Date, reminderType: RemindMeType, identifier: String, startDate: Date, endDate: Date)
     case removeReimder(identifiers: [String])
     case removeAllReminder
     case resetBadgeNumber
@@ -87,8 +87,8 @@ class NotificationService: NSObject {
     
     func input(_ notification: StandardNotification) {
         switch notification {
-        case .createRemider(actionTitle: let title, stake: let stake, date: let date, reminderType: let reminderType, identifier: let identifier):
-            createReminder(title: title, stake: stake, date: date, reminderType: reminderType, identifier: identifier)
+        case .createRemider(actionTitle: let title, stake: let stake, date: let date, reminderType: let reminderType, identifier: let identifier, let startDate, let endDate):
+            createReminder(title: title, stake: stake, date: date, reminderType: reminderType, identifier: identifier, startDate: startDate, endDate: endDate)
         case .removeReimder(let identifiers):
             removeNotificationRequest(with: identifiers)
         case .removeAllReminder:
@@ -116,7 +116,7 @@ class NotificationService: NSObject {
     
     //MARK:- Create
     
-    func createReminder(title: String, stake: Int, date: Date, reminderType: RemindMeType, identifier: String?) {
+    func createReminder(title: String, stake: Int, date: Date, reminderType: RemindMeType, identifier: String?, startDate: Date, endDate: Date) {
         getLocalNotificationStatus { [weak self] status in
             guard let self = self,
                 status == .authorized
@@ -142,7 +142,29 @@ class NotificationService: NSObject {
             let trigger = self.createReminderTrigger(triggerDate: date)
             content.categoryIdentifier = CategoryIdentifier.stake.rawValue
             
-            self.addRequest(with: identifier ?? UUID().uuidString, content: content, trigger: trigger)
+            let requestId = identifier ?? UUID().uuidString
+            self.addRequest(with: requestId, content: content, trigger: trigger)
+            
+            self.createBasicReminder(content: content, startDate: startDate, endDate: endDate, identifier: requestId)
+            
+        }
+    }
+    
+    func createBasicReminder(content: UNMutableNotificationContent, startDate: Date, endDate: Date, identifier: String) {
+        
+        getLocalNotificationStatus {[weak self] (status) in
+            guard let ss = self, status == .authorized else { return }
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10800, repeats: false)
+            let triggerId = identifier + "3h"
+            
+            let dateComponets = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: endDate)
+            let triggerAtTheEnd = UNCalendarNotificationTrigger(dateMatching: dateComponets, repeats: false)
+            let atEndId = identifier + "atEnd"
+            
+            ss.addRequest(with: triggerId, content: content, trigger: trigger)
+            ss.addRequest(with: atEndId, content: content, trigger: triggerAtTheEnd)
+            
         }
     }
     
@@ -190,7 +212,17 @@ class NotificationService: NSObject {
     //MARK:- Remove
     
     func removeNotificationRequest(with identifiers: [String]) {
-        notificationCenter.removePendingNotificationRequests(withIdentifiers: identifiers)
+        
+        var ids = identifiers
+        
+        for identifier in ids {
+            let id3h = identifier + "3h"
+            let idAtEnd = identifier + "atEnd"
+            
+            ids.append(id3h)
+            ids.append(idAtEnd)
+        }
+        notificationCenter.removePendingNotificationRequests(withIdentifiers: ids)
     }
     
     //MARK:- Configure

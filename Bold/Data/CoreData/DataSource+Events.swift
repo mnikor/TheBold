@@ -41,7 +41,8 @@ extension DataSource: EventFunctionality {
         event.action = action
         
         if let reminderDate = reminderDate, let remind = action.reminderMe, let type = RemindMeType(rawValue: remind.type) {
-            NotificationService.shared.input(.createRemider(actionTitle: event.name!, stake: Int(event.stake), date: reminderDate, reminderType: type, identifier: event.id!))
+            NotificationService.shared.input(.createRemider(actionTitle: event.name!, stake: Int(event.stake), date: reminderDate, reminderType: type, identifier: event.id!, startDate: startDate, endDate: endDate))
+            
         }
     }
     
@@ -231,7 +232,7 @@ extension DataSource: EventFunctionality {
         
         var results = [Event]()
         let filterDate = Date().dayOfMonthOfYear() as NSDate
-        
+
         let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
         let sort = NSSortDescriptor(key: "startDate", ascending: true)
         fetchRequest.sortDescriptors = [sort]

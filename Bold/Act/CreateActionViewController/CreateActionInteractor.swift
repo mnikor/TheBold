@@ -129,7 +129,6 @@ class CreateActionInteractor: CreateActionInputInteractorProtocol {
                         
                         let reminderDate = calculateReminder(startDate: startDate, reminderMe: presenter.newAction.reminderMe)
                         DataSource.shared.createEvent(action: action, startDate: startDate, endDate: endDate, reminderDate: reminderDate)
-//                        NotificationService.shared.createReminder(title: <#T##String#>, body: <#T##String#>, date: <#T##Date#>, reminderType: <#T##ReminderType#>, identifier: <#T##String?#>)
                     }
                 }
                 startDate = calendar.date(byAdding: .day, value: 1, to: startDate)!

@@ -10,8 +10,19 @@ import Foundation
 
 extension Date {
     
+    var startOfDay: Date {
+        return Calendar.current.startOfDay(for: self)
+    }
+    
+    var endOfDay: Date {
+        var components = DateComponents()
+        components.day = 1
+        components.second = -1
+        return Calendar.current.date(byAdding: components, to: startOfDay)!
+    }
+    
     func baseTime() -> Date {
-        return customTime(hour: 12, minute: 00)
+        return customTime(hour: 0, minute: 00)
     }
     
     func customTime(hour:Int, minute:Int) -> Date {
@@ -25,7 +36,7 @@ extension Date {
     func tommorowDay() -> Date {
         return Calendar.current.date(byAdding: .day, value: 1, to: self)!.baseTime()
     }
-    
+
     func afterOneWeek() -> Date {
         return Calendar.current.date(byAdding: .day, value: 7, to: self)!.baseTime()
     }
