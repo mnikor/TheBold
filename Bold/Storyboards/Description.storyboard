@@ -28,20 +28,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kw-kA-kVM">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="-50" width="375" height="673"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ub-wy-29P">
-                                        <rect key="frame" x="0.0" y="300" width="375" height="300"/>
+                                        <rect key="frame" x="0.0" y="350" width="375" height="300"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="300" id="EqD-yi-kn0"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="27V-vI-3iO">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="370"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="serfer" translatesAutoresizingMaskIntoConstraints="NO" id="GPZ-yi-lAd" customClass="CustomImageView" customModule="Bold" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="370"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygI-B4-CJr">
                                                 <rect key="frame" x="321" y="14" width="44" height="44"/>
@@ -55,7 +55,7 @@
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="mbD-Av-OwD">
-                                                <rect key="frame" x="20" y="230.5" width="335" height="59.5"/>
+                                                <rect key="frame" x="20" y="280.5" width="335" height="59.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lesson" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sud-IR-Ach">
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="18.5"/>
@@ -84,11 +84,11 @@
                                             <constraint firstItem="ygI-B4-CJr" firstAttribute="top" secondItem="27V-vI-3iO" secondAttribute="topMargin" constant="6" id="d5J-06-Ls5"/>
                                             <constraint firstAttribute="bottom" secondItem="mbD-Av-OwD" secondAttribute="bottom" constant="30" id="ha4-Jj-Svg"/>
                                             <constraint firstAttribute="trailing" secondItem="ygI-B4-CJr" secondAttribute="trailing" constant="10" id="pP9-p4-R9h"/>
-                                            <constraint firstAttribute="height" constant="320" id="wnv-V0-cCr"/>
+                                            <constraint firstAttribute="height" constant="370" id="wnv-V0-cCr"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zr7-su-X8u">
-                                        <rect key="frame" x="120" y="295" width="135" height="50"/>
+                                        <rect key="frame" x="120" y="345" width="135" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="9de-h4-jgG"/>
@@ -152,7 +152,7 @@
                             <constraint firstItem="mex-pN-zp7" firstAttribute="bottom" secondItem="D9H-Rb-vNn" secondAttribute="bottom" id="U46-M5-HWU"/>
                             <constraint firstItem="D9H-Rb-vNn" firstAttribute="top" secondItem="7kw-kA-kVM" secondAttribute="bottom" id="bhE-wR-5kS"/>
                             <constraint firstItem="D9H-Rb-vNn" firstAttribute="leading" secondItem="mex-pN-zp7" secondAttribute="leading" id="d5W-JE-owf"/>
-                            <constraint firstItem="7kw-kA-kVM" firstAttribute="top" secondItem="mex-pN-zp7" secondAttribute="top" id="gLf-5u-yMS"/>
+                            <constraint firstItem="7kw-kA-kVM" firstAttribute="top" secondItem="mex-pN-zp7" secondAttribute="top" constant="-50" id="gLf-5u-yMS"/>
                             <constraint firstItem="27V-vI-3iO" firstAttribute="leading" secondItem="mex-pN-zp7" secondAttribute="leading" id="i6x-IH-fGN"/>
                             <constraint firstItem="mex-pN-zp7" firstAttribute="trailing" secondItem="7kw-kA-kVM" secondAttribute="trailing" id="ieA-YD-WjL"/>
                             <constraint firstItem="mex-pN-zp7" firstAttribute="trailing" secondItem="27V-vI-3iO" secondAttribute="trailing" id="wEb-Gw-dRq"/>

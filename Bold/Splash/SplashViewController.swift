@@ -40,7 +40,6 @@ class SplashViewController: UIViewController {
     private func randomText() {
         
         let texts = [L10n.Splash.text0,L10n.Splash.text1, L10n.Splash.text2, L10n.Splash.text3, L10n.Splash.text4, L10n.Splash.text5, L10n.Splash.text6, L10n.Splash.text7, L10n.Splash.text8, L10n.Splash.text9, L10n.Splash.text10, L10n.Splash.text11]
-
         
         if let firstLoad = UserDefaults.standard.value(forKey: Constants.isFirstLoad) as? Bool {
             if !firstLoad {
