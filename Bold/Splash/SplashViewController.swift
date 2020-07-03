@@ -26,6 +26,7 @@ class SplashViewController: UIViewController {
         transitioningDelegate = self
         videoView.delegate = self
         label.alpha = 0
+        /// To show some particular text at first app load we have to save state in UserDefaults
         randomText()
     }
     
@@ -37,8 +38,20 @@ class SplashViewController: UIViewController {
     }
 
     private func randomText() {
-        let texts = [L10n.Splash.text1, L10n.Splash.text2, L10n.Splash.text3, L10n.Splash.text4, L10n.Splash.text5, L10n.Splash.text6, L10n.Splash.text7, L10n.Splash.text8, L10n.Splash.text9, L10n.Splash.text10, L10n.Splash.text11]
-        label.text = texts[Int(arc4random_uniform(UInt32(texts.count)))]
+        
+        let texts = [L10n.Splash.text0,L10n.Splash.text1, L10n.Splash.text2, L10n.Splash.text3, L10n.Splash.text4, L10n.Splash.text5, L10n.Splash.text6, L10n.Splash.text7, L10n.Splash.text8, L10n.Splash.text9, L10n.Splash.text10, L10n.Splash.text11]
+
+        
+        if let firstLoad = UserDefaults.standard.value(forKey: Constants.isFirstLoad) as? Bool {
+            if !firstLoad {
+                label.text = texts[Int(arc4random_uniform(UInt32(texts.count)))]
+                return
+            }
+        }
+        
+        UserDefaults.standard.set(false, forKey: Constants.isFirstLoad)
+        
+        label.text = texts.first
     }
     
 //    override func viewDidDisappear(_ animated: Bool) {
@@ -114,4 +127,10 @@ extension SplashViewController: UIViewControllerTransitioningDelegate {
         return nil
     }
     
+}
+
+// MARK: - Constants
+
+private struct Constants {
+    static let isFirstLoad = "FirstLoad"
 }

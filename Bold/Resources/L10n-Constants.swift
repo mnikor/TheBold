@@ -532,6 +532,8 @@ internal enum L10n {
     internal static let findYourBoldness = L10n.tr("Localizable", "Splash.FindYourBoldness")
     /// Sign Up
     internal static let signUp = L10n.tr("Localizable", "Splash.SignUp")
+    /// Have faith in yourself
+    internal static let text0 = L10n.tr("Localizable", "Splash.text0")
     /// Explore uncharted territories
     internal static let text1 = L10n.tr("Localizable", "Splash.text1")
     /// Keep your fire burning
