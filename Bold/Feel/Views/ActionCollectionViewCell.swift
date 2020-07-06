@@ -63,8 +63,10 @@ class ActionCollectionViewCell: BaseCollectionViewCell {
     
     private func getType(by status: ContentStatus) -> actionSmallCellType {
         switch status {
-        case .locked, .lockedPoints:
+        case .locked:
             return .lock
+        case .lockedPoints:
+            return .shape
         case .unlocked:
             return .none
         default:

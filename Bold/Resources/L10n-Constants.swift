@@ -348,11 +348,11 @@ internal enum L10n {
     internal static let feelBold = L10n.tr("Localizable", "Feel.FeelBold")
     /// Hypnosis
     internal static let hypnosis = L10n.tr("Localizable", "Feel.Hypnosis")
-    /// Hack your supercomputer and change unhelpful programs running in your subconscious mind.
+    /// Go deep to your subconscious mind to change unhelpful programs and install new one that will help you to succeed.
     internal static let hypnosisSubtitle = L10n.tr("Localizable", "Feel.HypnosisSubtitle")
     /// Meditation
     internal static let meditation = L10n.tr("Localizable", "Feel.Meditation")
-    /// Tune your mind, body and soul and let them work together.
+    /// Find space in your mind to find calm and clarity. Connect to your inner wisdom and power.
     internal static let meditationSubtitle = L10n.tr("Localizable", "Feel.MeditationSubtitle")
     /// Pep-talk
     internal static let pepTalk = L10n.tr("Localizable", "Feel.Pep-talk")
