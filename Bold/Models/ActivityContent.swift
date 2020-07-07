@@ -178,6 +178,10 @@ class ActivityContent: ActivityBase {
             documentURL = nil
         }
         
+        /// Setup content status in according to premium subscriiption
+        var contentStatus: ContentStatus = content.isLock ? .locked : .unlocked
+        if DataSource.shared.isPremiumUser() { contentStatus = .unlocked }
+        
         return ActivityContent(id: Int(content.id),
                                position: 0,
                                type: type,
@@ -187,7 +191,7 @@ class ActivityContent: ActivityBase {
                                footer: content.footer ?? "",
                                durtionRead: Int(content.durationRead),
                                pointOfUnlock: Int(content.pointsUnlock),
-                               contentStatus: content.isLock ? .locked : .unlocked,
+                               contentStatus: contentStatus,
                                imageURL: content.imageUrl,
                                smallImageURL: content.smallImage,
                                largeImageURL: content.largeImage,

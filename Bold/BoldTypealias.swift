@@ -7,8 +7,14 @@
 //
 
 import Foundation
+import StoreKit
 
 typealias VoidCallback = () -> Void
 typealias Callback<T> = (T) -> Void
 typealias DualCallback<T, U> = (T, U) -> Void
 typealias ReturningCallback<T> = () -> T
+
+// IAP
+
+public typealias ProductIdentifier = String
+public typealias ProductsRequestCompletionHandler = (_ success: Bool, _ products: [SKProduct]?) -> Void

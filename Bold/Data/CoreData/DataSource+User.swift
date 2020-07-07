@@ -46,6 +46,11 @@ extension DataSource: UserFunctionality {
         return result
     }
     
+    func isPremiumUser() -> Bool {
+        let user = readUser()
+        return user.premiumOn
+    }
+    
     func createNewUser() -> User {
         
         let user = User()

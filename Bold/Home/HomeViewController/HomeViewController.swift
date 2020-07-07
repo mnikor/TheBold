@@ -53,6 +53,7 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -15,6 +15,9 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        /// Restore purchased subscriptions
+        clearUserDefaultsSubscriptions()
+        IAPProducts.store.restorePurchases()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -41,6 +44,7 @@ class SplashViewController: UIViewController {
         
         let texts = [L10n.Splash.text0,L10n.Splash.text1, L10n.Splash.text2, L10n.Splash.text3, L10n.Splash.text4, L10n.Splash.text5, L10n.Splash.text6, L10n.Splash.text7, L10n.Splash.text8, L10n.Splash.text9, L10n.Splash.text10, L10n.Splash.text11]
         
+        /// Check if app loading for the first time
         if let firstLoad = UserDefaults.standard.value(forKey: Constants.isFirstLoad) as? Bool {
             if !firstLoad {
                 label.text = texts[Int(arc4random_uniform(UInt32(texts.count)))]
@@ -49,8 +53,8 @@ class SplashViewController: UIViewController {
         }
         
         UserDefaults.standard.set(false, forKey: Constants.isFirstLoad)
-        
         label.text = texts.first
+        
     }
     
 //    override func viewDidDisappear(_ animated: Bool) {
@@ -60,6 +64,11 @@ class SplashViewController: UIViewController {
     
     deinit {
         print("SplashViewController DEINIT")
+    }
+    
+    private func clearUserDefaultsSubscriptions() {
+        UserDefaults.standard.set(false, forKey: IAPProducts.MonthlySubscription)
+        UserDefaults.standard.set(false, forKey: IAPProducts.YearlySubscription)
     }
 }
 

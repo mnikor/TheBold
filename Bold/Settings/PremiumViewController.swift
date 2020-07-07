@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 enum PremiumType {
     case monthly
@@ -16,11 +17,16 @@ enum PremiumType {
 class PremiumViewController: UIViewController {
     
     @IBOutlet weak var monthlyView: UIView!
+    @IBOutlet weak var monthlyPriceLabel: UILabel!
     @IBOutlet weak var yearlyView: UIView!
+    @IBOutlet weak var yearlyPriceLabel: UILabel!
     @IBOutlet weak var congratsView: UIView!
     @IBOutlet weak var crossButton: UIButton!
     
     private var premium : PremiumType!
+    
+    private var monthlyProduct: SKProduct?
+    private var yearlyProduct: SKProduct?
     
     var fromThoughts = false
     
@@ -33,11 +39,15 @@ class PremiumViewController: UIViewController {
     }
     
     @IBAction func tapMonthlyButton(_ sender: UIButton) {
-        selectPremium(type: .monthly)
+        guard let product = monthlyProduct else { return }
+        premium = .monthly
+        IAPProducts.store.buyProduct(product)
     }
     
     @IBAction func tapYearlyButton(_ sender: UIButton) {
-        selectPremium(type: .yearly)
+        guard let product = monthlyProduct else { return }
+        premium = .yearly
+        IAPProducts.store.buyProduct(product)
     }
     
     @IBAction func tapUnlockPremiumButton(_ sender: UIButton) {
@@ -51,15 +61,14 @@ class PremiumViewController: UIViewController {
     }
     
     @IBAction func congratsDoneButton() {
-        
         if let navController = navigationController {
             navController.popViewController(animated: true)
         } else {
             dismiss(animated: true, completion: nil)
         }
-
-        
     }
+    
+    // MARK: - LIFE CYCLE
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,12 +76,69 @@ class PremiumViewController: UIViewController {
         if fromThoughts {
             crossButton.isHidden = true
         }
+        
+        /// Load IAP subscriptions
+        IAPProducts.store.requestProducts {[weak self] (success, products) in
+            guard let ss = self else { return }
+            
+            if success {
+                if let products = products {
+                    for product in products {
+                        if product.productIdentifier == IAPProducts.MonthlySubscription {
+                            ss.monthlyProduct = product
+                            if let isMonthly = UserDefaults.standard.value(forKey: product.productIdentifier) as? Bool {
+                                if isMonthly { ss.premium = .monthly }
+                            }
+                        } else if product.productIdentifier == IAPProducts.YearlySubscription {
+                            ss.yearlyProduct = product
+                            if let isYearly = UserDefaults.standard.value(forKey: product.productIdentifier) as? Bool {
+                                if isYearly { ss.premium = .yearly }
+                            }
+                        }
+                        ss.selectPremium()
+                    }
+                }
+            }
+        }
+        
     }
     
-    private func selectPremium(type: PremiumType) {
-        premium = type
-        addShadow(to: type == .monthly ? monthlyView : yearlyView)
-        removeShadow(from: type == .monthly ? yearlyView : monthlyView)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setupObserver()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    // MARK: - SETUP OBSERVER
+    
+    private func setupObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(selectPremium), name: .IAPHelperPurchaseNotification, object: nil)
+    }
+    
+    // MARK: - SETUP VIEW
+    
+    @objc private func selectPremium() {
+        
+        DispatchQueue.main.async { [weak self] in
+            guard let ss = self else { return }
+            
+            switch ss.premium {
+            case .monthly:
+                ss.yearlyView.isUserInteractionEnabled = false
+                ss.addShadow(to: ss.monthlyView)
+            case .yearly:
+                ss.monthlyView.isUserInteractionEnabled = false
+                ss.removeShadow(from: ss.yearlyView)
+            default:
+                break
+            }
+        }
     }
     
     private func addShadow(to view: UIView) {

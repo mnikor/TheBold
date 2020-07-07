@@ -17,6 +17,8 @@
 		3EFCA3BF2306E00900129DB4 /* SettingsSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFCA3BE2306E00900129DB4 /* SettingsSectionModel.swift */; };
 		3EFCA3C12306E3F000129DB4 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EFCA3C02306E3F000129DB4 /* SettingsTableViewCell.xib */; };
 		4B1DFC7E2481425300921A91 /* NavigationTitleAndProgressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B1DFC7D2481425300921A91 /* NavigationTitleAndProgressTableViewCell.xib */; };
+		4B4D632924B45C5D00859CB7 /* IAPProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D632824B45C5D00859CB7 /* IAPProducts.swift */; };
+		4B4D632B24B45CC800859CB7 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D632A24B45CC800859CB7 /* IAPHelper.swift */; };
 		4B61C5F92498F65F00493E1B /* RateAndShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B61C5F82498F65E00493E1B /* RateAndShareView.xib */; };
 		4B61C5FB2498F67600493E1B /* RateAndShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B61C5FA2498F67600493E1B /* RateAndShareView.swift */; };
 		4B813B7D24A1FF5E00E574E8 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B813B7C24A1FF5E00E574E8 /* AuthViewController.swift */; };
@@ -474,6 +476,8 @@
 		3EFCA3BE2306E00900129DB4 /* SettingsSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionModel.swift; sourceTree = "<group>"; };
 		3EFCA3C02306E3F000129DB4 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
 		4B1DFC7D2481425300921A91 /* NavigationTitleAndProgressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationTitleAndProgressTableViewCell.xib; sourceTree = "<group>"; };
+		4B4D632824B45C5D00859CB7 /* IAPProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPProducts.swift; sourceTree = "<group>"; };
+		4B4D632A24B45CC800859CB7 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		4B61C5F82498F65E00493E1B /* RateAndShareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RateAndShareView.xib; sourceTree = "<group>"; };
 		4B61C5FA2498F67600493E1B /* RateAndShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateAndShareView.swift; sourceTree = "<group>"; };
 		4B813B7C24A1FF5E00E574E8 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -969,6 +973,15 @@
 				3EFCA3C02306E3F000129DB4 /* SettingsTableViewCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4B4D632724B45C4900859CB7 /* IAP */ = {
+			isa = PBXGroup;
+			children = (
+				4B4D632824B45C5D00859CB7 /* IAPProducts.swift */,
+				4B4D632A24B45CC800859CB7 /* IAPHelper.swift */,
+			);
+			path = IAP;
 			sourceTree = "<group>";
 		};
 		4B813B7E24A210FB00E574E8 /* Main */ = {
@@ -1665,6 +1678,7 @@
 				F179974E22AE619C0039879F /* EmptyView.swift */,
 				F179975522AFB04B0039879F /* LocalizableViewController.swift */,
 				F169675B236ACD9F004BB9BA /* BoldTypealias.swift */,
+				4B4D632724B45C4900859CB7 /* IAP */,
 				F1F44A592368711600F977D1 /* Models */,
 				F1F6AD9D23210DB200F6A925 /* Data */,
 				C5B1E5532304384A000991DF /* Protocols */,
@@ -2582,6 +2596,7 @@
 				F179974F22AE619C0039879F /* EmptyView.swift in Sources */,
 				F1E698AE2315721000438E3E /* DownloadsConfigurator.swift in Sources */,
 				C50FE4D0239545E3008DD7C8 /* TableViewCellAnimator.swift in Sources */,
+				4B4D632B24B45CC800859CB7 /* IAPHelper.swift in Sources */,
 				F179976922B1319F0039879F /* HomeViewController.swift in Sources */,
 				F1CECE1D22E9C77600EA95EE /* IconListCreateGoalTableViewCell.swift in Sources */,
 				F107538122EF496F0078C71C /* ShareButtonTableViewCell.swift in Sources */,
@@ -2771,6 +2786,7 @@
 				F1EAF59C22E8AA89008073D7 /* ConfigurateActionInteractor.swift in Sources */,
 				F1EA1CB522E1BF4900BB328F /* AllGoalsViewController.swift in Sources */,
 				F179977A22B141FA0039879F /* HostViewController.swift in Sources */,
+				4B4D632924B45C5D00859CB7 /* IAPProducts.swift in Sources */,
 				F1F6ADCF23210E7700F6A925 /* NumberFormatter+Extensions.swift in Sources */,
 				F19A98B822D758CF00A0492E /* MissedYouTwoButtonAlertView.swift in Sources */,
 				F190357822D87AF8001BC996 /* FixedPaddingTextView.swift in Sources */,
