@@ -27,6 +27,8 @@
 		4B813B8424A211BE00E574E8 /* AuthViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B813B8324A211BE00E574E8 /* AuthViewInteractor.swift */; };
 		4B813B8624A211C600E574E8 /* AuthViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B813B8524A211C600E574E8 /* AuthViewRouter.swift */; };
 		4BB9CB9424B4BF8B00686CE6 /* LockedByPointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9CB9324B4BF8B00686CE6 /* LockedByPointsViewController.swift */; };
+		4BB9CB9724B4CE3500686CE6 /* Meditation.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4BB9CB9524B4CE3500686CE6 /* Meditation.pdf */; };
+		4BB9CB9824B4CE3500686CE6 /* Hypnosis.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4BB9CB9624B4CE3500686CE6 /* Hypnosis.pdf */; };
 		4BD74C4F247F9D8B00BD0A24 /* UIColor+HexExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD74C4E247F9D8B00BD0A24 /* UIColor+HexExtension.swift */; };
 		4BD74C51248123CB00BD0A24 /* NavigationTitleAndProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD74C50248123CB00BD0A24 /* NavigationTitleAndProgressTableViewCell.swift */; };
 		AB3A5076A4778FC67A39C5DE /* Pods_Bold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F633E16C16CF1D2DB8E5B5 /* Pods_Bold.framework */; };
@@ -105,8 +107,6 @@
 		C5DCDEBD237293540018DEA4 /* DescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCDEBC237293540018DEA4 /* DescriptionViewModel.swift */; };
 		C5DCDEC32372973C0018DEA4 /* Manifest.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDEBE2372973B0018DEA4 /* Manifest.pdf */; };
 		C5DCDEC42372973C0018DEA4 /* Bold Manifest .mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDEBF2372973B0018DEA4 /* Bold Manifest .mp3 */; };
-		C5DCDEC52372973C0018DEA4 /* Meditation.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDEC02372973C0018DEA4 /* Meditation.pdf */; };
-		C5DCDEC62372973C0018DEA4 /* Hypnosis.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDEC12372973C0018DEA4 /* Hypnosis.pdf */; };
 		C5DCDEC72372973C0018DEA4 /* Pep-Talks.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDEC22372973C0018DEA4 /* Pep-Talks.pdf */; };
 		C5DCDECB2373D78A0018DEA4 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCDECA2373D78A0018DEA4 /* SettingsService.swift */; };
 		C5DCDECD237458580018DEA4 /* Privacy.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C5DCDECC237458580018DEA4 /* Privacy.pdf */; };
@@ -487,6 +487,8 @@
 		4B813B8324A211BE00E574E8 /* AuthViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewInteractor.swift; sourceTree = "<group>"; };
 		4B813B8524A211C600E574E8 /* AuthViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewRouter.swift; sourceTree = "<group>"; };
 		4BB9CB9324B4BF8B00686CE6 /* LockedByPointsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedByPointsViewController.swift; sourceTree = "<group>"; };
+		4BB9CB9524B4CE3500686CE6 /* Meditation.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Meditation.pdf; sourceTree = "<group>"; };
+		4BB9CB9624B4CE3500686CE6 /* Hypnosis.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Hypnosis.pdf; sourceTree = "<group>"; };
 		4BD74C4E247F9D8B00BD0A24 /* UIColor+HexExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+HexExtension.swift"; sourceTree = "<group>"; };
 		4BD74C50248123CB00BD0A24 /* NavigationTitleAndProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitleAndProgressTableViewCell.swift; sourceTree = "<group>"; };
 		C50FE4CD238BD785008DD7C8 /* DataSource+Files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSource+Files.swift"; sourceTree = "<group>"; };
@@ -565,8 +567,6 @@
 		C5DCDEBC237293540018DEA4 /* DescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewModel.swift; sourceTree = "<group>"; };
 		C5DCDEBE2372973B0018DEA4 /* Manifest.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Manifest.pdf; sourceTree = "<group>"; };
 		C5DCDEBF2372973B0018DEA4 /* Bold Manifest .mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Bold Manifest .mp3"; sourceTree = "<group>"; };
-		C5DCDEC02372973C0018DEA4 /* Meditation.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Meditation.pdf; sourceTree = "<group>"; };
-		C5DCDEC12372973C0018DEA4 /* Hypnosis.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Hypnosis.pdf; sourceTree = "<group>"; };
 		C5DCDEC22372973C0018DEA4 /* Pep-Talks.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Pep-Talks.pdf"; sourceTree = "<group>"; };
 		C5DCDECA2373D78A0018DEA4 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		C5DCDECC237458580018DEA4 /* Privacy.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Privacy.pdf; sourceTree = "<group>"; };
@@ -1793,9 +1793,9 @@
 				C5DCDECE2374587C0018DEA4 /* Terms.pdf */,
 				C5DCDECC237458580018DEA4 /* Privacy.pdf */,
 				C5DCDEBF2372973B0018DEA4 /* Bold Manifest .mp3 */,
-				C5DCDEC12372973C0018DEA4 /* Hypnosis.pdf */,
+				4BB9CB9624B4CE3500686CE6 /* Hypnosis.pdf */,
+				4BB9CB9524B4CE3500686CE6 /* Meditation.pdf */,
 				C5DCDEBE2372973B0018DEA4 /* Manifest.pdf */,
-				C5DCDEC02372973C0018DEA4 /* Meditation.pdf */,
 				F17EFABE23AD15730012F9DB /* Lessons.pdf */,
 				F17EFAC023AD15A00012F9DB /* Stories.pdf */,
 				C5DCDEC22372973C0018DEA4 /* Pep-Talks.pdf */,
@@ -2321,7 +2321,6 @@
 				F14166AD22C125A50020BF0F /* ActionCollectionTableViewCell.xib in Resources */,
 				F158E2C122C3C73F00FD671A /* ProgressHeaderView.xib in Resources */,
 				F1C2533422B297B9003156AA /* UnlockPremiumTableViewCell.xib in Resources */,
-				C5DCDEC62372973C0018DEA4 /* Hypnosis.pdf in Resources */,
 				F107539522F20C0B0078C71C /* EnterYourGoalTableViewCell.xib in Resources */,
 				F1C2534A22B2ACFC003156AA /* ActInactiveCollectionViewCell.xib in Resources */,
 				F17EFABF23AD15730012F9DB /* Lessons.pdf in Resources */,
@@ -2342,7 +2341,6 @@
 				F1868832229E90EF0029A663 /* Montserrat-Bold.ttf in Resources */,
 				F1EA1CB322E0BFCE00BB328F /* EmptyActView.xib in Resources */,
 				F1EA1CAD22E0834D00BB328F /* StakeHeaderView.xib in Resources */,
-				C5DCDEC52372973C0018DEA4 /* Meditation.pdf in Resources */,
 				F1EAF59322E89925008073D7 /* HeaderWriteActionsTableViewCell.xib in Resources */,
 				F1868838229E90EF0029A663 /* Montserrat-Medium.ttf in Resources */,
 				F1A79DCA22D8A5620018A8EF /* ManageItTableViewCell.xib in Resources */,
@@ -2357,6 +2355,7 @@
 				F19A98B622D7575C00A0492E /* MissedYouOneButtonAlertView.xib in Resources */,
 				F186883E229E90EF0029A663 /* Montserrat-Regular.ttf in Resources */,
 				F1CECE1622E9C73400EA95EE /* ColorCreateGoalTableViewCell.xib in Resources */,
+				4BB9CB9824B4CE3500686CE6 /* Hypnosis.pdf in Resources */,
 				C5DCDEC72372973C0018DEA4 /* Pep-Talks.pdf in Resources */,
 				C5650914236FDD6A0072ADF9 /* AllowCameraView.xib in Resources */,
 				F10B69CC22EB2D9100E47315 /* IdeasTableViewCell.xib in Resources */,
@@ -2369,6 +2368,7 @@
 				F141669122C0D97B0020BF0F /* PlayerSmallView.xib in Resources */,
 				F186883A229E90EF0029A663 /* Montserrat-Thin.ttf in Resources */,
 				F1C2533C22B2A78A003156AA /* ActivityCollectionViewCell.xib in Resources */,
+				4BB9CB9724B4CE3500686CE6 /* Meditation.pdf in Resources */,
 				F1868817229E8CA50029A663 /* Menu.storyboard in Resources */,
 				F1868839229E90EF0029A663 /* Montserrat-SemiBold.ttf in Resources */,
 				F186883D229E90EF0029A663 /* Montserrat-ExtraLightItalic.ttf in Resources */,
