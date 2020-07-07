@@ -97,8 +97,11 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
     private func showDetails(for content: ActivityContent) {
         let isDownloadedContent = DataSource.shared.contains(content: content)
         if isContentStatusLocked(content: content) {
-            /// show premium content
-            router.showPremiumController()
+            if content.contentStatus == .locked {
+                router.showPremiumController()
+            } else {
+                router.showLockedByPointsController()
+            }
         } else {
             switch content.type {
             case .lesson, .story:

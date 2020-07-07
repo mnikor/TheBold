@@ -88,7 +88,11 @@ class ActionsListRouter: RouterProtocol, ActionsListRouterProtocol {
     
     private func showPlayer(content: ActivityContent) {
         if isContentStatusLocked(content: content) {
-            showPremiumController()
+            if content.contentStatus == .locked {
+                showPremiumController()
+            } else {
+                showLockedByPointsController()
+            }
         } else {
             PlayerViewController.createController(content: content)
         }
@@ -113,4 +117,10 @@ class ActionsListRouter: RouterProtocol, ActionsListRouterProtocol {
         let vc = StoryboardScene.Settings.premiumViewController.instantiate()
         viewController.present(vc, animated: true, completion: nil)
     }
+    
+    func showLockedByPointsController() {
+        let vc = StoryboardScene.Settings.lockedByPointsViewController.instantiate()
+        viewController.present(vc, animated: true, completion: nil)
+    }
+    
 }

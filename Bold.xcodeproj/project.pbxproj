@@ -26,6 +26,7 @@
 		4B813B8224A211B100E574E8 /* AuthViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B813B8124A211B100E574E8 /* AuthViewPresenter.swift */; };
 		4B813B8424A211BE00E574E8 /* AuthViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B813B8324A211BE00E574E8 /* AuthViewInteractor.swift */; };
 		4B813B8624A211C600E574E8 /* AuthViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B813B8524A211C600E574E8 /* AuthViewRouter.swift */; };
+		4BB9CB9424B4BF8B00686CE6 /* LockedByPointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9CB9324B4BF8B00686CE6 /* LockedByPointsViewController.swift */; };
 		4BD74C4F247F9D8B00BD0A24 /* UIColor+HexExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD74C4E247F9D8B00BD0A24 /* UIColor+HexExtension.swift */; };
 		4BD74C51248123CB00BD0A24 /* NavigationTitleAndProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD74C50248123CB00BD0A24 /* NavigationTitleAndProgressTableViewCell.swift */; };
 		AB3A5076A4778FC67A39C5DE /* Pods_Bold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F633E16C16CF1D2DB8E5B5 /* Pods_Bold.framework */; };
@@ -485,6 +486,7 @@
 		4B813B8124A211B100E574E8 /* AuthViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewPresenter.swift; sourceTree = "<group>"; };
 		4B813B8324A211BE00E574E8 /* AuthViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewInteractor.swift; sourceTree = "<group>"; };
 		4B813B8524A211C600E574E8 /* AuthViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewRouter.swift; sourceTree = "<group>"; };
+		4BB9CB9324B4BF8B00686CE6 /* LockedByPointsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedByPointsViewController.swift; sourceTree = "<group>"; };
 		4BD74C4E247F9D8B00BD0A24 /* UIColor+HexExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+HexExtension.swift"; sourceTree = "<group>"; };
 		4BD74C50248123CB00BD0A24 /* NavigationTitleAndProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitleAndProgressTableViewCell.swift; sourceTree = "<group>"; };
 		C50FE4CD238BD785008DD7C8 /* DataSource+Files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSource+Files.swift"; sourceTree = "<group>"; };
@@ -950,6 +952,7 @@
 			children = (
 				F1E698C32317DFA200438E3E /* SettingsViewController */,
 				F1E698C12317DF9100438E3E /* PremiumViewController.swift */,
+				4BB9CB9324B4BF8B00686CE6 /* LockedByPointsViewController.swift */,
 				F1E698C42317DFC700438E3E /* TermsPrivacyViewController.swift */,
 				3EFCA3BB2306D46000129DB4 /* Views */,
 				3EFCA3B82306D01C00129DB4 /* Models */,
@@ -2705,6 +2708,7 @@
 				C5B1E55D23043A31000991DF /* ConfigurableTableViewCell.swift in Sources */,
 				F183301C22E5CBD800BB7A9E /* ActionsListPresenter.swift in Sources */,
 				F1F6ADC023210DB300F6A925 /* DaysOfWeek+CoreDataProperties.swift in Sources */,
+				4BB9CB9424B4BF8B00686CE6 /* LockedByPointsViewController.swift in Sources */,
 				F1C2534E22B3F9A9003156AA /* HomePresenter.swift in Sources */,
 				F183303E22E6F0D300BB7A9E /* CreateGoalConfigurator.swift in Sources */,
 				F1F6ADC923210DB300F6A925 /* Goal+CoreDataProperties.swift in Sources */,

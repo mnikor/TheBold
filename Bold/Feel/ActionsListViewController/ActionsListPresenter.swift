@@ -97,8 +97,11 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
     }
     
     private func unlockActionCard(_ content: ActivityContent) {
-    
-        router.input(.showPremium)
+        if content.contentStatus == .locked {
+            router.input(.showPremium)
+        } else {
+            router.showLockedByPointsController()
+        }
         
 //        print("\(content)")
 //

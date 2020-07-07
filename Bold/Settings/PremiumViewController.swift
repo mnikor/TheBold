@@ -33,25 +33,30 @@ class PremiumViewController: UIViewController {
     @IBAction func closeButton(_ sender: UIButton) {
         if let nc = navigationController {
             nc.popViewController(animated: true)
-        }else {
+        } else {
             dismiss(animated: true, completion: nil)
         }
     }
     
     @IBAction func tapMonthlyButton(_ sender: UIButton) {
-        guard let product = monthlyProduct else { return }
-        premium = .monthly
-        IAPProducts.store.buyProduct(product)
+        selectPremium(type: .monthly)
     }
     
     @IBAction func tapYearlyButton(_ sender: UIButton) {
-        guard let product = monthlyProduct else { return }
-        premium = .yearly
-        IAPProducts.store.buyProduct(product)
+        selectPremium(type: .yearly)
     }
     
     @IBAction func tapUnlockPremiumButton(_ sender: UIButton) {
-        congratsView.isHidden = false
+        switch premium {
+        case .monthly:
+            guard let product = monthlyProduct else { return }
+            IAPProducts.store.buyProduct(product)
+        case .yearly:
+            guard let product = yearlyProduct else { return }
+            IAPProducts.store.buyProduct(product)
+        default:
+            break
+        }
     }
     
     @IBAction func termsAndConditionAction() {
@@ -95,7 +100,6 @@ class PremiumViewController: UIViewController {
                                 if isYearly { ss.premium = .yearly }
                             }
                         }
-                        ss.selectPremium()
                     }
                 }
             }
@@ -118,27 +122,22 @@ class PremiumViewController: UIViewController {
     // MARK: - SETUP OBSERVER
     
     private func setupObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(selectPremium), name: .IAPHelperPurchaseNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showCongratsView), name: .IAPHelperPurchaseNotification, object: nil)
+    }
+    
+    @objc private func showCongratsView() {
+        DispatchQueue.main.async { [weak self] in
+            guard let ss = self else { return }
+            
+            ss.congratsView.isHidden = false
+        }
     }
     
     // MARK: - SETUP VIEW
     
-    @objc private func selectPremium() {
-        
-        DispatchQueue.main.async { [weak self] in
-            guard let ss = self else { return }
-            
-            switch ss.premium {
-            case .monthly:
-                ss.yearlyView.isUserInteractionEnabled = false
-                ss.addShadow(to: ss.monthlyView)
-            case .yearly:
-                ss.monthlyView.isUserInteractionEnabled = false
-                ss.removeShadow(from: ss.yearlyView)
-            default:
-                break
-            }
-        }
+    private func selectPremium(type: PremiumType) {
+        addShadow(to: type == .monthly ? monthlyView : yearlyView)
+        removeShadow(from: type == .monthly ? yearlyView : monthlyView)
     }
     
     private func addShadow(to view: UIView) {

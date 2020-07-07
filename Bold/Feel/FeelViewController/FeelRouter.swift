@@ -18,6 +18,7 @@ enum FeelInputRouter {
 protocol FeelInputRouterProtocol {
     func input(_ inputCase: FeelInputRouter)
     func showPremiumController()
+    func showLockedByPointsController()
 }
 
 class FeelRouter: RouterProtocol, FeelInputRouterProtocol {
@@ -52,4 +53,10 @@ class FeelRouter: RouterProtocol, FeelInputRouterProtocol {
         let vc = StoryboardScene.Settings.premiumViewController.instantiate()
         viewController.present(vc, animated: true, completion: nil)
     }
+    
+    func showLockedByPointsController() {
+        let vc = StoryboardScene.Settings.lockedByPointsViewController.instantiate()
+        viewController.present(vc, animated: true, completion: nil)
+    }
+    
 }

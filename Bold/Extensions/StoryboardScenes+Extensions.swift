@@ -96,6 +96,8 @@ internal enum StoryboardScene {
 
     internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: Settings.self)
 
+    internal static let lockedByPointsViewController = SceneType<Bold.LockedByPointsViewController>(storyboard: Settings.self, identifier: "LockedByPointsViewController")
+
     internal static let premiumViewController = SceneType<Bold.PremiumViewController>(storyboard: Settings.self, identifier: "PremiumViewController")
   }
   internal enum Splash: StoryboardType {

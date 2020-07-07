@@ -319,6 +319,7 @@ internal enum Asset {
   internal static let triangleIcon = ImageAsset(name: "triangleIcon")
   internal static let ulist = ImageAsset(name: "ulist")
   internal static let unlockWhiteIcon = ImageAsset(name: "unlockWhiteIcon")
+  internal static let win = ImageAsset(name: "win")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
