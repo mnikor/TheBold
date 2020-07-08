@@ -72,6 +72,13 @@ class DescriptionAndLikesCountViewController: UIViewController, AlertDisplayable
         }
     }
     
+    private func swipeDownGesture() {
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(tapCloseButton))
+        swipeDown.direction = .down
+        
+        imageView.addGestureRecognizer(swipeDown)
+    }
+    
     private func config() {
         imageView.image = nil
         imageView.backgroundColor = ColorName.typographyBlack100.color
@@ -276,6 +283,13 @@ extension DescriptionAndLikesCountViewController: UIScrollViewDelegate {
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         calculatePosition(scrollView: scrollView)
+        
+        print(scrollView.contentOffset.y)
+        if isTermsOrPrivacyFromLogin {
+            if scrollView.contentOffset.y < -100 {
+                dismiss(animated: true, completion: nil)
+            }
+        }
         
         let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
         if bottomEdge >= scrollView.contentSize.height {

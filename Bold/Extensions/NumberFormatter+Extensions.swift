@@ -12,11 +12,13 @@ extension NumberFormatter {
     
     class func stringForCurrency(_ currency: Float) -> String{
         //guard let currency = currency else { return String() }
-        let currencyFormatter = NumberFormatter()
+/*        let currencyFormatter = NumberFormatter()
         let number = NSNumber(value: currency)
         currencyFormatter.numberStyle = .currency
         currencyFormatter.maximumFractionDigits = 0
-        return currencyFormatter.string(from: number) ?? String()
+        return currencyFormatter.string(from: number) ?? String() */
+        let stake = Int(currency)
+        return "$\(stake)"
     }
     
 }
