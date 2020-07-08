@@ -144,8 +144,8 @@ extension AuthViewController: SignUpViewDelegate {
     func showTermsAndPrivacyView(descriptionView: DescriptionViewModel) {
         let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
         vc.viewModel = descriptionView
-        let currentVC = UIApplication.topViewController ?? self
-        currentVC.present(vc, animated: true)
+        vc.isTermsOrPrivacyFromLogin = true
+        present(vc, animated: true, completion: nil)
     }
     
     func showAlert(title: String, message: String) {

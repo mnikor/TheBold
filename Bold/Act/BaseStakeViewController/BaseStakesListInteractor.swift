@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import PassKit
 
 enum BaseStakesListInputInteractor {
     case createDataSource(type: BaseStakesDataSourceType, goalID: String?, startDate: Date, endDate:Date, success:([ActDataSourceViewModel])->Void)
@@ -14,6 +15,7 @@ enum BaseStakesListInputInteractor {
 
 protocol BaseStakesListInputInteractorProtocol {
     func input(_ inputCase: BaseStakesListInputInteractor)
+    func setupPaymentRequest(title: String, amount: NSDecimalNumber) -> PKPaymentRequest
 }
 
 class BaseStakesListInteractor: InteractorProtocol, BaseStakesListInputInteractorProtocol {
@@ -301,6 +303,22 @@ class BaseStakesListInteractor: InteractorProtocol, BaseStakesListInputInteracto
     private func getCountTodayEvents() -> Int {
         
         return 0
+    }
+    
+    // MARK: - APPLE PAY REQUEST
+    
+    func setupPaymentRequest(title: String, amount: NSDecimalNumber) -> PKPaymentRequest {
+        
+        let paymentRequest = PKPaymentRequest()
+        paymentRequest.merchantIdentifier = "merchant.com.nikonorov.newBold"
+        paymentRequest.supportedNetworks = [.visa, .masterCard]
+        paymentRequest.merchantCapabilities = .capability3DS
+        paymentRequest.supportedCountries = ["UA"]
+        paymentRequest.countryCode = "UA"
+        paymentRequest.currencyCode = "USD"
+        paymentRequest.paymentSummaryItems = [PKPaymentSummaryItem(label: "Bid 10 Dollars", amount: 10)]
+        
+        return paymentRequest
     }
     
 }

@@ -44,7 +44,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="370"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygI-B4-CJr">
-                                                <rect key="frame" x="321" y="14" width="44" height="44"/>
+                                                <rect key="frame" x="321" y="50" width="44" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="ygI-B4-CJr" secondAttribute="height" multiplier="1:1" id="N0Z-GZ-1WP"/>
                                                     <constraint firstAttribute="height" constant="44" id="lN3-df-bo8"/>
@@ -74,14 +74,12 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="ygI-B4-CJr" firstAttribute="top" secondItem="27V-vI-3iO" secondAttribute="topMargin" constant="6" id="6DK-nL-OZn"/>
                                             <constraint firstAttribute="bottom" secondItem="GPZ-yi-lAd" secondAttribute="bottom" id="Bky-pM-0gt"/>
                                             <constraint firstItem="mbD-Av-OwD" firstAttribute="centerX" secondItem="27V-vI-3iO" secondAttribute="centerX" id="CZM-A9-lkq"/>
                                             <constraint firstItem="GPZ-yi-lAd" firstAttribute="top" secondItem="27V-vI-3iO" secondAttribute="top" id="EF3-HG-X0i"/>
                                             <constraint firstItem="mbD-Av-OwD" firstAttribute="leading" secondItem="27V-vI-3iO" secondAttribute="leading" constant="20" id="Reh-F5-aTV"/>
                                             <constraint firstItem="GPZ-yi-lAd" firstAttribute="leading" secondItem="27V-vI-3iO" secondAttribute="leading" id="bHD-Vb-YnT"/>
                                             <constraint firstAttribute="trailing" secondItem="GPZ-yi-lAd" secondAttribute="trailing" id="cAC-2k-0Fg"/>
-                                            <constraint firstItem="ygI-B4-CJr" firstAttribute="top" secondItem="27V-vI-3iO" secondAttribute="topMargin" constant="6" id="d5J-06-Ls5"/>
                                             <constraint firstAttribute="bottom" secondItem="mbD-Av-OwD" secondAttribute="bottom" constant="30" id="ha4-Jj-Svg"/>
                                             <constraint firstAttribute="trailing" secondItem="ygI-B4-CJr" secondAttribute="trailing" constant="10" id="pP9-p4-R9h"/>
                                             <constraint firstAttribute="height" constant="370" id="wnv-V0-cCr"/>
@@ -147,6 +145,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="mex-pN-zp7" firstAttribute="top" secondItem="ygI-B4-CJr" secondAttribute="top" id="8zc-p0-R6W"/>
                             <constraint firstItem="mex-pN-zp7" firstAttribute="trailing" secondItem="D9H-Rb-vNn" secondAttribute="trailing" id="M5A-Hm-zeP"/>
                             <constraint firstItem="7kw-kA-kVM" firstAttribute="leading" secondItem="mex-pN-zp7" secondAttribute="leading" id="MEn-8b-jkZ"/>
                             <constraint firstItem="mex-pN-zp7" firstAttribute="bottom" secondItem="D9H-Rb-vNn" secondAttribute="bottom" id="U46-M5-HWU"/>

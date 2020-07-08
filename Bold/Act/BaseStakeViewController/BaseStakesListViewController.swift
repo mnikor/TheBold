@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PassKit
 
 class BaseStakesListViewController: UIViewController, ViewProtocol {
     
@@ -152,6 +153,7 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
     }
     
     
+    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -265,6 +267,17 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
         }
         return filterCell
     }
+    
+    func showApplePayController(paymentRequest: PKPaymentRequest) {
+        if let controller = PKPaymentAuthorizationViewController(paymentRequest: paymentRequest) {
+            controller.delegate = self
+            DispatchQueue.main.async {[weak self] in
+                guard let ss = self else { return }
+                ss.present(controller, animated: true, completion: nil)
+            }
+        }
+    }
+    
 }
 
 
@@ -509,6 +522,20 @@ extension BaseStakesListViewController: ActivityCollectionTableViewCellDelegate 
     func tapCreateGoal() {
         print("createGoal")
     }
+}
+
+// MARK: - PKPaymentAuthorizationViewControllerDelegate
+
+extension BaseStakesListViewController: PKPaymentAuthorizationViewControllerDelegate {
+    
+    func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
+        completion(PKPaymentAuthorizationResult(status: .success, errors: nil))
+    }
+    
+    func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 

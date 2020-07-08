@@ -151,7 +151,12 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
             
         case .goalItem(goal: let goal):
             if goal.status == StatusType.locked.rawValue {
-                AlertViewService.shared.input(.missedYourActionLock(tapUnlock: {
+                AlertViewService.shared.input(.missedYourActionLock(tapUnlock: { [weak self] in
+                    guard let ss = self else { return }
+                    /// Get stake for the first missed action
+                    /// Create Apple Pay request and show controller
+                    let paymentRequest = ss.interactor.setupPaymentRequest(title: "Stake", amount: 10)
+                    ss.viewController.showApplePayController(paymentRequest: paymentRequest)
                     LevelOfMasteryService.shared.input(.unlockGoal(goalID: goal.id!))
                 }))
             }else {

@@ -38,6 +38,7 @@ class DescriptionAndLikesCountViewController: UIViewController, AlertDisplayable
     private var alertController: BlurAlertController?
     
     private var isBoldManifest = false
+    var isTermsOrPrivacyFromLogin = false
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
