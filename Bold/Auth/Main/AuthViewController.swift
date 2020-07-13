@@ -125,6 +125,11 @@ extension AuthViewController: SignUpViewDelegate {
         
     }
     
+    func tapApple() {
+        /// Sign in with Apple id
+        presenter.signInWithAppleId()
+    }
+    
     func tapShowSignUp() {
         signUpView.config(typeView: .signUp)
     }

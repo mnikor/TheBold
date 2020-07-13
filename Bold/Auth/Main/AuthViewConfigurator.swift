@@ -14,8 +14,10 @@ class AuthViewConfigurator: ConfiguratorProtocol {
     
     func configure(with viewController: AuthViewController) {
         
+        let appleSignInManager = AppleSignInManager.shared
+        
         let presenter = AuthViewPresenter(view: viewController)
-        let interactor = AuthViewInteractor(presenter: presenter)
+        let interactor = AuthViewInteractor(presenter: presenter, appleSignInManager: appleSignInManager)
         let router = AuthViewRouter(viewController: viewController)
         
         viewController.presenter = presenter

@@ -18,6 +18,7 @@ protocol SignUpViewDelegate: class {
     func tapForgot()
     func signUpViewDidTapSignUp(_ signUpView: SignUpView)
     func tapFacebook()
+    func tapApple()
     func tapShowSignUp()
     func tapShowLogIn()
     func signUpViewDidTapAtPrivacyPolicy()
@@ -55,7 +56,7 @@ class SignUpView: UIView {
     @IBOutlet weak var forgotButton: UIButton!
     @IBOutlet weak var logInButton: RoundedButton!
     @IBOutlet weak var betweenButtonLabel: UILabel!
-    @IBOutlet weak var facebookButton: RoundedButton!
+    @IBOutlet weak var appleButton: RoundedButton!
     @IBOutlet weak var bottomLabel: UILabel!
     @IBOutlet weak var bottomButton: RoundedButton!
     @IBOutlet weak var privacyPolicyStack: UIStackView!
@@ -84,6 +85,10 @@ class SignUpView: UIView {
     
     @IBAction func tapFacebookButton(_ sender: Any) {
         delegate?.tapFacebook()
+    }
+    
+    @IBAction func tapAppleButton(_ sender: Any) {
+        delegate?.tapApple()
     }
     
     @IBAction func tapBottonButton(_ sender: Any) {
@@ -143,7 +148,6 @@ class SignUpView: UIView {
         }
         emailTextField.placeholder = L10n.Authorization.email
         passwordTextField.placeholder = L10n.Authorization.password
-        facebookButton.setTitle(L10n.Authorization.facebook, for: .normal)
         checkImageView.isHidden = true
         setNeedsLayout()
         layoutIfNeeded()

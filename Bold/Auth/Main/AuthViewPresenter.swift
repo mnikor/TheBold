@@ -10,6 +10,7 @@ import Foundation
 
 protocol AuthViewPresenterInputProtocol: class {
     func didTapSignUp(_ type: TypeAuthView, email: String?, password: String?, name: String?, acceptTerms: Bool?)
+    func signInWithAppleId()
 }
 
 protocol AuthViewPresenterOutputProtocol: class {
@@ -48,6 +49,14 @@ class AuthViewPresenter: PresenterProtocol, AuthViewPresenterInputProtocol, Auth
             
         case .signUp:
             interactor.signUp(acceptTerms: acceptTerms, name: name, email: email, password: password)
+        }
+    }
+    
+    func signInWithAppleId() {
+        interactor.signInWithAppleId { (user, email) in
+            print("user: \(user), email: \(email)")
+            /// connect with our backend to finish authorization
+            
         }
     }
     

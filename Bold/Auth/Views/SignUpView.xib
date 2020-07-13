@@ -133,18 +133,18 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnb-RN-9la" customClass="RoundedButton" customModule="Bold" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="123.5" width="325" height="55"/>
-                            <color key="backgroundColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.28627450980392155" green="0.32549019607843138" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="55" id="YMG-vr-pqz"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
                             <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="26" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="170" maxY="0.0"/>
-                            <state key="normal" title="Facebook" image="facebook">
+                            <state key="normal" title="Apple" image="apple_logo">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
-                                <action selector="tapFacebookButton:" destination="577-zy-ts2" eventType="touchUpInside" id="X3Q-v0-kqx"/>
+                                <action selector="tapAppleButton:" destination="577-zy-ts2" eventType="touchUpInside" id="yik-tW-2Z3"/>
                             </connections>
                         </button>
                     </subviews>
@@ -282,6 +282,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="appleButton" destination="rnb-RN-9la" id="E9q-u1-9nk"/>
                 <outlet property="betweenButtonLabel" destination="Js8-sC-qvM" id="wm3-TP-Ztj"/>
                 <outlet property="bottomButton" destination="aAQ-W0-m3s" id="sDD-Ay-czl"/>
                 <outlet property="bottomLabel" destination="fuc-gj-f8H" id="2T2-A4-LaC"/>
@@ -289,7 +290,6 @@
                 <outlet property="checkImageView" destination="vry-Wj-zFF" id="1cT-Pw-qMe"/>
                 <outlet property="emailTextField" destination="4pd-ft-EvX" id="2Zn-yx-ShI"/>
                 <outlet property="emailTopConstraint" destination="5P0-sg-Cu0" id="rdg-le-EFX"/>
-                <outlet property="facebookButton" destination="rnb-RN-9la" id="3Kb-Yb-I0p"/>
                 <outlet property="forgotButton" destination="lAu-lp-WAp" id="Vcj-7b-ksC"/>
                 <outlet property="haveAccountTopConstraint" destination="9S6-zV-wLg" id="drA-kZ-EEv"/>
                 <outlet property="logInButton" destination="DyX-Gt-TdK" id="fQa-5u-IiB"/>
@@ -309,9 +309,9 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
+        <image name="apple_logo" width="36" height="48"/>
         <image name="checkBox" width="17" height="17"/>
         <image name="check_mark" width="13" height="10"/>
-        <image name="facebook" width="26" height="26"/>
         <image name="passwordEye" width="21" height="15"/>
     </resources>
 </document>

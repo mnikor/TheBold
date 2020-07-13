@@ -289,6 +289,7 @@ internal enum Asset {
   internal static let sliderShadowThumb = ImageAsset(name: "SliderShadowThumb")
   internal static let think15 = ImageAsset(name: "Think_1.5")
   internal static let actionShape = ImageAsset(name: "actionShape")
+  internal static let appleLogo = ImageAsset(name: "apple_logo")
   internal static let arrowBack = ImageAsset(name: "arrowBack")
   internal static let arrowPopUp = ImageAsset(name: "arrowPopUp")
   internal static let calendarBlueIcon = ImageAsset(name: "calendarBlueIcon")

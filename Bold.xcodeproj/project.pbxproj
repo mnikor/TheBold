@@ -26,6 +26,7 @@
 		4B813B8224A211B100E574E8 /* AuthViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B813B8124A211B100E574E8 /* AuthViewPresenter.swift */; };
 		4B813B8424A211BE00E574E8 /* AuthViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B813B8324A211BE00E574E8 /* AuthViewInteractor.swift */; };
 		4B813B8624A211C600E574E8 /* AuthViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B813B8524A211C600E574E8 /* AuthViewRouter.swift */; };
+		4BACD9BF24BC74620004D64F /* AppleSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BACD9BE24BC74620004D64F /* AppleSignInManager.swift */; };
 		4BB9CB9424B4BF8B00686CE6 /* LockedByPointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9CB9324B4BF8B00686CE6 /* LockedByPointsViewController.swift */; };
 		4BB9CB9724B4CE3500686CE6 /* Meditation.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4BB9CB9524B4CE3500686CE6 /* Meditation.pdf */; };
 		4BB9CB9824B4CE3500686CE6 /* Hypnosis.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4BB9CB9624B4CE3500686CE6 /* Hypnosis.pdf */; };
@@ -486,6 +487,7 @@
 		4B813B8124A211B100E574E8 /* AuthViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewPresenter.swift; sourceTree = "<group>"; };
 		4B813B8324A211BE00E574E8 /* AuthViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewInteractor.swift; sourceTree = "<group>"; };
 		4B813B8524A211C600E574E8 /* AuthViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewRouter.swift; sourceTree = "<group>"; };
+		4BACD9BE24BC74620004D64F /* AppleSignInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInManager.swift; sourceTree = "<group>"; };
 		4BB9CB9324B4BF8B00686CE6 /* LockedByPointsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedByPointsViewController.swift; sourceTree = "<group>"; };
 		4BB9CB9524B4CE3500686CE6 /* Meditation.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Meditation.pdf; sourceTree = "<group>"; };
 		4BB9CB9624B4CE3500686CE6 /* Hypnosis.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Hypnosis.pdf; sourceTree = "<group>"; };
@@ -995,6 +997,7 @@
 				4B813B8124A211B100E574E8 /* AuthViewPresenter.swift */,
 				4B813B8324A211BE00E574E8 /* AuthViewInteractor.swift */,
 				4B813B8524A211C600E574E8 /* AuthViewRouter.swift */,
+				4BACD9BE24BC74620004D64F /* AppleSignInManager.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -2725,6 +2728,7 @@
 				F19A98A822D616FB00A0492E /* DontGiveUpAlertView.swift in Sources */,
 				F1130CD7230BFF81008FA60D /* CircularProgressBar.swift in Sources */,
 				F1EA1CC022E1EAE300BB328F /* UIViewController+Extensions.swift in Sources */,
+				4BACD9BF24BC74620004D64F /* AppleSignInManager.swift in Sources */,
 				F1C2533B22B2A78A003156AA /* ActivityCollectionViewCell.swift in Sources */,
 				3EFCA3BA2306D02800129DB4 /* SettingsModel.swift in Sources */,
 				F13FCBB82339FE4A00BAE544 /* CalendarActionSectionModel.swift in Sources */,
