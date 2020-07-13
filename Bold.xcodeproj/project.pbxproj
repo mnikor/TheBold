@@ -19,6 +19,7 @@
 		4B1DFC7E2481425300921A91 /* NavigationTitleAndProgressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B1DFC7D2481425300921A91 /* NavigationTitleAndProgressTableViewCell.xib */; };
 		4B4D632924B45C5D00859CB7 /* IAPProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D632824B45C5D00859CB7 /* IAPProducts.swift */; };
 		4B4D632B24B45CC800859CB7 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D632A24B45CC800859CB7 /* IAPHelper.swift */; };
+		4B5208C924BCB35000ED7DA6 /* ThanksForPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5208C824BCB35000ED7DA6 /* ThanksForPaymentViewController.swift */; };
 		4B61C5F92498F65F00493E1B /* RateAndShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B61C5F82498F65E00493E1B /* RateAndShareView.xib */; };
 		4B61C5FB2498F67600493E1B /* RateAndShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B61C5FA2498F67600493E1B /* RateAndShareView.swift */; };
 		4B813B7D24A1FF5E00E574E8 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B813B7C24A1FF5E00E574E8 /* AuthViewController.swift */; };
@@ -480,6 +481,7 @@
 		4B1DFC7D2481425300921A91 /* NavigationTitleAndProgressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationTitleAndProgressTableViewCell.xib; sourceTree = "<group>"; };
 		4B4D632824B45C5D00859CB7 /* IAPProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPProducts.swift; sourceTree = "<group>"; };
 		4B4D632A24B45CC800859CB7 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		4B5208C824BCB35000ED7DA6 /* ThanksForPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksForPaymentViewController.swift; sourceTree = "<group>"; };
 		4B61C5F82498F65E00493E1B /* RateAndShareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RateAndShareView.xib; sourceTree = "<group>"; };
 		4B61C5FA2498F67600493E1B /* RateAndShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateAndShareView.swift; sourceTree = "<group>"; };
 		4B813B7C24A1FF5E00E574E8 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -955,6 +957,7 @@
 				F1E698C32317DFA200438E3E /* SettingsViewController */,
 				F1E698C12317DF9100438E3E /* PremiumViewController.swift */,
 				4BB9CB9324B4BF8B00686CE6 /* LockedByPointsViewController.swift */,
+				4B5208C824BCB35000ED7DA6 /* ThanksForPaymentViewController.swift */,
 				F1E698C42317DFC700438E3E /* TermsPrivacyViewController.swift */,
 				3EFCA3BB2306D46000129DB4 /* Views */,
 				3EFCA3B82306D01C00129DB4 /* Models */,
@@ -2749,6 +2752,7 @@
 				F1160E04242A59A500EC5DD6 /* ActivityBase.swift in Sources */,
 				C59E5E30230581F0005DCD18 /* AccountDetailsViewController.swift in Sources */,
 				F1F6ADD023210E7700F6A925 /* DateFormatter+Extensions.swift in Sources */,
+				4B5208C924BCB35000ED7DA6 /* ThanksForPaymentViewController.swift in Sources */,
 				F13FCBB62339FCDB00BAE544 /* StakeActionViewModel.swift in Sources */,
 				F179977722B1413A0039879F /* SideMenuItemContent.swift in Sources */,
 				F1E8EFDA22F484B2006A9D39 /* CalendarTableViewCell.swift in Sources */,

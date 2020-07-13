@@ -23,6 +23,7 @@ enum BaseStakesListInputRouter {
 
 protocol BaseStakesListInputRouterProtocol {
     func input(_ inputCase: BaseStakesListInputRouter)
+    func showThankForPaymentController()
 }
 
 class BaseStakesListRouter: RouterProtocol, BaseStakesListInputRouterProtocol {
@@ -64,6 +65,11 @@ class BaseStakesListRouter: RouterProtocol, BaseStakesListInputRouterProtocol {
             let vc = StoryboardScene.Act.createGoalViewController.instantiate()
             viewController.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    func showThankForPaymentController() {
+        let vc = StoryboardScene.Settings.thanksForPaymentViewController.instantiate()
+        viewController.present(vc, animated: true, completion: nil)
     }
  
 }

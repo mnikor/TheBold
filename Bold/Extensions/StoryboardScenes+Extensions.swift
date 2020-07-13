@@ -99,6 +99,8 @@ internal enum StoryboardScene {
     internal static let lockedByPointsViewController = SceneType<Bold.LockedByPointsViewController>(storyboard: Settings.self, identifier: "LockedByPointsViewController")
 
     internal static let premiumViewController = SceneType<Bold.PremiumViewController>(storyboard: Settings.self, identifier: "PremiumViewController")
+
+    internal static let thanksForPaymentViewController = SceneType<Bold.ThanksForPaymentViewController>(storyboard: Settings.self, identifier: "ThanksForPaymentViewController")
   }
   internal enum Splash: StoryboardType {
     internal static let storyboardName = "Splash"

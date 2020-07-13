@@ -295,6 +295,7 @@ internal enum Asset {
   internal static let calendarBlueIcon = ImageAsset(name: "calendarBlueIcon")
   internal static let camera = ImageAsset(name: "camera")
   internal static let cameraGrayscale = ImageAsset(name: "cameraGrayscale")
+  internal static let charity = ImageAsset(name: "charity")
   internal static let check = ImageAsset(name: "check")
   internal static let checkBox = ImageAsset(name: "checkBox")
   internal static let checkMark = ImageAsset(name: "check_mark")
