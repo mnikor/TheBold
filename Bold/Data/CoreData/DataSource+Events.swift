@@ -77,7 +77,7 @@ extension DataSource: EventFunctionality {
         
         var results : [Event]!
         let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
-        fetchRequest.predicate = NSPredicate(format: "((status = %d) OR (status = %d)) AND SUBQUERY(action, $act, $act.id == '\(actionID)').@count > 0", StatusType.completed.rawValue, StatusType.failed.rawValue)
+        fetchRequest.predicate = NSPredicate(format: "((status = %d) OR (status = %d)) AND SUBQUERY(action, $act, $act.id == '\(actionID)').@count > 0", StatusType.completed.rawValue)//, StatusType.failed.rawValue)
         do {
             results = try DataSource.shared.backgroundContext.fetch(fetchRequest)
         } catch {
@@ -154,7 +154,7 @@ extension DataSource: EventFunctionality {
         let start = startDate as NSDate
         let end = endDate as NSDate
 
-        fetchRequest.predicate = NSPredicate(format: "((startDate => %@) AND (startDate < %@) AND ((status = %d) OR (status = %d)))", start, end, StatusType.completed.rawValue, StatusType.failed.rawValue)
+        fetchRequest.predicate = NSPredicate(format: "((startDate => %@) AND (startDate < %@) AND ((status = %d) OR (status = %d)))", start, end, StatusType.completed.rawValue) //, StatusType.failed.rawValue)
         
         do {
             results = try DataSource.shared.viewContext.fetch(fetchRequest)
@@ -176,7 +176,9 @@ extension DataSource: EventFunctionality {
         let components = calendar.dateComponents([.month, .year], from: startDate)
         let firstDayMonthDate = calendar.date(from: components)!
         
-        fetchRequest.predicate = NSPredicate(format: " (startDate >= %@) AND (status == \(StatusType.wait.rawValue) OR status == \(StatusType.failed.rawValue) OR status == \(StatusType.completed.rawValue)) AND SUBQUERY(action, $act, $act.goal.id == '\(goalID)').@count > 0", firstDayMonthDate as NSDate)
+        fetchRequest.predicate = NSPredicate(format: " (startDate >= %@) AND (status == \(StatusType.wait.rawValue) OR status == \(StatusType.completed.rawValue)) AND SUBQUERY(action, $act, $act.goal.id == '\(goalID)').@count > 0", firstDayMonthDate as NSDate)
+        
+   /*     fetchRequest.predicate = NSPredicate(format: " (startDate >= %@) AND (status == \(StatusType.wait.rawValue) OR status == \(StatusType.failed.rawValue) OR status == \(StatusType.completed.rawValue)) AND SUBQUERY(action, $act, $act.goal.id == '\(goalID)').@count > 0", firstDayMonthDate as NSDate) */
         
         do {
             results = try DataSource.shared.viewContext.fetch(fetchRequest)

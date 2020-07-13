@@ -131,7 +131,7 @@ extension DataSource: GoalsFunctionality {
         let startDate = Date().beforeTheDay().dayOfMonthOfYear() as NSDate
         
         fetchRequest.sortDescriptors = [sort]
-        fetchRequest.predicate = NSPredicate(format: "(startDate <= %@)", startDate, StatusType.completed.rawValue, StatusType.failed.rawValue)
+        fetchRequest.predicate = NSPredicate(format: "(startDate <= %@)", startDate, StatusType.completed.rawValue) //, StatusType.failed.rawValue)
         
         do {
             results = try DataSource.shared.viewContext.fetch(fetchRequest)
@@ -151,7 +151,7 @@ extension DataSource: GoalsFunctionality {
         
         let filterDate = Date().dayOfMonthOfYear() as NSDate
         
-        fetchRequest.predicate = NSPredicate(format: "(endDate >= %@) AND ((status = %d) OR (status = %d))", filterDate, StatusType.completed.rawValue, StatusType.failed.rawValue)
+        fetchRequest.predicate = NSPredicate(format: "(endDate >= %@) AND ((status = %d) OR (status = %d))", filterDate, StatusType.completed.rawValue) //, StatusType.failed.rawValue)
         
         do {
             results = try DataSource.shared.viewContext.fetch(fetchRequest)

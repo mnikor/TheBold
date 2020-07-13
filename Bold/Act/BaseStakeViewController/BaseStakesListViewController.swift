@@ -269,13 +269,19 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
     }
     
     func showApplePayController(paymentRequest: PKPaymentRequest) {
-        if let controller = PKPaymentAuthorizationViewController(paymentRequest: paymentRequest) {
-            controller.delegate = self
-            DispatchQueue.main.async {[weak self] in
-                guard let ss = self else { return }
-                ss.present(controller, animated: true, completion: nil)
+        
+        if PKPaymentAuthorizationController.canMakePayments() {
+            
+            if let controller = PKPaymentAuthorizationViewController(paymentRequest: paymentRequest) {
+                controller.delegate = self
+                
+                DispatchQueue.main.async {[weak self] in
+                    guard let ss = self else { return }
+                    ss.present(controller, animated: true, completion: nil)
+                }
             }
-        }
+            
+        } else { print("User can't make payments") }
     }
     
 }
@@ -529,11 +535,26 @@ extension BaseStakesListViewController: ActivityCollectionTableViewCellDelegate 
 extension BaseStakesListViewController: PKPaymentAuthorizationViewControllerDelegate {
     
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
+
+        /// 1. Check payment
+        /// 2. Send payment token to backend
+        /// 3. When we got result call completion ether successfull or failure
+        
+        print("Payment: \(payment.description) successed!")
+
         completion(PKPaymentAuthorizationResult(status: .success, errors: nil))
     }
     
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
-        controller.dismiss(animated: true, completion: nil)
+        /// Show thanks for payment screen at the end if payment was succesfull
+        controller.dismiss(animated: true) { [weak self] in
+            self?.showSuccessfullScreen()
+        }
+    }
+    
+    private func showSuccessfullScreen() {
+        let vc = StoryboardScene.Settings.thanksForPaymentViewController.instantiate()
+        present(vc, animated: true, completion: nil)
     }
     
 }

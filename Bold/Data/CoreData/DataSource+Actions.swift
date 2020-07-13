@@ -81,7 +81,7 @@ extension DataSource: ActionsFunctionality {
         
         var results : [Action]!
         let fetchRequest = NSFetchRequest<Action>(entityName: "Action")
-        fetchRequest.predicate = NSPredicate(format: "((status = %d) OR (status = %d)) AND SUBQUERY(goal, $gl, $gl.id == '\(goalID)').@count > 0", StatusType.completed.rawValue, StatusType.failed.rawValue)
+        fetchRequest.predicate = NSPredicate(format: "((status = %d) OR (status = %d)) AND SUBQUERY(goal, $gl, $gl.id == '\(goalID)').@count > 0", StatusType.completed.rawValue) //, StatusType.failed.rawValue)
         do {
             results = try DataSource.shared.backgroundContext.fetch(fetchRequest)
         } catch {
