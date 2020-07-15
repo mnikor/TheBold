@@ -12,7 +12,7 @@ class AppleSignInManager: NSObject {
     
     static let shared = AppleSignInManager()
     
-    var completion: ((String, String) -> ())?
+    var completion: (() -> Void)?
     
     func authorizationRequest() {
         
@@ -41,18 +41,37 @@ extension AppleSignInManager: ASAuthorizationControllerDelegate {
         
         switch authorization.credential {
             
-            case let appleIDCredential as ASAuthorizationAppleIDCredential:
+        case let appleIDCredential as ASAuthorizationAppleIDCredential:
             
-                let user = appleIDCredential.user
-                
-                let _ = appleIDCredential.identityToken
-                
-                let _ = appleIDCredential.fullName
-                
-                if let email = appleIDCredential.email {
-                    completion?(user, email) }
-
-            default: break
+            var firstName = ""
+            var lastName = ""
+            var email = ""
+            
+            let user = appleIDCredential.user
+            
+            guard let code = appleIDCredential.authorizationCode?.base64EncodedString() else { return }
+            guard  let idToken = appleIDCredential.identityToken?.base64EncodedString() else { return }
+            if let fName = appleIDCredential.fullName?.givenName { firstName = fName }
+            if let lName = appleIDCredential.fullName?.familyName { lastName = lName }
+            
+            if let mail = appleIDCredential.email { email = mail }
+            
+            print("Code: \(code), \nidToken: \(idToken), \nfirstName: \(firstName), lastName: \(lastName), email: \(email), uid: \(user)")
+            
+            NetworkService.shared.appleSignIn(code: code, idToken: idToken, email: email, user: user, firstName: firstName, lastName: lastName) { [weak self] (result) in
+                switch result {
+                case .failure(let error):
+                    // add error handling
+                    print("Auth error: \(error.localizedDescription)")
+                    break
+                case .success(let profile):
+                    SessionManager.shared.profile = profile
+                    print("Successfull login")
+                    self?.completion?()
+                }
+            }
+        
+        default: break
             
         }
         

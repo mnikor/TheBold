@@ -67,16 +67,18 @@ class NetworkService {
         sendRequest(endpoint: Endpoint.signIn.rawValue,
                     method: .post,
                     parameters: [RequestParameter.usersEmail: email,
-                                 RequestParameter.usersPassword: password]) { result in
+                                 RequestParameter.usersPassword: password]) {[weak self] result in
+                                    guard let ss = self else { return }
+                                    
                                     switch result {
+                                        
                                     case .failure(let error):
                                         completion?(.failure(error))
+                                        
                                     case .success(let jsonData):
-                                        guard let accessToken = jsonData["access_token"].string,
-                                        let expirationTimeInterval = jsonData["token_expiration_time"].double
-                                            else { return }
-                                        let expirationDate = Date(timeIntervalSinceNow: expirationTimeInterval)
-                                        SessionManager.shared.updateToken(accessToken, expireDate: expirationDate)
+                                        /// Setup Token
+                                        if !ss.setupToken(jsonData: jsonData) { return }
+                                        /// Setup Profile
                                         guard let profile = Profile.mapJSON(jsonData)
                                             else {
                                                 completion?(.failure(ServerErrorFactory.unknown))
@@ -100,12 +102,19 @@ class NetworkService {
         params.updateValue(acceptTerms, forKey: RequestParameter.acceptTerms)
         sendRequest(endpoint: Endpoint.signUp.rawValue,
                     method: .post,
-                    parameters: params) { result in
+                    parameters: params) {[weak self] result in
+                        guard let ss = self else { return }
+                        
                         switch result {
+                            
                         case .failure(let error):
                             completion?(.failure(error))
+                            
                         case .success(let jsonData):
                             print("successful request")
+                            /// Setup Token
+                            if !ss.setupToken(jsonData: jsonData) { return }
+                            /// Setup profile
                             guard let profile = Profile.mapJSON(jsonData)
                                 else {
                                     completion?(.failure(ServerErrorFactory.unknown))
@@ -114,6 +123,49 @@ class NetworkService {
                             completion?(.success(profile))
                         }
         }
+    }
+    
+    func appleSignIn(code: String, idToken: String, email: String, user: String, firstName: String, lastName: String, completion: ((Result<Profile>) -> Void)?) {
+        
+        var params: [String: Any] = [:]
+        params.updateValue(email, forKey: RequestParameter.usersEmail)
+        params.updateValue(firstName, forKey: RequestParameter.usersFirstName)
+        params.updateValue(lastName, forKey: RequestParameter.usersLastName)
+        params.updateValue(code, forKey: RequestParameter.code)
+        params.updateValue(idToken, forKey: RequestParameter.idToken)
+        params.updateValue(user, forKey: RequestParameter.uid)
+        
+        sendRequest(endpoint: Endpoint.authApple.rawValue, method: .post, parameters: params) {[weak self] (result) in
+            guard let ss = self else { return }
+            
+            switch result {
+                
+            case .failure(let err):
+                completion?(.failure(err))
+                
+            case .success(let jsonData):
+                /// Setup Token
+                if !ss.setupToken(jsonData: jsonData) { return }
+                
+                /// Setup profile
+                guard let profile = Profile.mapJSON(jsonData)
+                    else {
+                        completion?(.failure(ServerErrorFactory.unknown))
+                        return
+                }
+                completion?(.success(profile))
+            }
+        }
+        
+    }
+    
+    private func setupToken(jsonData: JSON) -> Bool {
+        guard let accessToken = jsonData["access_token"].string,
+        let expirationTimeInterval = jsonData["token_expiration_time"].double
+            else { return false }
+        let expirationDate = Date(timeIntervalSinceNow: expirationTimeInterval)
+        SessionManager.shared.updateToken(accessToken, expireDate: expirationDate)
+        return true
     }
     
     func profile(completion: ((Result<Profile>) -> Void)?) {
@@ -177,6 +229,7 @@ class NetworkService {
                                 switch result {
                                 case .failure(let error):
                                     // TODO: - error handling
+                                    print(error.localizedDescription)
                                     break
                                 case .success(let jsonData):
                                     guard let profile = Profile.mapJSON(jsonData)

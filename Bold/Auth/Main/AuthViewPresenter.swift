@@ -53,11 +53,7 @@ class AuthViewPresenter: PresenterProtocol, AuthViewPresenterInputProtocol, Auth
     }
     
     func signInWithAppleId() {
-        interactor.signInWithAppleId { (user, email) in
-            print("user: \(user), email: \(email)")
-            /// connect with our backend to finish authorization
-            
-        }
+        interactor.signInWithAppleId()
     }
     
     // MARK: - OUTPUT PROTOCOL

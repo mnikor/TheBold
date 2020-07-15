@@ -9,6 +9,7 @@
 import Foundation
 
 enum Endpoint: String {
+    case authApple = "/apple/auth/redirect"
     case authFacebook = "/auth/facebook"
     /// Delete image from user
     case deleteImage = "/users/image"

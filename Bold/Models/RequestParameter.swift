@@ -24,4 +24,7 @@ struct RequestParameter {
     static let usersEmail = "user[email]"
     static let usersPassword = "user[password]"
     static let usersImage = "user[image]"
+    static let code = "code"
+    static let idToken = "id_token"
+    static let uid = "user[uid]"
 }

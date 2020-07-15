@@ -11,7 +11,7 @@ import Foundation
 protocol AuthViewInteractorInputProtocol: class {
     func login(email: String?, password: String?)
     func signUp(acceptTerms: Bool?, name: String?, email: String?, password: String?)
-    func signInWithAppleId(completion: @escaping (String, String) -> Void)
+    func signInWithAppleId()
 }
 
 class AuthViewInteractor: InteractorProtocol, AuthViewInteractorInputProtocol {
@@ -123,10 +123,12 @@ class AuthViewInteractor: InteractorProtocol, AuthViewInteractorInputProtocol {
         
     }
     
-    func signInWithAppleId(completion: @escaping (String, String) -> Void) {
+    func signInWithAppleId() {
         appleManager.authorizationRequest()
-        appleManager.completion = { (user, email) in
-            completion(user, email)
+        appleManager.completion = { [weak self] in
+            guard let ss = self else { return }
+            let vc = StoryboardScene.Menu.initialScene.instantiate()
+            ss.presenter.moveToHomeView(controller: vc)
         }
     }
     
