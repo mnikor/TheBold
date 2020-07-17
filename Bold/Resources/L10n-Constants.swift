@@ -290,7 +290,7 @@ internal enum L10n {
     internal static let sometimesItsHardToFollowYourPlansDeleteThisTask = L10n.tr("Localizable", "Alert.SometimesItsHardToFollowYourPlansDeleteThisTask")
     /// Sometimes it's hard to follow your plans, but on the other side is glory...\n\nSo, are you sure you want to move to a later date?
     internal static let sometimesItsHardToFollowYourPlansLaterDate = L10n.tr("Localizable", "Alert.SometimesItsHardToFollowYourPlansLaterDate")
-    /// Your goal is locked now.To unlock  it stake should be paid with Apple Pay. Don’t give up, keep going!
+    /// Your goal is locked now.To unlock it stake should be paid with In-App Purchases. Don’t give up, keep going!
     internal static let yourGoalIsLockedNow = L10n.tr("Localizable", "Alert.YourGoalIsLockedNow")
     /// You've missed your action.
     internal static let youveMissedYourAction = L10n.tr("Localizable", "Alert.YouveMissedYourAction.")

@@ -50,10 +50,10 @@ class PremiumViewController: UIViewController {
         switch premium {
         case .monthly:
             guard let product = monthlyProduct else { return }
-            IAPProducts.store.buyProduct(product)
+            IAPProducts.shared.store.buyProduct(product)
         case .yearly:
             guard let product = yearlyProduct else { return }
-            IAPProducts.store.buyProduct(product)
+            IAPProducts.shared.store.buyProduct(product)
         default:
             break
         }
@@ -82,8 +82,27 @@ class PremiumViewController: UIViewController {
             crossButton.isHidden = true
         }
         
+        requestSubscriptions()
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setupObserver()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    // MARK: - LOAD SUBSCRIPTIONS
+    
+    private func requestSubscriptions() {
         /// Load IAP subscriptions
-        IAPProducts.store.requestProducts {[weak self] (success, products) in
+        IAPProducts.shared.store.requestProducts {[weak self] (success, products) in
             guard let ss = self else { return }
             
             if success {
@@ -104,19 +123,6 @@ class PremiumViewController: UIViewController {
                 }
             }
         }
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        setupObserver()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - SETUP OBSERVER

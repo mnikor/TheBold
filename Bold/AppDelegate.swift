@@ -28,7 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NotificationService.shared.delegate = self
         NotificationService.shared.input(.resetBadgeNumber)
-        // Override point for customization after application launch.
+        
+        /// Download in-app products
+        let _ = IAPProducts.shared
+        
         return true
     }
     

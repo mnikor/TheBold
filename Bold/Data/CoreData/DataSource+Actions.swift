@@ -75,13 +75,31 @@ extension DataSource: ActionsFunctionality {
         }
     }
     
+    func getActions(for goal: Goal) -> [Action] {
+        guard let goalID = goal.id else { return [] }
+        
+        var results: [Action] = []
+        
+        let fetchRequest = NSFetchRequest<Action>(entityName: "Action")
+        
+        fetchRequest.predicate = NSPredicate(format: "((status = %d) OR (status = %d)) AND SUBQUERY(goal, $gl, $gl.id == '\(goalID)').@count > 0", StatusType.completed.rawValue, StatusType.failed.rawValue)
+        
+        do {
+            results = try DataSource.shared.backgroundContext.fetch(fetchRequest)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        return results
+    }
+    
     func checkAllActionOfGoal(goalID: String?) {
         
         guard let goalID = goalID else { return }
         
         var results : [Action]!
         let fetchRequest = NSFetchRequest<Action>(entityName: "Action")
-        fetchRequest.predicate = NSPredicate(format: "((status = %d) OR (status = %d)) AND SUBQUERY(goal, $gl, $gl.id == '\(goalID)').@count > 0", StatusType.completed.rawValue) //, StatusType.failed.rawValue)
+        fetchRequest.predicate = NSPredicate(format: "((status = %d) OR (status = %d)) AND SUBQUERY(goal, $gl, $gl.id == '\(goalID)').@count > 0", StatusType.completed.rawValue, StatusType.failed.rawValue)
         do {
             results = try DataSource.shared.backgroundContext.fetch(fetchRequest)
         } catch {

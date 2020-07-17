@@ -69,6 +69,9 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
         case .goalItem(let goal):
             if goal.status == StatusType.locked.rawValue {
                 AlertViewService.shared.input(.missedYourActionLock(tapUnlock: {
+                    
+                    // TODO: Unlock Goal Logic
+                    
                     LevelOfMasteryService.shared.input(.unlockGoal(goalID: goal.id!))
                 }))
             }else {

@@ -128,7 +128,9 @@ class NetworkService {
     func appleSignIn(code: String, idToken: String, email: String, user: String, firstName: String, lastName: String, completion: ((Result<Profile>) -> Void)?) {
         
         var params: [String: Any] = [:]
-        params.updateValue(email, forKey: RequestParameter.usersEmail)
+        if !email.isEmpty {
+            params.updateValue(email, forKey: RequestParameter.usersEmail)
+        }
         params.updateValue(firstName, forKey: RequestParameter.usersFirstName)
         params.updateValue(lastName, forKey: RequestParameter.usersLastName)
         params.updateValue(code, forKey: RequestParameter.code)

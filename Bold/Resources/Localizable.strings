@@ -265,7 +265,7 @@
 "Alert.GoalFantastic" = "Fantastic! You have achieved your goal. \nCongratulations, you get additional points!!!";
 "Alert.YouveMissedYourAction." = "You've missed your action.";
 "Alert.DontGiveUpKeepGoing" = "Don’t give up, keep going!";
-"Alert.YourGoalIsLockedNow" = "Your goal is locked now.To unlock  it stake should be paid with Apple Pay. Don’t give up, keep going!";
+"Alert.YourGoalIsLockedNow" = "Your goal is locked now.To unlock it stake should be paid with In-App Purchases. Don’t give up, keep going!";
 "Alert.DontGiveUp" = "Don’t give up!";
 "Alert.SometimesItsHardToFollowYourPlansLaterDate" = "Sometimes it's hard to follow your plans, but on the other side is glory...\n\nSo, are you sure you want to move to a later date?";
 "Alert.SometimesGoalsBecomeIrrelevant" = "Sometimes goals become irrelevant!\n\nConfirm deletion";

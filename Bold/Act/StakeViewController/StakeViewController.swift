@@ -28,6 +28,33 @@ class StakeViewController: UIViewController {
     var currentStake: Float = 0
     
     @IBAction func actionCostSlider(_ sender: UISlider) {
+        
+        let roundValue = Int(sender.value)
+        
+        switch roundValue {
+            case 51, 52: sender.value = 50
+            case 53, 54: sender.value = 55
+            case 56, 57: sender.value = 55
+            case 58, 59: sender.value = 60
+            case 61, 62: sender.value = 60
+            case 63, 64: sender.value = 65
+            case 66, 67: sender.value = 65
+            case 68, 69: sender.value = 70
+            case 71, 72: sender.value = 70
+            case 73, 74: sender.value = 75
+            case 76, 77: sender.value = 75
+            case 78, 79: sender.value = 80
+            case 81, 82: sender.value = 80
+            case 83, 84: sender.value = 85
+            case 86, 87: sender.value = 85
+            case 88, 89: sender.value = 90
+            case 91, 92: sender.value = 90
+            case 93, 94: sender.value = 95
+            case 96, 97: sender.value = 95
+            case 98, 99: sender.value = 100
+            default: break
+        }
+        
         costStakeLabel.text = NumberFormatter.stringForCurrency(costSlider.value)
         countKarmaLabel.text = pointsString(cost: costSlider.value)
     }

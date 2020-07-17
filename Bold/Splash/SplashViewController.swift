@@ -17,7 +17,7 @@ class SplashViewController: UIViewController {
         configure()
         /// Restore purchased subscriptions
         clearUserDefaultsSubscriptions()
-        IAPProducts.store.restorePurchases()
+        IAPProducts.shared.store.restorePurchases()
     }
     
     override func viewDidAppear(_ animated: Bool) {

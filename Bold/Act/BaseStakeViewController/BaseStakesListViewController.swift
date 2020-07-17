@@ -13,6 +13,8 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
     
     @IBOutlet weak var tableView: UITableView!
     
+    private var loader = LoaderView(frame: .zero)
+    
     typealias Presenter = BaseStakesListPresenter
     typealias Configurator = BaseStakesListConfigurator
     
@@ -65,6 +67,30 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
         
         let textAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(red: 82/255, green: 109/255, blue: 209/255, alpha: 1)]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
+        
+        setupObserver()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func setupObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(showCongratsView), name: .IAPHelperPurchaseNotification, object: nil)
+    }
+    
+    @objc private func showCongratsView() {
+        presenter.succesfullPayment()
+    }
+    
+    func startLoader() {
+        DispatchQueue.main.async { [weak self] in
+            guard let ss = self else { return }
+            ss.loader.start(in: ss.view, yOffset: 0)
+            ss.view.bringSubviewToFront(ss.loader)
+        }
     }
     
     func configTableView() {

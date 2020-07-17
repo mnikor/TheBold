@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import StoreKit
 
 enum BaseStakesDataSourceType {
     case all
@@ -73,6 +74,7 @@ enum BaseStakesListInputPresenter {
 
 protocol BaseStakesListInputPresenterProtocol {
     func input(_ inputCase: BaseStakesListInputPresenter)
+    func succesfullPayment()
 }
 
 class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterProtocol {
@@ -113,6 +115,7 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
     }
     var rangeDate: RangeDatePeriod!
     var goal: Goal!
+    var goalToUnlock: Goal?
     var isCalendarVisible: Bool = false
     
     var isLoadContent: Bool = false
@@ -151,12 +154,48 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
             
         case .goalItem(goal: let goal):
             if goal.status == StatusType.locked.rawValue {
+            
+                /// Get goal's actions
+                let actions = DataSource.shared.getActions(for: goal)
+                
+                var stake = 0
+                
+                /// Get first stake with status failed or unlock and stake
+                for action in actions {
+                    print("Status: \(action.status)")
+                    if action.status > 4 {
+                        print("Action's stake: \(action.stake)")
+                        if action.stake > 0 {
+                            stake = Int(action.stake.rounded())
+                            break
+                        }
+                    }
+                }
+                
+                print("The stake of the first action is: \(stake)")
+                
                 AlertViewService.shared.input(.missedYourActionLock(tapUnlock: { [weak self] in
                     guard let ss = self else { return }
-                    /// Get stake for the first missed action
-                    /// Create Apple Pay request and show controller
-                    let paymentRequest = ss.interactor.setupPaymentRequest(title: "Stake", amount: 10)
-                    ss.viewController.showApplePayController(paymentRequest: paymentRequest)
+                    /// Select correct SKProduct
+                    let baseStakeId = "com.nikonorov.newBold.Stake"
+                    let products = IAPProducts.shared.products
+                    var currentStake: SKProduct?
+                    
+                    for product in products {
+                        if product.productIdentifier == baseStakeId + String(stake) {
+                            currentStake = product
+                            break
+                        }
+                    }
+                    
+                    /// After we get required stake product we should launch in-app
+                    if let product = currentStake {
+                        ss.goalToUnlock = goal
+                        IAPProducts.shared.store.buyProduct(product)
+                    } else {
+                        print("We don't have such product: Stake\(stake)")
+                        fatalError()
+                    }
                     LevelOfMasteryService.shared.input(.unlockGoal(goalID: goal.id!))
                 }))
             }else {
@@ -391,6 +430,12 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
         DataSource.shared.changeContext.subscribe(onNext: { (_) in
             self.input(.createDataSource(goalID: self.goal?.id))
         }).disposed(by: disposeBag)
+    }
+    
+    func succesfullPayment() {
+        //TODO: Unlock goal with goalToUnlock
+        
+        router.showThankForPaymentController()
     }
     
 }

@@ -49,8 +49,12 @@ extension AppleSignInManager: ASAuthorizationControllerDelegate {
             
             let user = appleIDCredential.user
             
-            guard let code = appleIDCredential.authorizationCode?.base64EncodedString() else { return }
-            guard  let idToken = appleIDCredential.identityToken?.base64EncodedString() else { return }
+            guard let codeData = appleIDCredential.authorizationCode,
+                let code = String(data: codeData, encoding: .utf8) else { return }
+            
+            guard let idTokenData = appleIDCredential.identityToken,
+                let idToken = String(data: idTokenData, encoding: .utf8) else { return }
+            
             if let fName = appleIDCredential.fullName?.givenName { firstName = fName }
             if let lName = appleIDCredential.fullName?.familyName { lastName = lName }
             
