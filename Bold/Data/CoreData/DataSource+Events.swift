@@ -73,6 +73,30 @@ extension DataSource: EventFunctionality {
         success()
     }
     
+    func updateEvent(eventID: String, success: ()->Void) {
+        
+        var results : Event?
+        let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", eventID)
+        do {
+            results = try DataSource.shared.backgroundContext.fetch(fetchRequest).first
+        } catch {
+            print(error)
+        }
+        
+        if let result = results {
+            result.status = StatusType.wait.rawValue
+            DataSource.shared.saveBackgroundContext()
+            
+            if let _ = result.reminderDate {
+                NotificationService.shared.input(.removeReimder(identifiers: [eventID]))
+            }
+            
+            checkAllEventOfAction(actionID: result.action!.id!)
+        }
+        success()
+    }
+    
     func checkAllEventOfAction(actionID: String) {
         
         var results : [Event]!
@@ -189,6 +213,24 @@ extension DataSource: EventFunctionality {
         return results
     }
     
+    func eventOfGoal(goalID: String) -> [Event] {
+        
+        var results = [Event]()
+             let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
+             let sort = NSSortDescriptor(key: "startDate", ascending: true)
+             fetchRequest.sortDescriptors = [sort]
+             
+             fetchRequest.predicate = NSPredicate(format: "SUBQUERY(action, $act, $act.goal.id == '\(goalID)').@count > 0")
+             
+             do {
+                 results = try DataSource.shared.viewContext.fetch(fetchRequest)
+             } catch {
+                 print(error)
+             }
+             
+             return results
+    }
+    
     func searchEventsInGoal(goalID: String) -> NSFetchedResultsController<Event> {
         
         let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
@@ -234,6 +276,7 @@ extension DataSource: EventFunctionality {
         
         var results = [Event]()
         let filterDate = Date().dayOfMonthOfYear() as NSDate
+//        let filterDate = Date().tommorowDay() as NSDate   // Test to make overdue events
 
         let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
         let sort = NSSortDescriptor(key: "startDate", ascending: true)

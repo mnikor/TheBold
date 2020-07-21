@@ -153,29 +153,29 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
             subscribeToUpdate()
             
         case .goalItem(goal: let goal):
-            if goal.status == StatusType.locked.rawValue {
             
+            if goal.status == StatusType.locked.rawValue {
+                /// Price to unlock the goal
+                var stake = 0
                 /// Get goal's actions
                 let actions = DataSource.shared.getActions(for: goal)
-                
-                var stake = 0
-                
                 /// Get first stake with status failed or unlock and stake
                 for action in actions {
-                    print("Status: \(action.status)")
                     if action.status > 4 {
-                        print("Action's stake: \(action.stake)")
                         if action.stake > 0 {
                             stake = Int(action.stake.rounded())
                             break
                         }
                     }
                 }
-                
-                print("The stake of the first action is: \(stake)")
-                
+                /// Bottom alert view with unlock action
                 AlertViewService.shared.input(.missedYourActionLock(tapUnlock: { [weak self] in
                     guard let ss = self else { return }
+                    
+//                    ss.goalToUnlock = goal
+//                    ss.unlockGoal()
+//                    return
+                    
                     /// Select correct SKProduct
                     let baseStakeId = "com.nikonorov.newBold.Stake"
                     let products = IAPProducts.shared.products
@@ -187,18 +187,17 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
                             break
                         }
                     }
-                    
+        
                     /// After we get required stake product we should launch in-app
                     if let product = currentStake {
                         ss.goalToUnlock = goal
                         IAPProducts.shared.store.buyProduct(product)
                     } else {
                         print("We don't have such product: Stake\(stake)")
-                        fatalError()
                     }
                     LevelOfMasteryService.shared.input(.unlockGoal(goalID: goal.id!))
                 }))
-            }else {
+            } else {
                 let calendarVC = StoryboardScene.Act.calendarActionsListViewController.instantiate()
                 calendarVC.presenter.goal = goal
                 router.input(.goalItem(calendarVC: calendarVC))
@@ -434,8 +433,49 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
     
     func succesfullPayment() {
         //TODO: Unlock goal with goalToUnlock
-        
+        unlockGoal()
         router.showThankForPaymentController()
+    }
+    
+    private func unlockGoal() {
+        
+        let coreData = DataSource.shared
+        
+        guard let goal = goalToUnlock, let goalId = goal.id else { return }
+        
+        goal.status = StatusType.wait.rawValue
+        
+        let events = DataSource.shared.eventOfGoal(goalID: goalId)
+        
+        for event in events {
+            if event.status > 4 {
+                coreData.updateEvent(eventID: event.id!) {
+                    print("Event updated successfully!")
+                }
+                
+                let actions = DataSource.shared.getActions(for: goal)
+                
+                for action in actions {
+                    if action.status > 4 {
+                        action.status = StatusType.wait.rawValue
+                    }
+                }
+                
+                if goal.status > 4 {
+                    goal.status = StatusType.completed.rawValue
+                }
+                
+            }
+        }
+
+        do {
+            try DataSource.shared.viewContext.save()
+        } catch {
+            print("Can't save main context")
+        }
+        
+        DataSource.shared.saveBackgroundContext()
+        
     }
     
 }

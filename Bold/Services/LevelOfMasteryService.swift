@@ -139,6 +139,10 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
     // MARK: - Public funcs
     private func getCurrentLevel() -> LevelBold {
         
+        DataSource.shared.goalsListForRead { (goals) in
+            
+        }
+        
         let points: Int = currentPoints()
         let achievedGoals: [Goal] = getAchievedGoals()
         
@@ -248,13 +252,15 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
             return
         }
         
-        let _ = events.compactMap { (event) -> Event? in
+        let _ = events.compactMap {(event) -> Event? in
             event.status = StatusType.failed.rawValue
             
             if let action = event.action {
                 action.status = StatusType.failed.rawValue
                 if let goal = action.goal {
-                    goal.status = StatusType.locked.rawValue
+                    if action.stake > 0 {
+                        goal.status = StatusType.locked.rawValue
+                    }
                 }
             }
             
@@ -278,11 +284,13 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
             return
         }
         
-        let _ = actions.compactMap { (action) -> Action? in
+        let _ = actions.compactMap {(action) -> Action? in
             action.status = StatusType.failed.rawValue
             
             if let goal = action.goal {
-                goal.status = StatusType.locked.rawValue
+                if action.stake > 0 {
+                    goal.status = StatusType.locked.rawValue
+                }
             }
             
             return action
@@ -302,15 +310,22 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
     private func checkOverdueStatusGoals() {
         let goals = DataSource.shared.searchOverdueGoals()
         
-        if goals.isEmpty {
-            return
-        }
+        if goals.isEmpty { return }
         
-        let _ = goals.compactMap { (goal) -> Goal? in
-            goal.status = StatusType.failed.rawValue
+        let _ = goals.compactMap {(goal) -> Goal? in
+            
+            if let actions = goal.actions as? Set<Action> {
+                for action in actions {
+                    if action.stake > 0 {
+                        goal.status = StatusType.locked.rawValue
+                    }
+                }
+            }
+//            goal.status = StatusType.failed.rawValue
             return goal
         }
         
         DataSource.shared.saveBackgroundContext()
     }
+    
 }

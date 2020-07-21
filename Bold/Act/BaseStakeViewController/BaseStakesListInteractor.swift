@@ -253,13 +253,16 @@ class BaseStakesListInteractor: InteractorProtocol, BaseStakesListInputInteracto
         let tommorowDate = Date().tommorowDay().dayOfMonthOfYear()
         
         DataSource.shared.goalsListForRead { (goals) in
+            
+            for goal in goals {
+                print("Goal: \(goal.name) \nStatus: \(goal.status)")
+            }
 
             let dataSource = goals.compactMap { (goal) -> GoalCollectionViewModel in
                 return GoalCollectionViewModel.createGoalModel(goal: goal)
             }
             
             DataSource.shared.searchEventsInGoal(goalID: nil, startDate: currentDate, endDate: tommorowDate) { (events) in
-                
                 success(createGoalsSection(goals: dataSource, itemsCount: events.count))
             }
         }

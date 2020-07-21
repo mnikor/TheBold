@@ -95,6 +95,11 @@ extension DataSource: GoalsFunctionality {
         
         do {
             results = try DataSource.shared.viewContext.fetch(fetchRequest)
+            
+            for result in results {
+                print("\(result.name) status: \(result.status)")
+            }
+            
             success(results)
         } catch {
             success([])
@@ -114,7 +119,6 @@ extension DataSource: GoalsFunctionality {
         
         do {
             results = try DataSource.shared.viewContext.fetch(fetchRequest)
-            
         } catch {
             print(error)
         }

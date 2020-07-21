@@ -9,6 +9,7 @@
 import Foundation
 import RxCocoa
 import RxSwift
+import StoreKit
 
 enum HomePresenterInput {
     case prepareDataSource(([ActivityViewModel]) -> Void)
@@ -40,6 +41,8 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
     
     private var disposeBag = DisposeBag()
     
+    private var goalToUnlock: Goal?
+    
     required init(view: View) {
         self.viewController = view
     }
@@ -68,18 +71,48 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
             subscribeForUpdates()
         case .goalItem(let goal):
             if goal.status == StatusType.locked.rawValue {
-                AlertViewService.shared.input(.missedYourActionLock(tapUnlock: {
-                    
-                    // TODO: Unlock Goal Logic
-                    
+                /// Price to unlock the goal
+                        var stake = 0
+                        /// Get goal's actions
+                        let actions = DataSource.shared.getActions(for: goal)
+                        /// Get first stake with status failed or unlock and stake
+                        for action in actions {
+                            if action.status > 4 {
+                                if action.stake > 0 {
+                                    stake = Int(action.stake.rounded())
+                                    break
+                                }
+                            }
+                        }
+                        /// Bottom alert view with unlock action
+                        AlertViewService.shared.input(.missedYourActionLock(tapUnlock: { [weak self] in
+                            guard let ss = self else { return }
+                            /// Select correct SKProduct
+                            let baseStakeId = "com.nikonorov.newBold.Stake"
+                            let products = IAPProducts.shared.products
+                            var currentStake: SKProduct?
+                            
+                            for product in products {
+                                if product.productIdentifier == baseStakeId + String(stake) {
+                                    currentStake = product
+                                    break
+                                }
+                            }
+                
+                            /// After we get required stake product we should launch in-app
+                            if let product = currentStake {
+                                ss.goalToUnlock = goal
+                                IAPProducts.shared.store.buyProduct(product)
+                            } else {
+                                print("We don't have such product: Stake\(stake)")
+                            }
                     LevelOfMasteryService.shared.input(.unlockGoal(goalID: goal.id!))
                 }))
-            }else {
-                router.input(.goalItem(goal))
-            }
+            } else { router.input(.goalItem(goal)) }
         case .editGoal(let goal):
             if goal.status == StatusType.locked.rawValue {
                 AlertViewService.shared.input(.missedYourActionLock(tapUnlock: {
+                    
                     LevelOfMasteryService.shared.input(.unlockGoal(goalID: goal.id!))
                 }))
             }else {
@@ -104,6 +137,50 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
         DataSource.shared.changeContext.subscribe(onNext: {[weak self] (_) in
             self?.viewController.input(.goalsUpdated)
         }).disposed(by: disposeBag)
+    }
+    
+    private func unlockGoal() {
+        
+        let coreData = DataSource.shared
+        
+        guard let goal = goalToUnlock, let goalId = goal.id else { return }
+        
+        goal.status = StatusType.wait.rawValue
+        
+        let events = DataSource.shared.eventOfGoal(goalID: goalId)
+        
+        for event in events {
+            
+            if event.status > 4 {
+                
+                coreData.updateEvent(eventID: event.id!) {
+                    print("Event updated successfully!")
+                }
+                
+                let actions = DataSource.shared.getActions(for: goal)
+                
+                for action in actions {
+                    if action.status > 4 {
+                        action.status = StatusType.wait.rawValue
+                    }
+                }
+                
+                if goal.status > 4 {
+                    goal.status = StatusType.completed.rawValue
+                }
+                
+            }
+            
+        }
+
+        do {
+            try DataSource.shared.viewContext.save()
+        } catch {
+            print("Can't save main context")
+        }
+        
+        DataSource.shared.saveBackgroundContext()
+        
     }
     
 }
