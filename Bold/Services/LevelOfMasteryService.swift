@@ -245,6 +245,7 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
 
     //проверяем все ивенты на то есть ли просроченные
     private func checkOverdueStatusEvents() {
+        print("checkOverdueStatusEvents")
         let events = DataSource.shared.searchOverdueEvents()
         
         if events.isEmpty {
@@ -277,6 +278,7 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
     
     //проверяем все экшены на то есть ли просроченные
     private func checkOverdueStatusActions() {
+        print("checkOverdueStatusActions")
         let actions = DataSource.shared.searchOverdueActions()
         
         if actions.isEmpty {
@@ -308,6 +310,7 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
     }
     
     private func checkOverdueStatusGoals() {
+        print("checkOverdueStatusGoals")
         let goals = DataSource.shared.searchOverdueGoals()
         
         if goals.isEmpty { return }

@@ -161,6 +161,7 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
                 let actions = DataSource.shared.getActions(for: goal)
                 /// Get first stake with status failed or unlock and stake
                 for action in actions {
+                    print(action.events)
                     if action.status > 4 {
                         if action.stake > 0 {
                             stake = Int(action.stake.rounded())
@@ -168,6 +169,13 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
                         }
                     }
                 }
+                
+                let events = DataSource.shared.searchOverdueEvents()
+                
+                for event in events {
+                    print("Event: \(event.name), status: \(event.status)")
+                }
+                
                 /// Bottom alert view with unlock action
                 AlertViewService.shared.input(.missedYourActionLock(tapUnlock: { [weak self] in
                     guard let ss = self else { return }
@@ -193,6 +201,8 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
                         ss.goalToUnlock = goal
                         IAPProducts.shared.store.buyProduct(product)
                     } else {
+                        ss.goalToUnlock = goal
+                        ss.unlockGoal()
                         print("We don't have such product: Stake\(stake)")
                     }
                     LevelOfMasteryService.shared.input(.unlockGoal(goalID: goal.id!))
@@ -450,9 +460,10 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
         
         guard let goal = goalToUnlock, let goalId = goal.id else { return }
         
-        goal.status = StatusType.wait.rawValue
-        
         let events = DataSource.shared.eventOfGoal(goalID: goalId)
+        
+        goal.status = StatusType.wait.rawValue
+        goal.endDate = Date().tommorowDay() as NSDate
         
         for event in events {
             if event.status > 4 {
@@ -465,11 +476,13 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
                 for action in actions {
                     if action.status > 4 {
                         action.status = StatusType.wait.rawValue
+                        action.endDate = Date().tommorowDay() as NSDate
                     }
                 }
                 
                 if goal.status > 4 {
                     goal.status = StatusType.completed.rawValue
+                    goal.endDate = Date().tommorowDay() as NSDate
                 }
                 
             }
