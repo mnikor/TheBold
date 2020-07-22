@@ -295,7 +295,14 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
         baseDataSource.removeAll()
         calendarDataSource.removeAll()
         currentDate = Date()
-        rangeDate = RangeDatePeriod.initRange(date: type.startDatePeriod())
+        
+        /// start Date should be equal to goal start date
+        if let goal = goal, let startDate = goal.startDate {
+            rangeDate = RangeDatePeriod.initRange(date: startDate as Date)
+        } else {
+            rangeDate = RangeDatePeriod.initRange(date: type.startDatePeriod())
+        }
+        
         self.goalID = goalID
         interactor.input(.createDataSource(type: type, goalID: goalID, startDate: rangeDate.start, endDate:rangeDate.end, success: { [weak self] dataSections in
             self?.baseDataSource += dataSections
