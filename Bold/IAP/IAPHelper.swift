@@ -21,6 +21,8 @@ class IAPHelper: NSObject {
     
     private var productsRequestCompletionHandler: ProductsRequestCompletionHandler?
     
+    private var isPremium = false
+    
     // MARK: - INIT
     
     init(productIds: Set<ProductIdentifier>) {
@@ -139,8 +141,14 @@ extension IAPHelper: SKPaymentTransactionObserver {
     private func restore(transaction: SKPaymentTransaction) {
         guard let productId = transaction.original?.payment.productIdentifier else { return }
         
-        deliverPurchaseNotification(for: productId)
+        if !isPremium {
+            if productId == IAPProducts.MonthlySubscription || productId == IAPProducts.YearlySubscription {
+                premiumUser()
+            }
+        }
         
+        deliverPurchaseNotification(for: productId)
+
         SKPaymentQueue.default().finishTransaction(transaction)
     }
     
@@ -158,8 +166,6 @@ extension IAPHelper: SKPaymentTransactionObserver {
         purchasedProductIds.insert(id)
         UserDefaults.standard.set(true, forKey: id)
         NotificationCenter.default.post(name: .IAPHelperPurchaseNotification, object: id)
-        
-        premiumUser()
     }
     
     private func deliverPurchaseFailedNotification(with message: String?) {
@@ -173,6 +179,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
     private func premiumUser() {
         let user = DataSource.shared.readUser()
         user.premiumOn = true
+        isPremium = true
         
         DataSource.shared.saveBackgroundContext()
     }

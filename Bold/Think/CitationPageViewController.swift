@@ -19,6 +19,8 @@ class CitationPageViewController: UIPageViewController {
     
     var quotes: [ActivityContent] = []
     
+    private var isPremium = false
+    
     private var orderedViewControllers: [UIViewController] = []
     
 //    private(set) lazy var orderedViewControllers: [UIViewController] = {
@@ -75,7 +77,8 @@ class CitationPageViewController: UIPageViewController {
     private func configureOrderedViewControllers() {
         orderedViewControllers = []
         
-        let isPremium = false // Detect is it Premium
+        let user = DataSource.shared.readUser()
+        isPremium = user.premiumOn
         
         let number = isPremium ? quotes.count : 3
         
@@ -83,7 +86,7 @@ class CitationPageViewController: UIPageViewController {
             orderedViewControllers.append(createArrayViewController(quote: quotes[index], color: ColorGoalType(rawValue: Int16((index % 6) + 1))!))
         }
         
-        if !isPremium { appendPremiumController() }
+        if !user.premiumOn { appendPremiumController() }
         
     }
     
@@ -132,7 +135,7 @@ extension CitationPageViewController: UIPageViewControllerDataSource {
             return nil
         }
         
-        if viewControllerIndex > 3 { return nil }
+//        if viewControllerIndex > 3 && !isPremium { return nil }
         
         let nextIndex = viewControllerIndex + 1
         let orderedViewControllersCount = orderedViewControllers.count

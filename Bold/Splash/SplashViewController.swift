@@ -69,6 +69,12 @@ class SplashViewController: UIViewController {
     private func clearUserDefaultsSubscriptions() {
         UserDefaults.standard.set(false, forKey: IAPProducts.MonthlySubscription)
         UserDefaults.standard.set(false, forKey: IAPProducts.YearlySubscription)
+        
+        let user = DataSource.shared.readUser()
+        user.premiumOn = false
+        
+        DataSource.shared.saveBackgroundContext()
+        
     }
 }
 
