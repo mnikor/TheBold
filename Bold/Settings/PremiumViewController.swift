@@ -25,6 +25,8 @@ class PremiumViewController: UIViewController {
     
     private var premium : PremiumType!
     
+    private var loader = LoaderView(frame: .zero)
+    
     private var monthlyProduct: SKProduct?
     private var yearlyProduct: SKProduct?
     
@@ -47,6 +49,10 @@ class PremiumViewController: UIViewController {
     }
     
     @IBAction func tapUnlockPremiumButton(_ sender: UIButton) {
+        
+        startLoader()
+        view.isUserInteractionEnabled = false
+        
         switch premium {
         case .monthly:
             guard let product = monthlyProduct else { return }
@@ -55,6 +61,7 @@ class PremiumViewController: UIViewController {
             guard let product = yearlyProduct else { return }
             IAPProducts.shared.store.buyProduct(product)
         default:
+            showAlert(with: "Please make your choice")
             break
         }
     }
@@ -90,12 +97,18 @@ class PremiumViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupObserver()
+        selectPremium(type: .monthly)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func startLoader() {
+        loader.start(in: view, yOffset: 0)
+        view.bringSubviewToFront(loader)
     }
     
     // MARK: - LOAD SUBSCRIPTIONS
@@ -129,19 +142,40 @@ class PremiumViewController: UIViewController {
     
     private func setupObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(showCongratsView), name: .IAPHelperPurchaseNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handlePurchaseError), name: .IAPHelperPurchaseFailedNotification, object: nil)
     }
     
     @objc private func showCongratsView() {
         DispatchQueue.main.async { [weak self] in
             guard let ss = self else { return }
             
+            ss.loader.stop()
+            ss.view.isUserInteractionEnabled = true
             ss.congratsView.isHidden = false
         }
+    }
+    
+    @objc private func handlePurchaseError(notification: Notification) {
+        if let info = notification.userInfo?["errorDescription"] as? String {
+            /// Stop loader
+            loader.stop()
+            /// Unlock view
+            view.isUserInteractionEnabled = true
+            /// Show alert
+            showAlert(with: info)
+        }
+    }
+    
+    private func showAlert(with message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     // MARK: - SETUP VIEW
     
     private func selectPremium(type: PremiumType) {
+        premium = type
         addShadow(to: type == .monthly ? monthlyView : yearlyView)
         removeShadow(from: type == .monthly ? yearlyView : monthlyView)
     }

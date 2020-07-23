@@ -58,8 +58,14 @@ extension IAPHelper {
     public func buyProduct(_ product: SKProduct) {
         print("Buying \(product.productIdentifier)...")
         
-        let payment = SKPayment(product: product)
-        SKPaymentQueue.default().add(payment)
+        if IAPHelper.canMakePayments() {
+            let payment = SKPayment(product: product)
+            SKPaymentQueue.default().add(payment)
+        } else {
+            deliverPurchaseFailedNotification(with: "You can't make payments with this account")
+        }
+        
+        
     }
     
     public func isProductPurchased(_ productIdentifier: ProductIdentifier) -> Bool {
@@ -140,7 +146,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
     
     private func failed(transaction: SKPaymentTransaction) {
         if let error = transaction.error {
-            print(error.localizedDescription)
+            deliverPurchaseFailedNotification(with: error.localizedDescription)
         }
         
         SKPaymentQueue.default().finishTransaction(transaction)
@@ -154,6 +160,14 @@ extension IAPHelper: SKPaymentTransactionObserver {
         NotificationCenter.default.post(name: .IAPHelperPurchaseNotification, object: id)
         
         premiumUser()
+    }
+    
+    private func deliverPurchaseFailedNotification(with message: String?) {
+        var userInfo = ["errorDescription": "Unknown error"]
+        
+        if let error = message { userInfo["errorDescription"] = error }
+        
+        NotificationCenter.default.post(name: .IAPHelperPurchaseFailedNotification, object: nil, userInfo: userInfo)
     }
     
     private func premiumUser() {

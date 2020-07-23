@@ -11,4 +11,5 @@ import Foundation
 extension Notification.Name {
     static let profileChanged = Notification.Name("profile changed")
     static let IAPHelperPurchaseNotification = Notification.Name("IAPHelperPurchaseNotification")
+    static let IAPHelperPurchaseFailedNotification = Notification.Name("IAPHelperPurchaseFailedNotification")
 }
