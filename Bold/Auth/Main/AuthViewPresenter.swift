@@ -10,7 +10,7 @@ import Foundation
 
 protocol AuthViewPresenterInputProtocol: class {
     func didTapSignUp(_ type: TypeAuthView, email: String?, password: String?, name: String?, acceptTerms: Bool?)
-    func signInWithAppleId()
+    func signInWithAppleId(termsAccepted: Bool)
 }
 
 protocol AuthViewPresenterOutputProtocol: class {
@@ -52,8 +52,9 @@ class AuthViewPresenter: PresenterProtocol, AuthViewPresenterInputProtocol, Auth
         }
     }
     
-    func signInWithAppleId() {
-        interactor.signInWithAppleId()
+    func signInWithAppleId(termsAccepted: Bool) {
+        if termsAccepted { interactor.signInWithAppleId() }
+        else { showAlert(title: "Warning", message: "Please accept Terms and conditions")}
     }
     
     // MARK: - OUTPUT PROTOCOL

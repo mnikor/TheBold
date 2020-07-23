@@ -131,24 +131,27 @@ class SignUpView: UIView {
             yourNameTextField.isHidden = true
             checkBoxImageView.isHidden = true
             privacyPolicyStack.isHidden = true
+            checkImageView.alpha = 0
             bottomButton.setTitle("Sign up")
         case .signUp:
             titleLabel?.text = L10n.Authorization.signUp
             logInButton.setTitle(L10n.Authorization.signUpButton, for: .normal)
             betweenButtonLabel.text = L10n.Authorization.orSignUpWith
             bottomLabel.text = L10n.Authorization.haveAnAccount
-            
             forgotButton.isHidden = true
             emailTopConstraint.constant = 89
             haveAccountTopConstraint.constant = 30
             yourNameTextField.isHidden = false
             checkBoxImageView.isHidden = false
+            checkImageView.alpha = 1
             privacyPolicyStack.isHidden = false
             bottomButton.setTitle("Sign in")
         }
+        
+        checkImageView.isHidden = false
         emailTextField.placeholder = L10n.Authorization.email
         passwordTextField.placeholder = L10n.Authorization.password
-        checkImageView.isHidden = true
+        
         setNeedsLayout()
         layoutIfNeeded()
     }
