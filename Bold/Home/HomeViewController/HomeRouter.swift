@@ -22,6 +22,7 @@ enum HomeInputRouter {
 
 protocol HomeInputRouterProtocol: RouterProtocol {
     func input(_ inputCase: HomeInputRouter)
+    func showThankForPaymentController()
 }
 
 class HomeRouter: RouterProtocol, HomeInputRouterProtocol {
@@ -91,6 +92,11 @@ class HomeRouter: RouterProtocol, HomeInputRouterProtocol {
             viewController.navigationController?.pushViewController(actionListVC, animated: true)
         }
         
+    }
+    
+    func showThankForPaymentController() {
+        let vc = StoryboardScene.Settings.thanksForPaymentViewController.instantiate()
+        viewController.present(vc, animated: true, completion: nil)
     }
     
 }

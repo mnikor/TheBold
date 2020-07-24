@@ -25,6 +25,7 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
     }
     
     var headerHomeView : HeaderHomeView!
+    private var loader = LoaderView(frame: .zero)
     
     typealias Presenter = HomePresenter
     typealias Configurator = HomeConfigurator
@@ -36,7 +37,6 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerForNotifications()
         configurator.configure(with: self)
         
         presenter.input(.subscribeForUpdates)
@@ -60,6 +60,7 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
         super.viewWillAppear(true)
         
         configureNavigationBar()
+        setupObserver()
     }
     
     private func configureNavigationBar() {
@@ -78,13 +79,6 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
     func registerXibs() {
         tableView.registerNib(UnlockPremiumTableViewCell.self)
         tableView.registerNib(ActivityCollectionTableViewCell.self)
-    }
-    
-    private func registerForNotifications() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(profileChanged(_:)),
-                                               name: .profileChanged,
-                                               object: nil)
     }
     
     private func prepareDataSource() {
@@ -151,6 +145,54 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         headerHomeView.setBoldness(boldness: SettingsService.shared.boldness)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func setupObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(showCongratsView), name: .IAPHelperPurchaseNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handlePurchaseError), name: .IAPHelperPurchaseFailedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(profileChanged), name: .profileChanged, object: nil)
+    }
+    
+    @objc private func showCongratsView() {
+        presenter.succesfullPayment()
+    }
+    
+    @objc private func handlePurchaseError(notification: Notification) {
+        if let info = notification.userInfo?["errorDescription"] as? String {
+            /// Stop loader
+            stopLoader()
+            /// Show alert
+            showAlert(with: info)
+        }
+    }
+    
+    private func showAlert(with message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func startLoader() {
+        DispatchQueue.main.async { [weak self] in
+            guard let ss = self else { return }
+            ss.loader.start(in: ss.view, yOffset: 0)
+            ss.view.bringSubviewToFront(ss.loader)
+            ss.view.isUserInteractionEnabled = false
+        }
+    }
+    
+    func stopLoader() {
+        DispatchQueue.main.async { [weak self] in
+            guard let ss = self else { return }
+            ss.loader.stop()
+            ss.view.isUserInteractionEnabled = true
+        }
     }
     
     func input(_ inputCase: HomeViewInput) {

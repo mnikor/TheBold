@@ -180,9 +180,8 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
                 AlertViewService.shared.input(.missedYourActionLock(tapUnlock: { [weak self] in
                     guard let ss = self else { return }
                     
-//                    ss.goalToUnlock = goal
-//                    ss.unlockGoal()
-//                    return
+                    /// Start loader
+                    ss.viewController.startLoader()
                     
                     /// Select correct SKProduct
                     let baseStakeId = "com.nikonorov.newBold.Stake"
@@ -495,6 +494,8 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
         }
         
         DataSource.shared.saveBackgroundContext()
+        
+        viewController.stopLoader()
         
     }
     

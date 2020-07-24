@@ -27,6 +27,7 @@ enum HomePresenterInput {
 
 protocol HomePresenterInputProtocol {
     func input(_ inputCase: HomePresenterInput)
+    func succesfullPayment()
 }
 
 class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
@@ -53,75 +54,80 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
     func input(_ inputCase: HomePresenterInput) {
         
         switch inputCase {
-        case .prepareDataSource(let completion):
-            interactor.input(.prepareDataSource(completion))
-        case .menuShow:
-            router.input(.menuShow)
-        case .actionAll(let type):
-            router.input(.actionAll(type))
-        case .actionItem(let viewModel, let index):
-            actionItem(viewModel: viewModel, at: index)
-        case .unlockBoldManifest:
-            router.input(.unlockBoldManifest)
-        case .showBoldManifest:
-            router.input(.showBoldManifest)
-        case .createGoal:
-            router.input(.createGoal)
-        case .subscribeForUpdates:
-            subscribeForUpdates()
-        case .goalItem(let goal):
-            if goal.status == StatusType.locked.rawValue {
-                /// Price to unlock the goal
-                        var stake = 0
-                        /// Get goal's actions
-                        let actions = DataSource.shared.getActions(for: goal)
-                        /// Get first stake with status failed or unlock and stake
-                        for action in actions {
-                            if action.status > 4 {
-                                if action.stake > 0 {
-                                    stake = Int(action.stake.rounded())
-                                    break
-                                }
+            case .prepareDataSource(let completion):
+                interactor.input(.prepareDataSource(completion))
+            case .menuShow:
+                router.input(.menuShow)
+            case .actionAll(let type):
+                router.input(.actionAll(type))
+            case .actionItem(let viewModel, let index):
+                actionItem(viewModel: viewModel, at: index)
+            case .unlockBoldManifest:
+                router.input(.unlockBoldManifest)
+            case .showBoldManifest:
+                router.input(.showBoldManifest)
+            case .createGoal:
+                router.input(.createGoal)
+            case .subscribeForUpdates:
+                subscribeForUpdates()
+            case .goalItem(let goal):
+                if goal.status == StatusType.locked.rawValue {
+                    /// Price to unlock the goal
+                    var stake = 0
+                    /// Get goal's actions
+                    let actions = DataSource.shared.getActions(for: goal)
+                    /// Get first stake with status failed or unlock and stake
+                    for action in actions {
+                        if action.status > 4 {
+                            if action.stake > 0 {
+                                stake = Int(action.stake.rounded())
+                                break
                             }
                         }
-                        /// Bottom alert view with unlock action
-                        AlertViewService.shared.input(.missedYourActionLock(tapUnlock: { [weak self] in
-                            guard let ss = self else { return }
-                            /// Select correct SKProduct
-                            let baseStakeId = "com.nikonorov.newBold.Stake"
-                            let products = IAPProducts.shared.products
-                            var currentStake: SKProduct?
-                            
-                            for product in products {
-                                if product.productIdentifier == baseStakeId + String(stake) {
-                                    currentStake = product
-                                    break
-                                }
+                    }
+                    /// Bottom alert view with unlock action
+                    AlertViewService.shared.input(.missedYourActionLock(tapUnlock: { [weak self] in
+                        guard let ss = self else { return }
+                        /// Start loader
+                        ss.viewController.startLoader()
+                        
+                        /// Select correct SKProduct
+                        let baseStakeId = "com.nikonorov.newBold.Stake"
+                        let products = IAPProducts.shared.products
+                        var currentStake: SKProduct?
+                        
+                        for product in products {
+                            if product.productIdentifier == baseStakeId + String(stake) {
+                                currentStake = product
+                                break
                             }
-                
-                            /// After we get required stake product we should launch in-app
-                            if let product = currentStake {
-                                ss.goalToUnlock = goal
-                                IAPProducts.shared.store.buyProduct(product)
-                            } else {
-                                print("We don't have such product: Stake\(stake)")
-                            }
-                    LevelOfMasteryService.shared.input(.unlockGoal(goalID: goal.id!))
-                }))
-            } else { router.input(.goalItem(goal)) }
-        case .editGoal(let goal):
-            if goal.status == StatusType.locked.rawValue {
-                AlertViewService.shared.input(.missedYourActionLock(tapUnlock: {
-                    
-                    LevelOfMasteryService.shared.input(.unlockGoal(goalID: goal.id!))
-                }))
-            }else {
-                let vc = EditGoalViewController.createController(goalID: goal.id) {
-                    print("tap edit goal ok")
-                }
-                router.input(.longTapGoalPresentedBy(vc))
+                        }
+                        
+                        /// After we get required stake product we should launch in-app
+                        if let product = currentStake {
+                            ss.goalToUnlock = goal
+                            IAPProducts.shared.store.buyProduct(product)
+                        } else {
+                            ss.goalToUnlock = goal
+                            ss.unlockGoal()
+                            print("We don't have such product: Stake\(stake)")
+                        }
+                        LevelOfMasteryService.shared.input(.unlockGoal(goalID: goal.id!))
+                    }))
+                } else { router.input(.goalItem(goal)) }
+            case .editGoal(let goal):
+                if goal.status == StatusType.locked.rawValue {
+                    AlertViewService.shared.input(.missedYourActionLock(tapUnlock: {
+                        
+                        LevelOfMasteryService.shared.input(.unlockGoal(goalID: goal.id!))
+                    }))
+                }else {
+                    let vc = EditGoalViewController.createController(goalID: goal.id) {
+                        print("tap edit goal ok")
+                    }
+                    router.input(.longTapGoalPresentedBy(vc))
             }
-        case .showLevelOfMastery:
+            case .showLevelOfMastery:
                 router.input(.showLevelOfMastery)
         }
     }
@@ -139,20 +145,25 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
         }).disposed(by: disposeBag)
     }
     
+    func succesfullPayment() {
+        //TODO: Unlock goal with goalToUnlock
+        unlockGoal()
+        router.showThankForPaymentController()
+    }
+    
     private func unlockGoal() {
         
         let coreData = DataSource.shared
         
         guard let goal = goalToUnlock, let goalId = goal.id else { return }
         
-        goal.status = StatusType.wait.rawValue
-        
         let events = DataSource.shared.eventOfGoal(goalID: goalId)
         
+        goal.status = StatusType.wait.rawValue
+        goal.endDate = Date().tommorowDay() as NSDate
+        
         for event in events {
-            
             if event.status > 4 {
-                
                 coreData.updateEvent(eventID: event.id!) {
                     print("Event updated successfully!")
                 }
@@ -162,15 +173,16 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
                 for action in actions {
                     if action.status > 4 {
                         action.status = StatusType.wait.rawValue
+                        action.endDate = Date().tommorowDay() as NSDate
                     }
                 }
                 
                 if goal.status > 4 {
                     goal.status = StatusType.completed.rawValue
+                    goal.endDate = Date().tommorowDay() as NSDate
                 }
                 
             }
-            
         }
 
         do {
@@ -180,6 +192,8 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
         }
         
         DataSource.shared.saveBackgroundContext()
+        
+        viewController.stopLoader()
         
     }
     
