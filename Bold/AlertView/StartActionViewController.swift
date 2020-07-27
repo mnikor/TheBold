@@ -22,6 +22,8 @@ class StartActionViewController: UIViewController {
     
     @IBOutlet weak var bottomContentViewConstraint: NSLayoutConstraint!
     
+    private var loader = LoaderView(frame: .zero)
+    
     var activeStartButton : (() -> Void)?
     private var content: Content!
     
@@ -33,11 +35,18 @@ class StartActionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        coverImageView.image = nil
 //        contentView.roundCorners(corners: [.topLeft, .topRight], radius: 10)
         overlayView.alpha = 0
         bottomContentViewConstraint.constant = -self.contentView.bounds.height
         addSwipe()
         configureContent(content)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        setupLoader()
     }
     
     override func viewDidLayoutSubviews() {
@@ -65,7 +74,10 @@ class StartActionViewController: UIViewController {
     
     private func configureContent(_ content: Content) {
         if let smallImage = content.imageUrl {
-            coverImageView.downloadImageAnimated(path: smallImage, placeholder: Asset.actionBackground.image)
+            coverImageView.downloadImageAnimated(path: smallImage) {[weak self] (image) in
+                guard let ss = self else { return }
+                ss.loader.stop()
+            }
 //            coverImageView.setImageAnimated(path: smallImage, placeholder: Asset.actionBackground.image)
         }
         timeButton.isUserInteractionEnabled = false
@@ -76,6 +88,16 @@ class StartActionViewController: UIViewController {
         }
         authorLabel.text = content.authorName
         titleTextView.text = content.title
+    }
+    
+    private func setupLoader() {
+        if coverImageView.image == nil {
+            let centerY = view.center.y
+            let loaderHeight = UIScreen.main.bounds.width * 0.2
+            let yOffSet = ((loaderHeight * 0.5) + 355) - centerY
+            loader.start(in: view, yOffset: yOffSet < 0 ? 0 : yOffSet)
+            view.bringSubviewToFront(loader)
+        }
     }
     
     private func addSwipe() {
