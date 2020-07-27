@@ -85,7 +85,7 @@ extension DataSource: EventFunctionality {
         }
         
         if let result = results {
-            result.status = StatusType.wait.rawValue
+            result.status = StatusType.completed.rawValue
             result.endDate = Date().tommorowDay() as NSDate
             DataSource.shared.saveBackgroundContext()
             

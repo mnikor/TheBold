@@ -478,7 +478,7 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
                 
                 for action in actions {
                     if action.status > 4 {
-                        action.status = StatusType.wait.rawValue
+                        action.status = StatusType.completed.rawValue
                         action.endDate = Date().tommorowDay() as NSDate
                     }
                 }

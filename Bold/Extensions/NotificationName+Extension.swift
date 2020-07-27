@@ -13,4 +13,5 @@ extension Notification.Name {
     static let IAPHelperPurchaseNotification = Notification.Name("IAPHelperPurchaseNotification")
     static let IAPHelperSubscriptionPurchaseNotification = Notification.Name("IAPHelperSubscriptionPurchaseNotification")
     static let IAPHelperPurchaseFailedNotification = Notification.Name("IAPHelperPurchaseFailedNotification")
+    static let IAPHelperPremiumNotification = Notification.Name("IAPHelperPremiumNotification")
 }

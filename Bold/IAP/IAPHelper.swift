@@ -166,7 +166,8 @@ extension IAPHelper: SKPaymentTransactionObserver {
             }
         }
         
-        deliverPurchaseNotification(for: productId)
+        purchasedProductIds.insert(productId)
+        UserDefaults.standard.set(true, forKey: productId)
 
         SKPaymentQueue.default().finishTransaction(transaction)
     }
@@ -209,6 +210,8 @@ extension IAPHelper: SKPaymentTransactionObserver {
         isPremium = true
         
         DataSource.shared.saveBackgroundContext()
+        
+        NotificationCenter.default.post(name: .IAPHelperPremiumNotification, object: nil)
     }
     
 }

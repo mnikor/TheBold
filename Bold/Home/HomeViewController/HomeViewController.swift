@@ -157,6 +157,7 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
         NotificationCenter.default.addObserver(self, selector: #selector(showCongratsView), name: .IAPHelperPurchaseNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handlePurchaseError), name: .IAPHelperPurchaseFailedNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(profileChanged), name: .profileChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(premiumUpdate), name: .IAPHelperPremiumNotification, object: nil)
     }
     
     @objc private func showCongratsView() {
@@ -204,6 +205,10 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
     
     @objc private func profileChanged(_ notification: Notification) {
         headerHomeView.configureTitle()
+    }
+    
+    @objc private func premiumUpdate() {
+        prepareDataSource()
     }
     
 }
