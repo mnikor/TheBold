@@ -301,6 +301,9 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
     
     private func createDataSource(goalID: String?) {
         
+        /// Function calls a few times instead of one
+        /// After done button doesn't show actions created NOT TODAY
+        
         baseDataSource.removeAll()
         calendarDataSource.removeAll()
         currentDate = Date()
@@ -312,7 +315,8 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
             rangeDate = RangeDatePeriod.initRange(date: type.startDatePeriod())
         }
         
-        self.goalID = goalID
+        if goalID != nil { self.goalID = goalID }
+        
         interactor.input(.createDataSource(type: type, goalID: goalID, startDate: rangeDate.start, endDate:rangeDate.end, success: { [weak self] dataSections in
             self?.baseDataSource += dataSections
             self?.configDataSource(date: nil)

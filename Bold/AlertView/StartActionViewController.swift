@@ -78,7 +78,6 @@ class StartActionViewController: UIViewController {
                 guard let ss = self else { return }
                 ss.loader.stop()
             }
-//            coverImageView.setImageAnimated(path: smallImage, placeholder: Asset.actionBackground.image)
         }
         timeButton.isUserInteractionEnabled = false
         timeButton.isHidden = content.durationRead == 0

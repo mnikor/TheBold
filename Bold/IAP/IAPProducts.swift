@@ -64,6 +64,8 @@ class IAPProducts {
                 if let products = products {
                     ss.products = products
                 }
+            } else {
+                print("Can't request products from the app store")
             }
         }
     }

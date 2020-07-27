@@ -55,10 +55,16 @@ class PremiumViewController: UIViewController {
         
         switch premium {
         case .monthly:
-            guard let product = monthlyProduct else { return }
+            guard let product = monthlyProduct else {
+                stopLoader()
+                showAlert(with: "Connection error \nPlease try again later.")
+                return }
             IAPProducts.shared.store.buyProduct(product)
         case .yearly:
-            guard let product = yearlyProduct else { return }
+            guard let product = yearlyProduct else {
+                stopLoader()
+                showAlert(with: "Connection error \nPlease try again later.")
+                return }
             IAPProducts.shared.store.buyProduct(product)
         default:
             showAlert(with: "Please make your choice")
@@ -111,12 +117,19 @@ class PremiumViewController: UIViewController {
         view.bringSubviewToFront(loader)
     }
     
+    private func stopLoader() {
+        loader.stop()
+        view.isUserInteractionEnabled = true
+    }
+    
     // MARK: - LOAD SUBSCRIPTIONS
     
     private func requestSubscriptions() {
         /// Load IAP subscriptions
         IAPProducts.shared.store.requestProducts {[weak self] (success, products) in
-            guard let ss = self else { return }
+            guard let ss = self else {
+                fatalError("\(#line)")
+                return }
             
             if success {
                 if let products = products {
@@ -134,6 +147,8 @@ class PremiumViewController: UIViewController {
                         }
                     }
                 }
+            } else {
+                print("Can't load subscriptions")
             }
         }
     }
@@ -141,7 +156,7 @@ class PremiumViewController: UIViewController {
     // MARK: - SETUP OBSERVER
     
     private func setupObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(showCongratsView), name: .IAPHelperPurchaseNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showCongratsView), name: .IAPHelperSubscriptionPurchaseNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handlePurchaseError), name: .IAPHelperPurchaseFailedNotification, object: nil)
     }
     

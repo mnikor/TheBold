@@ -26,6 +26,7 @@ class IAPHelper: NSObject {
     // MARK: - INIT
     
     init(productIds: Set<ProductIdentifier>) {
+        
         self.productIdentifiers = productIds
         
         for id in productIds {
@@ -36,6 +37,8 @@ class IAPHelper: NSObject {
         }
         
         super.init()
+        
+        clearRequestAndHandler()
         
         SKPaymentQueue.default().add(self)
     }
@@ -133,7 +136,23 @@ extension IAPHelper: SKPaymentTransactionObserver {
     
     private func complete(transaction: SKPaymentTransaction) {
         
-        deliverPurchaseNotification(for: transaction.payment.productIdentifier)
+        if let date = transaction.transactionDate {
+            if let minutes = Calendar.current.dateComponents([.minute], from: date, to: Date()).minute {
+                if minutes > 5 {
+                    SKPaymentQueue.default().finishTransaction(transaction)
+                    return
+                }
+            }
+        }
+        
+        let prodId = transaction.payment.productIdentifier
+        
+        switch prodId {
+            case IAPProducts.MonthlySubscription, IAPProducts.YearlySubscription:
+                deliverSubscriptionsPurchaseNotification(for: prodId)
+            default:
+                deliverPurchaseNotification(for: prodId)
+        }
         
         SKPaymentQueue.default().finishTransaction(transaction)
     }
@@ -166,6 +185,14 @@ extension IAPHelper: SKPaymentTransactionObserver {
         purchasedProductIds.insert(id)
         UserDefaults.standard.set(true, forKey: id)
         NotificationCenter.default.post(name: .IAPHelperPurchaseNotification, object: id)
+    }
+    
+    private func deliverSubscriptionsPurchaseNotification(for identifier: String?) {
+        guard let id = identifier else { return }
+        
+        purchasedProductIds.insert(id)
+        UserDefaults.standard.set(true, forKey: id)
+        NotificationCenter.default.post(name: .IAPHelperSubscriptionPurchaseNotification, object: id)
     }
     
     private func deliverPurchaseFailedNotification(with message: String?) {

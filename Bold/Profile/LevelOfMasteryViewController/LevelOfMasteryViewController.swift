@@ -19,6 +19,8 @@ class LevelOfMasteryViewController: UIViewController, ViewProtocol {
     var presenter: Presenter!
     var configurator: Configurator! = Configurator()
     
+    private var isPremium = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -70,16 +72,25 @@ class LevelOfMasteryViewController: UIViewController, ViewProtocol {
 
 extension LevelOfMasteryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.levels.count + 1
+        /// Add check for premium
+        isPremium = DataSource.shared.isPremiumUser()
+        if isPremium {
+            return presenter.levels.count
+        } else {
+            return presenter.levels.count + 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
+        if indexPath.row == 0 && !isPremium {
+            /// Add check for premium
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as UnlockPremiumTableViewCell
             cell.delegate = self
             return cell
         } else {
-            let level = presenter.levels[indexPath.row - 1]
+            /// Check for premium
+            let index = isPremium ? indexPath.row : indexPath.row - 1
+            let level = presenter.levels[index]
             let cell = tableView.dequeReusableCell(indexPath: indexPath) as LevelOfMasteryTableViewCell
             cell.config(level: level)
             return cell

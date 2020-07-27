@@ -30,9 +30,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationService.shared.input(.resetBadgeNumber)
         
         /// Download in-app products
-        let _ = IAPProducts.shared
+        /// Restore purchased subscriptions
+        clearUserDefaultsSubscriptions()
+        IAPProducts.shared.store.restorePurchases()
         
         return true
+    }
+    
+    private func clearUserDefaultsSubscriptions() {
+        UserDefaults.standard.set(false, forKey: IAPProducts.MonthlySubscription)
+        UserDefaults.standard.set(false, forKey: IAPProducts.YearlySubscription)
+        
+        let user = DataSource.shared.readUser()
+        user.premiumOn = false
+        
+        DataSource.shared.saveBackgroundContext()
+        
     }
     
     func clearCoreData() {

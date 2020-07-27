@@ -41,6 +41,14 @@ extension Date {
         return Calendar.current.date(byAdding: .day, value: 7, to: self)!.baseTime()
     }
     
+    func yearAgo() -> Date {
+        return Calendar.current.date(byAdding: .year, value: -1, to: self)!.baseTime()
+    }
+    
+    func monthAgo() -> Date {
+        return Calendar.current.date(byAdding: .month, value: -1, to: self)!.baseTime()
+    }
+    
     func totalDistance(from date: Date, resultIn component: Calendar.Component) -> Int? {
         return Calendar.current.dateComponents([component], from: self, to: date).value(for: component)
     }
