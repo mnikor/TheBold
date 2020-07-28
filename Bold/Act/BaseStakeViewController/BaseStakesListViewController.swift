@@ -104,9 +104,9 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
     func startLoader() {
         DispatchQueue.main.async { [weak self] in
             guard let ss = self else { return }
-            ss.loader.start(in: ss.view, yOffset: 0)
-            ss.view.bringSubviewToFront(ss.loader)
-            ss.view.isUserInteractionEnabled = false
+//            ss.loader.start(in: ss.view, yOffset: 0)
+//            ss.view.bringSubviewToFront(ss.loader)
+//            ss.view.isUserInteractionEnabled = false
         }
     }
     
@@ -131,10 +131,15 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
         navigationController?.navigationBar.tintColor = ColorName.primaryBlue.color
         navigationController?.navigationBar.barTintColor = .white
         navigationItem.title = presenter.goal?.name ?? L10n.viewAll
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: Asset.plusTodayActions.image, style: .plain, target: self, action: #selector(tapCreateAction))
-        
+
         let backItem = UIBarButtonItem(image: UIImage(named: "arrowBack"), style: .plain, target: self, action: #selector(tapBackButton))
         navigationItem.leftBarButtonItem = backItem
+        
+        if let goal = presenter.goal {
+            if goal.status < StatusType.completed.rawValue {
+                navigationItem.rightBarButtonItem = UIBarButtonItem(image: Asset.plusTodayActions.image, style: .plain, target: self, action: #selector(tapCreateAction))
+            }
+        }
     }
     
     private func setupInfoView(_ indexPath: IndexPath) {

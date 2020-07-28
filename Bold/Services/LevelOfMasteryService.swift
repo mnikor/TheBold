@@ -320,7 +320,7 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
             if let actions = goal.actions as? Set<Action> {
                 for action in actions {
                     if action.stake > 0 {
-                        goal.status = StatusType.locked.rawValue
+                        goal.status = StatusType.failed.rawValue
                     }
                 }
             }

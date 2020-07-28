@@ -37,6 +37,7 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configurator.configure(with: self)
         
         presenter.input(.subscribeForUpdates)

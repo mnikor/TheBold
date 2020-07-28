@@ -180,6 +180,11 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
                 AlertViewService.shared.input(.missedYourActionLock(tapUnlock: { [weak self] in
                     guard let ss = self else { return }
                     
+                    ss.goalToUnlock = goal
+                    ss.unlockGoal()
+                    return
+                    
+                    
                     /// Start loader
                     ss.viewController.startLoader()
                     
@@ -220,9 +225,9 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
                 AlertViewService.shared.input(.missedYourActionLock(tapUnlock: {
                     LevelOfMasteryService.shared.input(.unlockGoal(goalID: goal.id!))
                 }))
-            }else {
-                let vc = EditGoalViewController.createController(goalID: goal.id) {
-                    print("tap edit goal ok")
+            } else {
+                let vc = EditGoalViewController.createController(goal: goal) {
+                    print("tap done button")
                 }
                 router.input(.longTapGoalPresentedBy(vc))
             }
@@ -466,7 +471,6 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
         let events = DataSource.shared.eventOfGoal(goalID: goalId)
         
         goal.status = StatusType.wait.rawValue
-        goal.endDate = Date().tommorowDay() as NSDate
         
         for event in events {
             if event.status > 4 {
@@ -478,14 +482,8 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
                 
                 for action in actions {
                     if action.status > 4 {
-                        action.status = StatusType.completed.rawValue
-                        action.endDate = Date().tommorowDay() as NSDate
+                        action.status = StatusType.failed.rawValue
                     }
-                }
-                
-                if goal.status > 4 {
-                    goal.status = StatusType.completed.rawValue
-                    goal.endDate = Date().tommorowDay() as NSDate
                 }
                 
             }

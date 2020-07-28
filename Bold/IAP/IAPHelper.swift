@@ -26,15 +26,7 @@ class IAPHelper: NSObject {
     // MARK: - INIT
     
     init(productIds: Set<ProductIdentifier>) {
-        
         self.productIdentifiers = productIds
-        
-        for id in productIds {
-            let purchased = UserDefaults.standard.bool(forKey: id)
-            if purchased {
-                purchasedProductIds.insert(id)
-            }
-        }
         
         super.init()
         
@@ -69,7 +61,6 @@ extension IAPHelper {
         } else {
             deliverPurchaseFailedNotification(with: "You can't make payments with this account")
         }
-        
         
     }
     
@@ -159,16 +150,15 @@ extension IAPHelper: SKPaymentTransactionObserver {
     
     private func restore(transaction: SKPaymentTransaction) {
         guard let productId = transaction.original?.payment.productIdentifier else { return }
-        
+        print(productId)
         if !isPremium {
             if productId == IAPProducts.MonthlySubscription || productId == IAPProducts.YearlySubscription {
                 premiumUser()
+                purchasedProductIds.insert(productId)
+                UserDefaults.standard.set(true, forKey: productId)
             }
         }
         
-        purchasedProductIds.insert(productId)
-        UserDefaults.standard.set(true, forKey: productId)
-
         SKPaymentQueue.default().finishTransaction(transaction)
     }
     
@@ -182,9 +172,6 @@ extension IAPHelper: SKPaymentTransactionObserver {
     
     private func deliverPurchaseNotification(for identifier: String?) {
         guard let id = identifier else { return }
-        
-        purchasedProductIds.insert(id)
-        UserDefaults.standard.set(true, forKey: id)
         NotificationCenter.default.post(name: .IAPHelperPurchaseNotification, object: id)
     }
     

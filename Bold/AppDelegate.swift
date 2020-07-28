@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         /// Download in-app products
         /// Restore purchased subscriptions
-        clearUserDefaultsSubscriptions()
+//        clearUserDefaultsSubscriptions()
         IAPProducts.shared.store.restorePurchases()
         
         return true

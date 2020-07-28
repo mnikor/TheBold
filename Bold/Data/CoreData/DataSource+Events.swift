@@ -85,8 +85,7 @@ extension DataSource: EventFunctionality {
         }
         
         if let result = results {
-            result.status = StatusType.completed.rawValue
-            result.endDate = Date().tommorowDay() as NSDate
+            result.status = StatusType.failed.rawValue
             DataSource.shared.saveBackgroundContext()
             
             if let _ = result.reminderDate {
@@ -115,7 +114,7 @@ extension DataSource: EventFunctionality {
         
         DataSource.shared.searchAction(actionID: actionID) { (action) in
             if action?.events?.count == results.count {
-                action?.status = StatusType.completed.rawValue
+                action?.status = StatusType.failed.rawValue
                 DataSource.shared.saveBackgroundContext()
             }
             checkAllActionOfGoal(goalID: action!.id!)

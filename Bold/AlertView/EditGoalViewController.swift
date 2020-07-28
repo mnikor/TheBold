@@ -21,6 +21,7 @@ class EditGoalViewController: UIViewController {
     var activeOkButton : (() -> Void)?
     var actionDeleteButton : (() -> Void)?
     
+    var goal: Goal?
     var goalID : String?
     var points : Int!
     var isEditingGoal : Bool = false
@@ -41,7 +42,7 @@ class EditGoalViewController: UIViewController {
             if let goalIDTemp = goalID {
                 tapDoneGoal(goalID: goalIDTemp)
             }
-        }else {
+        } else {
             view.endEditing(true)
             createGoalVC.presenter.input(.updateGoal({
                 print("Updated Goal")
@@ -50,6 +51,17 @@ class EditGoalViewController: UIViewController {
         
         activeOkButton?()
         hideAnimateView()
+    }
+    
+    class func createController(goal: Goal?, tapOk: @escaping VoidCallback) -> EditGoalViewController {
+        
+        let addVC = StoryboardScene.AlertView.editGoalViewController.instantiate()
+        addVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        addVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        addVC.activeOkButton = tapOk
+        addVC.goal = goal
+        addVC.goalID = goal?.id
+        return addVC
     }
     
     class func createController(goalID: String?, tapOk: @escaping VoidCallback) -> EditGoalViewController {
@@ -76,6 +88,12 @@ class EditGoalViewController: UIViewController {
         
         doneButton.setTitle(L10n.achieved, for: .normal)
         deleteButton.setTitle(L10n.delete, for: .normal)
+        
+        if let goal = goal {
+            if goal.status > StatusType.wait.rawValue {
+                doneButton.isHidden = true
+            }
+        }
         
         addSwipe()
         displayContentController()
