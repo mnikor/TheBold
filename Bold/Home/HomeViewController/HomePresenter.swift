@@ -153,18 +153,15 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
     
     private func unlockGoal() {
         
-        let coreData = DataSource.shared
-        
         guard let goal = goalToUnlock, let goalId = goal.id else { return }
         
         let events = DataSource.shared.eventOfGoal(goalID: goalId)
         
         goal.status = StatusType.wait.rawValue
-        goal.endDate = Date().tommorowDay() as NSDate
         
         for event in events {
             if event.status > 4 {
-                coreData.updateEvent(eventID: event.id!) {
+                DataSource.shared.updateEvent(eventID: event.id!) {
                     print("Event updated successfully!")
                 }
                 
@@ -172,19 +169,13 @@ class HomePresenter: PresenterProtocol, HomePresenterInputProtocol {
                 
                 for action in actions {
                     if action.status > 4 {
-                        action.status = StatusType.wait.rawValue
-                        action.endDate = Date().tommorowDay() as NSDate
+                        action.status = StatusType.failed.rawValue
                     }
-                }
-                
-                if goal.status > 4 {
-                    goal.status = StatusType.completed.rawValue
-                    goal.endDate = Date().tommorowDay() as NSDate
                 }
                 
             }
         }
-
+        
         do {
             try DataSource.shared.viewContext.save()
         } catch {

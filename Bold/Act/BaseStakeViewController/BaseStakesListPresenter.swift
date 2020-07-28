@@ -172,19 +172,9 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
                 
                 let events = DataSource.shared.searchOverdueEvents()
                 
-                for event in events {
-                    print("Event: \(event.name), status: \(event.status)")
-                }
-                
                 /// Bottom alert view with unlock action
                 AlertViewService.shared.input(.missedYourActionLock(tapUnlock: { [weak self] in
                     guard let ss = self else { return }
-                    
-                    ss.goalToUnlock = goal
-                    ss.unlockGoal()
-                    return
-                    
-                    
                     /// Start loader
                     ss.viewController.startLoader()
                     
@@ -464,8 +454,6 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
     
     private func unlockGoal() {
         
-        let coreData = DataSource.shared
-        
         guard let goal = goalToUnlock, let goalId = goal.id else { return }
         
         let events = DataSource.shared.eventOfGoal(goalID: goalId)
@@ -474,7 +462,7 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
         
         for event in events {
             if event.status > 4 {
-                coreData.updateEvent(eventID: event.id!) {
+                DataSource.shared.updateEvent(eventID: event.id!) {
                     print("Event updated successfully!")
                 }
                 
@@ -488,7 +476,7 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
                 
             }
         }
-
+        
         do {
             try DataSource.shared.viewContext.save()
         } catch {

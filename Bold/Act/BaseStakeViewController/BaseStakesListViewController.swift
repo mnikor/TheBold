@@ -104,9 +104,9 @@ class BaseStakesListViewController: UIViewController, ViewProtocol {
     func startLoader() {
         DispatchQueue.main.async { [weak self] in
             guard let ss = self else { return }
-//            ss.loader.start(in: ss.view, yOffset: 0)
-//            ss.view.bringSubviewToFront(ss.loader)
-//            ss.view.isUserInteractionEnabled = false
+            ss.loader.start(in: ss.view, yOffset: 0)
+            ss.view.bringSubviewToFront(ss.loader)
+            ss.view.isUserInteractionEnabled = false
         }
     }
     
