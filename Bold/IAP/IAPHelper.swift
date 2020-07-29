@@ -150,7 +150,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
     
     private func restore(transaction: SKPaymentTransaction) {
         guard let productId = transaction.original?.payment.productIdentifier else { return }
-        print(productId)
+        
         if !isPremium {
             if productId == IAPProducts.MonthlySubscription || productId == IAPProducts.YearlySubscription {
                 premiumUser()

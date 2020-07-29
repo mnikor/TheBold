@@ -104,6 +104,7 @@ class EditGoalViewController: UIViewController {
         createGoalVC.presenter.baseConfigType = .editGoalSheet(goalID: goalID!)
         createGoalVC.presenter.tapEditCallback = { [weak self] in
             self?.isEditingGoal = true
+            self?.doneButton.isHidden = false
             self?.doneButton.setTitle(L10n.save, for: .normal)
         }
         if let addActionVC = createGoalVC {

@@ -161,7 +161,6 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
                 let actions = DataSource.shared.getActions(for: goal)
                 /// Get first stake with status failed or unlock and stake
                 for action in actions {
-                    print(action.events)
                     if action.status > 4 {
                         if action.stake > 0 {
                             stake = Int(action.stake.rounded())
@@ -313,8 +312,10 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
         if goalID != nil { self.goalID = goalID }
         
         interactor.input(.createDataSource(type: type, goalID: goalID, startDate: rangeDate.start, endDate:rangeDate.end, success: { [weak self] dataSections in
-            self?.baseDataSource += dataSections
-            self?.configDataSource(date: nil)
+            guard let ss = self else { return }
+            
+            ss.baseDataSource += dataSections
+            ss.configDataSource(date: nil)
         }))
     }
     
@@ -335,8 +336,16 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
             }
             
             interactor.input(.createDataSource(type: type, goalID: goalID, startDate: rangeDate.start, endDate:rangeDate.end, success: { [weak self] dataSections in
-                self?.baseDataSource += dataSections
-                self?.configDataSource(date: nil)
+                guard let ss = self else { return }
+                
+                /// Check if this section doesn't exist yet to avoid duplication
+                for model in dataSections {
+                    if !ss.baseDataSource.contains(model) {
+                        ss.baseDataSource.append(model)
+                    }
+                }
+                
+                ss.configDataSource(date: nil)
             }))
         }
     }
@@ -360,14 +369,18 @@ class BaseStakesListPresenter: PresenterProtocol, BaseStakesListInputPresenterPr
                 }
                 dataSource = [calendarSection]
                 dataSource += search
-            }else {
+            } else {
                 dataSource = [calendarSection]
             }
-        }else {
+            
+        } else {
+            
             if goalSection != nil {
                 dataSource = [goalSection]
             }
+            
             dataSource += baseDataSource
+            
         }
         
         DispatchQueue.main.async { [weak self] in

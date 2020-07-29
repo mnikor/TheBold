@@ -50,21 +50,32 @@ class StakeActionTableViewCell: BaseTableViewCell {
     }
     
     func config(viewModel: CalendarModelType) {
-        
         if case .event(viewModel: let cellModel) = viewModel {
-            
-            print(cellModel.points)
-            
             event = cellModel.event
+            
+            setupAttributedTitle(for: cellModel)
+            
             statusImageView.renderImageWithColor(image: cellModel.statusIcon, color: cellModel.statusIconColor)
-            titleLabel.attributedText = cellModel.title
-            subtitleLabel.text = cellModel.contentName
-            subtitleLabel.isHidden = cellModel.contentNameIsHidden
-            stakeLabel.text = cellModel.stake
-            stakeLabel.textColor = cellModel.stakeColor
-            pointsActivityLabel.text = cellModel.points
+            subtitleLabel.text          = cellModel.contentName
+            subtitleLabel.isHidden      = cellModel.contentNameIsHidden
+            stakeLabel.text             = cellModel.stake
+            stakeLabel.textColor        = cellModel.stakeColor
+            pointsActivityLabel.text    = cellModel.points
         }
+    }
+ 
+    private func setupAttributedTitle(for cellModel: StakeActionViewModel) {
+        
+        titleLabel.attributedText = cellModel.title
+        
+        if event.status == StatusType.completed.rawValue {
+            if let nameTitle = event.name {
+                let title = NSMutableAttributedString(string: nameTitle)
+                title.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, title.length))
+                titleLabel.attributedText = title
+            }
+        }
+        
     }
     
 }
-

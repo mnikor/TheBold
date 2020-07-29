@@ -79,17 +79,12 @@ class ActionTableViewCell: BaseTableViewCell {
     }
 
     func config(item: ActionEntity) {
-        
-        print("Item: \(item.data?.type)\n \(item.data?.imageURL)\n\(item.data?.authorPhotoURL)\n\(item.data?.body)")
-        
         //quote
-        
         self.item = item
         configHeader(type: item.header!)
         configButton(item: item)
         titleTextView.text = item.data?.title
         backgroundImageView.downloadImageAnimated(path: item.data?.imageURL ?? "")
-        //backgroundImageView.setImageAnimated(path: item.data?.imageURL ?? "")//, placeholder: Asset.actionBackground.image)
         authorNameLabel.text = item.data?.authorName
         
         //guard let tempHeaderType = HeaderType(rawValue: UInt(arc4random_uniform(3))) else { return }

@@ -8,7 +8,21 @@
 
 import Foundation
 
-enum ActSectionModelType {
+enum ActSectionModelType: Equatable {
+    static func == (lhs: ActSectionModelType, rhs: ActSectionModelType) -> Bool {
+        
+        switch (lhs, rhs) {
+            case (.goal, .goal):
+                return true
+            case let (.calendar(v0), .calendar(v1)):
+                return v0.title == v1.title
+            case let (.stake(v0), .stake(v1)):
+                return v0.title == v1.title
+            default:
+                return false
+        }
+    }
+    
     case goal
     case calendar(viewModel: CalendarActionSectionViewModel)
     case stake(viewModel: CalendarActionSectionViewModel)
@@ -20,7 +34,11 @@ enum CalendarModelType {
     case goals(viewModel: ActivityViewModel)
 }
 
-struct ActDataSourceViewModel {
+struct ActDataSourceViewModel: Equatable {
+    static func == (lhs: ActDataSourceViewModel, rhs: ActDataSourceViewModel) -> Bool {
+        lhs.section == rhs.section
+    }
+    
     var section : ActSectionModelType
     var items : [CalendarModelType]
 }

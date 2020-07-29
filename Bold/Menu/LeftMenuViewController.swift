@@ -60,8 +60,6 @@ extension LeftMenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("select = \(menuItems[indexPath.row])")
-        
         tableView.deselectRow(at: indexPath, animated: false)
         
         guard let menuContainerViewController = self.menuContainerViewController else {

@@ -42,7 +42,6 @@ class IAPProducts {
         /// Append products Ids with stakes
         for val in tempArray {
             let stakeId = "com.nikonorov.newBold.Stake\(val)"
-            print(stakeId)
             productsId.insert(stakeId)
         }
         

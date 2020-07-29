@@ -13,7 +13,8 @@ import SDWebImage
 class NetworkService {
     static let shared = NetworkService()
     
-    private let baseURL = "https://the-bold-staging.herokuapp.com/api/v1"
+//    private let baseURL = "https://the-bold-staging.herokuapp.com/api/v1"
+    private let baseURL = "https://the-bold-production.herokuapp.com/api/v1"
     
     private var headers: [String : String] {
         var headers = [String: String]()

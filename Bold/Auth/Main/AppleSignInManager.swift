@@ -60,8 +60,6 @@ extension AppleSignInManager: ASAuthorizationControllerDelegate {
             
             if let mail = appleIDCredential.email { email = mail }
             
-            print("Code: \(code), \nidToken: \(idToken), \nfirstName: \(firstName), lastName: \(lastName), email: \(email), uid: \(user)")
-            
             NetworkService.shared.appleSignIn(code: code, idToken: idToken, email: email, user: user, firstName: firstName, lastName: lastName) { [weak self] (result) in
                 switch result {
                 case .failure(let error):

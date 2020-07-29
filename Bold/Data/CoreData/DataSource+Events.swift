@@ -132,7 +132,8 @@ extension DataSource: EventFunctionality {
         let end = endDate as NSDate
         
         if let goalIDString = goalID {
-            fetchRequest.predicate = NSPredicate(format: "(((startDate => %@) AND (startDate < %@)) OR ((startDate => %@) AND (startDate < %@) AND (status = %d))) AND SUBQUERY(action, $act, $act.goal.id == '\(goalIDString)').@count > 0", start, nextDay, nextDay, end, StatusType.wait.rawValue)
+            fetchRequest.predicate = NSPredicate(format: "SUBQUERY(action, $act, $act.goal.id == '\(goalIDString)').@count > 0", start, nextDay, nextDay, end, StatusType.wait.rawValue)
+//            fetchRequest.predicate = NSPredicate(format: "(((startDate => %@) AND (startDate < %@)) OR ((startDate => %@) AND (startDate < %@) AND (status = %d))) AND SUBQUERY(action, $act, $act.goal.id == '\(goalIDString)').@count > 0", start, nextDay, nextDay, end, StatusType.wait.rawValue)
         }else {
             fetchRequest.predicate = NSPredicate(format: "(startDate >= %@) AND (startDate <= %@)", start, end)
         }

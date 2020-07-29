@@ -168,8 +168,6 @@ class DescriptionAndLikesCountViewController: UIViewController, AlertDisplayable
         if #available(iOS 11.0, *) {
             
             var docURL = viewModel?.documentURL
-            print(viewModel.debugDescription)
-            print(docURL)
             
             if docURL?.lastPathComponent == "Manifest.pdf" {
                 isBoldManifest = true

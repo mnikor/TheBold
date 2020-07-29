@@ -367,7 +367,6 @@ extension BaseStakesListViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionItem = presenter.dataSource[section]
-        
         switch sectionItem.section {
         case .calendar:
             return sectionItem.items.count

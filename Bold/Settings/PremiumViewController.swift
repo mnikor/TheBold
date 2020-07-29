@@ -127,9 +127,7 @@ class PremiumViewController: UIViewController {
     private func requestSubscriptions() {
         /// Load IAP subscriptions
         IAPProducts.shared.store.requestProducts {[weak self] (success, products) in
-            guard let ss = self else {
-                fatalError("\(#line)")
-                return }
+            guard let ss = self else { return }
             
             if success {
                 if let products = products {

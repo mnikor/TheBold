@@ -14,7 +14,7 @@ class CustomImageView: UIImageView {
     var imageURLString: String?
     
     func downloadImageAnimated(path: String, placeholder: UIImage? = nil, forceFade: Bool = false, completion: ((UIImage?) -> Void)? = nil) {
-        
+
         image = nil
         
         DispatchQueue.global(qos: .default).async {[weak self] in
