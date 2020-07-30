@@ -30,7 +30,11 @@ class PremiumViewController: UIViewController {
     private var monthlyProduct: SKProduct?
     private var yearlyProduct: SKProduct?
     
+    private var connectionTimer: Timer?
+    
     var fromThoughts = false
+    
+    // MARK: - ACTIONS
     
     @IBAction func closeButton(_ sender: UIButton) {
         if let nc = navigationController {
@@ -70,6 +74,25 @@ class PremiumViewController: UIViewController {
             showAlert(with: "Please make your choice")
             break
         }
+    }
+    
+    @IBAction func tapRestorePurchases() {
+        if !IAPProducts.shared.store.isPremium {
+            
+            IAPProducts.shared.store.restorePurchases()
+            startLoader()
+            startConnectionTimer()
+            view.isUserInteractionEnabled = false
+            
+        } else { showSuccesfullyRestoredAlert() }
+    }
+    
+    private func startConnectionTimer() {
+        connectionTimer = Timer.scheduledTimer(timeInterval: 120,
+                                               target: self,
+                                               selector: #selector(showUnsuccessfullyRestoredAlert),
+                                               userInfo: nil,
+                                               repeats: false)
     }
     
     @IBAction func termsAndConditionAction() {
@@ -120,6 +143,9 @@ class PremiumViewController: UIViewController {
     private func stopLoader() {
         loader.stop()
         view.isUserInteractionEnabled = true
+        
+        connectionTimer?.invalidate()
+        connectionTimer = nil
     }
     
     // MARK: - LOAD SUBSCRIPTIONS
@@ -156,6 +182,7 @@ class PremiumViewController: UIViewController {
     private func setupObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(showCongratsView), name: .IAPHelperSubscriptionPurchaseNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handlePurchaseError), name: .IAPHelperPurchaseFailedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showSuccesfullyRestoredAlert), name: .SubscriptionRestoredSuccesfully, object: nil)
     }
     
     @objc private func showCongratsView() {
@@ -177,6 +204,25 @@ class PremiumViewController: UIViewController {
             /// Show alert
             showAlert(with: info)
         }
+    }
+    
+    @objc private func showSuccesfullyRestoredAlert() {
+        stopLoader()
+        
+        let alert = UIAlertController(title: "Success", message: "Subscription was successfully restored", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @objc private func showUnsuccessfullyRestoredAlert() {
+        stopLoader()
+        
+        let alert = UIAlertController(title: "Failed",
+                                      message: "Sorry, we can't restore your subscription. Please try again later",
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     private func showAlert(with message: String) {

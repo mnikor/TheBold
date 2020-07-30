@@ -21,7 +21,9 @@ class IAPHelper: NSObject {
     
     private var productsRequestCompletionHandler: ProductsRequestCompletionHandler?
     
-    private var isPremium = false
+    var isPremium = false
+    
+    private var showRestorePopup = false
     
     // MARK: - INIT
     
@@ -74,6 +76,11 @@ extension IAPHelper {
     
     public func restorePurchases() {
         SKPaymentQueue.default().restoreCompletedTransactions()
+    }
+    
+    func restoreWithPopUp() {
+        showRestorePopup = true
+        restorePurchases()
     }
     
 }
@@ -156,6 +163,11 @@ extension IAPHelper: SKPaymentTransactionObserver {
                 premiumUser()
                 purchasedProductIds.insert(productId)
                 UserDefaults.standard.set(true, forKey: productId)
+                /// Show succesful alert if needed
+                if showRestorePopup {
+                    showRestorePopup = false
+                    NotificationCenter.default.post(name: .SubscriptionRestoredSuccesfully, object: nil)
+                }
             }
         }
         
