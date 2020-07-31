@@ -133,7 +133,7 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnb-RN-9la" customClass="RoundedButton" customModule="Bold" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="123.5" width="325" height="55"/>
-                            <color key="backgroundColor" red="0.28627450980392155" green="0.32549019607843138" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="55" id="YMG-vr-pqz"/>
                             </constraints>
