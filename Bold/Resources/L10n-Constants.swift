@@ -250,7 +250,7 @@ internal enum L10n {
       internal static let shareWithFriends = L10n.tr("Localizable", "Act.Share.ShareWithFriends")
     }
     internal enum Stake {
-      /// If you miss to complete the actions the amount of stake will go to global charities
+      /// If you miss to complete the action your goal will be locked. To unlock Stake have to be paid
       internal static let allFundsGoesToGlobalCharityFoundation = L10n.tr("Localizable", "Act.Stake.AllFundsGoesToGlobalCharityFoundation")
       /// Confirm stake
       internal static let confirmStake = L10n.tr("Localizable", "Act.Stake.ConfirmStake")

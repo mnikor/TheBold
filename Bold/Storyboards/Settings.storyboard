@@ -798,7 +798,7 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XlU-wM-HVb">
                                 <rect key="frame" x="0.0" y="228" width="414" height="450"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="charity" translatesAutoresizingMaskIntoConstraints="NO" id="pho-jk-mHr">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stake_payment" translatesAutoresizingMaskIntoConstraints="NO" id="pho-jk-mHr">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="292"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="292" id="QMp-D9-PYl"/>
@@ -816,18 +816,11 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don’t worry, money will be used for good causes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDm-Pd-0ty">
-                                        <rect key="frame" x="20" y="292" width="374" height="15"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="12"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Ze2-e3-dE0" firstAttribute="centerX" secondItem="XlU-wM-HVb" secondAttribute="centerX" id="7lp-OB-O2R"/>
-                                    <constraint firstItem="eDm-Pd-0ty" firstAttribute="top" secondItem="pho-jk-mHr" secondAttribute="bottom" id="9Jl-Ox-XW3"/>
                                     <constraint firstItem="pho-jk-mHr" firstAttribute="leading" secondItem="XlU-wM-HVb" secondAttribute="leading" id="B7j-tm-yqg"/>
                                     <constraint firstItem="bsh-Xp-L2z" firstAttribute="centerX" secondItem="XlU-wM-HVb" secondAttribute="centerX" id="EdC-uT-qCN"/>
                                     <constraint firstItem="Ze2-e3-dE0" firstAttribute="top" secondItem="pho-jk-mHr" secondAttribute="bottom" constant="40" id="HLO-fj-eTV"/>
@@ -838,8 +831,6 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                                     <constraint firstAttribute="trailing" secondItem="pho-jk-mHr" secondAttribute="trailing" id="Vyv-cg-pdY"/>
                                     <constraint firstItem="pho-jk-mHr" firstAttribute="centerX" secondItem="XlU-wM-HVb" secondAttribute="centerX" id="eXR-E2-k6U"/>
                                     <constraint firstAttribute="trailing" secondItem="bsh-Xp-L2z" secondAttribute="trailing" constant="20" id="fKW-tu-ofZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="eDm-Pd-0ty" secondAttribute="trailing" constant="20" id="naR-Ad-Nh0"/>
-                                    <constraint firstItem="eDm-Pd-0ty" firstAttribute="leading" secondItem="XlU-wM-HVb" secondAttribute="leading" constant="20" id="vaX-V2-zOd"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYx-KK-zgE">
@@ -882,13 +873,13 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
         </scene>
     </scenes>
     <resources>
-        <image name="charity" width="269" height="211"/>
         <image name="checkPremiumParams" width="18" height="14"/>
         <image name="checkPremiumSave" width="16" height="13"/>
         <image name="closeWhite" width="16" height="16"/>
         <image name="logoSmall" width="60" height="28"/>
         <image name="premiumImage" width="375" height="355"/>
         <image name="premium_congrats" width="335" height="246"/>
+        <image name="stake_payment" width="375" height="273"/>
         <image name="win" width="276" height="292"/>
     </resources>
 </document>

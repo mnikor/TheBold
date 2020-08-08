@@ -249,7 +249,7 @@
 "Act.Stake.LetsMakeYourChallenging" = "Have a skin in the game…";
 "Act.Stake.YourStake" = "Your stake";
 "Act.Stake.ConfirmStake" = "Confirm stake";
-"Act.Stake.AllFundsGoesToGlobalCharityFoundation" = "If you miss to complete the actions the amount of stake will go to global charities";
+"Act.Stake.AllFundsGoesToGlobalCharityFoundation" = "If you miss to complete the action your goal will be locked. To unlock Stake have to be paid";
 "Act.Stake.gcfCareOrg" = "gcf-care.org";
 
 "Act.Cell.CreateGoal" = "Create goal";

@@ -94,10 +94,16 @@ class CreateGoalInteractor: CreateGoalInputInteractorProtocol {
     
     private func createModelView(goal: Goal) {
         
-        let modelView = CreateGoalViewModel(startDate: goal.startDate! as Date,
-                                            startDateString: dateFormatting(date: goal.startDate! as Date),
-                                            endDate: goal.endDate! as Date,
-                                            endDateString: dateFormatting(date: goal.endDate! as Date),
+        var startDate = Date()
+        var endDate = Date()
+        
+        if let date = goal.startDate { startDate = date as Date }
+        if let date = goal.endDate { endDate = date as Date }
+        
+        let modelView = CreateGoalViewModel(startDate: startDate,
+                                            startDateString: dateFormatting(date: startDate),
+                                            endDate: endDate,
+                                            endDateString: dateFormatting(date: endDate),
                                             color: ColorGoalType(rawValue: goal.color)!,
                                             icon: IdeasType(rawValue: goal.icon)!,
                                             nameGoal: goal.name,
