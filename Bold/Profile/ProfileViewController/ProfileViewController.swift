@@ -134,9 +134,14 @@ class ProfileViewController: UIViewController, SideMenuItemContent, ProfileViewI
     private func makeAPhoto() {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = .camera
+            imagePicker.cameraCaptureMode = .photo
             imagePicker.delegate = self
             imagePicker.allowsEditing = true
-            self.present(imagePicker, animated: true, completion: nil)
+            DispatchQueue.main.async { [weak self] in
+                self?.present(imagePicker, animated: true, completion: nil)
+            }
+            
         }
     }
     

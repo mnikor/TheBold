@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 enum ProfilePresenterInput {
     case prepareDataSource(([UserProfileDataSourceItem]) -> Void)
@@ -133,17 +134,23 @@ class ProfilePresenter: ProfilePresenterInputProtocol {
     }
     
     private func makeAPhoto() {
-        if let alertController = alertController {
-            alertController.dismiss(animated: true) { [weak self] in
-                let contentView = AllowCameraView.loadFromNib()
-                contentView.delegate = self?.viewController
-                self?.alertController = self?.viewController.showAlert(with: contentView, completion: nil)
-            }
+        /// Add check if user already granted the access
+        if AVCaptureDevice.authorizationStatus(for: .video) == .authorized {
+            allowCameraUse(allowed: true)
         } else {
-            let contentView = AllowCameraView.loadFromNib()
-            contentView.delegate = viewController
-            alertController = viewController.showAlert(with: contentView, completion: nil)
+            if let alertController = alertController {
+                alertController.dismiss(animated: true) { [weak self] in
+                    let contentView = AllowCameraView.loadFromNib()
+                    contentView.delegate = self?.viewController
+                    self?.alertController = self?.viewController.showAlert(with: contentView, completion: nil)
+                }
+            } else {
+                let contentView = AllowCameraView.loadFromNib()
+                contentView.delegate = viewController
+                alertController = viewController.showAlert(with: contentView, completion: nil)
+            }
         }
+        
     }
     
     private func allowCameraUse(allowed: Bool) {
@@ -156,7 +163,7 @@ class ProfilePresenter: ProfilePresenterInputProtocol {
                 viewController.input(.makeAPhoto)
             }
         } else {
-            
+            alertController?.dismiss(animated: true, completion: nil)
         }
     }
     

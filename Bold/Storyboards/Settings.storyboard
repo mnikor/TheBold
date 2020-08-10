@@ -802,13 +802,13 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for the payment!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ze2-e3-dE0">
-                                        <rect key="frame" x="61.5" y="332" width="291" height="29"/>
+                                        <rect key="frame" x="62" y="312" width="290.5" height="28.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="23"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are really Bold as you keep yourself honest and commited. Now you know what it means to have a stake." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsh-Xp-L2z">
-                                        <rect key="frame" x="20" y="376" width="374" height="55"/>
+                                        <rect key="frame" x="20" y="355.5" width="374" height="55"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -820,7 +820,7 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                                     <constraint firstItem="Ze2-e3-dE0" firstAttribute="centerX" secondItem="XlU-wM-HVb" secondAttribute="centerX" id="7lp-OB-O2R"/>
                                     <constraint firstItem="pho-jk-mHr" firstAttribute="leading" secondItem="XlU-wM-HVb" secondAttribute="leading" id="B7j-tm-yqg"/>
                                     <constraint firstItem="bsh-Xp-L2z" firstAttribute="centerX" secondItem="XlU-wM-HVb" secondAttribute="centerX" id="EdC-uT-qCN"/>
-                                    <constraint firstItem="Ze2-e3-dE0" firstAttribute="top" secondItem="pho-jk-mHr" secondAttribute="bottom" constant="40" id="HLO-fj-eTV"/>
+                                    <constraint firstItem="Ze2-e3-dE0" firstAttribute="top" secondItem="pho-jk-mHr" secondAttribute="bottom" constant="20" id="HLO-fj-eTV"/>
                                     <constraint firstItem="bsh-Xp-L2z" firstAttribute="top" secondItem="Ze2-e3-dE0" secondAttribute="bottom" constant="15" id="KAm-Ht-4UD"/>
                                     <constraint firstAttribute="height" constant="450" id="M9C-NA-gpP"/>
                                     <constraint firstItem="bsh-Xp-L2z" firstAttribute="leading" secondItem="XlU-wM-HVb" secondAttribute="leading" constant="20" id="P0V-zX-HDV"/>
