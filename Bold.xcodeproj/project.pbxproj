@@ -31,6 +31,7 @@
 		4BB9CB9424B4BF8B00686CE6 /* LockedByPointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9CB9324B4BF8B00686CE6 /* LockedByPointsViewController.swift */; };
 		4BB9CB9724B4CE3500686CE6 /* Meditation.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4BB9CB9524B4CE3500686CE6 /* Meditation.pdf */; };
 		4BB9CB9824B4CE3500686CE6 /* Hypnosis.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4BB9CB9624B4CE3500686CE6 /* Hypnosis.pdf */; };
+		4BC2620F24E40CBC0001D39B /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC2620E24E40CBC0001D39B /* DoubleExtension.swift */; };
 		4BD74C4F247F9D8B00BD0A24 /* UIColor+HexExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD74C4E247F9D8B00BD0A24 /* UIColor+HexExtension.swift */; };
 		4BD74C51248123CB00BD0A24 /* NavigationTitleAndProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD74C50248123CB00BD0A24 /* NavigationTitleAndProgressTableViewCell.swift */; };
 		AB3A5076A4778FC67A39C5DE /* Pods_Bold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F633E16C16CF1D2DB8E5B5 /* Pods_Bold.framework */; };
@@ -493,6 +494,7 @@
 		4BB9CB9324B4BF8B00686CE6 /* LockedByPointsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedByPointsViewController.swift; sourceTree = "<group>"; };
 		4BB9CB9524B4CE3500686CE6 /* Meditation.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Meditation.pdf; sourceTree = "<group>"; };
 		4BB9CB9624B4CE3500686CE6 /* Hypnosis.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Hypnosis.pdf; sourceTree = "<group>"; };
+		4BC2620E24E40CBC0001D39B /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		4BD74C4E247F9D8B00BD0A24 /* UIColor+HexExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+HexExtension.swift"; sourceTree = "<group>"; };
 		4BD74C50248123CB00BD0A24 /* NavigationTitleAndProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitleAndProgressTableViewCell.swift; sourceTree = "<group>"; };
 		C50FE4CD238BD785008DD7C8 /* DataSource+Files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSource+Files.swift"; sourceTree = "<group>"; };
@@ -1742,6 +1744,7 @@
 				C565091723713ED50072ADF9 /* NotificationName+Extension.swift */,
 				F1911408240E8F6900049BB8 /* Bool+Extensions.swift */,
 				F1955410241A836300663BEC /* UIWindow+Extensions.swift */,
+				4BC2620E24E40CBC0001D39B /* DoubleExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2803,6 +2806,7 @@
 				F19A98B822D758CF00A0492E /* MissedYouTwoButtonAlertView.swift in Sources */,
 				F190357822D87AF8001BC996 /* FixedPaddingTextView.swift in Sources */,
 				C565CCA023987DBE003BF7CF /* Validator.swift in Sources */,
+				4BC2620F24E40CBC0001D39B /* DoubleExtension.swift in Sources */,
 				F1CECE1922E9C75000EA95EE /* ColorListCreateGoalTableViewCell.swift in Sources */,
 				F186884D229E9BD80029A663 /* UIFont+Extensions.swift in Sources */,
 				C5A4853E2306B934002CC62A /* CalendarAndHistoryConfigurator.swift in Sources */,
@@ -2962,7 +2966,7 @@
 				CODE_SIGN_ENTITLEMENTS = Bold/Bold.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 37HBR3VGFU;
 				INFOPLIST_FILE = Bold/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2970,6 +2974,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikonorov.newBold;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2986,7 +2991,7 @@
 				CODE_SIGN_ENTITLEMENTS = Bold/Bold.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 37HBR3VGFU;
 				INFOPLIST_FILE = Bold/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2994,6 +2999,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikonorov.newBold;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

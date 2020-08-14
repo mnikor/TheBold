@@ -16,24 +16,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var hostController: HostViewController?
     
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let rootViewController = getRootViewController()
         self.window?.rootViewController = rootViewController
         self.window?.makeKeyAndVisible()
         
+        /// Download in-app products
+        /// Restore purchased subscriptions
+        IAPProducts.shared.store.restorePurchases()
+        
         LevelOfMasteryService.shared.input(.calculateProgress)
-//        LevelOfMasteryService.shared.input(.checkAllGoalsAndAction)
         
         NotificationService.shared.delegate = self
         NotificationService.shared.input(.resetBadgeNumber)
-        
-        /// Download in-app products
-        /// Restore purchased subscriptions
-//        clearUserDefaultsSubscriptions()
-        IAPProducts.shared.store.restorePurchases()
-        
+
         return true
     }
     

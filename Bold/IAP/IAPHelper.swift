@@ -91,6 +91,29 @@ extension IAPHelper: SKProductsRequestDelegate {
     
     public func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         let products = response.products
+        
+        for product in products {
+            if product.productIdentifier == IAPProducts.MonthlySubscription {
+                
+                let price           = Double(truncating: product.price).removeZerosFromEnd()
+                let monthlyPrice    = "\(product.priceLocale.currencySymbol ?? "$") \(price)"
+                
+                IAPProducts.shared.monthlyPrice = monthlyPrice
+                
+            } else if product.productIdentifier == IAPProducts.YearlySubscription {
+                
+                let price           = Double(truncating: product.price)
+                let priceInYear     = price.removeZerosFromEnd()
+                let priceInMonth    = (price / 12).removeZerosFromEnd()
+                
+                let yearlyPrice         = "\(product.priceLocale.currencySymbol ?? "$") \(priceInYear)"
+                let yearlyPriceInMonth  = "\(product.priceLocale.currencySymbol ?? "$") \(priceInMonth)/month"
+                
+                IAPProducts.shared.yearlyPrice          = yearlyPrice
+                IAPProducts.shared.yearlyPriceInMonth   = yearlyPriceInMonth
+            }
+        }
+        
         productsRequestCompletionHandler?(true, products)
         clearRequestAndHandler()
     }
@@ -112,6 +135,10 @@ extension IAPHelper: SKProductsRequestDelegate {
 // MARK: - SKPaymentTransactionObserver
 
 extension IAPHelper: SKPaymentTransactionObserver {
+    
+    func paymentQueue(_ queue: SKPaymentQueue, shouldAddStorePayment payment: SKPayment, for product: SKProduct) -> Bool {
+        return true
+    }
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {

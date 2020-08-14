@@ -15,7 +15,7 @@ struct GlobalConstants {
         static let maxDate = DateFormatter.formatting(type: .compareDateEvent, dateString: "01/01/2031")
     }
     
-    static let appURL = "https://www.apple.com"
+    static let appURL = "https://apps.apple.com/be/app/bold-strong-smart-mind/id1491187912"
     static let isBoldManifest = "isBoldManifestPlayed"
     
 }

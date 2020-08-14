@@ -16,10 +16,16 @@ enum PremiumType {
 
 class PremiumViewController: UIViewController {
     
-    @IBOutlet weak var monthlyView: UIView!
-    @IBOutlet weak var monthlyPriceLabel: UILabel!
-    @IBOutlet weak var yearlyView: UIView!
-    @IBOutlet weak var yearlyPriceLabel: UILabel!
+    @IBOutlet weak var monthlyView:         UIView!
+    @IBOutlet weak var monthlyPriceLabel:   UILabel!
+    @IBOutlet weak var monthlyLabel:        UILabel!
+    
+    @IBOutlet weak var yearlyView:          UIView!
+    @IBOutlet weak var yearlyPriceLabel:    UILabel!
+    @IBOutlet weak var yearlyLabel:         UILabel!
+    @IBOutlet weak var saveLabel:           UILabel!
+    @IBOutlet weak var devidedPriceLabel:   UILabel!
+    
     @IBOutlet weak var congratsView: UIView!
     @IBOutlet weak var crossButton: UIButton!
     
@@ -119,14 +125,14 @@ class PremiumViewController: UIViewController {
         }
         
         requestSubscriptions()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         setupObserver()
-        selectPremium(type: .monthly)
+        selectPremium(type: .yearly)
+        setupPrice()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -233,14 +239,45 @@ class PremiumViewController: UIViewController {
     
     // MARK: - SETUP VIEW
     
+    private func setupPrice() {
+        monthlyPriceLabel.text  = IAPProducts.shared.monthlyPrice
+        yearlyPriceLabel.text   = IAPProducts.shared.yearlyPrice
+        devidedPriceLabel.text  = IAPProducts.shared.yearlyPriceInMonth
+    }
+    
     private func selectPremium(type: PremiumType) {
         premium = type
         addShadow(to: type == .monthly ? monthlyView : yearlyView)
         removeShadow(from: type == .monthly ? yearlyView : monthlyView)
+        
+        setupView(type: type)
+    }
+    
+    private func setupView(type: PremiumType) {
+        switch type {
+            case .monthly:
+                monthlyLabel.textColor      = .white
+                monthlyPriceLabel.textColor = .white
+                
+                yearlyLabel.textColor       = ColorName.primaryBlue.color
+                devidedPriceLabel.textColor = ColorName.primaryBlue.color
+                saveLabel.textColor         = ColorName.primaryBlue.color
+                yearlyPriceLabel.textColor  = ColorName.primaryBlue.color
+            
+            case .yearly:
+                yearlyLabel.textColor       = .white
+                yearlyPriceLabel.textColor  = .white
+                saveLabel.textColor         = .white
+                devidedPriceLabel.textColor = .white
+                
+                
+                monthlyLabel.textColor      = ColorName.primaryBlue.color
+                monthlyPriceLabel.textColor = ColorName.primaryBlue.color
+        }
     }
     
     private func addShadow(to view: UIView) {
-        view.backgroundColor = .white
+        view.backgroundColor = ColorName.primaryBlue.color
         view.layer.shadowColor = UIColor(red: 19/255, green: 28/255, blue: 50/255, alpha: 1).cgColor
         view.layer.shadowOpacity = 0.14
         view.layer.shadowOffset = CGSize(width: 0, height: 2)
