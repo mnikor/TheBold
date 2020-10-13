@@ -315,6 +315,7 @@ internal enum Asset {
   internal static let rightArrowIcon = ImageAsset(name: "rightArrowIcon")
   internal static let rightArrowWhite = ImageAsset(name: "rightArrowWhite")
   internal static let screen = ImageAsset(name: "screen")
+  internal static let shapeForCell = ImageAsset(name: "shapeForCell")
   internal static let sliderThumb = ImageAsset(name: "sliderThumb")
   internal static let splashBackground = ImageAsset(name: "splashBackground")
   internal static let stakePayment = ImageAsset(name: "stake_payment")

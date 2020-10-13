@@ -10,14 +10,27 @@ import UIKit
 
 class ThinkViewController: FeelViewController {
 
+    private var playAnimationCallback : Callback<Bool>?
+    
     override var contentTypes: [ContentType] {
         return [.story, .quote, .lesson]
     }
     
-//    override var feelItems: [FeelEntity] {
-//        get {return thinkItems}
-//        set {thinkItems = newValue}
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(appMovedToActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        playAnimationCallback?(true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        playAnimationCallback?(false)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +45,10 @@ class ThinkViewController: FeelViewController {
         hideTitleInHighNavigationBar()
     }
     
+    @objc private func appMovedToActive() {
+        playAnimationCallback?(true)
+    }
+    
     private func hideTitleInHighNavigationBar() {
         highNavigationBar.titleLabel.isHidden = true
         highNavigationBar.infoButton.isHidden = true
@@ -42,11 +59,6 @@ class ThinkViewController: FeelViewController {
         tableView.registerNib(CitationTableViewCell.self)
         tableView.registerNib(NavigationTitleAndProgressTableViewCell.self)
     }
-    
-//    override func showAll(typeCells: FeelTypeCell) {
-//        performSegue(withIdentifier: StoryboardSegue.Think.showItem.rawValue, sender: typeCells)
-//    }
-    
 }
 
 extension ThinkViewController {
@@ -84,5 +96,9 @@ extension ThinkViewController {
 extension ThinkViewController: CitationTableViewCellDelegate {
     func tapMoreInfoButton() {
         performSegue(withIdentifier: StoryboardSegue.Think.citationIdentifier.rawValue, sender: nil)
+    }
+    
+    func animateState(status: @escaping (Bool) -> Void) {
+        playAnimationCallback = status
     }
 }

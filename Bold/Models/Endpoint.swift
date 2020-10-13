@@ -32,4 +32,6 @@ enum Endpoint: String {
     
     case contentGroupAllWithType = "/content_groups/%@"
     case contentGroupWithID = "/content_groups/%d"
+    
+    case animationContent = "animations"
 }

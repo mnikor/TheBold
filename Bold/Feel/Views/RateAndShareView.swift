@@ -88,9 +88,13 @@ class RateAndShareView: UIView {
         }
     }
     
-    func configureCitation(authorImage: UIImage, authorName: String, citation: String, color: UIColor) {
+    func configureCitation(authorImage: UIImage?, authorName: String?, citation: String?, imagePath: String? = nil, color: UIColor) {
         isFoodForThoughts = true
+        if let path = imagePath {
+            actionImageView.downloadImageAnimated(path: path)
+        }
         backgroundImageView.backgroundColor = color
+        authorImageView.backgroundColor = .clear
         authorImageView.image = authorImage
         authorNameLabel.text = authorName
         citationLabel.text = citation

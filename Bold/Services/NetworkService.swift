@@ -13,8 +13,8 @@ import SDWebImage
 class NetworkService {
     static let shared = NetworkService()
     
-//    private let baseURL = "https://the-bold-staging.herokuapp.com/api/v1"
-    private let baseURL = "https://the-bold-production.herokuapp.com/api/v1"
+    private let baseURL = "https://the-bold-staging.herokuapp.com/api/v1"
+//    private let baseURL = "https://the-bold-production.herokuapp.com/api/v1"
     
     private var headers: [String : String] {
         var headers = [String: String]()
@@ -58,6 +58,7 @@ class NetworkService {
     
     private init() { }
     
+    //MARK:- Authentification
     func facebookAuth(facebookToken: String) {
         sendRequest(endpoint: Endpoint.authFacebook.rawValue, method: .post, parameters: [RequestParameter.facebookToken: facebookToken]) { result in
             print("request sended")
@@ -171,6 +172,7 @@ class NetworkService {
         return true
     }
     
+    //MARK:- Profile
     func profile(completion: ((Result<Profile>) -> Void)?) {
         guard downloadEnabled else { return }
         sendRequest(endpoint: Endpoint.profile.rawValue,
@@ -263,6 +265,7 @@ class NetworkService {
         }
     }
     
+    //MARK:- Likes
     func likeContent(of type: ContentType, with id: Int) {
         guard downloadEnabled else { return }
         sendRequest(endpoint: String(format: Endpoint.likeContentObject.rawValue, type.rawValue, id),
@@ -291,6 +294,27 @@ class NetworkService {
         }
     }
     
+    //MARK:- Animations
+    func loadAnimations(completion: @escaping ((Result<[AnimateContent]>) -> Void)) {
+        guard downloadEnabled else {return}
+        sendRequest(endpoint: Endpoint.animationContent.rawValue,
+                    method: .get,
+                    parameters: [:]) { result in
+            switch result {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(let data):
+                guard let dataArray = data.array else {
+                    completion(.failure(ServerErrorFactory.unknown))
+                    return
+                }
+                let animationsArray = dataArray.compactMap { AnimateContent.mapJSON($0) }
+                completion(.success(animationsArray))
+            }
+        }
+    }
+    
+    //MARK:- Content
     func getContent(with type: ContentType, completion: ((Result<[ActivityContent]>) -> Void)?) {
         guard downloadEnabled else { return }
         sendRequest(endpoint: String(format: Endpoint.contentObjectsWithType.rawValue, type.rawValue),
@@ -350,6 +374,7 @@ class NetworkService {
         }
     }
     
+    //MARK:- Password
     func changePassword(currentPassword: String, newPassword: String) {
         guard downloadEnabled else { return }
         var params: [String: Any] = [:]
@@ -397,6 +422,7 @@ class NetworkService {
         }
     }
     
+    //MARK:- Device
     func registerDevice(deviceToken: String) {
         var params: [String: Any] = [:]
         params.updateValue(deviceToken, forKey: RequestParameter.deviceToken)
@@ -429,6 +455,7 @@ class NetworkService {
         }
     }
     
+    //MARK:- File
     private func sendMultipartRequest(endpoint: String, method: HTTPMethod, parameters: [String: Any], imageData: Data?, headers: [String: String], completion: ((Result<JSON>) -> Void)?) {
         let url = baseURL + endpoint
         let encodingType: ParameterEncoding = URLEncoding.default
@@ -460,11 +487,12 @@ class NetworkService {
         }
     }
     
-    func loadFile(with urlString: String?, completion: @escaping (((path: String, url: String)?) -> Void)) {
+    func loadFile(with urlString: String?, name: String? = nil, completion: @escaping (((path: String, url: String)?) -> Void)) {
         let fileLoader = FileLoader(downloadCompletion: completion)
-        fileLoader.load(from: urlString ?? "")
+        fileLoader.load(from: urlString ?? "", nameFile: name)
     }
     
+    //MARK:- Base request
     private func sendRequest(endpoint: String, method: HTTPMethod, parameters: [String : Any], completion: ((Result<JSON>) -> Void)?) {
         let encodingType: ParameterEncoding = URLEncoding.default //(method == .get) ? URLEncoding.default : JSONEncoding.default
         Alamofire.request(baseURL + endpoint,

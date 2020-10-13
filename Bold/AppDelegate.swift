@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NotificationService.shared.delegate = self
         NotificationService.shared.input(.resetBadgeNumber)
+        
+        AnimationContentView.loadAllAnimations()
 
         return true
     }

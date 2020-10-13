@@ -4,12 +4,13 @@ PODS:
   - Cosmos (19.0.3)
   - JTAppleCalendar (8.0.0)
   - KeychainAccess (3.1.2)
-  - RxCocoa (5.0.0):
+  - lottie-ios (3.1.8)
+  - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
-  - RxRelay (5.0.0):
+  - RxRelay (5.1.1):
     - RxSwift (~> 5)
-  - RxSwift (5.0.0)
+  - RxSwift (5.1.1)
   - SDWebImage (5.2.3):
     - SDWebImage/Core (= 5.2.3)
   - SDWebImage/Core (5.2.3)
@@ -26,8 +27,9 @@ DEPENDENCIES:
   - Cosmos (~> 19.0)
   - JTAppleCalendar (~> 8.0)
   - KeychainAccess (~> 3.1.2)
-  - RxCocoa (~> 5)
-  - RxSwift (~> 5)
+  - lottie-ios
+  - RxCocoa (~> 5.1.1)
+  - RxSwift (~> 5.1.1)
   - SDWebImage
   - SnapKit
   - SVProgressHUD
@@ -37,12 +39,13 @@ DEPENDENCIES:
   - VisualEffectView (~> 3.1.0)
 
 SPEC REPOS:
-  trunk:
+  https://github.com/CocoaPods/Specs.git:
     - ActiveLabel
     - Alamofire
     - Cosmos
     - JTAppleCalendar
     - KeychainAccess
+    - lottie-ios
     - RxCocoa
     - RxRelay
     - RxSwift
@@ -60,9 +63,10 @@ SPEC CHECKSUMS:
   Cosmos: a6fb17284281fa12cf4c85c2efecd440a215ec44
   JTAppleCalendar: 76ccdc5a8b236166293e50b190c5f2722c30cdcd
   KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
-  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
-  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
-  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SDWebImage: 46a7f73228f84ce80990c786e4372cf4db5875ce
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
@@ -71,6 +75,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   VisualEffectView: bde340c8268765c2d71f7f115930733ba7e4a926
 
-PODFILE CHECKSUM: 4b17f64c366c6ee965ff27351b5cc906b5066667
+PODFILE CHECKSUM: b0895cd19a341201ad85b5e147aaa4fcb8dbb11e
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3

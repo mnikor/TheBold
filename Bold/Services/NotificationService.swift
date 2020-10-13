@@ -109,6 +109,8 @@ class NotificationService: NSObject {
             case .denied,
                  .provisional:
                 status = .denied
+            default:
+                status = .denied
             }
             completion(status)
         }

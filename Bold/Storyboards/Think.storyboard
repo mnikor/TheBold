@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uIa-My-1aK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uIa-My-1aK">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -63,6 +63,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="i4T-Bo-I09"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="lr8-mb-wzW" firstAttribute="top" secondItem="QBc-pY-VFl" secondAttribute="bottom" id="1sh-ZB-ip3"/>
@@ -77,7 +78,6 @@
                             <constraint firstItem="QBc-pY-VFl" firstAttribute="top" secondItem="i4T-Bo-I09" secondAttribute="top" id="ia6-6H-u0H"/>
                             <constraint firstItem="PHB-0j-How" firstAttribute="top" secondItem="QBc-pY-VFl" secondAttribute="bottom" id="tWI-ET-A4j"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="i4T-Bo-I09"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="lr8-mb-wzW"/>
@@ -132,6 +132,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="ryC-br-dvA"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="snL-Tm-A9I" firstAttribute="bottom" secondItem="mAk-89-9w6" secondAttribute="bottom" id="6LZ-g6-UDP"/>
@@ -145,7 +146,6 @@
                             <constraint firstItem="Wv4-mY-7y0" firstAttribute="top" secondItem="ryC-br-dvA" secondAttribute="top" id="fkX-Ge-b65"/>
                             <constraint firstItem="Wv4-mY-7y0" firstAttribute="leading" secondItem="ryC-br-dvA" secondAttribute="leading" id="t8J-hu-6gp"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="ryC-br-dvA"/>
                     </view>
                     <connections>
                         <outlet property="highNavigationBar" destination="Wv4-mY-7y0" id="dKp-0F-j1c"/>
@@ -191,12 +191,21 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One can have no smaller or greater mastery  than of oneself" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PW1-Zq-HID">
-                                <rect key="frame" x="36" y="217" width="319" height="137"/>
-                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="28"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bBF-gV-sUk">
+                                <rect key="frame" x="0.0" y="133.5" width="375" height="400"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bBF-gV-sUk" secondAttribute="height" multiplier="15:16" id="Jgy-e4-FIO"/>
+                                </constraints>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3VL-BT-hK0">
+                                <rect key="frame" x="36" y="217" width="319" height="318"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="28"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gH5-di-7zH">
                                 <rect key="frame" x="38" y="551" width="56" height="56"/>
                                 <constraints>
@@ -216,30 +225,35 @@
                                 </constraints>
                             </imageView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="eAm-Fr-4ju"/>
                         <color key="backgroundColor" red="1" green="0.66666666669999997" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="eAm-Fr-4ju" firstAttribute="trailing" secondItem="PW1-Zq-HID" secondAttribute="trailing" constant="20" id="0un-Pa-35B"/>
                             <constraint firstItem="DMp-Rb-NEq" firstAttribute="leading" secondItem="eAm-Fr-4ju" secondAttribute="leading" constant="36" id="3Ro-fo-g5v"/>
                             <constraint firstAttribute="bottom" secondItem="6Pi-K9-Vu5" secondAttribute="bottom" id="4rl-78-h4B"/>
+                            <constraint firstItem="eAm-Fr-4ju" firstAttribute="trailing" secondItem="bBF-gV-sUk" secondAttribute="trailing" id="8OQ-3W-yIV"/>
                             <constraint firstItem="eAm-Fr-4ju" firstAttribute="trailing" secondItem="DMp-Rb-NEq" secondAttribute="trailing" constant="20" id="Ami-OI-Goa"/>
-                            <constraint firstItem="PW1-Zq-HID" firstAttribute="top" secondItem="DMp-Rb-NEq" secondAttribute="bottom" constant="50" id="Arb-va-oyq"/>
+                            <constraint firstItem="3VL-BT-hK0" firstAttribute="leading" secondItem="eAm-Fr-4ju" secondAttribute="leading" constant="36" id="LU2-kL-ttX"/>
+                            <constraint firstItem="bBF-gV-sUk" firstAttribute="centerY" secondItem="4iW-wn-Owb" secondAttribute="centerY" id="LzG-I0-T5B"/>
+                            <constraint firstItem="eAm-Fr-4ju" firstAttribute="trailing" secondItem="3VL-BT-hK0" secondAttribute="trailing" constant="20" id="MHc-eZ-ozv"/>
                             <constraint firstItem="gH5-di-7zH" firstAttribute="leading" secondItem="eAm-Fr-4ju" secondAttribute="leading" constant="38" id="bZj-AC-KOj"/>
-                            <constraint firstItem="PW1-Zq-HID" firstAttribute="leading" secondItem="eAm-Fr-4ju" secondAttribute="leading" constant="36" id="egz-dC-jIr"/>
+                            <constraint firstItem="bBF-gV-sUk" firstAttribute="leading" secondItem="eAm-Fr-4ju" secondAttribute="leading" id="fJv-ma-lFt"/>
                             <constraint firstItem="eAm-Fr-4ju" firstAttribute="trailing" secondItem="6Pi-K9-Vu5" secondAttribute="trailing" id="fqs-N9-B9f"/>
+                            <constraint firstItem="gH5-di-7zH" firstAttribute="top" secondItem="3VL-BT-hK0" secondAttribute="bottom" constant="16" id="i8z-eH-voz"/>
+                            <constraint firstItem="3VL-BT-hK0" firstAttribute="top" secondItem="DMp-Rb-NEq" secondAttribute="bottom" constant="50" id="iEE-ra-ma6"/>
                             <constraint firstAttribute="bottom" secondItem="gH5-di-7zH" secondAttribute="bottom" constant="60" id="v1N-Kd-0uP"/>
                             <constraint firstItem="DMp-Rb-NEq" firstAttribute="top" secondItem="eAm-Fr-4ju" secondAttribute="top" constant="130" id="w0f-O6-krP"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="eAm-Fr-4ju"/>
                     </view>
                     <connections>
                         <outlet property="authorImageView" destination="v5F-K4-amP" id="MJz-FV-v6m"/>
                         <outlet property="authorNameLabel" destination="3jC-jK-XcR" id="9a4-Pr-Adz"/>
-                        <outlet property="citationTextLabel" destination="PW1-Zq-HID" id="E2E-cc-280"/>
+                        <outlet property="citationTextView" destination="3VL-BT-hK0" id="5HX-ZJ-jDc"/>
+                        <outlet property="contentAnimationView" destination="bBF-gV-sUk" id="Z2x-ht-cJE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LnD-T3-i8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2630" y="-698"/>
+            <point key="canvasLocation" x="2629.5999999999999" y="-698.5007496251875"/>
         </scene>
         <!--Citation Base View Controller-->
         <scene sceneID="egl-Hl-DTe">
@@ -257,7 +271,7 @@
                                 </connections>
                             </containerView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="PlN-AQ-0Vj" customClass="CustomDotsPageControl" customModule="Bold" customModuleProvider="target">
-                                <rect key="frame" x="144" y="5" width="87" height="37"/>
+                                <rect key="frame" x="98" y="5" width="179" height="27.5"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXa-21-tpJ">
                                 <rect key="frame" x="321" y="-6" width="44" height="44"/>
@@ -271,13 +285,13 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="0UG-rQ-M5a"/>
                         <constraints>
                             <constraint firstItem="PlN-AQ-0Vj" firstAttribute="top" secondItem="0UG-rQ-M5a" secondAttribute="top" constant="5" id="6LF-Sf-lf0"/>
                             <constraint firstItem="0UG-rQ-M5a" firstAttribute="trailing" secondItem="jXa-21-tpJ" secondAttribute="trailing" constant="10" id="CqX-a8-7Qx"/>
                             <constraint firstItem="PlN-AQ-0Vj" firstAttribute="centerX" secondItem="43d-1a-Kzz" secondAttribute="centerX" id="oUu-TG-7bx"/>
                             <constraint firstItem="jXa-21-tpJ" firstAttribute="top" secondItem="0UG-rQ-M5a" secondAttribute="top" constant="-6" id="uQY-qJ-Ez1"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="0UG-rQ-M5a"/>
                     </view>
                     <connections>
                         <outlet property="containerView" destination="9vm-Op-mNb" id="RLK-rt-LAw"/>

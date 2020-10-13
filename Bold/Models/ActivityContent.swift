@@ -28,8 +28,10 @@ class ActivityContent: ActivityBase {
     var documentURL: FilePath?
     var documentPreviewURL: String?
     var forCategoryPresentation: Bool
+    var color: String?
+    var animationKey: String?
     
-    init(id: Int, position: Int, type:ContentType, title: String, body: String, authorName: String, footer: String, durtionRead: Int, pointOfUnlock: Int, contentStatus: ContentStatus, imageURL: String?, smallImageURL: String?, largeImageURL: String?, likesCount: Int, authorPhotoURL: String?, audioTracks: [AudioPlayerTrackInfo], audioPreviews: [AudioPlayerTrackInfo], documentURL: FilePath?, documentPreviewURL: String?, forCategoryPresentation: Bool) {
+    init(id: Int, position: Int, type:ContentType, title: String, body: String, authorName: String, footer: String, durtionRead: Int, pointOfUnlock: Int, contentStatus: ContentStatus, imageURL: String?, smallImageURL: String?, largeImageURL: String?, likesCount: Int, authorPhotoURL: String?, audioTracks: [AudioPlayerTrackInfo], audioPreviews: [AudioPlayerTrackInfo], documentURL: FilePath?, documentPreviewURL: String?, forCategoryPresentation: Bool, color: String?, animationKey: String?) {
         self.title = title
         self.body = body
         self.authorName = authorName
@@ -48,6 +50,8 @@ class ActivityContent: ActivityBase {
         self.forCategoryPresentation = forCategoryPresentation
         self.audioPreviews = audioPreviews
         self.documentPreviewURL = documentPreviewURL
+        self.color = color
+        self.animationKey = animationKey
         super.init(id: id, position: position, type: type)
     }
     
@@ -126,7 +130,6 @@ class ActivityContent: ActivityBase {
             documetnPreviewURL = url
         }
         
-        
         let durationRead = json[ResponseKeys.durationRead].int ?? 0
         let forCategoryPresentation = json[ResponseKeys.forCategoryPresentation].bool ?? false
         
@@ -149,7 +152,9 @@ class ActivityContent: ActivityBase {
                        audioPreviews: audioPreviews,
                        documentURL: documentURL,
                        documentPreviewURL: documetnPreviewURL,
-                       forCategoryPresentation: forCategoryPresentation)
+                       forCategoryPresentation: forCategoryPresentation,
+                       color: json[ResponseKeys.color].string,
+                       animationKey: json[ResponseKeys.animationKey].string)
     }
     
     static func map(content: Content) -> ActivityContent? {
@@ -201,7 +206,9 @@ class ActivityContent: ActivityBase {
                                audioPreviews: [],
                                documentURL: documentURL,
                                documentPreviewURL: nil,
-                               forCategoryPresentation: false)
+                               forCategoryPresentation: false,
+                               color: nil,
+                               animationKey: nil)
     }
     
     func saveContent() {
@@ -275,4 +282,6 @@ private struct ResponseKeys {
     static let forCategoryPresentation = "for_category_presentation"
     static let audioPreviews = "audio_previews"
     static let documentPreview = "document_preview"
+    static let color = "color"
+    static let animationKey = "animation_key"
 }

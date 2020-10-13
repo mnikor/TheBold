@@ -207,6 +207,8 @@
 		F162A78C22C2400D008292E8 /* ListenOrReadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F162A78A22C2400D008292E8 /* ListenOrReadTableViewCell.xib */; };
 		F169675C236ACD9F004BB9BA /* BoldTypealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169675B236ACD9F004BB9BA /* BoldTypealias.swift */; };
 		F16F21D622F304A4004DC5F3 /* StakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16F21D522F304A4004DC5F3 /* StakeViewController.swift */; };
+		F1765F1F252C7D8A00472AB5 /* AnimationContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1765F1E252C7D8A00472AB5 /* AnimationContentView.swift */; };
+		F1765F2D252C9C6300472AB5 /* AnimateContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1765F2C252C9C6300472AB5 /* AnimateContent.swift */; };
 		F179974D22AE615D0039879F /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F179974C22AE615D0039879F /* Localizable.swift */; };
 		F179974F22AE619C0039879F /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F179974E22AE619C0039879F /* EmptyView.swift */; };
 		F179975622AFB04B0039879F /* LocalizableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F179975522AFB04B0039879F /* LocalizableViewController.swift */; };
@@ -465,6 +467,7 @@
 		F1F6ADD72321297700F6A925 /* CreateGoalActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6ADD62321297700F6A925 /* CreateGoalActionModel.swift */; };
 		F1F6ADDB23261E6E00F6A925 /* CreateGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6ADDA23261E6E00F6A925 /* CreateGoalViewModel.swift */; };
 		F1F6ADDF232626DA00F6A925 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6ADDE232626DA00F6A925 /* Date+Extensions.swift */; };
+		F1FCAD70252F3CD400893E73 /* UITextView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FCAD6F252F3CD400893E73 /* UITextView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -671,6 +674,8 @@
 		F162A78A22C2400D008292E8 /* ListenOrReadTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListenOrReadTableViewCell.xib; sourceTree = "<group>"; };
 		F169675B236ACD9F004BB9BA /* BoldTypealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldTypealias.swift; sourceTree = "<group>"; };
 		F16F21D522F304A4004DC5F3 /* StakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StakeViewController.swift; sourceTree = "<group>"; };
+		F1765F1E252C7D8A00472AB5 /* AnimationContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationContentView.swift; sourceTree = "<group>"; };
+		F1765F2C252C9C6300472AB5 /* AnimateContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateContent.swift; sourceTree = "<group>"; };
 		F179974C22AE615D0039879F /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		F179974E22AE619C0039879F /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		F179975522AFB04B0039879F /* LocalizableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableViewController.swift; sourceTree = "<group>"; };
@@ -931,6 +936,7 @@
 		F1F6ADD62321297700F6A925 /* CreateGoalActionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalActionModel.swift; sourceTree = "<group>"; };
 		F1F6ADDA23261E6E00F6A925 /* CreateGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalViewModel.swift; sourceTree = "<group>"; };
 		F1F6ADDE232626DA00F6A925 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		F1FCAD6F252F3CD400893E73 /* UITextView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1468,6 +1474,14 @@
 			path = StakeViewController;
 			sourceTree = "<group>";
 		};
+		F1765F1D252C7D3700472AB5 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				F1765F1E252C7D8A00472AB5 /* AnimationContentView.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		F179974822AE56EE0039879F /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1689,6 +1703,7 @@
 				F179974E22AE619C0039879F /* EmptyView.swift */,
 				F179975522AFB04B0039879F /* LocalizableViewController.swift */,
 				F169675B236ACD9F004BB9BA /* BoldTypealias.swift */,
+				F1765F1D252C7D3700472AB5 /* Animation */,
 				4B4D632724B45C4900859CB7 /* IAP */,
 				F1F44A592368711600F977D1 /* Models */,
 				F1F6AD9D23210DB200F6A925 /* Data */,
@@ -1745,6 +1760,7 @@
 				F1911408240E8F6900049BB8 /* Bool+Extensions.swift */,
 				F1955410241A836300663BEC /* UIWindow+Extensions.swift */,
 				4BC2620E24E40CBC0001D39B /* DoubleExtension.swift */,
+				F1FCAD6F252F3CD400893E73 /* UITextView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2170,6 +2186,7 @@
 				F1160E03242A59A500EC5DD6 /* ActivityBase.swift */,
 				F1F44A5F2368711600F977D1 /* ActivityContent.swift */,
 				F1160E01242A254000EC5DD6 /* ActivityGroup.swift */,
+				F1765F2C252C9C6300472AB5 /* AnimateContent.swift */,
 				F1F44A602368711600F977D1 /* RequestParameter.swift */,
 				F1F44A612368711600F977D1 /* CalendarCustomError.swift */,
 				F1F44A622368711600F977D1 /* Endpoint.swift */,
@@ -2476,6 +2493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F187147F2369A01D000F764C /* AlertViewService.swift in Sources */,
+				F1FCAD70252F3CD400893E73 /* UITextView+Extensions.swift in Sources */,
 				F183304D22E7151400BB7A9E /* PlayerRouter.swift in Sources */,
 				F10B69CB22EB2D9100E47315 /* IdeasTableViewCell.swift in Sources */,
 				F1CCC71822CE474800E7B637 /* UIButton+Extensions.swift in Sources */,
@@ -2681,6 +2699,7 @@
 				F19A98AE22D6551E00A0492E /* BaseAlertViewController.swift in Sources */,
 				F179977322B1413A0039879F /* MenuContainerViewController.swift in Sources */,
 				F1F6ADC723210DB300F6A925 /* Goal+CoreDataClass.swift in Sources */,
+				F1765F2D252C9C6300472AB5 /* AnimateContent.swift in Sources */,
 				F1EB8DD822A8026C00E3BC4C /* ForgotSuccessViewController.swift in Sources */,
 				C5B1E55223042947000991DF /* ImagedTitleSubtitleViewModel.swift in Sources */,
 				3EFCA3B12306BF8700129DB4 /* SettingsPresenter.swift in Sources */,
@@ -2727,6 +2746,7 @@
 				F1F6ADC223210DB300F6A925 /* Content+CoreDataClass.swift in Sources */,
 				F1E698AB2315643A00438E3E /* LevelOfMasteryRouter.swift in Sources */,
 				F1130CE9230FE058008FA60D /* ZSegmentedControl.swift in Sources */,
+				F1765F1F252C7D8A00472AB5 /* AnimationContentView.swift in Sources */,
 				F183303022E617B900BB7A9E /* AllGoalsInteractor.swift in Sources */,
 				C5B1E55523043865000991DF /* ViewModelConfigurable.swift in Sources */,
 				F15FB3252330E413002F0C00 /* ConfigurateActionCellModel.swift in Sources */,
@@ -2966,7 +2986,7 @@
 				CODE_SIGN_ENTITLEMENTS = Bold/Bold.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 37HBR3VGFU;
 				INFOPLIST_FILE = Bold/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2974,7 +2994,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikonorov.newBold;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2991,7 +3011,7 @@
 				CODE_SIGN_ENTITLEMENTS = Bold/Bold.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 37HBR3VGFU;
 				INFOPLIST_FILE = Bold/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2999,7 +3019,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikonorov.newBold;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
