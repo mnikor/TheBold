@@ -60,33 +60,44 @@ class FeelInteractor: FeelInteractorInputProtocol {
     }
     
     private func prepareDataSource(contentTypeArray: [ContentType], completion: (([ContentType: [ActivityContent]]) -> Void)?) {
-        var contentTypeArray = contentTypeArray
-        guard let type = contentTypeArray.first else { return }
-        NetworkService.shared.getContent(with: type) { [weak self] result in
-            guard let self = self else { return }
-            
-            self.prepareDataSource(contentTypeArray: Array(contentTypeArray.dropFirst()), completion: completion)
-            
-            switch result {
-            case .failure(let error):
-                self.count -= 1
-            case .success(let content):
-                if type == .quote {
-                    self.dataSource[type] = content
-                }else {
-                    let filterArray = content.filter { (content) -> Bool in
-                        return content.forCategoryPresentation == true
+
+        let dispatchGroup = DispatchGroup()
+
+        DispatchQueue.global().async {
+            for type in contentTypeArray {
+
+                dispatchGroup.enter()
+                NetworkService.shared.getContent(with: type) {[weak self] (result) in
+                    guard let self = self else { return }
+
+                    switch result {
+                    case .failure(_):
+                        break
+                    case .success(let content):
+                        if type == .quote {
+                            self.dataSource[type] = content
+                        }else {
+                            let filterArray = content.filter { (content) -> Bool in
+                                return content.forCategoryPresentation == true
+                            }
+                            self.dataSource[type] = filterArray
+                        }
                     }
-                    self.dataSource[type] = filterArray
+                    dispatchGroup.leave()
                 }
             }
-            if self.dataSource.keys.count == self.count {
-                if self.dataSource.keys.isEmpty {
-                    completion?(self.emptyDataSource)
-                } else {
-                    let timeElapsed = CFAbsoluteTimeGetCurrent() -  self.startTime
-                    print("timer = \(timeElapsed)")
-                    completion?(self.dataSource)
+            
+            dispatchGroup.notify(queue: .main) {[weak self] in
+                guard let self = self else { return }
+                
+                if self.dataSource.keys.count == self.count {
+                    if self.dataSource.keys.isEmpty {
+                        completion?(self.emptyDataSource)
+                    } else {
+                        let timeElapsed = CFAbsoluteTimeGetCurrent() -  self.startTime
+                        print("timer = \(timeElapsed)")
+                        completion?(self.dataSource)
+                    }
                 }
             }
         }
