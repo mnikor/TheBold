@@ -52,7 +52,7 @@ class FileLoader: NSObject {
                 do {
                     let fileAttributes = try fileURL.resourceValues(forKeys:[.isRegularFileKey])
                     if fileAttributes.isRegularFile! {
-                        if fileURL.lastPathComponent.lowercased() == name.lowercased() {
+                        if fileURL.lastPathComponent.lowercased().contains(name.lowercased())  {
                             files.append(fileURL)
                         }
                         //files.append(fileURL)

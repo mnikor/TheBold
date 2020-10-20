@@ -42,7 +42,7 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
     @IBOutlet weak var playerView: UIView!
     @IBOutlet var playerListView: PlayerListView!
     
-    @IBOutlet weak var contentView: VideoView!
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var titleImageView: CustomImageView!
     @IBOutlet weak var recommendationLabel: UILabel!
     @IBOutlet weak var toolBar: UIToolbar!
@@ -53,13 +53,21 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
     @IBOutlet weak var durationSongLabel: UILabel!
     @IBOutlet weak var slider: UISlider!
     
-    
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var playPauseButton: UIButton!
     
 //    @IBOutlet weak var downloadButton: UIBarButtonItem!
     @IBOutlet weak var likeButton: UIBarButtonItem!
+    
+    lazy var videoView : VideoView = {
+        let tempView = VideoView()
+        tempView.fixInView(contentView)
+        contentView.insertSubview(tempView, aboveSubview: titleImageView)
+        tempView.backgroundColor = .clear
+        tempView.addGestureRecognizer(swipe)
+        return tempView
+    }()
     
     let service = AudioService.shared
     
@@ -161,9 +169,9 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
     private func changeImageButton() {
         playPauseButton.setImage(AudioService.shared.isPlaying() ? Asset.playerPause.image : Asset.playerPlay.image, for: .normal)
         if AudioService.shared.isPlaying() {
-            contentView.play()
+            videoView.play()
         }else {
-            contentView.pause()
+            videoView.pause()
         }
     }
     
@@ -177,7 +185,7 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
         configurator.configure(with: self)
         configureDowloadButton()
         
-        if let videoKey = selectedContent?.animationKey, let videoImagePath = readFiles(name: videoKey + ".png").first {
+        if let videoKey = selectedContent?.animationKey, let videoImagePath = readFiles(name: videoKey + "_image").first {
             imageWasLoaded = true
             titleImageView.image = UIImage(contentsOfFile: videoImagePath.path)
             return
@@ -233,18 +241,10 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
     private func configureVideo() {
         
         guard let videoKey = selectedContent?.animationKey else { return }
-        guard let videoFilePath = readFiles(name: videoKey + ".mov").first else { return }
+        guard let videoFilePath = readFiles(name: videoKey + "_animation").first else { return }
         
-        contentView.configure(url: videoFilePath, willLoopVideo: true)
-        
-        UIView.animate(withDuration: 0.1) {[weak self] in
-            self?.titleImageView.alpha = 0
-        } completion: { [weak self] (_) in
-            self?.titleImageView.isHidden = true
-        }
-
-        changeImageButton()
-        contentView.addGestureRecognizer(swipe)
+        videoView.configure(url: videoFilePath, willLoopVideo: true)
+        videoView.play()
     }
     
     private func readFiles(name: String) -> [URL] {
