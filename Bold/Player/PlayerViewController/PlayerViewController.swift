@@ -42,6 +42,7 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
     @IBOutlet weak var playerView: UIView!
     @IBOutlet var playerListView: PlayerListView!
     
+    @IBOutlet weak var contentView: VideoView!
     @IBOutlet weak var titleImageView: CustomImageView!
     @IBOutlet weak var recommendationLabel: UILabel!
     @IBOutlet weak var toolBar: UIToolbar!
@@ -72,12 +73,14 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
     }
     
     private var isDismissGesture = false
-    
     private var alertController: BlurAlertController?
-    
     private var loader = LoaderView(frame: .zero)
-    
     private var isBoldManifest = false
+    private lazy var swipe : UISwipeGestureRecognizer = {
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(userSwipe))
+        swipe.direction = .down
+        return swipe
+    }()
     
     @IBAction func tapPreviousSong(_ sender: UIButton) {
         AudioService.shared.input(.playPrevious)
@@ -157,6 +160,11 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
     
     private func changeImageButton() {
         playPauseButton.setImage(AudioService.shared.isPlaying() ? Asset.playerPause.image : Asset.playerPlay.image, for: .normal)
+        if AudioService.shared.isPlaying() {
+            contentView.play()
+        }else {
+            contentView.pause()
+        }
     }
     
     override func viewDidLoad() {
@@ -167,6 +175,14 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
         subtitleSongLabel.text = AudioService.shared.getCurrentArtistName()
         
         configurator.configure(with: self)
+        configureDowloadButton()
+        
+        if let videoKey = selectedContent?.animationKey, let videoImagePath = readFiles(name: videoKey + ".png").first {
+            imageWasLoaded = true
+            titleImageView.image = UIImage(contentsOfFile: videoImagePath.path)
+            return
+        }
+        
         switch AudioService.shared.image {
         case .image(let image):
             if let image = image {
@@ -186,7 +202,6 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
         if let content = selectedContent {
             isDownloadedContent = DataSource.shared.contains(content: content)
         }
-        configureDowloadButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -199,17 +214,42 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
             loader.start(in: view, yOffset: 0)
             view.bringSubviewToFront(loader)
         }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.configureVideo()
+//        }
     }
     
     private func configureDowloadButton() {
         buttonsToolbar.dowload = isDownloadedContent
 //        downloadButton.image = buttonsToolbar.dowload == false ? Asset.playerDownloadIcon.image : Asset.playerDownloadedIcon.image
 //        downloadButton.tintColor = buttonsToolbar.dowload == false ? .gray : ColorName.primaryBlue.color
+    }
+    
+    private func configureVideo() {
+        
+        guard let videoKey = selectedContent?.animationKey else { return }
+        guard let videoFilePath = readFiles(name: videoKey + ".mov").first else { return }
+        
+        contentView.configure(url: videoFilePath, willLoopVideo: true)
+        
+        UIView.animate(withDuration: 0.1) {[weak self] in
+            self?.titleImageView.alpha = 0
+        } completion: { [weak self] (_) in
+            self?.titleImageView.isHidden = true
+        }
+
+        changeImageButton()
+        contentView.addGestureRecognizer(swipe)
+    }
+    
+    private func readFiles(name: String) -> [URL] {
+        let files = FileLoader.findFile(name: name)
+        return files
     }
     
     func setImage(imagePath: String?) {
@@ -287,8 +327,6 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
     }
     
     func addSwipe() {
-        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(userSwipe))
-        swipe.direction = .down
         self.view.addGestureRecognizer(swipe)
     }
     

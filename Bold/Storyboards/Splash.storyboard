@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WIf-zC-O2x">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WIf-zC-O2x">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -55,6 +55,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="hkg-qV-8FE"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="IYQ-e5-zu5" secondAttribute="trailing" id="CGM-Ys-eK8"/>
@@ -68,7 +69,6 @@
                             <constraint firstItem="HT4-wv-7M9" firstAttribute="centerY" secondItem="hkg-qV-8FE" secondAttribute="centerY" id="pLP-U6-947"/>
                             <constraint firstItem="IYQ-e5-zu5" firstAttribute="leading" secondItem="lC5-u3-Uij" secondAttribute="leading" id="uDF-ty-fBt"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="hkg-qV-8FE"/>
                     </view>
                     <connections>
                         <outlet property="label" destination="yM0-pT-yJw" id="BXC-s8-YzZ"/>
@@ -105,13 +105,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xF4-78-6mq">
-                                                    <rect key="frame" x="151" y="201.5" width="73.5" height="41.5"/>
+                                                    <rect key="frame" x="155.5" y="204" width="64" height="40"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat SemiBold" pointSize="34"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIK-H6-teH">
-                                                    <rect key="frame" x="40" y="253" width="295" height="21"/>
+                                                    <rect key="frame" x="40" y="254" width="295" height="20"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -136,7 +136,7 @@
                                     <outlet property="delegate" destination="BMw-ec-akt" id="54U-TU-vbg"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zE9-4p-6wz">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zE9-4p-6wz">
                                 <rect key="frame" x="286" y="19.5" width="74" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="74" id="6qs-Lk-Rwe"/>
@@ -185,7 +185,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuB-i4-1i8" customClass="RoundedButton" customModule="Bold" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuB-i4-1i8" customClass="RoundedButton" customModule="Bold" customModuleProvider="target">
                                 <rect key="frame" x="25" y="564" width="325" height="55"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -198,6 +198,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="naN-Dj-9kM"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="naN-Dj-9kM" firstAttribute="trailing" secondItem="vuB-i4-1i8" secondAttribute="trailing" constant="25" id="0q1-uC-4tG"/>
@@ -214,7 +215,6 @@
                             <constraint firstItem="vuB-i4-1i8" firstAttribute="leading" secondItem="naN-Dj-9kM" secondAttribute="leading" constant="25" id="sro-gw-JVh"/>
                             <constraint firstItem="N0M-5R-WiM" firstAttribute="top" secondItem="6WR-8P-DcS" secondAttribute="top" id="zIR-HA-NYe"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="naN-Dj-9kM"/>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -241,6 +241,11 @@
             <point key="canvasLocation" x="1689" y="-206"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="vuB-i4-1i8">
+            <size key="intrinsicContentSize" width="146" height="32"/>
+        </designable>
+    </designables>
     <resources>
         <image name="logoSmall" width="60" height="28"/>
     </resources>

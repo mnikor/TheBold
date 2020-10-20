@@ -81,6 +81,13 @@ class AnimationContentView {
                         dispatchGroup.leave()
                         print("Load File: \n\(file?.url) \n\(file?.path)")
                     }
+                    if let imageURL = animate.imageURL {
+                        dispatchGroup.enter()
+                        NetworkService.shared.loadFile(with: imageURL, name: animate.key) { (file) in
+                            dispatchGroup.leave()
+                            print("Load File: \n\(file?.url) \n\(file?.path)")
+                        }
+                    }
                 }
             }
         }

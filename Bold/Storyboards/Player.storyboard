@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mMh-k2-Xc4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mMh-k2-Xc4">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,7 +24,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgn-V6-qxP">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgn-V6-qxP" customClass="VideoView" customModule="Bold" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="427"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0bv-WW-br8" customClass="CustomImageView" customModule="Bold" customModuleProvider="target">
@@ -196,6 +196,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="1Xv-eL-OJT"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bgn-V6-qxP" firstAttribute="top" secondItem="epk-QM-YCE" secondAttribute="top" id="0Uy-5J-NA0"/>
@@ -207,11 +208,11 @@
                             <constraint firstItem="0zP-6N-xZO" firstAttribute="leading" secondItem="1Xv-eL-OJT" secondAttribute="leading" id="nsv-9o-Cgc"/>
                             <constraint firstItem="bgn-V6-qxP" firstAttribute="leading" secondItem="1Xv-eL-OJT" secondAttribute="leading" id="smx-WM-umM"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="1Xv-eL-OJT"/>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="contentView" destination="bgn-V6-qxP" id="s4F-PL-HBh"/>
                         <outlet property="currentTimeSongLabel" destination="exQ-ih-Oxe" id="2Uk-S9-mEh"/>
                         <outlet property="durationSongLabel" destination="JNb-61-KJg" id="Fuz-qX-Cdl"/>
                         <outlet property="likeButton" destination="V8w-dH-Gn2" id="pIy-nE-QZa"/>
@@ -349,6 +350,7 @@
                             <blurEffect style="light"/>
                         </visualEffectView>
                     </subviews>
+                    <viewLayoutGuide key="safeArea" id="QIJ-W6-UGC"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="GZZ-K2-al2" firstAttribute="leading" secondItem="QIJ-W6-UGC" secondAttribute="leading" id="67X-bh-5kY"/>
@@ -356,7 +358,6 @@
                         <constraint firstItem="GZZ-K2-al2" firstAttribute="top" secondItem="QIJ-W6-UGC" secondAttribute="top" id="fuX-ok-4Kh"/>
                         <constraint firstItem="GZZ-K2-al2" firstAttribute="bottom" secondItem="QIJ-W6-UGC" secondAttribute="bottom" id="wls-VP-uTW"/>
                     </constraints>
-                    <viewLayoutGuide key="safeArea" id="QIJ-W6-UGC"/>
                     <connections>
                         <outlet property="tableView" destination="dR1-nr-8xd" id="8ER-SD-Yc8"/>
                         <outlet property="titleLabel" destination="Xb9-Up-3oU" id="QtM-jf-jP9"/>
