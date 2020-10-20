@@ -20,6 +20,7 @@ enum StandardNotification {
     case removeReimder(identifiers: [String])
     case removeAllReminder
     case resetBadgeNumber
+    case createShortPhrase
 }
 
 private enum CategoryIdentifier: String {
@@ -95,6 +96,8 @@ class NotificationService: NSObject {
             print("removeAllReminder")
         case .resetBadgeNumber:
             UIApplication.shared.applicationIconBadgeNumber = 0
+        case .createShortPhrase:
+            checkAndCreateShortReminders()
         }
     }
     
@@ -118,7 +121,7 @@ class NotificationService: NSObject {
     
     //MARK:- Create
     
-    func createReminder(title: String, stake: Int, date: Date, reminderType: RemindMeType, identifier: String?, startDate: Date, endDate: Date) {
+    private func createReminder(title: String, stake: Int, date: Date, reminderType: RemindMeType, identifier: String?, startDate: Date, endDate: Date) {
         getLocalNotificationStatus { [weak self] status in
             guard let self = self,
                 status == .authorized
@@ -152,7 +155,7 @@ class NotificationService: NSObject {
         }
     }
     
-    func createBasicReminder(content: UNMutableNotificationContent, startDate: Date, endDate: Date, identifier: String) {
+    private func createBasicReminder(content: UNMutableNotificationContent, startDate: Date, endDate: Date, identifier: String) {
         
         getLocalNotificationStatus {[weak self] (status) in
             guard let ss = self, status == .authorized else { return }
@@ -211,9 +214,60 @@ class NotificationService: NSObject {
     //        }
     //    }
     
+    private func checkAndCreateShortReminders() {
+        
+        var startDate = Date()
+        let calendar = Calendar.current
+        let dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: startDate)
+        let currentMonth = dateComponents.month
+        var nextMonth = dateComponents.month
+        
+//        UserDefaults.standard.removeObject(forKey: "ShortNotification")
+        if UserDefaults.standard.integer(forKey: "ShortNotification") == currentMonth {
+            return
+        }
+        
+        let notificationList = [L10n.Notification.notification1, L10n.Notification.notification2, L10n.Notification.notification3, L10n.Notification.notification4, L10n.Notification.notification5, L10n.Notification.notification6, L10n.Notification.notification7, L10n.Notification.notification8, L10n.Notification.notification9, L10n.Notification.notification10, L10n.Notification.notification11, L10n.Notification.notification12, L10n.Notification.notification13, L10n.Notification.notification14, L10n.Notification.notification15, L10n.Notification.notification16] as [Any]
+        
+        getLocalNotificationStatus {[weak self] (status) in
+            guard let ss = self, status == .authorized else { return }
+            
+            startDate = startDate.customTime(hour: 8, minute: 0)
+            
+            while currentMonth == nextMonth {
+                
+                if startDate < Date() {
+                    startDate = startDate.customTime(hour: 8, minute: 0)
+                    startDate = calendar.date(byAdding: .day, value: 1, to: startDate)!
+                    nextMonth = calendar.dateComponents([.month], from: startDate).month
+                    continue
+                }
+                
+                if let daysWeek = DaysOfWeekType(rawValue: startDate.dayNumberOfWeek() ?? 0) {
+                    switch daysWeek {
+                    
+                    case .monday, .friday:
+                        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: startDate)
+                        let identifier = daysWeek.shortText + "_notification_" + startDate.description
+                        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+                        let text = notificationList[Int(arc4random_uniform(UInt32(notificationList.count)))] as! String
+                        let content = ss.configureLocalNotificationContent(title: "Bold", body: text)
+                        ss.addRequest(with: identifier, content: content, trigger: trigger)
+                        
+                    default:
+                        break
+                    }
+                }
+                startDate = calendar.date(byAdding: .day, value: 1, to: startDate)!
+                nextMonth = calendar.dateComponents([.month], from: startDate).month
+            }
+        }
+        UserDefaults.standard.set(currentMonth, forKey: "ShortNotification")
+    }
+    
     //MARK:- Remove
     
-    func removeNotificationRequest(with identifiers: [String]) {
+    private func removeNotificationRequest(with identifiers: [String]) {
         
         var ids = identifiers
         

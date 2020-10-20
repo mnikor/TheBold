@@ -397,6 +397,43 @@ internal enum L10n {
     internal static let think = L10n.tr("Localizable", "Menu.Think")
   }
 
+  internal enum Notification {
+    /// Be aware of your thoughts and feelings. Alter them when needed.
+    internal static let notification1 = L10n.tr("Localizable", "Notification.Notification1")
+    /// Be the pilot, not the passenger 🛩
+    internal static let notification10 = L10n.tr("Localizable", "Notification.Notification10")
+    /// Just get better 1% every day. Compound your growth.
+    internal static func notification11(_ p1: Float) -> String {
+      return L10n.tr("Localizable", "Notification.Notification11", p1)
+    }
+    /// Speak less, do more
+    internal static let notification12 = L10n.tr("Localizable", "Notification.Notification12")
+    /// Seek truth, not pleasant lies
+    internal static let notification13 = L10n.tr("Localizable", "Notification.Notification13")
+    /// Enjoy the process. Play.Pause.Play. Repeat the cycle.
+    internal static let notification14 = L10n.tr("Localizable", "Notification.Notification14")
+    /// Do what is necessary, not what is pleasant
+    internal static let notification15 = L10n.tr("Localizable", "Notification.Notification15")
+    /// Think beyond yourself  and your ego but first take care of yourself.
+    internal static let notification16 = L10n.tr("Localizable", "Notification.Notification16")
+    /// Feel, Think  and Act based on your future-self.
+    internal static let notification2 = L10n.tr("Localizable", "Notification.Notification2")
+    /// Do something meaningful today. Could be small but meaningful.
+    internal static let notification3 = L10n.tr("Localizable", "Notification.Notification3")
+    /// 🧘‍♀️Stay still, stay even and keep going.
+    internal static let notification4 = L10n.tr("Localizable", "Notification.Notification4.")
+    /// Have macro patience and move with micro speed but consistently
+    internal static let notification5 = L10n.tr("Localizable", "Notification.Notification5")
+    /// Don’t believe or reject things without evidence or experiment
+    internal static let notification6 = L10n.tr("Localizable", "Notification.Notification6")
+    /// Work on the high leverage tasks. The one that will have most impact.
+    internal static let notification7 = L10n.tr("Localizable", "Notification.Notification7")
+    /// Stay curious, stay humble and keep  figuring out
+    internal static let notification8 = L10n.tr("Localizable", "Notification.Notification8")
+    /// Create value, give more, expect less
+    internal static let notification9 = L10n.tr("Localizable", "Notification.Notification9")
+  }
+
   internal enum Player {
     /// Sessions
     internal static let nextPractices = L10n.tr("Localizable", "Player.NextPractices")
