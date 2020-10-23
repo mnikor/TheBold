@@ -19,6 +19,7 @@ enum DateType : String {
     case compareDateEvent = "dd/MM/yyyy"
     case headerSomeDayEvent = "d MMMM"
     case calendar = "yyyy MM dd"
+    case contentUpdateAt = "yyyy-MM-dd HH:mm:ss" //"2020-10-17 07:31:04"
 }
 
 extension DateFormatter {
