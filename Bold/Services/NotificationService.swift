@@ -227,7 +227,7 @@ class NotificationService: NSObject {
             return
         }
         
-        let notificationList = [L10n.Notification.notification1, L10n.Notification.notification2, L10n.Notification.notification3, L10n.Notification.notification4, L10n.Notification.notification5, L10n.Notification.notification6, L10n.Notification.notification7, L10n.Notification.notification8, L10n.Notification.notification9, L10n.Notification.notification10, L10n.Notification.notification11, L10n.Notification.notification12, L10n.Notification.notification13, L10n.Notification.notification14, L10n.Notification.notification15, L10n.Notification.notification16] as [Any]
+        let notificationList : [String] = [L10n.Notification.notification1, L10n.Notification.notification2, L10n.Notification.notification3, L10n.Notification.notification4, L10n.Notification.notification5, L10n.Notification.notification6, L10n.Notification.notification7, L10n.Notification.notification8, L10n.Notification.notification9, L10n.Notification.notification10, L10n.Notification.notification11, L10n.Notification.notification12, L10n.Notification.notification13, L10n.Notification.notification14, L10n.Notification.notification15, L10n.Notification.notification16]
         
         getLocalNotificationStatus {[weak self] (status) in
             guard let ss = self, status == .authorized else { return }
@@ -250,7 +250,7 @@ class NotificationService: NSObject {
                         let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: startDate)
                         let identifier = daysWeek.shortText + "_notification_" + startDate.description
                         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
-                        let text = notificationList[Int(arc4random_uniform(UInt32(notificationList.count)))] as! String
+                        let text = notificationList[Int(arc4random_uniform(UInt32(notificationList.count)))]
                         let content = ss.configureLocalNotificationContent(title: "Bold", body: text)
                         ss.addRequest(with: identifier, content: content, trigger: trigger)
                         
