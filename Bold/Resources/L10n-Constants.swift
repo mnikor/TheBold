@@ -402,10 +402,8 @@ internal enum L10n {
     internal static let notification1 = L10n.tr("Localizable", "Notification.Notification1")
     /// Be the pilot, not the passenger 🛩
     internal static let notification10 = L10n.tr("Localizable", "Notification.Notification10")
-    /// Just get better 1% every day. Compound your growth.
-    internal static func notification11(_ p1: Float) -> String {
-      return L10n.tr("Localizable", "Notification.Notification11", p1)
-    }
+    /// Just get better 1u{0025} every day. Compound your growth.
+    internal static let notification11 = L10n.tr("Localizable", "Notification.Notification11")
     /// Speak less, do more
     internal static let notification12 = L10n.tr("Localizable", "Notification.Notification12")
     /// Seek truth, not pleasant lies
