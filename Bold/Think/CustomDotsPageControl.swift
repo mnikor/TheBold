@@ -27,8 +27,14 @@ class CustomDotsPageControl: UIPageControl {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        pageIndicatorTintColor = .clear
-        currentPageIndicatorTintColor = .clear
+        
+        if #available(iOS 14.0, *) {
+            pageIndicatorTintColor = .white
+            currentPageIndicatorTintColor = .white
+        }else {
+            pageIndicatorTintColor = .clear
+            currentPageIndicatorTintColor = .clear
+        }
         clipsToBounds = false
         currentPageImage = Asset.activePageControl.image
         otherPagesImage = Asset.inactivePageControl.image
@@ -36,13 +42,23 @@ class CustomDotsPageControl: UIPageControl {
     
     private func updateDots() {
         
+        if #available(iOS 14.0, *) {
+            var index : Int = 0
+            
+            while index < numberOfPages {
+                let image = currentPage == index ? currentPageImage : otherPagesImage
+                setIndicatorImage(image, forPage: index)
+                index = index + 1
+            }
+            return
+        }
+        
         for (index, subview) in subviews.enumerated() {
             let imageView: UIImageView
             if let existingImageview = getImageView(forSubview: subview) {
                 imageView = existingImageview
             } else {
                 imageView = UIImageView(image: otherPagesImage)
-                
                 imageView.center = subview.center
                 subview.addSubview(imageView)
                 subview.clipsToBounds = false
