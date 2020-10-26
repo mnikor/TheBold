@@ -487,7 +487,7 @@ class NetworkService {
         }
     }
     
-    func loadFile(with urlString: String?, name: String? = nil, completion: @escaping (((path: String, url: String)?) -> Void)) {
+    func loadFile(with urlString: String?, name: String? = nil, completion: @escaping (((path: URL, url: URL)?) -> Void)) {
         let fileLoader = FileLoader(downloadCompletion: completion)
         fileLoader.load(from: urlString ?? "", nameFile: name)
     }

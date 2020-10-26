@@ -18,8 +18,10 @@ class AnimationContentView {
     class func setupAnimation(view: UIView, name: String, delay: Int? = nil) -> AnimationContentView {
         
         let animationContent = AnimationContentView()
-        guard let filePath = animationContent.readFile(name: name + ".json") else { return animationContent}
+//        guard let filePath = animationContent.readFile(name: name + "_animation") else { return animationContent}
         //let animation = Animation.named("Execution")
+        guard let fileName = DataSource.shared.searchFile(forKey: name, type: .anim_json)?.path else { return animationContent}
+        guard let filePath = animationContent.readFile(name: fileName) else { return animationContent}
         let animation = Animation.filepath(filePath.path)
         animationContent.animationView.animation = animation
         animationContent.animationView.contentMode = .scaleToFill
@@ -66,40 +68,116 @@ class AnimationContentView {
     }
     
     class func loadAllAnimations() {
+//        return
         
-        let dispatchGroup = DispatchGroup()
-        var err : Error?
+//        let dispatchGroup = DispatchGroup()
+//        var err : Error?
+        
+        DispatchQueue.global(qos: .background).async {
+            
+        
         
         NetworkService.shared.loadAnimations { (result) in
             switch result {
             case .failure(let error):
-                err = error
+//                err = error
+                break
             case .success(let animations):
+                
+                let saveFiles = DataSource.shared.searchAnimationFiles()
+                print("\(saveFiles)")
+                
                 for animate in animations {
-                    dispatchGroup.enter()
-                    NetworkService.shared.loadFile(with: animate.fileURL, name: animate.key) { (file) in
-                        dispatchGroup.leave()
-                        print("Load File: \n\(file?.url) \n\(file?.path)")
+//                    dispatchGroup.enter()
+                    
+                    let findFiles = saveFiles.filter{ $0.key == animate.key }
+                    
+                    var animation : (animate: File?, image: File?) = (nil, nil)
+                    var isLoad : (animate: Bool, image: Bool) = (false, false)
+                    
+                    animation.animate = findFiles.filter { $0.type != FileType.anim_image.rawValue }.first
+                    animation.image = findFiles.filter { $0.type == FileType.anim_image.rawValue }.first
+                    
+                    if animation.animate == nil {
+                        animation = DataSource.shared.createNewFiles(forAnimation: animate)
+                        isLoad = (true, true)
+                    }else if animation.animate?.updatedAt != DateFormatter.formatting(type: .contentUpdateAt, dateString: animate.updatedAt) {
+                        isLoad = (true, true)
+                    }else if animation.animate?.isDownloaded == false  || animation.image?.isDownloaded == false {
+                        isLoad.animate = animation.animate?.isDownloaded == false
+                        isLoad.image = animation.image?.isDownloaded == false
+                        }
+                    
+                    if isLoad.animate {
+                        NetworkService.shared.loadFile(with: animate.fileURL, name: animate.key) { (file) in
+                            //print("Load File: \n\(file?.url) \n\(file?.path)")
+    //                        animate.filePath = file?.path
+                            DispatchQueue.main.async {
+                                animation.animate?.path = file?.path.lastPathComponent
+                            animation.animate?.isDownloaded = true
+                            DataSource.shared.saveBackgroundContext()
+                            }
+    //                        dispatchGroup.leave()
+                        }
                     }
-                    if let imageURL = animate.imageURL {
-                        dispatchGroup.enter()
+                    
+                    if let imageURL = animate.imageURL, isLoad.image == true {
+//                        dispatchGroup.enter()
                         NetworkService.shared.loadFile(with: imageURL, name: animate.key) { (file) in
-                            dispatchGroup.leave()
-                            print("Load File: \n\(file?.url) \n\(file?.path)")
+                            //print("Load File: \n\(file?.url) \n\(file?.path)")
+//                            animate.imagePath = file?.path
+                            DispatchQueue.main.async {
+                                animation.image?.path = file?.path.lastPathComponent
+                                animation.image?.isDownloaded = true
+                                DataSource.shared.saveBackgroundContext()
+                            }
+//                            dispatchGroup.leave()
                         }
                     }
                 }
+//                print("\(animations)")
             }
         }
-        
-        dispatchGroup.notify(queue: .main) {
-            if let err = err {
-                print("Error = \(err)")
-                return
-            }
-            
-            print("All work fine")
         }
+//        dispatchGroup.notify(queue: .main) {
+//            if let err = err {
+//                print("Error = \(err)")
+//                return
+//            }
+//
+//            print("All work fine")
+//        }
     }
     
+}
+
+
+extension JSONSerialization {
+    
+    static func loadJSON(withFilename filename: String) throws -> Any? {
+        let fm = FileManager.default
+        let urls = fm.urls(for: .documentDirectory, in: .userDomainMask)
+        if let url = urls.first {
+            var fileURL = url.appendingPathComponent(filename)
+            fileURL = fileURL.appendingPathExtension("json")
+            let data = try Data(contentsOf: fileURL)
+            let jsonObject = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers, .mutableLeaves])
+            return jsonObject
+        }
+        return nil
+    }
+    
+    static func save(jsonObject: Any, toFilename filename: String) throws -> Bool{
+        let fm = FileManager.default
+        let urls = fm.urls(for: .documentDirectory, in: .userDomainMask)
+        if let url = urls.first {
+            var fileURL = url.appendingPathComponent(filename)
+            fileURL = fileURL.appendingPathExtension("json")
+            let data = try JSONSerialization.data(withJSONObject: jsonObject, options: [.prettyPrinted])
+            try data.write(to: fileURL, options: [.atomicWrite])
+            return true
+        }
+        
+        return false
+    }
 }

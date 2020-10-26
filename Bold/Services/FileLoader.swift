@@ -9,10 +9,10 @@
 import Foundation
 
 class FileLoader: NSObject {
-    let downloadCompletion: (((path: String, url: String)?) -> Void)
+    let downloadCompletion: (((path: URL, url: URL)?) -> Void)
     private var nameFile: String?
     
-    init(downloadCompletion: @escaping (((path: String, url: String)?) -> Void)) {
+    init(downloadCompletion: @escaping (((path: URL, url: URL)?) -> Void)) {
         self.downloadCompletion = downloadCompletion
     }
     
@@ -25,11 +25,11 @@ class FileLoader: NSObject {
     }
     
     class func findFile(name: String) -> [URL] {
-        
+
         let downloadsPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
         let docURL = URL(string: downloadsPath)!
         let boldDirectory = docURL.appendingPathComponent("Bold")
-        
+
 //        let url =  NSURL(fileURLWithPath: boldDirectory.absoluteString)
 //        if let pathComponent = url.appendingPathComponent(name) {
 //            let filePath = pathComponent.path
@@ -45,7 +45,7 @@ class FileLoader: NSObject {
 //            print("FILE PATH NOT AVAILABLE")
 //            //return nil
 //        }
-        
+
         var files = [URL]()
         if let enumerator = FileManager.default.enumerator(at: boldDirectory, includingPropertiesForKeys: [.isRegularFileKey], options: [.skipsHiddenFiles, .skipsPackageDescendants]) {
             for case let fileURL as URL in enumerator {
@@ -83,7 +83,7 @@ extension FileLoader: URLSessionDownloadDelegate {
         
         do {
             try FileManager.default.copyItem(at: location, to: destinationURL)
-            downloadCompletion((path: destinationURL.absoluteString, url: url.absoluteString))
+            downloadCompletion((path: destinationURL, url: url))
         } catch let error {
             print(error.localizedDescription)
             downloadCompletion(nil)

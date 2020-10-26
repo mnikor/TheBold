@@ -159,7 +159,7 @@ class ActivityContent: ActivityBase {
     
     static func map(content: Content) -> ActivityContent? {
         guard let type = ContentType(rawValue: content.type ?? "") else { return nil }
-        let audioFilesMO: [File] = content.files?.filter { $0.isAudio } ?? []
+        let audioFilesMO: [File] = content.files?.filter { $0.type == FileType.mp3.rawValue } ?? []
         let tracks: [AudioPlayerTrackInfo] = audioFilesMO.compactMap { file in
             let filePath: FilePath
             if let path = file.path {
@@ -172,7 +172,7 @@ class ActivityContent: ActivityBase {
                                         duration: "0:00",
                                         path: filePath)
             }
-        let pdfDocument = content.files?.first(where: { !$0.isAudio })
+        let pdfDocument = content.files?.first(where: { $0.type == FileType.pdf.rawValue })
         let documentURL: FilePath?
         
         if let path = pdfDocument?.path {

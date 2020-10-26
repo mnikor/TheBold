@@ -60,13 +60,21 @@ class CitationViewController: UIViewController, AlertDisplayable {
         }
         
         if let animationName = quote?.animationKey {
-            imagePath = nil
+            
+//            imagePath =  readFiles(name: animationName + "_image").first?.path
+            let fileName = DataSource.shared.searchFile(forKey: animationName, type: .anim_image)?.path
+            imagePath = readFiles(name: fileName ?? "1234567890.0987654321").first?.path
             citationTextView.isHidden = true
             DispatchQueue.main.async {
                 self.animationContent = AnimationContentView.setupAnimation(view: self.contentAnimationView, name: animationName, delay: 3)
                 self.animationContent?.play()
             }
         }
+    }
+    
+    private func readFiles(name: String) -> [URL] {
+        let files = FileLoader.findFile(name: name)
+        return files
     }
     
     func updateTextFont() {

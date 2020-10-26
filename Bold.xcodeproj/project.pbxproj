@@ -207,6 +207,8 @@
 		F162A78C22C2400D008292E8 /* ListenOrReadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F162A78A22C2400D008292E8 /* ListenOrReadTableViewCell.xib */; };
 		F169675C236ACD9F004BB9BA /* BoldTypealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169675B236ACD9F004BB9BA /* BoldTypealias.swift */; };
 		F16F21D622F304A4004DC5F3 /* StakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16F21D522F304A4004DC5F3 /* StakeViewController.swift */; };
+		F1744D622542DA08006A51FF /* MappingModelV1toV2.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = F1744D612542DA08006A51FF /* MappingModelV1toV2.xcmappingmodel */; };
+		F1744D652542DDDC006A51FF /* ModelMigrationV1toV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1744D642542DDDC006A51FF /* ModelMigrationV1toV2.swift */; };
 		F1765F1F252C7D8A00472AB5 /* AnimationContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1765F1E252C7D8A00472AB5 /* AnimationContentView.swift */; };
 		F1765F2D252C9C6300472AB5 /* AnimateContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1765F2C252C9C6300472AB5 /* AnimateContent.swift */; };
 		F179974D22AE615D0039879F /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F179974C22AE615D0039879F /* Localizable.swift */; };
@@ -650,6 +652,7 @@
 		F14166A422C115B50020BF0F /* PlayerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListView.swift; sourceTree = "<group>"; };
 		F14166AA22C125A50020BF0F /* ActionCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		F14166AB22C125A50020BF0F /* ActionCollectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionCollectionTableViewCell.xib; sourceTree = "<group>"; };
+		F146E1212541AB9900777F86 /* Bold 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Bold 2.xcdatamodel"; sourceTree = "<group>"; };
 		F15699BC2383FD5E001E3D7B /* BaseStakesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStakesListViewController.swift; sourceTree = "<group>"; };
 		F15699BE2383FD71001E3D7B /* BaseStakesListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStakesListConfigurator.swift; sourceTree = "<group>"; };
 		F15699C02383FD82001E3D7B /* BaseStakesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStakesListPresenter.swift; sourceTree = "<group>"; };
@@ -674,6 +677,8 @@
 		F162A78A22C2400D008292E8 /* ListenOrReadTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListenOrReadTableViewCell.xib; sourceTree = "<group>"; };
 		F169675B236ACD9F004BB9BA /* BoldTypealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldTypealias.swift; sourceTree = "<group>"; };
 		F16F21D522F304A4004DC5F3 /* StakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StakeViewController.swift; sourceTree = "<group>"; };
+		F1744D612542DA08006A51FF /* MappingModelV1toV2.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = MappingModelV1toV2.xcmappingmodel; sourceTree = "<group>"; };
+		F1744D642542DDDC006A51FF /* ModelMigrationV1toV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMigrationV1toV2.swift; sourceTree = "<group>"; };
 		F1765F1E252C7D8A00472AB5 /* AnimationContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationContentView.swift; sourceTree = "<group>"; };
 		F1765F2C252C9C6300472AB5 /* AnimateContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateContent.swift; sourceTree = "<group>"; };
 		F179974C22AE615D0039879F /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
@@ -1826,6 +1831,8 @@
 				C5DCDEC22372973C0018DEA4 /* Pep-Talks.pdf */,
 				F1EE4D4E229EA6620072F663 /* BackgroundVideo.MOV */,
 				F1F6ADCA23210DC800F6A925 /* Bold.xcdatamodeld */,
+				F1744D612542DA08006A51FF /* MappingModelV1toV2.xcmappingmodel */,
+				F1744D642542DDDC006A51FF /* ModelMigrationV1toV2.swift */,
 				C56CD6E32330FC3A00322688 /* boldlogo.mp4 */,
 				F186881A229E8DFF0029A663 /* Fonts */,
 				F18687E4229D56B10029A663 /* Assets.xcassets */,
@@ -2547,6 +2554,7 @@
 				F1E698BD23157E6A00438E3E /* ArchivedGoalsRouter.swift in Sources */,
 				F1B2B1CA22FB697100C327B0 /* DateCalendarCell.swift in Sources */,
 				F14166A322C1158C0020BF0F /* PlayerViewController.swift in Sources */,
+				F1744D622542DA08006A51FF /* MappingModelV1toV2.xcmappingmodel in Sources */,
 				4B813B8224A211B100E574E8 /* AuthViewPresenter.swift in Sources */,
 				F1EAF59822E8AA63008073D7 /* ConfigurateActionConfigurator.swift in Sources */,
 				F10B69C622EB171A00E47315 /* IdeasInteractor.swift in Sources */,
@@ -2797,6 +2805,7 @@
 				3EFCA3BF2306E00900129DB4 /* SettingsSectionModel.swift in Sources */,
 				F183304B22E7150300BB7A9E /* PlayerInteractor.swift in Sources */,
 				F1EBC7B622D3772100BAA82D /* CitationTableViewCell.swift in Sources */,
+				F1744D652542DDDC006A51FF /* ModelMigrationV1toV2.swift in Sources */,
 				C5B1E56923045F7B000991DF /* ProfileInteractor.swift in Sources */,
 				C561C412234474850073ABAC /* KeychainManager.swift in Sources */,
 				C59E5E2A23057703005DCD18 /* ButtonedTitleViewModel.swift in Sources */,
@@ -2986,7 +2995,7 @@
 				CODE_SIGN_ENTITLEMENTS = Bold/Bold.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 37HBR3VGFU;
 				INFOPLIST_FILE = Bold/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3011,7 +3020,7 @@
 				CODE_SIGN_ENTITLEMENTS = Bold/Bold.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 37HBR3VGFU;
 				INFOPLIST_FILE = Bold/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3055,9 +3064,10 @@
 		F1F6ADCA23210DC800F6A925 /* Bold.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				F146E1212541AB9900777F86 /* Bold 2.xcdatamodel */,
 				F1F6ADCB23210DC800F6A925 /* Bold.xcdatamodel */,
 			);
-			currentVersion = F1F6ADCB23210DC800F6A925 /* Bold.xcdatamodel */;
+			currentVersion = F146E1212541AB9900777F86 /* Bold 2.xcdatamodel */;
 			path = Bold.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -94,6 +94,10 @@ class RateAndShareView: UIView {
             actionImageView.downloadImageAnimated(path: path)
         }
         backgroundImageView.backgroundColor = color
+        if let imagePath = imagePath {
+            backgroundImageView.contentMode = .scaleToFill
+            backgroundImageView.image = UIImage(contentsOfFile: imagePath)
+        }
         authorImageView.backgroundColor = .clear
         authorImageView.image = authorImage
         authorNameLabel.text = authorName

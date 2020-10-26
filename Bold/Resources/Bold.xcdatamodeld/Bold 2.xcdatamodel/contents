@@ -55,12 +55,14 @@
         <relationship name="action" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Action" inverseName="events" inverseEntity="Action"/>
     </entity>
     <entity name="File" representedClassName=".File" syncable="YES">
-        <attribute name="isAudio" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isDownloaded" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="key" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="path" optional="YES" attributeType="String"/>
         <attribute name="sequence" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="timeSpent" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="url" optional="YES" attributeType="String"/>
         <relationship name="content" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Content" inverseName="files" inverseEntity="Content"/>
     </entity>
@@ -98,7 +100,7 @@
         <element name="Content" positionX="311.4296875" positionY="-12.078125" width="128" height="298"/>
         <element name="DaysOfWeek" positionX="-74.8515625" positionY="264.7265625" width="128" height="163"/>
         <element name="Event" positionX="-113.421875" positionY="-246.47265625" width="128" height="163"/>
-        <element name="File" positionX="106.078125" positionY="219.77734375" width="128" height="163"/>
+        <element name="File" positionX="106.078125" positionY="219.77734375" width="128" height="193"/>
         <element name="Goal" positionX="-114.953125" positionY="-51.84375" width="128" height="163"/>
         <element name="Reminder" positionX="-113.9375" positionY="145.5078125" width="128" height="103"/>
         <element name="User" positionX="309.921875" positionY="-236.03125" width="128" height="208"/>

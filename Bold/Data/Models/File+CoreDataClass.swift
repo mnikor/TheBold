@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 public class File: NSManagedObject {
 
     convenience init() {
@@ -18,8 +17,7 @@ public class File: NSManagedObject {
         self.init(entity: entity!, insertInto: DataSource.shared.backgroundContext)
     }
     
-    static func fill(audioTracks: [AudioPlayerTrackInfo],
-              to content: Content) {
+    static func fill(audioTracks: [AudioPlayerTrackInfo], to content: Content) {
         for audioTrack in audioTracks {
             let fileMO = File()
             fileMO.map(audioTrack: audioTrack)
@@ -28,7 +26,8 @@ public class File: NSManagedObject {
     }
     
     func map(pdfFile: FilePath) {
-        isAudio = false
+        //isAudio = false
+        type = FileType.pdf.rawValue
         switch pdfFile {
         case .local(let filePath):
             name = URL(fileURLWithPath: filePath).lastPathComponent
@@ -41,7 +40,8 @@ public class File: NSManagedObject {
     }
     
     func map(audioTrack: AudioPlayerTrackInfo) {
-        isAudio = true
+        //isAudio = true
+        type = FileType.mp3.rawValue
         isDownloaded = true
         name = audioTrack.trackName
         switch audioTrack.path {
