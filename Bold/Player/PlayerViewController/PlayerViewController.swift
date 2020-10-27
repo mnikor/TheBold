@@ -315,7 +315,7 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
                 UIApplication.topViewController?.present(playerVC, animated: true) {
                     if content.type != .meditation {
 //                        playerVC.play()
-                        playerVC.changeImageButton()
+//                        playerVC.changeImageButton()
                     }
                 }
             default:

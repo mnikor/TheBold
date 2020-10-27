@@ -26,7 +26,7 @@ class FileLoader: NSObject {
     
     class func findFile(name: String) -> [URL] {
 
-        let downloadsPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
+        let downloadsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let docURL = URL(string: downloadsPath)!
         let boldDirectory = docURL.appendingPathComponent("Bold")
 
@@ -69,7 +69,7 @@ extension FileLoader: URLSessionDownloadDelegate {
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         guard let url = downloadTask.originalRequest?.url else { return }
-        let downloadsPath = FileManager.default.urls(for: .cachesDirectory, in: .allDomainsMask)[0]
+        let downloadsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let boldDirectory = downloadsPath.appendingPathComponent("Bold")
         let ext = String(url.lastPathComponent.split(separator: ".").last ?? "")
         let fileDirectory = ext.isEmpty ? boldDirectory : boldDirectory.appendingPathComponent(ext.uppercased())

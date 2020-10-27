@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /// Restore purchased subscriptions
         IAPProducts.shared.store.restorePurchases()
         
+        LevelOfMasteryService.shared.input(.checkAllGoalsAndAction)
         LevelOfMasteryService.shared.input(.calculateProgress)
         
         NotificationService.shared.delegate = self
@@ -45,7 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         user.premiumOn = false
         
         DataSource.shared.saveBackgroundContext()
-        
     }
     
     func clearCoreData() {
