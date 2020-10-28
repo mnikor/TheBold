@@ -26,6 +26,21 @@ class CitationTableViewCell: BaseTableViewCell {
     
     private var animationContent: AnimationContentView?
     
+    lazy var animationImageView : UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        baseView.addSubview(imageView)
+        NSLayoutConstraint.activate([
+            authorImageView.bottomAnchor.constraint(equalTo: imageView.topAnchor),
+            moreButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -10),
+            baseView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+            baseView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+            ])
+        imageView.isHidden = false
+        return imageView
+    }()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -40,6 +55,11 @@ class CitationTableViewCell: BaseTableViewCell {
     
     @IBAction func tapMoreButton(_ sender: UIButton) {
         delegate?.tapMoreInfoButton()
+    }
+    
+    private func readFile(name: String) -> URL? {
+        let file = FileLoader.findFile(name: name)
+        return file.first
     }
     
     func config(content: ActivityContent) {
@@ -60,6 +80,17 @@ class CitationTableViewCell: BaseTableViewCell {
         
         if let animationName = content.animationKey {
             citationTextLabel.isHidden = true
+            
+            let fileName = DataSource.shared.searchFile(forKey: animationName, type: .anim_json)?.path
+            let fileImage = DataSource.shared.searchFile(forKey: animationName, type: .anim_image)?.path
+            
+            if fileName == nil && fileImage != nil {
+                if let filePath = readFile(name: fileImage!) {
+                    animationImageView.isHidden = false
+                    animationImageView.image = UIImage(contentsOfFile: filePath.path)
+                }
+            }
+            
             animationContent = AnimationContentView.setupAnimation(view: contentAnimationView, name: animationName)
         }
         

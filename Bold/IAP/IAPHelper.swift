@@ -8,6 +8,7 @@
 
 import Foundation
 import StoreKit
+import TPInAppReceipt
 
 class IAPHelper: NSObject {
     
@@ -66,9 +67,9 @@ extension IAPHelper {
         
     }
     
-    public func isProductPurchased(_ productIdentifier: ProductIdentifier) -> Bool {
-        return purchasedProductIds.contains(productIdentifier)
-    }
+//    public func isProductPurchased(_ productIdentifier: ProductIdentifier) -> Bool {
+//        return purchasedProductIds.contains(productIdentifier)
+//    }
     
     public class func canMakePayments() -> Bool {
         return SKPaymentQueue.canMakePayments()
@@ -81,6 +82,61 @@ extension IAPHelper {
     func restoreWithPopUp() {
         showRestorePopup = true
         restorePurchases()
+    }
+    
+    func validateAutoRenewableSubscription(_ productIdentifier: ProductIdentifier) -> Bool {
+        if let receipt = try? InAppReceipt.localReceipt(){
+            if receipt.hasActiveAutoRenewableSubscription(ofProductIdentifier: productIdentifier, forDate: Date()) {
+                // user has subscription of the product, which is still active at the specified date
+                 return true
+            }
+        }
+        return false
+    }
+    
+    func validateReceipt(){
+        
+//
+//        let urlString = "https://sandbox.itunes.apple.com/verifyReceipt"
+//        //                       let urlString = "https://buy.itunes.apple.com/verifyReceipt"
+//
+//        guard let receiptURL = Bundle.main.appStoreReceiptURL, let receiptString = try? Data(contentsOf: receiptURL).base64EncodedString() , let url = URL(string: urlString) else {
+//            return
+//        }
+//
+//        let requestData : [String : Any] = ["receipt-data" : receiptString,
+//                                            "password" : "c4e66dd0639b45fb8540603e61c9531d",
+//                                            "exclude-old-transactions" : false]
+//        let httpBody = try? JSONSerialization.data(withJSONObject: requestData, options: [])
+//
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "POST"
+//        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+//        request.httpBody = httpBody
+//        URLSession.shared.dataTask(with: request)  { (data, response, error) in
+//            // convert data to Dictionary and view purchases
+//
+////            let str = String(decoding: data!, as: UTF8.self)
+////
+////            let data = Data(str.utf8)
+//
+//            do {
+//                // make sure this JSON is in the format we expect
+//                if let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
+//                    // try to read out a string array
+////                    if let names = json["names"] as? [String] {
+////                        print(names)
+////                    }
+//                    print("\(json)")
+//                }
+//            } catch let error as NSError {
+//                print("Failed to load: \(error.localizedDescription)")
+//            }
+//
+//            print("\(data)")
+////            print("\(json)")
+//
+//        }.resume()
     }
     
 }

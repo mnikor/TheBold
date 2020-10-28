@@ -23,7 +23,6 @@ target 'Bold' do
     pod 'SVProgressHUD'
     pod 'ActiveLabel'
     pod 'lottie-ios'
-    #pod 'Gifu'
-    #pod 'SwiftGifOrigin'
+    pod 'TPInAppReceipt'
     
 end

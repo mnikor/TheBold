@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -84,7 +84,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </imageView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WTE-th-kM9">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WTE-th-kM9">
                             <rect key="frame" x="20" y="20" width="38" height="38"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="38" id="7oC-xP-Uyo"/>
@@ -221,6 +221,7 @@
                 <outlet property="authorImageView" destination="WTE-th-kM9" id="evH-ug-Rco"/>
                 <outlet property="authorNameLabel" destination="5jW-vB-fye" id="g74-lC-yvx"/>
                 <outlet property="backgroundImageView" destination="ttF-cH-YWC" id="UJg-wL-V9z"/>
+                <outlet property="bottomBackgroundImageConstraint" destination="dnS-3x-sxn" id="HWV-tK-wCy"/>
                 <outlet property="citationLabel" destination="U5F-oY-JDw" id="YZ4-W2-HDU"/>
                 <outlet property="citationView" destination="Vn7-OM-x8q" id="vaP-D2-8Do"/>
                 <outlet property="myActionIsLabel" destination="H3d-BL-Ixt" id="x0v-gY-gXp"/>
@@ -228,6 +229,7 @@
                 <outlet property="sharableView" destination="oew-xl-O5q" id="CdB-tj-IUX"/>
                 <outlet property="shareButton" destination="Cul-yn-9b4" id="7wm-nl-9Zi"/>
                 <outlet property="titleLabel" destination="swg-7e-XZi" id="NON-8U-Aeg"/>
+                <outlet property="topBackgroundImageConstraint" destination="3ux-9l-DK0" id="P6N-mO-N9M"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="100.78125"/>
         </view>

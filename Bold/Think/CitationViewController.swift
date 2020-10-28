@@ -13,21 +13,36 @@ class CitationViewController: UIViewController, AlertDisplayable {
     @IBOutlet weak var authorImageView: CustomImageView!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var citationTextView: UITextView!
-    
     @IBOutlet weak var contentAnimationView: UIView!
+    @IBOutlet weak var shareButton: UIButton!
     
     @IBAction func tapShareButton(_ sender: UIButton) {
         configureShareActivity()
     }
     
     var animationContent: AnimationContentView?
-    
     var alertController: BlurAlertController?
     
     var quote: ActivityContent?
     var color: ColorGoalType = .none
     private var currentColor : UIColor?
     private var imagePath: String?
+    private var isImageAnim: Bool = false
+    
+    lazy var animationImageView : UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(imageView)
+        NSLayoutConstraint.activate([
+            authorImageView.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: 20),
+            shareButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
+            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            view.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16),
+            ])
+        imageView.isHidden = true
+        return imageView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,9 +76,20 @@ class CitationViewController: UIViewController, AlertDisplayable {
         
         if let animationName = quote?.animationKey {
             
+            let fileName = DataSource.shared.searchFile(forKey: animationName, type: .anim_json)?.path
+            let fileImage = DataSource.shared.searchFile(forKey: animationName, type: .anim_image)?.path
+            
+            if fileName == nil && fileImage != nil {
+                if let filePath = readFiles(name: fileImage!).first {
+                    isImageAnim = true
+                    animationImageView.isHidden = false
+                    animationImageView.image = UIImage(contentsOfFile: filePath.path)
+                }
+            }
+            
 //            imagePath =  readFiles(name: animationName + "_image").first?.path
-            let fileName = DataSource.shared.searchFile(forKey: animationName, type: .anim_image)?.path
-            imagePath = readFiles(name: fileName ?? "1234567890.0987654321").first?.path
+//            let fileName = DataSource.shared.searchFile(forKey: animationName, type: .anim_image)?.path
+            imagePath = readFiles(name: fileImage ?? "1234567890").first?.path
             citationTextView.isHidden = true
             DispatchQueue.main.async {
                 self.animationContent = AnimationContentView.setupAnimation(view: self.contentAnimationView, name: animationName, delay: 3)
@@ -116,7 +142,8 @@ class CitationViewController: UIViewController, AlertDisplayable {
                                     authorName: quote?.authorName,
                                     citation: quote?.body,
                                     imagePath: imagePath,
-                                    color: currentColor != nil ? currentColor! : color.colorGoal())
+                                    color: currentColor != nil ? currentColor! : color.colorGoal(),
+                                    isImageAnim: isImageAnim)
         
         alertController = showAlert(with: shareView)
     }

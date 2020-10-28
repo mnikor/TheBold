@@ -31,6 +31,9 @@ class RateAndShareView: UIView {
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var citationLabel: UILabel!
 
+    @IBOutlet weak var topBackgroundImageConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomBackgroundImageConstraint: NSLayoutConstraint!
+    
     private var action: ActionEntity?
     private var activityContent: ActivityContent?
     private var descriptionViewModel: DescriptionViewModel?
@@ -88,14 +91,20 @@ class RateAndShareView: UIView {
         }
     }
     
-    func configureCitation(authorImage: UIImage?, authorName: String?, citation: String?, imagePath: String? = nil, color: UIColor) {
+    func configureCitation(authorImage: UIImage?, authorName: String?, citation: String?, imagePath: String? = nil, color: UIColor, isImageAnim: Bool = false) {
         isFoodForThoughts = true
         if let path = imagePath {
             actionImageView.downloadImageAnimated(path: path)
         }
-        backgroundImageView.backgroundColor = color
+        citationView.backgroundColor = color
+        backgroundImageView.backgroundColor = .clear
         if let imagePath = imagePath {
-            backgroundImageView.contentMode = .scaleToFill
+            citationView.cornerRadius = 10
+            if isImageAnim {
+                topBackgroundImageConstraint.constant = 30
+                bottomBackgroundImageConstraint.constant = 50
+            }
+            backgroundImageView.contentMode = isImageAnim == true ? .scaleAspectFit : .scaleToFill
             backgroundImageView.image = UIImage(contentsOfFile: imagePath)
         }
         authorImageView.backgroundColor = .clear

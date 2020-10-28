@@ -254,7 +254,6 @@ internal enum Asset {
   internal static let playerBackground = ImageAsset(name: "playerBackground")
   internal static let playerDownloadIcon = ImageAsset(name: "playerDownloadIcon")
   internal static let playerDownloadedIcon = ImageAsset(name: "playerDownloadedIcon")
-  internal static let playerFullScreen = ImageAsset(name: "playerFullScreen")
   internal static let playerLikeIcon = ImageAsset(name: "playerLikeIcon")
   internal static let playerLikedIcon = ImageAsset(name: "playerLikedIcon")
   internal static let playerListIcon = ImageAsset(name: "playerListIcon")

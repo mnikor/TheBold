@@ -1,6 +1,7 @@
 PODS:
   - ActiveLabel (1.1.0)
   - Alamofire (4.8.2)
+  - ASN1Swift (1.2.3)
   - Cosmos (19.0.3)
   - JTAppleCalendar (8.0.0)
   - KeychainAccess (3.1.2)
@@ -19,6 +20,8 @@ PODS:
   - SwiftGen (6.1.0)
   - SwiftVideoBackground (3.3.0)
   - SwiftyJSON (5.0.0)
+  - TPInAppReceipt (3.0.0):
+    - ASN1Swift (~> 1.2.2)
   - VisualEffectView (3.1.1)
 
 DEPENDENCIES:
@@ -36,6 +39,7 @@ DEPENDENCIES:
   - SwiftGen (~> 6.0)
   - SwiftVideoBackground
   - SwiftyJSON
+  - TPInAppReceipt
   - VisualEffectView (~> 3.1.0)
 
 SPEC REPOS:
@@ -56,10 +60,14 @@ SPEC REPOS:
     - SwiftVideoBackground
     - SwiftyJSON
     - VisualEffectView
+  trunk:
+    - ASN1Swift
+    - TPInAppReceipt
 
 SPEC CHECKSUMS:
   ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  ASN1Swift: 73ba94f1d97c1c1d059d180708ad42845aeac4f9
   Cosmos: a6fb17284281fa12cf4c85c2efecd440a215ec44
   JTAppleCalendar: 76ccdc5a8b236166293e50b190c5f2722c30cdcd
   KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
@@ -73,8 +81,9 @@ SPEC CHECKSUMS:
   SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
   SwiftVideoBackground: ebcc843d4cbcfc520e42472dad80925a6433da06
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  TPInAppReceipt: 772fec006fd2ce1a6b7b90eac6a049fa20a0ff87
   VisualEffectView: bde340c8268765c2d71f7f115930733ba7e4a926
 
-PODFILE CHECKSUM: b0895cd19a341201ad85b5e147aaa4fcb8dbb11e
+PODFILE CHECKSUM: c21f6723fb251e738eda843ab795bab24a593208
 
 COCOAPODS: 1.9.3
