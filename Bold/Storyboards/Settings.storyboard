@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="thN-vg-miR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="thN-vg-miR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -42,7 +43,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Fjk-Ju-9hk">
                                 <rect key="frame" x="0.0" y="170" width="414" height="692"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="yJa-co-b9p" id="Esz-ka-RpQ"/>
                                     <outlet property="delegate" destination="yJa-co-b9p" id="QsE-cB-aJz"/>
@@ -56,6 +57,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="fSI-HO-zgg"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Fjk-Ju-9hk" firstAttribute="top" secondItem="0cm-Kg-c9z" secondAttribute="bottom" id="3SN-va-23w"/>
@@ -66,7 +68,6 @@
                             <constraint firstItem="fSI-HO-zgg" firstAttribute="bottom" secondItem="Fjk-Ju-9hk" secondAttribute="bottom" id="wmA-hC-g7I"/>
                             <constraint firstItem="0cm-Kg-c9z" firstAttribute="top" secondItem="fSI-HO-zgg" secondAttribute="top" id="ycm-eI-Qx4"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="fSI-HO-zgg"/>
                     </view>
                     <navigationItem key="navigationItem" id="ora-SE-v9x">
                         <nil key="title"/>
@@ -91,8 +92,8 @@
                     <view key="view" contentMode="scaleToFill" id="LZh-42-lRz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Vj7-Pn-gPO"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4NZ-82-ZCL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -149,7 +150,7 @@
                                     <constraint firstAttribute="trailing" secondItem="hLS-6j-IDa" secondAttribute="trailing" id="tsZ-3B-Sc4"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zgu-bW-lMV">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zgu-bW-lMV">
                                 <rect key="frame" x="20" y="756" width="374" height="56"/>
                                 <color key="backgroundColor" red="1" green="0.66666666669999997" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                 <constraints>
@@ -169,6 +170,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="GGg-mN-bRx"/>
                         <color key="backgroundColor" red="0.95333987470000003" green="0.96029573680000002" blue="0.9882349372" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="GGg-mN-bRx" firstAttribute="trailing" secondItem="GYj-O8-lqA" secondAttribute="trailing" id="8AJ-ei-s1Y"/>
@@ -180,7 +182,6 @@
                             <constraint firstItem="GYj-O8-lqA" firstAttribute="leading" secondItem="GGg-mN-bRx" secondAttribute="leading" id="owc-Aa-XQO"/>
                             <constraint firstItem="Zgu-bW-lMV" firstAttribute="leading" secondItem="GGg-mN-bRx" secondAttribute="leading" constant="20" id="xim-Yi-Sau"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="GGg-mN-bRx"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hn9-H1-6NU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -226,7 +227,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="VM1-z4-8gV" firstAttribute="centerX" secondItem="ubC-60-AQ9" secondAttribute="centerX" id="4fY-bh-hhO"/>
                                             <constraint firstItem="zJx-2l-avd" firstAttribute="leading" secondItem="ubC-60-AQ9" secondAttribute="leading" id="MUe-jF-aV0"/>
@@ -238,7 +239,7 @@
                                             <constraint firstAttribute="height" constant="400" id="yLZ-wt-ozS"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7f-jA-xFZ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7f-jA-xFZ">
                                         <rect key="frame" x="20" y="1561" width="335" height="56"/>
                                         <color key="backgroundColor" red="1" green="0.66666666666666663" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                         <constraints>
@@ -258,7 +259,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="ubC-60-AQ9" firstAttribute="leading" secondItem="dYa-fl-1N3" secondAttribute="leading" constant="20" id="8VX-QI-JY8"/>
                                     <constraint firstAttribute="bottom" secondItem="M7f-jA-xFZ" secondAttribute="bottom" constant="50" id="Fk1-oD-JkM"/>
@@ -331,7 +332,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y73-4b-9Ug">
                                         <rect key="frame" x="0.0" y="355" width="375" height="335"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wT7-1G-brb" customClass="RoundedButton" customModule="Bold" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wT7-1G-brb" customClass="RoundedButton" customModule="Bold" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="239" width="335" height="56"/>
                                                 <color key="backgroundColor" red="1" green="0.66666666669999997" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -363,7 +364,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wty-Yw-wGe">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wty-Yw-wGe">
                                                                 <rect key="frame" x="0.0" y="0.0" width="160" height="179"/>
                                                                 <connections>
                                                                     <action selector="tapMonthlyButton:" destination="NVH-Yv-Lx6" eventType="touchUpInside" id="In2-5m-Kjd"/>
@@ -420,7 +421,7 @@
                                                                 <color key="textColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ELd-ob-QPN">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ELd-ob-QPN">
                                                                 <rect key="frame" x="0.0" y="0.0" width="160" height="179"/>
                                                                 <connections>
                                                                     <action selector="tapYearlyButton:" destination="NVH-Yv-Lx6" eventType="touchUpInside" id="lgk-Fg-gID"/>
@@ -451,7 +452,7 @@
                                                     </view>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MmN-ve-GQd">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MmN-ve-GQd">
                                                 <rect key="frame" x="112.5" y="300" width="150" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="16"/>
                                                 <state key="normal" title="Restore purchases">
@@ -477,7 +478,7 @@
                                             <constraint firstItem="t5B-oI-yxk" firstAttribute="top" secondItem="y73-4b-9Ug" secondAttribute="top" constant="30" id="z3T-Zu-gOn"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQQ-bH-6LU">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQQ-bH-6LU" userLabel="ReasonView">
                                         <rect key="frame" x="0.0" y="690" width="375" height="380"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7 reasons to unlock premium account" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y73-ro-oFe">
@@ -690,8 +691,77 @@
                                             <constraint firstItem="5PB-57-ZWT" firstAttribute="trailing" secondItem="y73-ro-oFe" secondAttribute="trailing" id="vip-gz-NNQ"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6y-zN-QTJ">
-                                        <rect key="frame" x="0.0" y="1070" width="375" height="215"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TsL-4f-cwr" userLabel="ReviewView">
+                                        <rect key="frame" x="0.0" y="1070" width="375" height="430"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jr8-OS-vFP">
+                                                <rect key="frame" x="20" y="20" width="335" height="170"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stars" translatesAutoresizingMaskIntoConstraints="NO" id="eQD-Er-YIf">
+                                                        <rect key="frame" x="165" y="0.0" width="140" height="28"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="140" id="2qY-aQ-xqj"/>
+                                                            <constraint firstAttribute="height" constant="28" id="7TQ-mN-oEi"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="“ It’s such a high-quality app that helps me boost my performance and train my mind effectively. Suitable for everyone! “" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="get-SK-Ah6">
+                                                        <rect key="frame" x="40" y="44" width="295" height="110"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="18"/>
+                                                        <color key="textColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="eQD-Er-YIf" firstAttribute="top" secondItem="Jr8-OS-vFP" secondAttribute="top" id="Fys-7U-NcZ"/>
+                                                    <constraint firstItem="get-SK-Ah6" firstAttribute="leading" secondItem="Jr8-OS-vFP" secondAttribute="leading" constant="40" id="H2P-Uj-tB8"/>
+                                                    <constraint firstItem="get-SK-Ah6" firstAttribute="top" secondItem="eQD-Er-YIf" secondAttribute="bottom" constant="16" id="K9V-OM-cQO"/>
+                                                    <constraint firstAttribute="bottom" secondItem="get-SK-Ah6" secondAttribute="bottom" constant="16" id="P52-H0-9if"/>
+                                                    <constraint firstAttribute="trailing" secondItem="eQD-Er-YIf" secondAttribute="trailing" constant="30" id="R44-9N-4Cw"/>
+                                                    <constraint firstAttribute="trailing" secondItem="get-SK-Ah6" secondAttribute="trailing" id="ySF-6q-EJG"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zb9-Qy-zOM">
+                                                <rect key="frame" x="20" y="210" width="335" height="170"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stars" translatesAutoresizingMaskIntoConstraints="NO" id="5F9-aM-let">
+                                                        <rect key="frame" x="0.0" y="0.0" width="140" height="28"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="140" id="hc6-MF-lKd"/>
+                                                            <constraint firstAttribute="height" constant="28" id="jX7-Vx-15g"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="4Ie-iU-6fI">
+                                                        <rect key="frame" x="0.0" y="44" width="295" height="110"/>
+                                                        <string key="text">“ I’ve never known any apps with the idea to help train our mind like this one. It’s such a unique and useful app. Highly recommended! “</string>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="18"/>
+                                                        <color key="textColor" red="0.27058823529999998" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="5F9-aM-let" firstAttribute="top" secondItem="Zb9-Qy-zOM" secondAttribute="top" id="6aj-Sj-dF8"/>
+                                                    <constraint firstItem="5F9-aM-let" firstAttribute="leading" secondItem="Zb9-Qy-zOM" secondAttribute="leading" id="8d9-RD-5ql"/>
+                                                    <constraint firstItem="4Ie-iU-6fI" firstAttribute="leading" secondItem="Zb9-Qy-zOM" secondAttribute="leading" id="GDr-f6-kT4"/>
+                                                    <constraint firstAttribute="bottom" secondItem="4Ie-iU-6fI" secondAttribute="bottom" constant="16" id="J6w-lD-5Xu"/>
+                                                    <constraint firstItem="4Ie-iU-6fI" firstAttribute="top" secondItem="5F9-aM-let" secondAttribute="bottom" constant="16" id="LHk-Ql-N37"/>
+                                                    <constraint firstAttribute="trailing" secondItem="4Ie-iU-6fI" secondAttribute="trailing" constant="40" id="POV-r0-tTX"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.95294117647058818" green="0.96078431372549022" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="Jr8-OS-vFP" firstAttribute="top" secondItem="TsL-4f-cwr" secondAttribute="top" constant="20" id="2fj-es-Oxr"/>
+                                            <constraint firstItem="Jr8-OS-vFP" firstAttribute="leading" secondItem="TsL-4f-cwr" secondAttribute="leading" constant="20" id="HIk-Tl-3lT"/>
+                                            <constraint firstAttribute="trailing" secondItem="Jr8-OS-vFP" secondAttribute="trailing" constant="20" id="bpe-Pc-iwm"/>
+                                            <constraint firstAttribute="height" constant="430" id="chy-xt-x3K"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Zb9-Qy-zOM" secondAttribute="bottom" constant="16" id="hWF-6A-9om"/>
+                                            <constraint firstAttribute="trailing" secondItem="Zb9-Qy-zOM" secondAttribute="trailing" constant="20" id="hib-Et-tz9"/>
+                                            <constraint firstItem="Zb9-Qy-zOM" firstAttribute="top" secondItem="Jr8-OS-vFP" secondAttribute="bottom" constant="20" id="rfE-87-gLI"/>
+                                            <constraint firstItem="Zb9-Qy-zOM" firstAttribute="leading" secondItem="TsL-4f-cwr" secondAttribute="leading" constant="20" id="v4R-b3-8bb"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6y-zN-QTJ" userLabel="BottomView">
+                                        <rect key="frame" x="0.0" y="1500" width="375" height="215"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Vz0-gd-Lx6" customClass="FixedPaddingTextView" customModule="Bold" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="30" width="343" height="135"/>
@@ -710,7 +780,7 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHC-PL-Jr0">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHC-PL-Jr0">
                                                         <rect key="frame" x="58.5" y="0.0" width="156.5" height="15"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="12"/>
                                                         <state key="normal" title="Terms and Privacy Policy.">
@@ -740,15 +810,18 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                                     </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="TsL-4f-cwr" secondAttribute="trailing" id="3qB-TO-AQl"/>
                                     <constraint firstItem="VQQ-bH-6LU" firstAttribute="top" secondItem="y73-4b-9Ug" secondAttribute="bottom" id="4bv-u0-VV0"/>
                                     <constraint firstItem="VQQ-bH-6LU" firstAttribute="leading" secondItem="rQt-hd-jNo" secondAttribute="leading" id="52S-Fk-vSR"/>
                                     <constraint firstAttribute="bottom" secondItem="X6y-zN-QTJ" secondAttribute="bottom" id="8Du-Q9-IBA"/>
                                     <constraint firstItem="y73-4b-9Ug" firstAttribute="leading" secondItem="rQt-hd-jNo" secondAttribute="leading" id="BWw-7D-hYI"/>
+                                    <constraint firstItem="TsL-4f-cwr" firstAttribute="top" secondItem="VQQ-bH-6LU" secondAttribute="bottom" id="FEF-Ac-2OG"/>
                                     <constraint firstItem="cPc-tv-0N6" firstAttribute="leading" secondItem="rQt-hd-jNo" secondAttribute="leading" id="K79-G6-nyR"/>
                                     <constraint firstItem="X6y-zN-QTJ" firstAttribute="leading" secondItem="rQt-hd-jNo" secondAttribute="leading" id="Raj-cZ-cs0"/>
                                     <constraint firstItem="cPc-tv-0N6" firstAttribute="top" secondItem="rQt-hd-jNo" secondAttribute="top" id="e3f-rA-7JN"/>
-                                    <constraint firstItem="X6y-zN-QTJ" firstAttribute="top" secondItem="VQQ-bH-6LU" secondAttribute="bottom" id="eqO-Sr-ynv"/>
+                                    <constraint firstItem="X6y-zN-QTJ" firstAttribute="top" secondItem="TsL-4f-cwr" secondAttribute="bottom" id="eqO-Sr-ynv"/>
                                     <constraint firstAttribute="trailing" secondItem="VQQ-bH-6LU" secondAttribute="trailing" id="fbB-hO-s1b"/>
+                                    <constraint firstItem="TsL-4f-cwr" firstAttribute="leading" secondItem="rQt-hd-jNo" secondAttribute="leading" id="nGK-Ig-tSD"/>
                                     <constraint firstItem="y73-4b-9Ug" firstAttribute="top" secondItem="cPc-tv-0N6" secondAttribute="bottom" id="tXZ-LY-bI7"/>
                                     <constraint firstAttribute="trailing" secondItem="X6y-zN-QTJ" secondAttribute="trailing" id="td6-gR-Z3m"/>
                                     <constraint firstItem="cPc-tv-0N6" firstAttribute="width" secondItem="rQt-hd-jNo" secondAttribute="width" id="v6f-Xz-jX4"/>
@@ -757,6 +830,7 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="bbk-DP-VOj"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dYa-fl-1N3" firstAttribute="top" secondItem="rQt-hd-jNo" secondAttribute="top" id="0Hh-JF-rSr"/>
@@ -770,7 +844,6 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                             <constraint firstItem="dYa-fl-1N3" firstAttribute="bottom" secondItem="rQt-hd-jNo" secondAttribute="bottom" id="nNh-v8-w5n"/>
                             <constraint firstItem="rQt-hd-jNo" firstAttribute="leading" secondItem="bbk-DP-VOj" secondAttribute="leading" id="zPw-dI-uKh"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="bbk-DP-VOj"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1667"/>
@@ -837,7 +910,7 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                                     <constraint firstAttribute="trailing" secondItem="bsh-Xp-L2z" secondAttribute="trailing" constant="20" id="fKW-tu-ofZ"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYx-KK-zgE">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYx-KK-zgE">
                                 <rect key="frame" x="20" y="756" width="374" height="56"/>
                                 <color key="backgroundColor" red="1" green="0.66666666669999997" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                 <constraints>
@@ -857,6 +930,7 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="sSg-x8-nem"/>
                         <color key="backgroundColor" red="0.95333987470000003" green="0.96029573680000002" blue="0.9882349372" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="sSg-x8-nem" firstAttribute="trailing" secondItem="XlU-wM-HVb" secondAttribute="trailing" id="2BO-3c-Tod"/>
@@ -866,7 +940,6 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
                             <constraint firstItem="XlU-wM-HVb" firstAttribute="centerY" secondItem="sSg-x8-nem" secondAttribute="centerY" id="iLf-wc-OX3"/>
                             <constraint firstItem="LYx-KK-zgE" firstAttribute="leading" secondItem="sSg-x8-nem" secondAttribute="leading" constant="20" id="jjt-3j-C7P"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="sSg-x8-nem"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZqB-ni-rkl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -874,6 +947,11 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
             <point key="canvasLocation" x="3908.6956521739135" y="874.55357142857144"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="wT7-1G-brb">
+            <size key="intrinsicContentSize" width="222" height="33"/>
+        </designable>
+    </designables>
     <resources>
         <image name="checkPremiumParams" width="18" height="14"/>
         <image name="closeWhite" width="16" height="16"/>
@@ -881,6 +959,13 @@ The Yearly subscription of 39.9$, automaticallly renews unless turned off in Acc
         <image name="premium_congrats" width="335" height="246"/>
         <image name="premium_girl" width="375" height="355"/>
         <image name="stake_payment" width="375" height="273"/>
+        <image name="stars" width="138" height="26"/>
         <image name="win" width="276" height="292"/>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
