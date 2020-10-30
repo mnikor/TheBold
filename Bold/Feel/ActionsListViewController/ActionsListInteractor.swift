@@ -42,7 +42,7 @@ class ActionsListInteractor: ActionsListInteractorInputProtocol {
         var contentsDG : [ActivityContent] = []
         var groupsDG : [ActivityGroup] = []
         
-        DispatchQueue.main.async {
+        DispatchQueue.global(qos: .userInteractive).async {
             
             self.dispatchGroup.enter()
             NetworkService.shared.getAllGroup(with: contentType) { (result) in

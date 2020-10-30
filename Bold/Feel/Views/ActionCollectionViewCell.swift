@@ -53,7 +53,7 @@ class ActionCollectionViewCell: BaseCollectionViewCell {
         topLeftButton.setImage(typeCell.image(), for: .normal)
         topLeftButton.isHidden = typeCell.hidden()
         titleLabel.text = model.title
-        if let imageURL = model.imageURL {
+        if let imageURL = model.largeImageURL {
             backgroundImageView.downloadImageAnimated(path: imageURL)
 //            backgroundImageView.setImageAnimated(path: imageURL)//, placeholder: Asset.actionImage.image)
         } else {

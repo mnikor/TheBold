@@ -94,8 +94,8 @@ extension IAPHelper {
         return false
     }
     
-    func validateReceipt(){
-        
+//    func validateReceipt(){
+//
 //
 //        let urlString = "https://sandbox.itunes.apple.com/verifyReceipt"
 //        //                       let urlString = "https://buy.itunes.apple.com/verifyReceipt"
@@ -137,7 +137,7 @@ extension IAPHelper {
 ////            print("\(json)")
 //
 //        }.resume()
-    }
+//    }
     
 }
 

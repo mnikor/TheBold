@@ -63,7 +63,7 @@ class FeelInteractor: FeelInteractorInputProtocol {
 
         let dispatchGroup = DispatchGroup()
 
-        DispatchQueue.global().async {
+        DispatchQueue.global(qos: .userInteractive).async {
             for type in contentTypeArray {
 
                 dispatchGroup.enter()

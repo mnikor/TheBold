@@ -84,7 +84,7 @@ class ActionTableViewCell: BaseTableViewCell {
         configHeader(type: item.header!)
         configButton(item: item)
         titleTextView.text = item.data?.title
-        backgroundImageView.downloadImageAnimated(path: item.data?.imageURL ?? "")
+        backgroundImageView.downloadImageAnimated(path: item.data?.largeImageURL ?? "")
         authorNameLabel.text = item.data?.authorName
         
         //guard let tempHeaderType = HeaderType(rawValue: UInt(arc4random_uniform(3))) else { return }

@@ -139,12 +139,13 @@ extension ActionsListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            tableView.deselectRow(at: indexPath, animated: false)
+        tableView.deselectRow(at: indexPath, animated: false)
+        
+        if indexPath.row == 0 {return}
+        guard let content = actions[indexPath.row - 1].data else { return }
             
-            guard let content = actions[indexPath.row - 1].data else { return }
-            
-            selectedContent = content
-            presenter.input(.didSelectContent(content))
+        selectedContent = content
+        presenter.input(.didSelectContent(content))
     //        switch content.type {
     //        case .lesson, .story:
     //            let vc = StoryboardScene.Description.descriptionAndLikesCountViewController.instantiate()
