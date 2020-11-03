@@ -37,6 +37,7 @@ public class Content: NSManagedObject {
         title = activityContent.title
         type = activityContent.type.rawValue
         durationRead = Int16(activityContent.durtionRead)
+        animationKey = activityContent.animationKey
         
         File.fill(audioTracks: activityContent.audioTracks,
                   to: self)

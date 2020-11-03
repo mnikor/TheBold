@@ -220,7 +220,7 @@ class ActivityContent: ActivityBase {
                                documentPreviewURL: nil,
                                forCategoryPresentation: false,
                                color: nil,
-                               animationKey: nil)
+                               animationKey: content.animationKey)
     }
     
     func saveContent() {

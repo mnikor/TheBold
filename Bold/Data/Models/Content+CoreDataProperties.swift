@@ -33,6 +33,7 @@ extension Content {
     @NSManaged public var files: Set<File>?
     @NSManaged public var isHidden: Bool
     @NSManaged public var durationRead: Int16
+    @NSManaged public var animationKey: String?
 
 }
 
