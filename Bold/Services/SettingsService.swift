@@ -49,6 +49,14 @@ class SettingsService {
         }
     }
     
+    var isMissedYourAction: Bool {
+        didSet {
+            if isMissedYourAction != oldValue {
+                UserDefaults.standard.setValue(isMissedYourAction, forKey: DefaultsKeys.isMissedYourAction)
+            }
+        }
+    }
+    
     private init() {
         self.syncWithIOSCalendar = UserDefaults.standard.bool(forKey: DefaultsKeys.syncWithIOSCalendar)
         self.syncWithICloud = UserDefaults.standard.bool(forKey: DefaultsKeys.syncWithICloud)
@@ -61,6 +69,7 @@ class SettingsService {
         }
         firstEntrance = UserDefaults.standard.bool(forKey: DefaultsKeys.firstEntrance)
         boldness = UserDefaults.standard.integer(forKey: DefaultsKeys.boldness)
+        isMissedYourAction = UserDefaults.standard.bool(forKey: DefaultsKeys.isMissedYourAction)
     }
     
 }
@@ -71,4 +80,5 @@ private struct DefaultsKeys {
     static let downloadOnWiFiOnly = "downloadOnWiFiOnly"
     static let firstEntrance = "first entrance"
     static let boldness = "boldness"
+    static let isMissedYourAction = "isMissedYourAction"
 }

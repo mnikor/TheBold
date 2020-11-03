@@ -273,9 +273,7 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
             return event
         }
         
-        AlertViewService.shared.input(.missedYourAction(tapOkay: {
-            print("OK")
-        }))
+        SettingsService.shared.isMissedYourAction = true
         
         DataSource.shared.saveBackgroundContext()
         checkOverdueStatusActions()

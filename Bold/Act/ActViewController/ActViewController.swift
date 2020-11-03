@@ -19,6 +19,17 @@ class ActViewController: BaseStakesListViewController, SideMenuItemContent {
         LevelOfMasteryService.shared.input(.checkAllGoalsAndAction)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if SettingsService.shared.isMissedYourAction {
+            SettingsService.shared.isMissedYourAction = false
+            AlertViewService.shared.input(.missedYourAction(tapOkay: {
+                print("OK")
+            }))
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
