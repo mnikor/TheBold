@@ -583,39 +583,6 @@ extension BaseStakesListViewController: ActivityCollectionTableViewCellDelegate 
 //        guard let _ = presenter.selectedContent else { return }
 //    }
 //    
-//    func playerStoped(with totalDuration: TimeInterval) {
-//        guard let type = presenter.selectedContent?.type else { return }
-//        let durationInMinutes = Int(totalDuration / 60)
-//        boldnessChanged(duration: durationInMinutes)
-//        switch type {
-//        case .meditation:
-//            if durationInMinutes >= 7 {
-//                updatePoints()
-//            }
-//        case .hypnosis:
-//            if durationInMinutes >= 20 {
-//                updatePoints()
-//            }
-//        case .preptalk:
-//            if totalDuration >= 3 {
-//                updatePoints()
-//            }
-//        case .story:
-//            // TODO: - story duration
-//            break
-//        case .lesson, .quote:
-//            break
-//        }
-//    }
-//    
-//    private func boldnessChanged(duration: Int) {
-//        SettingsService.shared.boldness += duration
-//    }
-//    
-//    private func updatePoints() {
-//        LevelOfMasteryService.shared.input(.addPoints(points: 10))
-//    }
-//    
 //    func addActionPlan() {
 //        guard let content = presenter.selectedContent else { return }
 //        //presenter.input(.addActionPlan(content))

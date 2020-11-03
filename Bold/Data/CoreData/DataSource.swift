@@ -9,6 +9,7 @@
 import CoreData
 import RxSwift
 import RxCocoa
+import Foundation
 
 enum DataTablesType: String {
     case content = "Content"
@@ -38,6 +39,11 @@ class DataSource {
         return changeContextVariable.asObservable()
     }
     
+    private let changePremiumVariable : BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    var changePremium : Observable<Bool> {
+        return changePremiumVariable.asObservable()
+    }
+    
     private init() {
         let container = NSPersistentContainer(name: DataConstants.coreDataModel)
         container.loadPersistentStores(completionHandler: { (_, error) in
@@ -57,12 +63,34 @@ class DataSource {
     func addedNotification() {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: viewContext)
+        notificationCenter.addObserver(self, selector: #selector(contextObjectsDidChange(_:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: backgroundContext)
 //        notificationCenter.addObserver(self, selector: #selector(managedObjectContextWillSave), name: NSManagedObjectContextWillSaveNotification, object: managedObjectContext)
 //        notificationCenter.addObserver(self, selector: #selector(managedObjectContextDidSave), name: NSNotification.Name.NSManagedObjectContextDidSave, object: backgroundContext)
     }
     
     @objc private func managedObjectContextObjectsDidChange() {
         changeContextVariable.accept("ContextDidSave")
+        print("ViewContextDidSave")
+    }
+    
+    @objc private func contextObjectsDidChange(_ notification: Notification) {
+        
+        guard let userInfo = notification.userInfo else {
+            return
+        }
+        
+        if let updates = userInfo[NSUpdatedObjectsKey] as? Set<NSManagedObject> {
+            for update in updates {
+                if let user = update as? User {
+                    let valueDict = user.changedValues()
+                    if let status : Bool = valueDict["premiumOn"] as? Bool, status == true {
+                        print("ChangePremium")
+//                        let isPremium = NSNumber(value: status)
+                        changePremiumVariable.accept(status)
+                    }
+                }
+            }
+        }
     }
     
     func saveBackgroundContext() {

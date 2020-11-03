@@ -47,6 +47,8 @@ class ActionsListViewController: UIViewController, ViewProtocol, AlertDisplayabl
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 60))
         registerXibs()
         prepareDataSource()
+        
+        presenter.input(.subscribeToUpdate)
     }
     
     func registerXibs() {
@@ -265,39 +267,6 @@ extension ActionsListViewController: RateAndShareViewDelegate {
 //
 //    func likeContent(_ isLiked: Bool) {
 //        guard let content = selectedContent else { return }
-//    }
-//
-//    func playerStoped(with totalDuration: TimeInterval) {
-//        guard let type = selectedContent?.type else { return }
-//        let durationInMinutes = Int(totalDuration / 60)
-//        boldnessChanged(duration: durationInMinutes)
-//        switch type {
-//        case .meditation:
-//            if durationInMinutes >= 7 {
-//                updatePoints()
-//            }
-//        case .hypnosis:
-//            if durationInMinutes >= 20 {
-//                updatePoints()
-//            }
-//        case .preptalk:
-//            if totalDuration >= 3 {
-//                updatePoints()
-//            }
-//        case .story:
-//            // TODO: - story duration
-//            break
-//        case .lesson, .quote:
-//            break
-//        }
-//    }
-//
-//    private func boldnessChanged(duration: Int) {
-//        SettingsService.shared.boldness += duration
-//    }
-//
-//    private func updatePoints() {
-//        LevelOfMasteryService.shared.input(.addPoints(points: 10))
 //    }
 //
 //    func addActionPlan() {

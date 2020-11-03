@@ -104,12 +104,13 @@ class HeaderHomeView: UIView {
     }
     
     func setBoldness(boldness: Int) {
-        boldnessStartValue = Int(timeLabel.text?.components(separatedBy: "min").first ?? "0" ) ?? 0
+//        boldnessStartValue = Int(timeLabel.text?.components(separatedBy: "min").first ?? "0" ) ?? 0
         boldnessEndValue = boldness
+        timeLabel.text = "\(boldnessEndValue) \(boldnessEndValue == 1 ? "session" : "sessions")"
         
-        let displayLink = CADisplayLink(target: self, selector: #selector(animateBoldness))
-        displayLink.add(to: .main, forMode: .default)
-        pointsStartDate = Date()
+//        let displayLink = CADisplayLink(target: self, selector: #selector(animateBoldness))
+//        displayLink.add(to: .main, forMode: .default)
+//        pointsStartDate = Date()
     }
     
     func configure() {

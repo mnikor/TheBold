@@ -137,7 +137,8 @@ class PlayerSmallView: UIView {
 extension PlayerSmallView: AudioServiceDelegate {
     
     func playerStoped(with totalDuration: TimeInterval) {
-        currentContent?.playerStoped(with: totalDuration)
+        let countService = CountSessionService(content: currentContent!)
+        countService.input(.forAudio(totalDuration: totalDuration))
     }
     
     func playerIsPlaying() {

@@ -40,6 +40,10 @@ class DescriptionAndLikesCountViewController: UIViewController, AlertDisplayable
     private var isBoldManifest = false
     var isTermsOrPrivacyFromLogin = false
     
+    private var countService : CountSessionService?
+    
+    //MARK:- Init
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         modalPresentationStyle = .overCurrentContext
@@ -202,6 +206,9 @@ class DescriptionAndLikesCountViewController: UIViewController, AlertDisplayable
     @objc private func documentChanged(_ notification: Notification) {
         loader.stop()
         isDocumentLoaded = true
+        if let content = viewModel?.content {
+            countService = CountSessionService(content: content)
+        }
     }
     
     @IBAction func tapCloseButton(_ sender: UIButton) {
@@ -318,6 +325,7 @@ extension DescriptionAndLikesCountViewController: UIScrollViewDelegate {
             //            toolbar.alpha = 1 - percent
             //            likseCountView.moveConstraintView(percent: percent)
         }
+        countService?.input(.forRead(contentHeight: scrollView.contentSize.height, offset: scrollView.contentOffset.y + scrollView.bounds.height))
     }
     
 }

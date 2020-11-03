@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 enum ActionsListPresenterInput {
     case prepareDataSource(type: FeelTypeCell, completion: (([ActionEntity]) -> Void))
@@ -21,6 +23,7 @@ enum ActionsListPresenterInput {
     case addActionPlan(ActivityContent)
     case tappedContentInGroup(pressType: GroupContentButtonPressType, content: ActivityContent)
     case didSelectContent(ActivityContent)
+    case subscribeToUpdate
 }
 
 protocol ActionsListPresenterProtocol {
@@ -36,6 +39,8 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
     weak var viewController: ActionsListViewController!
     var interactor: ActionsListInteractor!
     var router: ActionsListRouter!
+    
+    private let disposeBag = DisposeBag()
     
     required init(view: View) {
         self.viewController = view
@@ -84,16 +89,14 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
         case .didSelectContent(let content):
             switch content.type {
             case .lesson, .story:
-                increaseBoldnessCounter()
+//                increaseBoldnessCounter()
                 router.input(.read(content))
             default:
                 router.input(.player(content))
             }
+        case .subscribeToUpdate:
+            subscribeToChangePremium()
         }
-    }
-    
-    func increaseBoldnessCounter() {
-        SettingsService.shared.boldness += 1
     }
     
     private func unlockActionCard(_ content: ActivityContent) {
@@ -194,6 +197,36 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
         case .stories:
             return .story
         }
+    }
+    
+    private func subscribeToChangePremium() {
+        
+        DataSource.shared.changePremium.subscribe(onNext: {[weak self] (isPremium) in
+            guard let ss = self else {return}
+            
+            for itemHeader in ss.viewController.actions {
+                
+                itemHeader.data?.calculateStatus()
+                
+                switch itemHeader.data?.contentStatus {
+                case .locked:
+                    itemHeader.header = .unlock
+                case .lockedPoints:
+                    itemHeader.header = .points
+                default:
+                    itemHeader.header = .duration
+                }
+                
+                if let group = itemHeader.group {
+                    
+                    for itemCell in group.contentObjects {
+                        itemCell.calculateStatus()
+                    }
+                }
+            }
+            ss.viewController.tableView.reloadData()
+                        
+        }).disposed(by: disposeBag)
     }
     
 }

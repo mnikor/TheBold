@@ -7,10 +7,20 @@
 //
 
 import Foundation
+import UIKit
 
 class FileLoader: NSObject {
     let downloadCompletion: (((path: URL, url: URL)?) -> Void)
     private var nameFile: String?
+    
+    lazy var backgroundSession : URLSession = {
+        let config = URLSessionConfiguration.background(withIdentifier: "com.bold.backgroundSession")
+//        config.isDiscretionary = true
+        config.sessionSendsLaunchEvents = true
+        config.allowsCellularAccess = true
+        let urlSession = URLSession(configuration: config, delegate: self, delegateQueue: nil)
+        return urlSession
+    }()
     
     init(downloadCompletion: @escaping (((path: URL, url: URL)?) -> Void)) {
         self.downloadCompletion = downloadCompletion
@@ -19,8 +29,11 @@ class FileLoader: NSObject {
     func load(from url: String, nameFile: String? = nil) {
         guard let url = URL(string: url) else { return }
         self.nameFile = nameFile
-        let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
-        let downloadTask = urlSession.downloadTask(with: url)
+//        let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
+        
+//        let config = URLSessionConfiguration.background(withIdentifier: "com.bold.backgroundSession")
+//        let backgroundSession = URLSession(configuration: config, delegate: self, delegateQueue: OperationQueue())
+        let downloadTask = backgroundSession.downloadTask(with: url)
         downloadTask.resume()
     }
     
@@ -67,26 +80,44 @@ class FileLoader: NSObject {
 
 extension FileLoader: URLSessionDownloadDelegate {
     
+    func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
+        print("forBackgroundURLSession")
+        
+        DispatchQueue.main.async {
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+               let completionHandler = appDelegate.backgroundSessionCompletionHandler {
+                appDelegate.backgroundSessionCompletionHandler = nil
+                
+                completionHandler()
+            }
+        }
+    }
+    
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        
         guard let url = downloadTask.originalRequest?.url else { return }
         let downloadsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let boldDirectory = downloadsPath.appendingPathComponent("Bold")
         let ext = String(url.lastPathComponent.split(separator: ".").last ?? "")
         let fileDirectory = ext.isEmpty ? boldDirectory : boldDirectory.appendingPathComponent(ext.uppercased())
         var file = url.lastPathComponent
-        if let nameFile = nameFile {
-            file = nameFile + "." + url.pathExtension
-        }
+//        if let nameFile = nameFile {
+//            file = nameFile + "." + url.pathExtension
+//        }
         let destinationURL = fileDirectory.appendingPathComponent(file)
         try? FileManager.default.createDirectory(at: fileDirectory, withIntermediateDirectories: true, attributes: [:])
         try? FileManager.default.removeItem(at: destinationURL)
         
         do {
             try FileManager.default.copyItem(at: location, to: destinationURL)
-            downloadCompletion((path: destinationURL, url: url))
+//            DispatchQueue.main.async {[weak self] in
+                self.downloadCompletion((path: destinationURL, url: url))
+//            }
         } catch let error {
             print(error.localizedDescription)
-            downloadCompletion(nil)
+//            DispatchQueue.main.async {[weak self] in
+                self.downloadCompletion(nil)
+//            }
         }
     }
     

@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 enum FeelPresenterInput  {
     case menuShow
@@ -14,6 +16,7 @@ enum FeelPresenterInput  {
     case showDetails(item: ActivityContent)
     case prepareDataSource(types: [ContentType], completion: (([FeelEntity]) -> Void)?)
     case addActionPlan(ActivityContent)
+    case subscribeToUpdate
 }
 
 protocol FeelPresenterProtocol {
@@ -29,6 +32,8 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
     weak var viewController: View!
     var interactor: Interactor!
     var router: Router!
+    
+    private let disposeBag = DisposeBag()
     
     required init(view: View) {
         self.viewController = view
@@ -61,6 +66,9 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
 //            interactor.input(.downloadContent(content))
             
 //            router.input(.present(vc))
+        
+        case .subscribeToUpdate:
+            subscribeToChangePremium()
         }
     }
     
@@ -122,6 +130,23 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
         } else {
             return false
         }
+    }
+    
+    private func subscribeToChangePremium() {
+        
+        DataSource.shared.changePremium.subscribe(onNext: {[weak self] (isPremium) in
+            guard let ss = self else {return}
+            
+            print("++++++++++PREMIUM STATUS = \(isPremium)")
+            
+            for itemHeader in ss.viewController.items {
+                for itemCell in itemHeader.items {
+                    itemCell.calculateStatus()
+                }
+            }
+            ss.viewController.tableView.reloadData()
+            
+        }).disposed(by: disposeBag)
     }
 }
 

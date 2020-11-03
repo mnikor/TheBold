@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol CitationPageViewControllerDelegate : class {
     func citationPageViewController(_ citationPageViewController: CitationPageViewController, numberOfPages: Int)
@@ -20,14 +22,10 @@ class CitationPageViewController: UIPageViewController {
     var quotes: [ActivityContent] = []
     
     private var isPremium = false
+    private let disposeBag = DisposeBag()
+    private var lastIndex : Int = 0
     
     private var orderedViewControllers: [UIViewController] = []
-    
-//    private(set) lazy var orderedViewControllers: [UIViewController] = {
-//        return [createArrayViewController(type: .orange),
-//        createArrayViewController(type: .blue),
-//        createArrayViewController(type: .ink)]
-//    }()
     
     private func createArrayViewController(quote: ActivityContent, color: ColorGoalType) -> UIViewController {
         
@@ -48,12 +46,19 @@ class CitationPageViewController: UIPageViewController {
         if quotes.count > 0 { configurePages() }
         else { prepareData() }
         
+        subscribeToChangePremium()
     }
     
     private func configurePages() {
         configureOrderedViewControllers()
         
         pageDelegate?.citationPageViewController(self, numberOfPages: orderedViewControllers.count)
+        
+        if lastIndex != 0 {
+            let vController = orderedViewControllers[lastIndex]
+            setViewControllers([vController], direction: .forward, animated: true, completion: nil)
+            return
+        }
         
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
@@ -96,6 +101,17 @@ class CitationPageViewController: UIPageViewController {
         orderedViewControllers.append(vc)
     }
     
+    private func subscribeToChangePremium() {
+        
+        DataSource.shared.changePremium.subscribe(onNext: {[weak self] (isPremium) in
+
+            self?.isPremium = true
+            self?.configurePages()
+            if let ss = self {
+                ss.pageDelegate?.citationPageViewController(ss, currentPage: ss.lastIndex)
+            }
+        }).disposed(by: disposeBag)
+    }
 }
 
 extension CitationPageViewController: UIPageViewControllerDelegate {
@@ -105,6 +121,7 @@ extension CitationPageViewController: UIPageViewControllerDelegate {
         if let firstViewController = viewControllers?.first,
             let index = orderedViewControllers.firstIndex(of: firstViewController) {
             pageDelegate?.citationPageViewController(self, currentPage: index)
+            lastIndex = index
         }
     }
     

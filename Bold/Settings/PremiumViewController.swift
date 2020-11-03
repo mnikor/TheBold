@@ -26,8 +26,9 @@ class PremiumViewController: UIViewController {
     @IBOutlet weak var saveLabel:           UILabel!
     @IBOutlet weak var devidedPriceLabel:   UILabel!
     
-    @IBOutlet weak var congratsView: UIView!
     @IBOutlet weak var crossButton: UIButton!
+    
+    private var congratsVC: CongratsForPaymentViewController!
     
     private var premium : PremiumType!
     
@@ -107,7 +108,16 @@ class PremiumViewController: UIViewController {
         present(vc, animated: true)
     }
     
-    @IBAction func congratsDoneButton() {
+    private func showCongratsForPaymentController() {
+        congratsVC = StoryboardScene.Settings.congratsForPaymentViewController.instantiate()
+        congratsVC.doneCallBack = {[weak self] in
+            self?.congratsDone()
+        }
+        congratsVC.view.fixInView(self.view)
+//        present(vc, animated: true, completion: nil)
+    }
+    
+    private func congratsDone() {
         if let navController = navigationController {
             navController.popViewController(animated: true)
         } else {
@@ -197,7 +207,7 @@ class PremiumViewController: UIViewController {
             
             ss.loader.stop()
             ss.view.isUserInteractionEnabled = true
-            ss.congratsView.isHidden = false
+            ss.showCongratsForPaymentController()
         }
     }
     

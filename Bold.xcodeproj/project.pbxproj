@@ -332,6 +332,8 @@
 		F1A79DCE22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A79DCC22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.xib */; };
 		F1A79DD022D8A9560018A8EF /* ListenOrReadMaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A79DCF22D8A9560018A8EF /* ListenOrReadMaterialView.swift */; };
 		F1A79DD622DCAFA80018A8EF /* OverTabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A79DD522DCAFA80018A8EF /* OverTabbarView.swift */; };
+		F1B07D4F254F7A5A001F35E1 /* CongratsForPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B07D4E254F7A5A001F35E1 /* CongratsForPaymentViewController.swift */; };
+		F1B10EFE254CC512001C38E8 /* CountSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B10EFD254CC512001C38E8 /* CountSessionService.swift */; };
 		F1B2B1CA22FB697100C327B0 /* DateCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B2B1C922FB697100C327B0 /* DateCalendarCell.swift */; };
 		F1B2B1CC22FB698E00C327B0 /* HeaderCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B2B1CB22FB698E00C327B0 /* HeaderCalendarView.swift */; };
 		F1B2B1CE22FB723000C327B0 /* DateCalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1B2B1CD22FB723000C327B0 /* DateCalendarCell.xib */; };
@@ -804,6 +806,8 @@
 		F1A79DCC22D8A8CB0018A8EF /* ListenOrReadMaterialCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListenOrReadMaterialCollectionViewCell.xib; sourceTree = "<group>"; };
 		F1A79DCF22D8A9560018A8EF /* ListenOrReadMaterialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenOrReadMaterialView.swift; sourceTree = "<group>"; };
 		F1A79DD522DCAFA80018A8EF /* OverTabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverTabbarView.swift; sourceTree = "<group>"; };
+		F1B07D4E254F7A5A001F35E1 /* CongratsForPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsForPaymentViewController.swift; sourceTree = "<group>"; };
+		F1B10EFD254CC512001C38E8 /* CountSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountSessionService.swift; sourceTree = "<group>"; };
 		F1B2B1C922FB697100C327B0 /* DateCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalendarCell.swift; sourceTree = "<group>"; };
 		F1B2B1CB22FB698E00C327B0 /* HeaderCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCalendarView.swift; sourceTree = "<group>"; };
 		F1B2B1CD22FB723000C327B0 /* DateCalendarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateCalendarCell.xib; sourceTree = "<group>"; };
@@ -971,6 +975,7 @@
 				F1E698C12317DF9100438E3E /* PremiumViewController.swift */,
 				4BB9CB9324B4BF8B00686CE6 /* LockedByPointsViewController.swift */,
 				4B5208C824BCB35000ED7DA6 /* ThanksForPaymentViewController.swift */,
+				F1B07D4E254F7A5A001F35E1 /* CongratsForPaymentViewController.swift */,
 				F1E698C42317DFC700438E3E /* TermsPrivacyViewController.swift */,
 				3EFCA3BB2306D46000129DB4 /* Views */,
 				3EFCA3B82306D01C00129DB4 /* Models */,
@@ -1382,6 +1387,7 @@
 			isa = PBXGroup;
 			children = (
 				F141668922BD00F20020BF0F /* VideoService.swift */,
+				F1B10EFD254CC512001C38E8 /* CountSessionService.swift */,
 				F19114062407D1AC00049BB8 /* InfoService.swift */,
 				F141668B22BD1F590020BF0F /* AudioService.swift */,
 				F1EBC7B122CF70A000BAA82D /* AudioPlayer.swift */,
@@ -2539,6 +2545,7 @@
 				C561C41723447B5F0073ABAC /* ServerErrorFactory.swift in Sources */,
 				F16F21D622F304A4004DC5F3 /* StakeViewController.swift in Sources */,
 				F1EA1CAB22E0833400BB328F /* StakeHeaderView.swift in Sources */,
+				F1B07D4F254F7A5A001F35E1 /* CongratsForPaymentViewController.swift in Sources */,
 				C5DCDED123752F640018DEA4 /* LoaderView.swift in Sources */,
 				C561C3F62341FB900073ABAC /* CustomPresentViewController.swift in Sources */,
 				C561C3EA2341F79F0073ABAC /* AnimationTransitionView.swift in Sources */,
@@ -2640,6 +2647,7 @@
 				F107538122EF496F0078C71C /* ShareButtonTableViewCell.swift in Sources */,
 				F1868850229E9D970029A663 /* Assets-Constants.swift in Sources */,
 				C5DCDEBD237293540018DEA4 /* DescriptionViewModel.swift in Sources */,
+				F1B10EFE254CC512001C38E8 /* CountSessionService.swift in Sources */,
 				F1F44A662368711700F977D1 /* ServerError.swift in Sources */,
 				F1EBC7BB22D38E8100BAA82D /* ThinkListViewController.swift in Sources */,
 				F19A98B422D7573000A0492E /* MissedYouOneButtonAlertView.swift in Sources */,
@@ -2995,7 +3003,7 @@
 				CODE_SIGN_ENTITLEMENTS = Bold/Bold.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 37HBR3VGFU;
 				INFOPLIST_FILE = Bold/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3020,7 +3028,7 @@
 				CODE_SIGN_ENTITLEMENTS = Bold/Bold.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 37HBR3VGFU;
 				INFOPLIST_FILE = Bold/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

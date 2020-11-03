@@ -113,7 +113,6 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
     }
     
     func play() {
-        increaseBoldnessCounter()
         state = .playing
         slider.value = 0
         service.input(.play(trackIndex: nil))
@@ -359,17 +358,14 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
         service.input(.seek(to: time))
     }
     
-    private func increaseBoldnessCounter() {
-        SettingsService.shared.boldness += 1
-    }
-    
 }
 
 
 extension PlayerViewController: AudioServiceDelegate {
     
     func playerStoped(with totalDuration: TimeInterval) {
-        selectedContent?.playerStoped(with: totalDuration)
+        let countService = CountSessionService(content: selectedContent!)
+        countService.input(.forAudio(totalDuration: totalDuration))
     }
     
     func playerPaused() {

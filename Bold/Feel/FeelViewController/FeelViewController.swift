@@ -42,6 +42,7 @@ class FeelViewController: UIViewController, SideMenuItemContent, ViewProtocol {
         prepareDataSource()
         
         hideProgressViewAndTitleInHighNavigationBar()
+        presenter.input(.subscribeToUpdate)
     }
     
     private func hideProgressViewAndTitleInHighNavigationBar() {
@@ -60,7 +61,7 @@ class FeelViewController: UIViewController, SideMenuItemContent, ViewProtocol {
         tableView.registerNib(NavigationTitleAndProgressTableViewCell.self)
     }
     
-    private func prepareDataSource() {
+    func prepareDataSource() {
         loader.start(in: self.view)
         presenter.input(.prepareDataSource(types: contentTypes, completion: { [weak self] items in
             self?.loader.stop()

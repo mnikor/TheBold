@@ -33,6 +33,8 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
     var presenter: Presenter!
     var configurator: Configurator! = HomeConfigurator()
     
+    var firstStart: Bool = true
+    
     private var actionItems: [ActivityViewModel] = []
     
     override func viewDidLoad() {
@@ -146,6 +148,10 @@ class HomeViewController: UIViewController, SideMenuItemContent, HomeViewInputPr
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         headerHomeView.setBoldness(boldness: SettingsService.shared.boldness)
+        if firstStart == true {
+            firstStart = false
+            LevelOfMasteryService.shared.firstAnim()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

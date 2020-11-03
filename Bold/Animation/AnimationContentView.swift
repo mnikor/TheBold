@@ -75,8 +75,6 @@ class AnimationContentView {
         
         DispatchQueue.global(qos: .background).async {
             
-        
-        
         NetworkService.shared.loadAnimations { (result) in
             switch result {
             case .failure(let error):
@@ -113,9 +111,11 @@ class AnimationContentView {
                             //print("Load File: \n\(file?.url) \n\(file?.path)")
     //                        animate.filePath = file?.path
                             DispatchQueue.main.async {
-                                animation.animate?.path = file?.path.lastPathComponent
-                            animation.animate?.isDownloaded = true
+                                if let path = file?.url.absoluteString, let animT = DataSource.shared.searchFile(forURL: path) {
+                                    animT.path = file?.path.lastPathComponent
+                                    animT.isDownloaded = true
                             DataSource.shared.saveBackgroundContext()
+                                }
                             }
     //                        dispatchGroup.leave()
                         }
@@ -127,9 +127,11 @@ class AnimationContentView {
                             //print("Load File: \n\(file?.url) \n\(file?.path)")
 //                            animate.imagePath = file?.path
                             DispatchQueue.main.async {
-                                animation.image?.path = file?.path.lastPathComponent
-                                animation.image?.isDownloaded = true
+                                if let path = file?.url.absoluteString, let animT = DataSource.shared.searchFile(forURL: path) {
+                                animT.path = file?.path.lastPathComponent
+                                animT.isDownloaded = true
                                 DataSource.shared.saveBackgroundContext()
+                                }
                             }
 //                            dispatchGroup.leave()
                         }

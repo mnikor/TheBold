@@ -55,6 +55,18 @@ class ActivityContent: ActivityBase {
         super.init(id: id, position: position, type: type)
     }
     
+    func calculateStatus() {
+        if pointOfUnlock != 0 && contentStatus == .unlocked {
+            if LevelOfMasteryService.shared.currentPoints() >= pointOfUnlock {
+                contentStatus = .unlockedPoints
+            }else {
+                contentStatus = .lockedPoints
+            }
+        }else if DataSource.shared.readUser().premiumOn == true {
+            contentStatus = .unlockedPremium
+        }
+    }
+    
     static func mapJSON(_ json: JSON) -> ActivityContent? {
         let id = json[ResponseKeys.id].intValue
         let title = json[ResponseKeys.title].stringValue
@@ -220,39 +232,6 @@ class ActivityContent: ActivityBase {
     }
     
     func likeContent(_ isLiked: Bool) {
-    }
-    
-    func playerStoped(with totalDuration: TimeInterval) {
-        let type = self.type
-        let durationInMinutes = Int(totalDuration / 60)
-//        boldnessChanged(duration: durationInMinutes)
-        switch type {
-        case .meditation:
-            if durationInMinutes >= 7 {
-                updatePoints()
-            }
-        case .hypnosis:
-            if durationInMinutes >= 20 {
-                updatePoints()
-            }
-        case .peptalk:
-            if totalDuration >= 3 {
-                updatePoints()
-            }
-        case .story:
-            // TODO: - story duration
-            break
-        case .lesson, .quote:
-            break
-        }
-    }
-    
-    private func boldnessChanged(duration: Int) {
-        SettingsService.shared.boldness += duration
-    }
-    
-    private func updatePoints() {
-        LevelOfMasteryService.shared.input(.addPoints(points: 10))
     }
 
 }

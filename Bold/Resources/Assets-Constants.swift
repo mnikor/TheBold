@@ -319,6 +319,7 @@ internal enum Asset {
   internal static let splashBackground = ImageAsset(name: "splashBackground")
   internal static let stakePayment = ImageAsset(name: "stake_payment")
   internal static let starBlue = ImageAsset(name: "star_blue")
+  internal static let stars = ImageAsset(name: "stars")
   internal static let successKey = ImageAsset(name: "successKey")
   internal static let triangleIcon = ImageAsset(name: "triangleIcon")
   internal static let ulist = ImageAsset(name: "ulist")

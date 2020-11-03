@@ -205,6 +205,11 @@ class LevelOfMasteryService: NSObject, LevelOfMasteryServiceProtocol {
         return DataSource.shared.listLevelOfMasteryGoal()
     }
     
+    func firstAnim() {
+        let levelInfoTest = LevelInfoObserv(level: getCurrentLevel(), currentPoint: currentPoints(), stepChangePoint: -currentPoints())
+        changePointsVariable.accept(levelInfoTest)
+    }
+    
     private func calculateProgress() {
         let levelInfoTest = LevelInfoObserv(level: getCurrentLevel(), currentPoint: currentPoints(), stepChangePoint: stepChangePoint)
         changePointsVariable.accept(levelInfoTest)

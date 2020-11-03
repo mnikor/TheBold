@@ -114,7 +114,6 @@ class AudioService: NSObject, AudioServiceProtocol {
         nowPlayingInfo[MPMediaItemPropertyTitle] = tracks[currentTrackIndex].trackName
         nowPlayingInfo[MPMediaItemPropertyArtist] = tracks[currentTrackIndex].artistName
         
-        
         nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player.currentTime.seconds
         nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = (player.duration?.seconds ?? 0)
         nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = player.rate
@@ -155,7 +154,9 @@ class AudioService: NSObject, AudioServiceProtocol {
     }
     
     private func stop() {
-        totalDuration += Date().timeIntervalSince(startDate)
+        if player.player.timeControlStatus == .playing {
+            totalDuration += Date().timeIntervalSince(startDate)
+        }
         player.stop()
         delegate?.playerStoped(with: totalDuration)
     }

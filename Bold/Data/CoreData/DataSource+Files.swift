@@ -114,4 +114,19 @@ extension DataSource: FileFunctionality {
         return results.first
     }
     
+    func searchFile(forURL url: String) -> File? {
+        
+        var results = [File]()
+        let fetchRequest = NSFetchRequest<File>(entityName: "File")
+        fetchRequest.predicate = NSPredicate(format: "url == %@", url)
+        
+        do {
+            results = try DataSource.shared.backgroundContext.fetch(fetchRequest)
+        } catch {
+            print(error)
+        }
+        
+        return results.first
+    }
+    
 }

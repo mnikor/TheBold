@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -68,6 +66,7 @@
                     </subviews>
                 </stackView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="XhP-HH-TQJ"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="pu8-aN-AAn" firstAttribute="top" secondItem="q5Y-qe-mqb" secondAttribute="bottom" constant="14" id="1Z3-N3-Zih"/>
@@ -83,7 +82,6 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="XhP-HH-TQJ"/>
             <connections>
                 <outlet property="iconImageView" destination="q5Y-qe-mqb" id="lz0-mG-v6E"/>
                 <outlet property="okButton" destination="sJu-m0-GD3" id="5NU-cF-zQX"/>
@@ -93,6 +91,11 @@
             <point key="canvasLocation" x="54" y="117"/>
         </view>
     </objects>
+    <designables>
+        <designable name="sJu-m0-GD3">
+            <size key="intrinsicContentSize" width="89" height="21"/>
+        </designable>
+    </designables>
     <resources>
         <image name="ShapeWhiteButton" width="28" height="15"/>
         <image name="clapIcon" width="63" height="63"/>
