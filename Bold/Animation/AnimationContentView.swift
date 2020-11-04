@@ -67,6 +67,11 @@ class AnimationContentView {
         return file.first
     }
     
+    class func readFile(name: String) -> URL? {
+        let file = FileLoader.findFile(name: name)
+        return file.first
+    }
+    
     class func loadAllAnimations() {
 //        return
         
@@ -100,6 +105,18 @@ class AnimationContentView {
                         animation = DataSource.shared.createNewFiles(forAnimation: animate)
                         isLoad = (true, true)
                     }else if animation.animate?.updatedAt != DateFormatter.formatting(type: .contentUpdateAt, dateString: animate.updatedAt) {
+                        //search file for key and remove
+                        DispatchQueue.main.async {
+                            let filesDB = DataSource.shared.searchFiles(forKey: animate.key)
+                            for fileDB in filesDB {
+                                if let path = fileDB.path, let filePath = AnimationContentView.readFile(name: path) {
+                                    try? FileManager.default.removeItem(at: filePath)
+                                }
+                                DataSource.shared.backgroundContext.delete(fileDB)
+                            }
+                            DataSource.shared.saveBackgroundContext()
+                        }
+                        animation = DataSource.shared.createNewFiles(forAnimation: animate)
                         isLoad = (true, true)
                     }else if animation.animate?.isDownloaded == false  || animation.image?.isDownloaded == false {
                         isLoad.animate = animation.animate?.isDownloaded == false
@@ -110,13 +127,13 @@ class AnimationContentView {
                         NetworkService.shared.loadFile(with: animate.fileURL, name: animate.key) { (file) in
                             //print("Load File: \n\(file?.url) \n\(file?.path)")
     //                        animate.filePath = file?.path
-                            DispatchQueue.main.async {
+//                            DispatchQueue.main.async {
                                 if let path = file?.url.absoluteString, let animT = DataSource.shared.searchFile(forURL: path) {
                                     animT.path = file?.path.lastPathComponent
                                     animT.isDownloaded = true
                             DataSource.shared.saveBackgroundContext()
                                 }
-                            }
+//                            }
     //                        dispatchGroup.leave()
                         }
                     }
@@ -126,13 +143,13 @@ class AnimationContentView {
                         NetworkService.shared.loadFile(with: imageURL, name: animate.key) { (file) in
                             //print("Load File: \n\(file?.url) \n\(file?.path)")
 //                            animate.imagePath = file?.path
-                            DispatchQueue.main.async {
+//                            DispatchQueue.main.async {
                                 if let path = file?.url.absoluteString, let animT = DataSource.shared.searchFile(forURL: path) {
                                 animT.path = file?.path.lastPathComponent
                                 animT.isDownloaded = true
                                 DataSource.shared.saveBackgroundContext()
                                 }
-                            }
+//                            }
 //                            dispatchGroup.leave()
                         }
                     }

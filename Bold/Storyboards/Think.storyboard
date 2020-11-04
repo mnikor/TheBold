@@ -176,7 +176,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="DMp-Rb-NEq">
                                 <rect key="frame" x="36" y="130" width="319" height="37"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leonardo" translatesAutoresizingMaskIntoConstraints="NO" id="v5F-K4-amP" customClass="CustomImageView" customModule="Bold" customModuleProvider="target">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leonardo" translatesAutoresizingMaskIntoConstraints="NO" id="v5F-K4-amP" customClass="CustomImageView" customModule="Bold" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="Brb-Q1-f9R"/>

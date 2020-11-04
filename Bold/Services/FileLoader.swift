@@ -100,7 +100,7 @@ extension FileLoader: URLSessionDownloadDelegate {
         let boldDirectory = downloadsPath.appendingPathComponent("Bold")
         let ext = String(url.lastPathComponent.split(separator: ".").last ?? "")
         let fileDirectory = ext.isEmpty ? boldDirectory : boldDirectory.appendingPathComponent(ext.uppercased())
-        var file = url.lastPathComponent
+        let file = url.lastPathComponent
 //        if let nameFile = nameFile {
 //            file = nameFile + "." + url.pathExtension
 //        }
@@ -110,14 +110,14 @@ extension FileLoader: URLSessionDownloadDelegate {
         
         do {
             try FileManager.default.copyItem(at: location, to: destinationURL)
-//            DispatchQueue.main.async {[weak self] in
-                self.downloadCompletion((path: destinationURL, url: url))
-//            }
+            DispatchQueue.main.async {[weak self] in
+                self?.downloadCompletion((path: destinationURL, url: url))
+            }
         } catch let error {
             print(error.localizedDescription)
-//            DispatchQueue.main.async {[weak self] in
-                self.downloadCompletion(nil)
-//            }
+            DispatchQueue.main.async {[weak self] in
+                self?.downloadCompletion(nil)
+            }
         }
     }
     
