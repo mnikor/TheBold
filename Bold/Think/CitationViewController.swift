@@ -76,11 +76,11 @@ class CitationViewController: UIViewController, AlertDisplayable {
         
         if let animationName = quote?.animationKey {
             
-            let fileName = DataSource.shared.searchFile(forKey: animationName, type: .anim_json)?.path
-            let fileImage = DataSource.shared.searchFile(forKey: animationName, type: .anim_image)?.path
+            let fileName = DataSource.shared.searchFile(forKey: animationName, type: .anim_json)?.name
+            let fileImage = DataSource.shared.searchFile(forKey: animationName, type: .anim_image)?.name
             
             if fileName == nil && fileImage != nil {
-                if let filePath = readFiles(name: fileImage!).first {
+                if let filePath = FileLoader.readFile(name: fileImage!) {
                     isImageAnim = true
                     animationImageView.isHidden = false
                     animationImageView.image = UIImage(contentsOfFile: filePath.path)
@@ -89,18 +89,13 @@ class CitationViewController: UIViewController, AlertDisplayable {
             
 //            imagePath =  readFiles(name: animationName + "_image").first?.path
 //            let fileName = DataSource.shared.searchFile(forKey: animationName, type: .anim_image)?.path
-            imagePath = readFiles(name: fileImage ?? "1234567890").first?.path
+            imagePath = FileLoader.readFile(name: fileImage ?? "1234567890")?.path
             citationTextView.isHidden = true
             DispatchQueue.main.async {
                 self.animationContent = AnimationContentView.setupAnimation(view: self.contentAnimationView, name: animationName, delay: 3)
                 self.animationContent?.play()
             }
         }
-    }
-    
-    private func readFiles(name: String) -> [URL] {
-        let files = FileLoader.findFile(name: name)
-        return files
     }
     
     func updateTextFont() {

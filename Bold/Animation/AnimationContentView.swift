@@ -20,8 +20,8 @@ class AnimationContentView {
         let animationContent = AnimationContentView()
 //        guard let filePath = animationContent.readFile(name: name + "_animation") else { return animationContent}
         //let animation = Animation.named("Execution")
-        guard let fileName = DataSource.shared.searchFile(forKey: name, type: .anim_json)?.path else { return animationContent}
-        guard let filePath = animationContent.readFile(name: fileName) else { return animationContent}
+        guard let fileName = DataSource.shared.searchFile(forKey: name, type: .anim_json)?.name else { return animationContent}
+        guard let filePath = FileLoader.readFile(name: fileName) else { return animationContent}
         let animation = Animation.filepath(filePath.path)
         animationContent.animationView.animation = animation
         animationContent.animationView.contentMode = .scaleToFill
@@ -61,113 +61,6 @@ class AnimationContentView {
             self?.animationView.stop()
         }
     }
-    
-    private func readFile(name: String) -> URL? {
-        let file = FileLoader.findFile(name: name)
-        return file.first
-    }
-    
-    class func readFile(name: String) -> URL? {
-        let file = FileLoader.findFile(name: name)
-        return file.first
-    }
-    
-    class func loadAllAnimations() {
-//        return
-        
-//        let dispatchGroup = DispatchGroup()
-//        var err : Error?
-        
-        DispatchQueue.global(qos: .background).async {
-            
-        NetworkService.shared.loadAnimations { (result) in
-            switch result {
-            case .failure(let error):
-//                err = error
-                break
-            case .success(let animations):
-                
-                let saveFiles = DataSource.shared.searchAnimationFiles()
-                print("\(saveFiles)")
-                
-                for animate in animations {
-//                    dispatchGroup.enter()
-                    
-                    let findFiles = saveFiles.filter{ $0.key == animate.key }
-                    
-                    var animation : (animate: File?, image: File?) = (nil, nil)
-                    var isLoad : (animate: Bool, image: Bool) = (false, false)
-                    
-                    animation.animate = findFiles.filter { $0.type != FileType.anim_image.rawValue }.first
-                    animation.image = findFiles.filter { $0.type == FileType.anim_image.rawValue }.first
-                    
-                    if animation.animate == nil {
-                        animation = DataSource.shared.createNewFiles(forAnimation: animate)
-                        isLoad = (true, true)
-                    }else if animation.animate?.updatedAt != DateFormatter.formatting(type: .contentUpdateAt, dateString: animate.updatedAt) {
-                        //search file for key and remove
-                        DispatchQueue.main.async {
-                            let filesDB = DataSource.shared.searchFiles(forKey: animate.key)
-                            for fileDB in filesDB {
-                                if let path = fileDB.path, let filePath = AnimationContentView.readFile(name: path) {
-                                    try? FileManager.default.removeItem(at: filePath)
-                                }
-                                DataSource.shared.backgroundContext.delete(fileDB)
-                            }
-                            DataSource.shared.saveBackgroundContext()
-                        }
-                        animation = DataSource.shared.createNewFiles(forAnimation: animate)
-                        isLoad = (true, true)
-                    }else if animation.animate?.isDownloaded == false  || animation.image?.isDownloaded == false {
-                        isLoad.animate = animation.animate?.isDownloaded == false
-                        isLoad.image = animation.image?.isDownloaded == false
-                        }
-                    
-                    if isLoad.animate {
-                        NetworkService.shared.loadFile(with: animate.fileURL, name: animate.key) { (file) in
-                            //print("Load File: \n\(file?.url) \n\(file?.path)")
-    //                        animate.filePath = file?.path
-//                            DispatchQueue.main.async {
-                                if let path = file?.url.absoluteString, let animT = DataSource.shared.searchFile(forURL: path) {
-                                    animT.path = file?.path.lastPathComponent
-                                    animT.isDownloaded = true
-                            DataSource.shared.saveBackgroundContext()
-                                }
-//                            }
-    //                        dispatchGroup.leave()
-                        }
-                    }
-                    
-                    if let imageURL = animate.imageURL, isLoad.image == true {
-//                        dispatchGroup.enter()
-                        NetworkService.shared.loadFile(with: imageURL, name: animate.key) { (file) in
-                            //print("Load File: \n\(file?.url) \n\(file?.path)")
-//                            animate.imagePath = file?.path
-//                            DispatchQueue.main.async {
-                                if let path = file?.url.absoluteString, let animT = DataSource.shared.searchFile(forURL: path) {
-                                animT.path = file?.path.lastPathComponent
-                                animT.isDownloaded = true
-                                DataSource.shared.saveBackgroundContext()
-                                }
-//                            }
-//                            dispatchGroup.leave()
-                        }
-                    }
-                }
-//                print("\(animations)")
-            }
-        }
-        }
-//        dispatchGroup.notify(queue: .main) {
-//            if let err = err {
-//                print("Error = \(err)")
-//                return
-//            }
-//
-//            print("All work fine")
-//        }
-    }
-    
 }
 
 

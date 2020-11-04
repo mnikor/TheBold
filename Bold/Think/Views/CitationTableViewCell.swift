@@ -81,8 +81,8 @@ class CitationTableViewCell: BaseTableViewCell {
         if let animationName = content.animationKey {
             citationTextLabel.isHidden = true
             
-            let fileName = DataSource.shared.searchFile(forKey: animationName, type: .anim_json)?.path
-            let fileImage = DataSource.shared.searchFile(forKey: animationName, type: .anim_image)?.path
+            let fileName = DataSource.shared.searchFile(forKey: animationName, type: .anim_json)?.name
+            let fileImage = DataSource.shared.searchFile(forKey: animationName, type: .anim_image)?.name
             
             if fileName == nil && fileImage != nil {
                 if let filePath = readFile(name: fileImage!) {

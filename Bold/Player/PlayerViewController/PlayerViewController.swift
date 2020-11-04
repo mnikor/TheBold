@@ -185,7 +185,9 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
         configureDowloadButton()
         
 //        if let videoKey = selectedContent?.animationKey, let videoImagePath = readFiles(name: videoKey + "_image").first {
-        if let videoKey = selectedContent?.animationKey, let fileName = DataSource.shared.searchFile(forKey: videoKey, type: .anim_image)?.path, let videoImagePath = readFiles(name: fileName).first {
+        if let videoKey = selectedContent?.animationKey,
+           let fileName = DataSource.shared.searchFile(forKey: videoKey, type: .anim_image)?.name,
+           let videoImagePath = FileLoader.readFile(name: fileName) {
             imageWasLoaded = true
             titleImageView.image = UIImage(contentsOfFile: videoImagePath.path)
             return
@@ -242,16 +244,11 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
         
         guard let videoKey = selectedContent?.animationKey else { return }
 //        guard let videoFilePath = readFiles(name: videoKey + "_animation").first else { return }
-        guard let fileName = DataSource.shared.searchFile(forKey: videoKey, type: .anim_video)?.path else { return }
-        guard let videoFilePath = readFiles(name: fileName).first else { return }
+        guard let fileName = DataSource.shared.searchFile(forKey: videoKey, type: .anim_video)?.name else { return }
+        guard let videoFilePath = FileLoader.readFile(name: fileName) else { return }
         
         videoView.configure(url: videoFilePath, willLoopVideo: true)
         videoView.play()
-    }
-    
-    private func readFiles(name: String) -> [URL] {
-        let files = FileLoader.findFile(name: name)
-        return files
     }
     
     func setImage(imagePath: String?) {

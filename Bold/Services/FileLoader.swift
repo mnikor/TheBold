@@ -15,7 +15,6 @@ class FileLoader: NSObject {
     
     lazy var backgroundSession : URLSession = {
         let config = URLSessionConfiguration.background(withIdentifier: "com.bold.backgroundSession")
-//        config.isDiscretionary = true
         config.sessionSendsLaunchEvents = true
         config.allowsCellularAccess = true
         let urlSession = URLSession(configuration: config, delegate: self, delegateQueue: nil)
@@ -30,11 +29,84 @@ class FileLoader: NSObject {
         guard let url = URL(string: url) else { return }
         self.nameFile = nameFile
 //        let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
-        
-//        let config = URLSessionConfiguration.background(withIdentifier: "com.bold.backgroundSession")
-//        let backgroundSession = URLSession(configuration: config, delegate: self, delegateQueue: OperationQueue())
         let downloadTask = backgroundSession.downloadTask(with: url)
         downloadTask.resume()
+    }
+    
+    //MARK:- Loader
+    
+    class func loadAllAnimations() {
+        
+        DispatchQueue.global(qos: .background).async {
+            
+            NetworkService.shared.loadAnimations { (result) in
+                switch result {
+                case .failure(_):
+                    break
+                case .success(let animations):
+                    
+                    let saveFiles = DataSource.shared.searchAnimationFiles()
+                    
+                    for animate in animations {
+                        
+                        let findFiles = saveFiles.filter{ $0.key == animate.key }
+                        
+                        var animation : (animate: File?, image: File?) = (nil, nil)
+                        var isLoad : (animate: Bool, image: Bool) = (false, false)
+                        
+                        animation.animate = findFiles.filter { $0.type != FileType.anim_image.rawValue }.first
+                        animation.image = findFiles.filter { $0.type == FileType.anim_image.rawValue }.first
+                        
+                        if animation.animate == nil {
+                            
+                            animation = DataSource.shared.createNewFiles(forAnimation: animate)
+                            isLoad = (true, true)
+                            
+                        }else if animation.animate?.updatedAt != DateFormatter.formatting(type: .contentUpdateAt, dateString: animate.updatedAt) {
+                            
+                            //search file for key and remove
+                            let filesDB = DataSource.shared.searchFiles(forKey: animate.key)
+                            for fileDB in filesDB {
+                                if let path = fileDB.path { //, let filePath = AnimationContentView.readFile(name: path) {
+                                    try? FileManager.default.removeItem(atPath: path) //(at: filePath)
+                                }
+                                DataSource.shared.backgroundContext.delete(fileDB)
+                            }
+                            DataSource.shared.saveBackgroundContext()
+                            
+                            animation = DataSource.shared.createNewFiles(forAnimation: animate)
+                            isLoad = (true, true)
+                            
+                        }else if animation.animate?.isDownloaded == false  || animation.image?.isDownloaded == false {
+                            
+                            isLoad.animate = animation.animate?.isDownloaded == false
+                            isLoad.image = animation.image?.isDownloaded == false
+                        }
+                        
+                        if isLoad.animate {
+                            FileLoader.downloadFile(with: animate.fileURL, animateKey: animate.key)
+                        }
+                        
+                        if let imageURL = animate.imageURL, isLoad.image == true {
+                            FileLoader.downloadFile(with: imageURL, animateKey: animate.key)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    class func downloadFile(with fileURL: String?, animateKey: String) {
+        NetworkService.shared.loadFile(with: fileURL, name: animateKey) { (file) in
+            //                            DispatchQueue.main.async {
+            if let path = file?.url.absoluteString, let animT = DataSource.shared.searchFile(forURL: path) {
+                animT.name = file?.path.lastPathComponent
+                animT.path = file?.path.path
+                animT.isDownloaded = true
+                DataSource.shared.saveBackgroundContext()
+            }
+            //                            }
+        }
     }
     
     class func findFile(name: String) -> [URL] {
@@ -75,6 +147,11 @@ class FileLoader: NSObject {
             print(files)
         }
         return files
+    }
+    
+    class func readFile(name: String) -> URL? {
+        let file = FileLoader.findFile(name: name)
+        return file.first
     }
 }
 

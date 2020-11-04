@@ -33,12 +33,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationService.shared.delegate = self
         NotificationService.shared.input(.resetBadgeNumber)
         
-        AnimationContentView.loadAllAnimations()
+        FileLoader.loadAllAnimations()
         NotificationService.shared.input(.createShortPhrase)
         
-//        let user = DataSource.shared.readUser()
-//        user.premiumOn = true
-//        DataSource.shared.saveBackgroundContext()
+        let user = DataSource.shared.readUser()
+        user.premiumOn = true
+        DataSource.shared.saveBackgroundContext()
 
         return true
     }
