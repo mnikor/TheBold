@@ -56,13 +56,13 @@ class ActivityContent: ActivityBase {
     }
     
     func calculateStatus() {
-        if pointOfUnlock != 0 && contentStatus == .unlocked {
+        if pointOfUnlock != 0 && contentStatus != .locked {
             if LevelOfMasteryService.shared.currentPoints() >= pointOfUnlock {
                 contentStatus = .unlockedPoints
             }else {
                 contentStatus = .lockedPoints
             }
-        }else if DataSource.shared.readUser().premiumOn == true {
+        }else if DataSource.shared.isPremiumUser() == true {
             contentStatus = .unlockedPremium
         }
     }
@@ -84,7 +84,7 @@ class ActivityContent: ActivityBase {
             }else {
                 contentStatus = .lockedPoints
             }
-        }else if DataSource.shared.readUser().premiumOn == true {
+        }else if DataSource.shared.isPremiumUser() == true {
             contentStatus = .unlockedPremium
         }
         

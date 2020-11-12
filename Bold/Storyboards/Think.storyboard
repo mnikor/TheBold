@@ -184,7 +184,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.76999998092651367" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leonardo Da Vinci" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jC-jK-XcR">
-                                        <rect key="frame" x="48" y="9.5" width="271" height="18.5"/>
+                                        <rect key="frame" x="48" y="10" width="271" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat Medium" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -274,8 +274,8 @@
                                     <segue destination="HBN-7q-eKc" kind="embed" id="x22-3e-wCH"/>
                                 </connections>
                             </containerView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="PlN-AQ-0Vj" customClass="CustomDotsPageControl" customModule="Bold" customModuleProvider="target">
-                                <rect key="frame" x="98" y="5" width="179" height="27.5"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="PlN-AQ-0Vj" customClass="CustomDotsPageControl" customModule="Bold" customModuleProvider="target">
+                                <rect key="frame" x="117" y="5" width="141" height="27.5"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXa-21-tpJ">
                                 <rect key="frame" x="321" y="-6" width="44" height="44"/>

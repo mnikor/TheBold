@@ -35,22 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FileLoader.loadAllAnimations()
         NotificationService.shared.input(.createShortPhrase)
-        
-        let user = DataSource.shared.readUser()
-        user.premiumOn = true
-        DataSource.shared.saveBackgroundContext()
 
         return true
-    }
-    
-    private func clearUserDefaultsSubscriptions() {
-        UserDefaults.standard.set(false, forKey: IAPProducts.MonthlySubscription)
-        UserDefaults.standard.set(false, forKey: IAPProducts.YearlySubscription)
-        
-        let user = DataSource.shared.readUser()
-        user.premiumOn = false
-        
-        DataSource.shared.saveBackgroundContext()
     }
     
     func clearCoreData() {

@@ -243,7 +243,8 @@ extension IAPHelper: SKPaymentTransactionObserver {
         
         if !isPremium {
             if productId == IAPProducts.MonthlySubscription || productId == IAPProducts.YearlySubscription {
-                premiumUser()
+                print("========productId====\(productId)")
+                restoreUser()
                 purchasedProductIds.insert(productId)
                 UserDefaults.standard.set(true, forKey: productId)
                 /// Show succesful alert if needed
@@ -273,6 +274,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
     private func deliverSubscriptionsPurchaseNotification(for identifier: String?) {
         guard let id = identifier else { return }
         
+        premiumUser()
         purchasedProductIds.insert(id)
         UserDefaults.standard.set(true, forKey: id)
         NotificationCenter.default.post(name: .IAPHelperSubscriptionPurchaseNotification, object: id)
@@ -287,13 +289,64 @@ extension IAPHelper: SKPaymentTransactionObserver {
     }
     
     private func premiumUser() {
-        let user = DataSource.shared.readUser()
-        user.premiumOn = true
+        
+        print("++++++PREMIUM ON")
+        IAPHelper.isSubscribeUser()
+    }
+    
+    private func restoreUser() {
+        
+        print("++++++RESTORE")
         isPremium = true
-        
-        DataSource.shared.saveBackgroundContext()
-        
+        checkSubscriptions()
         NotificationCenter.default.post(name: .IAPHelperPremiumNotification, object: nil)
     }
     
+    func checkSubscriptions() {
+        
+        DispatchQueue.global(qos: .default).async {
+            let isMonthlySubscriptionPaid = IAPProducts.shared.store.validateAutoRenewableSubscription(IAPProducts.MonthlySubscription)
+            //isProductPurchased(IAPProducts.MonthlySubscription)
+            let isYearlySubscriptionPaid = IAPProducts.shared.store.validateAutoRenewableSubscription(IAPProducts.YearlySubscription)
+            //isProductPurchased(IAPProducts.YearlySubscription)
+
+            print("\n++++++CHECK PREMIUM \nisMonthlySubscriptionPaid = \(isMonthlySubscriptionPaid) \nisYearlySubscriptionPaid = \(isYearlySubscriptionPaid)\n")
+            
+            if !isMonthlySubscriptionPaid {
+                UserDefaults.standard.set(false, forKey: IAPProducts.MonthlySubscription)
+            }
+
+            if !isYearlySubscriptionPaid {
+                UserDefaults.standard.set(false, forKey: IAPProducts.YearlySubscription)
+            }
+
+            if !isMonthlySubscriptionPaid && !isYearlySubscriptionPaid {
+                IAPHelper.clearUserDefaultsSubscriptions()
+            }else {
+                IAPHelper.isSubscribeUser()
+            }
+        }
+    }
+    
+    func checkSubscriptionWithInterval() {
+        
+        DispatchQueue.global().asyncAfter(deadline: .now() + 10) { [weak self] in
+            self?.checkSubscriptions()
+        }
+    }
+    
+    class func isSubscribeUser() {
+        let user = DataSource.shared.readUser()
+        user.premiumOn = true
+        DataSource.shared.saveBackgroundContext()
+    }
+    
+    class func clearUserDefaultsSubscriptions() {
+        UserDefaults.standard.set(false, forKey: IAPProducts.MonthlySubscription)
+        UserDefaults.standard.set(false, forKey: IAPProducts.YearlySubscription)
+        
+        let user = DataSource.shared.readUser()
+        user.premiumOn = false
+        DataSource.shared.saveBackgroundContext()
+    }
 }

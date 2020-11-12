@@ -47,7 +47,29 @@ class FileLoader: NSObject {
                     
                     let saveFiles = DataSource.shared.searchAnimationFiles()
                     
-                    for animate in animations {
+                    let filterAnimations = animations.sorted { (anim1, anim2) -> Bool in
+                        
+                        var type1: FileType = .anim_video
+                        var type2: FileType = .anim_video
+
+                        if anim1.fileURL?.contains(".json") == true {
+                            type1 = FileType.anim_json
+                        }
+                        if anim1.fileURL?.contains(".png") == true {
+                            type1 = FileType.anim_image
+                        }
+                        
+                        if anim2.fileURL?.contains(".json") == true {
+                            type2 = FileType.anim_json
+                        }
+                        if anim2.fileURL?.contains(".png") == true {
+                            type2 = FileType.anim_image
+                        }
+                        
+                        return type1.rawValue > type2.rawValue
+                    }
+                    
+                    for animate in filterAnimations {
                         
                         let findFiles = saveFiles.filter{ $0.key == animate.key }
                         

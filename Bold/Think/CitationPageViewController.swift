@@ -38,13 +38,18 @@ class CitationPageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = ColorName.typographyBlack100.color
+        
         navigationController?.setNavigationBarHidden(true, animated: true)
 
         dataSource = self
         delegate = self
         
-        if quotes.count > 0 { configurePages() }
-        else { prepareData() }
+        if quotes.count > 0 {
+            configurePages()
+        }else {
+            prepareData()
+        }
         
         subscribeToChangePremium()
     }
@@ -73,8 +78,10 @@ class CitationPageViewController: UIPageViewController {
                 break
             case .success(let content):
                 //completion?(content)
-                self.quotes = content
-                self.configurePages()
+//                DispatchQueue.main.async { [weak self] in
+                    self.quotes = content
+                    self.configurePages()
+//                }
             }
         }
     }
@@ -88,11 +95,12 @@ class CitationPageViewController: UIPageViewController {
         let number = isPremium ? quotes.count : 3
         
         for index in (0 ..< number) {
-            orderedViewControllers.append(createArrayViewController(quote: quotes[index], color: ColorGoalType(rawValue: Int16((index % 6) + 1))!))
+            if quotes.indices.contains(index) {
+                orderedViewControllers.append(createArrayViewController(quote: quotes[index], color: ColorGoalType(rawValue: Int16((index % 6) + 1))!))
+            }
         }
         
         if !user.premiumOn { appendPremiumController() }
-        
     }
     
     func appendPremiumController() {
@@ -105,11 +113,15 @@ class CitationPageViewController: UIPageViewController {
         
         DataSource.shared.changePremium.subscribe(onNext: {[weak self] (isPremium) in
 
-            self?.isPremium = true
-            self?.configurePages()
-            if let ss = self {
-                ss.pageDelegate?.citationPageViewController(ss, currentPage: ss.lastIndex)
+            guard let ss = self else {return}
+            print("++++++++++PREMIUM STATUS CitationPageViewcontroller = \(isPremium)")
+            
+            if ss.quotes.isEmpty {
+                return
             }
+            ss.isPremium = true
+            ss.configurePages()
+            ss.pageDelegate?.citationPageViewController(ss, currentPage: ss.lastIndex)
         }).disposed(by: disposeBag)
     }
 }

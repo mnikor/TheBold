@@ -202,6 +202,9 @@ class ActionsListPresenter: PresenterProtocol, ActionsListPresenterProtocol {
     private func subscribeToChangePremium() {
         
         DataSource.shared.changePremium.subscribe(onNext: {[weak self] (isPremium) in
+            
+            print("++++++++++PREMIUM STATUS ActionListPresenter = \(isPremium)")
+            
             guard let ss = self else {return}
             
             for itemHeader in ss.viewController.actions {

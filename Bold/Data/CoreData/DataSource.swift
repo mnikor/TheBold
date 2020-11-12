@@ -84,7 +84,7 @@ class DataSource {
                 if let user = update as? User {
                     let valueDict = user.changedValues()
                     if let status : Bool = valueDict["premiumOn"] as? Bool, status == true {
-                        print("ChangePremium")
+                        print("++++++++ChangePremium to ON and send subscription")
 //                        let isPremium = NSNumber(value: status)
                         changePremiumVariable.accept(status)
                     }

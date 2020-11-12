@@ -28,7 +28,7 @@ class HomeInteractor: HomeInteractorInputProtocol {
     
     required init(presenter: Presenter) {
         self.presenter = presenter
-        setupSubscriptionTimer()
+        IAPProducts.shared.store.checkSubscriptionWithInterval()
     }
     
     func input(_ inputCase: HomeInteractorInput) {
@@ -94,42 +94,6 @@ class HomeInteractor: HomeInteractorInputProtocol {
             }
             
         } else { return HomeActionsTypeCell.boldManifest }
-    }
-    
-    // MARK: - CHECK SUBSCRIPTIONS -
-
-    @objc private func checkSubscriptions() {
-        let isMonthlySubscriptionPaid = IAPProducts.shared.store.validateAutoRenewableSubscription(IAPProducts.MonthlySubscription)
-        //isProductPurchased(IAPProducts.MonthlySubscription)
-        let isYearlySubscriptionPaid = IAPProducts.shared.store.validateAutoRenewableSubscription(IAPProducts.YearlySubscription)
-        //isProductPurchased(IAPProducts.YearlySubscription)
-
-        if !isMonthlySubscriptionPaid {
-            UserDefaults.standard.set(false, forKey: IAPProducts.MonthlySubscription)
-        }
-
-        if !isYearlySubscriptionPaid {
-            UserDefaults.standard.set(false, forKey: IAPProducts.YearlySubscription)
-        }
-
-        if !isMonthlySubscriptionPaid && !isYearlySubscriptionPaid {
-            unsubscribeUser()
-            return
-        }
-
-        print("User subscribed")
-    }
-
-    private func setupSubscriptionTimer() {
-        Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(checkSubscriptions), userInfo: nil, repeats: false)
-    }
-
-    private func unsubscribeUser() {
-        print("User unsubscribed")
-        let user = DataSource.shared.readUser()
-        user.premiumOn = false
-
-        DataSource.shared.saveBackgroundContext()
     }
     
 }

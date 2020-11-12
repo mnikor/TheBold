@@ -184,6 +184,8 @@ class PlayerViewController: UIViewController, ViewProtocol, AlertDisplayable {
         configurator.configure(with: self)
         configureDowloadButton()
         
+        titleImageView.backgroundColor = ColorName.typographyBlack100.color
+        
 //        if let videoKey = selectedContent?.animationKey, let videoImagePath = readFiles(name: videoKey + "_image").first {
         if let videoKey = selectedContent?.animationKey,
            let fileName = DataSource.shared.searchFile(forKey: videoKey, type: .anim_image)?.name,

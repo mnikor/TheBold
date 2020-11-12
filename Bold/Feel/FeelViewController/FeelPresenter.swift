@@ -137,7 +137,7 @@ class FeelPresenter: PresenterProtocol, FeelPresenterProtocol {
         DataSource.shared.changePremium.subscribe(onNext: {[weak self] (isPremium) in
             guard let ss = self else {return}
             
-            print("++++++++++PREMIUM STATUS = \(isPremium)")
+            print("++++++++++PREMIUM STATUS FeelPresenter = \(isPremium)")
             
             for itemHeader in ss.viewController.items {
                 for itemCell in itemHeader.items {
