@@ -61,6 +61,10 @@ class DateAlertViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        }
+        
         titleTextLabel.text = dateType.titleText
         datePicker.date = selectDate
         datePicker.datePickerMode = dateType == .time ? .time : .date
