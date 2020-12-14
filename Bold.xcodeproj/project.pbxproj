@@ -160,6 +160,7 @@
 		F11562A422DF2E9A00399FA6 /* StakeActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11562A222DF2E9A00399FA6 /* StakeActionTableViewCell.xib */; };
 		F1160E02242A254000EC5DD6 /* ActivityGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1160E01242A254000EC5DD6 /* ActivityGroup.swift */; };
 		F1160E04242A59A500EC5DD6 /* ActivityBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1160E03242A59A500EC5DD6 /* ActivityBase.swift */; };
+		F1182206257A5AE5009993D1 /* AnalyticService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1182205257A5AE5009993D1 /* AnalyticService.swift */; };
 		F12815E7236B298500CAE49B /* LevelOfMasteryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12815E6236B298500CAE49B /* LevelOfMasteryService.swift */; };
 		F1302705245080AA00D49730 /* CreateGoalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1302703245080AA00D49730 /* CreateGoalCollectionViewCell.swift */; };
 		F1302706245080AA00D49730 /* CreateGoalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1302704245080AA00D49730 /* CreateGoalCollectionViewCell.xib */; };
@@ -631,6 +632,7 @@
 		F11562A222DF2E9A00399FA6 /* StakeActionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StakeActionTableViewCell.xib; sourceTree = "<group>"; };
 		F1160E01242A254000EC5DD6 /* ActivityGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityGroup.swift; sourceTree = "<group>"; };
 		F1160E03242A59A500EC5DD6 /* ActivityBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityBase.swift; sourceTree = "<group>"; };
+		F1182205257A5AE5009993D1 /* AnalyticService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticService.swift; sourceTree = "<group>"; };
 		F12815E6236B298500CAE49B /* LevelOfMasteryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfMasteryService.swift; sourceTree = "<group>"; };
 		F1302703245080AA00D49730 /* CreateGoalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalCollectionViewCell.swift; sourceTree = "<group>"; };
 		F1302704245080AA00D49730 /* CreateGoalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateGoalCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1398,6 +1400,7 @@
 				C561C411234474850073ABAC /* KeychainManager.swift */,
 				F187147E2369A01D000F764C /* AlertViewService.swift */,
 				F12815E6236B298500CAE49B /* LevelOfMasteryService.swift */,
+				F1182205257A5AE5009993D1 /* AnalyticService.swift */,
 				F1C745F123707B33004D689F /* LevelOfMastery */,
 				C5DCDECA2373D78A0018DEA4 /* SettingsService.swift */,
 				C57C9AD623866141001F41CB /* FileLoader.swift */,
@@ -2689,6 +2692,7 @@
 				F1EBC7B922D38C3300BAA82D /* ThinkViewController.swift in Sources */,
 				F1F6ADBC23210DB300F6A925 /* File+CoreDataClass.swift in Sources */,
 				F1C2533322B297B9003156AA /* UnlockPremiumTableViewCell.swift in Sources */,
+				F1182206257A5AE5009993D1 /* AnalyticService.swift in Sources */,
 				F1130CEC230FF34E008FA60D /* DownloadsActionViewController.swift in Sources */,
 				C5B1E56023043DAE000991DF /* UnderlinedImageTitleView.swift in Sources */,
 				C59E5E2223056A30005DCD18 /* ImageTitleViewModel.swift in Sources */,
@@ -3003,7 +3007,7 @@
 				CODE_SIGN_ENTITLEMENTS = Bold/Bold.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 37HBR3VGFU;
 				INFOPLIST_FILE = Bold/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3028,7 +3032,7 @@
 				CODE_SIGN_ENTITLEMENTS = Bold/Bold.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 37HBR3VGFU;
 				INFOPLIST_FILE = Bold/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

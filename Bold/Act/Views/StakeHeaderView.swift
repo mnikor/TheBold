@@ -73,8 +73,8 @@ class StakeHeaderView: BaseTableViewHeaderFooterView {
         titleLabel.text = viewModel.title
         subtitleLabel.text = viewModel.subtitle
         type = viewModel.type
-        //contentView.backgroundColor = viewModel.backgroundColor
-        imageView.image = UIImage.image(size: imageView.bounds.size, fillColors: [viewModel.backgroundColor, viewModel.backgroundColor.withAlphaComponent(0)])
+        contentView.backgroundColor = viewModel.backgroundColor
+        //imageView.image = UIImage.image(size: imageView.bounds.size, fillColors: [viewModel.backgroundColor, viewModel.backgroundColor.withAlphaComponent(0)])
         plusButton.setImage(viewModel.imageButton, for: .normal)
         plusButton.isHidden = viewModel.rightButtonIsHidden
     }

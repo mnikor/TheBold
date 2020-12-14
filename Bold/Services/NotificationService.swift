@@ -80,7 +80,9 @@ class NotificationService: NSObject {
             (didAllow, error) in
             if !didAllow {
                 print("User has declined notifications")
+                return
             }
+            self.checkAndCreateShortReminders()
         }
     }
     
@@ -261,8 +263,8 @@ class NotificationService: NSObject {
                 startDate = calendar.date(byAdding: .day, value: 1, to: startDate)!
                 nextMonth = calendar.dateComponents([.month], from: startDate).month
             }
+            UserDefaults.standard.set(currentMonth, forKey: "ShortNotification")
         }
-        UserDefaults.standard.set(currentMonth, forKey: "ShortNotification")
     }
     
     //MARK:- Remove

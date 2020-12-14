@@ -24,5 +24,6 @@ target 'Bold' do
     pod 'ActiveLabel'
     pod 'lottie-ios'
     pod 'TPInAppReceipt'
+    pod 'AppsFlyerFramework'
     
 end

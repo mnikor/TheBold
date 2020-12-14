@@ -1,6 +1,9 @@
 PODS:
   - ActiveLabel (1.1.0)
   - Alamofire (4.8.2)
+  - AppsFlyerFramework (6.1.1):
+    - AppsFlyerFramework/Main (= 6.1.1)
+  - AppsFlyerFramework/Main (6.1.1)
   - ASN1Swift (1.2.3)
   - Cosmos (19.0.3)
   - JTAppleCalendar (8.0.0)
@@ -27,6 +30,7 @@ PODS:
 DEPENDENCIES:
   - ActiveLabel
   - Alamofire
+  - AppsFlyerFramework
   - Cosmos (~> 19.0)
   - JTAppleCalendar (~> 8.0)
   - KeychainAccess (~> 3.1.2)
@@ -61,12 +65,14 @@ SPEC REPOS:
     - SwiftyJSON
     - VisualEffectView
   trunk:
+    - AppsFlyerFramework
     - ASN1Swift
     - TPInAppReceipt
 
 SPEC CHECKSUMS:
   ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  AppsFlyerFramework: b26dca2329493c2ba3b3877d2f220af37a3108b6
   ASN1Swift: 73ba94f1d97c1c1d059d180708ad42845aeac4f9
   Cosmos: a6fb17284281fa12cf4c85c2efecd440a215ec44
   JTAppleCalendar: 76ccdc5a8b236166293e50b190c5f2722c30cdcd
@@ -84,6 +90,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 772fec006fd2ce1a6b7b90eac6a049fa20a0ff87
   VisualEffectView: bde340c8268765c2d71f7f115930733ba7e4a926
 
-PODFILE CHECKSUM: c21f6723fb251e738eda843ab795bab24a593208
+PODFILE CHECKSUM: 618e4ce24a24f75774ec492be3280cde02a8cc6a
 
 COCOAPODS: 1.9.3

@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var hostController: HostViewController?
     var backgroundSessionCompletionHandler: (() -> Void)?
+    let analyticService = AnalyticService()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -31,11 +32,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LevelOfMasteryService.shared.input(.calculateProgress)
         
         NotificationService.shared.delegate = self
+        NotificationService.shared.requestAuthorizaton()
         NotificationService.shared.input(.resetBadgeNumber)
+        NotificationService.shared.input(.createShortPhrase)
         
         FileLoader.loadAllAnimations()
-        NotificationService.shared.input(.createShortPhrase)
-
+        
+        analyticService.firstInit(window: window)
+        
+        // iOS 10 or later
+        if #available(iOS 10, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) { _, _ in }
+            application.registerForRemoteNotifications()
+        }
+        
         return true
     }
     
@@ -83,20 +93,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        NotificationService.shared.input(.resetBadgeNumber)
+        NotificationService.shared.input(.createShortPhrase)
     }
-
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        analyticService.applicationDidBecomeActive()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    func showAuth() {
-        
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        analyticService.handlePushNotification(userInfo)
     }
     
-    private func getRootViewController() -> UIViewController {
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        analyticService.openDeepLink(userActivity)
+        return true
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        analyticService.openURISheme(url, sourceApplication: sourceApplication, annotation: annotation)
+        return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        analyticService.openPushNotification(url, options: options)
+        return true
+    }
+    
+    private func getRootViewController(isShowSplash: Bool = true) -> UIViewController {
         
         let rootViewController: UIViewController
         if let _ = SessionManager.shared.token {
@@ -119,6 +148,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             rootViewController = StoryboardScene.Splash.storyboard.instantiateInitialViewController() ?? UIViewController()
         }
+        
+        if isShowSplash == false {
+            return StoryboardScene.Menu.storyboard.instantiateInitialViewController() ?? UIViewController()
+        }
+        
         return rootViewController
     }
 
@@ -134,4 +168,3 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
     
 }
-

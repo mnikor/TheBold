@@ -414,7 +414,7 @@ internal enum L10n {
     internal static let notification15 = L10n.tr("Localizable", "Notification.Notification15")
     /// Think beyond yourself  and your ego but first take care of yourself.
     internal static let notification16 = L10n.tr("Localizable", "Notification.Notification16")
-    /// Feel, Think  and Act based on your future-self.
+    /// Feel, Think and Act based on your future-self.
     internal static let notification2 = L10n.tr("Localizable", "Notification.Notification2")
     /// Do something meaningful today. Could be small but meaningful.
     internal static let notification3 = L10n.tr("Localizable", "Notification.Notification3")

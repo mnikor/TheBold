@@ -51,6 +51,10 @@ class HostViewController: MenuContainerViewController {
         
     }
     
+    func showStartController() {
+        self.selectContentViewController(contentViewControllers.first!)
+    }
+    
     class func showController(newVC: UIViewController) {
         
         guard let hoostVC = UIApplication.shared.keyWindow?.rootViewController as? HostViewController else {
@@ -101,7 +105,7 @@ class HostViewController: MenuContainerViewController {
             else { fatalError("Could not instantiate initial storyboard with name: \(StoryboardScene.Home.storyboardName)")
         }
         guard let feelController = StoryboardScene.Feel.storyboard.instantiateInitialViewController()
-            else {  fatalError("Could not instantiate initial storyboard with name: \(StoryboardScene.Home.storyboardName)")
+            else {  fatalError("Could not instantiate initial storyboard with name: \(StoryboardScene.Feel.storyboardName)")
         }
         guard let thinkController = StoryboardScene.Think.storyboard.instantiateInitialViewController()
             else {  fatalError("Could not instantiate initial storyboard with name: \(StoryboardScene.Think.storyboardName)")
