@@ -3007,7 +3007,7 @@
 				CODE_SIGN_ENTITLEMENTS = Bold/Bold.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = 37HBR3VGFU;
 				INFOPLIST_FILE = Bold/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3015,7 +3015,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikonorov.newBold;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3032,7 +3032,7 @@
 				CODE_SIGN_ENTITLEMENTS = Bold/Bold.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = 37HBR3VGFU;
 				INFOPLIST_FILE = Bold/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3040,7 +3040,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikonorov.newBold;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

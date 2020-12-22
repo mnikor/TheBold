@@ -87,6 +87,9 @@ class HeaderHomeView: UIView {
     
     private func set(points: Int, changePoint: Int, currentLevel: LevelBold) {
         
+        pointsStartValue = points - changePoint//Int(currentPointsLabel.text?.components(separatedBy: "/").first ?? "0") ?? 0
+        pointsEndValue = points
+        
         if (contentView.window == nil) {
             currentPointsLabel.text = "\(points)"
             limitPointsLabel.text = "/\(pointsLimit)"
@@ -94,10 +97,7 @@ class HeaderHomeView: UIView {
             timeLabel.text = "\(boldnessEndValue) \(boldnessEndValue == 1 ? "session" : "sessions")"
             return
         }
-        
-        pointsStartValue = points - changePoint//Int(currentPointsLabel.text?.components(separatedBy: "/").first ?? "0") ?? 0
-        pointsEndValue = points
-        
+
         let displayLink = CADisplayLink(target: self, selector: #selector(animatePoints))
         displayLink.add(to: .main, forMode: .default)
         pointsStartDate = Date()

@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LevelOfMasteryService.shared.input(.calculateProgress)
         
         NotificationService.shared.delegate = self
-        NotificationService.shared.requestAuthorizaton()
+//        NotificationService.shared.requestAuthorizaton()
         NotificationService.shared.input(.resetBadgeNumber)
         NotificationService.shared.input(.createShortPhrase)
         
@@ -41,10 +41,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         analyticService.firstInit(window: window)
         
         // iOS 10 or later
-        if #available(iOS 10, *) {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) { _, _ in }
-            application.registerForRemoteNotifications()
-        }
+//        if #available(iOS 10, *) {
+//            UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) { _, _ in }
+//            application.registerForRemoteNotifications()
+//        }
         
         return true
     }
